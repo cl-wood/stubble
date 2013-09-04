@@ -5,7 +5,7 @@ int main(int argc, char* argv[])
 
     // Exit if wrong number of arguments
     if (argc != 2) {
-        printf("%s\n", error_arguments);
+        printf("%s\n", k_error_arguments);
         return -1;
     }
 
@@ -16,8 +16,8 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    char user[str_length];
-    fscanf(config_file, "%s", user);
+    char user[k_str_length];
+    //fscanf(config_file, "%s", user);
 
     // Read each line to get machine:root pairs
     /*
@@ -30,26 +30,31 @@ int main(int argc, char* argv[])
 
 
     // While loop, exec each command
+    int command_number = 1;
     int args;
-    char str[str_length];
-    char cmd[str_length]; // Don't need to bother with bounds checking?
-    char arg[str_length]; 
-    char machine1[str_length]; 
-    char path1[str_length]; 
-    char machine2[str_length]; 
-    char path2[str_length]; 
+    char str[k_str_length];
+    char cmd[k_str_length]; // Don't need to bother with bounds checking?
+    char arg[k_str_length]; 
+    char machine1[k_str_length]; 
+    char path1[k_str_length]; 
+    char machine2[k_str_length]; 
+    char path2[k_str_length]; 
+    printf("%s%d%s ", "<cmd:", command_number++, ">");
 
-    while (fgets(str, str_length, stdin) ) {
+    while (fgets(str, k_str_length, stdin) ) {
+
+        // Strip trailing newline
+        strtok(str, "\n");
 
         // quit case
-        if (strncmp(str, "quit", 4) == 0) {
+        if (compare(k_quit, str)) {
             printf("%s\n", "Quitting now.");
             return 0;
         }
 
 
         // ls case, may have one optional parameter specifying dir to list.
-        if (strncmp(str, "ls", 2) == 0) {
+        if (compare(k_ls, str)) {
 
             // TODO do i need to parse a machine:path or just path?
             int ret = sscanf(str, "%s %s", cmd, path1);
@@ -64,24 +69,25 @@ int main(int argc, char* argv[])
         }
 
         
-        if (strncmp(str, "cat", 3) == 0) {
+        if (compare(k_cat, str)) {
             printf("HERE\n");
         }
 
-        if (strncmp(str, "cd", 2) == 0) {
+        if (compare(k_cd, str)) {
             printf("HERE\n");
         }
 
-        if (strncmp(str, "mkdir", 5) == 0) {
+        if (compare(k_mkdir, str)) {
             printf("HERE\n");
         }
 
-        if (strncmp(str, "cp", 2) == 0) {
+        if (compare(k_cp, str)) {
             printf("HERE\n");
         }
 
-            //sprintf(cmd, "%s %s@%s", ssh, user, machine);
 
+        // End of while loop, print next line
+        printf("%s%d%s ", "<cmd:", command_number++, ">");
     }
 
     //DEBUG
