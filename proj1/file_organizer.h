@@ -7,6 +7,7 @@
 
 const char* ssh = "ssh -q";
 const char* error_arguments = "Usage: a.out expects 1 argument, a config file of commands";
+const int str_length = 256;
 
 //cp
 //cat
