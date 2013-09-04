@@ -16,23 +16,41 @@ int main(int argc, char* argv[])
         return -1;
     }
 
+    char str[k_str_length];
     char user[k_str_length];
-    //fscanf(config_file, "%s", user);
+    fscanf(config_file, "%s", user);
 
     // Read each line to get machine:root pairs
-    /*
-    while (fscanf(config_file, "", ) != EOF ) {
+    // TODO currently assuming up to 10 strings of 100 chars
+    int i = 0;
+    char machine[k_str_length]; 
+    char machines[10][100];
+    memset(machines, 0, 10 * 100);
+    char root[k_str_length]; 
+    char roots[10][100];
+    memset(roots, 0, 10 * 100);
 
-    }*/
+    // TODO getting a duplicate on last entry?
+    while (fgets(str, k_str_length, config_file) ) {
+
+        fscanf(config_file, "%s %s", machine, root);
+        strncpy(machines[i], machine, strlen(machine) + 1);
+        strncpy(roots[i], root, strlen(root) + 1);
+        i++;
+    }
+
+    for (int j = 0; j < i; j++) {
+        printf("%s %s\n", machines[j], roots[j]);
+    }
     // check feof(f) to make sure it wasn't an error, was actually EOF
 
     fclose(config_file);
 
+/*
 
     // While loop, exec each command
     int command_number = 1;
     int args;
-    char str[k_str_length];
     char cmd[k_str_length]; // Don't need to bother with bounds checking?
     char arg[k_str_length]; 
     char machine1[k_str_length]; 
@@ -90,6 +108,7 @@ int main(int argc, char* argv[])
         printf("%s%d%s ", "<cmd:", command_number++, ">");
     }
 
+*/
     //DEBUG
 
 }
