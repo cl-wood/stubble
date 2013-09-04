@@ -1,0 +1,4 @@
+xyuan    # your login name, always in first line
+linprog1 /home/faculty/xyuan/tmp  # machine  dir pair in the rest of lines
+linprog2 /tmp/xyuan  # machine  directory
+linprog3 /tmp/xyuan  # machine  directory
