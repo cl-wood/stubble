@@ -1,4 +1,3 @@
-#include<stdio.h>
 #include "file_organizer.h"
 
 int main(int argc, char* argv[]) 

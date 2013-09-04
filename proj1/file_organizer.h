@@ -2,6 +2,9 @@
 #define __file_organizer_h
 
 #include<stdio.h>
+#include<string.h>
+#include<unistd.h>
+#include<stdarg.h>
 
 #define DEBUG printf("HERE %d\n", __LINE__);fflush(stdout);
 
@@ -19,6 +22,8 @@ void cd()
 }
 
 //ls
+
+
 //ls dir
 
 #endif
