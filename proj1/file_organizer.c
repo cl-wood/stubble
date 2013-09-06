@@ -22,34 +22,33 @@ int main(int argc, char* argv[])
 
     // Read each line to get machine:root pairs
     // TODO currently assuming up to 10 strings of 100 chars
-    int i = 0;
+    int num_paths = 0;
     char machine[k_str_length]; 
-    char machines[10][100];
-    memset(machines, 0, 10 * 100);
     char root[k_str_length]; 
-    char roots[10][100];
-    memset(roots, 0, 10 * 100);
+    absolute_path paths[100];
 
     // TODO getting a duplicate on last entry?
+    // TODO can i fscanf directly into paths?
     while (fgets(str, k_str_length, config_file) ) {
 
         fscanf(config_file, "%s %s", machine, root);
-        strncpy(machines[i], machine, strlen(machine) + 1);
-        strncpy(roots[i], root, strlen(root) + 1);
-        i++;
+        strncpy(paths[num_paths].machine, machine, strlen(machine) + 1);
+        strncpy(paths[num_paths].root, root, strlen(root) + 1);
+        num_paths++;
     }
 
-    for (int j = 0; j < i; j++) {
-        printf("%s %s\n", machines[j], roots[j]);
+    /*
+    for (int j = 0; j < num_paths; j++) {
+        printf("%s %s\n", paths[j].machine, paths[j].root);
     }
+    */
+   
     // check feof(f) to make sure it wasn't an error, was actually EOF
 
     fclose(config_file);
 
-/*
-
     // While loop, exec each command
-    int command_number = 1;
+    int command_number = 0;
     int args;
     char cmd[k_str_length]; // Don't need to bother with bounds checking?
     char arg[k_str_length]; 
@@ -66,10 +65,8 @@ int main(int argc, char* argv[])
 
         // quit case
         if (compare(k_quit, str)) {
-            printf("%s\n", "Quitting now.");
             return 0;
         }
-
 
         // ls case, may have one optional parameter specifying dir to list.
         if (compare(k_ls, str)) {
@@ -91,6 +88,7 @@ int main(int argc, char* argv[])
             printf("HERE\n");
         }
 
+        // cd
         if (compare(k_cd, str)) {
             printf("HERE\n");
         }
@@ -99,6 +97,7 @@ int main(int argc, char* argv[])
             printf("HERE\n");
         }
 
+        // cp 
         if (compare(k_cp, str)) {
             printf("HERE\n");
         }
@@ -108,7 +107,6 @@ int main(int argc, char* argv[])
         printf("%s%d%s ", "<cmd:", command_number++, ">");
     }
 
-*/
     //DEBUG
 
 }

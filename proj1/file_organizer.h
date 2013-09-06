@@ -12,6 +12,12 @@ const char* k_ssh = "ssh -q";
 const char* k_error_arguments = "Usage: a.out expects 1 argument, a config file of commands";
 const int k_str_length = 256;
 
+// Holds machine names and file root paths
+typedef struct  {
+    char machine[10];    
+    char root[10];    
+} absolute_path;
+
 // Commands
 const char* k_quit = "quit";
 const char* k_ls = "ls";
@@ -27,7 +33,8 @@ int compare(const char* s, const char* input)
            strlen(s) == strlen(input);
 }
 
-//cp
+// ssh -q machine1 scp -q root1/path1 username@machine2:root2/path2
+//void cp(, struct absolute_path path)
 //cat
 //mkdir
 
@@ -36,10 +43,14 @@ void cd()
     printf("stub!\n");    
 }
 
-//ls
+// ssh -q linprog1 ls /root1/path1
+void ls(char* dir, absolute_path paths)
+{
 
+//k_ssh + machine + k_ls + path
 
-//ls dir
+}
+
 
 #endif
 
