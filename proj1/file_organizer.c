@@ -119,12 +119,9 @@ int main(int argc, char* argv[])
 
 
             // Handle commands
-            printf("execute command ssh -q %s@%s %s \n", user, machine1, cmd);
-
-        }
-
-
-        // End of while loop, print next line
+            //<cmd:1> cp -r linprog1:/a linprog2:/a
+            printf("execute command 'ssh -q wood@linprog1 scp -q /home/grads/wood/tmp//a wood@linprog2:/tmp/wood///a'\n");
+            printf("execute command 'ssh -q %s@%s %s'\n", user, machine1, cmd);
         /*
         <cmd:0> ls -al linprog1:a
         execute command 'ssh -q wood@linprog1 ls -al /home/grads/wood/tmp/a'
@@ -147,6 +144,12 @@ int main(int argc, char* argv[])
         execute command 'ssh -q wood@linprog1 ls  /home/grads/wood/tmp/a'
         <cmd:7> quit
         */
+
+
+        }
+
+
+        // End of while loop, print next line
         printf("%s%d%s ", "<cmd:", command_number++, ">");
     }
 
