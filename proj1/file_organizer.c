@@ -68,8 +68,20 @@ int main(int argc, char* argv[])
             return 0;
         }
 
+        // TODO build a parsing function which covers common cases
+        else {
+            /* Sscanf regex. Read in: 1) whitespace delimited string
+             *                        2) a string on anything but ':'
+             *                        3) ignore (*) the ':'
+             *                        4) read in a string, then repeat with m2:p2
+             */
+            int ret = sscanf(str, "%s %[^:]%*c%s %[^:]%*c%s", cmd, machine1, path1, machine2, path2);
+            printf("ssh -q %s@%s %s %s/%s\n", user, machine1, cmd, "DIR1", path1);
+        }
+
+/*
         // ls case, may have one optional parameter specifying dir to list.
-        if (compare(k_ls, str)) {
+        else if (compare(k_ls, str)) {
 
             // TODO do i need to parse a machine:path or just path?
             int ret = sscanf(str, "%s %s", cmd, path1);
@@ -84,24 +96,25 @@ int main(int argc, char* argv[])
         }
 
         
-        if (compare(k_cat, str)) {
+        else if (compare(k_cat, str)) {
             printf("HERE\n");
         }
 
         // cd
-        if (compare(k_cd, str)) {
+        else if (compare(k_cd, str)) {
             printf("HERE\n");
         }
 
-        if (compare(k_mkdir, str)) {
+        else if (compare(k_mkdir, str)) {
             printf("HERE\n");
         }
 
         // cp 
-        if (compare(k_cp, str)) {
+        else if (compare(k_cp, str)) {
             printf("HERE\n");
         }
 
+*/
 
         // End of while loop, print next line
         printf("%s%d%s ", "<cmd:", command_number++, ">");
