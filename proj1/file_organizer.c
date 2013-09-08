@@ -117,11 +117,36 @@ int main(int argc, char* argv[])
 
            } // end token while
 
+
+            // Handle commands
             printf("execute command ssh -q %s@%s %s \n", user, machine1, cmd);
+
         }
 
 
         // End of while loop, print next line
+        /*
+        <cmd:0> ls -al linprog1:a
+        execute command 'ssh -q wood@linprog1 ls -al /home/grads/wood/tmp/a'
+        total 8
+        drwxr-xr-x 2 wood CS-Grads 4096 Sep  8 15:02 .
+        drwx------ 5 wood CS-Grads 4096 Sep  8 15:03 ..
+        <cmd:1> cp -r linprog1:/a linprog2:/a
+        execute command 'ssh -q wood@linprog1 scp -q /home/grads/wood/tmp//a wood@linprog2:/tmp/wood///a'
+        /home/grads/wood/tmp//a: not a regular file
+        <cmd:2> cat linprog1:a
+        execute command 'ssh -q wood@linprog1 cat  /home/grads/wood/tmp/a'
+        cat: /home/grads/wood/tmp/a: Is a directory
+        <cmd:3> mkdir linprog1:abc
+        execute command 'ssh -q wood@linprog1 mkdir /home/grads/wood/tmp/abc'
+        <cmd:4> cd linprog1:a
+        change current directory to linprog1:a
+        <cmd:5> ls
+        execute command 'ssh -q wood@linprog1 ls  /home/grads/wood/tmp/a'
+        <cmd:6> ls linprog1:a
+        execute command 'ssh -q wood@linprog1 ls  /home/grads/wood/tmp/a'
+        <cmd:7> quit
+        */
         printf("%s%d%s ", "<cmd:", command_number++, ">");
     }
 
