@@ -1,0 +1,3 @@
+mkdir -p linprog1:/b/{a,b,c,d}
+ls linprog1:/b
+ls -al linprog1

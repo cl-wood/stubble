@@ -49,16 +49,16 @@ int main(int argc, char* argv[])
 
     // While loop, exec each command
     int command_number = 0;
-    int args;
-    char cmd[k_str_length]; // Don't need to bother with bounds checking?
-    char arg[k_str_length]; 
-    char machine1[k_str_length]; 
-    char path1[k_str_length]; 
-    char machine2[k_str_length]; 
-    char path2[k_str_length]; 
+    int num_machines = 0;
     printf("%s%d%s ", "<cmd:", command_number++, ">");
 
     while (fgets(str, k_str_length, stdin) ) {
+
+        char cmd[k_str_length]; // Don't need to bother with bounds checking?
+        char machine1[k_str_length]; 
+        char path1[k_str_length]; 
+        char machine2[k_str_length]; 
+        char path2[k_str_length]; 
 
         // Strip trailing newline
         strtok(str, "\n");
@@ -68,53 +68,58 @@ int main(int argc, char* argv[])
             return 0;
         }
 
-        // TODO build a parsing function which covers common cases
         else {
-            /* Sscanf regex. Read in: 1) whitespace delimited string
-             *                        2) a string on anything but ':'
-             *                        3) ignore (*) the ':'
-             *                        4) read in a string, then repeat with m2:p2
-             */
-            int ret = sscanf(str, "%s %[^:]%*c%s %[^:]%*c%s", cmd, machine1, path1, machine2, path2);
-            printf("ssh -q %s@%s %s %s/%s\n", user, machine1, cmd, "DIR1", path1);
+
+            // Tokenize based on whitespace
+            char* token = strtok(str, " ");
+
+            // Get initial command
+            strcpy(cmd, token);
+            printf("cmd: %s\n", cmd);
+
+            // Re-prime for rest of user input
+            token = strtok (NULL, " ");
+            
+            while (token != NULL) {
+                    
+                // Check if this token contains a machine name
+                int contains_machine = 0;
+                for (int i = 0; i < num_paths; i++) {
+
+                    if (strstr(token, paths[i].machine) != NULL) {
+                        contains_machine = 1; 
+
+                        // Take care of machine1 first
+                        if (num_machines == 0) {
+                            num_machines++;
+                            sscanf(token, "%[^:]%*c%s", machine1, path1);
+                            printf("m: %s\n", machine1);
+                            printf("p: %s\n", path1);
+                        }
+
+                        // Now handle machine2
+                        else {
+                            sscanf(token, "%[^:]%*c%s", machine2, path2);
+                        }
+                        
+                        break;
+                    }
+                } // end machine name for loop
+
+                // Must be done to handle flags that can occur before or after args
+                if (!contains_machine) {
+                    strcat(cmd, " "); 
+                    strcat(cmd, token); 
+                    printf("cmd: %s\n", cmd);
+                }
+
+                token = strtok (NULL, " ");
+
+           } // end token while
+
+            printf("execute command ssh -q %s@%s %s \n", user, machine1, cmd);
         }
 
-/*
-        // ls case, may have one optional parameter specifying dir to list.
-        else if (compare(k_ls, str)) {
-
-            // TODO do i need to parse a machine:path or just path?
-            int ret = sscanf(str, "%s %s", cmd, path1);
-            if (ret == 1) {
-                printf("Executing %s on home directory\n", cmd);
-            } else if (ret == 2) {
-                printf("Executing %s on directory: %s\n", cmd, path1);
-            } else {
-                printf("%s\n", "Error: Used ls incorrectly.");
-            }
-
-        }
-
-        
-        else if (compare(k_cat, str)) {
-            printf("HERE\n");
-        }
-
-        // cd
-        else if (compare(k_cd, str)) {
-            printf("HERE\n");
-        }
-
-        else if (compare(k_mkdir, str)) {
-            printf("HERE\n");
-        }
-
-        // cp 
-        else if (compare(k_cp, str)) {
-            printf("HERE\n");
-        }
-
-*/
 
         // End of while loop, print next line
         printf("%s%d%s ", "<cmd:", command_number++, ">");
