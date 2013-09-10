@@ -18,17 +18,14 @@ int main(int argc, char* argv[])
 
     char str[k_str_length];
     char user[k_str_length];
-    //fscanf(config_file, "%s", user);
-    fgets(user, k_str_length, config_file);
+    fgets(str, k_str_length, config_file);
+    sscanf(str, "%s", user);
 
     // Read each line to get machine:root pairs
     // TODO currently assuming up to 10 strings of 100 chars
     int num_paths = 0;
     absolute_path paths[32];
-    //memset(paths, 0, 32 * 2 * 64 * sizeof(char));
-
     while (fgets(str, k_str_length, config_file) ) {
-
         sscanf(str, "%s %s", paths[num_paths].machine, paths[num_paths].root);
         printf("%s:%s\n",paths[num_paths].machine, paths[num_paths].root);
         num_paths++;
@@ -86,18 +83,12 @@ int main(int argc, char* argv[])
                             num_machines++;
                             sscanf(token, "%[^:]%*c%s", machine1, path1);
                             strcpy(root1, paths[i].root);
-                            printf("m: %s\n", machine1);
-                            printf("r: %s\n", root1);
-                            printf("p: %s\n", path1);
                         }
 
                         // Now handle machine2
                         else {
                             sscanf(token, "%[^:]%*c%s", machine2, path2);
                             strcpy(root2, paths[i].root);
-                            printf("m: %s\n", machine2);
-                            printf("r: %s\n", root2);
-                            printf("p: %s\n", path2);
                         }
                         
                         break;
@@ -118,8 +109,18 @@ int main(int argc, char* argv[])
 
             // Handle commands
             //<cmd:1> cp -r linprog1:/a linprog2:/a
-            printf("execute command 'ssh -q wood@linprog1 scp -q /home/grads/wood/tmp//a wood@linprog2:/tmp/wood///a'\n");
-            printf("execute command 'ssh -q %s@%s %s'\n", user, machine1, cmd);
+            //printf("execute command 'ssh -q wood@linprog1 scp -q /home/grads/wood/tmp//a wood@linprog2:/tmp/wood///a'\n");
+            printf("execute command 'ssh -q %s@%s %s -q %s/%s %s@%s:%s/%s'\n", 
+                user, 
+                machine1, 
+                cmd,
+                root1,
+                path1,
+                user,
+                machine2,
+                root2,
+                path2
+            );
         /*
         <cmd:0> ls -al linprog1:a
         execute command 'ssh -q wood@linprog1 ls -al /home/grads/wood/tmp/a'
