@@ -14,8 +14,8 @@ const int k_str_length = 256;
 
 // Holds machine names and file root paths
 typedef struct  {
-    char machine[10];    
-    char root[10];    
+    char machine[64];    
+    char root[64];    
 } absolute_path;
 
 // Commands

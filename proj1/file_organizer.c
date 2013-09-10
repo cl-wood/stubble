@@ -18,33 +18,23 @@ int main(int argc, char* argv[])
 
     char str[k_str_length];
     char user[k_str_length];
-    fscanf(config_file, "%s", user);
+    //fscanf(config_file, "%s", user);
+    fgets(user, k_str_length, config_file);
 
     // Read each line to get machine:root pairs
     // TODO currently assuming up to 10 strings of 100 chars
     int num_paths = 0;
-    char machine[k_str_length]; 
-    char root[k_str_length]; 
-    absolute_path paths[100];
+    absolute_path paths[32];
+    //memset(paths, 0, 32 * 2 * 64 * sizeof(char));
 
-    // TODO getting a duplicate on last entry?
-    // TODO can i fscanf directly into paths?
     while (fgets(str, k_str_length, config_file) ) {
 
-        fscanf(config_file, "%s %s", machine, root);
-        strncpy(paths[num_paths].machine, machine, strlen(machine) + 1);
-        strncpy(paths[num_paths].root, root, strlen(root) + 1);
+        sscanf(str, "%s %s", paths[num_paths].machine, paths[num_paths].root);
+        printf("%s:%s\n",paths[num_paths].machine, paths[num_paths].root);
         num_paths++;
     }
 
-    /*
-    for (int j = 0; j < num_paths; j++) {
-        printf("%s %s\n", paths[j].machine, paths[j].root);
-    }
-    */
-   
     // check feof(f) to make sure it wasn't an error, was actually EOF
-
     fclose(config_file);
 
     // While loop, exec each command
@@ -57,8 +47,10 @@ int main(int argc, char* argv[])
         char cmd[k_str_length]; // Don't need to bother with bounds checking?
         char machine1[k_str_length]; 
         char path1[k_str_length]; 
+        char root1[k_str_length]; 
         char machine2[k_str_length]; 
         char path2[k_str_length]; 
+        char root2[k_str_length]; 
 
         // Strip trailing newline
         strtok(str, "\n");
@@ -93,13 +85,19 @@ int main(int argc, char* argv[])
                         if (num_machines == 0) {
                             num_machines++;
                             sscanf(token, "%[^:]%*c%s", machine1, path1);
+                            strcpy(root1, paths[i].root);
                             printf("m: %s\n", machine1);
+                            printf("r: %s\n", root1);
                             printf("p: %s\n", path1);
                         }
 
                         // Now handle machine2
                         else {
                             sscanf(token, "%[^:]%*c%s", machine2, path2);
+                            strcpy(root2, paths[i].root);
+                            printf("m: %s\n", machine2);
+                            printf("r: %s\n", root2);
+                            printf("p: %s\n", path2);
                         }
                         
                         break;
