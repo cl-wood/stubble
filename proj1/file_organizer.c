@@ -49,6 +49,14 @@ int main(int argc, char* argv[])
         char path2[k_str_length]; 
         char root2[k_str_length]; 
 
+        // Init to NULL string
+        machine1[0] = '\0'; 
+        path1[0] = '\0'; 
+        root1[0] = '\0'; 
+        machine2[0] = '\0'; 
+        path2[0] = '\0'; 
+        root2[0] = '\0'; 
+
         // Strip trailing newline
         strtok(str, "\n");
 
@@ -110,6 +118,7 @@ int main(int argc, char* argv[])
             // Handle commands
             //<cmd:1> cp -r linprog1:/a linprog2:/a
             //printf("execute command 'ssh -q wood@linprog1 scp -q /home/grads/wood/tmp//a wood@linprog2:/tmp/wood///a'\n");
+            /*
             printf("execute command 'ssh -q %s@%s %s -q %s/%s %s@%s:%s/%s'\n", 
                 user, 
                 machine1, 
@@ -121,34 +130,87 @@ int main(int argc, char* argv[])
                 root2,
                 path2
             );
-        /*
-        <cmd:0> ls -al linprog1:a
-        execute command 'ssh -q wood@linprog1 ls -al /home/grads/wood/tmp/a'
-        total 8
-        drwxr-xr-x 2 wood CS-Grads 4096 Sep  8 15:02 .
-        drwx------ 5 wood CS-Grads 4096 Sep  8 15:03 ..
-        <cmd:1> cp -r linprog1:/a linprog2:/a
-        execute command 'ssh -q wood@linprog1 scp -q /home/grads/wood/tmp//a wood@linprog2:/tmp/wood///a'
-        /home/grads/wood/tmp//a: not a regular file
-        <cmd:2> cat linprog1:a
-        execute command 'ssh -q wood@linprog1 cat  /home/grads/wood/tmp/a'
-        cat: /home/grads/wood/tmp/a: Is a directory
-        <cmd:3> mkdir linprog1:abc
-        execute command 'ssh -q wood@linprog1 mkdir /home/grads/wood/tmp/abc'
-        <cmd:4> cd linprog1:a
-        change current directory to linprog1:a
-        <cmd:5> ls
-        execute command 'ssh -q wood@linprog1 ls  /home/grads/wood/tmp/a'
-        <cmd:6> ls linprog1:a
-        execute command 'ssh -q wood@linprog1 ls  /home/grads/wood/tmp/a'
-        <cmd:7> quit
-        */
+            */
+
+            // ls command
+            // Either 1) "ls"
+            //        2) "ls machine"
+            //        3) "ls machine:dir"
+            if (compare(k_ls, cmd) ) {
+
+                char delimiter;
+                
+                if (machine1[0] == '\0' && path1[0] == '\0') {
+                    delimiter = '\0';
+                    strcpy(machine1, paths[0].machine);
+                    strcpy(root1, paths[0].root);
+                }
+
+                else if (machine1[0] != '\0' && path1[0] == '\0') {
+                    delimiter = '\0';
+                    strcpy(root1, paths[0].root);
+                }
+
+                else if (machine1[0] != '\0' && path1[0] != '\0') {
+                    delimiter = '/';
+                } 
 
 
-        }
+                printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
+                    user,  // @
+                    machine1, // SPACE
+                    cmd, // 
+                    root1,
+                    delimiter,
+                    path1 
+                );
+
+            }
+
+                /*
+                if (machine1[0] == NULL) {
+                    printf("execute command 'ssh -q %s@%s %s -q %s/%s %s@%s:%s/%s'\n", 
+                    user, 
+                    machine1, 
+                    cmd,
+                    root1,
+                    path1,
+                    user,
+                    machine2,
+                    root2,
+                    path2
+                    );
+                    */
+                
+
+                //execute command 'ssh -q wood@linprog1 ls  /home/grads/wood/tmp'
+                //execute command 'ssh -q wood@linprog1 ls  /home/grads/wood/tmp/a'
+                /*
+                execute command 'ssh -q wood@ ls -q / wood@:/'
+                <cmd:1> ls linprog1:a
+                cmd: ls
+                execute command 'ssh -q wood@linprog1 ls -q /home/grads/wood/tmp/a wood@:/'
+                <cmd:2> ls linprog1
+                cmd: ls
+                execute command 'ssh -q wood@ ls -q / wood@linprog1:/home/grads/wood/tmp/'
+                */
+
+            
 
 
-        // End of while loop, print next line
+            // cp command 
+            //if (compare(k_cp, cmd) ) {
+            //    
+            //}
+
+
+
+
+
+        } // end user input while
+
+
+        // 
         printf("%s%d%s ", "<cmd:", command_number++, ">");
     }
 
