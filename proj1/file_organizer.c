@@ -114,28 +114,12 @@ int main(int argc, char* argv[])
 
            } // end token while
 
-
-            // Handle commands
-            //<cmd:1> cp -r linprog1:/a linprog2:/a
-            //printf("execute command 'ssh -q wood@linprog1 scp -q /home/grads/wood/tmp//a wood@linprog2:/tmp/wood///a'\n");
-            /*
-            printf("execute command 'ssh -q %s@%s %s -q %s/%s %s@%s:%s/%s'\n", 
-                user, 
-                machine1, 
-                cmd,
-                root1,
-                path1,
-                user,
-                machine2,
-                root2,
-                path2
-            );
-            */
-
-            // ls command
-            // Either 1) "ls"
-            //        2) "ls machine"
-            //        3) "ls machine:dir"
+            /* ls command
+             * Either 1) "ls"
+             *        2) "ls machine"
+             *        3) "ls machine:dir"
+             */
+            // TODO ls -al doesn't work
             if (compare(k_ls, cmd) ) {
 
                 char delimiter;
@@ -155,21 +139,58 @@ int main(int argc, char* argv[])
                     delimiter = '/';
                 } 
 
-
                 printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
-                    user,  // @
-                    machine1, // SPACE
-                    cmd, // 
-                    root1,
+                    user,       // @
+                    machine1,   // SPACE
+                    cmd,        // SPACE
+                    root1,      // :
                     delimiter,
-                    path1 
+                    path1       
                 );
 
-            }
+            } // end ls
 
-                /*
-                if (machine1[0] == NULL) {
-                    printf("execute command 'ssh -q %s@%s %s -q %s/%s %s@%s:%s/%s'\n", 
+            if (compare(k_cd, cmd) ) {
+
+                printf("change current directory to %s:%s\n", machine1, path1);
+                // We don't print the root, but we have to account for it
+
+            } // end cd
+
+            if (compare(k_cat, cmd) ) {
+                char delimiter = '/';
+
+                //cat linprog4:/tmp/blah
+                //execute command 'ssh -q wood@linprog4 cat  /tmp/wood//tmp/blah'
+                printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
+                    user,       // @
+                    machine1,   // SPACE
+                    cmd,        // SPACE
+                    root1,      // :
+                    delimiter,
+                    path1       
+                );
+
+            } // end cat
+
+            if (compare(k_mkdir, cmd) ) {
+                char delimiter = '/';
+
+                printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
+                    user,       // @
+                    machine1,   // SPACE
+                    cmd,        // SPACE
+                    root1,      // :
+                    delimiter,
+                    path1       
+                );
+
+
+            } // end mkdir
+
+            if (compare(k_cp, cmd) ) {
+
+                printf("execute command 'ssh -q %s@%s %s -q %s/%s %s@%s:%s/%s'\n", 
                     user, 
                     machine1, 
                     cmd,
@@ -179,42 +200,18 @@ int main(int argc, char* argv[])
                     machine2,
                     root2,
                     path2
-                    );
-                    */
-                
+                );
+               
+            } // end cp
 
-                //execute command 'ssh -q wood@linprog1 ls  /home/grads/wood/tmp'
-                //execute command 'ssh -q wood@linprog1 ls  /home/grads/wood/tmp/a'
-                /*
-                execute command 'ssh -q wood@ ls -q / wood@:/'
-                <cmd:1> ls linprog1:a
-                cmd: ls
-                execute command 'ssh -q wood@linprog1 ls -q /home/grads/wood/tmp/a wood@:/'
-                <cmd:2> ls linprog1
-                cmd: ls
-                execute command 'ssh -q wood@ ls -q / wood@linprog1:/home/grads/wood/tmp/'
-                */
-
-            
-
-
-            // cp command 
-            //if (compare(k_cp, cmd) ) {
-            //    
-            //}
-
-
-
-
-
-        } // end user input while
+        } // TODO end of unnecessary else, should move out of it
 
 
         // 
         printf("%s%d%s ", "<cmd:", command_number++, ">");
-    }
 
-    //DEBUG
+    } // end of user input while loop
+
 
 }
 
