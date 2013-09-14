@@ -8,7 +8,6 @@
 
 #define DEBUG printf("HERE %d\n", __LINE__);fflush(stdout);
 
-const char* k_ssh = "ssh -q";
 const char* k_error_arguments = "Usage: a.out expects 1 argument, a config file of commands";
 const int k_str_length = 256;
 

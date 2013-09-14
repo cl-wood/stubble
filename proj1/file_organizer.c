@@ -51,11 +51,11 @@ int main(int argc, char* argv[])
 
         // Init to NULL string
         machine1[0] = '\0'; 
-        path1[0] = '\0'; 
-        root1[0] = '\0'; 
+        path1[0]    = '\0'; 
+        root1[0]    = '\0'; 
         machine2[0] = '\0'; 
-        path2[0] = '\0'; 
-        root2[0] = '\0'; 
+        path2[0]    = '\0'; 
+        root2[0]    = '\0'; 
 
         // Strip trailing newline
         strtok(str, "\n");
@@ -65,132 +65,113 @@ int main(int argc, char* argv[])
             return 0;
         }
 
-        else {
+        // Tokenize based on whitespace
+        char* token = strtok(str, " ");
 
-            // Tokenize based on whitespace
-            char* token = strtok(str, " ");
+        // Get initial command
+        strcpy(cmd, token);
+        printf("cmd: %s\n", cmd);
 
-            // Get initial command
-            strcpy(cmd, token);
-            printf("cmd: %s\n", cmd);
+        // Re-prime for rest of user input
+        token = strtok (NULL, " ");
 
-            // Re-prime for rest of user input
-            token = strtok (NULL, " ");
-            
-            while (token != NULL) {
-                    
-                // Check if this token contains a machine name
-                int contains_machine = 0;
-                for (int i = 0; i < num_paths; i++) {
+        while (token != NULL) {
 
-                    if (strstr(token, paths[i].machine) != NULL) {
-                        contains_machine = 1; 
+            // Check if this token contains a machine name
+            int contains_machine = 0;
+            for (int i = 0; i < num_paths; i++) {
 
-                        // Take care of machine1 first
-                        if (num_machines == 0) {
-                            num_machines++;
-                            sscanf(token, "%[^:]%*c%s", machine1, path1);
-                            strcpy(root1, paths[i].root);
-                        }
+                if (strstr(token, paths[i].machine) != NULL) {
+                    contains_machine = 1; 
 
-                        // Now handle machine2
-                        else {
-                            sscanf(token, "%[^:]%*c%s", machine2, path2);
-                            strcpy(root2, paths[i].root);
-                        }
-                        
-                        break;
+                    // Take care of machine1 first
+                    if (num_machines == 0) {
+                        num_machines++;
+                        sscanf(token, "%[^:]%*c%s", machine1, path1);
+                        strcpy(root1, paths[i].root);
                     }
-                } // end machine name for loop
 
-                // Must be done to handle flags that can occur before or after args
-                if (!contains_machine) {
-                    strcat(cmd, " "); 
-                    strcat(cmd, token); 
-                    printf("cmd: %s\n", cmd);
+                    // Now handle machine2
+                    else {
+                        sscanf(token, "%[^:]%*c%s", machine2, path2);
+                        strcpy(root2, paths[i].root);
+                    }
+
+                    break;
                 }
+            } // end machine name for loop
 
-                token = strtok (NULL, " ");
+            // Must be done to handle flags that can occur before or after args
+            if (!contains_machine) {
+                strcat(cmd, " "); 
+                strcat(cmd, token); 
+                printf("cmd: %s\n", cmd);
+            }
 
-           } // end token while
+            token = strtok (NULL, " ");
 
-            /* ls command
-             * Either 1) "ls"
-             *        2) "ls machine"
-             *        3) "ls machine:dir"
-             */
-            // TODO ls -al doesn't work
-            if (compare(k_ls, cmd) ) {
+        } // end token while
 
-                char delimiter;
-                
-                if (machine1[0] == '\0' && path1[0] == '\0') {
-                    delimiter = '\0';
-                    strcpy(machine1, paths[0].machine);
-                    strcpy(root1, paths[0].root);
-                }
+        char delimiter = '/';
+        /* ls command
+         * Either 1) "ls"
+         *        2) "ls machine"
+         *        3) "ls machine:dir"
+         */
+        // TODO ls -al doesn't work
+        if (compare(k_ls, cmd) ) {
+            if (machine1[0] == '\0' && path1[0] == '\0') {
+                delimiter = '\0';
+                strcpy(machine1, paths[0].machine);
+                strcpy(root1, paths[0].root);
+            }
 
-                else if (machine1[0] != '\0' && path1[0] == '\0') {
-                    delimiter = '\0';
-                    strcpy(root1, paths[0].root);
-                }
+            else if (machine1[0] != '\0' && path1[0] == '\0') {
+                delimiter = '\0';
+                strcpy(root1, paths[0].root);
+            }
 
-                else if (machine1[0] != '\0' && path1[0] != '\0') {
-                    delimiter = '/';
-                } 
+            else if (machine1[0] != '\0' && path1[0] != '\0') {
+                delimiter = '/';
+            } 
 
-                printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
+            printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
+                    user, /* @ */ machine1, cmd, root1, delimiter, path1);
+        } // end ls
+
+        if (compare(k_cd, cmd) ) {
+            printf("change current directory to %s:%s\n", machine1, path1);
+            // TODO We don't print the root, but we have to account for it
+        } // end cd
+
+        if (compare(k_cat, cmd) ) {
+            //cat linprog4:/tmp/blah
+            //execute command 'ssh -q wood@linprog4 cat  /tmp/wood//tmp/blah'
+            printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
                     user,       // @
                     machine1,   // SPACE
                     cmd,        // SPACE
-                    root1,      // :
+                    root1,     
                     delimiter,
                     path1       
-                );
+                  );
 
-            } // end ls
+        } // end cat
 
-            if (compare(k_cd, cmd) ) {
+        if (compare(k_mkdir, cmd) ) {
 
-                printf("change current directory to %s:%s\n", machine1, path1);
-                // We don't print the root, but we have to account for it
-
-            } // end cd
-
-            if (compare(k_cat, cmd) ) {
-                char delimiter = '/';
-
-                //cat linprog4:/tmp/blah
-                //execute command 'ssh -q wood@linprog4 cat  /tmp/wood//tmp/blah'
-                printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
+            printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
                     user,       // @
                     machine1,   // SPACE
                     cmd,        // SPACE
-                    root1,      // :
+                    root1,      
                     delimiter,
                     path1       
-                );
+                  );
+        } // end mkdir
 
-            } // end cat
-
-            if (compare(k_mkdir, cmd) ) {
-                char delimiter = '/';
-
-                printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
-                    user,       // @
-                    machine1,   // SPACE
-                    cmd,        // SPACE
-                    root1,      // :
-                    delimiter,
-                    path1       
-                );
-
-
-            } // end mkdir
-
-            if (compare(k_cp, cmd) ) {
-
-                printf("execute command 'ssh -q %s@%s %s -q %s/%s %s@%s:%s/%s'\n", 
+        if (compare(k_cp, cmd) ) {
+            printf("execute command 'ssh -q %s@%s %s -q %s/%s %s@%s:%s/%s'\n", 
                     user, 
                     machine1, 
                     cmd,
@@ -200,12 +181,26 @@ int main(int argc, char* argv[])
                     machine2,
                     root2,
                     path2
-                );
-               
-            } // end cp
+                  );
+        } // end cp
 
-        } // TODO end of unnecessary else, should move out of it
+        /* TODO exec, copied from ~xyuan/cop5570/examples/lect3/example7.c */
+        // Now exec command
+        int pid, stat;
 
+        if (fork() == 0) {
+            char temp[100];
+            strcat(temp, user);
+            strcat(temp, "@");
+            strcat(temp, machine1);
+
+            if (execl("/usr/bin/ssh", "-q", temp, cmd, root1, delimiter, path1) == -1) 
+                exit(-1);
+                //printf("execute command 'ssh -q %s@%s %s %s%c%s'\n", 
+                 //   user, /* @ */ machine1, cmd, root1, delimiter, path1);
+        }
+
+        pid = wait(&stat);
 
         // 
         printf("%s%d%s ", "<cmd:", command_number++, ">");
