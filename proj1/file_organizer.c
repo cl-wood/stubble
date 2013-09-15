@@ -34,13 +34,13 @@ int main(int argc, char* argv[])
     // check feof(f) to make sure it wasn't an error, was actually EOF
     fclose(config_file);
 
-    // Set default machine and path
-    char default_machine[k_str_length];
-    strcpy(default_machine, paths[0].machine);
-    char default_root[k_str_length];
-    strcpy(default_root, paths[0].root);
-    char default_path[k_str_length];
-    default_path[0] = '\0';
+    // Set current machine and path
+    char current_machine[k_str_length];
+    strcpy(current_machine, paths[0].machine);
+    char current_root[k_str_length];
+    strcpy(current_root, paths[0].root);
+    char current_path[k_str_length];
+    current_path[0] = '\0';
 
     // While loop, exec each command
     int command_number = 0;
@@ -52,6 +52,7 @@ int main(int argc, char* argv[])
         int num_machines = 0;
         char delimiter = '/';
         char cmd[k_str_length]; // Don't need to bother with bounds checking?
+        char flags[k_str_length];
         char machine1[k_str_length]; 
         char path1[k_str_length]; 
         char root1[k_str_length]; 
@@ -61,6 +62,7 @@ int main(int argc, char* argv[])
 
         // Init to NULL string
         cmd[0]      = '\0';
+        flags[0]      = '\0';
         machine1[0] = '\0'; 
         path1[0]    = '\0'; 
         root1[0]    = '\0'; 
@@ -87,72 +89,61 @@ int main(int argc, char* argv[])
 
         while (token != NULL) {
 
-            for (int i = 0; i < num_paths; i++) {
-                if (strstr(token, paths[i].machine) != NULL) {
-                    sscanf(token, "%[^:]%*c%s", machine1, path1);
-                    strcpy(root1, paths[i].root);
-                    break;
-                }
+            // Starts with '-', then flag
+            if (token[0] == '-') {
+                strcpy(flags, token); 
             }
-            
-            // Check if this token contains a machine name
-            /*
-            int contains_machine = 0;
-            for (int i = 0; i < num_paths; i++) {
 
-                if (strstr(token, paths[i].machine) != NULL) {
-                    contains_machine = 1; 
+            // Else, it's machine:path
+            else {
+                int machine_token = 0;
 
-                    // Take care of machine1 first
-                    if (num_machines == 0) {
-                        num_machines++;
+                // find root path based on machine name
+                for (int i = 0; i < num_paths; i++) {
+                    if (strstr(token, paths[i].machine) != NULL) {
+                        machine_token = 1;
                         sscanf(token, "%[^:]%*c%s", machine1, path1);
                         strcpy(root1, paths[i].root);
+                        break;
                     }
-
-                    // Now handle machine2
-                    else {
-                        sscanf(token, "%[^:]%*c%s", machine2, path2);
-                        strcpy(root2, paths[i].root);
-                    }
-
-                    break;
                 }
-            } // end machine name for loop
-
-            // Must be done to handle flags that can occur before or after args
-            if (!contains_machine) {
-                strcat(cmd, " "); 
-                strcat(cmd, token); 
-                //printf("cmd: %s\n", cmd);
             }
-            */
 
             token = strtok (NULL, " ");
 
         } // end token while
 
         /* EXEC code
-         * There are 3 main cases:
+         * There are 4 main cases:
          *      1) ls with no args
-         *      2) anything else but cp, which has 1 arg
-         *      3) cp, with 2 args
+         *      2) cd, which changes the current machine:path/root vars
+         *      3) anything else but cp, which has 1 arg
+         *      4) cp, with 2 args
          */
 
         // ls command with 0 args
         // TODO ls -al doesn't work
         if (compare(k_ls, cmd) && machine1[0] == '\0') {
-
-            strcpy(machine1, default_machine);
-            strcpy(root1, default_root);
+            strcpy(machine1, current_machine);
+            strcpy(root1, current_root);
+            strcpy(path1, current_path);
         } // end ls
 
         // cd command
+        // Behavior is undefined for no args to cd
         if (compare(k_cd, cmd) ) {
             printf("change current directory to %s:%s\n", machine1, path1);
-            strcpy(default_machine, machine1 );
-            //strcpy(default_root, path1);
-            strcpy(default_path, path1);
+
+            // Change current_{machine,path,root}, only used for ls without path
+            strcpy(current_machine, machine1);
+            strcpy(current_path, path1);
+            for (int i = 0; i < num_paths; i++) {
+                if (strcmp(machine1, paths[i].machine) == 0) {
+                    printf("FOUND %s\n", machine1);
+                    strcpy(current_root, paths[i].root);
+                    break;
+                }
+            }
 
             // TODO We don't print the root, but we have to account for it
         } // end cd
@@ -172,10 +163,10 @@ int main(int argc, char* argv[])
             strcat(abs_path, "/");
             strcat(abs_path, path1);
 
-            printf("execute command 'ssh -q %s %s %s'\n", 
-                m1, cmd, abs_path);
+            printf("execute command 'ssh -q %s %s %s %s'\n", 
+                m1, cmd, flags, abs_path);
 
-            if (execl("/usr/bin/ssh", "-q", m1, cmd, abs_path, (char*)0) == -1) {
+            if (execl("/usr/bin/ssh", "-q", m1, cmd, flags, abs_path, (char*)0) == -1) {
                 exit(-1);
             } 
             
