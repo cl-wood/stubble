@@ -1,10 +1,12 @@
 #ifndef __file_organizer_h
 #define __file_organizer_h
 
+#include<stdarg.h>
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
 #include<unistd.h>
-#include<stdarg.h>
+#include<wait.h>
 
 #define DEBUG printf("HERE %d\n", __LINE__);fflush(stdout);
 
