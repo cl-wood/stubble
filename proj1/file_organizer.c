@@ -34,6 +34,14 @@ int main(int argc, char* argv[])
     // check feof(f) to make sure it wasn't an error, was actually EOF
     fclose(config_file);
 
+    // Set default machine and path
+    char default_machine[k_str_length];
+    strcpy(default_machine, paths[0].machine);
+    char default_root[k_str_length];
+    strcpy(default_root, paths[0].root);
+    char default_path[k_str_length];
+    default_path[0] = '\0';
+
     // While loop, exec each command
     int command_number = 0;
     printf("%s%d%s ", "<cmd:", command_number++, ">");
@@ -83,9 +91,6 @@ int main(int argc, char* argv[])
                 if (strstr(token, paths[i].machine) != NULL) {
                     sscanf(token, "%[^:]%*c%s", machine1, path1);
                     strcpy(root1, paths[i].root);
-                    printf("m1: %s\n", machine1);
-                    printf("p1: %s\n", path1);
-                    printf("r1: %s\n", root1);
                     break;
                 }
             }
@@ -127,38 +132,31 @@ int main(int argc, char* argv[])
 
         } // end token while
 
-        /* ls command
-         * Either 1) "ls"
-         *        2) "ls machine"
-         *        3) "ls machine:dir"
+        /* EXEC code
+         * There are 3 main cases:
+         *      1) ls with no args
+         *      2) anything else but cp, which has 1 arg
+         *      3) cp, with 2 args
          */
+
+        // ls command with 0 args
         // TODO ls -al doesn't work
-        /*
-        if (compare(k_ls, cmd) ) {
+        if (compare(k_ls, cmd) && machine1[0] == '\0') {
 
-            // If no machine/path specified, use default
-            if (machine1[0] == '\0' && path1[0] == '\0') {
-                printf("null machine1\n");
-                delimiter = '\0';
-                strcpy(machine1, paths[0].machine);
-                strcpy(root1, paths[0].root);
-            }
-
-            else if (machine1[0] != '\0' && path1[0] == '\0') {
-                printf("null path1\n");
-                delimiter = '\0';
-                strcpy(root1, paths[0].root);
-            }
-
+            strcpy(machine1, default_machine);
+            strcpy(root1, default_root);
         } // end ls
-        */
-
 
         // cd command
         if (compare(k_cd, cmd) ) {
             printf("change current directory to %s:%s\n", machine1, path1);
+            strcpy(default_machine, machine1 );
+            //strcpy(default_root, path1);
+            strcpy(default_path, path1);
+
             // TODO We don't print the root, but we have to account for it
         } // end cd
+
 
         // Now exec command
         if (fork() == 0) {
