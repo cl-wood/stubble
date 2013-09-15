@@ -50,7 +50,6 @@ int main(int argc, char* argv[])
 
         int pid, stat;
         int num_machines = 0;
-        char delimiter = '/';
         char cmd[k_str_length]; // Don't need to bother with bounds checking?
         char flags[k_str_length];
         char machine1[k_str_length]; 
@@ -62,7 +61,7 @@ int main(int argc, char* argv[])
 
         // Init to NULL string
         cmd[0]      = '\0';
-        flags[0]      = '\0';
+        flags[0]    = '\0';
         machine1[0] = '\0'; 
         path1[0]    = '\0'; 
         root1[0]    = '\0'; 
@@ -94,19 +93,33 @@ int main(int argc, char* argv[])
                 strcpy(flags, token); 
             }
 
-            // Else, it's machine:path
-            else {
-                int machine_token = 0;
-
+            // Else, it's machine:path, handle 1st machine
+            else if (num_machines == 0) {
+                
                 // find root path based on machine name
                 for (int i = 0; i < num_paths; i++) {
                     if (strstr(token, paths[i].machine) != NULL) {
-                        machine_token = 1;
                         sscanf(token, "%[^:]%*c%s", machine1, path1);
                         strcpy(root1, paths[i].root);
                         break;
                     }
                 }
+
+                num_machines++;
+            }
+
+            // And 2nd machine if there
+            else if (num_machines == 1) {
+                
+                // find root path based on machine name
+                for (int i = 0; i < num_paths; i++) {
+                    if (strstr(token, paths[i].machine) != NULL) {
+                        sscanf(token, "%[^:]%*c%s", machine2, path2);
+                        strcpy(root2, paths[i].root);
+                        break;
+                    }
+                }
+
             }
 
             token = strtok (NULL, " ");
@@ -163,12 +176,33 @@ int main(int argc, char* argv[])
             strcat(abs_path, "/");
             strcat(abs_path, path1);
 
-            printf("execute command 'ssh -q %s %s %s %s'\n", 
-                m1, cmd, flags, abs_path);
+            //ssh -q machine1 scp -q root1/path1 username@machine2:root2/path2
+            // Treat cp a little differently
+            if (compare(k_cp, cmd) ) {
+                char m2[200];
+                strcat(m2, user);
+                strcat(m2, "@");
+                strcat(m2, machine2);
+                strcat(m2, ":");
+                strcat(m2, root2);
+                strcat(m2, "/");
+                strcat(m2, path2);
 
-            if (execl("/usr/bin/ssh", "-q", m1, cmd, flags, abs_path, (char*)0) == -1) {
-                exit(-1);
-            } 
+                printf("execute command 'ssh -q %s scp -q %s %s'\n", 
+                    m1, abs_path, m2);
+
+                if (execl("/usr/bin/ssh", "-q", m1, "scp", "-q", abs_path, m2, (char*)0) == -1) {
+                    exit(-1);
+                } 
+            }
+            else {
+                printf("execute command 'ssh -q %s %s %s %s'\n", 
+                    m1, cmd, flags, abs_path);
+
+                if (execl("/usr/bin/ssh", "-q", m1, cmd, flags, abs_path, (char*)0) == -1) {
+                    exit(-1);
+                } 
+            }
             
         }
 
