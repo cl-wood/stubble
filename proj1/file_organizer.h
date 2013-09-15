@@ -34,28 +34,6 @@ int compare(const char* s, const char* input)
            strlen(s) == strlen(input);
 }
 
-// cp machine1:path1 machine2:path2 
-// ssh -q machine1 scp -q root1/path1 username@machine2:root2/path2
-//void cp(char* str, struct absolute_path paths)
-//{
-//}
-
-//cat
-//mkdir
-
-void cd() 
-{
-    printf("stub!\n");    
-}
-
-// ssh -q linprog1 ls /root1/path1
-void ls(char* dir, absolute_path paths)
-{
-
-//k_ssh + machine + k_ls + path
-
-}
-
 
 #endif
 

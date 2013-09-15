@@ -135,7 +135,6 @@ int main(int argc, char* argv[])
          */
 
         // ls command with 0 args
-        // TODO ls -al doesn't work
         if (compare(k_ls, cmd) && machine1[0] == '\0') {
             strcpy(machine1, current_machine);
             strcpy(root1, current_root);
@@ -152,13 +151,11 @@ int main(int argc, char* argv[])
             strcpy(current_path, path1);
             for (int i = 0; i < num_paths; i++) {
                 if (strcmp(machine1, paths[i].machine) == 0) {
-                    printf("FOUND %s\n", machine1);
                     strcpy(current_root, paths[i].root);
                     break;
                 }
             }
 
-            // TODO We don't print the root, but we have to account for it
         } // end cd
 
 
@@ -176,7 +173,6 @@ int main(int argc, char* argv[])
             strcat(abs_path, "/");
             strcat(abs_path, path1);
 
-            //ssh -q machine1 scp -q root1/path1 username@machine2:root2/path2
             // Treat cp a little differently
             if (compare(k_cp, cmd) ) {
                 char m2[200];
