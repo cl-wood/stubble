@@ -6,3 +6,7 @@ How to compile and run project:
 
 Known bugs:
 
+My assumptions:
+    1)  Where parsing is necessary, I assume exactly 1 space 
+        in between tokens, except with macros, where I
+        assume no spaces.
