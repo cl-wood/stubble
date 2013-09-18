@@ -1,0 +1,11 @@
+.c: prereq1 prereq2 prereq3
+	ls
+	ls
+	ps -eax | grep blah
+	find / -name etc
+.o.c: prereq1 prereq2 
+	echo hahaha
+	echo hahaha | tr -d "a"
+.bf.py:
+	echo removing stuff
+	ls -al
