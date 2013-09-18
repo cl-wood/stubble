@@ -17,8 +17,8 @@
 typedef struct {
     // 16 64 char length rules
     int numMacroRules;
-    char macro_variable[kNumRules][kStringLength];    
-    char macro_value[kNumRules][kStringLength];    
+    char macroKey[kNumRules][kStringLength];    
+    char macroValue[kNumRules][kStringLength];    
 
     // Prevent infinite recursion
     int recursiveDepth;
@@ -35,7 +35,7 @@ rulesStruct rulesFactory(rulesStruct rules) {
 
 
 // 
-rulesStruct parseMakefileRules(FILE* makefile, rulesStruct rules)
+rulesStruct parseMakefile(FILE* makefile, rulesStruct rules)
 {
     rules.numMacroRules = 0;
     char str[kStringLength];
@@ -43,16 +43,23 @@ rulesStruct parseMakefileRules(FILE* makefile, rulesStruct rules)
        
         int ret;
         switch(str[0]) {
+            // Blank line
+            case '\n':
+                break;
 
             // Comment line
             case '#':
                 break;
 
+            // Inference rule
+            case '.':
+                break;
+
             // Macro
             default:
                 ret = sscanf(str, "%[^=]%*c%s\n", 
-                                rules.macro_variable[rules.numMacroRules], 
-                                rules.macro_value[rules.numMacroRules]);
+                                rules.macroKey[rules.numMacroRules], 
+                                rules.macroValue[rules.numMacroRules]);
 
                 // Find 2 strings? Add the rule
                 if (ret == 2) {
@@ -65,14 +72,32 @@ rulesStruct parseMakefileRules(FILE* makefile, rulesStruct rules)
 
     #ifdef DBGING
     for (int i = 0; i < rules.numMacroRules; i++) {
-        printf("Rule %d: %s = %s\n", i, rules.macro_variable[i], rules.macro_value[i]);
+        printf("Rule %d: %s = %s\n", i, rules.macroKey[i], rules.macroValue[i]);
     }
     #endif
 
 
     return rules;
-}
+} // end parseMakefileRules
 
+// Recursively resolve key:value pairs of macros
+char* resolveMacro(rulesStruct rules, char* key, int recursiveDepth)
+{
+    // likely we have a loop
+    if (recursiveDepth == maxRecursiveDepth) {
+        printf("Probably encountered a loop\n");
+        return (char*)0;
+    }
+
+    for (int i = 0; i < rules.numMacroRules; i++) {
+        if (strcmp(rules.macroKey[i], key) == 0) {
+            return resolveMacro(rules, rules.macroValue[i], recursiveDepth + 1);
+        }
+    }
+
+    return key;
+
+} // end resolveMacro
 
 
 

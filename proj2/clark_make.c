@@ -46,7 +46,8 @@ int main(int argc, char* argv[])
 
             printf("Trying to build %s\n", argv[i]);
             FILE* makefile = fopen(argv[i], "r");
-            rules = parseMakefileRules(makefile, rules);
+            rules = parseMakefile(makefile, rules);
+            printf("String1 is: %s\n", resolveMacro(rules, "string1", 0));
             
         }
     }
