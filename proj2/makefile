@@ -1,10 +1,10 @@
 CC=gcc
 CFLAGS=-Wall -std=c99 -pedantic
 
-a.out: clark_makefile.o
-	$(CC) clark_makefile.o
-clark_makefile.o: clark_makefile.c clark_makefile.h
-	$(CC) $(CFLAGS) -c clark_makefile.c clark_makefile.h
+a.out: clark_make.o
+	$(CC) clark_make.o
+clark_make.o: clark_make.c clark_make.h
+	$(CC) $(CFLAGS) -c clark_make.c clark_make.h
 
 #demo:
 
