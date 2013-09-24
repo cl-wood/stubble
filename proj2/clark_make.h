@@ -84,7 +84,7 @@ void getRules(FILE* makefile,
 */
 
 
-// 
+// Parse macro, target, and inference rules into rulesStruct
 rulesStruct parseMakefile(FILE* makefile, rulesStruct rules)
 {
     rules.numMacros = 0;
@@ -154,7 +154,7 @@ rulesStruct parseMakefile(FILE* makefile, rulesStruct rules)
 
                     // Add rule
                     rules.numTargetRules++;
-                }
+                } // End if
 
                 // Has '=', then macro
                 else if (strchr(str, '=') != NULL) {
