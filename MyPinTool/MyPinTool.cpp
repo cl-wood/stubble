@@ -43,14 +43,18 @@ using namespace std;
 #if defined(TARGET_MAC)
 #define MALLOC "_malloc"
 #define FREE "_free"
+#define MAIN "_main"
 #else
 #define MALLOC "malloc"
 #define FREE "free"
+#define MAIN "main"
 #endif
 
 /* ===================================================================== */
 /* Global Variables */
 /* ===================================================================== */
+
+bool LOGGING = false;
 
 std::ofstream TraceFile;
 std::ofstream ControlFlowFile;
@@ -84,12 +88,16 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 // Gets value of Arg1 to malloc call
 VOID Arg1Before(CHAR * name, ADDRINT size)
 {
-    TraceFile << name << "(" << size << ")" << endl;
+    if (LOGGING) {
+        TraceFile << name << "(" << size << ")" << endl;
+    }
 }
 
 VOID MallocAfter(ADDRINT ret)
 {
-    TraceFile << "  returns " << ret << endl;
+    if (LOGGING) {
+        TraceFile << "  returns " << ret << endl;
+    }
 }
 
 // Update map of memory address => size of allocated memory pairs.
@@ -97,15 +105,19 @@ VOID MallocAfter(ADDRINT ret)
 VOID MallocInfo(CHAR* name, ADDRINT size, ADDRINT allocationAddress)
 {
     // 
-    MemoryAllocations[allocationAddress] = size;
-    TraceFile << name << "(" << size << ") bytes at " << allocationAddress << endl;
+    if (LOGGING) {
+        MemoryAllocations[allocationAddress] = size;
+        TraceFile << name << "(" << size << ") bytes at " << allocationAddress << endl;
+    }
 }
 
 VOID FreeInfo(CHAR * name, ADDRINT allocationAddress)
 {
     // Memory Freed, set size to 0 to signify this
-    MemoryAllocations[allocationAddress] = 0;
-    TraceFile << name << "(" << allocationAddress << ")" << endl;
+    if (LOGGING) {
+        MemoryAllocations[allocationAddress] = 0;
+        TraceFile << name << "(" << allocationAddress << ")" << endl;
+    }
 }
 
 /* ===================================================================== */
@@ -119,7 +131,7 @@ VOID FindBranchOrJump(INS ins, VOID *v)
 {
 	// Categories are higher-level semantic descriptions than opcodes.
 	// The constant matches all conditional branches
-	if (INS_Category(ins) == XED_CATEGORY_COND_BR) {
+	if (INS_Category(ins) == XED_CATEGORY_COND_BR && LOGGING) {
         
         ControlFlow.addresses.push_back(INS_Address(ins));
         ControlFlow.instructions.push_back(INS_Disassemble(ins));
@@ -127,6 +139,52 @@ VOID FindBranchOrJump(INS ins, VOID *v)
 		ControlFlowFile << INS_Disassemble(ins) << "\t" << INS_Address(ins) << endl;
 
 	} 
+
+}
+
+// Follow each instruction in each bbl of each trace.
+// basic block is single entrace, single exit block of sequential instructions.
+// trace is single entrace, multiple exits, and generated at entrace during runtime.
+VOID FollowControlFlow(TRACE trace, VOID *v)
+{
+    ControlFlowFile << "START: " << TRACE_Address(trace) << endl;
+    // For each basic block, track each instruction
+    for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl)) {
+        for (INS ins = BBL_InsHead(bbl); INS_Valid(ins); ins = INS_Next(ins) ) {
+		    ControlFlowFile << INS_Disassemble(ins) << "\t" << INS_Address(ins) << endl;
+        }
+    }
+}
+
+// Toggle logging on or off
+VOID ToggleLogging(bool status)
+{
+    LOGGING = status; 
+    // Global, can be turned off to speed up execution
+    //EnableInstrumentation = status;
+
+}
+
+// Instrument main function, this starts the other instrumentation objects.
+VOID WatchMain(IMG img, VOID *v)
+{
+    //LOGGING = IMG_IsMainExecutable(img);
+
+    RTN mainRtn = RTN_FindByName(img, MAIN);
+    if (RTN_Valid(mainRtn))
+    {
+        RTN_Open(mainRtn);
+
+        // Instrument main() to print the input argument value and the return value.
+        RTN_InsertCall(mainRtn, IPOINT_BEFORE, (AFUNPTR)ToggleLogging,
+                        IARG_BOOL, true,
+                        IARG_END);
+        RTN_InsertCall(mainRtn, IPOINT_AFTER, (AFUNPTR)ToggleLogging,
+                        IARG_BOOL, false,
+                        IARG_END);
+
+        RTN_Close(mainRtn);
+    }
 
 }
    
@@ -215,11 +273,17 @@ int main(int argc, char *argv[])
     ControlFlowFile.setf(ios::showbase);
     
     // WatchMemoryAllocation to see how malloc/free used
-    IMG_AddInstrumentFunction(WatchMemoryAllocation, 0);
+    //IMG_AddInstrumentFunction(WatchMemoryAllocation, 0);
+
+    // Watch main function
+    //IMG_AddInstrumentFunction(WatchMain, 0);
 
     // For Mutation:
     // At every instruction, print if branch or jump
-    INS_AddInstrumentFunction(FindBranchOrJump, 0);
+    //INS_AddInstrumentFunction(FindBranchOrJump, 0);
+
+    // Perform work at BBL or Trace level
+    TRACE_AddInstrumentFunction(FollowControlFlow, 0);
     
 
     PIN_AddFiniFunction(Fini, 0);
