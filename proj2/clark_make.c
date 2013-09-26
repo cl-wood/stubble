@@ -40,15 +40,19 @@ int main(int argc, char* argv[])
         rules = rulesFactory(rules);
 
         // Try to open file
-        int ret = stat(argv[i], &fs);
+        int ret = stat(makefiles[i], &fs);
         if(ret != 0) {
             printf("Error trying to stat %s\n", makefiles[i]);
             break;
         }
 
+        // Build rulesStruct 
         printf("Trying to build %s\n", makefiles[i]);
         FILE* makefile = fopen(makefiles[i], "r");
-        //rules = parseMakefile(makefile, rules);
+        rules = parseMakefile(makefile, rules);
+
+        //findTarget(rules, "demo");
+
         //printf("String1 is: %s\n", resolveMacro(rules, "string1", 0));
 
     }
