@@ -2,13 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#define BUFSIZE 512
 
 int main(int argc, char **argv) {
 	char *buf;
-	buf = (char *) malloc(BUFSIZE);
+	// Allocate memory
+	buf = (char *) malloc(512);
 
+	// Free memory
 	free(buf);
-	strncpy(buf, argv[1], BUFSIZE-1);
+
+	// Get used input, taint source
+	char string[32];
+	printf("%s", "Enter string: ");
+  	gets(string);	
+
+	// Use memory after freed
+	strcpy(buf, string);
+
 }
 

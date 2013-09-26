@@ -32,6 +32,8 @@ END_LEGAL */
 #include "pin.H"
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <list>
 #include <unordered_map>
 using namespace std;
 
@@ -51,6 +53,19 @@ using namespace std;
 /* ===================================================================== */
 
 std::ofstream TraceFile;
+std::ofstream ControlFlowFile;
+
+// For Mutation 
+typedef struct 
+{
+    vector<UINT32> addresses;
+    vector<string> instructions;
+} ControlFlowStruct;
+
+ControlFlowStruct ControlFlow;
+
+// For Vulnerability Analysis
+unordered_map<ADDRINT, UINT32> MemoryAllocations;
 
 /* ===================================================================== */
 /* Commandline Switches */
@@ -63,9 +78,10 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 
 
 /* ===================================================================== */
-/* Analysis routines                                                     */
+/* Vulnerability Analysis routines                                       */
 /* ===================================================================== */
  
+// Gets value of Arg1 to malloc call
 VOID Arg1Before(CHAR * name, ADDRINT size)
 {
     TraceFile << name << "(" << size << ")" << endl;
@@ -76,10 +92,43 @@ VOID MallocAfter(ADDRINT ret)
     TraceFile << "  returns " << ret << endl;
 }
 
+// Update map of memory address => size of allocated memory pairs.
+// Remove entries when memory freed
+VOID MallocInfo(CHAR* name, ADDRINT size, ADDRINT allocationAddress)
+{
+    // 
+    MemoryAllocations[allocationAddress] = size;
+    TraceFile << name << "(" << size << ") bytes at " << allocationAddress << endl;
+}
+
+VOID FreeInfo(CHAR * name, ADDRINT allocationAddress)
+{
+    // Memory Freed, set size to 0 to signify this
+    MemoryAllocations[allocationAddress] = 0;
+    TraceFile << name << "(" << allocationAddress << ")" << endl;
+}
 
 /* ===================================================================== */
 /* Instrumentation routines                                              */
 /* ===================================================================== */
+
+// For Mutation
+// At each branch/jump, record the memory address and disassembled instruction.
+// Comparisons based on input => ControlFlow mapping will drive mutation.
+VOID FindBranchOrJump(INS ins, VOID *v)
+{
+	// Categories are higher-level semantic descriptions than opcodes.
+	// The constant matches all conditional branches
+	if (INS_Category(ins) == XED_CATEGORY_COND_BR) {
+        
+        ControlFlow.addresses.push_back(INS_Address(ins));
+        ControlFlow.instructions.push_back(INS_Disassemble(ins));
+
+		ControlFlowFile << INS_Disassemble(ins) << "\t" << INS_Address(ins) << endl;
+
+	} 
+
+}
    
 VOID WatchMemoryAllocation(IMG img, VOID *v)
 {
@@ -93,12 +142,19 @@ VOID WatchMemoryAllocation(IMG img, VOID *v)
         RTN_Open(mallocRtn);
 
         // Instrument malloc() to print the input argument value and the return value.
+        RTN_InsertCall(mallocRtn, IPOINT_AFTER, (AFUNPTR)MallocInfo,
+                       IARG_ADDRINT, MALLOC,
+                       IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
+                       IARG_FUNCRET_EXITPOINT_VALUE,
+                       IARG_END);
+        /*
         RTN_InsertCall(mallocRtn, IPOINT_BEFORE, (AFUNPTR)Arg1Before,
                        IARG_ADDRINT, MALLOC,
                        IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
                        IARG_END);
         RTN_InsertCall(mallocRtn, IPOINT_AFTER, (AFUNPTR)MallocAfter,
                        IARG_FUNCRET_EXITPOINT_VALUE, IARG_END);
+        */
 
         RTN_Close(mallocRtn);
     }
@@ -109,7 +165,8 @@ VOID WatchMemoryAllocation(IMG img, VOID *v)
     {
         RTN_Open(freeRtn);
         // Instrument free() to print the input argument value.
-        RTN_InsertCall(freeRtn, IPOINT_BEFORE, (AFUNPTR)Arg1Before,
+        //RTN_InsertCall(freeRtn, IPOINT_BEFORE, (AFUNPTR)Arg1Before,
+        RTN_InsertCall(freeRtn, IPOINT_BEFORE, (AFUNPTR)FreeInfo,
                        IARG_ADDRINT, FREE,
                        IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
                        IARG_END);
@@ -122,6 +179,7 @@ VOID WatchMemoryAllocation(IMG img, VOID *v)
 VOID Fini(INT32 code, VOID *v)
 {
     TraceFile.close();
+    ControlFlowFile.close();
 }
 
 /* ===================================================================== */
@@ -152,11 +210,17 @@ int main(int argc, char *argv[])
     TraceFile.open(KnobOutputFile.Value().c_str());
     TraceFile << hex;
     TraceFile.setf(ios::showbase);
+    ControlFlowFile.open("controlpath.out");
+    ControlFlowFile << hex;
+    ControlFlowFile.setf(ios::showbase);
     
     // WatchMemoryAllocation to see how malloc/free used
     IMG_AddInstrumentFunction(WatchMemoryAllocation, 0);
 
-
+    // For Mutation:
+    // At every instruction, print if branch or jump
+    INS_AddInstrumentFunction(FindBranchOrJump, 0);
+    
 
     PIN_AddFiniFunction(Fini, 0);
 
