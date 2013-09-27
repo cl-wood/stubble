@@ -39,40 +39,32 @@ END_LEGAL */
 using namespace std;
 
 /* ===================================================================== */
-/* Names of malloc and free */
-/* ===================================================================== */
-#if defined(TARGET_MAC)
-#define MALLOC "_malloc"
-#define FREE "_free"
-#define MAIN "_main"
-#else
-#define MALLOC "malloc"
-#define FREE "free"
-#define MAIN "main"
-#endif
-
-/* ===================================================================== */
 /* Global Variables */
 /* ===================================================================== */
 
 bool LOGGING = false;
-
 std::ofstream TraceFile;
 std::ofstream TaintFile;
-std::ofstream ControlFlowFile;
 
-// For Mutation 
-typedef struct 
-{
-    vector<UINT32> addresses;
-    vector<string> instructions;
-} ControlFlowStruct;
+#if defined(TARGET_MAC)
+#define MALLOC "_malloc"
+#define FREE "_free"
+#define MAIN "_main"
+#define LIBCSTART "__libc_start_main"
+#else
+#define MALLOC "malloc"
+#define FREE "free"
+#define MAIN "main"
+#define LIBCSTART "__libc_start_main"
+#endif
 
-ControlFlowStruct ControlFlow;
+/* ===================================================================== */
+/* User Libraries */
+/* ===================================================================== */
+#include "FollowExecution.h"
+#include "DTA.h"
+#include "FindVulnerability.h"
 
-// For Vulnerability Analysis
-//unordered_map<ADDRINT, UINT32> MemoryAllocations;
-unordered_map<ADDRINT, UINT32> TaintMap;
 
 /* ===================================================================== */
 /* Commandline Switches */
@@ -84,96 +76,18 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 /* ===================================================================== */
 
 
-/* ===================================================================== */
-/* Vulnerability Analysis routines                                       */
-/* ===================================================================== */
- 
-// Gets value of Arg1 to malloc call
-VOID Arg1Before(CHAR * name, ADDRINT size)
-{
-    if (LOGGING) {
-        TraceFile << name << "(" << size << ")" << endl;
-    }
-}
-
-VOID MallocAfter(ADDRINT ret)
-{
-    if (LOGGING) {
-        TraceFile << "  returns " << ret << endl;
-    }
-}
-
-// Update map of memory address => size of allocated memory pairs.
-// Remove entries when memory freed
-/*
-VOID MallocInfo(CHAR* name, ADDRINT size, ADDRINT allocationAddress)
-{
-    // 
-    if (LOGGING) {
-        MemoryAllocations[allocationAddress] = size;
-        TraceFile << name << "(" << size << ") bytes at " << allocationAddress << endl;
-    }
-}
-
-VOID FreeInfo(CHAR * name, ADDRINT allocationAddress)
-{
-    // Memory Freed, set size to 0 to signify this
-    if (LOGGING) {
-        MemoryAllocations[allocationAddress] = 0;
-        TraceFile << name << "(" << allocationAddress << ")" << endl;
-    }
-}
-*/
 
 /* ===================================================================== */
 /* Instrumentation routines                                              */
 /* ===================================================================== */
 
-// For Mutation
-// At each branch/jump, record the memory address and disassembled instruction.
-// Comparisons based on input => ControlFlow mapping will drive mutation.
-VOID FindBranchOrJump(INS ins, VOID *v)
-{
-	// Categories are higher-level semantic descriptions than opcodes.
-	// The constant matches all conditional branches
-	if (INS_Category(ins) == XED_CATEGORY_COND_BR && LOGGING) {
-        
-        ControlFlow.addresses.push_back(INS_Address(ins));
-        ControlFlow.instructions.push_back(INS_Disassemble(ins));
-
-		ControlFlowFile << INS_Disassemble(ins) << "\t" << INS_Address(ins) << endl;
-
-	} 
-
-}
-
-// Follow each instruction in each bbl of each trace.
-// basic block is single entrace, single exit block of sequential instructions.
-// trace is single entrace, multiple exits, and generated at entrace during runtime.
-VOID FollowTraces(TRACE trace, VOID *v)
-{
-    ControlFlowFile << "START: " << TRACE_Address(trace) << endl;
-    // For each basic block, track each instruction
-    for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl)) {
-        for (INS ins = BBL_InsHead(bbl); INS_Valid(ins); ins = INS_Next(ins) ) {
-		    ControlFlowFile << INS_Disassemble(ins) << "\t"; //<< INS_Address(ins) << endl;
-
-            // Get routine name if it's a call instruction
-            if (INS_IsDirectCall(ins) && INS_IsDirectBranchOrCall(ins) ) {
-                ADDRINT addrint = INS_DirectBranchOrCallTargetAddress(ins);
-                ControlFlowFile << RTN_FindNameByAddress(addrint);
-            }
-
-            ControlFlowFile << endl;
-
-        }
-    }
-} // End FollowTraces
 
 // Toggle logging on or off
 VOID ToggleLogging(bool status)
 {
     LOGGING = status; 
+    //TraceFile << "HERE" << endl;
+    ControlFlowFile << "HERE" << endl;
     // Global, can be turned off to speed up execution
     //EnableInstrumentation = status;
 
@@ -182,9 +96,10 @@ VOID ToggleLogging(bool status)
 // Instrument main function, this starts the other instrumentation objects.
 VOID WatchMain(IMG img, VOID *v)
 {
-    //LOGGING = IMG_IsMainExecutable(img);
+    // TODO might this work better?
+    //cout << IMG_IsMainExecutable(img) << endl;
 
-    RTN mainRtn = RTN_FindByName(img, MAIN);
+    RTN mainRtn = RTN_FindByName(img, LIBCSTART); 
     if (RTN_Valid(mainRtn))
     {
         RTN_Open(mainRtn);
@@ -248,24 +163,6 @@ VOID WatchMemoryAllocation(IMG img, VOID *v)
     }
 }
 
-// Catch all read syscalls since they are taint sources.
-VOID CatchReadSyscalls(THREADID threadIndex, CONTEXT *ctxt, SYSCALL_STANDARD std, VOID *v)
-{
-    if (PIN_GetSyscallNumber(ctxt, std) == __NR_read) {
-
-        //ssize_t read(int fd, void *buf, size_t count);
-        ADDRINT buf   = ((PIN_GetSyscallArgument(ctxt, std, 1)));
-        ADDRINT count = ((PIN_GetSyscallArgument(ctxt, std, 2)));
-
-        for (int i = 0; i < (int)count; i++) {
-            // TODO use API instead of sizeof char to get bytes?
-            pair<ADDRINT, UINT32> taintLocation(buf + i * sizeof(char), 0);
-            TaintMap.insert(taintLocation); 
-            TaintFile << get<0>(taintLocation) << "\t" << count << endl;
-        }
-    }
-
-}
 
 
 /* ===================================================================== */
@@ -274,7 +171,6 @@ VOID Fini(INT32 code, VOID *v)
 {
     TraceFile.close();
     TaintFile.close();
-    ControlFlowFile.close();
 }
 
 /* ===================================================================== */
@@ -305,29 +201,21 @@ int main(int argc, char *argv[])
     TraceFile.open(KnobOutputFile.Value().c_str());
     TraceFile << hex;
     TraceFile.setf(ios::showbase);
-    TaintFile.open("taint.out");
-    TaintFile << hex;
-    TaintFile.setf(ios::showbase);
-    ControlFlowFile.open("controlpath.out");
-    ControlFlowFile << hex;
-    ControlFlowFile.setf(ios::showbase);
+    //TaintFile.open("taint.out");
+    //TaintFile << hex;
+    //TaintFile.setf(ios::showbase);
     
     // WatchMemoryAllocation to see how malloc/free used
     //IMG_AddInstrumentFunction(WatchMemoryAllocation, 0);
 
     // Watch main function
-    //IMG_AddInstrumentFunction(WatchMain, 0);
+    IMG_AddInstrumentFunction(WatchMain, 0);
 
-    // For Mutation:
-    // At every instruction, print if branch or jump
-    //INS_AddInstrumentFunction(FindBranchOrJump, 0);
-
-    // Perform work at BBL or Trace level
+    // Follow execution at BBL or Trace level
     TRACE_AddInstrumentFunction(FollowTraces, 0);
 
     // Instrument read syscall to get taint sources
-    PIN_AddSyscallEntryFunction(CatchReadSyscalls, 0);
-    
+    //PIN_AddSyscallEntryFunction(CatchReadSyscalls, 0);
 
     PIN_AddFiniFunction(Fini, 0);
 
