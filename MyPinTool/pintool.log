@@ -1,3 +1,3 @@
 Pin 2.12 kit 58423
-A: Source/pin/core_ia32/operand_ia32.cpp:INS_OperandIsBranchDisplacement:INS_OperandIsBranchDisplacement:343: assertion failed: n < xed_inst_noperands(xedi)
+A: Source/pin/pin/image.cpp:INS_DirectBranchOrCallTargetAddress:INS_DirectBranchOrCallTargetAddress:1951: assertion failed: INS_IsDirectBranchOrCall(ins)
 
