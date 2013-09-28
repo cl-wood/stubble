@@ -36,8 +36,8 @@ int main(int argc, char* argv[])
         }
 
         // Setup rules data structure
-        rulesStruct rules;
-        rules = rulesFactory(rules);
+        makefileStruct rules;
+        //rules = makefileFactory(rules);
 
         // Try to open file
         int ret = stat(makefiles[i], &fs);

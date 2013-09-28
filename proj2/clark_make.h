@@ -13,39 +13,75 @@
 #define DEBUG printf("HERE %d\n", __LINE__);fflush(stdout);
 //#define DBGING 1
 
-// Struct holding makefile rules.
-// Each char char used like a key:value pair.
-// Macros are arrays of strings, rules arrays of string arrays, 
-// since one key maps to a list of instructions.
-// Rules must also know how many commands are in each rule
+// Struct representing a macro. 
+// Has:
+//     key=value  
+// 
 typedef struct {
-    int numMacros;
-    char macroKeys[kNumRules][kStringLength];    
-    char macroValues[kNumRules][kStringLength];    
+    char key[kStringLength];    
+    char value[kStringLength];    
+} macroStruct;
 
-    int numRules;
-    char keys[kNumRules][kStringLength];    
-    char values[kNumRules][kNumRules][kStringLength];    
-    int numCommandsInKey[kNumRules];
+// Struct representing one target rule
+// Members:
+//     target   - an array of strings
+//     prereqs  - an array of strings
+//     commands - an array of string arrays
+// members are treated like the PATH environ,
+// in that they are NULL terminated
+typedef struct {
 
-} rulesStruct;
+    // Name of rule, to the left of the ':'
+    char target[kNumRules][kStringLength];    
 
-// Make a rulesStruct and init properly
-rulesStruct rulesFactory(rulesStruct rules) {
+    // Prereqs, to the right of the ':'
+    char prereqs[kNumRules][kStringLength];    
+
+    // Commands, after the rule, start with '\t'
+    char commands[kNumRules][kStringLength];    
+
+} targetRuleStruct;
+
+// Like targetRuleStruct, but no prereqs
+// TODO make sure inference rules don't need prereqs
+typedef struct {
+
+    // Name of rule, to the left of the ':'
+    char target[kStringLength];    
+
+    // Commands, after the rule, start with '\t'
+    char commands[kNumRules][kStringLength];    
+
+} inferenceRuleStruct;
+
+typedef struct {
+    // 
+    macroStruct macros[kNumRules];
+    targetRuleStruct targets[kNumRules];
+    inferenceRuleStruct inferences[kNumRules];
+
+} makefileStruct;
+
+// Make a makefile and init properly
+makefileStruct makefileFactory(makefileStruct rules) {
     // Should start with 0 macros/rules
-    rules.numMacros = 0;
-    rules.numRules = 0;
+    rules.macros[0].key[0] = '\0';
 
-    // Each rule should start with 0 commands
-    memset(rules.numCommandsInKey, 0, kNumRules);
+    //rules.targets = 0;
+    //rules.inferences = 0;
 
     return rules;
 }
 
-// Parse macro, target, and inference rules into rulesStruct
-rulesStruct parseMakefile(FILE* makefile, rulesStruct rules)
+// Parse macro, target, and inference rules into makefile
+makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
 {
-    rules.numMacros = 0;
+    // Start with no macros or rules
+    int numMacros = 0;
+    int numTargets = 0;
+    int numInferences = 0;
+    int numCommands = 0;
+
     char str[kStringLength];
     while (fgets(str, kStringLength, makefile) ) {
 
@@ -56,60 +92,95 @@ rulesStruct parseMakefile(FILE* makefile, rulesStruct rules)
             case ' ':
                 break;
 
-            // Comment line
+                // Comment line
             case '#':
                 break;
 
-            // Rule or Macro
+                // Inference rule
+            case '.':
+                // Add target, can be .s or .s.t
+                // TODO parse of .s and .s.t cases, modify inference struct accordingly
+                strcpy(rules.inferences[numInferences].target, str);
+
+                // Now add commands 
+                char c = getc(makefile);
+                numCommands = 0;
+                while (c == '\t') {
+                    fgets(rules.inferences[numInferences].commands[numCommands],
+                            kStringLength, 
+                            makefile);
+                    c = getc(makefile);
+                    numCommands++;
+                }
+
+                // Null terminate last command in each inference rule
+                rules.inferences[numInferences].commands[numCommands][0] = '\0';
+
+                // Put last char back, it isn't tab so it's the start of the next rule
+                ungetc(c, makefile);
+
+                // Add rule
+                numInferences++;
+
+                break; // End inference rule case
+
+            // Target rule or Macro, parse and add to rules
             default:
 
-                // No '.' but has ':', then  rule
+                // No '.' but has ':', then add target rule
+                // TODO can target rules have multiple targets? modify parsing/struct
                 if (strchr(str, ':') != NULL) {
-                    // Get target or inference rule
-                    strcpy(rules.keys[rules.numRules], str);
+                    strcpy(rules.targets[numTargets].target, str);
 
-                    // Now get rules
+                    // Now add commands
                     char c = getc(makefile);
+                    numCommands = 0;
                     while (c == '\t') {
-                        fgets(rules.values[rules.numRules] 
-                                [rules.numCommandsInKey[rules.numRules]],
+                        fgets(rules.targets[numTargets].commands[numCommands],
                                 kStringLength, 
                                 makefile);
-                        rules.numCommandsInKey[rules.numRules]++;
-                        //fgets(str, kStringLength, makefile);
-                        //strcpy(rules.Values[rules.numCommandsInKey[rules.numRules]], str);
                         c = getc(makefile);
+                        numTargets++;
                     }
+                    // Null terminate last command in each target rule
+                    rules.targets[numTargets].commands[numCommands][0] = '\0';
 
                     // Put last char back, it isn't tab so it's the start of the next rule
                     ungetc(c, makefile);
 
                     // Add rule
-                    rules.numRules++;
-                } // End if
+                    numTargets++;
+                } // End if for target rules
 
                 // Has '=', then macro
                 else if (strchr(str, '=') != NULL) {
+                    // scan key=value and add macro if correct
                     ret = sscanf(str, "%[^=]%*c%s\n", 
-                            rules.macroKeys[rules.numMacros], 
-                            rules.macroValues[rules.numMacros]);
+                            rules.macros[numMacros].key, 
+                            rules.macros[numMacros].value);
 
-                    // Find 2 strings? Macro syntax correct, add the rule
+                    // Find 2 strings? Macro syntax correct, add the macro
                     if (ret == 2) {
-                        rules.numMacros++;
+                        numMacros++;
                     }   
-                }
+                } // End else if for macros
 
-        }
+        } // End switch
 
-    }
+    } // End while
 
+    // Debugging 
 #ifdef DBGING
     printf("Macros:\n");
-    for (int i = 0; i < rules.numMacros; i++) {
-        printf("Macro %d: %s = %s\n", i, rules.macroKeys[i], rules.macroValues[i]);
+    int i = 0;
+    while (rules.macros[i].key[0] != '\0') {
+        printf("Macro %d: %s = %s\n", i, rules.macros[i].key, rules.macros[i].value);
     }
+    //for (int i = 0; i < rules.numMacros; i++) {
+    //    printf("Macro %d: %s = %s\n", i, rules.macroKeys[i], rules.macroValues[i]);
+    //}
 
+/*
     printf(" Rules:\n");
     for (int i = 0; i < rules.numRules; i++) {
         printf(" %d: %s", i, rules.keys[i]);
@@ -118,16 +189,17 @@ rulesStruct parseMakefile(FILE* makefile, rulesStruct rules)
             printf("\t%s", rules.values[i][j]);
         }
     }
+    */
 
 #endif
-
 
     return rules;
 
 } // end parseMakefileRules
 
 // Recursively resolve key:value pairs of macros
-char* resolveMacro(rulesStruct rules, char* key, int recursiveDepth)
+// TODO fix this for new structs
+char* resolveMacro(makefileStruct rules, char* key, int recursiveDepth)
 {
     // likely we have a loop
     if (recursiveDepth == kMaxRecursiveDepth) {
@@ -135,11 +207,11 @@ char* resolveMacro(rulesStruct rules, char* key, int recursiveDepth)
         return (char*)0;
     }
 
-    for (int i = 0; i < rules.numMacros; i++) {
-        if (strcmp(rules.macroKeys[i], key) == 0) {
-            return resolveMacro(rules, rules.macroValues[i], recursiveDepth + 1);
-        }
-    }
+    //for (int i = 0; i < rules.numMacros; i++) {
+    //    if (strcmp(rules.macroKeys[i], key) == 0) {
+    //        return resolveMacro(rules, rules.macroValues[i], recursiveDepth + 1);
+    //    }
+    //}
 
     return key;
 
@@ -147,40 +219,40 @@ char* resolveMacro(rulesStruct rules, char* key, int recursiveDepth)
 
 /*
 // check to see if [cmd] is a  rule
-void findTarget(rulesStruct rules, char* inputRule)
+void findTarget(makefile rules, char* inputRule)
 {
-    for (int i = 0; i < rules.numRules; i++) {
-        char x = strtok(rules.keys[i], ":");
-        printf("%s\n", x);
+for (int i = 0; i < rules.numRules; i++) {
+char x = strtok(rules.keys[i], ":");
+printf("%s\n", x);
 
-        // Make sure it's a target rule, not inference
-        if (strchr(rules.keys[i], '.') != NULL) {
-            continue;
-        }
+// Make sure it's a target rule, not inference
+if (strchr(rules.keys[i], '.') != NULL) {
+continue;
+}
 
-        // Now make sure it's the rule we're looking for
-        if (strcmp(rules.keys[i], inputRule) != 0) {
-            continue;
-        }
+// Now make sure it's the rule we're looking for
+if (strcmp(rules.keys[i], inputRule) != 0) {
+continue;
+}
 
-        // Strip trailing newline
-        //strtok(str, "\n");
-            
-        for (int j = 0; j < rules.numCommandsInKey[i]; j++) {
+// Strip trailing newline
+//strtok(str, "\n");
 
-            // Re-prime for rest of user input
-            //char* token = strtok(str, " ");
-            //while (token != NULL) {
-            
-                printf("Token %d: %s", j, rules.values[i][j]);
-            //}
-        }
+for (int j = 0; j < rules.numCommandsInKey[i]; j++) {
 
-    } // end for loop over rules
+// Re-prime for rest of user input
+//char* token = strtok(str, " ");
+//while (token != NULL) {
+
+printf("Token %d: %s", j, rules.values[i][j]);
+//}
+}
+
+} // end for loop over rules
 
 
 } // End findTarget()
-*/
+ */
 
 
 
