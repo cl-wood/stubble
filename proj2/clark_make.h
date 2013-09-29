@@ -11,7 +11,7 @@
 #define kMaxRecursiveDepth 32
 
 #define DEBUG printf("HERE %d\n", __LINE__);fflush(stdout);
-//#define DBGING 1
+#define DBGING 1
 
 // Struct representing a macro. 
 // Has:
@@ -31,8 +31,9 @@ typedef struct {
 // in that they are NULL terminated
 typedef struct {
 
+    // TODO allow multiple targets
     // Name of rule, to the left of the ':'
-    char target[kNumRules][kStringLength];    
+    char targets[kNumRules][kStringLength];    
 
     // Prereqs, to the right of the ':'
     char prereqs[kNumRules][kStringLength];    
@@ -47,7 +48,7 @@ typedef struct {
 typedef struct {
 
     // Name of rule, to the left of the ':'
-    char target[kStringLength];    
+    char targets[2][kStringLength];    
 
     // Commands, after the rule, start with '\t'
     char commands[kNumRules][kStringLength];    
@@ -64,11 +65,15 @@ typedef struct {
 
 // Make a makefile and init properly
 makefileStruct makefileFactory(makefileStruct rules) {
-    // Should start with 0 macros/rules
-    rules.macros[0].key[0] = '\0';
 
-    //rules.targets = 0;
-    //rules.inferences = 0;
+    // Should start with 0 macros/rules
+    for (int i = 0; i < kNumRules; i++) {
+        rules.macros[i].key[0] = '\0';
+        rules.targets[i].targets[0][0] = '\0';
+        //rules.targets[i].prereqs[0][0] = '\0';
+        rules.inferences[i].targets[0][0] = '\0';
+        rules.inferences[i].targets[1][0] = '\0';
+    }
 
     return rules;
 }
@@ -100,7 +105,9 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
             case '.':
                 // Add target, can be .s or .s.t
                 // TODO parse of .s and .s.t cases, modify inference struct accordingly
-                strcpy(rules.inferences[numInferences].target, str);
+                //strcpy(rules.inferences[numInferences].targets, str);
+                sscanf(str, ".%s.%s:", rules.inferences[numInferences].targets[0],
+                                       rules.inferences[numInferences].targets[1]);
 
                 // Now add commands 
                 char c = getc(makefile);
@@ -130,7 +137,31 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
                 // No '.' but has ':', then add target rule
                 // TODO can target rules have multiple targets? modify parsing/struct
                 if (strchr(str, ':') != NULL) {
-                    strcpy(rules.targets[numTargets].target, str);
+                    //strcpy(rules.targets[numTargets].target, str);
+                    // strtok it
+                    char before[kStringLength];
+                    char after[kStringLength];
+                    sscanf(str, "%s:%s", before, after);
+
+                    // Put before into targets, after into prereqs
+                    char *token;
+                    int i = 0;
+                    token = strtok(before, " ");
+                    while (token != NULL)
+                    {
+                        strcpy(rules.targets[numTargets].targets[i], token);
+                        i++;
+                        token = strtok (NULL, " ,.-");
+                    }
+
+                    i = 0;
+                    token = strtok(after, " ");
+                    while (token != NULL)
+                    {
+                        strcpy(rules.targets[numTargets].prereqs[i], token);
+                        i++;
+                        token = strtok (NULL, " ,.-");
+                    }
 
                     // Now add commands
                     char c = getc(makefile);
@@ -169,27 +200,39 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
 
     } // End while
 
+    // Null delimit macros and rules
+    rules.targets[numTargets].targets[0][0] = '\0'; 
+    rules.inferences[numInferences].targets[0][0] = '\0'; 
+
     // Debugging 
 #ifdef DBGING
     printf("Macros:\n");
     int i = 0;
-    while (rules.macros[i].key[0] != '\0') {
+    while(rules.macros[i].key[0] != '\0') {
         printf("Macro %d: %s = %s\n", i, rules.macros[i].key, rules.macros[i].value);
+        i++;
     }
-    //for (int i = 0; i < rules.numMacros; i++) {
-    //    printf("Macro %d: %s = %s\n", i, rules.macroKeys[i], rules.macroValues[i]);
-    //}
 
-/*
-    printf(" Rules:\n");
+    printf("Target Rules:\n");
+    i = 0;
+    while(rules.targets[i].targets[0][0] != '\0') {
+        int j = 0;
+        printf("Target %d:\n %s: ", i, rules.targets[i].targets[0]);
+        while(rules.targets[i].prereqs[j] != '\0') {
+            printf("%s ", rules.targets[i].prereqs[j]);
+            j++;
+        }
+        i++;
+    }
+
+    /*
     for (int i = 0; i < rules.numRules; i++) {
         printf(" %d: %s", i, rules.keys[i]);
 
         for (int j = 0; j < rules.numCommandsInKey[i]; j++) {
             printf("\t%s", rules.values[i][j]);
         }
-    }
-    */
+    }*/
 
 #endif
 
@@ -216,44 +259,6 @@ char* resolveMacro(makefileStruct rules, char* key, int recursiveDepth)
     return key;
 
 } // end resolveMacro
-
-/*
-// check to see if [cmd] is a  rule
-void findTarget(makefile rules, char* inputRule)
-{
-for (int i = 0; i < rules.numRules; i++) {
-char x = strtok(rules.keys[i], ":");
-printf("%s\n", x);
-
-// Make sure it's a target rule, not inference
-if (strchr(rules.keys[i], '.') != NULL) {
-continue;
-}
-
-// Now make sure it's the rule we're looking for
-if (strcmp(rules.keys[i], inputRule) != 0) {
-continue;
-}
-
-// Strip trailing newline
-//strtok(str, "\n");
-
-for (int j = 0; j < rules.numCommandsInKey[i]; j++) {
-
-// Re-prime for rest of user input
-//char* token = strtok(str, " ");
-//while (token != NULL) {
-
-printf("Token %d: %s", j, rules.values[i][j]);
-//}
-}
-
-} // end for loop over rules
-
-
-} // End findTarget()
- */
-
 
 
 #endif
