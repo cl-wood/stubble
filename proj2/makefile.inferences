@@ -1,4 +1,4 @@
-.c:
+.c: # comment
 	ls
 	ls
 	ps -eax | grep blah

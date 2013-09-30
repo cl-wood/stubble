@@ -245,7 +245,6 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
 
         printf(".%s.%s:\n", rules.inferences[i].targets[0],
                             rules.inferences[i].targets[1]);
-        DEBUG
 
         int j = 0;
         while(rules.inferences[i].commands[j][0] != '\0') {
@@ -282,6 +281,16 @@ char* resolveMacro(makefileStruct rules, char* key, int recursiveDepth)
 
 } // end resolveMacro
 
+
+// Parse commands and execute them, one at a time.
+void execTarget(makefileStruct rules, char *target) {
+
+    // default case, make first target
+    if (strcmp(target, "") == 0) {
+        DEBUG
+    }
+
+}
 
 #endif
 
