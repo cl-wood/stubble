@@ -1,9 +1,9 @@
-.c: prereq1 prereq2 prereq3
+.c:
 	ls
 	ls
 	ps -eax | grep blah
 	find / -name etc
-.o.c: prereq1 prereq2 
+.o.c:
 	echo hahaha
 	echo hahaha | tr -d "a"
 .bf.py:

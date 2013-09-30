@@ -96,16 +96,16 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
             case ' ':
                 break;
 
-                // Comment line
+            // Comment line
             case '#':
                 break;
 
-                // Inference rule
+            // Inference rule
             case '.':
                 // Add target, can be .s or .s.t
                 // TODO parse of .s and .s.t cases, modify inference struct accordingly
                 //strcpy(rules.inferences[numInferences].targets, str);
-                sscanf(str, ".%s.%s:", rules.inferences[numInferences].targets[0],
+                sscanf(str, ".%[^:.\n].%[^:.\n]:", rules.inferences[numInferences].targets[0],
                                        rules.inferences[numInferences].targets[1]);
 
                 // Now add commands 
@@ -115,7 +115,7 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
                     fgets(rules.inferences[numInferences].commands[i],
                             kStringLength, 
                             makefile);
-                        strtok(rules.inferences[numTargets].commands[i], "\n");
+                        strtok(rules.inferences[numInferences].commands[i], "\n");
                     c = getc(makefile);
                     i++;
                 }
@@ -237,16 +237,24 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
         }
 
         i++;
-    }
+    } // End target rules
 
-    /*
-    for (int i = 0; i < rules.numRules; i++) {
-        printf(" %d: %s", i, rules.keys[i]);
+    printf("Inference Rules:\n");
+    i = 0;
+    while(rules.inferences[i].targets[0][0] != '\0') {
 
-        for (int j = 0; j < rules.iInKey[i]; j++) {
-            printf("\t%s", rules.values[i][j]);
+        printf(".%s.%s:\n", rules.inferences[i].targets[0],
+                            rules.inferences[i].targets[1]);
+        DEBUG
+
+        int j = 0;
+        while(rules.inferences[i].commands[j][0] != '\0') {
+            printf("\t%s\n", rules.inferences[i].commands[j]);
+            j++;
         }
-    }*/
+
+        i++;
+    } // End inference rules
 
 #endif
 
