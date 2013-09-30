@@ -85,7 +85,6 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
     int numMacros = 0;
     int numTargets = 0;
     int numInferences = 0;
-    int numCommands = 0;
 
     char str[kStringLength];
     while (fgets(str, kStringLength, makefile) ) {
@@ -111,17 +110,18 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
 
                 // Now add commands 
                 char c = getc(makefile);
-                numCommands = 0;
+                int i = 0;
                 while (c == '\t') {
-                    fgets(rules.inferences[numInferences].commands[numCommands],
+                    fgets(rules.inferences[numInferences].commands[i],
                             kStringLength, 
                             makefile);
+                        strtok(rules.inferences[numTargets].commands[i], "\n");
                     c = getc(makefile);
-                    numCommands++;
+                    i++;
                 }
 
                 // Null terminate last command in each inference rule
-                rules.inferences[numInferences].commands[numCommands][0] = '\0';
+                rules.inferences[numInferences].commands[i][0] = '\0';
 
                 // Put last char back, it isn't tab so it's the start of the next rule
                 ungetc(c, makefile);
@@ -137,11 +137,10 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
                 // No '.' but has ':', then add target rule
                 // TODO can target rules have multiple targets? modify parsing/struct
                 if (strchr(str, ':') != NULL) {
-                    //strcpy(rules.targets[numTargets].target, str);
                     // strtok it
                     char before[kStringLength];
                     char after[kStringLength];
-                    sscanf(str, "%s:%s", before, after);
+                    sscanf(str, "%[^\t\n:]:%[^\t\n]", before, after);
 
                     // Put before into targets, after into prereqs
                     char *token;
@@ -151,8 +150,9 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
                     {
                         strcpy(rules.targets[numTargets].targets[i], token);
                         i++;
-                        token = strtok (NULL, " ,.-");
+                        token = strtok (NULL, " ");
                     }
+                    rules.targets[numTargets].targets[i][0] = '\0';
 
                     i = 0;
                     token = strtok(after, " ");
@@ -160,21 +160,23 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
                     {
                         strcpy(rules.targets[numTargets].prereqs[i], token);
                         i++;
-                        token = strtok (NULL, " ,.-");
+                        token = strtok (NULL, " ");
                     }
+                    rules.targets[numTargets].prereqs[i][0] = '\0';
 
                     // Now add commands
                     char c = getc(makefile);
-                    numCommands = 0;
+                    i = 0;
                     while (c == '\t') {
-                        fgets(rules.targets[numTargets].commands[numCommands],
+                        fgets(rules.targets[numTargets].commands[i],
                                 kStringLength, 
                                 makefile);
+                        strtok(rules.targets[numTargets].commands[i], "\n");
                         c = getc(makefile);
-                        numTargets++;
+                        i++;
                     }
                     // Null terminate last command in each target rule
-                    rules.targets[numTargets].commands[numCommands][0] = '\0';
+                    rules.targets[numTargets].commands[i][0] = '\0';
 
                     // Put last char back, it isn't tab so it's the start of the next rule
                     ungetc(c, makefile);
@@ -217,11 +219,23 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
     i = 0;
     while(rules.targets[i].targets[0][0] != '\0') {
         int j = 0;
-        printf("Target %d:\n %s: ", i, rules.targets[i].targets[0]);
-        while(rules.targets[i].prereqs[j] != '\0') {
+        while(rules.targets[i].targets[j][0] != '\0') {
+            printf("%s ", rules.targets[i].targets[j]);
+            j++;
+        }
+        printf(": ");
+        j = 0;
+        while(rules.targets[i].prereqs[j][0] != '\0') {
             printf("%s ", rules.targets[i].prereqs[j]);
             j++;
         }
+        printf("\n");
+        j = 0;
+        while(rules.targets[i].commands[j][0] != '\0') {
+            printf("\t%s\n", rules.targets[i].commands[j]);
+            j++;
+        }
+
         i++;
     }
 
@@ -229,7 +243,7 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
     for (int i = 0; i < rules.numRules; i++) {
         printf(" %d: %s", i, rules.keys[i]);
 
-        for (int j = 0; j < rules.numCommandsInKey[i]; j++) {
+        for (int j = 0; j < rules.iInKey[i]; j++) {
             printf("\t%s", rules.values[i][j]);
         }
     }*/
