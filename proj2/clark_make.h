@@ -2,9 +2,13 @@
 #define __clark_make_h__
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <unistd.h>
+
+static const char* MYMAKEPATH = "/home/grads/wood/.bin:/home/grads/wood/.scripts:/usr/local/bin:/usr/local/java/bin:/usr/lang:/bin:/usr/bin:/usr/ucb:/usr/etc:/usr/local/bin/X11:/usr/bin/X11:/usr/openwin/bin:/usr/ccs/bin:/usr/sbin:/opt/sfw/bin:.";
 
 #define kNumRules 16
 #define kStringLength 256
@@ -281,14 +285,101 @@ char* resolveMacro(makefileStruct rules, char* key, int recursiveDepth)
 
 } // end resolveMacro
 
-
 // Parse commands and execute them, one at a time.
-void execTarget(makefileStruct rules, char *target) {
+void execTarget(makefileStruct rules, char* target) {
 
-    // default case, make first target
-    if (strcmp(target, "") == 0) {
-        DEBUG
+    // TODO default case, make first target
+    int pid, stat;
+
+    // Identify target to execute commands of
+    int i = 0;
+    int j = 0;
+    int found = 0;
+    while (rules.targets[i].targets[j][0] != '\0') {
+
+        // there are multiple targets possible per line
+        while (rules.targets[i].targets[j][0] != '\0') {
+            if (strcmp(target, rules.targets[i].targets[j]) == 0) {
+                found = 1;
+                break;
+            }
+            j++;
+        }
+        j = 0;
+        if (found) {
+            break; // again
+        }
+        i++;
     }
+    if (!found) {
+        printf("I don't know that command...");
+        return;
+    }
+
+
+    // check 
+
+    // Execute each command 
+    int k = 0;
+    while (rules.targets[i].commands[k][0] != '\0') {
+
+        // For each command, parse first by ';'
+        char* command = strtok(rules.targets[i].commands[k], ";");
+        while (command != NULL)
+        {
+            int args = 0;
+            char tempv[16][32];
+
+            char* token = strtok(command, " \t");
+            while (token != NULL) {
+                // TODO resolve path variable
+                
+                strcpy(tempv[args], token);
+                args++;
+
+                token = strtok(NULL, " \t");
+            } // End while loop for tokens
+
+            // Feed into argv
+            char* argv[16];
+            for (int i = 0; i < args; i++) {
+                argv[i] = tempv[i];
+                printf(tempv[i]);
+            }
+            argv[args] = (char*)NULL;
+            
+            // 
+            if (fork() == 0) {
+                if (execv(argv[0], argv)) {
+                    printf("Command execution failed.\n");
+                    exit(-1);
+                } 
+            }
+
+            // Now wait for child
+            pid = wait(&stat);
+            
+
+            // TODO check prereqs
+
+            // cd, use chdir()
+
+            // pipes 
+
+            // &
+
+            // < >
+
+
+
+            command = strtok(NULL, ";");
+        } // End while loop parsing ';' for commands
+
+        k++;
+    } // End while loop executing commands
+
+
+
 
 }
 

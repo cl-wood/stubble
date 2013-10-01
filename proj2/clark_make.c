@@ -1,6 +1,5 @@
 #include "clark_make.h"
 
-static const char* MYMAKEPATH = "/home/grads/wood/.bin:/home/grads/wood/.scripts:/usr/local/bin:/usr/local/java/bin:/usr/lang:/bin:/usr/bin:/usr/ucb:/usr/etc:/usr/local/bin/X11:/usr/bin/X11:/usr/openwin/bin:/usr/ccs/bin:/usr/sbin:/opt/sfw/bin:.";
 
 int main(int argc, char* argv[]) 
 {
@@ -51,8 +50,7 @@ int main(int argc, char* argv[])
         FILE* makefile = fopen(makefiles[i], "r");
         rules = parseMakefile(makefile, rules);
 
-        execTarget(rules, "");
-        //findTarget(rules, "demo");
+        execTarget(rules, "demo");
 
         //printf("String1 is: %s\n", resolveMacro(rules, "string1", 0));
 
