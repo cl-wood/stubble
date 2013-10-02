@@ -423,9 +423,7 @@ void handleRedirection(char* command)
     int hasInputRedirection = 0;
     int hasOutputRedirection = 0;
 
-    //sscanf(command, "%[^<> ] < %[^<> ] > %[^ ]", 
-    //                argv[0], //argv[1], argv[2], argv[3],
-    //                inFile, outFile);
+    // Tokenize on whitespace, handling < and > appropriately
     char* token = strtok(command, " ");
     int argc = 0;
     while (token != NULL)
@@ -485,6 +483,37 @@ void handleRedirection(char* command)
 
 } // End handleRedirection
 
+void handleBackground(char* command)
+{
+    char argv[5][64];
+
+    int argc = sscanf(command, "%s %s %s %s", 
+            argv[0],
+            argv[1],
+            argv[2],
+            argv[3]);
+
+    // Convert char x[][] to char* x[]
+    char* temp[5];
+    for (int i = 0; i < argc; i++) {
+        if (strchr(argv[i], '&') == NULL) {
+            temp[i] = argv[i];
+        }
+    }
+    // Account for not including '&'
+    temp[argc - 1]= NULL;
+
+    // Fork and wait, re-tokenize
+    if (fork()== 0) {
+        execv(temp[0], temp);
+        exit(0);
+    }
+
+    // Not waiting puts it in bg
+    //waitpid(-1, NULL, 0);
+
+} // End handleBackground
+
 // Parse commands and execute them, one at a time.
 void execTarget(makefileStruct rules, char* target) {
 
@@ -527,7 +556,7 @@ void execTarget(makefileStruct rules, char* target) {
         // Check what type of command it is
         // TODO add cd
         if (strchr(rules.targets[i].commands[k], '&') != NULL) {
-            printf("BG\n");
+            handleBackground(rules.targets[i].commands[k]);
         }
         else if (strchr(rules.targets[i].commands[k], '<') != NULL ||
                 strchr(rules.targets[i].commands[k], '>') != NULL) {
