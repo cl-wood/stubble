@@ -378,13 +378,12 @@ void handlePipes(char* command) {
         waitpid(-1, NULL, 0);
     }
 
-}
+} // End handlePipes
 
 void handleMultiple(char* command)
 {
     //TODO handle cd persistence
-   
-    char* argv[5];
+    char argv[5][64];
 
     char* token = strtok(command, ";");
     while (token != NULL)
@@ -393,18 +392,56 @@ void handleMultiple(char* command)
                                                 argv[1],
                                                 argv[2],
                                                 argv[3]);
-        argv[args]= NULL;
 
+        // Convert char x[][] to char* x[]
+        char* temp[5];
+        for (int i = 0; i < args; i++) {
+            temp[i] = argv[i];
+        }
+        temp[args]= NULL;
+
+        // Fork and wait, re-tokenize
         if (fork()== 0) {
-            execv(argv[0], argv);
+            execv(temp[0], temp);
             exit(0);
         }
+
         waitpid(-1, NULL, 0);
         token = strtok(NULL , ";");
     }
 
-}
+} // End handleMultiple
 
+void handleRedirection(char* command)
+{
+    int hasInputRedirection = 0;
+    int hasOutputRedirection = 0;
+    //int hasBoth = 0;
+
+    char argv[5][64];
+    char inFile[kStringLength];
+    char outFile[kStringLength];
+
+    int args = sscanf(command, "%[^<>] < %[^<>] > %s", 
+                                    argv[0], //argv[1], argv[2], argv[3],
+                                    inFile, outFile);
+
+    printf("%s %s %s\n", argv[0], inFile, outFile);
+
+
+    if (strchr(command, '<') != NULL) {
+        hasInputRedirection = 1;
+
+    }
+    if (strchr(command, '>') != NULL) {
+        hasOutputRedirection = 1;
+    }
+
+
+DEBUG
+
+
+} // End handleRedirection
 
 // Parse commands and execute them, one at a time.
 void execTarget(makefileStruct rules, char* target) {
@@ -452,7 +489,7 @@ void execTarget(makefileStruct rules, char* target) {
         }
         else if (strchr(rules.targets[i].commands[k], '<') != NULL ||
                 strchr(rules.targets[i].commands[k], '>') != NULL) {
-            printf("REDIR\n");
+            handleRedirection(rules.targets[i].commands[k]);
         }
         else if (strchr(rules.targets[i].commands[k], '|') != NULL) {
             handlePipes(rules.targets[i].commands[k]);
@@ -462,6 +499,8 @@ void execTarget(makefileStruct rules, char* target) {
         }
         else {
             printf("Regular\n");
+            // TODO will this work? it should...
+            handleMultiple(rules.targets[i].commands[k]);
         }
 
         // TODO check prereqs
