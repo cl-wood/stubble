@@ -285,11 +285,92 @@ char* resolveMacro(makefileStruct rules, char* key, int recursiveDepth)
 
 } // end resolveMacro
 
+void handlePipes(char* command) {
+    int maxPipes = 5;
+
+    // Count number of pipes
+    int numPipes = 0;
+    int fds[maxPipes][2];
+    int child[maxPipes];
+    char tempArgv[maxPipes][5][kStringLength];
+
+    char* token = strtok(command, "|");
+    while (token != NULL)
+    {
+        int args = sscanf(token, "%s %s %s %s", tempArgv[numPipes][0],
+                                                tempArgv[numPipes][1],
+                                                tempArgv[numPipes][2],
+                                                tempArgv[numPipes][3]);
+
+
+
+        tempArgv[numPipes][args][0] = '\0'; // maybe '\0'
+        numPipes++;
+        token = strtok(NULL , "|");
+    }
+    numPipes--;
+
+    // Convert char x[][][] to char* x[][]
+    char* argvs[maxPipes][5];
+    for (int i = 0; i < maxPipes; i++) {
+        for (int j = 0; tempArgv[i][j][0] != NULL; i++) {
+            argvs[i][j] = tempArgv[i][j];
+        }
+    }
+
+
+    // Create enough pipes
+    for (int i = 0; i < numPipes; i++) {
+        pipe(fds[i]);
+    }
+
+    // Last pipe always the same
+    if (fork()== 0) {
+        close(fds[numPipes - 1][1]);
+        close(STDIN_FILENO); dup(fds[numPipes - 1][0]); /* redirect standard input to fds[1] */
+        execv(argvs[numPipes][0], argvs[numPipes]);
+        exit(0);
+    }
+
+    // If intermediate pipes, count down
+    for (int i = numPipes - 1; i > 0; i--) {
+        if (fork()== 0) {
+            close(fds[i][1]);
+            close(STDOUT_FILENO); dup(fds[i][1]);  /* redirect standard output to fds[0] */
+            close(fds[i][1]);
+            close(STDIN_FILENO); dup(fds[i][0]); /* redirect standard input to fds[1] */
+            execv(argvs[i][0], argvs[i]);
+            exit(0);
+        }
+    }
+
+    // First pipe always the same
+    if (fork() == 0) {
+        close(fds[0][0]);
+        close(STDOUT_FILENO); dup(fds[0][1]);  /* redirect standard output to fds[0] */
+        execv(argvs[0][0], argvs[0]);
+        exit(0);
+
+    }
+
+    for (int i = 0; i < numPipes + 1; i++) {
+        close(fds[i][1]);
+    }
+
+    // Wait for all children
+    for (int i = 0; i < numPipes + 1; i++) {
+        wait(&child[0]);
+    }
+
+}
+
+
 // Parse commands and execute them, one at a time.
 void execTarget(makefileStruct rules, char* target) {
 
     // TODO default case, make first target
-    int pid, stat;
+    //int pid, stat;
+    char* pwd = getcwd(NULL, kStringLength);
 
     // Identify target to execute commands of
     int i = 0;
@@ -323,63 +404,34 @@ void execTarget(makefileStruct rules, char* target) {
     int k = 0;
     while (rules.targets[i].commands[k][0] != '\0') {
 
-        // For each command, parse first by ';'
-        char* command = strtok(rules.targets[i].commands[k], ";");
-        while (command != NULL)
-        {
-            int args = 0;
-            char tempv[16][32];
+        // Check what type of command it is
+        // TODO add cd
+        if (strchr(rules.targets[i].commands[k], '&') != NULL) {
+            printf("BG\n");
+        }
+        else if (strchr(rules.targets[i].commands[k], '<') != NULL ||
+                strchr(rules.targets[i].commands[k], '>') != NULL) {
+            printf("REDIR\n");
+        }
+        else if (strchr(rules.targets[i].commands[k], '|') != NULL) {
+            printf("PIPE\n");
+            handlePipes(rules.targets[i].commands[k]);
+        }
+        else if (strchr(rules.targets[i].commands[k], ';') != NULL) {
+            printf("MULTIPLE\n");
+        }
+        else {
+            printf("Regular\n");
+        }
 
-            char* token = strtok(command, " \t");
-            while (token != NULL) {
-                // TODO resolve path variable
-                
-                strcpy(tempv[args], token);
-                args++;
-
-                token = strtok(NULL, " \t");
-            } // End while loop for tokens
-
-            // Feed into argv
-            char* argv[16];
-            for (int i = 0; i < args; i++) {
-                argv[i] = tempv[i];
-                printf(tempv[i]);
-            }
-            argv[args] = (char*)NULL;
-            
-            // 
-            if (fork() == 0) {
-                if (execv(argv[0], argv)) {
-                    printf("Command execution failed.\n");
-                    exit(-1);
-                } 
-            }
-
-            // Now wait for child
-            pid = wait(&stat);
-            
-
-            // TODO check prereqs
-
-            // cd, use chdir()
-
-            // pipes 
-
-            // &
-
-            // < >
-
-
-
-            command = strtok(NULL, ";");
-        } // End while loop parsing ';' for commands
+        // TODO check prereqs
 
         k++;
     } // End while loop executing commands
 
 
 
+    free(pwd); // Remember to free!
 
 }
 

@@ -1,2 +1,2 @@
 demo:
-	/bin/ls -al 
+	/bin/ps | /bin/more
