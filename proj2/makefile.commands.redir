@@ -1,2 +1,2 @@
 demo:
-	/bin/cat < makefile > blah
+	/bin/cat -E < makefile > blah

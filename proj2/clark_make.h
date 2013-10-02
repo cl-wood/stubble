@@ -419,23 +419,58 @@ void handleRedirection(char* command)
     char argv[5][64];
     char inFile[kStringLength];
     char outFile[kStringLength];
-
-    sscanf(command, "%[^<> ] < %[^<> ] > %[^ ]", 
-                    argv[0], //argv[1], argv[2], argv[3],
-                    inFile, outFile);
-
     int fd0, fd1;
-    if (fork() == 0) {
-        char* temp[5];
-        temp[0] = argv[0];
-        temp[1]= NULL;
+    int hasInputRedirection = 0;
+    int hasOutputRedirection = 0;
 
-        if (strchr(command, '<') != NULL) {
+    //sscanf(command, "%[^<> ] < %[^<> ] > %[^ ]", 
+    //                argv[0], //argv[1], argv[2], argv[3],
+    //                inFile, outFile);
+    char* token = strtok(command, " ");
+    int argc = 0;
+    while (token != NULL)
+    {
+        if (strchr(token, '<') == NULL && (strchr(token, '>') == NULL)) {
+            strcpy(argv[argc], token);
+            //printf("%s\n", token);
+            argc++;
+        }
+        else { // has <, >, or both
+            if (strchr(token, '<') != NULL) {
+                hasInputRedirection = 1;
+                token = strtok(NULL, " ");
+            //printf("IN: %s\n", token);
+                strcpy(inFile, token);
+                token = strtok(NULL, " ");
+            }
+            if (strchr(token, '>') != NULL) {
+                hasOutputRedirection = 1;
+                token = strtok(NULL, " ");
+            //printf("OUT: %s\n", token);
+                strcpy(outFile, token);
+            }
+            break;
+        }
+
+        token = strtok(NULL, " ");
+    } // End token while
+
+    if (fork() == 0) {
+       
+        // Convert char x[][] to char* x[]
+        char* temp[5];
+        for (int i = 0; i < argc; i++) {
+            temp[i] = argv[i];
+        }
+        temp[argc]= NULL;
+
+        // Handle file I/O redirection
+        if (hasInputRedirection) {
             fd0 = open(inFile, O_RDONLY);
             close(0);
             dup(fd0);
         }
-        if (strchr(command, '>') != NULL) {
+        if (hasOutputRedirection) {
             fd1 = open(outFile, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
             close(1);
             dup(fd1);
