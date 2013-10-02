@@ -15,7 +15,7 @@ static const char* MYMAKEPATH = "/home/grads/wood/.bin:/home/grads/wood/.scripts
 #define kMaxRecursiveDepth 32
 
 #define DEBUG printf("HERE %d\n", __LINE__);fflush(stdout);
-#define DBGING 1
+//#define DBGING 1
 
 // Struct representing a macro. 
 // Has:
@@ -291,7 +291,7 @@ void handlePipes(char* command) {
     // Count number of pipes
     int numPipes = 0;
     int fds[maxPipes][2];
-    int child[maxPipes];
+    //int child[maxPipes];
     char tempArgv[maxPipes][5][kStringLength];
 
     char* token = strtok(command, "|");
@@ -301,10 +301,7 @@ void handlePipes(char* command) {
                                                 tempArgv[numPipes][1],
                                                 tempArgv[numPipes][2],
                                                 tempArgv[numPipes][3]);
-
-
-
-        tempArgv[numPipes][args][0] = '\0'; // maybe '\0'
+        tempArgv[numPipes][args][0] = '\0';
         numPipes++;
         token = strtok(NULL , "|");
     }
@@ -313,7 +310,7 @@ void handlePipes(char* command) {
     // Convert char x[][][] to char* x[][]
     char* argvs[maxPipes][5];
     for (int i = 0; i < maxPipes; i++) {
-        for (int j = 0; tempArgv[i][j][0] != NULL; i++) {
+        for (int j = 0; tempArgv[i][j][0] != '\0'; j++) {
             argvs[i][j] = tempArgv[i][j];
         }
     }
@@ -326,40 +323,60 @@ void handlePipes(char* command) {
 
     // Last pipe always the same
     if (fork()== 0) {
+        printf("end pipe: %d\n", numPipes - 1);
+        close(0); dup(fds[numPipes - 1][0]); /* redirect standard input to fds[1] */
         close(fds[numPipes - 1][1]);
-        close(STDIN_FILENO); dup(fds[numPipes - 1][0]); /* redirect standard input to fds[1] */
+        for (int i = 0; i < numPipes; i++) {
+            close(fds[i][0]);
+            close(fds[i][1]);
+        }
         execv(argvs[numPipes][0], argvs[numPipes]);
         exit(0);
     }
 
+    // TODO how should this middle one work?
     // If intermediate pipes, count down
     for (int i = numPipes - 1; i > 0; i--) {
         if (fork()== 0) {
-            close(fds[i][1]);
-            close(STDOUT_FILENO); dup(fds[i][1]);  /* redirect standard output to fds[0] */
-            close(fds[i][1]);
-            close(STDIN_FILENO); dup(fds[i][0]); /* redirect standard input to fds[1] */
+            printf("middle pipe out: %d\n", i);
+            close(1); dup(fds[i][1]);
+            printf("middle pipe in: %d\n", i - 1);
+            close(0); dup(fds[i - 1][0]); 
+            for (int i = 0; i < numPipes; i++) {
+                close(fds[i][0]);
+                close(fds[i][1]);
+            }
+            // having this makes it stop?
             execv(argvs[i][0], argvs[i]);
             exit(0);
         }
     }
 
+
     // First pipe always the same
     if (fork() == 0) {
-        close(fds[0][0]);
-        close(STDOUT_FILENO); dup(fds[0][1]);  /* redirect standard output to fds[0] */
+        close(1); dup(fds[0][1]);  /* redirect standard output to fds[0] */
+        for (int i = 0; i < numPipes; i++) {
+            close(fds[i][0]);
+            close(fds[i][1]);
+        }
         execv(argvs[0][0], argvs[0]);
         exit(0);
 
     }
 
-    for (int i = 0; i < numPipes + 1; i++) {
+    for (int i = 0; i < numPipes; i++) {
+        close(fds[i][0]);
         close(fds[i][1]);
     }
 
-    // Wait for all children
-    for (int i = 0; i < numPipes + 1; i++) {
-        wait(&child[0]);
+    // Wait for first and last, then middle children
+    waitpid(-1, NULL, 0);
+    waitpid(-1, NULL, 0);
+    //waitpid(-1, NULL, 0);
+    for (int i = 0; i < numPipes - 2; i++) {
+        DEBUG
+        printf("wait: %d\n", i);
     }
 
 }
