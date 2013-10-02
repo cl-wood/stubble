@@ -50,7 +50,8 @@ int main(int argc, char* argv[])
         FILE* makefile = fopen(makefiles[i], "r");
         rules = parseMakefile(makefile, rules);
 
-        execTarget(rules, "demo");
+        printf("%s\n", findInPath("ls"));
+        //execTarget(rules, "demo");
 
         //printf("String1 is: %s\n", resolveMacro(rules, "string1", 0));
 

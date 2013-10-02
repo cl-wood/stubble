@@ -83,6 +83,37 @@ makefileStruct makefileFactory(makefileStruct rules) {
     return rules;
 }
 
+// MYMAKEPATH 
+char* findInPath(char* command) {
+    char path[kStringLength];
+    strcpy(path, MYMAKEPATH);
+
+    char* token = strtok(path, ":");
+
+    while (token != NULL) {
+        char check[kStringLength];
+        strcat(check, token);
+        strcat(check, "/");
+        strcat(check, command);
+
+        printf("%s\n", check);
+
+        struct stat fs;
+        int ret = stat(check, &fs);
+        if (ret == 0) {
+            DEBUG
+            return check;
+        }
+
+        token = strtok(NULL, ":");
+    }
+
+    //return NULL;
+    return "BLAH";
+
+}
+
+
 // Parse macro, target, and inference rules into makefile
 makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
 {
