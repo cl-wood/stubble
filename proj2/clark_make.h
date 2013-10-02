@@ -375,8 +375,32 @@ void handlePipes(char* command) {
     waitpid(-1, NULL, 0);
     //waitpid(-1, NULL, 0);
     for (int i = 0; i < numPipes - 2; i++) {
-        DEBUG
-        printf("wait: %d\n", i);
+        waitpid(-1, NULL, 0);
+    }
+
+}
+
+void handleMultiple(char* command)
+{
+    //TODO handle cd persistence
+   
+    char* argv[5];
+
+    char* token = strtok(command, ";");
+    while (token != NULL)
+    {
+        int args = sscanf(token, "%s %s %s %s", argv[0],
+                                                argv[1],
+                                                argv[2],
+                                                argv[3]);
+        argv[args]= NULL;
+
+        if (fork()== 0) {
+            execv(argv[0], argv);
+            exit(0);
+        }
+        waitpid(-1, NULL, 0);
+        token = strtok(NULL , ";");
     }
 
 }
@@ -431,11 +455,10 @@ void execTarget(makefileStruct rules, char* target) {
             printf("REDIR\n");
         }
         else if (strchr(rules.targets[i].commands[k], '|') != NULL) {
-            printf("PIPE\n");
             handlePipes(rules.targets[i].commands[k]);
         }
         else if (strchr(rules.targets[i].commands[k], ';') != NULL) {
-            printf("MULTIPLE\n");
+            handleMultiple(rules.targets[i].commands[k]);
         }
         else {
             printf("Regular\n");
