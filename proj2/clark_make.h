@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 static const char* MYMAKEPATH = "/home/grads/wood/.bin:/home/grads/wood/.scripts:/usr/local/bin:/usr/local/java/bin:/usr/lang:/bin:/usr/bin:/usr/ucb:/usr/etc:/usr/local/bin/X11:/usr/bin/X11:/usr/openwin/bin:/usr/ccs/bin:/usr/sbin:/opt/sfw/bin:.";
 
@@ -412,34 +413,40 @@ void handleMultiple(char* command)
 
 } // End handleMultiple
 
+// TODO handle more possible args before redirs
 void handleRedirection(char* command)
 {
-    int hasInputRedirection = 0;
-    int hasOutputRedirection = 0;
-    //int hasBoth = 0;
-
     char argv[5][64];
     char inFile[kStringLength];
     char outFile[kStringLength];
 
-    int args = sscanf(command, "%[^<>] < %[^<>] > %s", 
-                                    argv[0], //argv[1], argv[2], argv[3],
-                                    inFile, outFile);
+    sscanf(command, "%[^<> ] < %[^<> ] > %[^ ]", 
+                    argv[0], //argv[1], argv[2], argv[3],
+                    inFile, outFile);
 
-    printf("%s %s %s\n", argv[0], inFile, outFile);
+    int fd0, fd1;
+    if (fork() == 0) {
+        char* temp[5];
+        temp[0] = argv[0];
+        temp[1]= NULL;
 
+        if (strchr(command, '<') != NULL) {
+            fd0 = open(inFile, O_RDONLY);
+            close(0);
+            dup(fd0);
+        }
+        if (strchr(command, '>') != NULL) {
+            fd1 = open(outFile, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
+            close(1);
+            dup(fd1);
+        }
 
-    if (strchr(command, '<') != NULL) {
-        hasInputRedirection = 1;
+        execv(temp[0], temp);
+        exit(0);
 
-    }
-    if (strchr(command, '>') != NULL) {
-        hasOutputRedirection = 1;
-    }
+    } // End fork
 
-
-DEBUG
-
+    waitpid(-1, NULL, 0);
 
 } // End handleRedirection
 

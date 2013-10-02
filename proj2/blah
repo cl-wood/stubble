@@ -1,0 +1,13 @@
+CC=gcc
+CFLAGS=-Wall -std=c99 -pedantic
+
+a.out: clark_make.o
+	$(CC) clark_make.o
+clark_make.o: clark_make.c clark_make.h
+	$(CC) $(CFLAGS) -c clark_make.c clark_make.h
+
+#demo:
+
+clean:
+	rm *.o *.h.gch a.out
+
