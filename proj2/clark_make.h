@@ -15,6 +15,7 @@
 
 static const char* MYMAKEPATH = "/home/grads/wood/.bin:/home/grads/wood/.scripts:/usr/local/bin:/usr/local/java/bin:/usr/lang:/bin:/usr/bin:/usr/ucb:/usr/etc:/usr/local/bin/X11:/usr/bin/X11:/usr/openwin/bin:/usr/ccs/bin:/usr/sbin:/opt/sfw/bin:.";
 static char executable[kStringLength];
+static char currentDirectory[kStringLength];
 
 #define DEBUG printf("HERE %d\n", __LINE__);fflush(stdout);
 //#define DBGING 1
@@ -412,6 +413,7 @@ void handlePipes(char* command) {
 void handleMultiple(char* command)
 {
     //TODO handle cd persistence
+    currentDirectory[0] = '\0';
     char argv[5][64];
 
     char* token = strtok(command, ";");
@@ -422,6 +424,7 @@ void handleMultiple(char* command)
                                                 argv[2],
                                                 argv[3]);
 
+
         // Convert char x[][] to char* x[]
         char* temp[5];
         for (int i = 0; i < args; i++) {
@@ -429,15 +432,33 @@ void handleMultiple(char* command)
         }
         temp[args]= NULL;
 
-        // Fork and wait, re-tokenize
-        if (fork()== 0) {
-            execv(temp[0], temp);
-            exit(0);
+        int isCdCommand = 0;
+        // Find executable in path, check for cd
+        if (strcmp(temp[0], "cd") == 0) {
+            getcwd(currentDirectory, kStringLength);
+            chdir(currentDirectory); 
+            isCdCommand = 1;
         }
 
-        waitpid(-1, NULL, 0);
+
+        // If not cd, Fork and wait, re-tokenize
+        if (!isCdCommand) {
+
+            temp[0] = findInPath(temp[0]);
+
+            if (fork()== 0) {
+                execv(temp[0], temp);
+                exit(0);
+            }
+
+            waitpid(-1, NULL, 0);
+        }
+
         token = strtok(NULL , ";");
     }
+
+    // Reset current directory
+    currentDirectory[0] = '\0';
 
 } // End handleMultiple
 
@@ -465,14 +486,14 @@ void handleRedirection(char* command)
             if (strchr(token, '<') != NULL) {
                 hasInputRedirection = 1;
                 token = strtok(NULL, " ");
-            //printf("IN: %s\n", token);
+                //printf("IN: %s\n", token);
                 strcpy(inFile, token);
                 token = strtok(NULL, " ");
             }
             if (strchr(token, '>') != NULL) {
                 hasOutputRedirection = 1;
                 token = strtok(NULL, " ");
-            //printf("OUT: %s\n", token);
+                //printf("OUT: %s\n", token);
                 strcpy(outFile, token);
             }
             break;
@@ -482,7 +503,7 @@ void handleRedirection(char* command)
     } // End token while
 
     if (fork() == 0) {
-       
+
         // Convert char x[][] to char* x[]
         char* temp[5];
         for (int i = 0; i < argc; i++) {
@@ -542,6 +563,14 @@ void handleBackground(char* command)
 
 } // End handleBackground
 
+// TODO make work for single and multiple commands
+// Uses global currentDirectory? or i can just pass the 
+void handleCD(char* string) 
+{
+    strcpy(currentDirectory, string);
+
+} // end handleCD
+
 // Parse commands and execute them, one at a time.
 void execTarget(makefileStruct rules, char* target) {
 
@@ -597,7 +626,7 @@ void execTarget(makefileStruct rules, char* target) {
             handleMultiple(rules.targets[i].commands[k]);
         }
         else {
-            printf("Regular\n");
+            //printf("Regular\n");
             // TODO will this work? it should...
             handleMultiple(rules.targets[i].commands[k]);
         }
