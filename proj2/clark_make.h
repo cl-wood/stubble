@@ -9,11 +9,12 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-static const char* MYMAKEPATH = "/home/grads/wood/.bin:/home/grads/wood/.scripts:/usr/local/bin:/usr/local/java/bin:/usr/lang:/bin:/usr/bin:/usr/ucb:/usr/etc:/usr/local/bin/X11:/usr/bin/X11:/usr/openwin/bin:/usr/ccs/bin:/usr/sbin:/opt/sfw/bin:.";
-
 #define kNumRules 16
 #define kStringLength 256
 #define kMaxRecursiveDepth 32
+
+static const char* MYMAKEPATH = "/home/grads/wood/.bin:/home/grads/wood/.scripts:/usr/local/bin:/usr/local/java/bin:/usr/lang:/bin:/usr/bin:/usr/ucb:/usr/etc:/usr/local/bin/X11:/usr/bin/X11:/usr/openwin/bin:/usr/ccs/bin:/usr/sbin:/opt/sfw/bin:.";
+static char executable[kStringLength];
 
 #define DEBUG printf("HERE %d\n", __LINE__);fflush(stdout);
 //#define DBGING 1
@@ -83,7 +84,8 @@ makefileStruct makefileFactory(makefileStruct rules) {
     return rules;
 }
 
-// MYMAKEPATH 
+// Uses executable and MYMAKEPATH to find location of executable
+// Returns NULL if the command is not found
 char* findInPath(char* command) {
     char path[kStringLength];
     strcpy(path, MYMAKEPATH);
@@ -91,27 +93,22 @@ char* findInPath(char* command) {
     char* token = strtok(path, ":");
 
     while (token != NULL) {
-        char check[kStringLength];
-        strcat(check, token);
-        strcat(check, "/");
-        strcat(check, command);
-
-        printf("%s\n", check);
+        executable[0] = '\0';
+        strcat(executable, token);
+        strcat(executable, "/");
+        strcat(executable, command);
 
         struct stat fs;
-        int ret = stat(check, &fs);
+        int ret = stat(executable, &fs);
         if (ret == 0) {
-            DEBUG
-            return check;
+            return executable;
         }
 
         token = strtok(NULL, ":");
     }
 
-    //return NULL;
-    return "BLAH";
-
-}
+    return NULL;
+} // End findInPath
 
 
 // Parse macro, target, and inference rules into makefile
