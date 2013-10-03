@@ -432,14 +432,13 @@ void handleMultiple(char* command)
         }
         temp[args]= NULL;
 
-        int isCdCommand = 0;
         // Find executable in path, check for cd
+        int isCdCommand = 0;
         if (strcmp(temp[0], "cd") == 0) {
             getcwd(currentDirectory, kStringLength);
-            chdir(currentDirectory); 
+            chdir(temp[1]); 
             isCdCommand = 1;
         }
-
 
         // If not cd, Fork and wait, re-tokenize
         if (!isCdCommand) {
