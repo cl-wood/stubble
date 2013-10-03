@@ -1,5 +1,8 @@
 # comment
 string1=string2
 string2=string3
-string3=string4
+string3=mydir
+
+demo:
+	ls $(string1)
 

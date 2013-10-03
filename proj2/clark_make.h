@@ -301,15 +301,18 @@ char* resolveMacro(makefileStruct rules, char* key, int recursiveDepth)
 {
     // likely we have a loop
     if (recursiveDepth == kMaxRecursiveDepth) {
-        printf("Probably encountered a circular macro definition\n");
-        return (char*)0;
+        printf("Probably encountered a circular macro definition\nor variable doesn't exist");
+        exit(0);
+        //return (char*)0;
     }
 
-    //for (int i = 0; i < rules.numMacros; i++) {
-    //    if (strcmp(rules.macroKeys[i], key) == 0) {
-    //        return resolveMacro(rules, rules.macroValues[i], recursiveDepth + 1);
-    //    }
-    //}
+    int i = 0;
+    while (rules.macros[i].key[0] != '\0') {
+        if (strcmp(rules.macros[i].key, key) == 0) {
+            return resolveMacro(rules, rules.macros[i].value, recursiveDepth + 1);
+        }
+        i++;
+    }
 
     return key;
 
@@ -609,28 +612,61 @@ void execTarget(makefileStruct rules, char* target) {
     int k = 0;
     while (rules.targets[i].commands[k][0] != '\0') {
 
-        // Check what type of command it is
-        // TODO add cd
-        if (strchr(rules.targets[i].commands[k], '&') != NULL) {
-            handleBackground(rules.targets[i].commands[k]);
+
+        // TODO resolve all macros
+        // best way to do this?
+        // build up new string which will be passed to each funct below?
+        char argString[kStringLength];
+        argString[0] = '\0';
+        char* token = strtok(rules.targets[i].commands[k], " \t");
+
+        while (token != NULL) {
+
+            // Resolve Macros, strip '$', '(', ')'
+            char temp[kStringLength] = {0};
+            if (token[0] == '$') {
+                if (token[1] == '(') {
+                    strncpy(temp, token + 2, strlen(token) - 3);
+                }
+                else {
+                    strcpy(temp, token + 1);
+                }
+
+                strcpy(token, temp);
+                token = resolveMacro(rules, token, 50);
+            }
+
+            // Build up string post-macros
+            strcat(argString, token);
+            strcat(argString, " ");
+
+            token = strtok(NULL, " \t");
         }
-        else if (strchr(rules.targets[i].commands[k], '<') != NULL ||
-                strchr(rules.targets[i].commands[k], '>') != NULL) {
-            handleRedirection(rules.targets[i].commands[k]);
-        }
-        else if (strchr(rules.targets[i].commands[k], '|') != NULL) {
-            handlePipes(rules.targets[i].commands[k]);
-        }
-        else if (strchr(rules.targets[i].commands[k], ';') != NULL) {
-            handleMultiple(rules.targets[i].commands[k]);
-        }
-        else {
-            //printf("Regular\n");
-            // TODO will this work? it should...
-            handleMultiple(rules.targets[i].commands[k]);
-        }
+        
 
         // TODO check prereqs
+
+        // Check what type of command it is
+        // TODO add cd
+
+        if (strchr(argString, '&') != NULL) {
+            handleBackground(argString);
+        }
+        else if (strchr(argString, '<') != NULL ||
+                strchr(argString, '>') != NULL) {
+            handleRedirection(argString);
+        }
+        else if (strchr(argString, '|') != NULL) {
+            handlePipes(argString);
+        }
+        else if (strchr(argString, ';') != NULL) {
+            handleMultiple(argString);
+        }
+        else { // simple command
+            // TODO will this work? it should...
+            handleMultiple(argString);
+        }
+
 
         k++;
     } // End while loop executing commands

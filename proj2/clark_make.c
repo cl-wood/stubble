@@ -52,6 +52,7 @@ int main(int argc, char* argv[])
 
         //printf("%s\n", findInPath("ls"));
         execTarget(rules, "demo");
+        //printf("%s\n", resolveMacro(rules, "string1", 10));
 
         //printf("String1 is: %s\n", resolveMacro(rules, "string1", 0));
 
