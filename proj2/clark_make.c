@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
         rules = parseMakefile(makefile, rules);
 
         //printf("%s\n", findInPath("ls"));
-        execTarget(rules, "demo");
+        //execTarget(rules, "demo");
         //printf("%s\n", resolveMacro(rules, "string1", 10));
 
         //printf("String1 is: %s\n", resolveMacro(rules, "string1", 0));

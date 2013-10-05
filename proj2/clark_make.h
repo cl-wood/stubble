@@ -51,11 +51,11 @@ typedef struct {
 } targetRuleStruct;
 
 // Like targetRuleStruct, but no prereqs
-// TODO make sure inference rules don't need prereqs
 typedef struct {
 
-    // Name of rule, to the left of the ':'
-    char targets[2][kStringLength];    
+    // Source used with $<, Target with $@
+    char source[kStringLength];    
+    char target[kStringLength];    
 
     // Commands, after the rule, start with '\t'
     char commands[kNumRules][kStringLength];    
@@ -71,15 +71,16 @@ typedef struct {
 } makefileStruct;
 
 // Make a makefile and init properly
+// TODO add prereqs
 makefileStruct makefileFactory(makefileStruct rules) {
 
     // Should start with 0 macros/rules
     for (int i = 0; i < kNumRules; i++) {
         rules.macros[i].key[0] = '\0';
         rules.targets[i].targets[0][0] = '\0';
-        //rules.targets[i].prereqs[0][0] = '\0';
-        rules.inferences[i].targets[0][0] = '\0';
-        rules.inferences[i].targets[1][0] = '\0';
+        rules.targets[i].prereqs[0][0] = '\0';
+        rules.inferences[i].source[0] = '\0';
+        rules.inferences[i].target[0] = '\0';
     }
 
     return rules;
@@ -120,6 +121,13 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
     int numTargets = 0;
     int numInferences = 0;
 
+    // For inference rules
+    int first;
+    int last;
+    char *p1, *p2;
+    char tempSource[kStringLength];
+    char tempTarget[kStringLength];
+
     char str[kStringLength];
     while (fgets(str, kStringLength, makefile) ) {
 
@@ -137,10 +145,31 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
             // Inference rule
             case '.':
                 // Add target, can be .s or .s.t
-                // TODO parse of .s and .s.t cases, modify inference struct accordingly
-                //strcpy(rules.inferences[numInferences].targets, str);
-                sscanf(str, ".%[^:.\n].%[^:.\n]:", rules.inferences[numInferences].targets[0],
-                                       rules.inferences[numInferences].targets[1]);
+                //sscanf(str, ".%[^:.\n].%[^:.\n]:", rules.inferences[numInferences].targets[0],
+                //                       rules.inferences[numInferences].targets[1]);
+
+                // If first and last '.' are the same, only a source, otherwise source/target
+                first = 0;
+                last = 0;
+
+                p1 = strchr(str,'.');
+                p2 = strrchr(str,'.');
+
+                first = (int)(p1 - str + 1);
+                last = (int)(p2 - str + 1);
+                // .s format
+                if (first == last) {
+                    sscanf(str, "%[^:\n]:", rules.inferences[numInferences].source);
+                }
+                // .s.t format
+                else {
+                    sscanf(str, ".%[^:.\n].%[^:.\n]:", tempSource, tempTarget);
+                    strcat(rules.inferences[numInferences].source, ".");
+                    strcat(rules.inferences[numInferences].target, ".");
+                    strcat(rules.inferences[numInferences].source, tempSource);
+                    strcat(rules.inferences[numInferences].target, tempTarget);
+                }
+
 
                 // Now add commands 
                 char c = getc(makefile);
@@ -149,7 +178,10 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
                     fgets(rules.inferences[numInferences].commands[i],
                             kStringLength, 
                             makefile);
-                        strtok(rules.inferences[numInferences].commands[i], "\n");
+
+                    strtok(rules.inferences[numInferences].commands[i], "\n");
+
+
                     c = getc(makefile);
                     i++;
                 }
@@ -238,7 +270,7 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
 
     // Null delimit macros and rules
     rules.targets[numTargets].targets[0][0] = '\0'; 
-    rules.inferences[numInferences].targets[0][0] = '\0'; 
+    rules.inferences[numInferences].source[0] = '\0'; 
 
     // Debugging 
 #ifdef DBGING
@@ -275,10 +307,10 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
 
     printf("Inference Rules:\n");
     i = 0;
-    while(rules.inferences[i].targets[0][0] != '\0') {
+    while(rules.inferences[i].source[0] != '\0') {
 
-        printf(".%s.%s:\n", rules.inferences[i].targets[0],
-                            rules.inferences[i].targets[1]);
+        printf("%s%s:\n", rules.inferences[i].source,
+                            rules.inferences[i].target);
 
         int j = 0;
         while(rules.inferences[i].commands[j][0] != '\0') {
@@ -317,6 +349,19 @@ char* resolveMacro(makefileStruct rules, char* key, int recursiveDepth)
     return key;
 
 } // end resolveMacro
+
+//
+/*
+char* resolveInference(makefileStruct rules, char* string)
+{
+    int i = 0;
+    while (rules.inferences[i].targets[0] != '\0') {
+
+    }
+
+
+}
+*/
 
 void handlePipes(char* command) {
     int maxPipes = 5;
@@ -613,18 +658,17 @@ void execTarget(makefileStruct rules, char* target) {
     while (rules.targets[i].commands[k][0] != '\0') {
 
 
-        // TODO resolve all macros
-        // best way to do this?
-        // build up new string which will be passed to each funct below?
         char argString[kStringLength];
         argString[0] = '\0';
         char* token = strtok(rules.targets[i].commands[k], " \t");
 
         while (token != NULL) {
 
-            // Resolve Macros, strip '$', '(', ')'
+            // Resolve Macros and strip '$', '(', ')'
             char temp[kStringLength] = {0};
             if (token[0] == '$') {
+
+                //
                 if (token[1] == '(') {
                     strncpy(temp, token + 2, strlen(token) - 3);
                 }
@@ -670,8 +714,6 @@ void execTarget(makefileStruct rules, char* target) {
 
         k++;
     } // End while loop executing commands
-
-
 
     free(pwd); // Remember to free!
 
