@@ -1,0 +1,4 @@
+demo: myprog.o
+	gcc -o myprog myprog.o
+myprog.o: myprog.c
+	gcc -c myprog.c
