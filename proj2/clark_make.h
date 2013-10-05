@@ -1,13 +1,14 @@
 #ifndef __clark_make_h__
 #define __clark_make_h__
 
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <time.h>
 #include <unistd.h>
-#include <fcntl.h>
 
 #define kNumRules 16
 #define kStringLength 256
@@ -622,8 +623,8 @@ void handleCD(char* string)
 void execTarget(makefileStruct rules, char* target) {
 
     // TODO default case, make first target
-    //int pid, stat;
     char* pwd = getcwd(NULL, kStringLength);
+
 
     // Identify target to execute commands of
     int i = 0;
@@ -645,23 +646,46 @@ void execTarget(makefileStruct rules, char* target) {
         }
         i++;
     }
+    // Target not found
     if (!found) {
         printf("I don't know that command...");
         return;
     }
 
+    // Recursively check prereqs
+    struct stat targetBuf;
+    int targetStatus;
+    int fd = open(rules.targets[i].targets[j], O_RDONLY);
+    targetStatus = fstat(fd, &targetBuf);
+    int x = 0;
 
-    // check 
+    while (rules.targets[i].prereqs[x][0] != '\0') {
+
+        // Compare timestamps 
+        struct stat prereqBuf;
+        int prereqStatus;
+        fd = open(rules.targets[i].prereqs[x], O_RDONLY);
+        prereqStatus = fstat(fd, &prereqBuf);
+
+        // If a prereq source is newer than a target, make prereq.
+        if (prereqBuf.st_mtime - targetBuf.st_mtime > 0) {
+            DEBUG
+            execTarget(rules, rules.targets[i].prereqs[x]);
+        }
+
+        x++;
+    }
+
 
     // Execute each command 
     int k = 0;
     while (rules.targets[i].commands[k][0] != '\0') {
 
 
-        char argString[kStringLength];
-        argString[0] = '\0';
+        char argString[kStringLength] = {0};
         char* token = strtok(rules.targets[i].commands[k], " \t");
 
+        // Resolve Macros
         while (token != NULL) {
 
             // Resolve Macros and strip '$', '(', ')'
@@ -687,8 +711,22 @@ void execTarget(makefileStruct rules, char* target) {
             token = strtok(NULL, " \t");
         }
         
+        /*
+        // Recursively resolve inferences for each token
+        char tempArgString[kStringLength] = {0};
+        strcpy(tempArgString, argString);
+        token = strtok(tempArgString, " ");
+        while (token != NULL) {
 
-        // TODO check prereqs
+            // For each token, check each inference rule to see if token is source
+            int i = 0;
+            //rules.inferences[i].source
+
+
+            token = strtok(NULL, " \t");
+        }
+        */
+
 
         // Check what type of command it is
         // TODO add cd
