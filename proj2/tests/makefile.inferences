@@ -1,0 +1,11 @@
+.c: # comment
+	ls
+	ls
+	ps -eax | grep blah
+	find / -name etc
+.o.c:
+	echo hahaha
+	echo hahaha | tr -d "a"
+.bf.py:
+	echo removing stuff
+	ls -al

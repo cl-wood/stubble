@@ -1,0 +1,2 @@
+demo:
+	cd mydir; ls
