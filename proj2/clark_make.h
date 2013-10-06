@@ -72,7 +72,6 @@ typedef struct {
 } makefileStruct;
 
 // Make a makefile and init properly
-// TODO add prereqs
 makefileStruct makefileFactory(makefileStruct rules) {
 
     // Should start with 0 macros/rules
@@ -202,7 +201,6 @@ makefileStruct parseMakefile(FILE* makefile, makefileStruct rules)
             default:
 
                 // No '.' but has ':', then add target rule
-                // TODO can target rules have multiple targets? modify parsing/struct
                 if (strchr(str, ':') != NULL) {
                     // strtok it
                     char before[kStringLength];
@@ -463,19 +461,26 @@ void handleMultiple(char* command)
 {
     //TODO handle cd persistence
     currentDirectory[0] = '\0';
-    char argv[5][64];
+    char argv[10][64];
 
     char* token = strtok(command, ";");
     while (token != NULL)
     {
-        int args = sscanf(token, "%s %s %s %s", argv[0],
-                                                argv[1],
-                                                argv[2],
-                                                argv[3]);
+        int args = sscanf(token, "%s %s %s %s %s %s %s %s %s %s", 
+                                    argv[0],
+                                    argv[1],
+                                    argv[2],
+                                    argv[3],
+                                    argv[4],
+                                    argv[5],
+                                    argv[6],
+                                    argv[7],
+                                    argv[8],
+                                    argv[9]);
 
 
         // Convert char x[][] to char* x[]
-        char* temp[5];
+        char* temp[10];
         for (int i = 0; i < args; i++) {
             temp[i] = argv[i];
         }
@@ -634,7 +639,10 @@ void execTarget(makefileStruct rules, char* target) {
 
         // there are multiple targets possible per line
         while (rules.targets[i].targets[j][0] != '\0') {
+            printf("YO: %s\n", rules.targets[i].targets[j]);
+            printf("YO: %s\n", target);
             if (strcmp(target, rules.targets[i].targets[j]) == 0) {
+                DEBUG
                 found = 1;
                 break;
             }
@@ -667,10 +675,21 @@ void execTarget(makefileStruct rules, char* target) {
         fd = open(rules.targets[i].prereqs[x], O_RDONLY);
         prereqStatus = fstat(fd, &prereqBuf);
 
-        // If a prereq source is newer than a target, make prereq.
+        // If a prereq source is newer than a target, or does not exist,
+        // try to find prereq amongst target rules and make it.
+        // SOMETHING WRONG HERE
         if (prereqBuf.st_mtime - targetBuf.st_mtime > 0) {
             DEBUG
-            execTarget(rules, rules.targets[i].prereqs[x]);
+            int y = 0;
+            while (rules.targets[i].targets[y][0] != '\0') {
+                if (strcmp(rules.targets[i].prereqs[x], rules.targets[i].targets[y]) == 0) {
+                    execTarget(rules, rules.targets[i].targets[y]);
+                    break;
+                }
+                y++;
+            }   
+
+            //execTarget(rules, rules.targets[i].prereqs[x]);
         }
 
         x++;
