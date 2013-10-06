@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[]) 
 {
-    char* defaultMakefiles[6] = {"dummyValueForArgumentOne", "-f", "makefile1", "makefile2", "makefile3", NULL};
+    char* defaultMakefiles[7] = {argv[0], "dummyValueForArgumentOne", "-f", "makefile1", "makefile2", "makefile3", NULL};
     char** makefiles;
 
     struct stat fs;
@@ -17,17 +17,19 @@ int main(int argc, char* argv[])
     // Case: ./a.out cmd
     else if (argc == 2) {
         // TODO strcpy segfaults why??
-        defaultMakefiles[0] = argv[1];
+        defaultMakefiles[1] = argv[1];
         makefiles = (char**)defaultMakefiles;
         argc = 5;
     }
     
     // Case: ./a.out [cmd] -f m1[,m2,...]
     else {
+        DEBUG
         makefiles = argv;
     }
 
-    for (int i = 1; i < argc; i++) {
+    for (int i = 2; i < argc; i++) {
+        printf("%s\n", makefiles[i]);
 
         // Skip -f flag
         if (makefiles[i][0] == '-') {
@@ -50,7 +52,8 @@ int main(int argc, char* argv[])
         FILE* makefile = fopen(makefiles[i], "r");
         rules = parseMakefile(makefile, rules);
 
-        execTarget(rules, "demo");
+        printf("Making %s\n", makefiles[1]);
+        execTarget(rules, makefiles[1]);
 
     }
 
