@@ -625,7 +625,7 @@ void handleCD(char* string)
 } // end handleCD
 
 // Parse commands and execute them, one at a time.
-void execTarget(makefileStruct rules, char* target) {
+int execTarget(makefileStruct rules, char* target) {
 
     char* pwd = getcwd(NULL, kStringLength);
 
@@ -649,10 +649,14 @@ void execTarget(makefileStruct rules, char* target) {
         }
         i++;
     }
+    // HACK to deal with null targets
+    if (strlen(target) >= 1) {
+        found = 1;
+    }
     // Target not found
     if (!found) {
-        printf("I don't know that command...");
-        return;
+        printf("I don't know %s\n", target); 
+        return 1;
     }
 
     // Recursively check prereqs
@@ -661,7 +665,8 @@ void execTarget(makefileStruct rules, char* target) {
     int fd = open(rules.targets[i].targets[j], O_RDONLY);
     targetStatus = fstat(fd, &targetBuf);
     int x = 0;
-    int skip = 1; // skip if nothing to do according to timestamps
+    int run = 0; // run if timestamps for prereqs newer or target doesn't exist
+    int targetFileExists = access(rules.targets[i].targets[j], F_OK);
 
     while (rules.targets[i].prereqs[x][0] != '\0') {
 
@@ -673,29 +678,44 @@ void execTarget(makefileStruct rules, char* target) {
 
         // If a prereq source is newer than a target, or does not exist,
         // try to find prereq amongst target rules and make it.
-        if (prereqBuf.st_mtime - targetBuf.st_mtime > 0) {
+        // TODO makefile3 doesn't succeed
+        // TODO maybe making the .o files in makefile3?
 
-            skip = 0;
-            //printf("%d %d\n", (int)prereqBuf.st_mtime, (int)targetBuf.st_mtime);
+        int prereqFileExists = access(rules.targets[i].prereqs[x], F_OK);
+        if (prereqBuf.st_mtime - targetBuf.st_mtime > 0 || 
+            targetFileExists != 0 || 
+            prereqFileExists != 0) {
+
+            //run = 0;
             //printf("%s %s\n", rules.targets[i].prereqs[x], rules.targets[i].targets[j]);
             //DEBUG
             int y = 0;
-            while (rules.targets[i].targets[y][0] != '\0') {
-                if (strcmp(rules.targets[i].prereqs[x], rules.targets[i].targets[y]) == 0) {
-                    execTarget(rules, rules.targets[i].targets[y]);
+            while (rules.targets[y].targets[0][0] != '\0') {
+                //printf("HERE %s %s\n", rules.targets[i].prereqs[x], rules.targets[y].targets[0]);
+                //DEBUG
+                
+                if (strcmp(rules.targets[i].prereqs[x], rules.targets[y].targets[0]) == 0) {
+                    run = execTarget(rules, rules.targets[y].targets[0]);
+                    printf("%d\n", run);
+                    //DEBUG
                     break;
                 }
                 y++;
             }   
+
+            // No newer prereqs, but still make
+            DEBUG
+            run = 1;
+
             //execTarget(rules, rules.targets[i].prereqs[x]);
         }
 
         x++;
     } // End prereqs while
 
-    // Time stamps have changed, don't skip execution.
-    if (!skip) {
-        DEBUG
+    DEBUG
+    // Time stamps have changed, run execution.
+    if (run) {
 
     // Execute each command 
     int k = 0;
@@ -774,9 +794,12 @@ void execTarget(makefileStruct rules, char* target) {
         k++;
     } // End while loop executing commands
 
-    } // End if timestamp skip
+    } // End if timestamp run
 
     free(pwd); // Remember to free!
+
+    // If this has run, anything up the tree MUST also run
+    return 1;
 
 }
 
