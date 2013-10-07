@@ -800,6 +800,8 @@ int execTarget(makefileStruct rules, char* target) {
         } // End prereqs while
 
         // Time stamps have changed, run execution.
+        DEBUG
+        run = 1;
         if (run) {
 
             // Execute each command 

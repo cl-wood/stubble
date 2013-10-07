@@ -6,6 +6,7 @@ How to compile and run project:
 
 Known bugs:
     Re-builds things involving .o files, even when it shouldn't
+    Some of the commands like multiple commands not working
 
 My assumptions:
     1)  Where parsing is necessary, I assume exactly 1 space 

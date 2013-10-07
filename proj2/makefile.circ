@@ -1,0 +1,8 @@
+# you need to remove a.out for a new a.out to be made
+a:b
+	echo a
+b:c
+	echo b
+c:a
+	echo c
+
