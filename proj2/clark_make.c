@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     if (argc == 1) {
         //DEBUG
         makefiles = (char**)defaultMakefiles;
-        argc = 5;
+        argc = 6;
     } 
 
     // Case: clark_make cmd

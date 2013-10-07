@@ -645,10 +645,7 @@ void execInference(makefileStruct rules, char* inference,
         char* token = strtok(rules.inferences[i].commands[k], " \t");
 
         // Resolve Macros and $@ and $<
-        // TODO handle $@ $<
         while (token != NULL) {
-            printf("TOKEN BEFORE: %s\n", token);
-            DEBUG
 
             // Resolve Macros and strip '$', '(', ')'
             int variable = 0;
@@ -658,33 +655,29 @@ void execInference(makefileStruct rules, char* inference,
 
                 //
                 if (token[1] == '(') {
-                    DEBUG
                     strncpy(temp, token + 2, strlen(token) - 3);
                     strcpy(token, temp);
                     token = resolveMacro(rules, token, 50);
                     strcat(argString, token);
                 }
-                else if (token[1] == '@') {
-                    DEBUG
-                    strcat(argString, target);
+                else if (token[1] == '@') { // target without suffix
+                    char* ptr = strrchr(target, '.');
+
+                    strncat(argString, target, ptr - target);
+                    //strcat(argString, target);
                 }
                 else if (token[1] == '<') {
-                    DEBUG
                     strcat(argString, source);
                 }
                 else {
-                    DEBUG
                     strcpy(temp, token + 1);
                     strcpy(token, temp);
                     token = resolveMacro(rules, token, 50);
                     strcat(argString, token);
                 }
 
-                //strcpy(token, temp);
-                //token = resolveMacro(rules, token, 50);
             }
             // Build up string post-macros
-            //strcat(argString, temp);
             if (!variable) {
                 strcat(argString, token);
             }
@@ -856,18 +849,11 @@ int execTarget(makefileStruct rules, char* target) {
                     while (rules.inferences[i].source[0] != '\0') {
                         int size = strlen(token);
                         char temp[kStringLength] = {0};
-                        char* pch;
-                        pch = strrchr(token,'.');
-                        if (pch != NULL) {
-                            //DEBUG
-                            //printf("%s\n", token);
-                            //printf("%ld\n", pch - token + 1);
-                            //printf("%d\n", size -1);
-                            //printf("%s\n", temp);
-                            strncpy(temp, token + (pch - token), size - 1);
+                        char* ptr;
+                        ptr = strrchr(token,'.');
+                        if (ptr != NULL) {
+                            strncpy(temp, token + (ptr - token), size - 1);
                             if (strcmp(temp, rules.inferences[i].source) == 0) {
-                                //printf("%s\n", rules.targets[i].prereqs[0]);
-                                DEBUG
 
                                 execInference(rules, 
                                     rules.inferences[i].source,
