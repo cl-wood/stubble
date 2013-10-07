@@ -629,12 +629,10 @@ void execInference(makefileStruct rules, char* inference,
 {
     int i = 0;
     while (rules.inferences[i].source[0] != '\0') {
-
         if (strcmp(inference, rules.inferences[i].source) == 0) {
             break;
-            i++;
         }
-
+        i++;
     }
 
     // Execute each command 

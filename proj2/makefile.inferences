@@ -1,6 +1,12 @@
 .c.o:
 	echo inference rule
 	echo making target $@ from source $<
+.bf:
+	# No bf interpreter
+	echo no bf interpreter 
 myprog4.o: myprog4.c
 	ls
 	g++ -c myprog4.c
+bf:
+	ls program.bf	
+
