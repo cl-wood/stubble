@@ -624,106 +624,24 @@ void handleCD(char* string)
 
 } // end handleCD
 
-// Parse commands and execute them, one at a time.
-int execTarget(makefileStruct rules, char* target) {
-
-    char* pwd = getcwd(NULL, kStringLength);
-
-    // Identify target to execute commands of
+void execInference(makefileStruct rules, char* inference)
+{
     int i = 0;
-    int j = 0;
-    int found = 0;
-    while (rules.targets[i].targets[j][0] != '\0') {
+    while (rules.inferences[i].source[0] != '\0') {
 
-        // there are multiple targets possible per line
-        while (rules.targets[i].targets[j][0] != '\0') {
-            if (strcmp(target, rules.targets[i].targets[j]) == 0) {
-                found = 1;
-                break;
-            }
-            j++;
-        }
-        j = 0;
-        if (found) {
-            break; // again
-        }
-        i++;
-    }
-    // HACK to deal with null targets
-    if (strlen(target) >= 1) {
-        found = 1;
-    }
-    // Target not found
-    if (!found) {
-        printf("I don't know %s\n", target); 
-        return 1;
-    }
-
-    // Recursively check prereqs
-    struct stat targetBuf;
-    int targetStatus;
-    int fd = open(rules.targets[i].targets[j], O_RDONLY);
-    targetStatus = fstat(fd, &targetBuf);
-    int x = 0;
-    int run = 0; // run if timestamps for prereqs newer or target doesn't exist
-    int targetFileExists = access(rules.targets[i].targets[j], F_OK);
-
-    while (rules.targets[i].prereqs[x][0] != '\0') {
-
-        // Compare timestamps 
-        struct stat prereqBuf;
-        int prereqStatus;
-        fd = open(rules.targets[i].prereqs[x], O_RDONLY);
-        prereqStatus = fstat(fd, &prereqBuf);
-
-        // If a prereq source is newer than a target, or does not exist,
-        // try to find prereq amongst target rules and make it.
-        // TODO makefile3 doesn't succeed
-        // TODO maybe making the .o files in makefile3?
-
-        int prereqFileExists = access(rules.targets[i].prereqs[x], F_OK);
-        if (prereqBuf.st_mtime - targetBuf.st_mtime > 0 || 
-            targetFileExists != 0 || 
-            prereqFileExists != 0) {
-
-            //run = 0;
-            //printf("%s %s\n", rules.targets[i].prereqs[x], rules.targets[i].targets[j]);
-            //DEBUG
-            int y = 0;
-            while (rules.targets[y].targets[0][0] != '\0') {
-                //printf("HERE %s %s\n", rules.targets[i].prereqs[x], rules.targets[y].targets[0]);
-                //DEBUG
-                
-                if (strcmp(rules.targets[i].prereqs[x], rules.targets[y].targets[0]) == 0) {
-                    run = execTarget(rules, rules.targets[y].targets[0]);
-                    printf("%d\n", run);
-                    //DEBUG
-                    break;
-                }
-                y++;
-            }   
-
-            // No newer prereqs, but still make
-            DEBUG
-            run = 1;
-
-            //execTarget(rules, rules.targets[i].prereqs[x]);
+        if (strcmp(inference, rules.inferences[i].source) == 0) {
+            break;
+            i++;
         }
 
-        x++;
-    } // End prereqs while
-
-    DEBUG
-    // Time stamps have changed, run execution.
-    if (run) {
+    }
 
     // Execute each command 
     int k = 0;
-    while (rules.targets[i].commands[k][0] != '\0') {
-
+    while (rules.inferences[i].commands[k][0] != '\0') {
 
         char argString[kStringLength] = {0};
-        char* token = strtok(rules.targets[i].commands[k], " \t");
+        char* token = strtok(rules.inferences[i].commands[k], " \t");
 
         // Resolve Macros
         while (token != NULL) {
@@ -750,23 +668,8 @@ int execTarget(makefileStruct rules, char* target) {
 
             token = strtok(NULL, " \t");
         }
-        
-        /*
-        // Recursively resolve inferences for each token
-        char tempArgString[kStringLength] = {0};
-        strcpy(tempArgString, argString);
-        token = strtok(tempArgString, " ");
-        while (token != NULL) {
 
-            // For each token, check each inference rule to see if token is source
-            int i = 0;
-            //rules.inferences[i].source
-
-
-            token = strtok(NULL, " \t");
-        }
-        */
-
+        // TODO handle $@ $<
 
         // Check what type of command it is
         // TODO add cd
@@ -790,18 +693,205 @@ int execTarget(makefileStruct rules, char* target) {
             handleMultiple(argString);
         }
 
-
         k++;
     } // End while loop executing commands
 
-    } // End if timestamp run
-
-    free(pwd); // Remember to free!
-
-    // If this has run, anything up the tree MUST also run
-    return 1;
-
 }
+
+// Parse commands and execute them, one at a time.
+int execTarget(makefileStruct rules, char* target) {
+
+    char* pwd = getcwd(NULL, kStringLength);
+
+    // Identify target to execute commands of
+    int i = 0;
+    int j = 0;
+    int found = 0;
+    while (rules.targets[i].targets[j][0] != '\0') {
+
+        // there are multiple targets possible per line
+        while (rules.targets[i].targets[j][0] != '\0') {
+            if (strcmp(target, rules.targets[i].targets[j]) == 0) {
+                found = 1;
+                break;
+            }
+            j++;
+        }
+        j = 0;
+        if (found) {
+            break; // again
+        }
+        i++;
+    }
+    // HACK to deal with null targets
+    //if (strlen(target) >= 1) {
+    //    found = 1;
+    //}
+    // Target not found
+    if (!found) {
+        printf("I don't know %s\n", target); 
+        return 1;
+    }
+
+    // Recursively check prereqs
+    struct stat targetBuf;
+    int targetStatus;
+    int fd = open(rules.targets[i].targets[j], O_RDONLY);
+    targetStatus = fstat(fd, &targetBuf);
+    int x = 0;
+    int run = 0; // run if timestamps for prereqs newer or target doesn't exist
+    int targetFileExists = access(rules.targets[i].targets[j], F_OK);
+
+    while (rules.targets[i].prereqs[x][0] != '\0') {
+
+        // Compare timestamps 
+        struct stat prereqBuf;
+        int prereqStatus;
+        fd = open(rules.targets[i].prereqs[x], O_RDONLY);
+        prereqStatus = fstat(fd, &prereqBuf);
+
+        // If a prereq source is newer than a target, or does not exist,
+        // try to find prereq amongst target rules and make it.
+        int prereqFileExists = access(rules.targets[i].prereqs[x], F_OK);
+        if (prereqBuf.st_mtime - targetBuf.st_mtime > 0 || 
+                targetFileExists != 0 || 
+                (prereqFileExists != 0 && prereqBuf.st_size == 0) ) {
+            //prereqFileExists != 0) {
+
+            // TODO makefile3 prereqs always made again, access returns -1
+            //printf("prereq name: %s\n", rules.targets[i].prereqs[x]);
+            //printf("prereq status: %d\n", prereqStatus);
+            //printf("prereq F_OK: %d\n", prereqFileExists);
+            //printf("cmp %d\n", strcmp(rules.targets[i].prereqs[x], "myprog1.o"));
+            int y = 0;
+            while (rules.targets[y].targets[0][0] != '\0') {
+                //printf("HERE %s %s\n", rules.targets[i].prereqs[x], rules.targets[y].targets[0]);
+                //DEBUG
+
+                if (strcmp(rules.targets[i].prereqs[x], rules.targets[y].targets[0]) == 0) {
+                    run = execTarget(rules, rules.targets[y].targets[0]);
+                    //printf("%d\n", run);
+                    //DEBUG
+                    break;
+                }
+                y++;
+            }   
+
+            // No newer prereqs, but still make
+            run = 1;
+
+        } // End if prereqs newer or no target exists, make recursively
+
+        x++;
+        } // End prereqs while
+
+        // Time stamps have changed, run execution.
+        if (run) {
+
+            // Execute each command 
+            int k = 0;
+            while (rules.targets[i].commands[k][0] != '\0') {
+
+
+                char argString[kStringLength] = {0};
+                char* token = strtok(rules.targets[i].commands[k], " \t");
+
+                // Resolve Macros
+                while (token != NULL) {
+
+                    // Resolve Macros and strip '$', '(', ')'
+                    char temp[kStringLength] = {0};
+                    if (token[0] == '$') {
+
+                        //
+                        if (token[1] == '(') {
+                            strncpy(temp, token + 2, strlen(token) - 3);
+                        }
+                        else {
+                            strcpy(temp, token + 1);
+                        }
+
+                        strcpy(token, temp);
+                        token = resolveMacro(rules, token, 50);
+                    }
+
+                    // Build up string post-macros
+                    strcat(argString, token);
+                    strcat(argString, " ");
+
+                    token = strtok(NULL, " \t");
+                }
+
+                // Recursively resolve inferences for each token
+                char tempArgString[kStringLength] = {0};
+                strcpy(tempArgString, argString);
+                token = strtok(tempArgString, " ");
+                while (token != NULL) {
+
+                    // For each token, check each inference rule to see if token ends in source
+                    int i = 0;
+                    while (rules.inferences[i].source[0] != '\0') {
+                        int size = strlen(token);
+                        char temp[kStringLength] = {0};
+                        char* pch;
+                        pch = strrchr(token,'.');
+                        if (pch != NULL) {
+                            //DEBUG
+                            //printf("%s\n", token);
+                            //printf("%ld\n", pch - token + 1);
+                            //printf("%d\n", size -1);
+                            //printf("%s\n", temp);
+                            strncpy(temp, token + (pch - token), size - 1);
+                            if (strcmp(temp, rules.inferences[i].source) == 0) {
+                                DEBUG
+                                    printf("%s\n", rules.inferences[i].source);
+                                execInference(rules, rules.inferences[i].source);
+                            }
+
+                        }
+
+                        i++;
+                    }
+
+
+                    token = strtok(NULL, " \t");
+                }
+
+
+                // Check what type of command it is
+                // TODO add cd
+                printf("Executing: %s\n", argString);
+
+                if (strchr(argString, '&') != NULL) {
+                    handleBackground(argString);
+                }
+                else if (strchr(argString, '<') != NULL ||
+                        strchr(argString, '>') != NULL) {
+                    handleRedirection(argString);
+                }
+                else if (strchr(argString, '|') != NULL) {
+                    handlePipes(argString);
+                }
+                else if (strchr(argString, ';') != NULL) {
+                    handleMultiple(argString);
+                }
+                else { // simple command
+                    // TODO will this work? it should...
+                    handleMultiple(argString);
+                }
+
+
+                k++;
+            } // End while loop executing commands
+
+        } // End if timestamp run
+
+        free(pwd); // Remember to free!
+
+        // If this has run, anything up the tree MUST also run
+        return 1;
+
+    }
 
 #endif
 

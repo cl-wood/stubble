@@ -1,11 +1,5 @@
-.c: # comment
+.c.o:
+	echo inference rule
+myprog4.o: myprog4.c
 	ls
-	ls
-	ps -eax | grep blah
-	find / -name etc
-.o.c:
-	echo hahaha
-	echo hahaha | tr -d "a"
-.bf.py:
-	echo removing stuff
-	ls -al
+	g++ -c myprog4.c
