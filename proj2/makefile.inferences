@@ -1,5 +1,6 @@
 .c.o:
 	echo inference rule
+	echo making target $@ from source $<
 myprog4.o: myprog4.c
 	ls
 	g++ -c myprog4.c

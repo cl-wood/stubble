@@ -624,7 +624,8 @@ void handleCD(char* string)
 
 } // end handleCD
 
-void execInference(makefileStruct rules, char* inference)
+void execInference(makefileStruct rules, char* inference, 
+                   char source[kStringLength], char target[kStringLength])
 {
     int i = 0;
     while (rules.inferences[i].source[0] != '\0') {
@@ -643,33 +644,55 @@ void execInference(makefileStruct rules, char* inference)
         char argString[kStringLength] = {0};
         char* token = strtok(rules.inferences[i].commands[k], " \t");
 
-        // Resolve Macros
+        // Resolve Macros and $@ and $<
+        // TODO handle $@ $<
         while (token != NULL) {
+            printf("TOKEN BEFORE: %s\n", token);
+            DEBUG
 
             // Resolve Macros and strip '$', '(', ')'
+            int variable = 0;
             char temp[kStringLength] = {0};
             if (token[0] == '$') {
+                variable = 1;
 
                 //
                 if (token[1] == '(') {
+                    DEBUG
                     strncpy(temp, token + 2, strlen(token) - 3);
+                    strcpy(token, temp);
+                    token = resolveMacro(rules, token, 50);
+                    strcat(argString, token);
+                }
+                else if (token[1] == '@') {
+                    DEBUG
+                    strcat(argString, target);
+                }
+                else if (token[1] == '<') {
+                    DEBUG
+                    strcat(argString, source);
                 }
                 else {
+                    DEBUG
                     strcpy(temp, token + 1);
+                    strcpy(token, temp);
+                    token = resolveMacro(rules, token, 50);
+                    strcat(argString, token);
                 }
 
-                strcpy(token, temp);
-                token = resolveMacro(rules, token, 50);
+                //strcpy(token, temp);
+                //token = resolveMacro(rules, token, 50);
             }
-
             // Build up string post-macros
-            strcat(argString, token);
+            //strcat(argString, temp);
+            if (!variable) {
+                strcat(argString, token);
+            }
             strcat(argString, " ");
 
             token = strtok(NULL, " \t");
         }
 
-        // TODO handle $@ $<
 
         // Check what type of command it is
         // TODO add cd
@@ -843,9 +866,14 @@ int execTarget(makefileStruct rules, char* target) {
                             //printf("%s\n", temp);
                             strncpy(temp, token + (pch - token), size - 1);
                             if (strcmp(temp, rules.inferences[i].source) == 0) {
+                                //printf("%s\n", rules.targets[i].prereqs[0]);
                                 DEBUG
-                                    printf("%s\n", rules.inferences[i].source);
-                                execInference(rules, rules.inferences[i].source);
+
+                                execInference(rules, 
+                                    rules.inferences[i].source,
+                                    rules.targets[i].targets[j], // source
+                                    rules.targets[i].prereqs[0] ); // target
+                                    
                             }
 
                         }
