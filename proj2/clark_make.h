@@ -627,9 +627,7 @@ void handleCD(char* string)
 // Parse commands and execute them, one at a time.
 void execTarget(makefileStruct rules, char* target) {
 
-    // TODO default case, make first target
     char* pwd = getcwd(NULL, kStringLength);
-
 
     // Identify target to execute commands of
     int i = 0;
@@ -639,10 +637,7 @@ void execTarget(makefileStruct rules, char* target) {
 
         // there are multiple targets possible per line
         while (rules.targets[i].targets[j][0] != '\0') {
-            printf("YO: %s\n", rules.targets[i].targets[j]);
-            printf("YO: %s\n", target);
             if (strcmp(target, rules.targets[i].targets[j]) == 0) {
-                DEBUG
                 found = 1;
                 break;
             }
@@ -666,6 +661,7 @@ void execTarget(makefileStruct rules, char* target) {
     int fd = open(rules.targets[i].targets[j], O_RDONLY);
     targetStatus = fstat(fd, &targetBuf);
     int x = 0;
+    int skip = 1; // skip if nothing to do according to timestamps
 
     while (rules.targets[i].prereqs[x][0] != '\0') {
 
@@ -677,9 +673,12 @@ void execTarget(makefileStruct rules, char* target) {
 
         // If a prereq source is newer than a target, or does not exist,
         // try to find prereq amongst target rules and make it.
-        // SOMETHING WRONG HERE
         if (prereqBuf.st_mtime - targetBuf.st_mtime > 0) {
-            DEBUG
+
+            skip = 0;
+            //printf("%d %d\n", (int)prereqBuf.st_mtime, (int)targetBuf.st_mtime);
+            //printf("%s %s\n", rules.targets[i].prereqs[x], rules.targets[i].targets[j]);
+            //DEBUG
             int y = 0;
             while (rules.targets[i].targets[y][0] != '\0') {
                 if (strcmp(rules.targets[i].prereqs[x], rules.targets[i].targets[y]) == 0) {
@@ -688,13 +687,15 @@ void execTarget(makefileStruct rules, char* target) {
                 }
                 y++;
             }   
-
             //execTarget(rules, rules.targets[i].prereqs[x]);
         }
 
         x++;
-    }
+    } // End prereqs while
 
+    // Time stamps have changed, don't skip execution.
+    if (!skip) {
+        DEBUG
 
     // Execute each command 
     int k = 0;
@@ -749,6 +750,7 @@ void execTarget(makefileStruct rules, char* target) {
 
         // Check what type of command it is
         // TODO add cd
+        printf("Executing: %s\n", argString);
 
         if (strchr(argString, '&') != NULL) {
             handleBackground(argString);
@@ -771,6 +773,8 @@ void execTarget(makefileStruct rules, char* target) {
 
         k++;
     } // End while loop executing commands
+
+    } // End if timestamp skip
 
     free(pwd); // Remember to free!
 
