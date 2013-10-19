@@ -91,9 +91,11 @@ if x % 2 == 0:
 \end{verbatim}
 
 TODO
-Taint can propagate via explicit or implicit flows (Figure 1). Explicit flows involve a tainted variable, x, which is used in an assignment expression to compute a new variable, y. In this situation, x taints y, and if y is involved in any further assignment to a variable z, then x taints z by transitivity. In contrast, implicit data flows ... [D]. 
+Taint can propagate via explicit or implicit flows (Figure 1), sometimes also called data and control dependencies respectively [G]. Explicit flows involve a tainted variable, x, which is used in an assignment expression to compute a new variable, y. In this situation, x taints y, and if y is involved in any further assignment to a variable z, then x taints z by transitivity. In contrast, implicit data flows involve a tainted variable used to affect control flow within a program which subsequently sets the value of another variable, for instance at a branch [D]. 
 
-Because of subtle implicit flow cases referenced by Clause, J. et all [D], which can be difficult to spot (Page 2, Figure 2b). Implicit data flows are not always considered by dynamic tainting techniques [E].
+Because of subtle implicit flow cases referenced by Clause, J. et all [D], which can be difficult to spot (Page 2, Figure 2b). Implicit data flows are not always considered by dynamic tainting techniques [E]. 
+
+This is a problem BECAUSE TODO
 
 \begin{verbatim}
 # Explicit taint
@@ -104,6 +106,9 @@ Because of subtle implicit flow cases referenced by Clause, J. et all [D], which
 
 
 Propagation
+
+\section{Machine Learning}
+While research has applied machine learning techniques to successfully extrapolate vulnerability patterns, previous efforts have required source code and training examples containing known vulnerabilities to drive learning [F]. In contrast, we implement ...
 
 \section{Dynamic Binary Instrumentation with Intel PIN}
 
@@ -135,6 +140,9 @@ Evolutionary Fuzzing", BlackHat and Defcon 2007.
 [C] Schwartz, E.J., Avgerinos, T., Brumley, D. "All You Ever Wanted to Know About Dynamic Taint Analysis and Forward Symbolic Execution (but might have been afraid to ask)." 2010 IEEE Symposium on Security and Privacy.
 [D] Clause, J. Li, W., Orso, A. "Dytan: a generic dynamic taint analysis framework". 2007 Int'l symposium on Software testing and analysis. ACM, 2007.
 [E] ... "Beyond Instruction Level Taint Propagation".
+[F] Yamaguchi, Fabian, Felix Lindner, and Konrad Rieck. "Vulnerability extrapolation: assisted discovery of vulnerabilities using machine learning." Proceedings of the 5th USENIX conference on Offensive technologies. USENIX Association, 2011.
+[G] Bao, Tao, et al. "Strict control dependence and its effect on dynamic information flow analyses." Proceedings of the 19th international symposium on Software testing and analysis. ACM, 2010.
+
 
 \end{document}
 
