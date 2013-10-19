@@ -10,7 +10,7 @@ void main(int argc, char* argv)
 
     // Assign value to x based on input
     int x;
-    if (choice == 'X') {
+    if (choice == '1') {
         x = 111;
     } else {
         x = 222;

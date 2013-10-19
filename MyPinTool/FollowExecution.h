@@ -1,4 +1,5 @@
 // FollowExecution.h
+
 /* ===================================================================== */
 /* Control Flow following functions, currently at bbl level */
 /* ===================================================================== */
@@ -25,6 +26,11 @@ typedef struct
 
 ControlFlowStruct ControlFlow;
 
+// Returns starting address for given trace.
+ADDRINT GetTraceStart(TRACE trace)
+{
+    return TRACE_Address(trace);
+}
 
 // Follow each instruction in each bbl of each trace.
 // basic block is single entrace, single exit block of sequential instructions.
@@ -35,7 +41,9 @@ VOID FollowTraces(TRACE trace, VOID *v)
         return;
     }
 
-    ControlFlowFile << "START: " << TRACE_Address(trace) << endl;
+    ControlFlowFile << GetTraceStart(trace) << endl;
+
+    /*
     // For each basic block, track each instruction
     for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl)) {
         for (INS ins = BBL_InsHead(bbl); INS_Valid(ins); ins = INS_Next(ins) ) {
@@ -51,4 +59,9 @@ VOID FollowTraces(TRACE trace, VOID *v)
 
         }
     }
+    */
+
 } // End FollowTraces
+
+// End FollowExecution.h
+

@@ -31,10 +31,11 @@ END_LEGAL */
 
 #include "pin.H"
 #include <asm/unistd.h>
-#include <iostream>
 #include <fstream>
-#include <string>
+#include <functional> // for hashes
+#include <iostream>
 #include <list>
+#include <string>
 #include <unordered_map>
 using namespace std;
 
@@ -171,6 +172,7 @@ VOID Fini(INT32 code, VOID *v)
 {
     TraceFile.close();
     TaintFile.close();
+    FiniFollowExecution();
 }
 
 /* ===================================================================== */
@@ -198,6 +200,8 @@ int main(int argc, char *argv[])
     }
     
     // Write to a file since cout and cerr maybe closed by the application
+    InitFollowExecution();
+
     TraceFile.open(KnobOutputFile.Value().c_str());
     TraceFile << hex;
     TraceFile.setf(ios::showbase);
@@ -212,6 +216,7 @@ int main(int argc, char *argv[])
     IMG_AddInstrumentFunction(WatchMain, 0);
 
     // Follow execution at BBL or Trace level
+    //TRACE_AddInstrumentFunction(FollowTraces, 0);
     TRACE_AddInstrumentFunction(FollowTraces, 0);
 
     // Instrument read syscall to get taint sources
