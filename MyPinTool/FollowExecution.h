@@ -5,17 +5,6 @@
 /* ===================================================================== */
 std::ofstream ControlFlowFile;
 
-VOID InitFollowExecution()
-{
-    ControlFlowFile.open("controlpath.out");
-    ControlFlowFile << hex;
-    ControlFlowFile.setf(ios::showbase);
-}
-
-VOID FiniFollowExecution()
-{
-    ControlFlowFile.close();
-}
 
 // For Mutation 
 typedef struct 
@@ -37,7 +26,7 @@ ADDRINT GetTraceStart(TRACE trace)
 // trace is single entrace, multiple exits, and generated at entrace during runtime.
 VOID FollowTraces(TRACE trace, VOID *v)
 {
-    if (!LOGGING) {
+    if (!IN_MAIN) {
         return;
     }
 
@@ -62,6 +51,20 @@ VOID FollowTraces(TRACE trace, VOID *v)
     */
 
 } // End FollowTraces
+
+VOID InitFollowExecution()
+{
+    ControlFlowFile.open("controlpath.out");
+    ControlFlowFile << hex;
+    ControlFlowFile.setf(ios::showbase);
+
+    TRACE_AddInstrumentFunction(FollowTraces, 0);
+}
+
+VOID FiniFollowExecution()
+{
+    ControlFlowFile.close();
+}
 
 // End FollowExecution.h
 

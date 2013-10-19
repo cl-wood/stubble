@@ -43,7 +43,7 @@ using namespace std;
 /* Global Variables */
 /* ===================================================================== */
 
-bool LOGGING = false;
+bool IN_MAIN = false;
 std::ofstream TraceFile;
 std::ofstream TaintFile;
 
@@ -52,11 +52,15 @@ std::ofstream TaintFile;
 #define FREE "_free"
 #define MAIN "_main"
 #define LIBCSTART "__libc_start_main"
+#define GETCHAR "_getchar"
+#define STRCPY "_strcpy"
 #else
 #define MALLOC "malloc"
 #define FREE "free"
 #define MAIN "main"
 #define LIBCSTART "__libc_start_main"
+#define GETCHAR "getchar"
+#define STRCPY "strcpy"
 #endif
 
 /* ===================================================================== */
@@ -86,7 +90,7 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 // Toggle logging on or off
 VOID ToggleLogging(bool status)
 {
-    LOGGING = status; 
+    IN_MAIN = status; 
     //TraceFile << "HERE" << endl;
     ControlFlowFile << "HERE" << endl;
     // Global, can be turned off to speed up execution
@@ -171,8 +175,8 @@ VOID WatchMemoryAllocation(IMG img, VOID *v)
 VOID Fini(INT32 code, VOID *v)
 {
     TraceFile.close();
-    TaintFile.close();
     FiniFollowExecution();
+    FiniDTA();
 }
 
 /* ===================================================================== */
@@ -201,26 +205,17 @@ int main(int argc, char *argv[])
     
     // Write to a file since cout and cerr maybe closed by the application
     InitFollowExecution();
+    InitDTA();
 
-    TraceFile.open(KnobOutputFile.Value().c_str());
-    TraceFile << hex;
-    TraceFile.setf(ios::showbase);
-    //TaintFile.open("taint.out");
-    //TaintFile << hex;
-    //TaintFile.setf(ios::showbase);
+    //TraceFile.open(KnobOutputFile.Value().c_str());
+    //TraceFile << hex;
+    //TraceFile.setf(ios::showbase);
     
     // WatchMemoryAllocation to see how malloc/free used
     //IMG_AddInstrumentFunction(WatchMemoryAllocation, 0);
 
     // Watch main function
     IMG_AddInstrumentFunction(WatchMain, 0);
-
-    // Follow execution at BBL or Trace level
-    //TRACE_AddInstrumentFunction(FollowTraces, 0);
-    TRACE_AddInstrumentFunction(FollowTraces, 0);
-
-    // Instrument read syscall to get taint sources
-    //PIN_AddSyscallEntryFunction(CatchReadSyscalls, 0);
 
     PIN_AddFiniFunction(Fini, 0);
 
