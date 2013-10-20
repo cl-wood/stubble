@@ -3,21 +3,25 @@
 #include <string.h>
 #include <unistd.h>
 
-int main(int argc, char **argv) {
-	char *buf;
-	// Allocate memory
-	buf = (char *) malloc(512);
+int main(int argc, char **argv)
+{
+    char *buf = malloc(32);
+    char c;
 
-	// Free memory
-	free(buf);
+    // User input
+    char *userInput = malloc(32);
+    gets(userInput);
 
-	// Get used input, taint source
-	char string[32];
-	printf("%s", "Enter string: ");
-  	gets(string);	
-
-	// Use memory after freed
-	strcpy(buf, string);
+    c = buf[0];             /* UAF not match */
+    if (userInput[0] == 'A') {
+        printf("Running UAF branch\n");
+        free(buf);  
+        c = buf[0];         /* UAF match     */
+        buf = malloc(32);
+        c = buf[0];         /* UAF not match */
+    }
+    if (userInput[0] != 'A') {
+        printf("NOT running UAF branch\n");
+    }
 
 }
-

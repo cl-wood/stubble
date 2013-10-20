@@ -44,18 +44,17 @@ using namespace std;
 /* ===================================================================== */
 
 bool IN_MAIN = false;
-//std::ofstream TraceFile;
 
 #if defined(TARGET_MAC)
 #define MALLOC "_malloc"
-#define FREE "_free"
+//#define FREE "_free"
 #define MAIN "_main"
 #define LIBCSTART "__libc_start_main"
 #define GETCHAR "_getchar"
 #define STRCPY "_strcpy"
 #else
 #define MALLOC "malloc"
-#define FREE "free"
+//#define FREE "free"
 #define MAIN "main"
 #define LIBCSTART "__libc_start_main"
 #define GETCHAR "getchar"
@@ -65,9 +64,10 @@ bool IN_MAIN = false;
 /* ===================================================================== */
 /* User Libraries */
 /* ===================================================================== */
-#include "FollowExecution.h"
+//#include "FollowExecution.h"
 //#include "DTA.h"
-#include "taint_example_3.h"
+//#include "taint_example_3.h"
+#include "FindUseAfterFree.h"
 //#include "FindVulnerability.h"
 
 
@@ -91,8 +91,6 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 VOID ToggleLogging(bool status)
 {
     IN_MAIN = status; 
-    //TraceFile << "HERE" << endl;
-    ControlFlowFile << "HERE" << endl;
     // Global, can be turned off to speed up execution
     //EnableInstrumentation = status;
 
@@ -122,60 +120,13 @@ VOID WatchMain(IMG img, VOID *v)
 
 }
    
-VOID WatchMemoryAllocation(IMG img, VOID *v)
-{
-    // Instrument the malloc() and free() functions.  Print the input argument
-    // of each malloc() or free(), and the return value of malloc().
-    //
-    //  Find the malloc() function.
-    RTN mallocRtn = RTN_FindByName(img, MALLOC);
-    if (RTN_Valid(mallocRtn))
-    {
-        RTN_Open(mallocRtn);
-
-        /*
-        // Instrument malloc() to print the input argument value and the return value.
-        RTN_InsertCall(mallocRtn, IPOINT_AFTER, (AFUNPTR)MallocInfo,
-                       IARG_ADDRINT, MALLOC,
-                       IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
-                       IARG_FUNCRET_EXITPOINT_VALUE,
-                       IARG_END);
-        RTN_InsertCall(mallocRtn, IPOINT_BEFORE, (AFUNPTR)Arg1Before,
-                       IARG_ADDRINT, MALLOC,
-                       IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
-                       IARG_END);
-        RTN_InsertCall(mallocRtn, IPOINT_AFTER, (AFUNPTR)MallocAfter,
-                       IARG_FUNCRET_EXITPOINT_VALUE, IARG_END);
-        */
-
-        RTN_Close(mallocRtn);
-    }
-
-    // Find the free() function.
-    RTN freeRtn = RTN_FindByName(img, FREE);
-    if (RTN_Valid(freeRtn))
-    {
-        RTN_Open(freeRtn);
-        // Instrument free() to print the input argument value.
-        //RTN_InsertCall(freeRtn, IPOINT_BEFORE, (AFUNPTR)Arg1Before,
-        /*
-        RTN_InsertCall(freeRtn, IPOINT_BEFORE, (AFUNPTR)FreeInfo,
-                       IARG_ADDRINT, FREE,
-                       IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
-                       IARG_END);
-        */
-        RTN_Close(freeRtn);
-    }
-}
-
-
 
 /* ===================================================================== */
 
 VOID Fini(INT32 code, VOID *v)
 {
-    //TraceFile.close();
-    FiniFollowExecution();
+    //FiniFollowExecution();
+    FiniFindUseAfterFree();
     //FiniDTA();
 }
 
@@ -205,23 +156,17 @@ int main(int argc, char *argv[])
         return Usage();
     }
     
-    // Write to a file since cout and cerr maybe closed by the application
-    InitFollowExecution();
+    // Init functions for modules
+    //InitFollowExecution();
+    InitFindUseAfterFree();
     //InitDTA();
-TaintFile.open("taint.out");
-TaintFile << hex;
-TaintFile.setf(ios::showbase);
 
-    //TraceFile.open(KnobOutputFile.Value().c_str());
-    //TraceFile << hex;
-    //TraceFile.setf(ios::showbase);
-    
-    // WatchMemoryAllocation to see how malloc/free used
-    //IMG_AddInstrumentFunction(WatchMemoryAllocation, 0);
+//TaintFile.open("taint.out");
+//TaintFile << hex;
+//TaintFile.setf(ios::showbase);
 
     // Watch main function
     //IMG_AddInstrumentFunction(WatchMain, 0);
-    PIN_AddSyscallEntryFunction(Syscall_entry, 0);
     INS_AddInstrumentFunction(Instruction, 0);
 
     PIN_AddFiniFunction(Fini, 0);
