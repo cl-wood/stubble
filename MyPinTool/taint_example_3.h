@@ -1,28 +1,24 @@
-std::list<UINT32> addressTainted;
-std::list<REG> regsTainted;
+unordered_map<ADDRINT, BOOL> AddressTaintMap;
+unordered_map<ADDRINT, BOOL> RegisterTaintMap;
 std::ofstream TaintFile;
 
 bool checkAlreadyRegTainted(REG reg)
 {
-  list<REG>::iterator i;
-
-  for(i = regsTainted.begin(); i != regsTainted.end(); i++){
-    if (*i == reg){
+    if (RegisterTaintMap.count(reg) > 0) {
       return true;
     }
-  }
   return false;
 }
 
 VOID removeMemTainted(UINT32 addr)
 {
-  addressTainted.remove(addr);
+    AddressTaintMap.erase(addr);
   TaintFile << std::hex << "\t\t\t" << addr << " is now freed" << std::endl;
 }
 
 VOID addMemTainted(UINT32 addr)
 {
-  addressTainted.push_back(addr);
+    AddressTaintMap[addr] = false;
   TaintFile << std::hex << "\t\t\t" << addr << " is now tainted" << std::endl;
 }
 
@@ -35,36 +31,36 @@ bool taintReg(REG reg)
 
   switch(reg){
 
-    case REG_EAX:  regsTainted.push_front(REG_EAX); 
-    case REG_AX:   regsTainted.push_front(REG_AX); 
-    case REG_AH:   regsTainted.push_front(REG_AH); 
-    case REG_AL:   regsTainted.push_front(REG_AL); 
+    case REG_EAX:  RegisterTaintMap.insert(REG_EAX); 
+    case REG_AX:   RegisterTaintMap.insert(REG_AX); 
+    case REG_AH:   RegisterTaintMap.insert(REG_AH); 
+    case REG_AL:   RegisterTaintMap.insert(REG_AL); 
          break;
 
-    case REG_EBX:  regsTainted.push_front(REG_EBX);
-    case REG_BX:   regsTainted.push_front(REG_BX);
-    case REG_BH:   regsTainted.push_front(REG_BH);
-    case REG_BL:   regsTainted.push_front(REG_BL);
+    case REG_EBX:  RegisterTaintMap.insert(REG_EBX);
+    case REG_BX:   RegisterTaintMap.insert(REG_BX);
+    case REG_BH:   RegisterTaintMap.insert(REG_BH);
+    case REG_BL:   RegisterTaintMap.insert(REG_BL);
          break;
 
-    case REG_ECX:  regsTainted.push_front(REG_ECX);
-    case REG_CX:   regsTainted.push_front(REG_CX);
-    case REG_CH:   regsTainted.push_front(REG_CH);
-    case REG_CL:   regsTainted.push_front(REG_CL);
+    case REG_ECX:  RegisterTaintMap.insert(REG_ECX);
+    case REG_CX:   RegisterTaintMap.insert(REG_CX);
+    case REG_CH:   RegisterTaintMap.insert(REG_CH);
+    case REG_CL:   RegisterTaintMap.insert(REG_CL);
          break;
 
-    case REG_EDX:  regsTainted.push_front(REG_EDX); 
-    case REG_DX:   regsTainted.push_front(REG_DX); 
-    case REG_DH:   regsTainted.push_front(REG_DH); 
-    case REG_DL:   regsTainted.push_front(REG_DL); 
+    case REG_EDX:  RegisterTaintMap.insert(REG_EDX); 
+    case REG_DX:   RegisterTaintMap.insert(REG_DX); 
+    case REG_DH:   RegisterTaintMap.insert(REG_DH); 
+    case REG_DL:   RegisterTaintMap.insert(REG_DL); 
          break;
 
-    case REG_EDI:  regsTainted.push_front(REG_EDI); 
-    case REG_DI:   regsTainted.push_front(REG_DI); 
+    case REG_EDI:  RegisterTaintMap.insert(REG_EDI); 
+    case REG_DI:   RegisterTaintMap.insert(REG_DI); 
          break;
 
-    case REG_ESI:  regsTainted.push_front(REG_ESI); 
-    case REG_SI:   regsTainted.push_front(REG_SI); 
+    case REG_ESI:  RegisterTaintMap.insert(REG_ESI); 
+    case REG_SI:   RegisterTaintMap.insert(REG_SI); 
          break;
 
     default:
@@ -79,36 +75,36 @@ bool removeRegTainted(REG reg)
 {
   switch(reg){
 
-    case REG_EAX:  regsTainted.remove(REG_EAX);
-    case REG_AX:   regsTainted.remove(REG_AX);
-    case REG_AH:   regsTainted.remove(REG_AH);
-    case REG_AL:   regsTainted.remove(REG_AL);
+    case REG_EAX:  RegisterTaintMap.erase(REG_EAX);
+    case REG_AX:   RegisterTaintMap.erase(REG_AX);
+    case REG_AH:   RegisterTaintMap.erase(REG_AH);
+    case REG_AL:   RegisterTaintMap.erase(REG_AL);
          break;
 
-    case REG_EBX:  regsTainted.remove(REG_EBX);
-    case REG_BX:   regsTainted.remove(REG_BX);
-    case REG_BH:   regsTainted.remove(REG_BH);
-    case REG_BL:   regsTainted.remove(REG_BL);
+    case REG_EBX:  RegisterTaintMap.erase(REG_EBX);
+    case REG_BX:   RegisterTaintMap.erase(REG_BX);
+    case REG_BH:   RegisterTaintMap.erase(REG_BH);
+    case REG_BL:   RegisterTaintMap.erase(REG_BL);
          break;
 
-    case REG_ECX:  regsTainted.remove(REG_ECX);
-    case REG_CX:   regsTainted.remove(REG_CX);
-    case REG_CH:   regsTainted.remove(REG_CH);
-    case REG_CL:   regsTainted.remove(REG_CL);
+    case REG_ECX:  RegisterTaintMap.erase(REG_ECX);
+    case REG_CX:   RegisterTaintMap.erase(REG_CX);
+    case REG_CH:   RegisterTaintMap.erase(REG_CH);
+    case REG_CL:   RegisterTaintMap.erase(REG_CL);
          break;
 
-    case REG_EDX:  regsTainted.remove(REG_EDX); 
-    case REG_DX:   regsTainted.remove(REG_DX); 
-    case REG_DH:   regsTainted.remove(REG_DH); 
-    case REG_DL:   regsTainted.remove(REG_DL); 
+    case REG_EDX:  RegisterTaintMap.erase(REG_EDX); 
+    case REG_DX:   RegisterTaintMap.erase(REG_DX); 
+    case REG_DH:   RegisterTaintMap.erase(REG_DH); 
+    case REG_DL:   RegisterTaintMap.erase(REG_DL); 
          break;
 
-    case REG_EDI:  regsTainted.remove(REG_EDI); 
-    case REG_DI:   regsTainted.remove(REG_DI); 
+    case REG_EDI:  RegisterTaintMap.erase(REG_EDI); 
+    case REG_DI:   RegisterTaintMap.erase(REG_DI); 
          break;
 
-    case REG_ESI:  regsTainted.remove(REG_ESI); 
-    case REG_SI:   regsTainted.remove(REG_SI); 
+    case REG_ESI:  RegisterTaintMap.erase(REG_ESI); 
+    case REG_SI:   RegisterTaintMap.erase(REG_SI); 
          break;
 
     default:
@@ -126,8 +122,8 @@ VOID ReadMem(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT
   if (opCount != 2)
     return;
 
-  for(i = addressTainted.begin(); i != addressTainted.end(); i++){
-      if (addr == *i){
+    for (auto it = AddressTaintMap.begin(); it != AddressTaintMap.end(); ++it) {
+        if (addr == it->first){
         TaintFile << std::hex << "[READ in " << addr << "]\t" << insAddr << ": " << insDis << std::endl;
         taintReg(reg_r);
         return ;
@@ -148,8 +144,8 @@ VOID WriteMem(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UIN
   if (opCount != 2)
     return;
 
-  for(i = addressTainted.begin(); i != addressTainted.end(); i++){
-      if (addr == *i){
+    for (auto it = AddressTaintMap.begin(); it != AddressTaintMap.end(); ++it) {
+        if (addr == it->first) {
         TaintFile << std::hex << "[WRITE in " << addr << "]\t" << insAddr << ": " << insDis << std::endl;
         if (!REG_valid(reg_r) || !checkAlreadyRegTainted(reg_r))
           removeMemTainted(addr);

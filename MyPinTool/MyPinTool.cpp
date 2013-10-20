@@ -66,8 +66,8 @@ bool IN_MAIN = false;
 /* User Libraries */
 /* ===================================================================== */
 #include "FollowExecution.h"
-#include "DTA.h"
-//#include "taint_example_3.h"
+//#include "DTA.h"
+#include "taint_example_3.h"
 //#include "FindVulnerability.h"
 
 
@@ -207,10 +207,10 @@ int main(int argc, char *argv[])
     
     // Write to a file since cout and cerr maybe closed by the application
     InitFollowExecution();
-    InitDTA();
-//TaintFile.open("taint.out");
-//TaintFile << hex;
-//TaintFile.setf(ios::showbase);
+    //InitDTA();
+TaintFile.open("taint.out");
+TaintFile << hex;
+TaintFile.setf(ios::showbase);
 
     //TraceFile.open(KnobOutputFile.Value().c_str());
     //TraceFile << hex;
