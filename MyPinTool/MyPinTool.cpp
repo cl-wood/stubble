@@ -44,8 +44,7 @@ using namespace std;
 /* ===================================================================== */
 
 bool IN_MAIN = false;
-std::ofstream TraceFile;
-std::ofstream TaintFile;
+//std::ofstream TraceFile;
 
 #if defined(TARGET_MAC)
 #define MALLOC "_malloc"
@@ -68,7 +67,8 @@ std::ofstream TaintFile;
 /* ===================================================================== */
 #include "FollowExecution.h"
 #include "DTA.h"
-#include "FindVulnerability.h"
+//#include "taint_example_3.h"
+//#include "FindVulnerability.h"
 
 
 /* ===================================================================== */
@@ -174,9 +174,9 @@ VOID WatchMemoryAllocation(IMG img, VOID *v)
 
 VOID Fini(INT32 code, VOID *v)
 {
-    TraceFile.close();
+    //TraceFile.close();
     FiniFollowExecution();
-    FiniDTA();
+    //FiniDTA();
 }
 
 /* ===================================================================== */
@@ -198,6 +198,8 @@ int main(int argc, char *argv[])
 {
     // Initialize pin & symbol manager
     PIN_InitSymbols();
+    PIN_SetSyntaxIntel();
+
     if( PIN_Init(argc,argv) )
     {
         return Usage();
@@ -206,6 +208,9 @@ int main(int argc, char *argv[])
     // Write to a file since cout and cerr maybe closed by the application
     InitFollowExecution();
     InitDTA();
+//TaintFile.open("taint.out");
+//TaintFile << hex;
+//TaintFile.setf(ios::showbase);
 
     //TraceFile.open(KnobOutputFile.Value().c_str());
     //TraceFile << hex;
@@ -215,7 +220,9 @@ int main(int argc, char *argv[])
     //IMG_AddInstrumentFunction(WatchMemoryAllocation, 0);
 
     // Watch main function
-    IMG_AddInstrumentFunction(WatchMain, 0);
+    //IMG_AddInstrumentFunction(WatchMain, 0);
+    PIN_AddSyscallEntryFunction(Syscall_entry, 0);
+    INS_AddInstrumentFunction(Instruction, 0);
 
     PIN_AddFiniFunction(Fini, 0);
 
