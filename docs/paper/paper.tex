@@ -120,6 +120,10 @@ Machine learning in lieu of symbolic execution?
 
 \section{Implementation}
 
+	\subsection{Dynamic Taint Analysis}
+We implemented dynamic taint analysis for multiple input sources. When performing certain actions, like reading a file, which makes use of the read() syscall in Linux, it was possible to watch for all reads after an specific opens which suggested user involvement, and follow the buffers read in. For user input directed to STDIN or through command line arguments however, it was necessary to hook into c library functions which allowed user input, like strcpy.	
+	
+	
 	\subsection{Pintools for Finding Vulnerable Conditions}
 
 	\subsection{Mutation Algorithm}
