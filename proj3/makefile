@@ -1,6 +1,6 @@
 demo: jacobi.o openmp.o
 	gcc -Wall -o seq jacobi.o
-	gcc -Wall -o openmp openmp.o
+	gcc -Wall -fopenmp -o openmp openmp.o
 
 jacobi.o: jacobi.c
 	gcc -c -Wall jacobi.c

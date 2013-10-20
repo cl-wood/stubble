@@ -4,6 +4,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <omp.h>
 
 #define N 4096
 
@@ -58,29 +59,34 @@ int main(void)
 
     t = 0; t1 = 1;
     maxdiff1 = 100000.0;
-    //iteration = 0;
+    iteration = 0;
 
-    while( maxdiff1 > MAXDIFF) {
-        maxdiff1 = -1.0;
+    #pragma omp parallel private(i,j,maxdiff1,x,t,t1,t2) shared()
+    {
+        while (maxdiff1 > MAXDIFF) {
+            maxdiff1 = -1.0;
 
-    	#pragma omp parallel for private(i,j) shared(x)
-        for (i=1; i <= NN; i++) {
-            for (j=1; j <=NN; j++) {
-                x[i][j][t] = a1*x[i-1][j][t1] + a3 * x[i+1][j][t1] +
-                    a2*x[i][j-1][t1] + a4 * x[i][j+1][t1];
-                if (myabs(x[i][j][t] - x[i][j][t1]) > maxdiff1)
-                    maxdiff1 = myabs(x[i][j][t] - x[i][j][t1]);
+            //#pragma omp parallel for default(none) private(i,j,NN,a1,a2,a3,a4,maxdiff1) shared(x,t,t1,t2) 
+            for (i = 1; i <= NN; i++) {
+                for (j = 1; j <= NN; j++) {
+                    x[i][j][t] = a1 * x[i-1][j][t1] + 
+			    	 a3 * x[i+1][j][t1] +
+				 a2 * x[i][j-1][t1] + 
+				 a4 * x[i][j+1][t1];
+                    if (myabs(x[i][j][t] - x[i][j][t1]) > maxdiff1)
+                        maxdiff1 = myabs(x[i][j][t] - x[i][j][t1]);
+                }
             }
-	}
 
-	// swap 
-        t2 = t; t = t1; t1 = t2;
-        printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", iteration++, maxdiff1, MAXDIFF);
-    }
+            // swap 
+            t2 = t; t = t1; t1 = t2;
+            printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", iteration++, maxdiff1, MAXDIFF);
+        }
+    } // End openmp
     printf("MAXDIFF = %f, maxdiff = %f\n", MAXDIFF, maxdiff1);
 
-    if ((i=open("proj3.output", O_WRONLY | O_CREAT | O_TRUNC, 0600)) < 0) {
-        fprintf(stderr, "Cannot open file proj3.output.\n");
+    if ((i=open("openmp.output", O_WRONLY | O_CREAT | O_TRUNC, 0600)) < 0) {
+        fprintf(stderr, "Cannot open file openmp.output.\n");
         exit(0);
     }
 
