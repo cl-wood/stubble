@@ -1,7 +1,7 @@
 // FollowExecution.h
 
 /* ===================================================================== */
-/* Control Flow following functions, currently at bbl level */
+/* Control Flow following jumps                                          */
 /* ===================================================================== */
 std::ofstream ControlFlowFile;
 
@@ -15,42 +15,24 @@ typedef struct
 
 ControlFlowStruct ControlFlow;
 
-// Returns starting address for given trace.
-ADDRINT GetTraceStart(TRACE trace)
-{
-    return TRACE_Address(trace);
-}
 
-// Follow each instruction in each bbl of each trace.
-// basic block is single entrace, single exit block of sequential instructions.
-// trace is single entrace, multiple exits, and generated at entrace during runtime.
-VOID FollowTraces(TRACE trace, VOID *v)
+// Record every taken jump
+// TODO find a better way to ONLY look at instructions inside main
+VOID FollowBranches(INS ins, VOID *v)
 {
     if (!IN_MAIN) {
         return;
     }
 
-    ControlFlowFile << GetTraceStart(trace) << endl;
-
-    /*
-    // For each basic block, track each instruction
-    for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl)) {
-        for (INS ins = BBL_InsHead(bbl); INS_Valid(ins); ins = INS_Next(ins) ) {
-		    ControlFlowFile << INS_Disassemble(ins) << "\t" << INS_Address(ins);
-
-            // Get routine name if it's a call instruction
-            if (INS_IsDirectCall(ins) && INS_IsDirectBranchOrCall(ins) ) {
-                ADDRINT addrint = INS_DirectBranchOrCallTargetAddress(ins);
-                ControlFlowFile << RTN_FindNameByAddress(addrint);
-            }
-
-            ControlFlowFile << endl;
-
-        }
+    if (INS_IsBranch(ins)) {
+        //ControlFlowFile << INS_Disassemble(ins) << endl;
+        // TODO instead of addresses, which will change, get the instruction and (jmpAddr - currentAddr), maybe that'll work better
+        //ControlFlowFile << StringFromAddrint(INS_NextAddress(ins)) << endl;
+        ControlFlowFile << CATEGORY_StringShort(INS_Category(ins)) << ":" 
+                        << StringFromAddrint(INS_NextAddress(ins) - INS_Address(ins)) << endl;
     }
-    */
 
-} // End FollowTraces
+} // End FollowBranches
 
 VOID InitFollowExecution()
 {
@@ -58,7 +40,7 @@ VOID InitFollowExecution()
     ControlFlowFile << hex;
     ControlFlowFile.setf(ios::showbase);
 
-    TRACE_AddInstrumentFunction(FollowTraces, 0);
+    INS_AddInstrumentFunction(FollowBranches, 0);
 }
 
 VOID FiniFollowExecution()

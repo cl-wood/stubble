@@ -64,7 +64,7 @@ bool IN_MAIN = false;
 /* ===================================================================== */
 /* User Libraries */
 /* ===================================================================== */
-//#include "FollowExecution.h"
+#include "FollowExecution.h"
 //#include "DTA.h"
 #include "FindUseAfterFree.h"
 
@@ -123,7 +123,7 @@ VOID WatchMain(IMG img, VOID *v)
 
 VOID Fini(INT32 code, VOID *v)
 {
-    //FiniFollowExecution();
+    FiniFollowExecution();
     FiniFindUseAfterFree();
     //FiniDTA();
 }
@@ -155,7 +155,7 @@ int main(int argc, char *argv[])
     }
     
     // Init functions for modules
-    //InitFollowExecution();
+    InitFollowExecution();
     InitFindUseAfterFree();
     //InitDTA();
 
@@ -164,7 +164,7 @@ int main(int argc, char *argv[])
 //TaintFile.setf(ios::showbase);
 
     // Watch main function
-    //IMG_AddInstrumentFunction(WatchMain, 0);
+    IMG_AddInstrumentFunction(WatchMain, 0);
     INS_AddInstrumentFunction(Instruction, 0);
 
     PIN_AddFiniFunction(Fini, 0);
