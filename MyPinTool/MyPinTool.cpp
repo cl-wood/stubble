@@ -66,9 +66,7 @@ bool IN_MAIN = false;
 /* ===================================================================== */
 //#include "FollowExecution.h"
 //#include "DTA.h"
-//#include "taint_example_3.h"
 #include "FindUseAfterFree.h"
-//#include "FindVulnerability.h"
 
 
 /* ===================================================================== */

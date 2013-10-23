@@ -1,2 +1,8 @@
 Pin 2.12 kit 58423
-E: :94: Invalid IARG_TYPE: IARG_-1212054680 for instruction at address: 0xb63ae7d0.
+E: Attach to pid 3455 failed. 
+  The Operating System configuration prevents Pin from using the default (parent) injection mode.
+  To resolve this, either execute the following (as root):
+  $ echo 0 > /proc/sys/kernel/yama/ptrace_scope
+  Or use the "-injection child" option.
+  For more information, regarding child injection, see Injection section in the Pin User Manual.
+
