@@ -9,5 +9,5 @@ openmp.o: openmp.c
 
 clean:
 	rm -f jacobi.o seq 
-	rm -f openmp.o openmp
+	rm -f openmp.o openmp.output openmp
 

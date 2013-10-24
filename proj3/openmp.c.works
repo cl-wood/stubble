@@ -61,13 +61,10 @@ int main(void)
     maxdiff1 = 100000.0;
     iteration = 0;
 
-    // maybe works, but not faster?
-    //#pragma omp parallel default(shared)
-
-    //#pragma omp parallel default (shared) private (i,j) shared(x,maxdiff1,t,t1,t2,iteration)
-    #pragma omp parallel default(shared)
+    //#pragma omp parallel 
+    // appears to be correct, but not faster
+    #pragma omp parallel private (i,j) shared(x,maxdiff1,t,t1,t2,iteration)
     {
-
         while (maxdiff1 > MAXDIFF) {
             maxdiff1 = -1.0;
 
@@ -85,7 +82,7 @@ int main(void)
 
             // swap 
             t2 = t; t = t1; t1 = t2;
-            //printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", iteration++, maxdiff1, MAXDIFF);
+            printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", iteration++, maxdiff1, MAXDIFF);
         }
     } // End openmp
     printf("MAXDIFF = %f, maxdiff = %f\n", MAXDIFF, maxdiff1);
