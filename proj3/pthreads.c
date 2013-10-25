@@ -4,15 +4,35 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
-#include <omp.h>
+#include <pthread.h>
 
 #define N 4096
 
 float x[N+2][N+2][2];
+int myid[100];
+pthread_t tid[200];
 
 #define myabs(a) (((a) > 0) ? (a):(-(a)))
 
-int main(void) 
+void *jacobi(void *arg)
+{
+    while (maxdiff1 > MAXDIFF) {
+        maxdiff1 = -1.0;
+        for (i=1; i <= NN; i++) 
+            for (j=1; j <=NN; j++) {
+                x[i][j][t] = a1*x[i-1][j][t1] + a3 * x[i+1][j][t1] +
+                    a2*x[i][j-1][t1] + a4 * x[i][j+1][t1];
+                if (myabs(x[i][j][t] - x[i][j][t1]) > maxdiff1)
+                    maxdiff1 = myabs(x[i][j][t] - x[i][j][t1]);
+            }
+
+        t2 = t; t = t1; t1 = t2;
+        printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", 
+                iteration++, maxdiff1, MAXDIFF);
+    } // End while
+}
+
+int main(int argc, char* argv[]) 
 {
     int NN;
     float a1, a2, a3, a4, a5, a6;
@@ -22,17 +42,8 @@ int main(void)
     float  maxdiff1;
     int iteration;
 
-
     scanf("%d %f %f %f %f %f %f %f", &NN, &a1, &a2, &a3, &a4, &a5, &a6, &MAXDIFF);
-
-
     printf("%d %f %f %f %f %f %f %f\n", NN, a1, a2, a3, a4, a5, a6, MAXDIFF);   
-    /*  a1 = a2 = a3 = a4 = 0.25; a6 = 0; a5 = 0.1;
-
-        MAXDIFF = 0.0001;
-        */
-
-    printf("maxdiff = %13.12f\n", MAXDIFF);
 
     for (i=1; i<=NN+1; i++) {
         x[i][0][0] = a5*i;
@@ -61,45 +72,25 @@ int main(void)
     maxdiff1 = 100000.0;
     iteration = 0;
 
-    #pragma omp parallel default(none) shared(maxdiff1)
-    {
+    int Nthreads = atoi(argv[1]);
+    //
 
-        int i,j;
-        int pa1 = a1;
-        int pa2 = a2;
-        int pa3 = a3;
-        int pa4 = a4;
-        float pMAXDIFF = MAXDIFF;
+    // Create threads
+    for (int i = 0; i < Nthreads; i++) {
+        myid[i] = i;
+        pthread_create(&tid[i], NULL, &jacobi, &myid[i]);
+    } 
 
+    // Join threads
+    for (int i = 0; i < Nthreads; i++) {
+        pthread_join(tid[i], NULL);
+    } 
 
-        while (maxdiff1 > pMAXDIFF) {
-            maxdiff1 = -1.0;
-
-            #pragma omp for
-            for (i = 1; i <= NN; i++) {
-                for (j = 1; j <= NN; j++) {
-                    x[i][j][t] = pa1 * x[i-1][j][t1] + 
-			    	             pa3 * x[i+1][j][t1] +
-				                 pa2 * x[i][j-1][t1] + 
-				                 pa4 * x[i][j+1][t1];
-                    #pragma omp critical
-                    {
-                    if (myabs(x[i][j][t] - x[i][j][t1]) > maxdiff1) {
-                        maxdiff1 = myabs(x[i][j][t] - x[i][j][t1]);
-                    }
-                    }
-                }
-            }
-
-            // swap 
-            t2 = t; t = t1; t1 = t2;
-            //printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", iteration++, maxdiff1, MAXDIFF);
-        }
-    } // End openmp
+    //
     printf("MAXDIFF = %f, maxdiff = %f\n", MAXDIFF, maxdiff1);
 
-    if ((i=open("openmp.output", O_WRONLY | O_CREAT | O_TRUNC, 0600)) < 0) {
-        fprintf(stderr, "Cannot open file openmp.output.\n");
+    if ((i=open("pthreads.output", O_WRONLY | O_CREAT | O_TRUNC, 0600)) < 0) {
+        fprintf(stderr, "Cannot open file pthreads.output.\n");
         exit(0);
     }
 
