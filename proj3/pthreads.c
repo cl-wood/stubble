@@ -11,38 +11,47 @@
 float x[N+2][N+2][2];
 int myid[100];
 pthread_t tid[200];
+int NN;
+float a1, a2, a3, a4, a5, a6;
+float MAXDIFF;
+int i, j;
+int t, t1, t2;
+float  maxdiff1;
+//int iteration;
+pthread_mutex_t xMutex;
 
 #define myabs(a) (((a) > 0) ? (a):(-(a)))
 
+// TODO divide for loops up using TID?
 void *jacobi(void *arg)
 {
     while (maxdiff1 > MAXDIFF) {
         maxdiff1 = -1.0;
-        for (i=1; i <= NN; i++) 
+        for (i=1; i <= NN; i++) {
             for (j=1; j <=NN; j++) {
-                x[i][j][t] = a1*x[i-1][j][t1] + a3 * x[i+1][j][t1] +
-                    a2*x[i][j-1][t1] + a4 * x[i][j+1][t1];
-                if (myabs(x[i][j][t] - x[i][j][t1]) > maxdiff1)
+                pthread_mutex_lock(&xMutex);
+                x[i][j][t] = a1 * x[i-1][j][t1] + 
+                             a2 * x[i][j-1][t1] + 
+                             a3 * x[i+1][j][t1] +
+                             a4 * x[i][j+1][t1];
+                if (myabs(x[i][j][t] - x[i][j][t1]) > maxdiff1) {
                     maxdiff1 = myabs(x[i][j][t] - x[i][j][t1]);
+                }
+                pthread_mutex_unlock(&xMutex);
             }
+        }
 
-        t2 = t; t = t1; t1 = t2;
-        printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", 
-                iteration++, maxdiff1, MAXDIFF);
+        t2 = t; t = t1; t1 = t2; // swap 'em
+        //printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n",iteration++, maxdiff1, MAXDIFF);
     } // End while
+    pthread_exit(NULL);
 }
 
 int main(int argc, char* argv[]) 
 {
-    int NN;
-    float a1, a2, a3, a4, a5, a6;
-    float MAXDIFF;
-    int i, j;
-    int t, t1, t2;
-    float  maxdiff1;
-    int iteration;
 
-    scanf("%d %f %f %f %f %f %f %f", &NN, &a1, &a2, &a3, &a4, &a5, &a6, &MAXDIFF);
+    int res = scanf("%d %f %f %f %f %f %f %f", &NN, &a1, &a2, &a3, &a4, &a5, &a6, &MAXDIFF);
+    if (res == 0) printf("ERROR\n");
     printf("%d %f %f %f %f %f %f %f\n", NN, a1, a2, a3, a4, a5, a6, MAXDIFF);   
 
     for (i=1; i<=NN+1; i++) {
@@ -70,9 +79,15 @@ int main(int argc, char* argv[])
 
     t = 0; t1 = 1;
     maxdiff1 = 100000.0;
-    iteration = 0;
+    //iteration = 0;
 
-    int Nthreads = atoi(argv[1]);
+    // Set number of threads to use
+    int Nthreads;
+    if (argc < 2) {
+        Nthreads = 4;
+    } else {
+        Nthreads = atoi(argv[1]);
+    }
     //
 
     // Create threads

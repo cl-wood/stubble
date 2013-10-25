@@ -20,10 +20,11 @@ int main(void)
     int i, j;
     int t, t1, t2;
     float  maxdiff1;
-    int iteration;
+    //int iteration;
 
 
-    scanf("%d %f %f %f %f %f %f %f", &NN, &a1, &a2, &a3, &a4, &a5, &a6, &MAXDIFF);
+    int res = scanf("%d %f %f %f %f %f %f %f", &NN, &a1, &a2, &a3, &a4, &a5, &a6, &MAXDIFF);
+    if (res!=0) {printf("ERROR");}
 
 
     printf("%d %f %f %f %f %f %f %f\n", NN, a1, a2, a3, a4, a5, a6, MAXDIFF);   
@@ -59,30 +60,42 @@ int main(void)
 
     t = 0; t1 = 1;
     maxdiff1 = 100000.0;
-    iteration = 0;
+    //iteration = 0;
 
-    //#pragma omp parallel 
-    // appears to be correct, but not faster
-    #pragma omp parallel private (i,j) shared(x,maxdiff1,t,t1,t2,iteration)
+    #pragma omp parallel //default(shared) private(maxdiff1)
     {
+
+        /*
+        int i,j;
+        int pa1 = a1;
+        int pa2 = a2;
+        int pa3 = a3;
+        int pa4 = a4;
+        float pMAXDIFF = MAXDIFF;
+        */
+
+
         while (maxdiff1 > MAXDIFF) {
             maxdiff1 = -1.0;
 
+            #pragma omp for
             for (i = 1; i <= NN; i++) {
                 for (j = 1; j <= NN; j++) {
                     x[i][j][t] = a1 * x[i-1][j][t1] + 
 			    	             a3 * x[i+1][j][t1] +
 				                 a2 * x[i][j-1][t1] + 
 				                 a4 * x[i][j+1][t1];
+                    //#pragma omp critical
+                    //{
                     if (myabs(x[i][j][t] - x[i][j][t1]) > maxdiff1) {
                         maxdiff1 = myabs(x[i][j][t] - x[i][j][t1]);
                     }
+                    //}
                 }
             }
-
             // swap 
             t2 = t; t = t1; t1 = t2;
-            printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", iteration++, maxdiff1, MAXDIFF);
+            //printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", iteration++, maxdiff1, MAXDIFF);
         }
     } // End openmp
     printf("MAXDIFF = %f, maxdiff = %f\n", MAXDIFF, maxdiff1);
