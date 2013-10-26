@@ -17,82 +17,79 @@ int i, j;
 int t, t1, t2;
 float  maxdiff1;
 //int iteration;
+int l_maxdiff1s[MAX_THREADS]; // global, use to reduce maxdiff1 after threads done
 
-int myid[100];
-
+//int myid[100];
 pthread_t tid[200];
 int Nthreads;
 
 // Locking
-int DONE = 0;
-int t_running = 0;
-pthread_mutex_t x_mutex[2];
-pthread_cond_t x_cond[2];
+int threadsFinished = 0;
+int done = 0;
+pthread_mutex_t x_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t x_cond = PTHREAD_COND_INITIALIZER;
 
 #define myabs(a) (((a) > 0) ? (a):(-(a)))
 
-// TODO divide for loops up using TID?
-// Globals written:
-//      maxdiff1
-//      x
-//      t,t1,t2
-// Guaranteed to always have 2n threads
+/* cool point about mutex vs. sema http://stackoverflow.com/questions/2065747/pthreads-mutex-vs-semaphore/13222180#13222180 */
 void *jacobi(void *arg)
 {
     int i, j;
-    int t,t1,t2;
 
-    // Half of threads work on t, other on t1
-    int myNum = *(int *)arg;
-    if (myNum % 2 == 0) {
-        t = 0; 
-    }
-    else {
-        t = 1; 
-    }
-    t1 = ~t;
+    int myNum = (int) arg;
+    printf("Thread %d\n", myNum); fflush(stdout);
 
-    printf("TID %d working on %d\n", myNum, t); fflush(stdout);
-
-    // Wait for other half to finish a matrix
-    pthread_mutex_lock(&x_mutex);
-    while (t_running != t) {
-        pthread_cond_wait(&x_cond, &x_mutex);
-    }
-    maxdiff1 = -1.0;
-
-    //for (i = NN/Nthreads*myNum+1; i <= NN/Nthreads*(myNum+1); i++) {
-    for (i = NN/Nthreads*myNum+1; i <= NN/Nthreads*(myNum+1); i++) {
-        for (j=1; j <=NN; j++) {
-            x[t][i][j] = a1 * x[t1][i-1][j] + 
-                         a2 * x[t1][i][j-1] + 
-                         a3 * x[t1][i+1][j] +
-                         a4 * x[t1][i][j+1];
-            if (myabs(x[t][i][j] - x[t1][i][j]) > maxdiff1) {
-                maxdiff1 = myabs(x[t][i][j] - x[t1][i][j]);
+    while (!done) {
+        l_maxdiff1s[myNum] = -1.0;
+        for (i = NN / Nthreads * myNum + 1; i <= NN / Nthreads * (myNum + 1); i++) {
+            for (j = 1; j <= NN; j++) {
+                x[t][i][j] = a1 * x[t1][i-1][j] + 
+                    a2 * x[t1][i][j-1] + 
+                    a3 * x[t1][i+1][j] +
+                    a4 * x[t1][i][j+1];
+                // If necessary, atomically update maxdiff1
+                if (myabs(x[t][i][j] - x[t1][i][j]) > l_maxdiff1s[myNum]) {
+                    l_maxdiff1s[myNum] = myabs(x[t][i][j] - x[t1][i][j]);
+                }
             }
         }
-    }
 
-    // performing this outside of function with locks
-    //t2 = t; t = t1; t1 = t2; 
+        // LOCK
+        pthread_mutex_lock(&x_mutex);
 
-    //if (myNum == Nthreads - 1 && maxdiff1 > MAXDIFF) {
-    if (maxdiff1 > MAXDIFF) {
-        DONE = 1;
-        printf("DONE HERE %d\n", myNum); fflush(stdout);
-    }
-    //}
+        threadsFinished++;
 
-    // if last thread in one of the halves
-    if ((Nthreads / 2 + 1 == myNum) || (Nthreads - 1 == myNum)) {
-        ~t_running;
-        pthread_cond_signal(&x_cond[myNum + 1]);
+        // Last thread done. Switch x's and go again unless at MAXDIFF
+        if (threadsFinished == Nthreads) {
+
+            // Done if hit MAXDIFF
+            for (int k = 0; k < Nthreads; k++) {
+                if (l_maxdiff1s[k] > MAXDIFF) {
+                    done = 1;
+                    printf("DONE HERE %d\n", myNum); fflush(stdout);
+                    break;
+                }
+            }
+
+            // Otherwise, setup another round
+            if (!done) {
+                threadsFinished = 0;
+                t2 = t; t = t1; t1 = t2; 
+                pthread_cond_broadcast(&x_cond);
+            }
+        } 
+
+        // Not last thread finished, wait for them to finish matrix
+        else {
+            pthread_cond_wait(&x_cond, &x_mutex);
+        }
+
         pthread_mutex_unlock(&x_mutex);
-    }
+        // UNLOCK
+    } // End while !done
+
     printf("DONE %d\n", myNum); fflush(stdout);
     return NULL;
-
 }
 
 int main(int argc, char* argv[]) 
@@ -135,27 +132,17 @@ int main(int argc, char* argv[])
     } else {
         Nthreads = atoi(argv[1]);
         printf("Running with %d threads\n", Nthreads);
-        // Deal with even number of threads to make things easier
-        if (Nthreads % 2 != 0) {
-            Nthreads--;
-        }
     }
 
+
+
+
     // Begin parallelization
-
-    // Prepare conditional variables, 1 for each matrix
-    pthread_mutex_init(&x_mutex[0], NULL);
-    pthread_mutex_init(&x_mutex[1], NULL);
-    pthread_cond_init(&x_cond[0], NULL);
-    pthread_cond_init(&x_cond[1], NULL);
-
-    // First thread is ready
-    //ready[0] = 1;
-
     // Create threads
     for (int i = 0; i < Nthreads; i++) {
-        myid[i] = i;
-        if (pthread_create(&tid[i], NULL, &jacobi, &myid[i]) != 0) {
+        //myid[i] = i;
+        //if (pthread_create(&tid[i], NULL, &jacobi, &myid[i]) != 0) {
+        if (pthread_create(&tid[i], NULL, &jacobi, (void *)i) != 0) {
             printf("Failed to create thread #%d\n", i);
             exit(-1);
         }
@@ -189,7 +176,7 @@ int main(int argc, char* argv[])
     }
     close(i);
     return 0;
-}
+    }
 
 
 
