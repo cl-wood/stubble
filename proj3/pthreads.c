@@ -16,10 +16,8 @@ float MAXDIFF;
 int i, j;
 int t, t1, t2;
 float  maxdiff1;
-//int iteration;
 float l_maxdiff1s[MAX_THREADS]; // global, use to reduce maxdiff1 after threads done
 
-//int myid[100];
 pthread_t tid[200];
 int Nthreads;
 
@@ -37,7 +35,7 @@ void *jacobi(void *arg)
     int i, j;
 
     int myNum = (int) arg;
-    printf("Thread %d\n", myNum); fflush(stdout);
+    //printf("Thread %d\n", myNum); fflush(stdout);
 
     while (!done) {
         l_maxdiff1s[myNum] = -1.0;
@@ -47,7 +45,7 @@ void *jacobi(void *arg)
                              a2 * x[t1][i][j-1] + 
                              a3 * x[t1][i+1][j] +
                              a4 * x[t1][i][j+1];
-                // If necessary, atomically update maxdiff1
+                // Update personal maxdiff, reduce later
                 if (myabs(x[t][i][j] - x[t1][i][j]) > l_maxdiff1s[myNum]) {
                     l_maxdiff1s[myNum] = myabs(x[t][i][j] - x[t1][i][j]);
                 }
@@ -65,35 +63,28 @@ void *jacobi(void *arg)
 
             float maxdiffCheck = -1.0;
 
-            // TODO these two segments possible bug sources
-            // TODO also could have ints instead of floats
-            // Get largest local maxdiff
             for (int k = 0; k < Nthreads; k++) {
                 if (l_maxdiff1s[k] > maxdiffCheck) {
                     maxdiffCheck = l_maxdiff1s[k];
                 }
             }
 
-            printf("maxdiff1 = %f\n", maxdiffCheck); fflush(stdout);
+            //printf("maxdiff1 = %f\n", maxdiffCheck); fflush(stdout);
 
             // Done if hit MAXDIFF
             if (maxdiffCheck <= MAXDIFF) {
                 done = 1;
-                printf("HIT MAXDIFF\n"); fflush(stdout);
+                //printf("HIT MAXDIFF\n"); fflush(stdout);
             }
 
-            // Otherwise, setup another round
-            // might not need this if?
-            //if (!done) {
             t2 = t; t = t1; t1 = t2; 
-            //}
 
             pthread_cond_broadcast(&x_cond);
         } 
 
         // Not last thread finished, wait for them to finish matrix
         else {
-            printf("Waiting %d\n", myNum); fflush(stdout);
+            //printf("Waiting %d\n", myNum); fflush(stdout);
             pthread_cond_wait(&x_cond, &x_mutex);
         }
 
@@ -102,7 +93,7 @@ void *jacobi(void *arg)
 
     } // End while !done
 
-    printf("DONE %d\n", myNum); fflush(stdout);
+    //printf("DONE %d\n", myNum); fflush(stdout);
     return NULL;
 }
 
@@ -138,9 +129,9 @@ int main(int argc, char* argv[])
 
     t = 0; t1 = 1;
     maxdiff1 = 100000.0;
-    //iteration = 0;
 
     // Set number of threads to use
+    // TODO seems to mess up with non-power of 2 thread count
     if (argc < 2) {
         Nthreads = 4;
     } else {
@@ -154,8 +145,6 @@ int main(int argc, char* argv[])
     // Begin parallelization
     // Create threads
     for (int i = 0; i < Nthreads; i++) {
-        //myid[i] = i;
-        //if (pthread_create(&tid[i], NULL, &jacobi, &myid[i]) != 0) {
         if (pthread_create(&tid[i], NULL, &jacobi, (void *)i) != 0) {
             printf("Failed to create thread #%d\n", i);
             exit(-1);
@@ -190,9 +179,6 @@ int main(int argc, char* argv[])
     }
     close(i);
     return 0;
-    }
-
-
-
+}
 
 
