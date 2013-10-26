@@ -18,6 +18,7 @@ int t, t1, t2;
 float  maxdiff1;
 float l_maxdiff1s[MAX_THREADS]; // global, use to reduce maxdiff1 after threads done
 
+int myid[100];
 pthread_t tid[200];
 int Nthreads;
 
@@ -34,17 +35,20 @@ void *jacobi(void *arg)
 {
     int i, j;
 
-    int myNum = (int) arg;
+    //int myNum = (int) arg;
+    int myNum = *(int *) arg;
     //printf("Thread %d\n", myNum); fflush(stdout);
 
     while (!done) {
         l_maxdiff1s[myNum] = -1.0;
+        // TODO does this not work correctly?
         for (i = NN / Nthreads * myNum + 1; i <= NN / Nthreads * (myNum + 1); i++) {
             for (j = 1; j <= NN; j++) {
                 x[t][i][j] = a1 * x[t1][i-1][j] + 
                              a2 * x[t1][i][j-1] + 
                              a3 * x[t1][i+1][j] +
                              a4 * x[t1][i][j+1];
+
                 // Update personal maxdiff, reduce later
                 if (myabs(x[t][i][j] - x[t1][i][j]) > l_maxdiff1s[myNum]) {
                     l_maxdiff1s[myNum] = myabs(x[t][i][j] - x[t1][i][j]);
@@ -140,12 +144,12 @@ int main(int argc, char* argv[])
     }
 
 
-
-
     // Begin parallelization
     // Create threads
     for (int i = 0; i < Nthreads; i++) {
-        if (pthread_create(&tid[i], NULL, &jacobi, (void *)i) != 0) {
+        myid[i] = i;
+        //if (pthread_create(&tid[i], NULL, &jacobi, (void *)i) != 0) {
+        if (pthread_create(&tid[i], NULL, &jacobi, &myid[i]) != 0) {
             printf("Failed to create thread #%d\n", i);
             exit(-1);
         }

@@ -1,9 +1,9 @@
 CFLAGS=-Wall -pedantic -std=c99 -O3
 
 #demo: jacobi.c openmp.c pthreads.c multiproc.c
-demo: jacobi.c pthreads.c
+demo: jacobi.c openmp.c pthreads.c
 	gcc $(CFLAGS) -o seq jacobi.c
-	#gcc $(CFLAGS) -fopenmp -o openmp openmp.c
+	gcc $(CFLAGS) -fopenmp -o openmp openmp.c
 	gcc $(CFLAGS) -pthread -o pthreads pthreads.c
 	#gcc $(CFLAGS) -o multiproc multiproc.c
 
