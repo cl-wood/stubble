@@ -109,7 +109,7 @@ int main(int argc, char* argv[])
         // swap 
         t2 = t; t = t1; t1 = t2;
 
-        printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", iteration++, maxdiff1, MAXDIFF);
+        //printf("iteration = %d, maxdiff1 = %f, MAXDIFF = %f\n", iteration++, maxdiff1, MAXDIFF);
     }
 
     printf("MAXDIFF = %f, maxdiff = %f\n", MAXDIFF, maxdiff1);
