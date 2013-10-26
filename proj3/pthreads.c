@@ -17,14 +17,14 @@ int i, j;
 int t, t1, t2;
 float  maxdiff1;
 //int iteration;
-int l_maxdiff1s[MAX_THREADS]; // global, use to reduce maxdiff1 after threads done
+float l_maxdiff1s[MAX_THREADS]; // global, use to reduce maxdiff1 after threads done
 
 //int myid[100];
 pthread_t tid[200];
 int Nthreads;
 
 // Locking
-int threadsFinished = 0;
+int threadsDone = 0;
 int done = 0;
 pthread_mutex_t x_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t x_cond = PTHREAD_COND_INITIALIZER;
@@ -44,9 +44,9 @@ void *jacobi(void *arg)
         for (i = NN / Nthreads * myNum + 1; i <= NN / Nthreads * (myNum + 1); i++) {
             for (j = 1; j <= NN; j++) {
                 x[t][i][j] = a1 * x[t1][i-1][j] + 
-                    a2 * x[t1][i][j-1] + 
-                    a3 * x[t1][i+1][j] +
-                    a4 * x[t1][i][j+1];
+                             a2 * x[t1][i][j-1] + 
+                             a3 * x[t1][i+1][j] +
+                             a4 * x[t1][i][j+1];
                 // If necessary, atomically update maxdiff1
                 if (myabs(x[t][i][j] - x[t1][i][j]) > l_maxdiff1s[myNum]) {
                     l_maxdiff1s[myNum] = myabs(x[t][i][j] - x[t1][i][j]);
@@ -57,35 +57,49 @@ void *jacobi(void *arg)
         // LOCK
         pthread_mutex_lock(&x_mutex);
 
-        threadsFinished++;
+        threadsDone++;
 
         // Last thread done. Switch x's and go again unless at MAXDIFF
-        if (threadsFinished == Nthreads) {
+        if (threadsDone == Nthreads) {
+            threadsDone = 0;
 
-            // Done if hit MAXDIFF
+            float maxdiffCheck = -1.0;
+
+            // TODO these two segments possible bug sources
+            // TODO also could have ints instead of floats
+            // Get largest local maxdiff
             for (int k = 0; k < Nthreads; k++) {
-                if (l_maxdiff1s[k] > MAXDIFF) {
-                    done = 1;
-                    printf("DONE HERE %d\n", myNum); fflush(stdout);
-                    break;
+                if (l_maxdiff1s[k] > maxdiffCheck) {
+                    maxdiffCheck = l_maxdiff1s[k];
                 }
             }
 
-            // Otherwise, setup another round
-            if (!done) {
-                threadsFinished = 0;
-                t2 = t; t = t1; t1 = t2; 
-                pthread_cond_broadcast(&x_cond);
+            printf("maxdiff1 = %f\n", maxdiffCheck); fflush(stdout);
+
+            // Done if hit MAXDIFF
+            if (maxdiffCheck <= MAXDIFF) {
+                done = 1;
+                printf("HIT MAXDIFF\n"); fflush(stdout);
             }
+
+            // Otherwise, setup another round
+            // might not need this if?
+            //if (!done) {
+            t2 = t; t = t1; t1 = t2; 
+            //}
+
+            pthread_cond_broadcast(&x_cond);
         } 
 
         // Not last thread finished, wait for them to finish matrix
         else {
+            printf("Waiting %d\n", myNum); fflush(stdout);
             pthread_cond_wait(&x_cond, &x_mutex);
         }
 
-        pthread_mutex_unlock(&x_mutex);
         // UNLOCK
+        pthread_mutex_unlock(&x_mutex);
+
     } // End while !done
 
     printf("DONE %d\n", myNum); fflush(stdout);
