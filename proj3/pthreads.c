@@ -30,7 +30,6 @@ pthread_cond_t x_cond = PTHREAD_COND_INITIALIZER;
 
 #define myabs(a) (((a) > 0) ? (a):(-(a)))
 
-/* cool point about mutex vs. sema http://stackoverflow.com/questions/2065747/pthreads-mutex-vs-semaphore/13222180#13222180 */
 void *jacobi(void *arg)
 {
     int i, j;
