@@ -36,11 +36,11 @@ void *jacobi(void *arg)
 
     //int myNum = (int) arg;
     int myNum = *(int *) arg;
-    //printf("Thread %d\n", myNum); fflush(stdout);
 
     while (!done) {
         l_maxdiff1s[myNum] = -1.0;
         // TODO does this not work correctly?
+        //for (i = NN / Nthreads * myNum + 1; i <= NN / Nthreads * (myNum + 1); i++) {
         for (i = NN / Nthreads * myNum + 1; i <= NN / Nthreads * (myNum + 1); i++) {
             for (j = 1; j <= NN; j++) {
                 x[t][i][j] = a1 * x[t1][i-1][j] + 
@@ -72,12 +72,9 @@ void *jacobi(void *arg)
                 }
             }
 
-            //printf("maxdiff1 = %f\n", maxdiffCheck); fflush(stdout);
-
             // Done if hit MAXDIFF
             if (maxdiffCheck <= MAXDIFF) {
                 done = 1;
-                //printf("HIT MAXDIFF\n"); fflush(stdout);
             }
 
             t2 = t; t = t1; t1 = t2; 
@@ -87,7 +84,6 @@ void *jacobi(void *arg)
 
         // Not last thread finished, wait for them to finish matrix
         else {
-            //printf("Waiting %d\n", myNum); fflush(stdout);
             pthread_cond_wait(&x_cond, &x_mutex);
         }
 
@@ -96,7 +92,6 @@ void *jacobi(void *arg)
 
     } // End while !done
 
-    //printf("DONE %d\n", myNum); fflush(stdout);
     return NULL;
 }
 
@@ -139,9 +134,9 @@ int main(int argc, char* argv[])
         Nthreads = 4;
     } else {
         Nthreads = atoi(argv[1]);
-        printf("Running with %d threads\n", Nthreads);
     }
 
+    printf("Running with %d threads\n", Nthreads);
 
     // Begin parallelization
     // Create threads

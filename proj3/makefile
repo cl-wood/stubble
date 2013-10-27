@@ -9,7 +9,7 @@ demo: jacobi.c openmp.c pthreads.c
 
 clean:
 	rm -f jacobi.o seq 
-	rm -f openmp.o openmp.output openmp
-	rm -f pthreads.o pthreads.output pthreads
-	rm -f multiproc.o multiproc.output multiproc
+	rm -f openmp.o openmp.output* openmp
+	rm -f pthreads.o pthreads.output* pthreads
+	rm -f multiproc.o multiproc.output* multiproc
 
