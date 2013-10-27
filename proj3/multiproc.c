@@ -1,3 +1,4 @@
+#define _POSIX_SOURCE
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -20,11 +21,12 @@ int main(int argc, char* argv[])
     float a1, a2, a3, a4, a5, a6;
     float MAXDIFF;
     int i, j;
+    j = 0;
     int t, t1, t2;
     float  maxdiff1;
 
     int res = scanf("%d %f %f %f %f %f %f %f", &NN, &a1, &a2, &a3, &a4, &a5, &a6, &MAXDIFF);
-    if (res!=0) {printf("ERROR");}
+    if (res <= 0) {printf("ERROR");}
 
     printf("%d %f %f %f %f %f %f %f\n", NN, a1, a2, a3, a4, a5, a6, MAXDIFF);   
 
@@ -65,55 +67,88 @@ int main(int argc, char* argv[])
     }
 
     // Pipes for giving and returning sub-matrices
-    int subMatrixPipe[Nprocesses][2];
-    int resultsPipe[Nprocesses][2];
+    int inPipe[Nprocesses][2];
+    int outPipe[Nprocesses][2];
 
     printf("Running with %d processes\n", Nprocesses);
 
     for (int procNum = 0; procNum < Nprocesses; procNum++) {
+        pipe(inPipe[procNum]);
+        pipe(outPipe[procNum]);
+
         pid_t pid = fork();
 
         // Child runs until parent kills it
         if (pid == 0) {
 
             // Create sub-matrix
-            float sub_x[N+2][N+2][2];
+            if (Nprocesses == 1) Nprocesses++;
+            //float sub_x[NN/(Nprocesses - 1)][NN][2];
+                fprintf(stderr, "HERE\n"); fflush(stderr);
+            float sub_x[N/(Nprocesses - 1)][N + 2][2];
+                fprintf(stderr, "Now\n"); fflush(stderr);
+            int t = 0; 
+            int t1 = 1;
+            int t2;
+            float localDiff;
 
             while (1) {
-                // Prep pipe for read
-                pipe(subMatrixPipe[procNum]);
-                close(subMatrixPipe[procNum][1]);
-                close(0); dup2(subMatrixPipe[procNum][0], 0);
+                localDiff = -1.0;
+                pipe(inPipe[procNum]);
+                close(inPipe[procNum][1]);
+                close(0); dup2(inPipe[procNum][0], 0);
                 
-                // Read in x
-                int n;
+                // Read in x one float at a time
+                //int n;
                 float value;
-                float x[][];
-                while (n = read(subMatrixPipe[procNum][0], &value, sizeof(float)) > 0) {
-                    
+                while (read(inPipe[procNum][0], &value, sizeof(float)) > 0) {
+                    sub_x[i++][j][t1] = value;    
+                    if (i == (NN / Nprocesses) ) { // TODO might need to be more specific about last proc
+                        i = 0;
+                        j++;
+                    }
                 }
 
                 // Do sub-jacobi
-                for (i = NN / NProcesses * procNum + 1; i <= NN / Nprocesses * (procNum + 1); i++) {
+                //for (i = NN / NProcesses * procNum + 1; i <= NN / Nprocesses * (procNum + 1); i++) {
+                // TODO might have to have specific case for last proc
+                for (i = 1; i <= NN / Nprocesses; i++) {
                     for (j = 1; j <= NN; j++) {
-                        val = a1 * x[i-1][j] + 
-                              a2 * x[i][j-1] + 
-                              a3 * x[i+1][j] +
-                              a4 * x[i][j+1];
-                        if (myabs(val - x[i][j]) > maxdiff1) {
-                            maxdiff1 = myabs(val - x[i][j]);
+                        sub_x[i][j][t] = a1 * sub_x[i-1][j][t1] + 
+                                         a2 * sub_x[i][j-1][t1] + 
+                                         a3 * sub_x[i+1][j][t1] +
+                                         a4 * sub_x[i][j+1][t1];
+                        if (myabs(sub_x[i][j][t]- sub_x[i][j][t1]) > localDiff) {
+                            localDiff = myabs(sub_x[i][j][t] - x[i][j][t1]);
                         }
                     }
                 }
-        //if ((t= write(i, &(x[NN/2][j][t1]),  sizeof(float))) != sizeof(float)) {
+        //if ((t= write(, &(x[NN/2][j][t1]),  sizeof(float))) != sizeof(float)) {
 
                 // Prep pipe for write
-                pipe(resultsPipe[procNum]);
-                close(resultsPipe[procNum][0]);
-                close(1); dup2(resultsPipe[procNum][1], 1);
+                close(outPipe[procNum][0]);
+                close(1); dup2(outPipe[procNum][1], 1);
 
+                // Write back localDiff
+                write(outPipe[procNum][1], &localDiff, sizeof(float));
+
+                fprintf(stderr, "%d\n", NN / Nprocesses); fflush(stderr);
                 // Write back x
-                writePipe res; // and localDiff
+                for (i = 1; i <= NN / Nprocesses; i++) {
+                    for (j = 1; j <= NN; j++) {
+                        int x;
+                        if ((x = write(outPipe[procNum][1], &(sub_x[i][j][t]), sizeof(float))) != sizeof(float))
+                            fprintf(stderr, "write fail %d\n", x);fflush(stderr);
+
+                    }
+                    fprintf(stderr, "%d %d %d %d\n", procNum, i, j, NN/Nprocesses);fflush(stderr);
+
+                }
+                fprintf(stderr, "HERE\n");
+
+                // Swap t/t1
+                t2 = t; t = t1; t1 = t2; 
+
             }
         }
 
@@ -125,63 +160,81 @@ int main(int argc, char* argv[])
 
     // Parent process
     while (maxdiff1 > MAXDIFF) {
+
+
+        // Give sub matrix to each process
         for (int procNum = 0; procNum < Nprocesses; procNum++) {
             //for (i = NN / Nthreads * myNum + 1; i <= NN / Nthreads * (myNum + 1); i++) {
-            writePipe submatrix
+            // Prep pipe for write
+            close(inPipe[procNum][0]);
+            close(1); dup2(inPipe[procNum][1], 1);
+        fprintf(stderr, "Parent\n");
+
+            // Write sub-matrix of x to pipe
+            for (i = NN / Nprocesses * procNum + 1; i <= NN / Nprocesses * (procNum + 1); i++) {
+                for (j = 1; j <= NN; j++) {
+                    write(inPipe[procNum][1], &(x[i][j][t]), sizeof(float));
+                }
+            }
+        
         }
 
+
+        // Get localDiff and iteration for each sub matrix
         for (int procNum = 0; procNum < Nprocesses; procNum++) {
-            receiveIteration data
-            get max(localDiffs)
-            writeIterationData
+
+            close(outPipe[procNum][0]);
+            close(1); dup2(outPipe[procNum][1], 1);
+
+            // Read localDiffs
+            float temp;
+            read(outPipe[procNum][0], &temp, sizeof(float));
+            if (temp > maxdiff1) {
+                maxdiff1 = temp;
+            }
+
+            // Write back x
+            for (i = 1; i <= NN / Nprocesses; i++) {
+                for (j = 1; j <= NN; j++) {
+                    read(outPipe[procNum][0], &(x[i][j][t]), sizeof(float));
+                }
+            }
+
         }
 
-        swap(t,t1)
+        // Swap t/t1
+        t2 = t; t = t1; t1 = t2; 
+
     }
 
-    // Done, kill off children
-    for (int procNum = 0; procNum < Nprocesses; procNum++) {
-        kill(pids[procNum], SIGTERM);
-    }
+        // Done, kill off children
+        for (int procNum = 0; procNum < Nprocesses; procNum++) {
+            kill(pids[procNum], SIGTERM);
+        }
 
 
-            /*
-               for (i = 1; i <= NN; i++) {
-               for (j = 1; j <=NN; j++) {
-               x[i][j][t] = a1 * x[i-1][j][t1] + 
-               a2 * x[i][j-1][t1] + 
-               a3 * x[i+1][j][t1] +
-               a4 * x[i][j+1][t1];
-               if (myabs(x[i][j][t] - x[i][j][t1]) > maxdiff1) {
-               maxdiff1 = myabs(x[i][j][t] - x[i][j][t1]);
-               }
-               }
-               }
-             */
+        printf("MAXDIFF = %f, maxdiff = %f\n", MAXDIFF, maxdiff1);
 
-
-            printf("MAXDIFF = %f, maxdiff = %f\n", MAXDIFF, maxdiff1);
-
-    if ((i=open("multiproc.output", O_WRONLY | O_CREAT | O_TRUNC, 0600)) < 0) {
-        fprintf(stderr, "Cannot open file proj3.output.\n");
-        exit(0);
-    }
-
-    for (j = 0; j <= NN + 1; j++) {
-        if ((t= write(i, &(x[NN/2][j][t1]),  sizeof(float))) != sizeof(float)) {
-            fprintf(stderr, "write error %d %d.\n", j, t);
+        if ((i=open("multiproc.output", O_WRONLY | O_CREAT | O_TRUNC, 0600)) < 0) {
+            fprintf(stderr, "Cannot open file multiproc.output.\n");
             exit(0);
         }
-    }
 
-    for (j = 0; j <= NN + 1; j++) {
-        if ((t = write(i, &(x[j][NN/2][t1]),  sizeof(float))) != sizeof(float)) {
-            fprintf(stderr, "write error. %d %d\n", j, t);
-            exit(0);
+        for (j = 0; j <= NN + 1; j++) {
+            if ((t= write(i, &(x[NN/2][j][t1]),  sizeof(float))) != sizeof(float)) {
+                fprintf(stderr, "write error %d %d.\n", j, t);
+                exit(0);
+            }
         }
-    }
-    close(i);
-    return 0;
+
+        for (j = 0; j <= NN + 1; j++) {
+            if ((t = write(i, &(x[j][NN/2][t1]),  sizeof(float))) != sizeof(float)) {
+                fprintf(stderr, "write error. %d %d\n", j, t);
+                exit(0);
+            }
+        }
+        close(i);
+        return 0;
     }
 
 
