@@ -83,10 +83,7 @@ int main(int argc, char* argv[])
 
             // Create sub-matrix
             if (Nprocesses == 1) Nprocesses++;
-            //float sub_x[NN/(Nprocesses - 1)][NN][2];
-                fprintf(stderr, "HERE\n"); fflush(stderr);
-            float sub_x[N/(Nprocesses - 1)][N + 2][2];
-                fprintf(stderr, "Now\n"); fflush(stderr);
+            float sub_x[NN/(Nprocesses) + 2][NN + 2][2];
             int t = 0; 
             int t1 = 1;
             int t2;
@@ -132,7 +129,6 @@ int main(int argc, char* argv[])
                 // Write back localDiff
                 write(outPipe[procNum][1], &localDiff, sizeof(float));
 
-                fprintf(stderr, "%d\n", NN / Nprocesses); fflush(stderr);
                 // Write back x
                 for (i = 1; i <= NN / Nprocesses; i++) {
                     for (j = 1; j <= NN; j++) {
@@ -168,16 +164,20 @@ int main(int argc, char* argv[])
             // Prep pipe for write
             close(inPipe[procNum][0]);
             close(1); dup2(inPipe[procNum][1], 1);
-        fprintf(stderr, "Parent\n");
 
             // Write sub-matrix of x to pipe
-            for (i = NN / Nprocesses * procNum + 1; i <= NN / Nprocesses * (procNum + 1); i++) {
+            for (i = NN / Nprocesses * procNum; i <= NN / Nprocesses * (procNum + 1); i++) {
                 for (j = 1; j <= NN; j++) {
-                    write(inPipe[procNum][1], &(x[i][j][t]), sizeof(float));
+                    if (write(inPipe[procNum][1], &(x[i][j][t]), sizeof(float)) != sizeof(float))
+                        fprintf(stderr, "write fail\n");fflush(stderr);
+
+        fprintf(stderr, "j %d\n", j); fflush(stderr);
                 }
+        fprintf(stderr, "Parent %d\n", i); fflush(stderr);
             }
         
         }
+        fprintf(stderr, "Parent HERE\n"); fflush(stderr);
 
 
         // Get localDiff and iteration for each sub matrix
