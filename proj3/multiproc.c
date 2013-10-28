@@ -85,7 +85,6 @@ int main(int argc, char* argv[])
         if (pid == 0) {
 
             // Create sub-matrix
-            //if (Nprocesses == 1) Nprocesses++;
             float sub_x[NN/Nprocesses + 2][NN + 2];
             float localDiff;
 
@@ -97,44 +96,85 @@ int main(int argc, char* argv[])
                 float value;
                 int i, j;
 
-                // Read entire section
-                for (i = 0; i <= NN + 1; i++) {
+                // Top/bottom borders are special cases
+                if (procNum == 0) {
                     for (j = 0; j <= NN + 1; j++) {
                         while (read(inPipe[procNum][0], &value, sizeof(float)) != sizeof(float));
-                        // 
+                        sub_x[0][j] = value;    
+                        //fprintf(stderr, "%f ", sub_x[0][j]);fflush(stderr);
+                    }
+                        //fprintf(stderr, "\n");fflush(stderr);
+                }
+                // Read entire section
+                //for (i = 0; i <= NN + 1; i++) {
+                //for (i = NN/Nprocesses * procNum; i <= NN/Nprocesses * (procNum + 1) + 1; i++) {
+                for (i = NN/Nprocesses * procNum + 1; i <= NN/Nprocesses * (procNum + 1); i++) {
+                    for (j = 0; j <= NN + 1; j++) {
+                        while (read(inPipe[procNum][0], &value, sizeof(float)) != sizeof(float));
                         sub_x[i][j] = value;    
-
                         //fprintf(stderr, "%f ", sub_x[i][j]);fflush(stderr);
                     }
                         //fprintf(stderr, "\n");fflush(stderr);
                 }
 
+                // Top/bottom borders are special cases
+                if (procNum == Nprocesses - 1) {
+                    for (j = 0; j <= NN + 1; j++) {
+                        while (read(inPipe[procNum][0], &value, sizeof(float)) != sizeof(float));
+                        sub_x[NN + 1][j] = value;    
+                        //fprintf(stderr, "%f ", sub_x[NN + 1][j]);fflush(stderr);
+                    }
+                        //fprintf(stderr, "\n");fflush(stderr);
+                }
+
+                //exit(0);
+
                 // Do sub-jacobi
                 //for (i = NN / NProcesses * procNum + 1; i <= NN / Nprocesses * (procNum + 1); i++) {
                 // TODO might have to have specific case for last proc
 
-                close(1); dup2(outPipe[procNum][1], 1);
-                for (i = 1; i <= NN / Nprocesses; i++) {
+                //close(1); dup2(outPipe[procNum][1], 1);
+                //for (i = 1; i <= NN / Nprocesses; i++) {
+                //for (i = NN/Nprocesses * procNum + 1; i <= NN/Nprocesses * (procNum + 1); i++) {
+                for (i = NN/Nprocesses * procNum + 1; i <= NN/Nprocesses * (procNum + 1); i++) {
                     for (j = 1; j <= NN; j++) {
                         // don't store, write
                         float temp = a1 * sub_x[i-1][j] + 
                                      a2 * sub_x[i][j-1] + 
                                      a3 * sub_x[i+1][j] +
                                      a4 * sub_x[i][j+1];
-                        //    fprintf(stderr, "%f %d %d\n", sub_x[i][j][t], i, j);
+                        fprintf(stderr, "%f ", temp);fflush(stderr);
                         write(outPipe[procNum][1], &temp, sizeof(float));
 
                         if (myabs(temp - sub_x[i][j]) > localDiff) {
                             localDiff = myabs(temp - sub_x[i][j]);
                         }
                     }
+                        fprintf(stderr, "\n");fflush(stderr);
                 }
+
+                // Last row is a special case
+                if (procNum == Nprocesses - 1) { 
+                    i = NN;
+                    for (j = 1; j <= NN; j++) {
+                        // don't store, write
+                        float temp = a1 * sub_x[i-1][j] + 
+                                     a2 * sub_x[i][j-1] + 
+                                     a3 * sub_x[i+1][j] +
+                                     a4 * sub_x[i][j+1];
+                        fprintf(stderr, "%f ", temp);fflush(stderr);
+                        write(outPipe[procNum][1], &temp, sizeof(float));
+
+                        if (myabs(temp - sub_x[i][j]) > localDiff) {
+                            localDiff = myabs(temp - sub_x[i][j]);
+                        }
+                    }
+                        fprintf(stderr, "\n");fflush(stderr);
+                }
+
+
                 //fprintf(stderr, "localdiff: %f\n", localDiff);fflush(stderr);
                 write(outPipe[procNum][1], &localDiff, sizeof(float));
-
-                if (check == 2)
-                    exit(0);
-                //check++;
                 
             } // End while 1
             } // End if pid is 0
@@ -155,43 +195,72 @@ int main(int argc, char* argv[])
                     //for (i = NN / Nthreads * myNum + 1; i <= NN / Nthreads * (myNum + 1); i++) {
                     // Prep pipe for write
                     //close(inPipe[procNum][0]);
-                    close(1); dup2(inPipe[procNum][1], 1);
+                    //close(1); dup2(inPipe[procNum][1], 1);
+
+                    // Top/bottom borders are special cases
+                    if (procNum == 0) {
+                        for (j = 0; j <= NN + 1; j++) {
+                            if (write(inPipe[procNum][1], &(x[0][j][t]), sizeof(float)) != sizeof(float))
+                                fprintf(stderr, "write fail\n");fflush(stderr);
+                        }
+                    }
 
                     // Write sub-matrix of x to pipe
-                    //for (i = NN / Nprocesses * procNum + 1; i <= NN / Nprocesses * (procNum + 1); i++) {
-                    //for (i = NN / Nprocesses * procNum; i <= NN / Nprocesses * (procNum + 1) + 1; i++) {
-                    for (i = 0; i <= NN + 1; i++) {
+                    //for (i = 0; i <= NN + 1; i++) {
+                    for (i = NN/Nprocesses * procNum + 1; i <= NN/Nprocesses * (procNum + 1); i++) {
                         for (j = 0; j <= NN + 1; j++) {
                             if (write(inPipe[procNum][1], &(x[i][j][t]), sizeof(float)) != sizeof(float))
                                 fprintf(stderr, "write fail\n");fflush(stderr);
                             //fprintf(stderr, "Parent passes: %f\n", x[i][j][t]);fflush(stderr);
                         }
                     }
+
+                    // Top/bottom borders are special cases
+                    if (procNum == Nprocesses - 1) {
+                        for (j = 0; j <= NN + 1; j++) {
+                            if (write(inPipe[procNum][1], &(x[NN + 1][j][t]), sizeof(float)) != sizeof(float))
+                                fprintf(stderr, "write fail\n");fflush(stderr);
+                        }
+                    }
                 }
 
                 // Get localDiff and iteration for each sub matrix
                 for (int procNum = 0; procNum < Nprocesses; procNum++) {
+                    fprintf(stderr,"proc: %d \n", procNum); fflush(stderr);
 
                     //close(outPipe[procNum][0]);
-                    close(1); dup2(outPipe[procNum][1], 1);
+                   // close(1); dup2(outPipe[procNum][1], 1);
 
                     // Read localDiffs
                     float localDiff;
 
                     // Write back x
-                    for (i = 1; i <= NN / Nprocesses; i++) {
+                    //for (i = 1; i <= NN / Nprocesses; i++) {
+                    for (i = NN/Nprocesses * procNum + 1; i <= NN/Nprocesses * (procNum + 1); i++) {
                         for (j = 1; j <= NN; j++) {
                             read(outPipe[procNum][0], &(x[i][j][t]), sizeof(float));
-                     fprintf(stderr,"%f ", x[i][j][t]); fflush(stderr);
+                            //fprintf(stderr,"%f ", x[i][j][t]); fflush(stderr);
                         }
-                     fprintf(stderr,"\n"); fflush(stderr);
+                        //fprintf(stderr,"\n"); fflush(stderr);
                     }
+
+                    // Last row NN is a special case
+                    if (procNum == Nprocesses - 1) {
+                        i = NN;
+                        for (j = 1; j <= NN; j++) {
+                            read(outPipe[procNum][0], &(x[i][j][t]), sizeof(float));
+                            //fprintf(stderr,"%f ", x[i][j][t]); fflush(stderr);
+                        }
+                        //fprintf(stderr,"\n"); fflush(stderr);
+                    }
+
                     read(outPipe[procNum][0], &localDiff, sizeof(float));
                     fprintf(stderr, "localdiff: %f\n", localDiff);fflush(stderr);
 
                     if (localDiff > maxdiff1) {
                         maxdiff1 = localDiff;
                     }
+                    fprintf(stderr,"proc: %d \n", procNum); fflush(stderr);
 
                 } // End receive matrix and localDiff, calc maxdiff1
 
