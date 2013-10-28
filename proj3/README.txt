@@ -19,10 +19,17 @@ Able to beat under what circumstances:
     32.23user 0.24system 0:05.91elapsed 549%CPU
     PTHREADS (16 threads)
     25.32user 0.16system 0:05.90elapsed 431%CPU
+    MULTIPROC
+    Can't beat it
 
 
 How to compile:
+    make
+
 
 Known Bugs:
+    Pthreads seems to have boundary issues, a small fraction of output will be slightly off
+    Multiproc seems to have boundary issues, a small fraction of output will be slightly off
+    Multiproc doesn't beat sequential
 
 

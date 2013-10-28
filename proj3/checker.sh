@@ -33,5 +33,10 @@ do
 done
 
 # MULTIPROC
+echo [*] Building sequential output...
+cat tests/small | /usr/bin/time ./seq > /dev/null
+echo [*] Running multiproc with 1 proc...
+cat tests/small | /usr/bin/time ./multiproc 1 > /dev/null
+cmp proj3.output multiproc.output
 
 
