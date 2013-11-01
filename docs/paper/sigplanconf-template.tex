@@ -111,6 +111,8 @@ I am leveraging Intel PIN to perform dynamic binary instrumentation. I plan to t
 
 \section{Research}
 
+\subsection{Dynamic Taint Analysis}
+
 Dynamic taint analysis (DTA) is the process of locating sources of taint and following their propagation through a binary to data sinks. Since, for exploitation, bugs must be triggered by user input, DTA usually identifies all user input (files, command line arguments, UI interactions, ...) as tainted, and marks it accordingly.
 
 The granularity of taint marking is variable. Assigning everything from a generic binary value of tainted/not tainted to bit-level marking of which part of user input affected which variable is conceivable, although finer-grained taint analysis is more computationally expensive and difficult to determine [CITE]. 
@@ -123,12 +125,34 @@ For my project, implicit data flows are very important, so I need to implement D
 
 DTA has been used to implement smart mutation fuzzers [A], but I think my work is unique from and complementary to Bekrar's work. In [A], DTA is proposed as a way to intelligently decide which parts of user input should be mutated. I plan to add on to this idea by allowing smarter mutations to be selected by backsolving to decide which values are most likely to result in new paths being explored. 
 
+\subsection{Symbolic Execution}
+
+Symbolic execution supplies symbolic instead of concrete values for input [O]. This technique has been used to effectively detect bugs in software [Q], although historically it has required access to source code, which makes traditional symbolic execution infeasible in many vulnerability research situations where source code is unavailable. In addition, symbolic execution often uses instruction translators like QEMU [K] and satisfiability modulo theorem solvers like Z3 [P], which introduce significant overhead. This makes it difficult for symbolic execution to scale past the order of tens of thousands of lines of code. 
+
+Current research focuses on carefully deciding when to use symbolic execution [J, CITE]. Such so-called concolic execution mixes concrete and symbolic input, and various heuristics to determine when to resort to symbolic execution are in research [CITE].
+
+Without utilizing symbolic execution, however, it is difficult to automatically guarantee that all possible paths in a binary have been explored. Where most current research focuses on improving speed by using symbolic execution less, I propose to achieve similar code coverage to symbolic execution by implementing something similar to symbolic execution, but without using the SMT solvers and instruction emulation which tend to make symbolic execution slow.
+
 \section{Implementation}
 
 	I plan to implement dynamic taint analysis for files as input sources. I am basing my DTA heavily on Jonathan Salwan\'s work [N]. I've been in contact with him and received permission to use his sample code. I can watch for all reads after a file is opened, then tag user input and follow it as it moves throughout the binary.
 	I will need to implement a system which keeps track of how taint propagates at the instruction level. A directed graph structure, with initial nodes representing the bytes of user input and edges pointing to subsequent instructions which propagate taint, along with some metadata to make backsolving easier, seems like a reasonable data structure.
 	
+\section{Setbacks}
+
+Dynamic taint analysis and fuzzing are hot topics of research, and so the area moves quickly. I have been trying to come up with ideas which are both novel and implementable within my graduation timeframe, but this has proved difficult.
+
+I have made progress using the Pin instrumentation framework, and feel comfortable developing code using the API. I have also read quite a few papers which have progressed my knowledge of the area, so in the worst case I have still learned a lot about a subject that interests me and written some code. I think, at the least, this can be a project option for my graduation, but I still think a thesis is possible.
+
+I need to:
+\begin{itemize}
+	\item Read more papers to make sure what I am proposing is novel and will not step on any toes.
+	\item Begin writing a prototype and prove that a subset of I am proposing is feasible.
+	\item Benchmark my prototype against modern applications like S2E and Peach Fuzzer to decide whether or not it makes sense to continue.
+\end{itemize}
+	
 \section{References}
+
 \begin{itemize}
 	\item [A] Bekrar, Sofia, et al. "A taint based approach for smart fuzzing." Software Testing, Verification and Validation (ICST), 2012 IEEE Fifth International Conference on. IEEE, 2012.
 	\item [B] DeMott, J., Enbody, R., and Punch, W. "Revolutionizing the Field of Grey-box Attack Surface Testing with
@@ -145,6 +169,10 @@ Evolutionary Fuzzing", BlackHat and Defcon 2007.
 	\item [L] Guillon, Christophe. "Program Instrumentation with QEMU." 1st International QEMU Users’ Forum. 2011.
 	\item [M] Luk, Chi-Keung, et al. "Pin: building customized program analysis tools with dynamic instrumentation." Acm Sigplan Notices. Vol. 40. No. 6. ACM, 2005.
 	\item [N] Salwan, Jonathan. Shell-storm.org %\url{http://shell-storm.org/blog/Taint-analysis-and-pattern-matching-with-Pin/}
+	\item [O] King, James C. "Symbolic execution and program testing." Communications of the ACM 19.7 (1976): 385-394.
+	\item [P] De Moura, Leonardo, and Nikolaj Bjørner. "Z3: An efficient SMT solver." Tools and Algorithms for the Construction and Analysis of Systems. Springer Berlin Heidelberg, 2008. 337-340.
+	\item [Q] Godefroid, Patrice, Michael Y. Levin, and David Molnar. "Sage: Whitebox fuzzing for security testing." Queue 10.1 (2012): 20.
+
 
 \end{itemize}
 
