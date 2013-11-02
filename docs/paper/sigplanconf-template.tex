@@ -114,6 +114,8 @@ I am hopeful about the results because current selective symbolic execution engi
 
 I am leveraging Intel PIN to perform dynamic binary instrumentation. I plan to test first on dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, should create an appropriate binary. I then plan to test against S2E and Peach Fuzzer. I already have this program written and have verified using IDA Pro that there are a many, many paths to try and find.
 
+There are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics and could be the subject of future research.
+
 \section{Research}
 
 \subsection{Dynamic Taint Analysis}
@@ -142,16 +144,18 @@ Call-chain-backward symbolic execution has been proposed by [R], although this t
 
 \subsection{Concolic Execution}
 
-Current research focuses on carefully deciding when to use symbolic execution [J, T, CITE]. So-called concolic execution mixes concrete and symbolic input, and various heuristics to determine when to resort to symbolic execution are in research [CITE].
+Current research focuses on carefully deciding when and how to use symbolic execution [J, T, W, CITE]. So-called concolic execution mixes concrete and symbolic input, and various heuristics to determine when to resort to symbolic execution are in research [CITE].
+
+Concolic testing has been shown to improve runtime while still allowing both wide and deep inspection of a program's execution tree, although it often still requires source code to be instrumented [X, Y].
+
 
 \section{Implementation}
 
-	I plan to implement dynamic taint analysis for files as input sources. I am basing my DTA heavily on Jonathan Salwan\'s work [N]. I've been in contact with him and received permission to use his sample code. I can watch for all reads after a file is opened, then tag user input and follow it as it moves throughout the binary.
+I plan to implement dynamic taint analysis for files as input sources. I am basing my DTA heavily on Jonathan Salwan\'s work [N]. I've been in contact with him and received permission to use his sample code. I can watch for all reads after a file is opened, then tag user input and follow it as it moves throughout the binary.
 	
-	I will need to implement a system which keeps track of how taint propagates at the instruction level. A directed graph structure, with initial nodes representing the bytes of user input and edges pointing to subsequent instructions which propagate taint, along with some metadata to make backsolving easier, seems like a reasonable data structure.
+I will need to implement a system which keeps track of how taint propagates at the instruction level. A directed graph structure, with initial nodes representing the bytes of user input and edges pointing to subsequent instructions which propagate taint, along with some metadata to make backsolving easier, seems like a reasonable data structure.
 
-Testing can begin on 	
-	
+Testing can begin on dummy programs which use a subset of all possible comparisons and arithmetic operations on tainted variables. If results appear promising I can try to make the fuzzer as complete as possible and begin running it on real-world applications. Achieving a noticeable speedup over modern symbolic execution would be the goal.
 	
 \section{Setbacks}
 
@@ -192,7 +196,9 @@ Evolutionary Fuzzing", BlackHat and Defcon 2007.
 	\item [T] Wang, Tielei, et al. "Checksum-aware fuzzing combined with dynamic taint analysis and symbolic execution." ACM Transactions on Information and System Security (TISSEC) 14.2 (2011): 15.
 	\item [U] Cadar, Cristian, and Koushik Sen. "Symbolic execution for software testing: three decades later." Communications of the ACM 56.2 (2013): 82-90.
 	\item [V] Cadar, Cristian, Daniel Dunbar, and Dawson R. Engler. "KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs." OSDI. Vol. 8. 2008.
-	
+	\item [W] McCamant, Stephen, et al. Transformation-aware symbolic execution for system test generation. Tech. Rep. UCB/EECS-2013-125, University of California, Berkeley (Jun 2013), 2013.
+	\item [X] Majumdar, Rupak, and Koushik Sen. "Hybrid concolic testing." Software Engineering, 2007. ICSE 2007. 29th International Conference on. IEEE, 2007.
+	\item [Y] Sen, Koushik, Darko Marinov, and Gul Agha. CUTE: a concolic unit testing engine for C. Vol. 30. No. 5. ACM, 2005.
 
 \end{itemize}
 
