@@ -146,12 +146,11 @@ Call-chain-backward symbolic execution has been proposed by [R], although this t
 
 Current research focuses on carefully deciding when and how to use symbolic execution [J, T, W, CITE]. So-called concolic execution mixes concrete and symbolic input, and various heuristics to determine when to resort to symbolic execution are in research [CITE].
 
-Concolic testing has been shown to improve runtime while still allowing both wide and deep inspection of a program's execution tree, although it often still requires source code to be instrumented [X, Y].
-
+Concolic testing has been shown to improve runtime while still allowing both wide and deep inspection of a program's execution tree, although it often still requires source code to be instrumented [X, Y]. What I propose is akin to concolic testing, in that I am augmenting concrete execution with dynamic taint analysis to solve for mutations which will exercise new paths in the code. However, the lack of a heavyweight constraint solver and the ability to work on binaries without instrumenting or using source code in any way have, to the best of my knowledge, not yet been proposed.
 
 \section{Implementation}
 
-I plan to implement dynamic taint analysis for files as input sources. I am basing my DTA heavily on Jonathan Salwan\'s work [N]. I've been in contact with him and received permission to use his sample code. I can watch for all reads after a file is opened, then tag user input and follow it as it moves throughout the binary.
+I plan to implement dynamic taint analysis for files as input sources. I am basing my DTA heavily on Jonathan Salwan\'s work [N]. I've been in contact with him and received permission to use his sample code. I can watch for all reads after a file is opened, then tag user input at the byte level and follow it as it moves throughout the binary.
 	
 I will need to implement a system which keeps track of how taint propagates at the instruction level. A directed graph structure, with initial nodes representing the bytes of user input and edges pointing to subsequent instructions which propagate taint, along with some metadata to make backsolving easier, seems like a reasonable data structure.
 
@@ -159,15 +158,25 @@ Testing can begin on dummy programs which use a subset of all possible compariso
 	
 \section{Setbacks}
 
-Dynamic taint analysis and fuzzing are hot topics of research, and so the area moves quickly. I have been trying to come up with ideas which are both novel and implementable within my graduation timeframe, but this has proved difficult.
+Dynamic taint analysis, symbolic execution and fuzzing are hot topics of research, and so the area moves quickly. I have been trying to come up with ideas which are both novel and implementable within my graduation timeframe, but this has proved difficult.
 
-I have made progress using the Pin instrumentation framework, and feel comfortable developing code using the API. I have also read quite a few papers which have progressed my knowledge of the area, so in the worst case I have still learned a lot about a subject that interests me and written some code. I think, at the least, this can be a project option for my graduation, but I still think a thesis is possible.
+I have made progress using the Pin instrumentation framework, and feel comfortable developing code using the API. I have also read quite a few papers which have progressed my knowledge of the area, so in the worst case I have still learned a lot about a subject that interests me and written some code. In addition, using the Pin API to instrument binaries, and debugging my pintools using tools like strace, has taught me more about assembly language, which is valuable for reverse engineering, a branch of information security I want to pursue a career in.
+
+I think, at the least, this can be a project option for my graduation, but I still believe a thesis is possible at this point.
 
 I need to:
 \begin{itemize}
 	\item Read more papers to make sure what I am proposing is novel and will not step on any toes.
 	\item Begin writing a prototype and prove that a subset of I am proposing is feasible.
 	\item Benchmark my prototype against modern applications like S2E and Peach Fuzzer to decide whether or not it makes sense to continue.
+\end{itemize}
+
+Possible complications are:
+
+\begin{itemize}
+	\item Difficulty achieving completeness. Since there are many different ways that user input can be modified and compared, there will be many cases to account for. I think I can at least implement a subset of them in order to demonstrate speedup under a specific set of circumstances
+	\item This work is not novel. Until very recently I was looking at DTA more than symbolic execution, so it is hard to say whether my proposal is actually new. I'm doing my best to read all the relevant papers, and so far it appears that the use of a separate constraint solver or other satisfiability prover is a prerequisite of symbolic execution.
+	\item No noticeable speedup. Pin introduces noticeable overhead, and my ideas may simply not be faster than current approaches, even when test cases are reasonably tailored to work in my favor. In this case I simply go the project route unless something else strikes me. Although research with negative results is theoretically publishable, I don't see very much of it, so I assume it's a faux pas in computer science.
 \end{itemize}
 	
 \section{References}
