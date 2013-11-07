@@ -16,62 +16,73 @@ using namespace std;
 // TODO every 5 minutes, write this to a file
 vector<user> users;
 
-// TODO
-// parseInput() for commands, receives string from main.cpp user input
-//                      returns string for main.cpp to handle
-// 
 
+/*
+ *  User Constructor
+ */
 user::user(string n, 
            string pw,
-           string info,
-           unsigned int wins,
-           unsigned int losses)
+           string i = "<none>",
+           int w = 0,
+           int l = 0)
 {
     name = n;
     password = pw;
-    wins = 0;
-    losses = 0;
+    info = i;
+    wins = w;
+    losses = l;
 }
 
 
 /*
  *  Register a new user.
+ *  Returns string informing success/failure.
  *  Only the guest user may register new users.
  *  Usernames should be unique. 
  */
-void registerUser(string n, string pw)
+string registerUser(string n, string pw)
 {
 
     for (vector<user>::iterator it = users.begin(); it != users.end(); ++it) {
 
         if (it->getName() == n) {
-            return;    
+            return it->getName() + " registered already.";    
         } 
     }
 
     // Create new user with no wins, losses, or info.
-    user newUser(n, pw, "", 0, 0);    
+    user newUser(n, pw);    
     users.push_back(newUser);    
-    return;
+    return "User created.";
 
 }
 
 /*
- *  Print a user's stats
- *  TODO check tesla when it's back up so we can see how sample works
- *
+ *  Print a user's stats.
+ *  Returns string.
  */ 
 string user::stats()
 {
     string res = "";
     res += "User: " + this->getName() + "\n";
     res += "Info: " + this->getInfo() + "\n";
-    res += "Rating: " + "0.000" + "\n";
-    //res += "Wins: " + itoa(this->getWins()) + ", Losses: " + itoa(this->getLosses()) + "\n";;
-    //Info: <none>
+    res += "Rating: ";
+    res += "0.000";
+    res += "\n";
+    res += "Wins: ";
+    res += static_cast<ostringstream*>( &(ostringstream() << this->getWins() ) )->str();
+    res += ", Losses: ";
+    res += static_cast<ostringstream*>( &(ostringstream() << this->getLosses() ) )->str();
+    res += "\n";
 
-    //cwood is currently online.
-    return info;
+    /* TODO use this when we have a way to determine if user is online or not.
+    res += "\n";
+    res += this->getName();
+    res += " ";
+    res += "is currently online\n";
+    */
+
+    return res;
 }
 
 
@@ -109,8 +120,5 @@ bool user::setInfo(string i)   // Used for info command
 }
 
 
-
-
 #endif
-
 
