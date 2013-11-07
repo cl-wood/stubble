@@ -1,0 +1,246 @@
+%-----------------------------------------------------------------------------
+%
+%               Template for sigplanconf LaTeX Class
+%
+% Name:         sigplanconf-template.tex
+%
+% Purpose:      A template for sigplanconf.cls, which is a LaTeX 2e class
+%               file for SIGPLAN conference proceedings.
+%
+% Guide:        Refer to "Author's Guide to the ACM SIGPLAN Class,"
+%               sigplanconf-guide.pdf
+%
+% Author:       Paul C. Anagnostopoulos
+%               Windfall Software
+%               978 371-2316
+%               paul@windfall.com
+%
+% Created:      15 February 2005
+%
+%-----------------------------------------------------------------------------
+
+
+\documentclass[10pt, twocolumn, times, nocopyrightspace, preprint]{sigplanconf}
+
+% The following \documentclass options may be useful:
+
+% preprint      Remove this option only once the paper is in final form.
+% 10pt          To set in 10-point type instead of 9-point.
+% 11pt          To set in 11-point type instead of 9-point.
+% authoryear    To obtain author/year citation style instead of numeric.
+
+\usepackage{amsmath}
+
+
+\begin{document}
+
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+
+\conferenceinfo{CONF 'yy}{Month d--d, 20yy, City, ST, Country} 
+\copyrightyear{20yy} 
+\copyrightdata{978-1-nnnn-nnnn-n/yy/mm} 
+\doi{nnnnnnn.nnnnnnn}
+
+% Uncomment one of the following two, if you are not going for the 
+% traditional copyright transfer agreement.
+
+%\exclusivelicense                % ACM gets exclusive license to publish, 
+                                  % you retain copyright
+
+%\permissiontopublish             % ACM gets nonexclusive license to publish
+                                  % (paid open-access papers, 
+                                  % short abstracts)
+
+\titlebanner{banner above paper title}        % These are ignored unless
+\preprintfooter{short description of paper}   % 'preprint' option specified.
+
+\title{Pseudo-Symbolic Execution (Or Minimialistic Constraint Solving) Using Dynamic Taint Analysis and Backsolving}
+%\subtitle{Subtitle Text, if any}
+
+\authorinfo{Clark Wood}
+           {Florida State University}
+           {clark.w.wood@gmail.com}
+%\authorinfo{Name2\and Name3}
+%           {Affiliation2/3}
+%           {Email2/3}
+
+\maketitle
+
+%\begin{abstract}
+%This is the text of the abstract.
+%\end{abstract}
+
+\category{CR-number}{subcategory}{third-level}
+
+% general terms are not compulsory anymore, 
+% you may leave them out
+%\terms
+%term1, term2
+
+%\keywords
+%keyword1, keyword2
+
+\section{Introduction}
+
+Finding exploitable bugs in binaries is a difficult and lucrative endeavour. Fuzzing, or the feeding of random input into processes to try and detect vulnerable conditions [CITE], is one technique used by researchers and analysts. Applications tested for vulnerabilities are often black boxes because source code is unavailable. This piles difficulties onto an already complex problem, of which much of current research attempts to solve or reduce [CITES]. Among these issues are i) efficient and thorough dynamic taint analysis [CITE], ii) the path explosion problem [U], and iii) the code coverage problem [CITE?]. Dynamic taint analysis is difficult because taint can propagate directly via assignment, or indirectly via affecting control flows which affect assignment [D], which make proper implementation tricky. The path explosion problem arises from the nature of assembly languages. Jump instructions, which may make up as much as X\% of machine instructions in programs [CITE], each multiply the total number of existing paths in a binary by two. Considering the size of binaries, this quickly leads to an un-tenably large set of possible paths to explore via conventional techniques like symbolic execution. And even if it is possible to explore all paths in a binary, analysts still need sample input which can trigger the vulnerable condition, perhaps proving that the binary is exploitable along the way. Such automated exploit generation is the subject of much research [H, I, CITES].
+
+This work aims to reduce the severity of the latter two problems while being wary of the first during implementation. Instead of trying to attain more reasonable performance by using symbolic execution less or more wisely [J], I focus instead on approximating symbolic execution by using dynamic taint analysis to drive mutation. This is possible by tracking taint at the instruction level, then backsolving from the jump to the source of taint to come up with smarter ways to mutate user input and create new test cases. For instance, in the below example:
+
+\begin{verbatim}
+mv eax, userInput1
+mv ebx, userInput2
+cmp eax, ebx
+jge 0xDEADBEEF
+\end{verbatim}
+
+If we already had a test case where userInput1 equalled 10 and userInput2 equalled 5, this test case would jump to 0xDEADBEEF. To generate a test case where we would not jump, we take the complement of the jge instruction's comparison function, which would be "less than". We can find the last instruction that modified the Z flag, which is how jge decides to jump or not. We see that this compare instruction was tained by the eax and ebx registers, which were in turn tainted by userInputs 1 and 2. Since we can impact both values in the comparison, it is easy to modify user input smartly to alter the value of the Z flag and jump during the next execution. Perhaps we could switch the values, or auto-increment/decrement one until we satisfy the needed comparison, or mutate values randomly.
+
+This works similarly to a constraint solver, but constraint solving appears to be a traditional bottleneck, requiring generating symbolic input, usually in a different language like LLVM intermediate representation [V] and passing execution to the constraint solver.
+
+I propose to avoid using a constraint solver entirely, and instead backsolve completely in memory. This is easier to implement than many of the clever optimizations used by S2E and could result in speedup over symbolic execution.
+
+
+There are a finite number of ways to compare data in x86, so I can create cases for all possible ways jumps are decided. I only want to prove this is possible however, so I will only implement a subset and instead comment on how to implement the other comparisons.
+
+\section{Assumptions and Scoping}
+
+I assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths by creating a list of jump locations. Since the world is moving more and more toward 64-bit architectures, I plan to implement the technique for x86\_64.
+
+I also assume the presence of an algorithm which will detect an exploitable condition, provided it is given the proper binary and input to the binary. The program will then attempt to concretely execute each path within the binary by backsolving, hopefully at a greater speed than symbolic execution. 
+
+I am hopeful about the results because current selective symbolic execution engines still appear to introduce significant overhead (Between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others) [J, K, L]. In contrast, basic block counting using Intel Pin, the framework I am leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for my proposed technique will introduce greater levels of overhead, since I will be working at the instruction level instead of the basic block level.
+
+I am leveraging Intel PIN to perform dynamic binary instrumentation. I plan to test first on dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, should create an appropriate binary. I then plan to test against S2E and Peach Fuzzer. I already have this program written and have verified using IDA Pro that there are a many, many paths to try and find.
+
+There are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics and could be the subject of future research.
+
+\section{Research}
+
+\subsection{Dynamic Taint Analysis}
+
+Dynamic taint analysis (DTA) is the process of locating sources of taint and following their propagation through a binary to data sinks. Since, for exploitation, bugs must be triggered by user input, DTA usually identifies all user input (files, command line arguments, UI interactions, ...) as tainted, and marks it accordingly.
+
+The granularity of taint marking is variable. Assigning everything from a generic binary value of tainted/not tainted to bit-level marking of which part of user input affected which variable is conceivable, although finer-grained taint analysis is more computationally expensive and difficult to determine [CITE]. 
+
+Taint can propagate via explicit or implicit flows, sometimes also called data and control dependencies respectively [G]. Explicit flows involve a tainted variable, x, which is used in an assignment expression to compute a new variable, y. In this situation, x taints y, and if y is involved in any further assignment to a variable z, then x taints z by transitivity. In contrast, implicit data flows involve a tainted variable used to affect control flow within a program which subsequently sets the value of another variable, for instance at a branch [D]. 
+
+Because of subtle implicit flow cases referenced by Clause, J. et all [D], which can be difficult to spot (Page 2, Figure 2b). Implicit data flows are not always considered by dynamic tainting techniques [E]. 
+
+For my project, implicit data flows are very important, so I need to implement DTA which catches both implicit and explicit flows.
+
+DTA has been used to implement smart mutation fuzzers [A, T, MORE], but I think my work is unique from and complementary to Bekrar's work. In [A], DTA is proposed as a way to intelligently decide which parts of user input should be mutated. In [T], dynamic taint analysis identified hot bytes, which were then modified randomly or with boundary values.
+
+I plan to add on to these ideas by allowing smarter mutations to be selected by backsolving to decide which values are most likely to result in new paths being explored. This has been done with symbolic execution before, but traditional symbolic execution is much more heavy-weight, both in time required to setup the environment and in overhead introduced to run the program, than my proposed approach.
+
+\subsection{Symbolic Execution}
+
+Symbolic execution supplies symbolic instead of concrete values for input [O]. This technique has been used to effectively detect bugs in software [Q], although historically it has required access to source code, which makes traditional symbolic execution infeasible in many vulnerability research situations where source code is unavailable. In addition, symbolic execution often uses instruction translators like QEMU [K] and satisfiability modulo theorem solvers like Z3 [P], which introduce significant overhead. This makes it difficult for symbolic execution to scale past the order of tens of thousands of lines of code. 
+
+Without utilizing symbolic execution, however, it is difficult to automatically guarantee that all possible paths in a binary have been explored. Where most current research focuses on improving speed by using symbolic execution less, I propose to achieve similar code coverage to symbolic execution by implementing something similar to symbolic execution, but without using the SMT solvers and instruction emulation which tend to make symbolic execution slow.
+
+Call-chain-backward symbolic execution has been proposed by [R], although this technique achieved a backward symbolic execution by iteratively applying a forward execution from successively farther away points in the program and the reducing the set of possible symbolic inputs. In contrast, I propose to avoid symbolic execution, forward or backward, by backsolving concretely and then applying heuristics to generate concrete input which is highly likely to result in exploring a new path. Symbolic execution never occurs, although I believe in many situations an equal degree of precision in determining new paths can be attained.
+
+\subsection{Concolic Execution}
+
+Current research focuses on carefully deciding when and how to use symbolic execution [J, T, W, CITE]. So-called concolic execution mixes concrete and symbolic input, and various heuristics to determine when to resort to symbolic execution are in research [CITE].
+
+Concolic testing has been shown to improve runtime while still allowing both wide and deep inspection of a program's execution tree, although it often still requires source code to be instrumented [X, Y]. What I propose is akin to concolic testing, in that I am augmenting concrete execution with dynamic taint analysis to solve for mutations which will exercise new paths in the code. However, the lack of a heavyweight constraint solver and the ability to work on binaries without instrumenting or using source code in any way have, to the best of my knowledge, not yet been proposed.
+
+\section{Implementation}
+
+I plan to implement dynamic taint analysis for files as input sources. I am basing my DTA heavily on Jonathan Salwan\'s work [N]. I've been in contact with him and received permission to use his sample code. I can watch for all reads after a file is opened, then tag user input at the byte level and follow it as it moves throughout the binary.
+	
+I will need to implement a system which keeps track of how taint propagates at the instruction level. A directed graph structure, with initial nodes representing the bytes of user input and edges pointing to subsequent instructions which propagate taint, along with some metadata to make backsolving easier, seems like a reasonable data structure.
+
+Testing can begin on dummy programs which use a subset of all possible comparisons and arithmetic operations on tainted variables. If results appear promising I can try to make the fuzzer as complete as possible and begin running it on real-world applications. Achieving a noticeable speedup over modern symbolic execution would be the goal.
+	
+\section{Setbacks}
+
+Dynamic taint analysis, symbolic execution and fuzzing are hot topics of research, and so the area moves quickly. I have been trying to come up with ideas which are both novel and implementable within my graduation timeframe, but this has proved difficult.
+
+I have made progress using the Pin instrumentation framework, and feel comfortable developing code using the API. I have also read quite a few papers which have progressed my knowledge of the area, so in the worst case I have still learned a lot about a subject that interests me and written some code. In addition, using the Pin API to instrument binaries, and debugging my pintools using tools like strace, has taught me more about assembly language, which is valuable for reverse engineering, a branch of information security I want to pursue a career in.
+
+I think, at the least, this can be a project option for my graduation, but I still believe a thesis is possible at this point.
+
+I need to:
+\begin{itemize}
+	\item Read more papers to make sure what I am proposing is novel and will not step on any toes.
+	\item Begin writing a prototype and prove that a subset of I am proposing is feasible.
+	\item Benchmark my prototype against modern applications like S2E and Peach Fuzzer to decide whether or not it makes sense to continue.
+\end{itemize}
+
+Possible complications are:
+
+\begin{itemize}
+	\item Difficulty achieving completeness. Since there are many different ways that user input can be modified and compared, there will be many cases to account for. I think I can at least implement a subset of them in order to demonstrate speedup under a specific set of circumstances
+	\item This work is not novel. Until very recently I was looking at DTA more than symbolic execution, so it is hard to say whether my proposal is actually new. I'm doing my best to read all the relevant papers, and so far it appears that the use of a separate constraint solver or other satisfiability prover is a prerequisite of symbolic execution.
+	\item No noticeable speedup. Pin introduces noticeable overhead, and my ideas may simply not be faster than current approaches, even when test cases are reasonably tailored to work in my favor. In this case I simply go the project route unless something else strikes me. Although research with negative results is theoretically publishable, I don't see very much of it, so I assume it's a faux pas in computer science.
+\end{itemize}
+	
+\section{References}
+
+\begin{itemize}
+	\item [A] Bekrar, Sofia, et al. "A taint based approach for smart fuzzing." Software Testing, Verification and Validation (ICST), 2012 IEEE Fifth International Conference on. IEEE, 2012.
+	\item [B] DeMott, J., Enbody, R., and Punch, W. "Revolutionizing the Field of Grey-box Attack Surface Testing with
+Evolutionary Fuzzing", BlackHat and Defcon 2007.
+	\item [C] Schwartz, E.J., Avgerinos, T., Brumley, D. "All You Ever Wanted to Know About Dynamic Taint Analysis and Forward Symbolic Execution (but might have been afraid to ask)." 2010 IEEE Symposium on Security and Privacy.
+	\item [D] Clause, J. Li, W., Orso, A. "Dytan: a generic dynamic taint analysis framework". 2007 Int'l symposium on Software testing and analysis. ACM, 2007.
+	\item [E] ... "Beyond Instruction Level Taint Propagation".
+	\item [F] Yamaguchi, Fabian, Felix Lindner, and Konrad Rieck. "Vulnerability extrapolation: assisted discovery of vulnerabilities using machine learning." Proceedings of the 5th USENIX conference on Offensive technologies. USENIX Association, 2011.
+	\item [G] Bao, Tao, et al. "Strict control dependence and its effect on dynamic information flow analyses." Proceedings of the 19th international symposium on Software testing and analysis. ACM, 2010.
+	\item [H] Cha, Sang Kil, et al. "Unleashing mayhem on binary code." Security and Privacy (SP), 2012 IEEE Symposium on. IEEE, 2012.
+	\item [I] Avgerinos, Thanassis, et al. "AEG: Automatic Exploit Generation." NDSS. Vol. 11. 2011.
+	\item [J] Chipounov, Vitaly, Volodymyr Kuznetsov, and George Candea. "S2E: A platform for in-vivo multi-path analysis of software systems." ACM SIGARCH Computer Architecture News 39.1 (2011): 265-278.
+	\item [K] Bellard, Fabrice. "QEMU, a Fast and Portable Dynamic Translator." USENIX Annual Technical Conference, FREENIX Track. 2005.
+	\item [L] Guillon, Christophe. "Program Instrumentation with QEMU." 1st International QEMU Users’ Forum. 2011.
+	\item [M] Luk, Chi-Keung, et al. "Pin: building customized program analysis tools with dynamic instrumentation." Acm Sigplan Notices. Vol. 40. No. 6. ACM, 2005.
+	\item [N] Salwan, Jonathan. Shell-storm.org %\url{http://shell-storm.org/blog/Taint-analysis-and-pattern-matching-with-Pin/}
+	\item [O] King, James C. "Symbolic execution and program testing." Communications of the ACM 19.7 (1976): 385-394.
+	\item [P] De Moura, Leonardo, and Nikolaj Bjørner. "Z3: An efficient SMT solver." Tools and Algorithms for the Construction and Analysis of Systems. Springer Berlin Heidelberg, 2008. 337-340.
+	\item [Q] Godefroid, Patrice, Michael Y. Levin, and David Molnar. "Sage: Whitebox fuzzing for security testing." Queue 10.1 (2012): 20.
+	\item [R] Ma, Kin-Keung, et al. "Directed symbolic execution." Static Analysis. Springer Berlin Heidelberg, 2011. 95-111.
+	\item [S] Boyer, Robert S., Bernard Elspas, and Karl N. Levitt. "SELECT—a formal system for testing and debugging programs by symbolic execution." ACM SigPlan Notices. Vol. 10. No. 6. ACM, 1975.
+	\item [T] Wang, Tielei, et al. "Checksum-aware fuzzing combined with dynamic taint analysis and symbolic execution." ACM Transactions on Information and System Security (TISSEC) 14.2 (2011): 15.
+	\item [U] Cadar, Cristian, and Koushik Sen. "Symbolic execution for software testing: three decades later." Communications of the ACM 56.2 (2013): 82-90.
+	\item [V] Cadar, Cristian, Daniel Dunbar, and Dawson R. Engler. "KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs." OSDI. Vol. 8. 2008.
+	\item [W] McCamant, Stephen, et al. Transformation-aware symbolic execution for system test generation. Tech. Rep. UCB/EECS-2013-125, University of California, Berkeley (Jun 2013), 2013.
+	\item [X] Majumdar, Rupak, and Koushik Sen. "Hybrid concolic testing." Software Engineering, 2007. ICSE 2007. 29th International Conference on. IEEE, 2007.
+	\item [Y] Sen, Koushik, Darko Marinov, and Gul Agha. CUTE: a concolic unit testing engine for C. Vol. 30. No. 5. ACM, 2005.
+
+\end{itemize}
+
+%\appendix
+%\section{Appendix Title}
+
+%This is the text of the appendix, if you need one.
+
+%\acks
+
+%Acknowledgments, if needed.
+
+% We recommend abbrvnat bibliography style.
+
+\bibliographystyle{abbrvnat}
+
+% The bibliography should be embedded for final submission.
+
+%\begin{thebibliography}{}
+%\softraggedright
+
+%\bibitem[Smith et~al.(2009)Smith, Jones]{smith02}
+%P. Q. Smith, and X. Y. Jones. ...reference text...
+
+%\end{thebibliography}
+
+
+\end{document}
+
+%                       Revision History
+%                       -------- -------
+%  Date         Person  Ver.    Change
+%  ----         ------  ----    ------
+
+%  2013.06.29   TU      0.1--4  comments on permission/copyright notices
+
