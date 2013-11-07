@@ -84,46 +84,26 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 /* Instrumentation routines                                              */
 /* ===================================================================== */
 
-
-// Toggle logging on or off
-VOID ToggleLogging(bool status)
-{
-    IN_MAIN = status; 
-    // Global, can be turned off to speed up execution
-    //EnableInstrumentation = status;
-
-}
-
 // Instrument main function, this starts the other instrumentation objects.
+/*
 VOID WatchMain(IMG img, VOID *v)
 {
     // TODO might this work better?
-    //cout << IMG_IsMainExecutable(img) << endl;
-
-    RTN mainRtn = RTN_FindByName(img, LIBCSTART); 
-    if (RTN_Valid(mainRtn))
-    {
-        RTN_Open(mainRtn);
-
-        // Instrument main() to print the input argument value and the return value.
-        RTN_InsertCall(mainRtn, IPOINT_BEFORE, (AFUNPTR)ToggleLogging,
-                        IARG_BOOL, true,
-                        IARG_END);
-        RTN_InsertCall(mainRtn, IPOINT_AFTER, (AFUNPTR)ToggleLogging,
-                        IARG_BOOL, false,
-                        IARG_END);
-
-        RTN_Close(mainRtn);
+    for (IMG img = APP_ImgHead(); IMG_Valid(img); img = IMG_Next(img)) {
+        if (IMG_IsMainExecutable(img)) {
+            IMG_AddInstrumentFunction(LogMain, 0);
+        }
     }
 
 }
-   
+*/
+
 
 /* ===================================================================== */
 
 VOID Fini(INT32 code, VOID *v)
 {
-    FiniFollowExecution();
+    //FiniFollowExecution();
     FiniFindUseAfterFree();
     //FiniDTA();
 }
@@ -131,7 +111,7 @@ VOID Fini(INT32 code, VOID *v)
 /* ===================================================================== */
 /* Print Help Message                                                    */
 /* ===================================================================== */
-   
+
 INT32 Usage()
 {
     cerr << "This tool produces a trace of calls to malloc." << endl;
@@ -149,29 +129,29 @@ int main(int argc, char *argv[])
     PIN_InitSymbols();
     PIN_SetSyntaxIntel();
 
-    if( PIN_Init(argc,argv) )
+    if (PIN_Init(argc,argv) )
     {
         return Usage();
     }
-    
+
     // Init functions for modules
-    InitFollowExecution();
+    //InitFollowExecution();
     InitFindUseAfterFree();
     //InitDTA();
 
-//TaintFile.open("taint.out");
-//TaintFile << hex;
-//TaintFile.setf(ios::showbase);
+    //TaintFile.open("taint.out");
+    //TaintFile << hex;
+    //TaintFile.setf(ios::showbase);
 
     // Watch main function
-    IMG_AddInstrumentFunction(WatchMain, 0);
-    INS_AddInstrumentFunction(Instruction, 0);
+    //IMG_AddInstrumentFunction(WatchMain, 0);
+    //INS_AddInstrumentFunction(Instruction, 0);
 
     PIN_AddFiniFunction(Fini, 0);
 
     // Never returns
     PIN_StartProgram();
-    
+
     return 0;
 }
 
