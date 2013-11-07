@@ -1,2 +1,2 @@
 Pin 2.12 kit 58423
-E: Unable to load obj-ia32/MyPinTool.so.  Check the architecture type.
+E: Unable to load obj-intel64/MyPinTool.so.  Check the architecture type.

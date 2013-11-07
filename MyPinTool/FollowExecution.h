@@ -1,38 +1,55 @@
 // FollowExecution.h
 
+#include <sstream>
+#include <algorithm>
+#include <iterator>
+#include <vector>
+
+
 /* ===================================================================== */
 /* Control Flow following jumps                                          */
 /* ===================================================================== */
 std::ofstream ControlFlowFile;
 
+/*
+ * Records whether branch taken or not 
+ */
+//VOID TaintBranch(ADDRINT ins, INT32 branchTaken) {
+VOID TaintBranch(ADDRINT ins, INT32 branchTaken) {
+    if (branchTaken) {
+        ControlFlowFile << ins << " " << "BRANCH" << endl;
+    }
+    else {
+        ControlFlowFile << ins << " " << "NO BRANCH" << endl;
+    }
+}
 
-// For Mutation 
-typedef struct 
+/*
+ *  Handle taint propagation during branches. Record if branch was taken or not. 
+ */ 
+VOID Branches(INS ins, VOID *v)
 {
-    vector<UINT32> addresses;
-    vector<string> instructions;
-} ControlFlowStruct;
 
-ControlFlowStruct ControlFlow;
+    // Print whether Conditional branch taken or not
+    if (INS_Category(ins) == XED_CATEGORY_COND_BR) { 
 
 
-// Record every taken jump
-// TODO find a better way to ONLY look at instructions inside main
-VOID FollowBranches(INS ins, VOID *v)
-{
-    if (!IN_MAIN) {
-        return;
+
+        INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(TaintBranch),
+                       IARG_INST_PTR,
+                       IARG_BRANCH_TAKEN,
+                       IARG_END);
     }
 
-    if (INS_IsBranch(ins)) {
-        //ControlFlowFile << INS_Disassemble(ins) << endl;
-        // TODO instead of addresses, which will change, get the instruction and (jmpAddr - currentAddr), maybe that'll work better
-        //ControlFlowFile << StringFromAddrint(INS_NextAddress(ins)) << endl;
-        ControlFlowFile << CATEGORY_StringShort(INS_Category(ins)) << ":" 
-                        << StringFromAddrint(INS_NextAddress(ins) - INS_Address(ins)) << endl;
-    }
+} // End Branches
 
-} // End FollowBranches
+/*
+    if (INS_Opcode(ins) == XED_ICLASS_MOV &&
+        INS_IsMemoryRead(ins) && 
+        INS_OperandIsReg(ins, 0) &&
+        INS_OperandIsMemory(ins, 1))
+
+*/
 
 VOID InitFollowExecution()
 {
@@ -40,7 +57,8 @@ VOID InitFollowExecution()
     ControlFlowFile << hex;
     ControlFlowFile.setf(ios::showbase);
 
-    INS_AddInstrumentFunction(FollowBranches, 0);
+    INS_AddInstrumentFunction(Branches, 0);
+
 }
 
 VOID FiniFollowExecution()

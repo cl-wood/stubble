@@ -66,7 +66,7 @@ bool IN_MAIN = false;
 /* ===================================================================== */
 #include "FollowExecution.h"
 //#include "DTA.h"
-#include "FindUseAfterFree.h"
+//#include "FindUseAfterFree.h"
 
 
 /* ===================================================================== */
@@ -103,8 +103,8 @@ VOID WatchMain(IMG img, VOID *v)
 
 VOID Fini(INT32 code, VOID *v)
 {
-    //FiniFollowExecution();
-    FiniFindUseAfterFree();
+    FiniFollowExecution();
+    //FiniFindUseAfterFree();
     //FiniDTA();
 }
 
@@ -135,8 +135,8 @@ int main(int argc, char *argv[])
     }
 
     // Init functions for modules
-    //InitFollowExecution();
-    InitFindUseAfterFree();
+    InitFollowExecution();
+    //InitFindUseAfterFree();
     //InitDTA();
 
     //TaintFile.open("taint.out");
