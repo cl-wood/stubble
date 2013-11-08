@@ -72,15 +72,19 @@ VOID InitFollowExecution()
 
 }
 
-//unordered_map<int, string>addressToInstruction;
-//unordered_map<int, int>addressToBranchTaken;
 VOID FiniFollowExecution()
 {
-    // Find collisions between instructions and branches taken
-    for (auto& x: addressToBranchTaken) {
-        // if find it in instruction, print both of the seconds
-        addressToInstruction.find(x);
-        if ( != 
+    // Find collisions between 1st elements in maps to instructions and branches taken
+    // This is a round-about way of mapping each cond. jump->taken/~taken
+
+    for (auto it = addressToBranchTaken.begin(); it != addressToBranchTaken.end(); ++it ) {
+
+        std::unordered_map<int, string>::const_iterator got = addressToInstruction.find(it->first);
+
+        if (got != addressToInstruction.end() ) {
+            ControlFlowFile << got->second << ":" << it->second << endl;
+        }
+
     }
 
 
