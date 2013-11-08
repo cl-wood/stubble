@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <iterator>
 #include <vector>
+#include <unordered_map>
 
 
 /* ===================================================================== */
@@ -11,17 +12,25 @@
 /* ===================================================================== */
 std::ofstream ControlFlowFile;
 
+unordered_map<int, string>addressToInstruction;
+unordered_map<int, int>addressToBranchTaken;
+// TODO both can have address of instruction, can put all the stuff in a DS and check after execting.
+
 /*
  * Records whether branch taken or not 
  */
-//VOID TaintBranch(ADDRINT ins, INT32 branchTaken) {
 VOID TaintBranch(ADDRINT ins, INT32 branchTaken) {
+
+    addressToBranchTaken.insert({ins, branchTaken});
+    /*
     if (branchTaken) {
         ControlFlowFile << ins << " " << "BRANCH" << endl;
     }
     else {
         ControlFlowFile << ins << " " << "NO BRANCH" << endl;
     }
+    */
+
 }
 
 /*
@@ -33,12 +42,14 @@ VOID Branches(INS ins, VOID *v)
     // Print whether Conditional branch taken or not
     if (INS_Category(ins) == XED_CATEGORY_COND_BR) { 
 
-
+        pair<int, string> mapping(INS_Address(ins), INS_Disassemble(ins));
+        addressToInstruction.insert(mapping);
 
         INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(TaintBranch),
                        IARG_INST_PTR,
                        IARG_BRANCH_TAKEN,
                        IARG_END);
+
     }
 
 } // End Branches
@@ -61,8 +72,18 @@ VOID InitFollowExecution()
 
 }
 
+//unordered_map<int, string>addressToInstruction;
+//unordered_map<int, int>addressToBranchTaken;
 VOID FiniFollowExecution()
 {
+    // Find collisions between instructions and branches taken
+    for (auto& x: addressToBranchTaken) {
+        // if find it in instruction, print both of the seconds
+        addressToInstruction.find(x);
+        if ( != 
+    }
+
+
     ControlFlowFile.close();
 }
 
