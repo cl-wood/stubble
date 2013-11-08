@@ -5,7 +5,10 @@
 #include <iterator>
 #include <vector>
 #include <unordered_map>
+#include <list>
 
+std::list<UINT32> addressTainted;
+std::list<REG> regsTainted;
 
 /* ===================================================================== */
 /* Control Flow following jumps                                          */
@@ -60,7 +63,28 @@ VOID Branches(INS ins, VOID *v)
         INS_OperandIsReg(ins, 0) &&
         INS_OperandIsMemory(ins, 1))
 
-*/
+ */
+
+VOID Syscall_entry(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, void *v)
+{
+    unsigned int i;
+    UINT32 start, size;
+
+    if (PIN_GetSyscallNumber(ctx, std) == __NR_read) {
+
+        //UINT32 fd = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 0)));
+        start = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 1)));
+        size  = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 2)));
+
+
+        for (i = 0; i < size; i++) {
+            addressTainted.push_back(start+i);
+        }
+
+        cout << "[TAINT]\t" << std::hex << "0x" << start << 
+             ": 0x" << start+size << " (read)" << endl;
+    }
+}
 
 VOID InitFollowExecution()
 {
@@ -69,6 +93,7 @@ VOID InitFollowExecution()
     ControlFlowFile.setf(ios::showbase);
 
     INS_AddInstrumentFunction(Branches, 0);
+    PIN_AddSyscallEntryFunction(Syscall_entry, 0);
 
 }
 

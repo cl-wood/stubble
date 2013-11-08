@@ -15,7 +15,7 @@
 #include <list>
 
 std::ofstream TaintFile;
-std::list<UINT64> addressTainted;
+std::list<UINT32> addressTainted;
 std::list<REG> regsTainted;
 
 
@@ -31,13 +31,13 @@ bool checkAlreadyRegTainted(REG reg)
   return false;
 }
 
-VOID removeMemTainted(UINT64 addr)
+VOID removeMemTainted(UINT32 addr)
 {
   addressTainted.remove(addr);
   TaintFile << std::hex << "\t\t\t" << addr << " is now freed" << std::endl;
 }
 
-VOID addMemTainted(UINT64 addr)
+VOID addMemTainted(UINT32 addr)
 {
   addressTainted.push_back(addr);
   TaintFile << std::hex << "\t\t\t" << addr << " is now tainted" << std::endl;
@@ -135,10 +135,10 @@ bool removeRegTainted(REG reg)
   return true;
 }
 
-VOID ReadMem(UINT64 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT64 memOp, UINT64 sp)
+VOID ReadMem(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT32 memOp, UINT32 sp)
 {
-  list<UINT64>::iterator i;
-  UINT64 addr = memOp;
+  list<UINT32>::iterator i;
+  UINT32 addr = memOp;
   
   if (opCount != 2)
     return;
@@ -161,10 +161,10 @@ VOID ReadMem(UINT64 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT
   }
 }
 
-VOID WriteMem(UINT64 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT64 memOp, UINT64 sp)
+VOID WriteMem(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT32 memOp, UINT32 sp)
 {
-  list<UINT64>::iterator i;
-  UINT64 addr = memOp;
+  list<UINT32>::iterator i;
+  UINT32 addr = memOp;
 
   if (opCount != 2)
     return;
@@ -187,7 +187,7 @@ VOID WriteMem(UINT64 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UIN
   }
 }
 
-VOID spreadRegTaint(UINT64 insAddr, std::string insDis, UINT32 opCount, REG reg_r, REG reg_w)
+VOID spreadRegTaint(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, REG reg_w)
 {
   if (opCount != 2)
     return;
@@ -206,7 +206,7 @@ VOID spreadRegTaint(UINT64 insAddr, std::string insDis, UINT32 opCount, REG reg_
   }
 }
 
-VOID followData(UINT64 insAddr, std::string insDis, REG reg)
+VOID followData(UINT32 insAddr, std::string insDis, REG reg)
 {
   if (!REG_valid(reg))
     return;
@@ -268,14 +268,14 @@ static unsigned int tryksOpen;
 VOID Syscall_entry(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, void *v)
 {
   unsigned int i;
-  UINT64 start, size;
+  UINT32 start, size;
 
   if (PIN_GetSyscallNumber(ctx, std) == __NR_read){
 
       TRICKS(); /* tricks to ignore the first open */
 
-      start = static_cast<UINT64>((PIN_GetSyscallArgument(ctx, std, 1)));
-      size  = static_cast<UINT64>((PIN_GetSyscallArgument(ctx, std, 2)));
+      start = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 1)));
+      size  = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 2)));
       
       // TODO 2nd arg can be too large, might not be an issue if all the area alloced isn't re-used
 
