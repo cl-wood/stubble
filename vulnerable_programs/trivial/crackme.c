@@ -2,15 +2,17 @@
 #include<unistd.h>
 #include<stdlib.h>
 #include<string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 int main(int argc, char* argv[])
 {
     //FILE * pFile = fopen(argv[1], "r");
-    FILE * pFile = fopen("file.txt", "r");
+    int fd = open("file.txt", O_RDONLY);
     char buf[500];
-    int res = fread(buf, sizeof(char), 500, pFile);
-    //buf[0] = fgetc(pFile);
-    fclose(pFile);
+    int res = read(fd, buf, 500);
+    close(fd);
 
     // Loop through password, creating a bunch of branches.
     char *password = "g";

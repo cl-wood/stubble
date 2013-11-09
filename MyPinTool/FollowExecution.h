@@ -215,23 +215,21 @@ VOID WriteMem(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UIN
 }
 
 //VOID handleLea(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_w, UINT32 memOp, UINT32 sp)
-VOID handleLea(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_w, UINT32 ea, UINT32 sp)
+VOID handleLea(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_w, CONTEXT* context, UINT32 disp, REG base, REG index, UINT32 scale)
 {
     list<UINT32>::iterator i;
     //UINT32 addr = ea - sp;
 
-    TaintFile << insDis << ": ea is: " << hex << ea << endl;
-    TaintFile << insDis << ": sp is: " << hex << sp << endl;
+    UINT32 ea = disp + PIN_GetContextReg(context, base) + 
+                PIN_GetContextReg(context, index) * scale; 
 
 
     // Taint register if effective address in tainted memory
-    /*
     for (i = addressTainted.begin(); i != addressTainted.end(); i++) {
-        if (addr == *i) {
-            TaintFile << insDis << endl;
+        if (ea == *i) {
+            TaintFile << insDis << ":" << ea << endl;
         }
     }
-    */
     
 }
 
@@ -324,6 +322,7 @@ VOID Branches(INS ins, VOID *v)
     else if (INS_IsLea(ins) ) {
 
         //cout << INS_OperandMemoryDisplacement(ins, 1) << endl;
+        // Effective address = Displacement + BaseReg + IndexReg * Scale 
 
         INS_InsertCall(
                 ins, IPOINT_BEFORE, (AFUNPTR)handleLea,
@@ -331,9 +330,15 @@ VOID Branches(INS ins, VOID *v)
                 IARG_PTR, new string(INS_Disassemble(ins)),
                 IARG_UINT32, INS_OperandCount(ins),
                 IARG_UINT32, INS_RegW(ins, 0),
+
+                IARG_CONST_CONTEXT,
                 IARG_UINT32, INS_OperandMemoryDisplacement(ins, 1),
+                IARG_UINT32, INS_OperandMemoryBaseReg(ins, 1),
+                IARG_UINT32, INS_OperandMemoryIndexReg(ins, 1),
+                IARG_UINT32, INS_OperandMemoryScale(ins, 1),
+
                 //IARG_MEMORYOP_EA, 0,
-                IARG_REG_VALUE, REG_STACK_PTR,
+                //IARG_REG_VALUE, REG_STACK_PTR,
                 IARG_END);
 
     }
@@ -382,8 +387,8 @@ VOID Syscall_entry(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID 
         //read  = static_cast<UINT32>((PIN_GetSyscallReturn(ctx, std)));
 
         // Cheap trick for demo, will need to remove later?
-        // if (size != 4096) {
-        if (start > 0xbf000000) {
+         if (size != 500) {
+        //if (start > 0xbf000000) {
             return; // only look at the read we know we care about
         }
 

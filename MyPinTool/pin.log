@@ -1,2 +1,3 @@
 Pin 2.12 kit 58423
-E: FollowExecution.h:326: IARG_MEMORYOP_EA/IARG_MEMORYOP_MASKED_ON invalid memory operand index (1) on    189 0xb773fb9b lea edx, ptr [ebx-0xc8]
+A: Source/pin/vm_ia32/jit_iarg_ia32.cpp:SetupArgument:SetupArgument:3226: assertion failed: argreg != REG_INVALID()
+
