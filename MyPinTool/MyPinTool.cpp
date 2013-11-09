@@ -64,8 +64,8 @@ bool IN_MAIN = false;
 /* ===================================================================== */
 /* User Libraries */
 /* ===================================================================== */
-//#include "FollowExecution.h"
-#include "DTA.h"
+#include "FollowExecution.h"
+//#include "DTA.h"
 //#include "FindUseAfterFree.h"
 
 
@@ -103,9 +103,9 @@ VOID WatchMain(IMG img, VOID *v)
 
 VOID Fini(INT32 code, VOID *v)
 {
-    //FiniFollowExecution();
+    FiniFollowExecution();
     //FiniFindUseAfterFree();
-    FiniDTA();
+    //FiniDTA();
 }
 
 /* ===================================================================== */
@@ -134,14 +134,15 @@ int main(int argc, char *argv[])
         return Usage();
     }
 
-    // Init functions for modules
-    //InitFollowExecution();
-    //InitFindUseAfterFree();
-    InitDTA();
 
-    //TaintFile.open("taint.out");
-    //TaintFile << hex;
-    //TaintFile.setf(ios::showbase);
+    TaintFile.open("taint.out");
+    TaintFile << hex;
+    TaintFile.setf(ios::showbase);
+
+    // Init functions for modules
+    InitFollowExecution();
+    //InitFindUseAfterFree();
+    //InitDTA();
 
     // Watch main function
     //IMG_AddInstrumentFunction(WatchMain, 0);

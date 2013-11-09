@@ -7,15 +7,15 @@ int main(int argc, char* argv[])
 {
     //FILE * pFile = fopen(argv[1], "r");
     FILE * pFile = fopen("file.txt", "r");
-    char buf[1];
-    //int res = fscanf(pFile, "%s", buf);
-    buf[0] = fgetc(pFile);
+    char buf[500];
+    int res = fread(buf, sizeof(char), 500, pFile);
+    //buf[0] = fgetc(pFile);
     fclose(pFile);
 
     // Loop through password, creating a bunch of branches.
     char *password = "g";
     int counter = 0;
-    int i = 0;
+    int i = 300;
 
     // put switches here
     switch(buf[i]) {
