@@ -164,16 +164,10 @@ VOID ReadMem(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT
     if (opCount != 2)
         return;
 
-    //TaintFile << insDis << endl;
-
     for (i = addressTainted.begin(); i != addressTainted.end(); i++) {
         if (addr == *i) {
-            TaintFile << std::hex << "[READ in " << addr << "]\t" << insAddr << ": " << insDis << endl;
+            TaintFile << hex << "[READ in " << addr << "]\t" << insAddr << ": " << insDis << endl;
             taintReg(reg_r);
-
-            if (sp > addr && addr > 0x700000000000) {
-                TaintFile << std::hex << "[UAF in " << addr << "]\t" << insAddr << ": " << insDis << std::endl;
-            }
 
             return;
         }
@@ -227,7 +221,8 @@ VOID handleLea(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_w, CO
     // Taint register if effective address in tainted memory
     for (i = addressTainted.begin(); i != addressTainted.end(); i++) {
         if (ea == *i) {
-            TaintFile << insDis << ":" << ea << endl;
+            TaintFile << insDis << ":" << ea << ": REG : " <<  REG_StringShort(reg_w) << endl;
+            taintReg(reg_w);
         }
     }
     
@@ -259,10 +254,10 @@ VOID followData(UINT32 insAddr, std::string insDis, REG reg)
     }
 
     if (checkAlreadyRegTainted(reg)) {
-        TaintFile << "[FOLLOW]\t\t" << insAddr << ": " << insDis << std::endl;
+        TaintFile << "[FOLLOW]\t\t" << insAddr << ": " << insDis << endl;
+        //TODO catch cmp ecx, val, record ecx and val.
     }
 
-    // TODO catch lea eax, ptr[ebp - 0x1f8]
 
 
 }
