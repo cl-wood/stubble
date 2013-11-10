@@ -15,6 +15,9 @@ list<REG> regsTainted;
 //REG lastCmpRegValue;
 UINT32 lastCmpRegValue;
 UINT32 lastCmpImmediate;
+UINT32 lastEaxTaintValue; // HACK to get 300 for buf[300]
+UINT32 taintPosition;
+BOOL taintedCmp = false;
 
 /* ===================================================================== */
 /* Control Flow following jumps                                          */
@@ -23,27 +26,22 @@ ofstream ControlFlowFile;
 ofstream TaintFile;
 ofstream InstructionFile;
 
-//unordered_map<int, string>addressToInstruction;
-//unordered_map<int, int>addressToBranchTaken;
-
 /*
  * Records whether branch taken or not 
  */
-VOID TaintBranch(ADDRINT ins, INT32 branchTaken, string insDis) {
+VOID BacksolveBranch(ADDRINT ins, INT32 branchTaken, string insDis) {
 
-    ControlFlowFile << insDis << ":" << branchTaken << endl;
-    // TODO PREDICATE_ZERO to get ZF == 0 and backsolve
+    TaintFile << taintPosition << " " << lastCmpRegValue << " " << lastCmpImmediate << endl;
+    cout << "change " << dec << taintPosition << " in file" << endl;
+    taintedCmp = false;
+    // TODO PREDICATE_ZERO to get ZF == 0 or cases for all jumps and backsolve
+    //if (INS_Opcode(ins) == XED_ICLASS_JNZ) {
+        
+    //    ControlFlowFile << insDis << ":" << branchTaken << endl;
+    //}
 
 }
 
-
-/*
-    if (INS_Opcode(ins) == XED_ICLASS_MOV &&
-        INS_IsMemoryRead(ins) && 
-        INS_OperandIsReg(ins, 0) &&
-        INS_OperandIsMemory(ins, 1))
-
- */
 
 bool checkAlreadyRegTainted(REG reg)
 {
@@ -170,13 +168,16 @@ VOID ReadMem(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT
     if (opCount != 2)
         return;
 
+    int posInUserInput = 0; // crude HACK, assumes user input only read in once
     for (i = addressTainted.begin(); i != addressTainted.end(); i++) {
         if (addr == *i) {
-            TaintFile << hex << "[READ in " << addr << "]\t" << insAddr << ": " << insDis << endl;
+            TaintFile << hex << "[READ in " << addr << "]\t" << insAddr << ": " << insDis << "From pos " << posInUserInput << endl;
             taintReg(reg_r);
+            lastEaxTaintValue = posInUserInput;
 
             return;
         }
+        posInUserInput++;
     }
     /* if mem != tained and reg == taint => free the reg */
     if (checkAlreadyRegTainted(reg_r)) {
@@ -262,11 +263,14 @@ VOID followData(UINT32 insAddr, std::string insDis, REG reg, UINT32 immediate, C
 
     if (checkAlreadyRegTainted(reg)) {
         TaintFile << "[FOLLOW]\t\t" << insAddr << ": " << insDis << endl;
+
+        // Catches cmp [TODO any cmd setting EFLAGS] if 1+ of its args are tainted
         lastCmpRegValue = PIN_GetContextReg(context, reg);
+        taintPosition = lastEaxTaintValue;
         //lastCmpRegValue = reg;
         lastCmpImmediate = immediate;
+        taintedCmp = true;
         TaintFile << "CMP " << lastCmpRegValue << " " << immediate << endl;
-        //TODO catch cmp ecx, 'X'. record ecx and val.
     }
 
 }
@@ -279,19 +283,15 @@ VOID Branches(INS ins, VOID *v)
     InstructionFile << insCount << ":" << INS_Disassemble(ins) << endl;
     insCount++;
 
-/*
-    if (INS_IsLea(ins)) {
-        TaintFile << "LEA: " << INS_Disassemble(ins) << endl;
-        TaintFile << "#Operands: " << INS_OperandCount(ins) << endl;
-        TaintFile << "Invalid: " << REG_INVALID() << endl;
-        TaintFile << "Reg: " << REG_StringShort( INS_OperandReg(ins, 0) ) << endl;
-    }
-*/
+    // If conditional branch after compared taint, Backsolve
+    if (INS_Category(ins) == XED_CATEGORY_COND_BR && 
+        !addressTainted.empty() && taintedCmp ) { 
 
-    // Print whether Conditional branch taken or not
-    if (INS_Category(ins) == XED_CATEGORY_COND_BR) { 
+        //cout << INS_GetPredicate(ins) << endl;
 
-        INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(TaintBranch),
+        //BacksolveBranch();
+
+        INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(BacksolveBranch),
                        IARG_INST_PTR,
                        IARG_BRANCH_TAKEN,
                        IARG_PTR, new string(INS_Disassemble(ins)),

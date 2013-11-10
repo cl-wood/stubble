@@ -1,276 +1,309 @@
-[TAINT]	0xbfdd2c30: 0xbfdd2e24 (read)
-[READ in 0xbfdd2d5c]	0x804864c: movsx eax, byte ptr [ebp-0xcc]
+[TAINT]	0xbfa1b290: 0xbfa1b484 (read)
+[READ in 0xbfa1b3bc]	0x804864c: movsx eax, byte ptr [ebp-0xcc]From pos 0x12c
 			eax is now tainted
 [FOLLOW]		0x8048653: cmp eax, 0x58
 CMP 0x58 0x58
-[WRITE in 0xbfdd2c28]	0x8048661: mov dword ptr [ebp-0x200], eax
-			0xbfdd2c28 is now tainted
-[READ in 0xbfdd2c28]	0x8048667: mov eax, dword ptr [ebp-0x200]
+[WRITE in 0xbfa1b288]	0x8048661: mov dword ptr [ebp-0x200], eax
+			0xbfa1b288 is now tainted
+[READ in 0xbfa1b288]	0x8048667: mov eax, dword ptr [ebp-0x200]From pos 0x1f4
 			eax is already tainted
-lea eax, ptr [esp+0x24]:0xbfdd2c28: REG : eax
+lea eax, ptr [esp+0x24]:0xbfa1b288: REG : eax
 			eax is already tainted
-[WRITE in 0xbfdd2c0c]	0xb5a687e3: mov dword ptr [esp+0x8], eax
-			0xbfdd2c0c is now tainted
-[READ in 0xbfdd2c24]	0xb5a687e7: mov eax, dword ptr [esp+0x20]
+[WRITE in 0xbfa1b26c]	0xb59b17e3: mov dword ptr [esp+0x8], eax
+			0xbfa1b26c is now tainted
+[READ in 0xbfa1b284]	0xb59b17e7: mov eax, dword ptr [esp+0x20]
 			eax is now freed
-[READ in 0xbfdd2c0c]	0xb5a5e960: mov eax, dword ptr [ebp+0x10]
+0x12c 0x58 0x58
+0x12c 0x58 0x58
+0x12c 0x58 0x58
+[READ in 0xbfa1b26c]	0xb59a7960: mov eax, dword ptr [ebp+0x10]From pos 0x1f5
 			eax is now tainted
-[WRITE in 0xbfdd2790]	0xb5a5e963: mov dword ptr [ebp-0x46c], eax
-			0xbfdd2790 is now tainted
-[READ in 0xbfdd2684]	0xb5a9b211: mov eax, dword ptr [esp+0x8]
+[WRITE in 0xbfa1adf0]	0xb59a7963: mov dword ptr [ebp-0x46c], eax
+			0xbfa1adf0 is now tainted
+[READ in 0xbfa1ace4]	0xb59e4211: mov eax, dword ptr [esp+0x8]
 			eax is now freed
-[WRITE in 0xbfdd2e18]	0xb5a4d7ff: mov dword ptr [esp+0x8], 0x1
-			0xbfdd2e18 is now freed
-[WRITE in 0xbfdd2e14]	0xb5a4d80d: mov dword ptr [esp+0x4], eax
-			0xbfdd2e14 is now freed
-[WRITE in 0xbfdd2e10]	0xb5a4d815: mov dword ptr [esp], eax
-			0xbfdd2e10 is now freed
-[READ in 0xbfdd2dcc]	0xb5b48173: mov ebx, dword ptr [esp]
+[WRITE in 0xbfa1b478]	0xb59967ff: mov dword ptr [esp+0x8], 0x1
+			0xbfa1b478 is now freed
+[WRITE in 0xbfa1b474]	0xb599680d: mov dword ptr [esp+0x4], eax
+			0xbfa1b474 is now freed
+[WRITE in 0xbfa1b470]	0xb5996815: mov dword ptr [esp], eax
+			0xbfa1b470 is now freed
+[READ in 0xbfa1b42c]	0xb5a91173: mov ebx, dword ptr [esp]From pos 0x19c
 			ebx is now tainted
-[FOLLOW]		0xb5a4d70c: add ebx, 0x17c8f4
-CMP 0xb5a4d70c 0x17c8f4
-[WRITE in 0xbfdd2dec]	0xb5a4d71e: mov dword ptr [esp+0x1c], eax
-			0xbfdd2dec is now freed
-[WRITE in 0xbfdd2dd4]	0xb5a4d77b: mov dword ptr [esp+0x4], esi
-			0xbfdd2dd4 is now freed
-[WRITE in 0xbfdd2dd0]	0xb5a4d78c: mov dword ptr [esp], edx
-			0xbfdd2dd0 is now freed
-[READ in 0xbfdd2db8]	0xb77a8e98: mov ebx, dword ptr [esp]
+[FOLLOW]		0xb599670c: add ebx, 0x17c8f4
+CMP 0xb599670c 0x17c8f4
+[WRITE in 0xbfa1b44c]	0xb599671e: mov dword ptr [esp+0x1c], eax
+			0xbfa1b44c is now freed
+0x19c 0xb599670c 0x17c8f4
+[WRITE in 0xbfa1b434]	0xb599677b: mov dword ptr [esp+0x4], esi
+			0xbfa1b434 is now freed
+[WRITE in 0xbfa1b430]	0xb599678c: mov dword ptr [esp], edx
+			0xbfa1b430 is now freed
+[READ in 0xbfa1b418]	0xb7703e98: mov ebx, dword ptr [esp]From pos 0x188
 			ebx is already tainted
-[FOLLOW]		0xb779f5fb: add ebx, 0x11a05
-CMP 0xb779f5fb 0x11a05
-[WRITE in 0xbfdd2d84]	0xb779f60a: mov dword ptr [ebp-0x44], esi
-			0xbfdd2d84 is now freed
-[WRITE in 0xbfdd2d9c]	0xb779f60d: mov dword ptr [ebp-0x2c], 0x0
-			0xbfdd2d9c is now freed
-[WRITE in 0xbfdd2d88]	0xb779f614: mov dword ptr [ebp-0x40], 0x0
-			0xbfdd2d88 is now freed
-[WRITE in 0xbfdd2da4]	0xb779f61b: mov dword ptr [ebp-0x24], 0x0
-			0xbfdd2da4 is now freed
-[WRITE in 0xbfdd2d7c]	0xb779f628: mov dword ptr [ebp-0x4c], esi
-			0xbfdd2d7c is now freed
-[WRITE in 0xbfdd2d78]	0xb779f631: mov dword ptr [ebp-0x50], esi
-			0xbfdd2d78 is now freed
-[WRITE in 0xbfdd2d94]	0xb779f637: mov dword ptr [ebp-0x34], esi
-			0xbfdd2d94 is now freed
-[WRITE in 0xbfdd2d8c]	0xb779f650: mov dword ptr [ebp-0x3c], esi
-			0xbfdd2d8c is now freed
-[WRITE in 0xbfdd2d90]	0xb779f659: mov dword ptr [ebp-0x38], esi
-			0xbfdd2d90 is now freed
-[WRITE in 0xbfdd2d98]	0xb779f662: mov dword ptr [ebp-0x30], eax
-			0xbfdd2d98 is now freed
-[WRITE in 0xbfdd2d80]	0xb779f665: mov dword ptr [ebp-0x48], esi
-			0xbfdd2d80 is now freed
-[WRITE in 0xbfdd2d60]	0xb779f693: mov dword ptr [esp], esi
-			0xbfdd2d60 is now freed
-[WRITE in 0xbfdd2dac]	0xb779f6bf: setz byte ptr [ebp-0x1c]
-			0xbfdd2dac is now freed
-lea esi, ptr [esp+0x1f]:0xbfdd2d5f: REG : esi
+[FOLLOW]		0xb76fa5fb: add ebx, 0x11a05
+CMP 0xb76fa5fb 0x11a05
+[WRITE in 0xbfa1b3e4]	0xb76fa60a: mov dword ptr [ebp-0x44], esi
+			0xbfa1b3e4 is now freed
+[WRITE in 0xbfa1b3fc]	0xb76fa60d: mov dword ptr [ebp-0x2c], 0x0
+			0xbfa1b3fc is now freed
+[WRITE in 0xbfa1b3e8]	0xb76fa614: mov dword ptr [ebp-0x40], 0x0
+			0xbfa1b3e8 is now freed
+[WRITE in 0xbfa1b404]	0xb76fa61b: mov dword ptr [ebp-0x24], 0x0
+			0xbfa1b404 is now freed
+[WRITE in 0xbfa1b3dc]	0xb76fa628: mov dword ptr [ebp-0x4c], esi
+			0xbfa1b3dc is now freed
+[WRITE in 0xbfa1b3d8]	0xb76fa631: mov dword ptr [ebp-0x50], esi
+			0xbfa1b3d8 is now freed
+[WRITE in 0xbfa1b3f4]	0xb76fa637: mov dword ptr [ebp-0x34], esi
+			0xbfa1b3f4 is now freed
+[WRITE in 0xbfa1b3ec]	0xb76fa650: mov dword ptr [ebp-0x3c], esi
+			0xbfa1b3ec is now freed
+[WRITE in 0xbfa1b3f0]	0xb76fa659: mov dword ptr [ebp-0x38], esi
+			0xbfa1b3f0 is now freed
+[WRITE in 0xbfa1b3f8]	0xb76fa662: mov dword ptr [ebp-0x30], eax
+			0xbfa1b3f8 is now freed
+[WRITE in 0xbfa1b3e0]	0xb76fa665: mov dword ptr [ebp-0x48], esi
+			0xbfa1b3e0 is now freed
+[WRITE in 0xbfa1b3c0]	0xb76fa693: mov dword ptr [esp], esi
+			0xbfa1b3c0 is now freed
+0x188 0xb76fa5fb 0x11a05
+0x188 0xb76fa5fb 0x11a05
+[WRITE in 0xbfa1b40c]	0xb76fa6bf: setz byte ptr [ebp-0x1c]
+			0xbfa1b40c is now freed
+0x188 0xb76fa5fb 0x11a05
+lea esi, ptr [esp+0x1f]:0xbfa1b3bf: REG : esi
 			esi is now tainted
-[FOLLOW]		0xb779f6e6: and esi, 0xfffffff0
-CMP 0xbfdd2d5f 0xfffffff0
-[WRITE in 0xbfdd2da4]	0xb779f6e9: mov dword ptr [ebp-0x24], esi
-			0xbfdd2da4 is now tainted
-[WRITE in 0xbfdd2da8]	0xb779f6ef: mov dword ptr [ebp-0x20], 0x0
-			0xbfdd2da8 is now freed
-[READ in 0xbfdd2da4]	0xb779f6f8: mov esi, dword ptr [ebp-0x24]
+[FOLLOW]		0xb76fa6e6: and esi, 0xfffffff0
+CMP 0xbfa1b3bf 0xfffffff0
+[WRITE in 0xbfa1b404]	0xb76fa6e9: mov dword ptr [ebp-0x24], esi
+			0xbfa1b404 is now tainted
+[WRITE in 0xbfa1b408]	0xb76fa6ef: mov dword ptr [ebp-0x20], 0x0
+			0xbfa1b408 is now freed
+[READ in 0xbfa1b404]	0xb76fa6f8: mov esi, dword ptr [ebp-0x24]From pos 0x1e3
 			esi is already tainted
-[WRITE in 0xbfdd2d50]	0xb779f714: mov dword ptr [esi+ecx*4], eax
-			0xbfdd2d50 is now freed
-[WRITE in 0xbfdd2d54]	0xb779f714: mov dword ptr [esi+ecx*4], eax
-			0xbfdd2d54 is now freed
-[WRITE in 0xbfdd2d58]	0xb779f714: mov dword ptr [esi+ecx*4], eax
-			0xbfdd2d58 is now freed
-[WRITE in 0xbfdd2d5c]	0xb779f714: mov dword ptr [esi+ecx*4], eax
-			0xbfdd2d5c is now freed
-[READ in 0xbfdd2d94]	0xb779f739: mov esi, dword ptr [ebp-0x34]
+0x188 0xbfa1b3bf 0xfffffff0
+0x188 0xbfa1b3bf 0xfffffff0
+[WRITE in 0xbfa1b3b0]	0xb76fa714: mov dword ptr [esi+ecx*4], eax
+			0xbfa1b3b0 is now freed
+0x188 0xbfa1b3bf 0xfffffff0
+0x188 0xbfa1b3bf 0xfffffff0
+0x188 0xbfa1b3bf 0xfffffff0
+[WRITE in 0xbfa1b3b4]	0xb76fa714: mov dword ptr [esi+ecx*4], eax
+			0xbfa1b3b4 is now freed
+0x188 0xbfa1b3bf 0xfffffff0
+0x188 0xbfa1b3bf 0xfffffff0
+0x188 0xbfa1b3bf 0xfffffff0
+[WRITE in 0xbfa1b3b8]	0xb76fa714: mov dword ptr [esi+ecx*4], eax
+			0xbfa1b3b8 is now freed
+0x188 0xbfa1b3bf 0xfffffff0
+0x188 0xbfa1b3bf 0xfffffff0
+0x188 0xbfa1b3bf 0xfffffff0
+[WRITE in 0xbfa1b3bc]	0xb76fa714: mov dword ptr [esi+ecx*4], eax
+			0xbfa1b3bc is now freed
+0x188 0xbfa1b3bf 0xfffffff0
+[READ in 0xbfa1b3f4]	0xb76fa739: mov esi, dword ptr [ebp-0x34]
 			esi is now freed
-[READ in 0xbfdd2da4]	0xb779f741: mov eax, dword ptr [ebp-0x24]
+[READ in 0xbfa1b404]	0xb76fa741: mov eax, dword ptr [ebp-0x24]From pos 0x1df
 			eax is now tainted
-[WRITE in 0xbfdd2d40]	0xb779f744: mov dword ptr [esp], esi
-			0xbfdd2d40 is now freed
-[READ in 0xbfdd2ccc]	0xb77a8e98: mov ebx, dword ptr [esp]
+[WRITE in 0xbfa1b3a0]	0xb76fa744: mov dword ptr [esp], esi
+			0xbfa1b3a0 is now freed
+[READ in 0xbfa1b32c]	0xb7703e98: mov ebx, dword ptr [esp]From pos 0x9c
 			ebx is already tainted
-[FOLLOW]		0xb779f3be: add ebx, 0x11c42
-CMP 0xb779f3be 0x11c42
-[WRITE in 0xbfdd2d00]	0xb779f3c7: mov dword ptr [ebp-0x38], eax
-[WRITE in 0xbfdd2d0c]	0xb779f3ca: mov dword ptr [ebp-0x2c], edx
-			0xbfdd2d0c is now freed
-[WRITE in 0xbfdd2cf8]	0xb779f3cd: mov dword ptr [ebp-0x40], ecx
-			0xbfdd2cf8 is now freed
-[WRITE in 0xbfdd2cf0]	0xb779f3d0: mov dword ptr [ebp-0x48], esp
-			0xbfdd2cf0 is now freed
-[READ in 0xbfdd2d0c]	0xb779f3de: mov eax, dword ptr [ebp-0x2c]
+[FOLLOW]		0xb76fa3be: add ebx, 0x11c42
+CMP 0xb76fa3be 0x11c42
+[WRITE in 0xbfa1b360]	0xb76fa3c7: mov dword ptr [ebp-0x38], eax
+[WRITE in 0xbfa1b36c]	0xb76fa3ca: mov dword ptr [ebp-0x2c], edx
+			0xbfa1b36c is now freed
+[WRITE in 0xbfa1b358]	0xb76fa3cd: mov dword ptr [ebp-0x40], ecx
+			0xbfa1b358 is now freed
+[WRITE in 0xbfa1b350]	0xb76fa3d0: mov dword ptr [ebp-0x48], esp
+			0xbfa1b350 is now freed
+[READ in 0xbfa1b36c]	0xb76fa3de: mov eax, dword ptr [ebp-0x2c]
 			eax is now freed
-[WRITE in 0xbfdd2d18]	0xb779f3e8: mov dword ptr [ebp-0x20], edx
-			0xbfdd2d18 is now freed
-lea ecx, ptr [esp+0xc]:0xbfdd2ccc: REG : ecx
+[WRITE in 0xbfa1b378]	0xb76fa3e8: mov dword ptr [ebp-0x20], edx
+			0xbfa1b378 is now freed
+lea ecx, ptr [esp+0xc]:0xbfa1b32c: REG : ecx
 			ecx is now tainted
-[WRITE in 0xbfdd2d10]	0xb779f3f7: mov dword ptr [ebp-0x28], ecx
-[WRITE in 0xbfdd2cc0]	0xb779f3fa: mov dword ptr [esp], ecx
-[WRITE in 0xbfdd2cc8]	0xb779f3fd: mov dword ptr [esp+0x8], eax
-			0xbfdd2cc8 is now freed
-[WRITE in 0xbfdd2cc4]	0xb779f401: mov dword ptr [esp+0x4], 0x0
-			0xbfdd2cc4 is now freed
-[READ in 0xbfdd2cc0]	0xb77a8c12: mov edx, dword ptr [esp+0x8]
+[WRITE in 0xbfa1b370]	0xb76fa3f7: mov dword ptr [ebp-0x28], ecx
+[WRITE in 0xbfa1b320]	0xb76fa3fa: mov dword ptr [esp], ecx
+[WRITE in 0xbfa1b328]	0xb76fa3fd: mov dword ptr [esp+0x8], eax
+			0xbfa1b328 is now freed
+[WRITE in 0xbfa1b324]	0xb76fa401: mov dword ptr [esp+0x4], 0x0
+			0xbfa1b324 is now freed
+[READ in 0xbfa1b320]	0xb7703c12: mov edx, dword ptr [esp+0x8]From pos 0x90
 			edx is now tainted
-[READ in 0xbfdd2cc8]	0xb77a8c16: mov ecx, dword ptr [esp+0x10]
+[READ in 0xbfa1b328]	0xb7703c16: mov ecx, dword ptr [esp+0x10]
 			ecx is now freed
-[FOLLOW]		0xb77a8c23: and edx, 0x3
-CMP 0xbfdd2ccc 0x3
-[FOLLOW]		0xb77a8c3e: and edx, 0x3
+[FOLLOW]		0xb7703c23: and edx, 0x3
+CMP 0xbfa1b32c 0x3
+[FOLLOW]		0xb7703c3e: and edx, 0x3
 CMP 0x8 0x3
-[READ in 0xbfdd2cc0]	0xb77a8c4d: mov eax, dword ptr [esp+0x8]
+[READ in 0xbfa1b320]	0xb7703c4d: mov eax, dword ptr [esp+0x8]From pos 0x90
 			eax is now tainted
-[READ in 0xbfdd2d0c]	0xb779f40e: mov edx, dword ptr [ebp-0x2c]
+[READ in 0xbfa1b36c]	0xb76fa40e: mov edx, dword ptr [ebp-0x2c]
 			edx is now freed
-[READ in 0xbfdd2d00]	0xb779f411: mov eax, dword ptr [ebp-0x38]
+[READ in 0xbfa1b360]	0xb76fa411: mov eax, dword ptr [ebp-0x38]From pos 0xcc
 			eax is already tainted
-[WRITE in 0xbfdd2cec]	0xb779f41b: mov dword ptr [ebp-0x4c], edx
-			0xbfdd2cec is now freed
-[WRITE in 0xbfdd2d14]	0xb779f424: mov dword ptr [ebp-0x24], ecx
-			0xbfdd2d14 is now freed
-[WRITE in 0xbfdd2cf4]	0xb779f42a: mov dword ptr [ebp-0x44], edx
-			0xbfdd2cf4 is now freed
-[READ in 0xbfdd2d10]	0xb779f46c: mov esi, dword ptr [ebp-0x28]
+[WRITE in 0xbfa1b34c]	0xb76fa41b: mov dword ptr [ebp-0x4c], edx
+			0xbfa1b34c is now freed
+[WRITE in 0xbfa1b374]	0xb76fa424: mov dword ptr [ebp-0x24], ecx
+			0xbfa1b374 is now freed
+[WRITE in 0xbfa1b354]	0xb76fa42a: mov dword ptr [ebp-0x44], edx
+			0xbfa1b354 is now freed
+[READ in 0xbfa1b370]	0xb76fa46c: mov esi, dword ptr [ebp-0x28]From pos 0xd9
 			esi is now tainted
-[READ in 0xbfdd2d00]	0xb779f475: mov eax, dword ptr [ebp-0x38]
+[READ in 0xbfa1b360]	0xb76fa475: mov eax, dword ptr [ebp-0x38]From pos 0xca
 			eax is already tainted
-[READ in 0xbfdd2cce]	0xb779f478: movzx ecx, word ptr [esi+ecx*2]
+[READ in 0xbfa1b32e]	0xb76fa478: movzx ecx, word ptr [esi+ecx*2]From pos 0x9c
 			ecx is now tainted
-[WRITE in 0xbfdd2d04]	0xb779f47f: mov dword ptr [ebp-0x34], eax
-[READ in 0xbfdd2d54]	0xb779f482: mov eax, dword ptr [eax]
+[WRITE in 0xbfa1b364]	0xb76fa47f: mov dword ptr [ebp-0x34], eax
+[READ in 0xbfa1b3b4]	0xb76fa482: mov eax, dword ptr [eax]
 			eax is now freed
-[FOLLOW]		0xb779f484: add ecx, 0x1
+[FOLLOW]		0xb76fa484: add ecx, 0x1
 CMP 0 0x1
-[WRITE in 0xbfdd2cce]	0xb779f487: mov word ptr [esi+edx*2], cx
-[READ in 0xb77b1c3c]	0xb779f48b: mov esi, dword ptr [eax+0x14]
+[WRITE in 0xbfa1b32e]	0xb76fa487: mov word ptr [esi+edx*2], cx
+[READ in 0xb770cc3c]	0xb76fa48b: mov esi, dword ptr [eax+0x14]
 			esi is now freed
-[WRITE in 0xbfdd2d0a]	0xb779f48e: mov word ptr [ebp-0x2e], cx
-[READ in 0xbfdd2cf4]	0xb779f49f: mov ecx, dword ptr [ebp-0x44]
+[WRITE in 0xbfa1b36a]	0xb76fa48e: mov word ptr [ebp-0x2e], cx
+0x9c 0 0x1
+0x9c 0 0x1
+[READ in 0xbfa1b354]	0xb76fa49f: mov ecx, dword ptr [ebp-0x44]
 			ecx is now freed
-[WRITE in 0xbfdd2d1c]	0xb779f4a5: mov dword ptr [ebp-0x1c], ecx
-			0xbfdd2d1c is now freed
-[READ in 0xbfdd2d10]	0xb779f447: mov ecx, dword ptr [ebp-0x28]
+[WRITE in 0xbfa1b37c]	0xb76fa4a5: mov dword ptr [ebp-0x1c], ecx
+			0xbfa1b37c is now freed
+0x9c 0 0x1
+[READ in 0xbfa1b370]	0xb76fa447: mov ecx, dword ptr [ebp-0x28]From pos 0xd9
 			ecx is now tainted
-lea eax, ptr [ecx+esi*2]:0xbfdd2cd0: REG : eax
+lea eax, ptr [ecx+esi*2]:0xbfa1b330: REG : eax
 			eax is now tainted
-[WRITE in 0xbfdd2cc0]	0xb779f461: mov dword ptr [esp], eax
-[READ in 0xbfdd2cc0]	0xb77a8c12: mov edx, dword ptr [esp+0x8]
+[WRITE in 0xbfa1b320]	0xb76fa461: mov dword ptr [esp], eax
+[READ in 0xbfa1b320]	0xb7703c12: mov edx, dword ptr [esp+0x8]From pos 0x90
 			edx is now tainted
-[READ in 0xbfdd2cc8]	0xb77a8c16: mov ecx, dword ptr [esp+0x10]
+[READ in 0xbfa1b328]	0xb7703c16: mov ecx, dword ptr [esp+0x10]
 			ecx is now freed
-[READ in 0xbfdd2cc4]	0xb77a8c1a: movzx eax, byte ptr [esp+0xc]
+[READ in 0xbfa1b324]	0xb7703c1a: movzx eax, byte ptr [esp+0xc]
 			eax is now freed
-[FOLLOW]		0xb77a8c23: and edx, 0x3
-CMP 0xbfdd2cd0 0x3
-[FOLLOW]		0xb77a8c3e: and edx, 0x3
+[FOLLOW]		0xb7703c23: and edx, 0x3
+CMP 0xbfa1b330 0x3
+[FOLLOW]		0xb7703c3e: and edx, 0x3
 CMP 0x4 0x3
-[READ in 0xbfdd2cc0]	0xb77a8c4d: mov eax, dword ptr [esp+0x8]
+[READ in 0xbfa1b320]	0xb7703c4d: mov eax, dword ptr [esp+0x8]From pos 0x90
 			eax is now tainted
-[READ in 0xbfdd2d10]	0xb779f46c: mov esi, dword ptr [ebp-0x28]
+[READ in 0xbfa1b370]	0xb76fa46c: mov esi, dword ptr [ebp-0x28]From pos 0xd9
 			esi is now tainted
-[READ in 0xbfdd2d18]	0xb779f46f: mov edx, dword ptr [ebp-0x20]
+[READ in 0xbfa1b378]	0xb76fa46f: mov edx, dword ptr [ebp-0x20]
 			edx is now freed
-[READ in 0xbfdd2d00]	0xb779f475: mov eax, dword ptr [ebp-0x38]
+[READ in 0xbfa1b360]	0xb76fa475: mov eax, dword ptr [ebp-0x38]From pos 0xca
 			eax is already tainted
-[READ in 0xbfdd2cd0]	0xb779f478: movzx ecx, word ptr [esi+ecx*2]
+[READ in 0xbfa1b330]	0xb76fa478: movzx ecx, word ptr [esi+ecx*2]From pos 0x9e
 			ecx is now tainted
-[WRITE in 0xbfdd2d04]	0xb779f47f: mov dword ptr [ebp-0x34], eax
-[READ in 0xbfdd2d58]	0xb779f482: mov eax, dword ptr [eax]
+[WRITE in 0xbfa1b364]	0xb76fa47f: mov dword ptr [ebp-0x34], eax
+[READ in 0xbfa1b3b8]	0xb76fa482: mov eax, dword ptr [eax]
 			eax is now freed
-[FOLLOW]		0xb779f484: add ecx, 0x1
+[FOLLOW]		0xb76fa484: add ecx, 0x1
 CMP 0 0x1
-[WRITE in 0xbfdd2cd0]	0xb779f487: mov word ptr [esi+edx*2], cx
-[READ in 0xb5cfb86c]	0xb779f48b: mov esi, dword ptr [eax+0x14]
+[WRITE in 0xbfa1b330]	0xb76fa487: mov word ptr [esi+edx*2], cx
+[READ in 0xb5c4786c]	0xb76fa48b: mov esi, dword ptr [eax+0x14]
 			esi is now freed
-[WRITE in 0xbfdd2d0a]	0xb779f48e: mov word ptr [ebp-0x2e], cx
-[READ in 0xbfdd2cf4]	0xb779f49f: mov ecx, dword ptr [ebp-0x44]
+[WRITE in 0xbfa1b36a]	0xb76fa48e: mov word ptr [ebp-0x2e], cx
+0x9e 0 0x1
+0x9e 0 0x1
+[READ in 0xbfa1b354]	0xb76fa49f: mov ecx, dword ptr [ebp-0x44]
 			ecx is now freed
-[READ in 0xbfdd2d10]	0xb779f447: mov ecx, dword ptr [ebp-0x28]
+0x9e 0 0x1
+[READ in 0xbfa1b370]	0xb76fa447: mov ecx, dword ptr [ebp-0x28]From pos 0xd9
 			ecx is now tainted
-lea eax, ptr [ecx+esi*2]:0xbfdd2cd2: REG : eax
+lea eax, ptr [ecx+esi*2]:0xbfa1b332: REG : eax
 			eax is now tainted
-[WRITE in 0xbfdd2cc0]	0xb779f461: mov dword ptr [esp], eax
-[READ in 0xbfdd2cc0]	0xb77a8c12: mov edx, dword ptr [esp+0x8]
+[WRITE in 0xbfa1b320]	0xb76fa461: mov dword ptr [esp], eax
+[READ in 0xbfa1b320]	0xb7703c12: mov edx, dword ptr [esp+0x8]From pos 0x90
 			edx is now tainted
-[READ in 0xbfdd2cc8]	0xb77a8c16: mov ecx, dword ptr [esp+0x10]
+[READ in 0xbfa1b328]	0xb7703c16: mov ecx, dword ptr [esp+0x10]
 			ecx is now freed
-[READ in 0xbfdd2cc4]	0xb77a8c1a: movzx eax, byte ptr [esp+0xc]
+[READ in 0xbfa1b324]	0xb7703c1a: movzx eax, byte ptr [esp+0xc]
 			eax is now freed
-[FOLLOW]		0xb77a8c23: and edx, 0x3
-CMP 0xbfdd2cd2 0x3
-[READ in 0xbfdd2cc0]	0xb77a8c4d: mov eax, dword ptr [esp+0x8]
+[FOLLOW]		0xb7703c23: and edx, 0x3
+CMP 0xbfa1b332 0x3
+0x90 0xbfa1b332 0x3
+0x90 0xbfa1b332 0x3
+[READ in 0xbfa1b320]	0xb7703c4d: mov eax, dword ptr [esp+0x8]From pos 0x90
 			eax is now tainted
-[READ in 0xbfdd2d10]	0xb779f46c: mov esi, dword ptr [ebp-0x28]
+[READ in 0xbfa1b370]	0xb76fa46c: mov esi, dword ptr [ebp-0x28]From pos 0xd9
 			esi is now tainted
-[READ in 0xbfdd2d18]	0xb779f46f: mov edx, dword ptr [ebp-0x20]
+[READ in 0xbfa1b378]	0xb76fa46f: mov edx, dword ptr [ebp-0x20]
 			edx is now freed
-[READ in 0xbfdd2d00]	0xb779f475: mov eax, dword ptr [ebp-0x38]
+[READ in 0xbfa1b360]	0xb76fa475: mov eax, dword ptr [ebp-0x38]From pos 0xca
 			eax is already tainted
-[READ in 0xbfdd2cd2]	0xb779f478: movzx ecx, word ptr [esi+ecx*2]
+[READ in 0xbfa1b332]	0xb76fa478: movzx ecx, word ptr [esi+ecx*2]From pos 0xa0
 			ecx is now tainted
-[WRITE in 0xbfdd2d04]	0xb779f47f: mov dword ptr [ebp-0x34], eax
-[READ in 0xbfdd2d5c]	0xb779f482: mov eax, dword ptr [eax]
+[WRITE in 0xbfa1b364]	0xb76fa47f: mov dword ptr [ebp-0x34], eax
+[READ in 0xbfa1b3bc]	0xb76fa482: mov eax, dword ptr [eax]
 			eax is now freed
-[FOLLOW]		0xb779f484: add ecx, 0x1
+[FOLLOW]		0xb76fa484: add ecx, 0x1
 CMP 0 0x1
-[WRITE in 0xbfdd2cd2]	0xb779f487: mov word ptr [esi+edx*2], cx
-[READ in 0xb77b1570]	0xb779f48b: mov esi, dword ptr [eax+0x14]
+[WRITE in 0xbfa1b332]	0xb76fa487: mov word ptr [esi+edx*2], cx
+[READ in 0xb770c570]	0xb76fa48b: mov esi, dword ptr [eax+0x14]
 			esi is now freed
-[WRITE in 0xbfdd2d0a]	0xb779f48e: mov word ptr [ebp-0x2e], cx
-[READ in 0xbfdd2cf4]	0xb779f49f: mov ecx, dword ptr [ebp-0x44]
+[WRITE in 0xbfa1b36a]	0xb76fa48e: mov word ptr [ebp-0x2e], cx
+0xa0 0 0x1
+0xa0 0 0x1
+[READ in 0xbfa1b354]	0xb76fa49f: mov ecx, dword ptr [ebp-0x44]
 			ecx is now freed
-lea esp, ptr [ebp-0xc]:0xbfdd2d2c: REG : esp
+0xa0 0 0x1
+lea esp, ptr [ebp-0xc]:0xbfa1b38c: REG : esp
 			esp can't be tainted
-[READ in 0xbfdd2da4]	0xb779f773: mov ecx, dword ptr [ebp-0x24]
+[READ in 0xbfa1b404]	0xb76fa773: mov ecx, dword ptr [ebp-0x24]From pos 0x1d4
 			ecx is now tainted
-[READ in 0xbfdd2da4]	0xb779f773: mov ecx, dword ptr [ebp-0x24]
+[READ in 0xbfa1b404]	0xb76fa773: mov ecx, dword ptr [ebp-0x24]From pos 0x1d4
 			ecx is already tainted
-[READ in 0xbfdd2da4]	0xb779f773: mov ecx, dword ptr [ebp-0x24]
+[READ in 0xbfa1b404]	0xb76fa773: mov ecx, dword ptr [ebp-0x24]From pos 0x1d4
 			ecx is already tainted
-[READ in 0xbfdd2da4]	0xb779f773: mov ecx, dword ptr [ebp-0x24]
+[READ in 0xbfa1b404]	0xb76fa773: mov ecx, dword ptr [ebp-0x24]From pos 0x1d4
 			ecx is already tainted
-lea esp, ptr [ebp-0xc]:0xbfdd2dbc: REG : esp
+lea esp, ptr [ebp-0xc]:0xbfa1b41c: REG : esp
 			esp can't be tainted
-[READ in 0xbfdd2db8]	0xb5b48173: mov ebx, dword ptr [esp]
+[READ in 0xbfa1b418]	0xb5a91173: mov ebx, dword ptr [esp]From pos 0x16b
 			ebx is already tainted
-[FOLLOW]		0xb5a8e689: add ebx, 0x13b977
-CMP 0xb5a8e689 0x13b977
-[READ in 0xbfdd2d3c]	0xb5b48173: mov ebx, dword ptr [esp]
+[FOLLOW]		0xb59d7689: add ebx, 0x13b977
+CMP 0xb59d7689 0x13b977
+[READ in 0xbfa1b39c]	0xb5a91173: mov ebx, dword ptr [esp]From pos 0x102
 			ebx is already tainted
-[FOLLOW]		0xb5a8e430: add ebx, 0x13bbd0
-CMP 0xb5a8e430 0x13bbd0
-[READ in 0xbfdd2d5c]	0xb5a8e591: mov ecx, dword ptr [esp+0x1c]
+[FOLLOW]		0xb59d7430: add ebx, 0x13bbd0
+CMP 0xb59d7430 0x13bbd0
+0x102 0xb59d7430 0x13bbd0
+[READ in 0xbfa1b3bc]	0xb59d7591: mov ecx, dword ptr [esp+0x1c]
 			ecx is now freed
-[WRITE in 0xbfdd2d84]	0xb5a8bfb7: mov dword ptr [esp+0x14], ebx
-			0xbfdd2d84 is now tainted
-[READ in 0xbfdd2d6c]	0xb5b48173: mov ebx, dword ptr [esp]
+[WRITE in 0xbfa1b3e4]	0xb59d4fb7: mov dword ptr [esp+0x14], ebx
+			0xbfa1b3e4 is now tainted
+[READ in 0xbfa1b3cc]	0xb5a91173: mov ebx, dword ptr [esp]From pos 0x12c
 			ebx is already tainted
-[FOLLOW]		0xb5a8bfc0: add ebx, 0x13e040
-CMP 0xb5a8bfc0 0x13e040
-[WRITE in 0xbfdd2d70]	0xb5a8bfd6: mov dword ptr [esp], esi
-			0xbfdd2d70 is now freed
-[WRITE in 0xbfdd2d74]	0xb5a8bfd9: mov dword ptr [esp+0x4], eax
-			0xbfdd2d74 is now freed
-[WRITE in 0xbfdd2d64]	0xb5a8df6b: mov dword ptr [esp+0x14], edi
-			0xbfdd2d64 is now freed
-[WRITE in 0xbfdd2d68]	0xb5a8df73: mov dword ptr [esp+0x18], ebp
-			0xbfdd2d68 is now freed
-[READ in 0xbfdd2d2c]	0xb5b48173: mov ebx, dword ptr [esp]
+[FOLLOW]		0xb59d4fc0: add ebx, 0x13e040
+CMP 0xb59d4fc0 0x13e040
+[WRITE in 0xbfa1b3d0]	0xb59d4fd6: mov dword ptr [esp], esi
+			0xbfa1b3d0 is now freed
+[WRITE in 0xbfa1b3d4]	0xb59d4fd9: mov dword ptr [esp+0x4], eax
+			0xbfa1b3d4 is now freed
+[WRITE in 0xbfa1b3c4]	0xb59d6f6b: mov dword ptr [esp+0x14], edi
+			0xbfa1b3c4 is now freed
+[WRITE in 0xbfa1b3c8]	0xb59d6f73: mov dword ptr [esp+0x18], ebp
+			0xbfa1b3c8 is now freed
+[READ in 0xbfa1b38c]	0xb5a91173: mov ebx, dword ptr [esp]From pos 0xf2
 			ebx is already tainted
-[FOLLOW]		0xb5a8bebe: add ebx, 0x13e142
-CMP 0xb5a8bebe 0x13e142
-[WRITE in 0xbfdd2d48]	0xb5a8dc83: mov dword ptr [esp+0x18], esi
-			0xbfdd2d48 is now freed
-[WRITE in 0xbfdd2d44]	0xb5a8dc8b: mov dword ptr [esp+0x14], ebx
-[READ in 0xbfdd2d2c]	0xb5b48173: mov ebx, dword ptr [esp]
+[FOLLOW]		0xb59d4ebe: add ebx, 0x13e142
+CMP 0xb59d4ebe 0x13e142
+0xf2 0xb59d4ebe 0x13e142
+[WRITE in 0xbfa1b3a8]	0xb59d6c83: mov dword ptr [esp+0x18], esi
+			0xbfa1b3a8 is now freed
+[WRITE in 0xbfa1b3a4]	0xb59d6c8b: mov dword ptr [esp+0x14], ebx
+[READ in 0xbfa1b38c]	0xb5a91173: mov ebx, dword ptr [esp]From pos 0xf2
 			ebx is already tainted
-[FOLLOW]		0xb5a8dc94: add ebx, 0x13c36c
-CMP 0xb5a8dc94 0x13c36c
-[READ in 0xbfdd2d44]	0xb5a8dcbf: mov ebx, dword ptr [esp+0x14]
+[FOLLOW]		0xb59d6c94: add ebx, 0x13c36c
+CMP 0xb59d6c94 0x13c36c
+[READ in 0xbfa1b3a4]	0xb59d6cbf: mov ebx, dword ptr [esp+0x14]From pos 0x109
 			ebx is already tainted
-[READ in 0xbfdd2d84]	0xb5a8bffd: mov ebx, dword ptr [esp+0x14]
+0xf2 0xb59d6c94 0x13c36c
+[READ in 0xbfa1b3e4]	0xb59d4ffd: mov ebx, dword ptr [esp+0x14]From pos 0x1d0
 			ebx is already tainted
-[READ in 0xbfdd2dd0]	0xb5ad4b04: mov ebx, dword ptr [esp+0x4]
+[READ in 0xbfa1b430]	0xb5a1db04: mov ebx, dword ptr [esp+0x4]
 			ebx is now freed
