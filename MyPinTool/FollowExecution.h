@@ -8,15 +8,20 @@
 #include <list>
 
 int insCount = 0;
-std::list<UINT32> addressTainted;
-std::list<REG> regsTainted;
+list<UINT32> addressTainted;
+list<REG> regsTainted;
+
+// TODO extend this to last [EFLAGS setting operation]'s 2 operands
+//REG lastCmpRegValue;
+UINT32 lastCmpRegValue;
+UINT32 lastCmpImmediate;
 
 /* ===================================================================== */
 /* Control Flow following jumps                                          */
 /* ===================================================================== */
-std::ofstream ControlFlowFile;
-std::ofstream TaintFile;
-std::ofstream InstructionFile;
+ofstream ControlFlowFile;
+ofstream TaintFile;
+ofstream InstructionFile;
 
 //unordered_map<int, string>addressToInstruction;
 //unordered_map<int, int>addressToBranchTaken;
@@ -27,6 +32,7 @@ std::ofstream InstructionFile;
 VOID TaintBranch(ADDRINT ins, INT32 branchTaken, string insDis) {
 
     ControlFlowFile << insDis << ":" << branchTaken << endl;
+    // TODO PREDICATE_ZERO to get ZF == 0 and backsolve
 
 }
 
@@ -247,7 +253,8 @@ VOID spreadRegTaint(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_
     }
 }
 
-VOID followData(UINT32 insAddr, std::string insDis, REG reg)
+VOID followData(UINT32 insAddr, std::string insDis, REG reg, UINT32 immediate, CONTEXT* context)
+// TODO rename, this will propagate indirect taint b/c of cmp
 {
     if (!REG_valid(reg)) {
         return;
@@ -255,13 +262,14 @@ VOID followData(UINT32 insAddr, std::string insDis, REG reg)
 
     if (checkAlreadyRegTainted(reg)) {
         TaintFile << "[FOLLOW]\t\t" << insAddr << ": " << insDis << endl;
-        //TODO catch cmp ecx, val, record ecx and val.
+        lastCmpRegValue = PIN_GetContextReg(context, reg);
+        //lastCmpRegValue = reg;
+        lastCmpImmediate = immediate;
+        TaintFile << "CMP " << lastCmpRegValue << " " << immediate << endl;
+        //TODO catch cmp ecx, 'X'. record ecx and val.
     }
 
-
-
 }
-
 
 /*
  *  Handle taint propagation during branches. Record if branch was taken or not. 
@@ -351,12 +359,17 @@ VOID Branches(INS ins, VOID *v)
     }
     */
 
-    if (INS_OperandCount(ins) > 1 && INS_OperandIsReg(ins, 0)) {
+    //if (INS_OperandCount(ins) > 1 && INS_OperandIsReg(ins, 0)) {
+    if (INS_OperandCount(ins) > 1 && INS_OperandIsReg(ins, 0) 
+        && INS_OperandIsImmediate(ins, 1) ) { 
+
         INS_InsertCall(
                 ins, IPOINT_BEFORE, (AFUNPTR)followData,
                 IARG_ADDRINT, INS_Address(ins),
                 IARG_PTR, new string(INS_Disassemble(ins)),
                 IARG_UINT32, INS_RegR(ins, 0),
+                IARG_UINT32, static_cast<UINT32>(INS_OperandImmediate(ins, 1)), // HACK, stacksmash if UINT64
+                IARG_CONST_CONTEXT,
                 IARG_END);
     }
 
@@ -422,7 +435,7 @@ VOID InitFollowExecution()
 
     INS_AddInstrumentFunction(Branches, 0);
     PIN_AddSyscallEntryFunction(Syscall_entry, 0);
-    PIN_AddSyscallExitFunction(Syscall_exit, 0);
+    //PIN_AddSyscallExitFunction(Syscall_exit, 0);
 
 }
 
