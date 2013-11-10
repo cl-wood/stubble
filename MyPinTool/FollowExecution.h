@@ -25,15 +25,19 @@ BOOL taintedCmp = false;
 ofstream ControlFlowFile;
 ofstream TaintFile;
 ofstream InstructionFile;
+ofstream ResultsFile;
 
 /*
- * Records whether branch taken or not 
+ *  Backsolves from branch sink to source of taint and recommends action.
  */
 VOID BacksolveBranch(ADDRINT ins, INT32 branchTaken, string insDis) {
 
     TaintFile << taintPosition << " " << lastCmpRegValue << " " << lastCmpImmediate << endl;
-    cout << "change " << dec << taintPosition << " in file" << endl;
+
+    // Write taint position and last cmps argv1 and argv2 to file for analysis
+    ResultsFile << dec << taintPosition << ":" << lastCmpRegValue << ":" << lastCmpImmediate << endl;
     taintedCmp = false;
+
     // TODO PREDICATE_ZERO to get ZF == 0 or cases for all jumps and backsolve
     //if (INS_Opcode(ins) == XED_ICLASS_JNZ) {
         
@@ -433,6 +437,8 @@ VOID InitFollowExecution()
     InstructionFile << hex;
     InstructionFile.setf(ios::showbase);
 
+    ResultsFile.open("results.out");
+
     INS_AddInstrumentFunction(Branches, 0);
     PIN_AddSyscallEntryFunction(Syscall_entry, 0);
     //PIN_AddSyscallExitFunction(Syscall_exit, 0);
@@ -441,12 +447,12 @@ VOID InitFollowExecution()
 
 VOID FiniFollowExecution()
 {
-    // Find collisions between 1st elements in maps to instructions and branches taken
-    // This is a round-about way of mapping each cond. jump->taken/~taken
 
     ControlFlowFile.close();
     TaintFile.close();
     InstructionFile.close();
+    ResultsFile.close();
+
 }
 
 // End FollowExecution.h

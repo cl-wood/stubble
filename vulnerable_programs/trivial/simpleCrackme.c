@@ -9,7 +9,8 @@
 int main(int argc, char* argv[])
 {
     // Open and read user input
-    int fd = open("file.txt", O_RDONLY);
+    //int fd = open("file.txt", O_RDONLY);
+    int fd = open(argv[1], O_RDONLY);
     char buf[500];
     int res = read(fd, buf, 500);
     close(fd);
