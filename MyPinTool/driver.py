@@ -3,30 +3,53 @@
 import os, subprocess
 from operator import itemgetter
 
-cmd =   [   
-            '../pin/pin', 
-            '-t', 'obj-ia32/MyPinTool.so', 
-            '--', '../vulnerable_programs/trivial/a.out', 'file.txt'
-        ]
+def main():
 
-p1 = subprocess.Popen(cmd)
-p1.wait()
+    cmd =   [   
+        '../pin/pin', 
+        '-t', 'obj-ia32/MyPinTool.so', 
+        '--', '../vulnerable_programs/trivial/a.out', 'file.txt'
+    ]
 
-print('done')
+    # One iteration of pintool, generates new (file.txt, results.out) pair
+    p1 = subprocess.Popen(cmd)
+    p1.wait()
 
-# Get set diffs
-master_results_set = open('./results/master', 'r').read().split()
-#while set(master_results_set) - 
-results = open('./results/results.2').read().split()
-newResults = set(results) - set(master_results_set) 
+    # Get set diffs to decide which parts of user input to mutate next
+    explored_results_set = open('./results/explored.out', 'r').read().split()
+    #while set(explored_results_set) - 
+    results = open('./results.out', 'r').read().split()
+    newResults = set(results) - set(explored_results_set) 
 
-todo = []
-for r in newResults:
-    todo.append(map(lambda x: int(x), r.split(':') ) )
+    # file in format pos:op:arg1:arg2
+    toExplore = [r.split(':') for r in newResults]
 
-todo = sorted(todo, key=itemgetter(0))
+    toExplore = sorted(toExplore, key=itemgetter(0))
+    print toExplore
+
+    # explore each 
+    #for i in toExplore:
+    # End main()
+
+def moveOperations(inputFile, outputFile):
+    results = os.listdir('.')
+
+def getMutationNumber(resultsDir):
+
+    results = os.listdir(resultsDir)
+    if len(results) == 1:
+        return 1
+
+    return max([int(i.split('.')[1]) for i in results]) + 1
+
+    
+# End getMutationsNumber
 
 
+
+
+#main()
+#moveOperations('file.txt', 'results.out')
 
 
 

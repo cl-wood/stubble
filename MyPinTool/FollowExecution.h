@@ -33,9 +33,14 @@ ofstream ResultsFile;
 VOID BacksolveBranch(ADDRINT ins, INT32 branchTaken, string insDis) {
 
     TaintFile << taintPosition << " " << lastCmpRegValue << " " << lastCmpImmediate << endl;
+    // TODO assuming cmp for now, will need to have cases later
 
     // Write taint position and last cmps argv1 and argv2 to file for analysis
-    ResultsFile << dec << taintPosition << ":" << lastCmpRegValue << ":" << lastCmpImmediate << endl;
+    ResultsFile << dec << taintPosition << ":" 
+                // TODO handle things other than cmp <<"cmp" << ":"
+                << lastCmpRegValue << ":" 
+                << lastCmpImmediate << endl;
+
     taintedCmp = false;
 
     // TODO PREDICATE_ZERO to get ZF == 0 or cases for all jumps and backsolve
