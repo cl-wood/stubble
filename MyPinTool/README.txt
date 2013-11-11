@@ -6,4 +6,9 @@ To modify, change MyPinTool.cpp and run:
 If it doesn't work, su to root and:
     echo 0 > /proc/sys/kernel/yama/ptrace_scope
 
+Cleaning up, this modifying Pin's makefile is scary:
+
+    rm input/input.* output/output.* taint/taint.* mutations/mutation.*
+    echo > taint/explored.0
+
 

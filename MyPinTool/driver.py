@@ -5,40 +5,50 @@ import subprocess
 from operator import itemgetter
 
 
-def test(inputFile, outputFile, seed = ('0', '0', '0') ):
+def test(inputFile, taintFile, seed = ('0', '0', '0') ):
 
-    mutate(inputFile, seed)
-
+    # First time, don't mutate
+    if seed != ('0', '0', '0'):
+        mutate(inputFile, seed)
+    else:
+        print('Initial run')
+    
+    # command for subprocess, pintool
     cmd =   [   
         '../pin/pin', 
         '-t', 'obj-ia32/MyPinTool.so', 
         '--', '../vulnerable_programs/trivial/a.out', inputFile
     ]
 
-    testNumber = getTestNumber('./results/')
-    print('Running test number', testNumber, 'based on seed', seed, '...')
+    # Which test are we running? 
+    testNumber = getTestNumber('./taint/')
+    print 'Running test #' + str(testNumber), 'based on mutation seed', seed, '...' 
 
-    # One iteration of pintool, generates new (input.txt, results.out) pair
-    p1 = subprocess.Popen(cmd)
+    # One iteration of pintool, generates new (input.txt, taint.out) pair
+    outputFile = open('./file.out', 'w')
+    p1 = subprocess.Popen(cmd, stdout=outputFile)
     p1.wait()
 
-    # Find which results are new
-    # input is copied to input/ and mutated
-    # results is copied to results/
-    explored = open('./results/explored.0', 'r').read().split()
-    exploredFile = open('./results/explored.0', 'a')
-    results = open(outputFile, 'r').read().split()
-    newResults = set(results) - set(explored) 
+    # Find which taint are new
+    # input  -> input/ and mutated
+    # taint -> taint/
+    explored        =   open('./taint/explored.0', 'r').read().split()
+    exploredFile    =   open('./taint/explored.0', 'a')
+    taint           =   open(taintFile, 'r').read().split()
 
-    # Copy results and append latest results to explored
-    copyResults(inputFile, newResults, testNumber) 
+    # Set difference
+    # HACK for now, only mutate each byte found in initial run once
+    newTaint = set(taint) - set(explored) 
+
+    # Copy taint and append latest taint to explored
+    recordResults(inputFile, outputFile, newTaint, seed, testNumber) 
     exploredFile.write(':'.join(seed) + "\n")
 
     # file in format pos:op:arg1:arg2
-    toExplore = [r.split(':') for r in newResults]
+    toExplore = [r.split(':') for r in newTaint]
 
     toExplore = sorted(toExplore, key=itemgetter(0))
-    return toExplore[0]
+    return toExplore
 
     # explore each 
     #for i in toExplore:
@@ -49,8 +59,9 @@ def test(inputFile, outputFile, seed = ('0', '0', '0') ):
 def mutate(inputFile, seed):
     f = list(open(inputFile, 'r').read())
 
+    # Change input value to equal non-tainted immediate
     if (int(seed[1]) < 256):
-        f[int(seed[0])] = chr(int(seed[1]))
+        f[int(seed[0])] = chr(int(seed[2]))
 
     out = ''.join(f)
 
@@ -58,36 +69,67 @@ def mutate(inputFile, seed):
 
 # End mutate
 
-def copyResults(inputFile, outputSet, testNumber):
+def recordResults(inputFile, outputFile, taintSet, mutation, n):
+    """ inputFile:  input to instrumented binary
+        outputFile: record of STDOUT from instrumented binary
+        taintSet:   taint from DTA analysis
+        mutation:   latest mutation explored
+        n:          test number 
+    """ 
+    
 
-    shutil.copy(inputFile, './input/input.' + str(testNumber) )
-    #shutil.copy(outputFile, './results/results.' + str(testNumber) )
-    results = open('./results/results.' + str(testNumber), 'w' )
-    for i in outputSet:
-        results.write(i + "\n")
+    # Record input file and STDOUT for test n
+    shutil.copy(inputFile, './input/input.' + str(n) )
+    shutil.copy(outputFile.name, './output/output.' + str(n) )
+
+    # Record mutation n (TODO and it's metadata or tree structure)
+    if mutation != ('0', '0', '0'):
+        open('./mutations/mutation.' + str(n), 'w').write(':'.join(mutation))
+    
+
+    taint = open('./taint/taint.' + str(n), 'w' )
+    for i in taintSet:
+        taint.write(i + "\n")
 
 # End copyOperations()
 
-def getTestNumber(resultsDir):
+def getTestNumber(taintDir):
 
-    results = os.listdir(resultsDir)
-    if len(results) == 1:
+    taint = os.listdir(taintDir)
+    if len(taint) == 1:
         return 1
 
-    return max([int(i.split('.')[1]) for i in results]) + 1
+    return max([int(i.split('.')[1]) for i in taint]) + 1
 
     
 # End getTestNumber
 
 
-i = './file.txt'
-o = './results.out'
+seedFile = './file.txt'
 
-newSeed = test(i, o)
-win = ('300', '88', '88')
-test(i, o, win)
+i = 'inputFile.txt'
+shutil.copy(seedFile, i)
+o = './results.out' # might rename in pintool to taint.out, makes more sense
 
-#while set(explored_results_set) - 
+# initial run
+toExplore = test(i, o)
+
+for s in toExplore:
+    # Re-seed in loop
+    shutil.copy(seedFile, i)
+    test(i, o, s)
+
+#win = ('300', '88', '88')
+#print test(i, o, win)
+#print test(i, o, ('412','3047130892','1558772'))
+#print test(i, o, ('392','3077965307','72197'))
+#print test(i, o, ('392','3218230767','4294967280'))
+#print test(i, o, ('156','0','1'))
+#print test(i, o, ('144','3218230626','3'))
+#print test(i, o, ('160','0','1'))
+#print test(i, o, ('258','3047396400','1293264'))
+
+#while set(explored_taint_set) - 
 
 
 
