@@ -119,17 +119,5 @@ for s in toExplore:
     shutil.copy(seedFile, i)
     test(i, o, s)
 
-#win = ('300', '88', '88')
-#print test(i, o, win)
-#print test(i, o, ('412','3047130892','1558772'))
-#print test(i, o, ('392','3077965307','72197'))
-#print test(i, o, ('392','3218230767','4294967280'))
-#print test(i, o, ('156','0','1'))
-#print test(i, o, ('144','3218230626','3'))
-#print test(i, o, ('160','0','1'))
-#print test(i, o, ('258','3047396400','1293264'))
-
 #while set(explored_taint_set) - 
-
-
 

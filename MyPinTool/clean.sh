@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 rm -f input/input.* output/output.* taint/taint.* mutations/mutation.*
 rm -f results.out
 rm -f taint.out

@@ -32,7 +32,6 @@ END_LEGAL */
 #include "pin.H"
 #include <asm/unistd.h>
 #include <fstream>
-#include <functional> // for hashes
 #include <iostream>
 #include <list>
 #include <string>
@@ -45,39 +44,12 @@ using namespace std;
 
 bool IN_MAIN = false;
 
-#if defined(TARGET_MAC)
-#define MALLOC "_malloc"
-//#define FREE "_free"
-#define MAIN "_main"
-#define LIBCSTART "__libc_start_main"
-#define GETCHAR "_getchar"
-#define STRCPY "_strcpy"
-#else
-#define MALLOC "malloc"
-//#define FREE "free"
-#define MAIN "main"
-#define LIBCSTART "__libc_start_main"
-#define GETCHAR "getchar"
-#define STRCPY "strcpy"
-#endif
-
 /* ===================================================================== */
 /* User Libraries */
 /* ===================================================================== */
 #include "FollowExecution.h"
 //#include "DTA.h"
 //#include "FindUseAfterFree.h"
-
-
-/* ===================================================================== */
-/* Commandline Switches */
-/* ===================================================================== */
-
-KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
-    "o", "malloctrace.out", "specify trace file name");
-
-/* ===================================================================== */
-
 
 
 /* ===================================================================== */
@@ -114,8 +86,7 @@ VOID Fini(INT32 code, VOID *v)
 
 INT32 Usage()
 {
-    cerr << "This tool produces a trace of calls to malloc." << endl;
-    cerr << endl << KNOB_BASE::StringKnobSummary() << endl;
+    cerr << "This tool DTA and backsolving to explore paths within a binary." << endl;
     return -1;
 }
 
@@ -133,7 +104,6 @@ int main(int argc, char *argv[])
     {
         return Usage();
     }
-
 
     TaintFile.open("taint.out");
     TaintFile << hex;
@@ -159,3 +129,4 @@ int main(int argc, char *argv[])
 /* ===================================================================== */
 /* eof */
 /* ===================================================================== */
+

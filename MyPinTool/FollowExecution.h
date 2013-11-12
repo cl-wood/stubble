@@ -22,9 +22,9 @@ BOOL taintedCmp = false;
 /* ===================================================================== */
 /* Control Flow following jumps                                          */
 /* ===================================================================== */
-ofstream ControlFlowFile;
+//ofstream ControlFlowFile;
 ofstream TaintFile;
-ofstream InstructionFile;
+//ofstream InstructionFile;
 ofstream ResultsFile;
 
 /*
@@ -289,8 +289,8 @@ VOID followData(UINT32 insAddr, std::string insDis, REG reg, UINT32 immediate, C
  */ 
 VOID Branches(INS ins, VOID *v)
 {
-    InstructionFile << insCount << ":" << INS_Disassemble(ins) << endl;
-    insCount++;
+    //InstructionFile << insCount << ":" << INS_Disassemble(ins) << endl;
+    //insCount++;
 
     // If conditional branch after compared taint, Backsolve
     if (INS_Category(ins) == XED_CATEGORY_COND_BR && 
@@ -434,13 +434,13 @@ VOID Syscall_exit(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID *
 
 VOID InitFollowExecution()
 {
-    ControlFlowFile.open("controlpath.out");
-    ControlFlowFile << hex;
-    ControlFlowFile.setf(ios::showbase);
+    //ControlFlowFile.open("controlpath.out");
+    //ControlFlowFile << hex;
+    //ControlFlowFile.setf(ios::showbase);
 
-    InstructionFile.open("instructions.out");
-    InstructionFile << hex;
-    InstructionFile.setf(ios::showbase);
+    //InstructionFile.open("instructions.out");
+    //InstructionFile << hex;
+    //InstructionFile.setf(ios::showbase);
 
     ResultsFile.open("results.out");
 
@@ -453,9 +453,9 @@ VOID InitFollowExecution()
 VOID FiniFollowExecution()
 {
 
-    ControlFlowFile.close();
+    //ControlFlowFile.close();
     TaintFile.close();
-    InstructionFile.close();
+    //InstructionFile.close();
     ResultsFile.close();
 
 }
