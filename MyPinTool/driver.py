@@ -17,7 +17,8 @@ def test(inputFile, taintFile, seed = ('0', '0', '0') ):
     cmd =   [   
         '../pin/pin', 
         '-t', 'obj-ia32/MyPinTool.so', 
-        '--', '../vulnerable_programs/trivial/a.out', inputFile
+        #'--', '../vulnerable_programs/trivial/a.out', inputFile
+        '--', './a.out', inputFile
     ]
 
     # Which test are we running? 
