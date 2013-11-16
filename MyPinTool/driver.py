@@ -37,24 +37,23 @@ def test(inputFile, taintFile, seed = ('0', '0', '0') ):
     exploredFile    =   open('./taint/explored.0', 'a')
     taint           =   open(taintFile, 'r').read().split()
 
+    newTaintDict = {i.split(':')[0]: i.split(':')[1:] for i in taint}
+    exploredTaintDict = {i.split(':')[0]: i.split(':')[1:] for i in explored}
+
     # Set difference
-    # HACK for now, only mutate each byte found in initial run once
-    newTaint = set(taint) - set(explored) 
+    newTaint = {x: newTaintDict[x] for x in newTaintDict if x not in exploredTaintDict.keys()} 
 
     # Copy taint and append latest taint to explored
     recordResults(inputFile, outputFile, newTaint, seed, testNumber) 
     exploredFile.write(':'.join(seed) + "\n")
 
     # file in format pos:op:arg1:arg2
-    toExplore = [r.split(':') for r in newTaint]
+    toExplore = [(r, newTaint[r][0], newTaint[r][1]) for r in newTaint]
 
     toExplore = sorted(toExplore, key=itemgetter(0))
     return toExplore
 
-    # explore each 
-    #for i in toExplore:
-
-# End main()
+# End test
 
 # TODO will need to handle non-character cases for seed[1]
 def mutate(inputFile, seed):
@@ -105,20 +104,20 @@ def getTestNumber(taintDir):
     
 # End getTestNumber
 
-
-seedFile = './file.txt'
-
-i = 'inputFile.txt'
-shutil.copy(seedFile, i)
-o = './results.out' # might rename in pintool to taint.out, makes more sense
-
-# initial run
-toExplore = test(i, o)
-
-for s in toExplore:
-    # Re-seed in loop
+if __name__ == '__main__':
+    seedFile = './file.txt'
+    i = 'inputFile.txt'
     shutil.copy(seedFile, i)
-    test(i, o, s)
+    o = './results.out' # might rename in pintool to taint.out, makes more sense
 
-#while set(explored_taint_set) - 
+    # initial run
+    toExplore = test(i, o)
+    print 'seed run', toExplore
+
+    while len(toExplore) > 1:
+        s = toExplore[0]
+        toExplore = test(i, o, s)
+        print toExplore
+
+# End main
 
