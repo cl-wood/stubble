@@ -48,6 +48,7 @@ bool IN_MAIN = false;
 /* User Libraries */
 /* ===================================================================== */
 #include "FollowExecution.h"
+//#include "buffer_linux.h"
 //#include "DTA.h"
 //#include "FindUseAfterFree.h"
 
@@ -78,6 +79,7 @@ VOID Fini(INT32 code, VOID *v)
     FiniFollowExecution();
     //FiniFindUseAfterFree();
     //FiniDTA();
+    //FiniBufferLinux();
 }
 
 /* ===================================================================== */
@@ -113,6 +115,7 @@ int main(int argc, char *argv[])
     InitFollowExecution();
     //InitFindUseAfterFree();
     //InitDTA();
+    //InitBufferLinux();
 
     // Watch main function
     //IMG_AddInstrumentFunction(WatchMain, 0);

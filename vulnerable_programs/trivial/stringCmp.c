@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<unistd.h>
+#include<stdlib.h>
+#include<string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+int main(int argc, char* argv[])
+{
+    // Open and read user input
+    int fd = open(argv[1], O_RDONLY);
+    char buf[500];
+    char str[100];
+    int res = read(fd, buf, 500);
+    close(fd);
+    strcpy(str, buf);
+
+    printf("%s\n", buf);
+
+    // You win if 300th character is X
+    int win = 0;
+    if (strncmp(str, "thepassword", strlen("thepassword") ) == 0) {
+        win = 1;
+    }
+
+    if (win) {
+        printf("you win!\n");
+    }
+    else {
+        printf("you lose!\n");
+    }
+
+}

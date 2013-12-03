@@ -1,0 +1,90 @@
+% This is a "bare-bones" thesis template file.  For examples of how to
+% use a few more LaTeX features, look in the 'sample' folder.  Read
+% the User Guide for documentation of the 'fsuthesis' class features.
+
+\documentclass[11pt,expanded,copyright]{fsuthesis}
+
+% Additional packages may be loaded here.
+
+\title{This Is My Title:\protect\\And This Is Its Second Line}
+\author{Viktor Spoyles}
+\college{College of Arty Science}
+\department{Department of Furtive Studies} % Delete if no department
+\manuscripttype{Dissertation}              % [Thesis, Dissertation, Treatise]
+\degree{Doctor of Philosophy}                 
+\semester{Fall}                            % [Spring, Summer, Fall]
+\degreeyear{2012}
+\defensedate{October 31, 2012}
+
+%\subject{My Topic}
+%\keywords{keyterm1; keyterm2; keyterm3; ...}
+
+\committeeperson{Faux Causson Yorverk}{Professor Directing Thesis}
+\committeeperson{Verda Boizaar}{University Representative}
+\committeeperson{Beauxeau D'Claune}{Committee Member}
+\committeeperson{Arlip Zarseeld}{Committee Member}
+
+\clubpenalty=9999
+\widowpenalty=9999
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\makecommitteepage
+
+%\begin{dedication}
+%\end{dedication}
+
+%\begin{acknowledgments}
+%\end{acknowledgments}
+
+\tableofcontents
+%\listoftables
+%\listoffigures
+%\listofmusex
+
+%\begin{listofsymbols}
+%\end{listofsymbols}
+
+%\begin{listofabbrevs}
+%\end{listofabbrevs}
+
+\begin{abstract}
+This is my abstract.
+\end{abstract}
+
+\mainmatter
+
+\input chapter1
+%\input chapter2
+%\input chapter3
+
+%\appendix
+%\input appendix1
+
+% You have your choice of bibliography sections, either
+% hand-crafted or BibTeX.
+
+% This is the "hand-crafted" bibliography/references section:
+\begin{references}
+Mybib, Sample. \textit{An Example of a Bibliographic Entry
+ Created Manually}. Tallahassee, Florida: Fornish and Frak, 2010.
+
+Smith, Marigold. \textit{Lots and Lots of Bibliographic Entries
+ and How to Display Them}. Tallahassee, Florida: Gibson and Goulash, 2010.
+\end{references}
+
+% Or use the BibTeX bibliography/references section below.  View the
+% file 'myrefs.bib' to get a feel for what these entries may look
+% like.  See the document in the 'sample' folder for more citation and
+% BibTeX examples.
+
+% \bibliographystyle{plain}
+% \bibliography{myrefs}
+
+\begin{biosketch}
+This is my biography.
+\end{biosketch}
+
+\end{document}

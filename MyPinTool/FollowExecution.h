@@ -18,6 +18,8 @@ UINT32 lastCmpImmediate;
 UINT32 lastEaxTaintValue; // HACK to get 300 for buf[300]
 UINT32 taintPosition;
 BOOL taintedCmp = false;
+//REG eipValue;
+UINT32 eipValue;
 
 /* ===================================================================== */
 /* Control Flow following jumps                                          */
@@ -84,6 +86,9 @@ bool taintReg(REG reg)
     }
 
     switch (reg) {
+        //case REG_EIP:  regsTainted.push_front(REG_EIP); 
+        //               TaintFile << "TAINT REACHED EIP" << endl;
+        //               break;
 
         case REG_EAX:  regsTainted.push_front(REG_EAX); 
         case REG_AX:   regsTainted.push_front(REG_AX); 
@@ -390,13 +395,20 @@ VOID Branches(INS ins, VOID *v)
  *  Instrument read syscall
  */
 VOID Syscall_entry(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID *v)
-//VOID Syscall_exit(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID *v)
 {
     unsigned int i;
     UINT32 start, size;
     //UINT32 read;
+    if (PIN_GetSyscallNumber(ctx, std) == __NR_open) {
+        //TaintFile << "BLAH " << PIN_GetSyscallArgument(ctx, std, 1);
+        TaintFile << "OPEN " << PIN_GetSyscallArgument(ctx, std, 0) << " "
+                             << PIN_GetSyscallArgument(ctx, std, 1) << endl;
+    }
 
     if (PIN_GetSyscallNumber(ctx, std) == __NR_read) {
+
+        eipValue = PIN_GetContextReg(ctx, REG_EIP);
+        TaintFile << "EIP value\t" << std::hex << eipValue << endl;
 
         //UINT32 fd = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 0)));
         start = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 1)));
@@ -404,13 +416,15 @@ VOID Syscall_entry(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID 
         //read  = static_cast<UINT32>((PIN_GetSyscallReturn(ctx, std)));
 
         // Cheap trick for demo, will need to remove later?
-         if (size != 500) {
+        if (size != 500) {
         //if (start > 0xbf000000) {
             return; // only look at the read we know we care about
         }
 
         for (i = 0; i < size; i++) {
             addressTainted.push_back(start+i);
+
+            
         }
 
         TaintFile << "[TAINT]\t" << std::hex << start << 
@@ -421,6 +435,7 @@ VOID Syscall_entry(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID 
 
 VOID Syscall_exit(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID *v)
 {
+        /*
         UINT32 read;
         UINT32 start, size;
         start = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 1)));
@@ -428,6 +443,12 @@ VOID Syscall_exit(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID *
         read = static_cast<UINT32>((PIN_GetSyscallReturn(ctx, std)));
 
         cout << hex << start << ":" << start+size << ":" << read << endl;
+        */
+
+    if (PIN_GetSyscallNumber(ctx, std) == __NR_read) {
+        eipValue = PIN_GetContextReg(ctx, REG_EIP);
+        TaintFile << "EIP value now \t" << std::hex << eipValue << endl;
+    }
 
 }
 

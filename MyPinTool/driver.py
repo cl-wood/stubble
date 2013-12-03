@@ -18,7 +18,10 @@ def test(inputFile, taintFile, seed = ('0', '0', '0') ):
         '../pin/pin', 
         '-t', 'obj-ia32/MyPinTool.so', 
         #'--', '../vulnerable_programs/trivial/a.out', inputFile
-        '--', './a.out', inputFile
+        #'--', './a.out', inputFile
+        '--', './simpleCrackme', inputFile
+        #'--', './strcpy', inputFile
+        #'--', 'ls'
     ]
 
     # Which test are we running? 
@@ -61,7 +64,11 @@ def mutate(inputFile, seed):
 
     # Change input value to equal non-tainted immediate
     if (int(seed[1]) < 256):
-        f[int(seed[0])] = chr(int(seed[2]))
+        try:
+            f[int(seed[0])] = chr(int(seed[2]))
+        except OverflowError as e:
+            print 'Value too large for C type long'
+            return
 
     out = ''.join(f)
 

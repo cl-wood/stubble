@@ -1,0 +1,35 @@
+\BOOKMARK [0][-]{MainTitlePage.0}{Title Page}{}% 1
+\BOOKMARK [0][-]{contents.0}{Table of Contents}{}% 2
+\BOOKMARK [1][-]{chapter*.3}{List of Tables}{contents.0}% 3
+\BOOKMARK [1][-]{chapter*.4}{List of Figures}{contents.0}% 4
+\BOOKMARK [1][-]{chapter*.5}{List of Symbols}{contents.0}% 5
+\BOOKMARK [1][-]{chapter*.6}{Abstract}{contents.0}% 6
+\BOOKMARK [0][-]{chapter.1}{1 A Derivation of a Formula for Amortization}{}% 7
+\BOOKMARK [1][-]{section.1.1}{1.1 Definitions}{chapter.1}% 8
+\BOOKMARK [2][-]{subsection.1.1.1}{1.1.1 Payment Schedule}{section.1.1}% 9
+\BOOKMARK [1][-]{section.1.2}{1.2 Balloon Payment}{chapter.1}% 10
+\BOOKMARK [1][-]{section.1.3}{1.3 Finding a Solution}{chapter.1}% 11
+\BOOKMARK [2][-]{subsection.1.3.1}{1.3.1 Defining the Equation}{section.1.3}% 12
+\BOOKMARK [2][-]{subsection.1.3.2}{1.3.2 Breaking It Down}{section.1.3}% 13
+\BOOKMARK [1][-]{section.1.4}{1.4 Application}{chapter.1}% 14
+\BOOKMARK [0][-]{chapter.2}{2 Citations and References}{}% 15
+\BOOKMARK [1][-]{section.2.1}{2.1 Using the references Environment}{chapter.2}% 16
+\BOOKMARK [1][-]{section.2.2}{2.2 Citations and BIBTeX}{chapter.2}% 17
+\BOOKMARK [1][-]{section.2.3}{2.3 Alternative Citation and Bibliography Formats}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 The natbib Package}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 The apacite Package}{section.2.3}% 20
+\BOOKMARK [1][-]{section.2.4}{2.4 Even More Options}{chapter.2}% 21
+\BOOKMARK [2][-]{subsection.2.4.1}{2.4.1 The biblatex-chicago Package}{section.2.4}% 22
+\BOOKMARK [2][-]{subsection.2.4.2}{2.4.2 The biblatex-historian Package}{section.2.4}% 23
+\BOOKMARK [0][-]{chapter.3}{3 Working with Graphics}{}% 24
+\BOOKMARK [1][-]{section.3.1}{3.1 Raster and Vector Graphics}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.2}{3.2 The graphicx Package}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.3}{3.3 PostScript, Encapsulated PostScript, and PDF}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.4}{3.4 Inserting Figures}{chapter.3}% 28
+\BOOKMARK [1][-]{section.3.5}{3.5 Inserting Forms or Full-Page Figures}{chapter.3}% 29
+\BOOKMARK [1][-]{section.3.6}{3.6 Musical Examples}{chapter.3}% 30
+\BOOKMARK [1][-]{section.3.7}{3.7 Further Information}{chapter.3}% 31
+\BOOKMARK [0][-]{chapter.4}{4 Tabular Data and Tables}{}% 32
+\BOOKMARK [0][-]{appendix.A}{Appendix}{}% 33
+\BOOKMARK [0][-]{appendix.A}{A Good Time Had by All}{}% 34
+\BOOKMARK [0][-]{appendix*.15}{Biographical Sketch}{}% 35
