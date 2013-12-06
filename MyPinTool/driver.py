@@ -34,7 +34,7 @@ def test(inputFile, taintFile, seed = ('0', '0', '0') ):
     p1.wait()
 
     # Find which taint are new
-    # input  -> input/ and mutated
+    # input -> input/ and mutated
     # taint -> taint/
     explored        =   open('./taint/explored.0', 'r').read().split()
     exploredFile    =   open('./taint/explored.0', 'a')
