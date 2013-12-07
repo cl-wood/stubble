@@ -14,7 +14,7 @@ def test(inputFile, taintFile, seeds = [('0', '0', '0')], processes = 1):
     ]
 
     # Which test are we running? 
-    testNumber = getTestNumber('./taint/')
+    testNumber = getTestNumber('./output/')
     print 'Running test #' + str(testNumber), 'based on mutation seed', seeds, '...' 
 
     # First time, don't mutate
@@ -35,10 +35,12 @@ def test(inputFile, taintFile, seeds = [('0', '0', '0')], processes = 1):
     # taint -> taint/
     explored        =   open('./taint/explored.0', 'r').read().split()
     exploredFile    =   open('./taint/explored.0', 'a')
-    #taint           =   open(taintFile, 'r').read().split()
-    taintValues = seeds[0:processes]
-    print taintValues
-    taint = map(lambda x: ':'.join(x), taintValues)
+    taint           =   open(taintFile, 'r').read().split()
+    #taintValues = seeds[0:processes]
+    #print taintValues
+    #taint = map(lambda x: ':'.join(x), taintValues)
+
+    print 'taint is:', taint
 
     newTaintDict = {i.split(':')[0]: i.split(':')[1:] for i in taint}
     exploredTaintDict = {i.split(':')[0]: i.split(':')[1:] for i in explored}
@@ -63,22 +65,31 @@ def test(inputFile, taintFile, seeds = [('0', '0', '0')], processes = 1):
 
 # TODO will need to handle non-character cases for seed[1]
 def mutate(inputFile, seeds, mutationNum, cmd):
+    if seeds == [('0', '0', '0')]:
+        mutationNum = 1
 
     # Change input value to equal non-tainted immediate
-    for seed in seeds:
+    for i in xrange(0, mutationNum):
+        if i > len(seeds) - 1:
+            return
+    #for seed in seeds:
         f = list(open(inputFile, 'r').read())
-        if (int(seed[1]) < 256):
+        print 'test num', str(i)
+        print seeds
+        if (int(seeds[i][1]) < 256):
             try:
-                f[int(seed[0])] = chr(int(seed[2]))
+                f[int(seeds[i][0])] = chr(int(seeds[i][2]))
             except OverflowError as e:
                 print 'Value too large for C type long'
                 return
 
         out = ''.join(f)
 
-        fileName = inputFile + '.' + str(mutationNum)
+        fileName = inputFile + '.' + str(i)
+        print 'Creating file', fileName
         open(fileName, 'w').write(out)
         cmd.append(fileName)
+        i += 1
 
 # End mutate
 
@@ -90,11 +101,13 @@ def recordResults(inputFile, outputFile, taintSet, mutation, n, processes):
         n:          test number 
     """ 
     
+    if mutation == [('0', '0', '0')]:
+        processes = 1
 
     # Record input file and STDOUT for test n
     for i in xrange(0, processes):
-        shutil.copy(inputFile, './input/input.' + str(n + i) )
-        shutil.copy(outputFile.name, './output/output.' + str(n + i) )
+        shutil.copy(inputFile + '.' + str(i), './input/input.' + str(n + i) )
+        shutil.copy('./output.' + str(i), './output/output.' + str(n + i) )
 
     # Record mutation n (TODO and it's metadata or tree structure)
     #if mutation != ('0', '0', '0'):
@@ -113,7 +126,10 @@ def getTestNumber(taintDir):
     if len(taint) == 1:
         return 1
 
-    return max([int(i.split('.')[1]) for i in taint]) + 1
+    try:
+        return max([int(i.split('.')[1]) for i in taint]) + 1
+    except ValueError as e: 
+        return 0
 
     
 # End getTestNumber
@@ -122,7 +138,7 @@ if __name__ == '__main__':
 
     # Concurrency handled in c program, this just drives
     try:
-        num_processes = sys.argv[1]
+        num_processes = int(sys.argv[1])
     except IndexError as e:
         num_processes = 1 
 

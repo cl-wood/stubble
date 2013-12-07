@@ -14,3 +14,8 @@ Testing:
     python driver.py
     # Check output for win condition
 
+
+Testing multiproc:
+    # Works best with 4 processes
+    /usr/bin/time python mpDriver.py 4
+

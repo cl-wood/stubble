@@ -463,7 +463,7 @@ VOID InitFollowExecution()
     //InstructionFile.open("instructions.out");
     //InstructionFile << hex;
     //InstructionFile.setf(ios::showbase);
-    string f = "results.out.";
+    string f = "results.out";
 
     ResultsFile.open(f);
 
