@@ -453,6 +453,7 @@ VOID Syscall_exit(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID *
 }
 
 
+// For multiproc, needs test number
 VOID InitFollowExecution()
 {
     //ControlFlowFile.open("controlpath.out");
@@ -462,8 +463,9 @@ VOID InitFollowExecution()
     //InstructionFile.open("instructions.out");
     //InstructionFile << hex;
     //InstructionFile.setf(ios::showbase);
+    string f = "results.out.";
 
-    ResultsFile.open("results.out");
+    ResultsFile.open(f);
 
     INS_AddInstrumentFunction(Branches, 0);
     PIN_AddSyscallEntryFunction(Syscall_entry, 0);

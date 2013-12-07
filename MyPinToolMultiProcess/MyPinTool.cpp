@@ -113,6 +113,7 @@ int main(int argc, char *argv[])
 
     // Init functions for modules
     InitFollowExecution();
+
     //InitFindUseAfterFree();
     //InitDTA();
     //InitBufferLinux();
