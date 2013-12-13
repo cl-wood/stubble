@@ -8,5 +8,6 @@
 \contentsline {chapter}{\numberline {5}Implementation}{9}
 \contentsline {section}{\numberline {5.1}Testing Harness}{9}
 \contentsline {section}{\numberline {5.2}Methodology}{10}
-\contentsline {chapter}{\numberline {6}References}{11}
-\contentsline {backmatter}{Biographical Sketch}{14}
+\contentsline {section}{\numberline {5.3}Parallelization}{10}
+\contentsline {chapter}{\numberline {6}References}{12}
+\contentsline {backmatter}{Biographical Sketch}{15}

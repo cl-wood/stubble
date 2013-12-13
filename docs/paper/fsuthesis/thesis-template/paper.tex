@@ -159,6 +159,27 @@ I am currently instrumenting dummy programs which use a subset of all possible c
 As of this writing I am moving towards fuzzing Linux utilities. Results for toy binaries are promising, with "crackme" type programs which ask for a secret being solved in approximately 2*n runs, where n is the length of the secret. There is, however, still some overtainting which must be accounted for.	
 %\section{Evaluation}
 
+\section{Parallelization}
+
+I have implemented a parallel version of the pintool, mp.c, to fork and exec a user-specified number of processes. Because a tainted branch may only be reachable based upon previous branches taken, and also because of complex conditions involving loops, the problem is not embarassingly parallel. For this project I have tested my program on a personally created binary, simpleCrackme. This binary takes a file containing a password in argv1. If the password matches its secret, then it prints "You win", otherwise, it prints "You lose". 
+
+After running my program, one can grep for the win string in the output/ directory. This is similar to concept to running a fuzzer, and grepping around the output recorded for more interesting conditions, like segfaults. Results show a noticeable speedup.
+
+Sequential:
+After several runs, I've seen performance ranging from ~33 seconds to 19 seconds.
+26.12user 7.15system 0:33.42elapsed 99\%CPU (0avgtext+0avgdata 12964maxresident)k
+0inputs+1496outputs (0major+1168365minor)pagefaults 0swaps
+
+14.66user 4.67system 0:19.44elapsed 99\%CPU (0avgtext+0avgdata 12964maxresident)k
+0inputs+1496outputs (0major+1168305minor)pagefaults 0swaps
+
+Parallel:
+The parallel implementation seems to decrease time by somewhere around half, which makes sense considering the problem is not embarassingly parellel, and Intel Pin may try and use multiple cores during startup.
+30.64user 9.71system 0:10.83elapsed 372\%CPU (0avgtext+0avgdata 12952maxresident)k
+0inputs+816outputs (0major+1368622minor)pagefaults 0swaps
+
+However, I have seen runs as high as ~13 seconds elapsed. Since my testing environment has 4GB ram and 4 virtual cores, 4 processes seems to give me the best speedup. I also tested with 2, 8, and 16 processes but didn't see a comparable speedup.
+
 %
 %Currently have results for crackmes, give idea of my fuzzer vs. %peach fuzz, and where i plan to go. 
 
