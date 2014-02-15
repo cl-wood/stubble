@@ -1,13 +1,21 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {chapter}{\numberline {2}Related Work}{4}
-\contentsline {chapter}{\numberline {3}Assumptions and Scoping}{5}
-\contentsline {chapter}{\numberline {4}Techniques}{6}
-\contentsline {section}{\numberline {4.1}Dynamic Taint Analysis}{6}
-\contentsline {section}{\numberline {4.2}Symbolic Execution}{7}
-\contentsline {section}{\numberline {4.3}Concolic Execution}{8}
-\contentsline {chapter}{\numberline {5}Implementation}{9}
-\contentsline {section}{\numberline {5.1}Testing Harness}{9}
-\contentsline {section}{\numberline {5.2}Methodology}{10}
-\contentsline {section}{\numberline {5.3}Parallelization}{10}
-\contentsline {chapter}{\numberline {6}References}{12}
-\contentsline {backmatter}{Biographical Sketch}{15}
+\contentsline {chapter}{\numberline {2}Preliminaries}{4}
+\contentsline {section}{\numberline {2.1}TODO White vs. Gray vs. Black box}{4}
+\contentsline {section}{\numberline {2.2}TODO Mutation vs. Generation?}{5}
+\contentsline {section}{\numberline {2.3}TODO Local vs. Network}{5}
+\contentsline {section}{\numberline {2.4}TODO Difficulties}{5}
+\contentsline {chapter}{\numberline {3}Related Work}{6}
+\contentsline {section}{\numberline {3.1}Taint-based Fuzzing}{6}
+\contentsline {section}{\numberline {3.2}TODO Mayhem}{6}
+\contentsline {section}{\numberline {3.3}TODO Argos: 0-Day Emulator}{6}
+\contentsline {chapter}{\numberline {4}Assumptions and Scoping}{7}
+\contentsline {chapter}{\numberline {5}Techniques}{8}
+\contentsline {section}{\numberline {5.1}Dynamic Taint Analysis}{8}
+\contentsline {section}{\numberline {5.2}Symbolic Execution}{9}
+\contentsline {section}{\numberline {5.3}Concolic Execution}{10}
+\contentsline {chapter}{\numberline {6}Implementation}{11}
+\contentsline {section}{\numberline {6.1}Testing Harness}{11}
+\contentsline {section}{\numberline {6.2}Methodology}{12}
+\contentsline {section}{\numberline {6.3}Parallelization}{12}
+\contentsline {chapter}{\numberline {7}References}{14}
+\contentsline {backmatter}{Biographical Sketch}{17}
