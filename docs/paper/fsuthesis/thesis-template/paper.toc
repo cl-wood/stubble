@@ -7,17 +7,17 @@
 \contentsline {section}{\numberline {2.4}TODO Difficulties}{5}
 \contentsline {chapter}{\numberline {3}Related Work}{6}
 \contentsline {section}{\numberline {3.1}Taint-based Fuzzing}{6}
-\contentsline {section}{\numberline {3.2}TODO Mayhem}{6}
-\contentsline {section}{\numberline {3.3}TODO Argos: 0-Day Emulator}{6}
-\contentsline {chapter}{\numberline {4}Assumptions and Scoping}{7}
-\contentsline {chapter}{\numberline {5}Techniques}{8}
-\contentsline {section}{\numberline {5.1}Dynamic Taint Analysis}{8}
-\contentsline {section}{\numberline {5.2}Symbolic Execution}{9}
-\contentsline {section}{\numberline {5.3}Concolic Execution}{10}
-\contentsline {chapter}{\numberline {6}Implementation}{11}
-\contentsline {section}{\numberline {6.1}Testing Harness}{11}
-\contentsline {section}{\numberline {6.2}Methodology}{12}
-\contentsline {section}{\numberline {6.3}Parallelization}{12}
-\contentsline {section}{\numberline {6.4}results}{13}
-\contentsline {chapter}{\numberline {7}References}{14}
-\contentsline {backmatter}{Biographical Sketch}{17}
+\contentsline {section}{\numberline {3.2}TODO Mayhem, AEG, Exploitable Bugs}{6}
+\contentsline {section}{\numberline {3.3}TODO Argos: 0-Day Emulator}{7}
+\contentsline {chapter}{\numberline {4}Assumptions and Scoping}{8}
+\contentsline {chapter}{\numberline {5}Techniques}{9}
+\contentsline {section}{\numberline {5.1}Dynamic Taint Analysis}{9}
+\contentsline {section}{\numberline {5.2}Symbolic Execution}{10}
+\contentsline {section}{\numberline {5.3}Concolic Execution}{11}
+\contentsline {chapter}{\numberline {6}Implementation}{12}
+\contentsline {section}{\numberline {6.1}Testing Harness}{12}
+\contentsline {section}{\numberline {6.2}Methodology}{13}
+\contentsline {section}{\numberline {6.3}Parallelization}{13}
+\contentsline {section}{\numberline {6.4}results}{14}
+\contentsline {chapter}{\numberline {7}References}{15}
+\contentsline {backmatter}{Biographical Sketch}{18}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  16 FEB 2014 09:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  16 FEB 2014 12:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -85,7 +85,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ]
 Chapter 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--74
+Underfull \hbox (badness 10000) in paragraph at lines 74--76
 
  []
 
@@ -100,24 +100,24 @@ Chapter 2.
 Chapter 3.
 [6
 
-]
+] [7]
 Chapter 4.
-[7
+[8
 
 ]
 Chapter 5.
-[8
+[9
 
-] [9] [10]
+] [10] [11]
 Chapter 6.
-[11
+[12
 
-] [12] [13]
+] [13] [14]
 Chapter 7.
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
-[14
+[15
 
 ]
 Missing character: There is no Ã in font cmr10!
@@ -125,7 +125,7 @@ Missing character: There is no ¸ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
- [15] [16] [17
+ [16] [17] [18
 
 ] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
@@ -135,17 +135,17 @@ Here is how much of TeX's memory you used:
  3957 multiletter control sequences out of 15000+600000
  8671 words of font info for 31 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 27i,5n,21p,1648b,272s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,5n,21p,1648b,211s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb>
-Output written on paper.pdf (20 pages, 110534 bytes).
+Output written on paper.pdf (21 pages, 114242 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 92 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
