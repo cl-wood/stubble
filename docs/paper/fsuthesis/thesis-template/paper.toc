@@ -1,6 +1,7 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {chapter}{\numberline {2}Preliminaries}{4}
 \contentsline {section}{\numberline {2.1}TODO White vs. Gray vs. Black box}{4}
+\contentsline {subsection}{\numberline {2.1.1}Microsoft SAGE}{4}
 \contentsline {section}{\numberline {2.2}TODO Mutation vs. Generation?}{5}
 \contentsline {section}{\numberline {2.3}TODO Local vs. Network}{5}
 \contentsline {section}{\numberline {2.4}TODO Difficulties}{5}
@@ -17,5 +18,6 @@
 \contentsline {section}{\numberline {6.1}Testing Harness}{11}
 \contentsline {section}{\numberline {6.2}Methodology}{12}
 \contentsline {section}{\numberline {6.3}Parallelization}{12}
+\contentsline {section}{\numberline {6.4}results}{13}
 \contentsline {chapter}{\numberline {7}References}{14}
 \contentsline {backmatter}{Biographical Sketch}{17}

@@ -14,13 +14,12 @@
 \degree{Masters of Science}                 
 \semester{Spring}                            % [Spring, Summer, Fall]
 \degreeyear{2014}
-\defensedate{Spring 2014}
+\defensedate{XXXXXXX}
 
 %\subject{My Topic}
 %\keywords{keyterm1; keyterm2; keyterm3; ...}
 
 \committeeperson{Zhi Wang}{Professor Directing Thesis}
-%\committeeperson{Verda Boizaar}{University Representative}
 %\committeeperson{Beauxeau D'Claune}{Committee Member}
 %\committeeperson{Arlip Zarseeld}{Committee Member}
 
@@ -97,7 +96,7 @@ Because there are a finite number of conditional jumps, all of which depend on d
 
 Explain white vs. black box. How gray could bleed into black because of DBI. Talk about SAGE.
 
-SAGE - architecture, then underlying ideas
+\subsection{Microsoft SAGE}
 
 Microsoft's Scalable Automatic Guided Execution, or SAGE, is an example of a white box fuzzer. Researchers at Microsoft developed SAGE to deal with large, complex programs which needed to be automatically tested for deep bugs. Microsoft considers SAGE, and whitebox fuzzing in general, so important that it requires the practice in its Security Development Lifecycle. The basic SAGE execution begins when a program to be fuzzed is first run concretely with known good input. During this run, the program is instrumented with Microsoft's AppVerifier to watch for bugs. Afterwards, SAGE receives a copy of the x86 instructions executed during this run, and symbolically executes the instructions, gathering constraints to be solved later by an SMT such as Z3. Once it has a set of these constraints, SAGE will negate each constraint in the set one by one and feed this new set to Z3. Sets that pass are ranked in descending order by the number of new instructions they reveal, and return into the start of the loop, to be executed concretely again [Q].
 
@@ -111,6 +110,8 @@ This is helpful for dealing with loops, which might evaluate or modify the same 
 
 
 \section{TODO Mutation vs. Generation?}
+
+Peach Fuzzer
 
 \section{TODO Local vs. Network}
 
@@ -229,6 +230,9 @@ However, I have seen runs as high as ~13 seconds elapsed. Since my testing envir
 %
 %Currently have results for crackmes, give idea of my fuzzer vs. %peach fuzz, and where i plan to go. 
 
+\section{results}
+
+TODO
 
 % Was setbacks, modify and remove heavily
 
