@@ -113,15 +113,18 @@ This is helpful for dealing with loops, which might evaluate or modify the same 
 
 \section{TODO Mutation vs. Generation?}
 
-Peach Fuzzer
+TODO Peach Fuzzer
 
 \section{TODO Local vs. Network}
 
 Do you have access to the program you are fuzzing?
 
-\section{TODO Difficulties}
+\section{TODO Difficulties and Limitations}
 
-Path explosion. Code coverage. Complex file formats which mean you create shallow errors over and over again.
+TODO Path explosion. Code coverage. Complex file formats which mean you create shallow errors over and over again.
+
+TODO Limitations - one-way functions like bitwise shifts and checksums, cryptographic hashes. encryption.
+
 
 \chapter{Related Work}
 
@@ -152,6 +155,25 @@ implications, but mine doesn't require a patch?
 \section{TODO Argos: 0-Day Emulator}
 
 http://www.few.vu.nl/argos/?page=3
+
+\section{Checksum-Aware Fuzzing}
+
+Much of smart fuzzing involves reasoning about constraints gathered during the execution of instrumented code. TaintScope [AB] was developed as the result of the following observation: generation-based fuzzing improves as the quality (and consequently effort) of the model to fuzz improves. This means better fuzzing is accomplished by devoting more programmer time and effort, instead of allocating more computational resources. Since a programmer's time and mental resources are valuable, so fuzzers should do for them by yielding fewer test cases that result in more interesting crashes [T].
+
+TaintScope focuses on checksums, one where area where traditional symbolic execution-based fuzzers tend to perform poorly. Other areas, which could be interesting areas of further study, are essentially any other functions that are, in one set of assumptions or another, considered one-way. For instance, bitwise shifts, being lossy, are hard to execute symbolically, as are encryption and decryption or hashing without a precomputed table. The impetus for TaintScope's design was the desire to find deeper bugs in work like network protocols, which very early on compute checksums for integrity. Before TaintScope, fuzzing said protocols often lead to lots of worthless test cases, because they all lead to similar, shallow crashes involving failing the checksum test. Since there are far more ways to fail a checksum than to pass it, fuzzers that couldn't reason about the checksum or threw random bytes in the checksum field wasted a lot of work. Instead, TaintScope identifies likely checksum integrity checks and instruments programs to let them keep going to try and find deeper, more meaningful bugs [T].
+
+The general method is to:
+
+\begin{enumerate}
+	\item Perform dynamic taint analysis during concrete execution
+	\item Identify what could be checksum validations
+	\item Run the instrumented program again, modifying ZF in EFLAGS to always "pass" the  checksum
+	\item If a crash results, execute again with the checksum bytes marked symbolic
+\end{enumerate}
+
+In order to identify possible checksum validations, TaintScope assumes certain x86 branches exist to validate the results of computing checksums. With correct input, the checks leading up to these branches are always either true or false, and with incorrect input they are always the opposite. During execution TaintScope watches for these conditions, and once these conditions, and the bytes involved in them, are identified, it treats the bytes and symbolic, collecting constraints during execution. After this, TaintScope can alter the previous test case to pass the checksum. However to save work, it only spends time solving these bytes when the normal test case results in a crash. To get past shallow crashes where checksums fail it will merely hot-patch the ZF before identified "checksum-based jumps". Note this approach won't work with hashes, since one-way functions can't be easily solved with constraint solvers [T].
+
+TODO [T] TaintScope [AB]
 
 
 \chapter{Assumptions and Scoping}
@@ -286,6 +308,7 @@ Evolutionary Fuzzing", BlackHat and Defcon 2007.
 	\item [Y] Sen, Koushik, Darko Marinov, and Gul Agha. CUTE: a concolic unit testing engine for C. Vol. 30. No. 5. ACM, 2005.
 	\item [Z] Peach Fuzzer. url{http://peachfuzzer.com/}
 	\item [AA] Zhang, Xiangyu, Rajiv Gupta, and Youtao Zhang. "Precise dynamic slicing algorithms." Software Engineering, 2003. Proceedings. 25th International Conference on. IEEE, 2003.
+	\item [AB] Wang, Tielei, et al. "TaintScope: A checksum-aware directed fuzzing tool for automatic software vulnerability detection." Security and Privacy (SP), 2010 IEEE Symposium on. IEEE, 2010.
 
 \end{itemize}
 
