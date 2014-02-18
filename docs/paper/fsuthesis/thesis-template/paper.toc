@@ -2,23 +2,24 @@
 \contentsline {chapter}{\numberline {2}Preliminaries}{4}
 \contentsline {section}{\numberline {2.1}TODO White vs. Gray vs. Black box}{4}
 \contentsline {subsection}{\numberline {2.1.1}Microsoft SAGE}{4}
+\contentsline {subsection}{\numberline {2.1.2}Grey-box Evolutionary Fuzzing}{5}
 \contentsline {section}{\numberline {2.2}TODO Mutation vs. Generation?}{5}
 \contentsline {section}{\numberline {2.3}TODO Local vs. Network}{5}
 \contentsline {section}{\numberline {2.4}TODO Difficulties and Limitations}{5}
-\contentsline {chapter}{\numberline {3}Related Work}{6}
-\contentsline {section}{\numberline {3.1}Taint-based Fuzzing}{6}
-\contentsline {section}{\numberline {3.2}TODO Mayhem, AEG, Exploitable Bugs}{6}
-\contentsline {section}{\numberline {3.3}TODO Argos: 0-Day Emulator}{7}
-\contentsline {section}{\numberline {3.4}Checksum-Aware Fuzzing}{7}
-\contentsline {chapter}{\numberline {4}Assumptions and Scoping}{10}
-\contentsline {chapter}{\numberline {5}Techniques}{11}
-\contentsline {section}{\numberline {5.1}Dynamic Taint Analysis}{11}
-\contentsline {section}{\numberline {5.2}Symbolic Execution}{12}
-\contentsline {section}{\numberline {5.3}Concolic Execution}{13}
-\contentsline {chapter}{\numberline {6}Implementation}{14}
-\contentsline {section}{\numberline {6.1}Testing Harness}{14}
-\contentsline {section}{\numberline {6.2}Methodology}{15}
-\contentsline {section}{\numberline {6.3}Parallelization}{15}
-\contentsline {section}{\numberline {6.4}results}{16}
-\contentsline {chapter}{\numberline {7}References}{17}
-\contentsline {backmatter}{Biographical Sketch}{20}
+\contentsline {chapter}{\numberline {3}Related Work}{7}
+\contentsline {section}{\numberline {3.1}Taint-based Fuzzing}{7}
+\contentsline {section}{\numberline {3.2}TODO Mayhem, AEG, Exploitable Bugs}{7}
+\contentsline {section}{\numberline {3.3}TODO Argos: 0-Day Emulator}{8}
+\contentsline {section}{\numberline {3.4}Checksum-Aware Fuzzing}{8}
+\contentsline {chapter}{\numberline {4}Assumptions and Scoping}{11}
+\contentsline {chapter}{\numberline {5}Techniques}{12}
+\contentsline {section}{\numberline {5.1}Dynamic Taint Analysis}{12}
+\contentsline {section}{\numberline {5.2}Symbolic Execution}{13}
+\contentsline {section}{\numberline {5.3}Concolic Execution}{14}
+\contentsline {chapter}{\numberline {6}Implementation}{15}
+\contentsline {section}{\numberline {6.1}Testing Harness}{15}
+\contentsline {section}{\numberline {6.2}Methodology}{16}
+\contentsline {section}{\numberline {6.3}Parallelization}{16}
+\contentsline {section}{\numberline {6.4}results}{17}
+\contentsline {chapter}{\numberline {7}References}{18}
+\contentsline {backmatter}{Biographical Sketch}{21}
