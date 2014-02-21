@@ -1,0 +1,30 @@
+\BOOKMARK [0][-]{MainTitlePage.0}{Title Page}{}% 1
+\BOOKMARK [0][-]{contents.0}{Table of Contents}{}% 2
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
+\BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Theoretical Difficulties}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Preliminaries}{}% 6
+\BOOKMARK [1][-]{section.2.1}{TODO White vs. Gray vs. Black box}{chapter.2}% 7
+\BOOKMARK [2][-]{subsection.2.1.1}{Microsoft SAGE}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.2}{Grey-box Evolutionary Fuzzing}{section.2.1}% 9
+\BOOKMARK [1][-]{section.2.2}{TODO Fuzzing Web Applications}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.3}{TODO Mutation vs. Generation?}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.4}{TODO Local vs. Network}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.5}{TODO Difficulties and Limitations}{chapter.2}% 13
+\BOOKMARK [0][-]{chapter.3}{Related Work}{}% 14
+\BOOKMARK [1][-]{section.3.1}{Taint-based Fuzzing}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.2}{TODO Mayhem, AEG, Exploitable Bugs}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.3}{TODO Argos: 0-Day Emulator}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.4}{Checksum-Aware Fuzzing}{chapter.3}% 18
+\BOOKMARK [0][-]{chapter.4}{Assumptions and Scoping}{}% 19
+\BOOKMARK [0][-]{chapter.5}{Techniques}{}% 20
+\BOOKMARK [1][-]{section.5.1}{Dynamic Taint Analysis}{chapter.5}% 21
+\BOOKMARK [1][-]{section.5.2}{Symbolic Execution}{chapter.5}% 22
+\BOOKMARK [1][-]{section.5.3}{Concolic Execution}{chapter.5}% 23
+\BOOKMARK [0][-]{chapter.6}{Implementation}{}% 24
+\BOOKMARK [1][-]{section.6.1}{Testing Harness}{chapter.6}% 25
+\BOOKMARK [1][-]{section.6.2}{Methodology}{chapter.6}% 26
+\BOOKMARK [1][-]{section.6.3}{Parallelization}{chapter.6}% 27
+\BOOKMARK [1][-]{section.6.4}{results}{chapter.6}% 28
+\BOOKMARK [0][-]{chapter.7}{References}{}% 29
+\BOOKMARK [0][-]{chapter*.2}{Biographical Sketch}{}% 30

@@ -5,6 +5,71 @@
 \documentclass[11pt,expanded,copyright]{fsuthesis}
 
 % Additional packages may be loaded here.
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+
+% Taken from Lena Herrmann at 
+% http://lenaherrmann.net/2010/05/20/javascript-syntax-highlighting-in-the-latex-listings-package
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
 
 \title{A Survey of Fuzzing and New Technique for Dynamic Analysis}
 \author{Clark Wood}
@@ -59,6 +124,29 @@
 
 \chapter{Introduction}
 
+\section{Motivation}
+TODO US gov't interest via money
+
+%\begin{lstlisting}
+%// Hello.c
+%#include<stdio.h>
+%int main() {
+%	int x = 3;
+%	printf("%d\n", x);
+%}
+%\end{lstlisting}
+
+%\begin{figure}[htb]
+%  	\center{\includegraphics[width=\textwidth]
+%   	{figures/archer.png}}
+%	\caption{\label{fig:my-label} My figure.  An example of a cool figure}
+%\end{figure}
+      
+
+\section{Theoretical Difficulties}
+TODO programming language theory, i.e. what makes fuzzing hard
+
+
 TODO focus on fact that this stands separate from and complementary to symb. exec? Perhaps performance analysis vs. s2e on binaries to show the potential?
 
 Finding exploitable bugs in binaries is a difficult but valuable endeavour. Fuzzing, or the feeding of controlled input into processes to try and detect vulnerable conditions, is one technique used by researchers and analysts. Applications tested for vulnerabilities are often black boxes because source code is unavailable. This piles difficulties onto an already complex problem, which current research attempts to solve or reduce. Among these issues are:
@@ -111,6 +199,46 @@ In practice, because program termination is indeterminable, white box fuzzing co
 This is helpful for dealing with loops, which might evaluate or modify the same constraint many times. This technique is an example of a typical tradeoff for fuzzers. A lot of program execution time is spent in loops, but deep bugs can lurk in rarely exercised parts of a loop, so fuzzers must pick some heuristic for terminating the exploration of a loop, trading code coverage for running time.
 
 \subsection{Grey-box Evolutionary Fuzzing}
+
+\section{TODO Fuzzing Web Applications}
+
+Fuzzing is a reliable and inexpensive way to find vulnerabilities not only in compiled C/C++ programs, but also in higher level scripting languages. JavaScript, as an example, is a higher-level scripting language becoming more and more prevalent as we continue to connect ever more devices to the internet and grow individual people's connectedness. Web browsers, as a portal through which to interact with millions of users, are a common target for malware and other exploitation, and JavaScript, as the de facto client-side scripting language, offers many targets. 
+
+Web exploits such as cross site scripting (XSS) are possible because of language functionality like the eval method, which takes an arbitrary string as an input parameter and evaluates that string as if it were JavaScript source code [AE]. The authors of "A Symbolic Execution Framework for JavaScript" wrote Kudzu because of a perceived lack of sophisticated tools for fuzzing client-side Javascript. In particular, constraint solvers at the time seemed unable to reason about JavaScript string objects, which are used in various parts of the web to represent myriad types of data, and are then parsed by custom, open-source, and propietary libraries in order to cast from a string to another data type. As an example, consider the following snippet involving eval:
+
+\begin{lstlisting}[caption=Figure BLAH]
+// Let userInput = "2 + 2"
+var str = eval(userInput); 
+
+if (str === 4) {
+	everythingDies();
+	throw new Error;
+}
+\end{lstlisting}
+
+In this contrived example, catastrophe occurs when user input, when executed as JavaScript, returns the value 4. Without even considering the strange casting and equality rules which JavaScript operates under, there are multiple ways for user input to throw an error, making constraint solving particularly difficult. The case where userInput = "4" is straightforward, but other cases which do not look like the String "4" or the Number 4, but evaluate to it, can also trigger the error. According to the authors, before Kudzu, string solvers were unable to reason about regular expressions, string equality, or multiple variables [AD].
+
+While JavaScript strings, and their ubiquitous usage in client-side web programming, presented one obstacle, the sheer complexity of modern web browsers presented another. Typical browsers can open and display PDFs, play media files, and execute multiple markup and programming languages like HTML, CSS, and JavaScript to present a web page to a user. Because of this complexity, the authors decided to divide possible user interaction into two, disparate spaces: an event space and a value space. The event space contains HTML elements and their state as defined by user behavior. This would include HTML elements like radio buttons or text boxes, along with their current state, such as which radio button is currently selected, along with the state transitions for the current page, such as a user clicking one radio button, then deselecting to check boxes in order. As a rule of thumb, GUI elements which users can interact with reside in the event space. The notable exception to this is any GUI element a user types into, such as a text box. Value space contains the values for these GUI elements, along with any other text which is used as input which users or other web pages have control over [AD].
+
+Kudzu aims to discover vulnerabilities, particularly client-side code injections, by using dynamic symbolic execution to identify constraints placed upon particular input and then solve them to generate new test cases. Dynamic symbolic execution, which mixes concrete values with choice symbolic values to optimize for speed and code coverage, is basically concolic execution. Kudzu was developed for the WebKit browser and consists of two major parts:
+\begin{enumerate}
+	\item GUI explorer
+	\item Dynamic symbolic execution engine, which includes:
+	\begin{enumerate}
+		\item a constraint extractor
+		\item a constraint solver
+	\end{enumerate}
+\end{enumerate}
+
+The GUI explorer handles the event space by exploring all possible sequences of user-defined events at random. In order to discover event handlers, the GUI explorer relies on information from Kudzu, which instruments WebKit functions. When an HTML element which can generate an event is found, or when one of these elements in removed, Kudzu's hooks notice this and inform the GUI explorer accordingly.
+
+[AD]
+new things contributed
+challenges - js strings, GUI elements
+arch. use WebKit browser, 
+js example of challenge
+shortcomings - don't support all string ops, nor all JavaScript regex functionality, tradeoff
+results - lots of found vulns involve strings, 
 
 
 \section{TODO Mutation vs. Generation?}
@@ -313,10 +441,13 @@ TODO
 	\item [W] McCamant, Stephen, et al. Transformation-aware symbolic execution for system test generation. Tech. Rep. UCB/EECS-2013-125, University of California, Berkeley (Jun 2013), 2013.
 	\item [X] Majumdar, Rupak, and Koushik Sen. "Hybrid concolic testing." Software Engineering, 2007. ICSE 2007. 29th International Conference on. IEEE, 2007.
 	\item [Y] Sen, Koushik, Darko Marinov, and Gul Agha. CUTE: a concolic unit testing engine for C. Vol. 30. No. 5. ACM, 2005.
-	\item [Z] Peach Fuzzer. url{http://peachfuzzer.com/}
+	\item [Z] Peach Fuzzer. \url{<http://peachfuzzer.com/>}
 	\item [AA] Zhang, Xiangyu, Rajiv Gupta, and Youtao Zhang. "Precise dynamic slicing algorithms." Software Engineering, 2003. Proceedings. 25th International Conference on. IEEE, 2003.
 	\item [AB] Wang, Tielei, et al. "TaintScope: A checksum-aware directed fuzzing tool for automatic software vulnerability detection." Security and Privacy (SP), 2010 IEEE Symposium on. IEEE, 2010.
 	\item [AC] Sen, Koushik. "Concolic testing." Proceedings of the twenty-second IEEE/ACM international conference on Automated software engineering. ACM, 2007.
+	\item [AD] Saxena, Prateek, et al. "A symbolic execution framework for javascript." Security and Privacy (SP), 2010 IEEE Symposium on. IEEE, 2010.
+	\item [AE] Mozilla Developer Network. \url{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/eval}
+	\item [AF] The WebKit Open Source Project. \url{http://www.webkit.org/}
 
 \end{itemize}
 
