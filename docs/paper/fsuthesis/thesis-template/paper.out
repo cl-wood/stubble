@@ -21,10 +21,11 @@
 \BOOKMARK [1][-]{section.5.1}{Dynamic Taint Analysis}{chapter.5}% 21
 \BOOKMARK [1][-]{section.5.2}{Symbolic Execution}{chapter.5}% 22
 \BOOKMARK [1][-]{section.5.3}{Concolic Execution}{chapter.5}% 23
-\BOOKMARK [0][-]{chapter.6}{Implementation}{}% 24
-\BOOKMARK [1][-]{section.6.1}{Testing Harness}{chapter.6}% 25
-\BOOKMARK [1][-]{section.6.2}{Methodology}{chapter.6}% 26
-\BOOKMARK [1][-]{section.6.3}{Parallelization}{chapter.6}% 27
-\BOOKMARK [1][-]{section.6.4}{results}{chapter.6}% 28
-\BOOKMARK [0][-]{chapter.7}{References}{}% 29
-\BOOKMARK [0][-]{chapter*.2}{Biographical Sketch}{}% 30
+\BOOKMARK [1][-]{section.5.4}{TODO Conversion to an Intermediate Representation}{chapter.5}% 24
+\BOOKMARK [0][-]{chapter.6}{Implementation}{}% 25
+\BOOKMARK [1][-]{section.6.1}{Testing Harness}{chapter.6}% 26
+\BOOKMARK [1][-]{section.6.2}{Methodology}{chapter.6}% 27
+\BOOKMARK [1][-]{section.6.3}{Parallelization}{chapter.6}% 28
+\BOOKMARK [1][-]{section.6.4}{results}{chapter.6}% 29
+\BOOKMARK [0][-]{chapter.7}{References}{}% 30
+\BOOKMARK [0][-]{chapter*.2}{Biographical Sketch}{}% 31
