@@ -17,7 +17,7 @@
 \contentsline {chapter}{\numberline {4}Assumptions and Scoping}{13}{chapter.4}
 \contentsline {chapter}{\numberline {5}Techniques}{14}{chapter.5}
 \contentsline {section}{\numberline {5.1}Dynamic Taint Analysis}{14}{section.5.1}
-\contentsline {section}{\numberline {5.2}Symbolic Execution}{15}{section.5.2}
+\contentsline {section}{\numberline {5.2}Symbolic Execution}{16}{section.5.2}
 \contentsline {section}{\numberline {5.3}Concolic Execution}{16}{section.5.3}
 \contentsline {section}{\numberline {5.4}TODO Conversion to an Intermediate Representation}{17}{section.5.4}
 \contentsline {chapter}{\numberline {6}Implementation}{18}{chapter.6}
