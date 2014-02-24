@@ -126,38 +126,20 @@
 
 %\input chapter1
 
-\chapter{Introduction}
+\chapter{Abstract}
 
-\section{Motivation}
-TODO US gov't interest via money
-
-\begin{lstlisting}[style=cstyle]
-// hello.c
-#include<stdio.h>
-int main() {
-	int x = 3;
-	printf("%d\n", x);
-}
-\end{lstlisting}
-      
-
-\section{Theoretical Difficulties}
-TODO programming language theory, i.e. what makes fuzzing hard
-
-
-TODO focus on fact that this stands separate from and complementary to symb. exec? Perhaps performance analysis vs. s2e on binaries to show the potential?
-
-Finding exploitable bugs in binaries is a difficult but valuable endeavour. Fuzzing, or the feeding of controlled input into processes to try and detect vulnerable conditions, is one technique used by researchers and analysts. Applications tested for vulnerabilities are often black boxes because source code is unavailable. This piles difficulties onto an already complex problem, which current research attempts to solve or reduce. Among these issues are:
+Finding exploitable bugs in binaries is a difficult but valuable endeavour. Fuzzing, or the feeding of controlled input into processes to try and detect vulnerable conditions, is one technique used by researchers and analysts. Because many project's source code is not made unavailable to protect intellectual property, applications tested for vulnerabilities are often considered black boxes. Reasoning about the inner working of a complex application when one can only observe the relationship between input and output is hard. In fact, for some situations, like properly implemented cryptography, it is provably hard. This piles difficulties onto an already complex problem, which current research attempts to solve or reduce. Among these issues this paper focuses on:
 	\begin{itemize}
 		\item efficient and thorough dynamic taint analysis
 		\item the path explosion problem [U], and
 		\item the code coverage problem. 
 	\end{itemize}
-
  
- Dynamic taint analysis is also difficult because taint can propagate directly via assignment, or indirectly via affecting control flows which affect assignment [D], which make proper implementation tricky. The path explosion problem arises from the nature of assembly languages. Jump instructions, which may make up a decent percentage of machine instructions in programs, each multiply the total number of existing paths in a binary by two. Considering the size of binaries, this quickly leads to an un-tenably large set of possible paths to explore via conventional techniques like symbolic execution. And even if it is possible to explore all paths in a binary, analysts still need sample input which can trigger the vulnerable condition, perhaps proving that the binary is exploitable along the way. Such automated exploit generation is the subject of much research [H, I].
+ Dynamic taint analysis is difficult because taint can propagate directly via assignment, or indirectly via affecting control flows which affect assignment [D], which make proper implementation tricky. The path explosion problem arises from the nature of assembly languages. Jump instructions, which may make up a decent percentage of machine instructions in programs, each multiply the total number of existing paths in a binary by two. Considering the size of binaries, this quickly leads to an un-tenably large set of possible paths to explore via conventional techniques like symbolic execution. And even if it is possible to explore all paths in a binary, analysts still need sample input which can trigger the vulnerable condition, perhaps proving that the binary is exploitable along the way. Such automated exploit generation is the subject of much research [H, I].
 
-This work aims to reduce the severity of the latter two problems while being wary of the first during implementation. Instead of trying to attain more reasonable performance by using symbolic execution less or more wisely [J], I focus instead on approximating symbolic execution by using dynamic taint analysis to drive mutation. This is possible by tracking taint at the instruction level, then backsolving from the jump to the source of taint to determine smarter ways to mutate user input and create new test cases. For instance, in the below example:
+This work aims to reduce the severity of the latter two problems while being wary of the first during implementation. Chapter 2 explains ZZZZ, Chapter 3 AAAA etc....
+
+Instead of trying to attain more reasonable performance by using symbolic execution less or more wisely [J], I focus instead on approximating symbolic execution by using dynamic taint analysis to drive mutation. This is possible by tracking taint at the instruction level, then backsolving from the jump to the source of taint to determine smarter ways to mutate user input and create new test cases. For instance, in the below example:
 
 \begin{lstlisting}[style=asmstyle]
 call read 				;instrument read syscall
@@ -168,16 +150,6 @@ cmp eax, 42				;cmp and jmp based on tainted reg value
 jnz 0x8BADC0DE
 \end{lstlisting}
 
-%\begin{verbatim}
-%figure 1:
-%call read
-%mov eax, [ebp - val]
-%inc eax
-%mul eax, 5
-%cmp eax, 42
-%jnz 0x8BADC0DE
-%\end{verbatim}
-
 If we already had a test case where the value read onto the stack, after the transformations, did not equal 42, then the cmp instruction would not set the zero flag, and we would jump to the memory location 0xBADC0DE. With dynamic taint analysis in place, we see taint introduced with the read syscall, then moved into the eax register (which is subsequently tainted). After some number of transformations, perhaps zero, to the value in the eax register, we see a compare instruction, which checks eax's value against an immediate value. Then we can keep track of specific taint sources, and can record any movements or transformations, we have all the necessary information to "solve" the branch. Once we reach the tainted branch, we know that user input can affect whether we jump or not, and consequently we can backsolve to find out how to affect the branch instruction. In particular, we know the conditional jump instruction jnz depends on the Z flag in the EFLAGS register. We record whatever instruction last modified each flag in EFLAGS, so we handle the compare instruction next. Because we have kept track of taint propagation, we know we can affect the value of eax, but not 42, since it is an immediate value, so we know we need to make the value in eax equal 42. We follow the instructions that have modified the value of eax and use any appropriate operands involved with the inverse operation of the one originally performed on the value to reverse the transformations to eax's value. Finally, we notice eax originally received taint when a value was moved from memory, which was read into memory using the read syscall.
 
 This works similarly to a constraint solver, but constraint solving appears to be a traditional bottleneck, requiring generating symbolic input, usually in a different language like LLVM intermediate representation [V] and passing execution to the constraint solver.
@@ -186,11 +158,35 @@ I propose to avoid using a constraint solver entirely, and instead backsolve com
 
 Because there are a finite number of conditional jumps, all of which depend on different flags or combinations of flags in the EFLAGS register, and a finite number of instructions that modify the EFLAGS register in x86, I can create cases for all possible ways jumps are decided. I only want to prove this is possible however, so I will only implement a subset and instead comment on how to implement the other comparisons.
 
-\chapter{Preliminaries}
+
+\chapter{Introduction}
+
+\section{Motivation}
+TODO US gov't interest via money, security issues, etc.
+
+\section{Problem Statement}
+
+TODO Overview of difficulties of fuzzing
+
+\section{State of the Field}
+
+TODO current capabilities and shortcomings of fuzzers
+
+\section{Contributions}
+
+TODO a few paragraphs about what I did, missteps, conclusions, etc.
+
+\section{Theoretical Difficulties}
+TODO programming language theory, i.e. what makes fuzzing hard
+
+
+\chapter{Fuzzing by Example}
+
+TODO fuzzing is a large field, hope to show "fuzzing" by detailing practical examples. Techniques chapter explains a more theoretical base.
 
 \section{TODO White vs. Gray vs. Black box}
 
-Explain white vs. black box. How gray could bleed into black because of DBI. Talk about SAGE.
+TODO Explain white vs. black box. How gray could bleed into black because of DBI. Talk about SAGE.
 
 \subsection{Microsoft SAGE}
 
@@ -206,13 +202,14 @@ This is helpful for dealing with loops, which might evaluate or modify the same 
 
 \subsection{Grey-box Evolutionary Fuzzing}
 
-\section{TODO Fuzzing Web Applications}
+TODO
+
+\section{Fuzzing Web Applications}
 
 Fuzzing is a reliable and inexpensive way to find vulnerabilities not only in compiled C/C++ programs, but also in higher level scripting languages. JavaScript, as an example, is a higher-level scripting language becoming more and more prevalent as we continue to connect ever more devices to the internet and grow individual people's connectedness. Web browsers, as a portal through which to interact with millions of users, are a common target for malware and other exploitation, and JavaScript, as the de facto client-side scripting language, offers many targets. 
 
 Web exploits such as cross site scripting (XSS) are possible because of language functionality like the eval method, which takes an arbitrary string as an input parameter and evaluates that string as if it were JavaScript source code [AE]. The authors of "A Symbolic Execution Framework for JavaScript" wrote Kudzu because of a perceived lack of sophisticated tools for fuzzing client-side Javascript. In particular, constraint solvers at the time seemed unable to reason about JavaScript string objects, which are used in various parts of the web to represent myriad types of data, and are then parsed by custom, open-source, and propietary libraries in order to cast from a string to another data type. As an example, consider the following snippet involving eval:
 
-%\begin{lstlisting}[caption=Figure BLAH]
 \begin{lstlisting}[style=jsstyle]
 // Let userInput = "2 + 2"
 var str = eval(userInput); 
@@ -255,6 +252,7 @@ TODO Path explosion. Code coverage. Complex file formats which mean you create s
 
 TODO Limitations - one-way functions like bitwise shifts and checksums, cryptographic hashes. encryption.
 
+TODO should this section be moved from prelims elsewhere?
 
 \chapter{Related Work}
 
@@ -264,8 +262,7 @@ The major impetus for this work is outlined in "A Taint Based Approach for Smart
 
 \section{TODO Mayhem, AEG, Exploitable Bugs}
 
-Talk about CMU Mayhem. [H]
-AEG [I]
+TODO AEG [I]?
 
 While finding bugs of any sort enhances software by providing developers the opportunity to fix problems with their programs, finding bugs that lead to exploitable conditions are of special interest. A bug is exploitable if it allows adveraries to undermine confidentiality, integrity, or availability [CITE] via avenues such as information disclosure, denial of service, or remote execution of code. Because these bugs stand alone as a separate, particularly worrying class, efforts have been made to automate the process of proving whether an identified bug is also a vulnerability which can be exploited.
 
@@ -278,8 +275,7 @@ TODO Mayhem techniques
 AEG required source code, where Mayhem needs access only a binary to execute. Mayhem is, however, limited to a subset of all system calls for the operating system it executes on. This is deliberate on the part of the authors, who reason that OS-wide symbolic execution introduces too much overhead. Of significance as an area of future research, Mayhem, and most other fuzzing technology explored, cannot reason about taint propagated through threading mechanisms [H].
 
 
-TODO similar to Automatic
-patch-based exploit generation is possible: Techniques and
+TODO similar to Automatic patch-based exploit generation is possible: Techniques and
 implications, but mine doesn't require a patch?
 
 \section{TODO Argos: 0-Day Emulator}
@@ -309,17 +305,6 @@ TaintScope implements DTA using PIN to instrument syscalls in binaries. PIN\_Add
 
 DTA is used to identify the so-called "hot bytes", which are then used as symbolic values later on, should test cases warrant further attention because of a crash or other interesting behavior. This strategy has netted TaintScope 27 new vulnerabilities across several different pieces of software, most of which operate on complicated file format specifications like PNG or PCAP files [T].
 
-\chapter{Assumptions and Scoping}
-
-I assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths. I plan to implement the technique for 32-bit x86 assembly, because x86 is widespread, and vulnerabilities resulting from unsafe C code should persist in binaries, regardless of both the size and flavor of architecture (32 vs. 64-bit, ARM vs. x86 vs. PowerPC etc.), since compilers try to adhere to the C standard and vulnerabilities like buffer overflows exist at a C source code level.
-
-I also assume the presence of an algorithm which will detect an exploitable condition, provided it is given the proper binary and input to the binary. The program will then attempt to concretely execute each path within the binary by backsolving, hopefully at a greater speed than symbolic execution. 
-
-Because current selective symbolic execution engines still appear to introduce significant overhead (Between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others) [J, K, L]. In contrast, basic block counting using Intel Pin, the framework I am leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for my proposed technique will introduce greater levels of overhead, since I will be working at the instruction level instead of the basic block level, requiring more instrumentations for a given binary.
-
-I am leveraging Intel PIN to perform dynamic binary instrumentation. I am first testing dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, is such an example binary. I then plan to test against S2E and Peach Fuzzer [Z]. 
-
-In addition, there are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics and could be the subject of future research.
 
 \chapter{Techniques}
 
@@ -404,7 +389,22 @@ Koushik Sen defines concolic testing as combining "random tesing and symbolic ex
 Used in javascript fuzzer [AD]
 Used in Owen's slides.
 
-\chapter{Implementation}
+\chapter{Contribution}
+
+\section{Assumptions and Scoping}
+
+I assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths. I plan to implement the technique for 32-bit x86 assembly, because x86 is widespread, and vulnerabilities resulting from unsafe C code should persist in binaries, regardless of both the size and flavor of architecture (32 vs. 64-bit, ARM vs. x86 vs. PowerPC etc.), since compilers try to adhere to the C standard and vulnerabilities like buffer overflows exist at a C source code level.
+
+I also assume the presence of an algorithm which will detect an exploitable condition, provided it is given the proper binary and input to the binary. The program will then attempt to concretely execute each path within the binary by backsolving, hopefully at a greater speed than symbolic execution. 
+
+Because current selective symbolic execution engines still appear to introduce significant overhead (Between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others) [J, K, L]. In contrast, basic block counting using Intel Pin, the framework I am leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for my proposed technique will introduce greater levels of overhead, since I will be working at the instruction level instead of the basic block level, requiring more instrumentations for a given binary.
+
+I am leveraging Intel PIN to perform dynamic binary instrumentation. I am first testing dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, is such an example binary. I then plan to test against S2E and Peach Fuzzer [Z]. 
+
+In addition, there are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics and could be the subject of future research.
+
+
+\section{Implementation}
 
 I implement dynamic taint analysis for files as input sources. I am basing my DTA heavily on Jonathan Salwan\'s work [N]. Currently I instrument the read syscall, watching for all reads executed, then tag user input at the byte level and follow it as it moves throughout the binary. I instrument binaries at the assembly instruction level using Intel Pin. Each instruction is handled differently based upon the following criteria:
 
@@ -454,13 +454,15 @@ However, I have seen runs as high as ~13 seconds elapsed. Since my testing envir
 %
 %Currently have results for crackmes, give idea of my fuzzer vs. %peach fuzz, and where i plan to go. 
 
-\section{results}
+
+\section{Results}
 
 TODO
 
-% Was setbacks, modify and remove heavily
+\section{Lessons Learned}
 
-	
+TODO 
+
 \chapter{References}
 
 \begin{itemize}

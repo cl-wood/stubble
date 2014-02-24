@@ -1,31 +1,37 @@
 \BOOKMARK [0][-]{MainTitlePage.0}{Title Page}{}% 1
 \BOOKMARK [0][-]{contents.0}{Table of Contents}{}% 2
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
-\BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.2}{Theoretical Difficulties}{chapter.1}% 5
-\BOOKMARK [0][-]{chapter.2}{Preliminaries}{}% 6
-\BOOKMARK [1][-]{section.2.1}{TODO White vs. Gray vs. Black box}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.1.1}{Microsoft SAGE}{section.2.1}% 8
-\BOOKMARK [2][-]{subsection.2.1.2}{Grey-box Evolutionary Fuzzing}{section.2.1}% 9
-\BOOKMARK [1][-]{section.2.2}{TODO Fuzzing Web Applications}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.3}{TODO Mutation vs. Generation?}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.4}{TODO Local vs. Network}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.5}{TODO Difficulties and Limitations}{chapter.2}% 13
-\BOOKMARK [0][-]{chapter.3}{Related Work}{}% 14
-\BOOKMARK [1][-]{section.3.1}{Taint-based Fuzzing}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.2}{TODO Mayhem, AEG, Exploitable Bugs}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.3}{TODO Argos: 0-Day Emulator}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.4}{Checksum-Aware Fuzzing}{chapter.3}% 18
-\BOOKMARK [0][-]{chapter.4}{Assumptions and Scoping}{}% 19
-\BOOKMARK [0][-]{chapter.5}{Techniques}{}% 20
-\BOOKMARK [1][-]{section.5.1}{Dynamic Taint Analysis}{chapter.5}% 21
-\BOOKMARK [1][-]{section.5.2}{Symbolic Execution}{chapter.5}% 22
-\BOOKMARK [1][-]{section.5.3}{Mixed and Concolic Execution}{chapter.5}% 23
-\BOOKMARK [1][-]{section.5.4}{TODO Conversion to an Intermediate Representation}{chapter.5}% 24
-\BOOKMARK [0][-]{chapter.6}{Implementation}{}% 25
-\BOOKMARK [1][-]{section.6.1}{Testing Harness}{chapter.6}% 26
-\BOOKMARK [1][-]{section.6.2}{Methodology}{chapter.6}% 27
-\BOOKMARK [1][-]{section.6.3}{Parallelization}{chapter.6}% 28
-\BOOKMARK [1][-]{section.6.4}{results}{chapter.6}% 29
-\BOOKMARK [0][-]{chapter.7}{References}{}% 30
-\BOOKMARK [0][-]{chapter*.2}{Biographical Sketch}{}% 31
+\BOOKMARK [0][-]{chapter.1}{Abstract}{}% 3
+\BOOKMARK [0][-]{chapter.2}{Introduction}{}% 4
+\BOOKMARK [1][-]{section.2.1}{Motivation}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.2}{Problem Statement}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.3}{State of the Field}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.4}{Contributions}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.5}{Theoretical Difficulties}{chapter.2}% 9
+\BOOKMARK [0][-]{chapter.3}{Fuzzing by Example}{}% 10
+\BOOKMARK [1][-]{section.3.1}{TODO White vs. Gray vs. Black box}{chapter.3}% 11
+\BOOKMARK [2][-]{subsection.3.1.1}{Microsoft SAGE}{section.3.1}% 12
+\BOOKMARK [2][-]{subsection.3.1.2}{Grey-box Evolutionary Fuzzing}{section.3.1}% 13
+\BOOKMARK [1][-]{section.3.2}{Fuzzing Web Applications}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.3}{TODO Mutation vs. Generation?}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.4}{TODO Local vs. Network}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.5}{TODO Difficulties and Limitations}{chapter.3}% 17
+\BOOKMARK [0][-]{chapter.4}{Related Work}{}% 18
+\BOOKMARK [1][-]{section.4.1}{Taint-based Fuzzing}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.2}{TODO Mayhem, AEG, Exploitable Bugs}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.3}{TODO Argos: 0-Day Emulator}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.4}{Checksum-Aware Fuzzing}{chapter.4}% 22
+\BOOKMARK [0][-]{chapter.5}{Techniques}{}% 23
+\BOOKMARK [1][-]{section.5.1}{Dynamic Taint Analysis}{chapter.5}% 24
+\BOOKMARK [1][-]{section.5.2}{Symbolic Execution}{chapter.5}% 25
+\BOOKMARK [1][-]{section.5.3}{Mixed and Concolic Execution}{chapter.5}% 26
+\BOOKMARK [1][-]{section.5.4}{TODO Conversion to an Intermediate Representation}{chapter.5}% 27
+\BOOKMARK [0][-]{chapter.6}{Contribution}{}% 28
+\BOOKMARK [1][-]{section.6.1}{Assumptions and Scoping}{chapter.6}% 29
+\BOOKMARK [1][-]{section.6.2}{Implementation}{chapter.6}% 30
+\BOOKMARK [1][-]{section.6.3}{Testing Harness}{chapter.6}% 31
+\BOOKMARK [1][-]{section.6.4}{Methodology}{chapter.6}% 32
+\BOOKMARK [1][-]{section.6.5}{Parallelization}{chapter.6}% 33
+\BOOKMARK [1][-]{section.6.6}{Results}{chapter.6}% 34
+\BOOKMARK [1][-]{section.6.7}{Lessons Learned}{chapter.6}% 35
+\BOOKMARK [0][-]{chapter.7}{References}{}% 36
+\BOOKMARK [0][-]{chapter*.2}{Biographical Sketch}{}% 37
