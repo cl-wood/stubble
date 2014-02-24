@@ -20,7 +20,7 @@
 \BOOKMARK [0][-]{chapter.5}{Techniques}{}% 20
 \BOOKMARK [1][-]{section.5.1}{Dynamic Taint Analysis}{chapter.5}% 21
 \BOOKMARK [1][-]{section.5.2}{Symbolic Execution}{chapter.5}% 22
-\BOOKMARK [1][-]{section.5.3}{Concolic Execution}{chapter.5}% 23
+\BOOKMARK [1][-]{section.5.3}{Mixed and Concolic Execution}{chapter.5}% 23
 \BOOKMARK [1][-]{section.5.4}{TODO Conversion to an Intermediate Representation}{chapter.5}% 24
 \BOOKMARK [0][-]{chapter.6}{Implementation}{}% 25
 \BOOKMARK [1][-]{section.6.1}{Testing Harness}{chapter.6}% 26
