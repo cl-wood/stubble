@@ -21,13 +21,13 @@
   showstringspaces=false,
   columns=flexible,
   basicstyle={\small\ttfamily},
-  numbers=none,
+  numbers=left,
   numberstyle=\tiny\color{gray},
   keywordstyle=\color{blue},
   commentstyle=\color{dkgreen},
   stringstyle=\color{mauve},
   breaklines=true,
-  breakatwhitespace=true
+  breakatwhitespace=true,
   tabsize=3
 }
 
@@ -43,13 +43,13 @@
   showstringspaces=false,
   columns=flexible,
   basicstyle={\small\ttfamily},
-  numbers=none,
+  numbers=left,
   numberstyle=\tiny\color{gray},
   keywordstyle=\color{blue},
   commentstyle=\color{dkgreen},
   stringstyle=\color{mauve},
   breaklines=true,
-  breakatwhitespace=true
+  breakatwhitespace=true,
   tabsize=3
 }
 
@@ -66,6 +66,7 @@
   ndkeywordstyle=\color{darkgray}\bfseries,
   identifierstyle=\color{black},
   sensitive=false,
+  numbers=left,
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
   commentstyle=\color{purple}\ttfamily,
@@ -73,7 +74,6 @@
   morestring=[b]',
   morestring=[b]"
 }
-
 
 \title{A Survey of Fuzzing and New Technique for Dynamic Analysis}
 \author{Clark Wood}
@@ -141,12 +141,13 @@ This work aims to reduce the severity of the latter two problems while being war
 
 Instead of trying to attain more reasonable performance by using symbolic execution less or more wisely [J], I focus instead on approximating symbolic execution by using dynamic taint analysis to drive mutation. This is possible by tracking taint at the instruction level, then backsolving from the jump to the source of taint to determine smarter ways to mutate user input and create new test cases. For instance, in the below example:
 
+
 \begin{lstlisting}[style=asmstyle]
-call read 				;instrument read syscall
-mov eax, [ebp - val]			;taint propagates from val to eax reg
-inc eax					;transform eax
-mul eax, 5				;transform eax
-cmp eax, 42				;cmp and jmp based on tainted reg value
+call read					;instrument read syscall
+mov eax, [ebp - val]		;taint propagates from val to eax reg
+inc eax						;transform eax
+mul eax, 5					;transform eax
+cmp eax, 42					;cmp and jmp based on tainted reg value
 jnz 0x8BADC0DE
 \end{lstlisting}
 
@@ -305,7 +306,6 @@ TaintScope implements DTA using PIN to instrument syscalls in binaries. PIN\_Add
 
 DTA is used to identify the so-called "hot bytes", which are then used as symbolic values later on, should test cases warrant further attention because of a crash or other interesting behavior. This strategy has netted TaintScope 27 new vulnerabilities across several different pieces of software, most of which operate on complicated file format specifications like PNG or PCAP files [T].
 
-
 \chapter{Techniques}
 
 Several valuable techniques to improve fuzzers' code coverage have evolved over the years. Two, in particular, inspire this work directly: Dynamic Taint Analysis and Symbolic Execution. Dynamic Taint Analysis, or DTA, provides valuable information for guided fuzzing. Symbolic execution improves code coverage by first running a program concretely to gather constraints on a particular element, then executes the program symbolically, giving these constraints over to some kind of SMT solver [CITE] to solve for what value the element should have under certain conditions. Concolic execution, which has spawned out of the desire to use symbolic execution more wisely due to performance constraints, aims for reasonable runtimes while maintaining good code coverage. These each come with their own drawbacks, a primary one of which is the lack of automated instrumentation. Historically, any amount of symbolic execution required a programmer to directly instrument source code, leading much current research to focus on automating as much as possible.
@@ -366,7 +366,7 @@ Because symbolic execution can reason about the constraints placed on input, it 
 
 Not only is symbolic execution costly, but certain things are difficult to reason about symbolically. Accessing memory, for example, is hard to do when we reference not a memory location but an unevaluated expression. Solutions to this are imperfect and tend to rely on a combination of outsourcing the work to an SMT solver and performing static analysis on the binary to try and guess about memory locations. Schwartz, Avgerinos and Brumley raise the concern that malware could take advantage of most symbolic execution engines inability to perfectly reason about symbolic memory to frustrate malware analysts [C].
 
-TODO challenges - Memory and jumps, syscalls, disk and other "outside" stuff 
+Certain constructs, like switch statements, when translated into assembly, are converted into jump tables, which consist of a sequence of checks and jumps to implement each case. During symbolic execution these compares and jumps could also be an expression instead of a concrete value. Syscalls and operations involving I/O are also difficult to express in a purely symbolic execution, because they can have side effects. For example, the write syscall not only returns an integer value representing success and number of bytes written, but also writes to a file descriptor. Implementation can model this effect to an external entity, but because of the unique side effects each syscall have, there will be many one-offs [C]. 
 
 Without utilizing symbolic execution, however, it is difficult to automatically guarantee that all possible paths in a binary have been explored. Where most current research focuses on improving speed by using symbolic execution less, I propose to achieve similar code coverage to symbolic execution by implementing something akin to symbolic execution, but without using the SMT solvers and instruction emulation which tend to make symbolic execution slow.
 
@@ -387,9 +387,11 @@ Koushik Sen defines concolic testing as combining "random tesing and symbolic ex
 \section{TODO Conversion to an Intermediate Representation}
 
 Used in javascript fuzzer [AD]
-Used in Owen's slides.
+Used in [C].
 
 \chapter{Contribution}
+
+TODO explain.
 
 \section{Assumptions and Scoping}
 
@@ -453,7 +455,6 @@ However, I have seen runs as high as ~13 seconds elapsed. Since my testing envir
 
 %
 %Currently have results for crackmes, give idea of my fuzzer vs. %peach fuzz, and where i plan to go. 
-
 
 \section{Results}
 
