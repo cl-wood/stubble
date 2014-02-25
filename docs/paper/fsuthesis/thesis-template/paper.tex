@@ -306,6 +306,8 @@ TaintScope implements DTA using PIN to instrument syscalls in binaries. PIN\_Add
 
 DTA is used to identify the so-called "hot bytes", which are then used as symbolic values later on, should test cases warrant further attention because of a crash or other interesting behavior. This strategy has netted TaintScope 27 new vulnerabilities across several different pieces of software, most of which operate on complicated file format specifications like PNG or PCAP files [T].
 
+\section{TODO Intel PIN}
+
 \chapter{Techniques}
 
 Several valuable techniques to improve fuzzers' code coverage have evolved over the years. Two, in particular, inspire this work directly: Dynamic Taint Analysis and Symbolic Execution. Dynamic Taint Analysis, or DTA, provides valuable information for guided fuzzing. Symbolic execution improves code coverage by first running a program concretely to gather constraints on a particular element, then executes the program symbolically, giving these constraints over to some kind of SMT solver [CITE] to solve for what value the element should have under certain conditions. Concolic execution, which has spawned out of the desire to use symbolic execution more wisely due to performance constraints, aims for reasonable runtimes while maintaining good code coverage. These each come with their own drawbacks, a primary one of which is the lack of automated instrumentation. Historically, any amount of symbolic execution required a programmer to directly instrument source code, leading much current research to focus on automating as much as possible.
@@ -395,20 +397,21 @@ TODO explain.
 
 \section{Assumptions and Scoping}
 
-I assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths. I plan to implement the technique for 32-bit x86 assembly, because x86 is widespread, and vulnerabilities resulting from unsafe C code should persist in binaries, regardless of both the size and flavor of architecture (32 vs. 64-bit, ARM vs. x86 vs. PowerPC etc.), since compilers try to adhere to the C standard and vulnerabilities like buffer overflows exist at a C source code level.
+I assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths. I have implemented the technique for the x86-32 architecture, because x86 is widespread, and vulnerabilities resulting from unsafe C code should persist across binaries, regardless of both the size and flavor of architecture (32 vs. 64-bit, ARM vs. x86 vs. PowerPC etc.), since compilers try to adhere to the C standard and vulnerabilities like buffer overflows exist at a C source code level. I also assume the presence of an algorithm which will detect an exploitable condition, provided it is given the proper binary and input to the binary, and an initial test case. The program concretely executes the binary once with the initial test case, recording taint propagation during execution. Stdin, stdout, and stderr are recorded for each run, for later analysis. After the initial run, the program automatically starts solving each byte by backsolving to try and find new paths.
 
-I also assume the presence of an algorithm which will detect an exploitable condition, provided it is given the proper binary and input to the binary. The program will then attempt to concretely execute each path within the binary by backsolving, hopefully at a greater speed than symbolic execution. 
+TODO in above make sure can catch stderr segfaults, segfaults go to shell's stderr, also a signal
 
-Because current selective symbolic execution engines still appear to introduce significant overhead (Between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others) [J, K, L]. In contrast, basic block counting using Intel Pin, the framework I am leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for my proposed technique will introduce greater levels of overhead, since I will be working at the instruction level instead of the basic block level, requiring more instrumentations for a given binary.
+Current selective symbolic execution engines still appear to introduce significant overhead, between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others [J, K, L]. In contrast, basic block counting using Intel Pin, the framework I am leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for my proposed technique introduces greater levels of overhead, since I will be working at the instruction level instead of the basic block level, requiring more insertions for any given binary.
 
-I am leveraging Intel PIN to perform dynamic binary instrumentation. I am first testing dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, is such an example binary. I then plan to test against S2E and Peach Fuzzer [Z]. 
+I am leveraging Intel PIN to perform dynamic binary instrumentation. I am testing dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, is such an example binary. 
 
-In addition, there are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics and could be the subject of future research.
+There are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics, fuzzers tend to simply count loops and terminate after a set threshold is reached, and could be the subject of future research.
 
+% TODO I then plan to test against S2E and Peach Fuzzer [Z]. 
 
 \section{Implementation}
 
-I implement dynamic taint analysis for files as input sources. I am basing my DTA heavily on Jonathan Salwan\'s work [N]. Currently I instrument the read syscall, watching for all reads executed, then tag user input at the byte level and follow it as it moves throughout the binary. I instrument binaries at the assembly instruction level using Intel Pin. Each instruction is handled differently based upon the following criteria:
+I implement dynamic taint analysis for files as input sources. I am basing my implementation of DTA on Jonathan Salwan\'s work [N]. Currently I instrument the read syscall, watching for all reads executed, then tag user input at the byte level and follow it as it moves throughout the binary. I instrument binaries at the assembly instruction level using Intel Pin, which dynamically disassembles . Each instruction is handled differently based upon the following criteria:
 
 \begin{itemize}
 	\item Is the instruction a conditional jump?
@@ -421,7 +424,7 @@ For example, move operations involving an untainted first operand and a tainted 
 	
 \section{Testing Harness}
 
-Fuzzers require intuitive but powerful test harnesses, so that users can easily control how a binary is fuzzed and understand the results of fuzz testing. Currently, I record input, output, and taint for each test executed, using an auto-incrementing id and separating results at the directory level. I also keep track of the mutations which have already been explored. Users can grep for interesting conditions like segfaults or unexpected output, then cross reference the test number with the observed taint flow and the particular mutation tested.
+Fuzzers require intuitive but powerful test harnesses, so that users can easily control how a binary is fuzzed and understand the results of fuzz testing. Currently, I record input, output, and taint for each test executed, appending an auto-incrementing id to log files and separating results at the directory level. I also keep track of the mutations which have already been explored. Users can grep for interesting conditions like segfaults or unexpected output, then cross reference the test number with the observed taint flow and the particular mutation tested.
 
 %Professional fuzzing products, like Peach Fuzzer
 

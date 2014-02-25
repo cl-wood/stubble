@@ -18,6 +18,7 @@
 \contentsline {section}{\numberline {4.2}TODO Mayhem, AEG, Exploitable Bugs}{10}{section.4.2}
 \contentsline {section}{\numberline {4.3}TODO Argos: 0-Day Emulator}{11}{section.4.3}
 \contentsline {section}{\numberline {4.4}Checksum-Aware Fuzzing}{11}{section.4.4}
+\contentsline {section}{\numberline {4.5}TODO Intel PIN}{13}{section.4.5}
 \contentsline {chapter}{\numberline {5}Techniques}{14}{chapter.5}
 \contentsline {section}{\numberline {5.1}Dynamic Taint Analysis}{14}{section.5.1}
 \contentsline {section}{\numberline {5.2}Symbolic Execution}{18}{section.5.2}
