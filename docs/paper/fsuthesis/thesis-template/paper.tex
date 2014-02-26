@@ -9,6 +9,9 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{hyperref}
+\usepackage{pgfplots}
+%\usepackage{filecontents}
+%\usepackage{pgfplotstable}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -393,7 +396,7 @@ Used in [C].
 
 \chapter{Contribution}
 
-TODO explain.
+I have written a proof of concept fuzzer which uses dynamic taint analysis to record the operations performed on user input, then reverses these operations to solve for new paths to explore. The fuzzer currently records implicit and explicit taint flows between memory and registers. When the EFLAGS register is modified, it is checked whether a comparison instruction with tainted operands was the modifier, and if so this is also recorded. After an execution it publishes input, output, taint, and mutation data to a driver program, which reasons about possible user input locations and values one byte at a time. This means when branch decisions are determined by comparisons at the byte level, the fuzzer can guarantee a new path is taken, provided it can accurately backsolve information about the transformations performed on the byte.
 
 \section{Assumptions and Scoping}
 
@@ -411,7 +414,7 @@ There are allowable situations in programs which are outside the scope of this p
 
 \section{Implementation}
 
-I implement dynamic taint analysis for files as input sources. I am basing my implementation of DTA on Jonathan Salwan\'s work [N]. Currently I instrument the read syscall, watching for all reads executed, then tag user input at the byte level and follow it as it moves throughout the binary. I instrument binaries at the assembly instruction level using Intel Pin, which dynamically disassembles . Each instruction is handled differently based upon the following criteria:
+I implement dynamic taint analysis for files as input sources. I am basing my implementation of DTA on Jonathan Salwan\'s work [N]. Currently I instrument the read syscall, watching for all reads executed, then tag user input at the byte level and follow it as it moves throughout the binary. I instrument binaries at the assembly instruction level using Intel Pin, which dynamically disassembles each instruction. Each instruction is handled differently based upon the following criteria:
 
 \begin{itemize}
 	\item Is the instruction a conditional jump?
@@ -420,19 +423,21 @@ I implement dynamic taint analysis for files as input sources. I am basing my im
 	\item Is the first (second if applicable) operand tainted?
 \end{itemize}
 	
-For example, move operations involving an untainted first operand and a tainted second operand generally spread taint, while those with a tainted first operand and an untainted second operand remove taint. Tainted branches trigger the backsolving technique. Various precautions, such as removing taint for an instruction like "xor eax, eax", must be taken. Lossy operations, like shifts, must be handled carefully to be backsolve-able.
+For example, move operations involving an untainted first operand and a tainted second operand generally spread taint, while those with a tainted first operand and an untainted second operand remove taint. Tainted branches trigger the backsolving technique. Various precautions, such as removing taint for an instruction like "xor eax, eax", must be taken. Lossy operations, like shifts, must be handled carefully to be backsolve-able, and checksums and cryptographic operations are not supported.
+	
+As a demonstration I have run my fuzzer, Stubble, against various binaries which open a file and check specific bytes in a file for specific character values. If all of these checks pass, then AAAAA, otherwise BBBBBB (segfault? EIP? add vulnerability detection alg?). I have observed .... (insert graphs with password lengths, etc.)
 	
 \section{Testing Harness}
 
-Fuzzers require intuitive but powerful test harnesses, so that users can easily control how a binary is fuzzed and understand the results of fuzz testing. Currently, I record input, output, and taint for each test executed, appending an auto-incrementing id to log files and separating results at the directory level. I also keep track of the mutations which have already been explored. Users can grep for interesting conditions like segfaults or unexpected output, then cross reference the test number with the observed taint flow and the particular mutation tested.
+Fuzzers require intuitive but powerful test harnesses, so that users can easily control how a binary is fuzzed and understand the results of fuzz testing. Currently, I record input, output, taint for each test executed, appending an auto-incrementing id to log files and separating results at the directory level. I also keep track of the mutations which have already been explored. A driver program keeps track of the observed taint which has already been explored, and selects a new byte to mutate. Users can grep for interesting conditions like segfaults or unexpected output, then cross reference the test number with the observed taint flow, input file, particular mutation tested.
 
 %Professional fuzzing products, like Peach Fuzzer
 
-\section{Methodology}
+%\section{Methodology}
 
-I am currently instrumenting dummy programs which use a subset of all possible comparisons and arithmetic operations on tainted variables. If results appear promising I can try to make the fuzzer as complete as possible and begin running it on real-world applications. Achieving a noticeable speedup over modern symbolic execution would be the goal.
+%I am currently instrumenting dummy programs which use a subset of all possible comparisons and arithmetic operations on tainted variables. If results appear promising I can try to make the fuzzer as complete as possible and begin running it on real-world applications. Achieving a noticeable speedup over modern symbolic execution would be the goal.
 
-As of this writing I am moving towards fuzzing Linux utilities. Results for toy binaries are promising, with "crackme" type programs which ask for a secret being solved in approximately 2*n runs, where n is the length of the secret. There is, however, still some overtainting which must be accounted for.	
+%As of this writing I am moving towards fuzzing Linux utilities. Results for toy binaries are promising, with "crackme" type programs which ask for a secret being solved in approximately 2*n runs, where n is the length of the secret. There is, however, still some overtainting which must be accounted for.	
 %\section{Evaluation}
 
 \section{Parallelization}
@@ -461,11 +466,55 @@ However, I have seen runs as high as ~13 seconds elapsed. Since my testing envir
 
 \section{Results}
 
-TODO
+%Looking like linear with password + constant of 16 overtaint
+%Pw len:   Tests: 
+%1         17
+%4         20
+%7         26
+%10        28
+
+%\begin{filecontents*}{results.txt}
+%	$x$	$y$       
+%	1	17
+%	4	20
+%    7	26
+%    10	28
+%\end{filecontents*}
+
+%\pgfplotsset{results.txt}
+
+
+\begin{tikzpicture}
+\begin{axis}[
+    title={Oracle Attack},
+    xlabel={Secret Length},
+    ylabel={Test cases},
+    xmin=0, xmax=15,
+    ymin=10, ymax=30,
+    xtick={0,2,4,6,8,10},
+    ytick={15,20,25,30},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+ 
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    		(1,17)
+    		(4,20)
+    		(7,26)
+    		(10,28)
+    		(15,38)
+    }; 
+\end{axis}
+\end{tikzpicture}
+
 
 \section{Lessons Learned}
 
-TODO 
+TODO overtainting, naive implementations had LOTS of it	
 
 \chapter{References}
 
