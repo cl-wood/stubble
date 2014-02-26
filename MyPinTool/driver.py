@@ -20,7 +20,8 @@ def test(inputFile, taintFile, seed = ('0', '0', '0') ):
         #'--', '../vulnerable_programs/trivial/a.out', inputFile
         #'--', './a.out', inputFile
         #'--', './simpleCrackme', inputFile
-        '--', './simpleCrackme2', inputFile
+        #'--', './simpleCrackme2', inputFile
+        '--', './simpleCrackme50', inputFile
         #'--', './strcpy', inputFile
         #'--', 'ls'
     ]
@@ -104,6 +105,7 @@ def recordResults(inputFile, outputFile, taintSet, mutation, n):
 def getTestNumber(taintDir):
 
     taint = os.listdir(taintDir)
+    taint.remove('.gitignore')
     if len(taint) == 1:
         return 1
 
