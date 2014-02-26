@@ -27,10 +27,9 @@
 \contentsline {chapter}{\numberline {6}Contribution}{22}{chapter.6}
 \contentsline {section}{\numberline {6.1}Assumptions and Scoping}{22}{section.6.1}
 \contentsline {section}{\numberline {6.2}Implementation}{23}{section.6.2}
-\contentsline {section}{\numberline {6.3}Testing Harness}{23}{section.6.3}
-\contentsline {section}{\numberline {6.4}Methodology}{24}{section.6.4}
-\contentsline {section}{\numberline {6.5}Parallelization}{24}{section.6.5}
-\contentsline {section}{\numberline {6.6}Results}{25}{section.6.6}
-\contentsline {section}{\numberline {6.7}Lessons Learned}{25}{section.6.7}
+\contentsline {section}{\numberline {6.3}Testing Harness}{24}{section.6.3}
+\contentsline {section}{\numberline {6.4}Parallelization}{24}{section.6.4}
+\contentsline {section}{\numberline {6.5}Results}{25}{section.6.5}
+\contentsline {section}{\numberline {6.6}Lessons Learned}{25}{section.6.6}
 \contentsline {chapter}{\numberline {7}References}{26}{chapter.7}
 \contentsline {backmatter}{Biographical Sketch}{29}{chapter*.2}
