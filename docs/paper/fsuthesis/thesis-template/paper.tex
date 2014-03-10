@@ -167,6 +167,7 @@ Because there are a finite number of conditional jumps, all of which depend on d
 
 \section{Motivation}
 TODO US gov't interest via money, security issues, etc.
+Raytheon SI/VUPEN use it.
 
 \section{Problem Statement}
 
@@ -256,7 +257,10 @@ TODO Path explosion. Code coverage. Complex file formats which mean you create s
 
 TODO Limitations - one-way functions like bitwise shifts and checksums, cryptographic hashes. encryption.
 
-TODO should this section be moved from prelims elsewhere?
+TODO add code examples
+%http://en.wikipedia.org/wiki/User_Datagram_Protocol#IPv4_Pseudo_Header
+IDEA write c program to checksum UDP packets and say whether they pass or not, have fuzzer "correct" packets to pass arbitrary, user decided checksum.
+update: probably will not work without noticeable modification, but could maybe notice the situation and reverse engineer the algorithm, then print it out or start making a lookup table?
 
 \chapter{Related Work}
 
@@ -311,6 +315,7 @@ DTA is used to identify the so-called "hot bytes", which are then used as symbol
 
 \section{TODO Intel PIN}
 
+
 \chapter{Techniques}
 
 Several valuable techniques to improve fuzzers' code coverage have evolved over the years. Two, in particular, inspire this work directly: Dynamic Taint Analysis and Symbolic Execution. Dynamic Taint Analysis, or DTA, provides valuable information for guided fuzzing. Symbolic execution improves code coverage by first running a program concretely to gather constraints on a particular element, then executes the program symbolically, giving these constraints over to some kind of SMT solver [CITE] to solve for what value the element should have under certain conditions. Concolic execution, which has spawned out of the desire to use symbolic execution more wisely due to performance constraints, aims for reasonable runtimes while maintaining good code coverage. These each come with their own drawbacks, a primary one of which is the lack of automated instrumentation. Historically, any amount of symbolic execution required a programmer to directly instrument source code, leading much current research to focus on automating as much as possible.
@@ -346,6 +351,9 @@ TODO Finish brumley DTA
 TODO undertaint info flow code example
 
 TODO one-way functs
+Use: https://www.ida.liu.se/~TDDC90/literature/papers/violating05.pdf
+[AJ]
+
 
 DTA has been used to implement smart mutation fuzzers [A, T, MORE], but I believe the technique I explore later is unique from and complementary to Bekrar's work. In [A], DTA is proposed as a way to intelligently decide which parts of user input should be mutated. In [T], dynamic taint analysis identified hot bytes, which were then modified randomly or with boundary values. I plan to add on to these ideas by allowing smarter mutations to be selected by backsolving to decide which values are most likely to result in new paths being explored. This has been done with symbolic execution before, but traditional symbolic execution is much more heavy-weight, both in time required to setup the environment and in overhead introduced to run the program, than my proposed approach.
 
@@ -393,6 +401,9 @@ Koushik Sen defines concolic testing as combining "random tesing and symbolic ex
 
 Used in javascript fuzzer [AD]
 Used in [C].
+Mitigates dealing with side effects, done by PANDA.
+%http://www.cc.gatech.edu/~brendan/tzb_author.pdf
+%http://iris.lib.neu.edu/cgi/viewcontent.cgi?article=1097&context=elec_comp_theses
 
 \chapter{Contribution}
 
@@ -425,7 +436,90 @@ I implement dynamic taint analysis for files as input sources. I am basing my im
 	
 For example, move operations involving an untainted first operand and a tainted second operand generally spread taint, while those with a tainted first operand and an untainted second operand remove taint. Tainted branches trigger the backsolving technique. Various precautions, such as removing taint for an instruction like "xor eax, eax", must be taken. Lossy operations, like shifts, must be handled carefully to be backsolve-able, and checksums and cryptographic operations are not supported.
 	
-As a demonstration I have run my fuzzer, Stubble, against various binaries which open a file and check specific bytes in a file for specific character values. If all of these checks pass, then AAAAA, otherwise BBBBBB (segfault? EIP? add vulnerability detection alg?). I have observed .... (insert graphs with password lengths, etc.)
+As a demonstration I have run my fuzzer, Stubble, against various binaries which open a file and check specific bytes in a file for specific character values. If all of these checks pass, then the program outputs a "win" string, otherwise it outputs a "lose" string. This can be thought of conceptually as an oracle attack, and is similar to reverse engineering "crackme" exercises. Given no knowledge of the secret key, and only able to query an oracle, a successful attack must discover the secret within a reasonable number of guess [CITE?].
+
+After compiling with the Tiny C Compiler, which performs minimal optimization and doesn't add security measures, this binary and a default test file are given as input to Stubble, which will begin to dynamically generate run cases which will explore new paths within the binary. These test cases are fed back into the system, which continues to backsolve to find new ways to explore at branches, until there are no tainted bytes left for exploration.
+
+
+% (segfault? EIP? add vulnerability detection alg?). I have observed .... (insert graphs with password lengths, etc.)
+	
+\section{Results}
+
+Secrets of length 1 to 50 were tested at various intervals. It appears that, aside from some constant overhead, that test cases generated and time required to crack the binary  rise linearly with password length. The constant overhead is probably introduced from overtaint.
+
+
+(TODO time smaller oracle attacks)
+TODO attacks which transform input first to show ability to backsolve
+
+\begin{tikzpicture}
+\begin{axis}[
+    title={Oracle Attack},
+    xlabel={Secret Length},
+    ylabel={Test cases},
+    xmin=0, xmax=55,
+    ymin=10, ymax=100,
+    xtick={0,10,20,30,40,50},
+    ytick={20,30,40,50,60,70,80,90,100},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+ 
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    		(1,17)
+    		(4,20)
+    		(7,26)
+    		(10,28)
+    		(15,38)
+    		(20, 45)
+    		(25, 53) % 1:41.22elapsed
+    		(30, 60) % 1:51.78elapsed
+    		(35, 67) % 2:09.49elapsed
+    		(40, 74) % 2:19.83elapsed
+    		(45, 82) % 2:36.96elapsed
+    		(50, 90) % 2:51.77elapsed
+    }; 
+\end{axis}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+\begin{axis}[
+    title={Oracle Attack},
+    xlabel={Secret Length},
+    ylabel={Time Elapsed (seconds)},
+    xmin=0, xmax=55,
+    ymin=10, ymax=200,
+    xtick={0,10,20,30,40,50},
+    ytick={0,20,30,40,50,60,80,100,120,140,160,180,200},
+    ymajorgrids=true,
+    grid style=dashed,
+]
+ 
+\addplot[
+    color=red,
+    mark=square,
+    ]
+    coordinates {
+    		(1,0) % TODO time these first couple
+    		(4,0)
+    		(7,0)
+    		(10,0)
+    		(15,0)
+    		(20, 0)
+    		(25, 101) 
+    		(30, 112)
+    		(35, 129) 
+    		(40, 140)
+    		(45, 157) 
+    		(50, 172) 
+    }; 
+\end{axis}
+\end{tikzpicture}
+	
 	
 \section{Testing Harness}
 
@@ -442,9 +536,7 @@ Fuzzers require intuitive but powerful test harnesses, so that users can easily 
 
 \section{Parallelization}
 
-I have implemented a parallel version of the pintool, mp.c, to fork and exec a user-specified number of processes. Because a tainted branch may only be reachable based upon previous branches taken, and also because of complex conditions involving loops, the problem is not embarassingly parallel. For this project I have tested my program on a personally created binary, simpleCrackme. This binary takes a file containing a password in argv1. If the password matches its secret, then it prints "You win", otherwise, it prints "You lose". 
-
-After running my program, one can grep for the win string in the output/ directory. This is similar to concept to running a fuzzer, and grepping around the output recorded for more interesting conditions, like segfaults. Results show a noticeable speedup.
+I have implemented a parallel version of the pintool, mp.c, to fork and exec a user-specified number of processes. Because a tainted branch may only be reachable based upon previous branches taken, and also because of complex conditions involving loops, the problem is not embarassingly parallel. Results show an expected speedup for an application with decently independent input.
 
 Sequential:
 After several runs, I've seen performance ranging from ~33 seconds to 19 seconds.
@@ -464,57 +556,10 @@ However, I have seen runs as high as ~13 seconds elapsed. Since my testing envir
 %
 %Currently have results for crackmes, give idea of my fuzzer vs. %peach fuzz, and where i plan to go. 
 
-\section{Results}
-
-%Looking like linear with password + constant of 16 overtaint
-%Pw len:   Tests: 
-%1         17
-%4         20
-%7         26
-%10        28
-
-%\begin{filecontents*}{results.txt}
-%	$x$	$y$       
-%	1	17
-%	4	20
-%    7	26
-%    10	28
-%\end{filecontents*}
-
-%\pgfplotsset{results.txt}
-
-
-\begin{tikzpicture}
-\begin{axis}[
-    title={Oracle Attack},
-    xlabel={Secret Length},
-    ylabel={Test cases},
-    xmin=0, xmax=15,
-    ymin=10, ymax=30,
-    xtick={0,2,4,6,8,10},
-    ytick={15,20,25,30},
-    ymajorgrids=true,
-    grid style=dashed,
-]
- 
-\addplot[
-    color=blue,
-    mark=square,
-    ]
-    coordinates {
-    		(1,17)
-    		(4,20)
-    		(7,26)
-    		(10,28)
-    		(15,38)
-    }; 
-\end{axis}
-\end{tikzpicture}
-
-
 \section{Lessons Learned}
 
-TODO overtainting, naive implementations had LOTS of it	
+TODO overtainting, naive implementations had lots of it.
+TODO difficulties with implementation
 
 \chapter{References}
 
@@ -544,7 +589,7 @@ TODO overtainting, naive implementations had LOTS of it
 	\item [W] McCamant, Stephen, et al. Transformation-aware symbolic execution for system test generation. Tech. Rep. UCB/EECS-2013-125, University of California, Berkeley (Jun 2013), 2013.
 	\item [X] Majumdar, Rupak, and Koushik Sen. "Hybrid concolic testing." Software Engineering, 2007. ICSE 2007. 29th International Conference on. IEEE, 2007.
 	\item [Y] Sen, Koushik, Darko Marinov, and Gul Agha. CUTE: a concolic unit testing engine for C. Vol. 30. No. 5. ACM, 2005.
-	\item [Z] Peach Fuzzer. \url{<http://peachfuzzer.com/>}
+	\item [Z] Eddington, Michael. "Peach fuzzing platform." Peach Fuzzer (2011).
 	\item [AA] Zhang, Xiangyu, Rajiv Gupta, and Youtao Zhang. "Precise dynamic slicing algorithms." Software Engineering, 2003. Proceedings. 25th International Conference on. IEEE, 2003.
 	\item [AB] Wang, Tielei, et al. "TaintScope: A checksum-aware directed fuzzing tool for automatic software vulnerability detection." Security and Privacy (SP), 2010 IEEE Symposium on. IEEE, 2010.
 	\item [AC] Sen, Koushik. "Concolic testing." Proceedings of the twenty-second IEEE/ACM international conference on Automated software engineering. ACM, 2007.
@@ -554,6 +599,7 @@ TODO overtainting, naive implementations had LOTS of it
 	\item [AG] Portokalidis, Georgios, Asia Slowinska, and Herbert Bos. "Argos: an emulator for fingerprinting zero-day attacks for advertised honeypots with automatic signature generation." ACM SIGOPS Operating Systems Review. Vol. 40. No. 4. ACM, 2006.
 	\item [AH] Rescue, Data. "IDA Pro Disassembler." 2006-10-20). http://www. datarescue. com/idabase.
 	\item [AI] Garg, Sanjam, et al. "Candidate indistinguishability obfuscation and functional encryption for all circuits." Foundations of Computer Science (FOCS), 2013 IEEE 54th Annual Symposium on. IEEE, 2013.
+	\item [AJ] Oehlert, Peter. "Violating assumptions with fuzzing." Security \& Privacy, IEEE 3.2 (2005): 58-62.
 	
 
 \end{itemize}
