@@ -317,14 +317,17 @@ DTA is used to identify the so-called "hot bytes", which are then used as symbol
 
 Heavyweight analysis techniques, like symbolic execution or dynamic taint analysis, which operate over an entire instruction set, must account for the idiosyncracies and diverse operations supported by the architecture. By leveraging a pre-existing framework like Intel Pin [M], new software can abstract away from architecture specific details like x86 variable length instructions and avoid re-inventing the wheel.
 
-Pin, developed by Intel Corporation and the University of Colorado, performs dynamic binary instrumentation on x86, Itanium, and ARM architectures. Pin takes an arbitrary binary to be instrumented and an user-developed dynamically linked library, and instruments the binary at runtime by inserted user defined routines or changes into the application's code.
+Pin, developed by Intel Corporation and the University of Colorado, performs dynamic binary instrumentation on x86, Itanium, and ARM architectures. Pin takes an arbitrary binary to be instrumented and a user-developed dynamically linked library, and instruments the binary at runtime by inserting user defined routines or changes into the application's code.
 
-Pin's architecture is two-fold: consisting of a virtual machine for compiling and executing code, and a cache for previously executed 
+Pin's architecture is two-fold: consisting of a virtual machine for compiling and executing code, and a code cache for storing invididual code traces. An API for developing Pintools is also provided. Pin takes apart the program one trace at a time, compiling the native executable and the instrumentation code together into the same architecture. Pin defines a trace as a linear sequence of machine code instructions, terminated by either an unconditional jump or a pre-defined number of conditional jumps. Traces, hopefully, correspond to higher level control flow structures, but are also limited in size by a pre-defined maximum number of instructions [M].
 
-instrumentation is accomplished with Unix ptrace, similar to debuggers
+The Pin VM can be broken down into three sub-components: a just-in-time compiler which instruments the binary by hooking the appropriate routines and re-compiles into the original architecture, along with a dispatcher and an emulator. The dispatcher passes code to the code cache and executes instructions, but, because Pin resides solely in userland, certain activities which occur at a lower level of the operating system, like syscalls, cannot be captured normally. The emulator handles these cases [M].
 
-TODO finish pin stuff
+Pin injects itself into a given binary using Ptrace to modify instructions and then trap running processes to inject code in a similar manner to how debuggers like GDB attach to processes and inject software breakpoints [AK]. Just like GDB, Pin can attach to a running process or instrument a process from the first instruction. This stands in contrast to other dynamic binary instrumentation frameworks like DynamoRIO [AL], which use LD\_PRELOAD to force a new  shared library into the process context. This noisily shifts shared libraries' memory addresses to accomodate the new, pre-loaded library, and also cannot instrument the first parts of a program before the library loading code executes [M].
 
+Pin instruments at the trace level, JIT compiling a trace and caching it for re-use. A number of Pin optimizations revolve around the compilation phase, because testing shows Pin bottlenecks tend to concentrate around the execution of instrumented code. This is perhaps because instrumenting code involves hooking perhaps both the entrance and exit to a function, which adds two jumps. In addition, transitions between the VM and code cache require saving application state. The eflags register, for instance, must be pushed onto the stack to be read or written so that the program's original eflags is preserved. Since this register is used for all jumps, among other things, it is accessed often by both Pin and the instrumented program. Thus, Pin analyzes the liveness of each flag in eflags on a per-routine basis, and avoids saving and restoring flags which are not used by the routine as an optimization measure [M].
+
+This research leverages Pin to instrument arbitrary binaries at the instruction and syscall levels. Code is inserted to track taint introduced by user input, and recorded separately as it propagates. When taint reaches a branch, the recorded state information is used to work backwards through lossless operations to try and reason about the location and value of bytes which affect whether the branch is taken or not.
 
 \chapter{Techniques}
 
@@ -610,7 +613,8 @@ TODO difficulties with implementation
 	\item [AH] Rescue, Data. "IDA Pro Disassembler." 2006-10-20). http://www. datarescue. com/idabase.
 	\item [AI] Garg, Sanjam, et al. "Candidate indistinguishability obfuscation and functional encryption for all circuits." Foundations of Computer Science (FOCS), 2013 IEEE 54th Annual Symposium on. IEEE, 2013.
 	\item [AJ] Oehlert, Peter. "Violating assumptions with fuzzing." Security \& Privacy, IEEE 3.2 (2005): 58-62.
-	
+	\item [AK] Gilmore, John, and Sten Shebs. "GDB internals—a guide to the internals of the GNU debugger." Found in the doc directory of gdb distribution version 5.1 (2000).
+	\item [AL] Bruening, Derek, and Qin Zhao. "DynamoRIO."	
 
 \end{itemize}
 

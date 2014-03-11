@@ -20,7 +20,7 @@
 \BOOKMARK [1][-]{section.4.2}{TODO Mayhem, AEG, Exploitable Bugs}{chapter.4}% 20
 \BOOKMARK [1][-]{section.4.3}{TODO Argos: 0-Day Emulator}{chapter.4}% 21
 \BOOKMARK [1][-]{section.4.4}{Checksum-Aware Fuzzing}{chapter.4}% 22
-\BOOKMARK [1][-]{section.4.5}{TODO Intel PIN}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.5}{Intel PIN}{chapter.4}% 23
 \BOOKMARK [0][-]{chapter.5}{Techniques}{}% 24
 \BOOKMARK [1][-]{section.5.1}{Dynamic Taint Analysis}{chapter.5}% 25
 \BOOKMARK [1][-]{section.5.2}{Symbolic Execution}{chapter.5}% 26
