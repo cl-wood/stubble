@@ -137,10 +137,9 @@ The software community knows that programmers write buggy software, even with de
 
 In this paper, we present our analysis of existing techniques for improving fuzzers' code coverage and path exploration abilities, along with our own contributions and conclusions. We begin by exploring related work in Chapter 2, which describes current fuzzers architecture and limitations. Chapter 3 describes several fundamental techniques incorporated in most modern sophisticated fuzzers. In Chapter 4, we describe our contributions, in the form of what is, to the best of our knowledge, a new technique for black box binary fuzzing, a proof of concept fuzzer which implements the technique, and testing results. Lastly, we describe possible future work and conclusions from the experience in Chapter 5.
 
-Our technique, dubbed taint-
+Our technique, dynamic slice backsolving, using dynamic taint analysis to watch user input. As user input is introduced, each byte is tracked separately and, when the program transforms or manipulates user input, those transformations are recorded. When branches which depend upon user input are reached, the recorded transformations, if possible, are reversed, backsolving for a new value of a particular byte in user input which will lead execution down a different path in the binary. After execution finishes, input test cases are mutated to reflect this new information, and a new execution test runs.
 
-ADD?
-The major impetus for this work is outlined in "A Taint Based Approach for Smart Fuzzing". This paper proposes a fuzzing tool architecture, involving vulnerability detection, followed by taint analysis based upon found vulnerabilities, which drives the generation of intelligent tests. As tests are run they are checked to ensure they provide adequate code coverage, and results are carefully monitored for interesting situations like crashes [A]. The paper also serves as an excellent explanation of the current state and future of fuzzing. In particular, they suggest combining taint analysis with backward slicing. The technique discussed in this paper boils down to an attempt to automatically solve slices like those introduced in [AA], which have been derived from taint analysis as much as possible.
+The inspiration for this technique comes mainly from "A Taint Based Approach for Smart Fuzzing", which proposes a fuzzing tool architecture, involving vulnerability detection, followed by taint analysis based upon found vulnerabilities, which drives the generation of intelligent tests. Dynamic taint analysis tracks which bytes of user input are important in the binary, and these so-called "hot bytes" are made the focus of fuzzing attempts. The paper mentions it is valuable to be able to generate backward slices of program traces. This traces can be run and analyzed by programmers. In the spirit of automation, our work not only generates backward slices based on taint propagation, but also automatically solves these traces to find new byte values. Thus, for a subset of programs, we can determine not only the exact location of user input which determines a branch condition, but also generate precise values for both branch and non-branch cases.
 
 \chapter{Old-Abstract}
 
@@ -179,24 +178,16 @@ Because there are a finite number of conditional jumps, all of which depend on d
 \chapter{Introduction}
 
 \section{Motivation}
-TODO US gov't interest via money, security issues, etc.
-Raytheon SI/VUPEN use it.
 
 \section{Problem Statement}
 
 TODO Overview of difficulties of fuzzing
 
-\section{State of the Field}
-
-TODO current capabilities and shortcomings of fuzzers
+\section{Methodology}
 
 \section{Contributions}
 
 TODO a few paragraphs about what I did, missteps, conclusions, etc.
-
-\section{Theoretical Difficulties}
-TODO programming language theory, i.e. what makes fuzzing hard
-
 
 \chapter{Fuzzing by Example}
 
@@ -603,7 +594,7 @@ TODO difficulties with implementation
 	\item [K] Bellard, Fabrice. "QEMU, a Fast and Portable Dynamic Translator." USENIX Annual Technical Conference, FREENIX Track. 2005.
 	\item [L] Guillon, Christophe. "Program Instrumentation with QEMU." 1st International QEMU Users’ Forum. 2011.
 	\item [M] Luk, Chi-Keung, et al. "Pin: building customized program analysis tools with dynamic instrumentation." Acm Sigplan Notices. Vol. 40. No. 6. ACM, 2005.
-	\item [N] Salwan, Jonathan. Shell-storm.org %\url{http://shell-storm.org/blog/Taint-analysis-and-pattern-matching-with-Pin/}
+	\item [N] Salwan, Jonathan. Shell-storm.org http://shell-storm.org/blog/Taint-analysis-and-pattern-matching-with-Pin/
 	\item [O] King, James C. "Symbolic execution and program testing." Communications of the ACM 19.7 (1976): 385-394.
 	\item [P] De Moura, Leonardo, and Nikolaj Bjørner. "Z3: An efficient SMT solver." Tools and Algorithms for the Construction and Analysis of Systems. Springer Berlin Heidelberg, 2008. 337-340.
 	\item [Q] Godefroid, Patrice, Michael Y. Levin, and David Molnar. "Sage: Whitebox fuzzing for security testing." Queue 10.1 (2012): 20.
@@ -620,8 +611,8 @@ TODO difficulties with implementation
 	\item [AB] Wang, Tielei, et al. "TaintScope: A checksum-aware directed fuzzing tool for automatic software vulnerability detection." Security and Privacy (SP), 2010 IEEE Symposium on. IEEE, 2010.
 	\item [AC] Sen, Koushik. "Concolic testing." Proceedings of the twenty-second IEEE/ACM international conference on Automated software engineering. ACM, 2007.
 	\item [AD] Saxena, Prateek, et al. "A symbolic execution framework for javascript." Security and Privacy (SP), 2010 IEEE Symposium on. IEEE, 2010.
-	\item [AE] Mozilla Developer Network. \url{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/eval}
-	\item [AF] The WebKit Open Source Project. \url{http://www.webkit.org/}
+	\item [AE] Mozilla Developer Network. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/eval
+	\item [AF] The WebKit Open Source Project. http://www.webkit.org/
 	\item [AG] Portokalidis, Georgios, Asia Slowinska, and Herbert Bos. "Argos: an emulator for fingerprinting zero-day attacks for advertised honeypots with automatic signature generation." ACM SIGOPS Operating Systems Review. Vol. 40. No. 4. ACM, 2006.
 	\item [AH] Rescue, Data. "IDA Pro Disassembler." 2006-10-20). http://www. datarescue. com/idabase.
 	\item [AI] Garg, Sanjam, et al. "Candidate indistinguishability obfuscation and functional encryption for all circuits." Foundations of Computer Science (FOCS), 2013 IEEE 54th Annual Symposium on. IEEE, 2013.

@@ -3,9 +3,8 @@
 \contentsline {chapter}{\numberline {3}Introduction}{6}{chapter.3}
 \contentsline {section}{\numberline {3.1}Motivation}{6}{section.3.1}
 \contentsline {section}{\numberline {3.2}Problem Statement}{6}{section.3.2}
-\contentsline {section}{\numberline {3.3}State of the Field}{6}{section.3.3}
+\contentsline {section}{\numberline {3.3}Methodology}{6}{section.3.3}
 \contentsline {section}{\numberline {3.4}Contributions}{6}{section.3.4}
-\contentsline {section}{\numberline {3.5}Theoretical Difficulties}{6}{section.3.5}
 \contentsline {chapter}{\numberline {4}Fuzzing by Example}{7}{chapter.4}
 \contentsline {section}{\numberline {4.1}TODO White vs. Gray vs. Black box}{7}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Microsoft SAGE}{7}{subsection.4.1.1}
