@@ -131,6 +131,19 @@
 
 \chapter{Abstract}
 
+Fuzzing, or the feeding of manipulated input to processes to try and detect software bugs and vulnerabilities, is an integral, even required, part of the work conducted by both private-sector companies like Microsoft [Q] and Google [AM] and nation-state powers and contractors. In 2014, Pwn2Own paid out 850,000 USD to participants over two days for proof of zero-day exploitable vulnerabilities, for an average of 66,000 USD per exploit [AN]. Forbes suggests black market prices are considerably higher, peaking at over \$150,000 for modern browser exploits [AO].
+
+The software community knows that programmers write buggy software, even with debugging tools and access to source code for auditing purposes. Fuzzing, however, cannot even assume source code access, because interesting programs are not always open source. As an example, Internet Explorer, a prime exploitation target, is propietary software. Successful testing depends upon the fuzzer's ability to explore the binary and detect bugs without source code. In addition, each branch instruction in assembly language introduces two new possible paths, leading to an explosion of explorable paths as binaries grow in size and complexity. Following all or most these paths, and doing so in a timely manner, requires complex software and time-memory tradeoffs.
+
+In this paper, we present our analysis of existing techniques for improving fuzzers' code coverage and path exploration abilities, along with our own contributions and conclusions. We begin by exploring related work in Chapter 2, which describes current fuzzers architecture and limitations. Chapter 3 describes several fundamental techniques incorporated in most modern sophisticated fuzzers. In Chapter 4, we describe our contributions, in the form of what is, to the best of our knowledge, a new technique for black box binary fuzzing, a proof of concept fuzzer which implements the technique, and testing results. Lastly, we describe possible future work and conclusions from the experience in Chapter 5.
+
+Our technique, dubbed taint-
+
+ADD?
+The major impetus for this work is outlined in "A Taint Based Approach for Smart Fuzzing". This paper proposes a fuzzing tool architecture, involving vulnerability detection, followed by taint analysis based upon found vulnerabilities, which drives the generation of intelligent tests. As tests are run they are checked to ensure they provide adequate code coverage, and results are carefully monitored for interesting situations like crashes [A]. The paper also serves as an excellent explanation of the current state and future of fuzzing. In particular, they suggest combining taint analysis with backward slicing. The technique discussed in this paper boils down to an attempt to automatically solve slices like those introduced in [AA], which have been derived from taint analysis as much as possible.
+
+\chapter{Old-Abstract}
+
 Finding exploitable bugs in binaries is a difficult but valuable endeavour. Fuzzing, or the feeding of controlled input into processes to try and detect vulnerable conditions, is one technique used by researchers and analysts. Because many project's source code is not made unavailable to protect intellectual property, applications tested for vulnerabilities are often considered black boxes. Reasoning about the inner working of a complex application when one can only observe the relationship between input and output is hard. In fact, for some situations, like properly implemented cryptography, it is provably hard. This piles difficulties onto an already complex problem, which current research attempts to solve or reduce. Among these issues this paper focuses on:
 	\begin{itemize}
 		\item efficient and thorough dynamic taint analysis
@@ -615,6 +628,10 @@ TODO difficulties with implementation
 	\item [AJ] Oehlert, Peter. "Violating assumptions with fuzzing." Security \& Privacy, IEEE 3.2 (2005): 58-62.
 	\item [AK] Gilmore, John, and Sten Shebs. "GDB internals—a guide to the internals of the GNU debugger." Found in the doc directory of gdb distribution version 5.1 (2000).
 	\item [AL] Bruening, Derek, and Qin Zhao. "DynamoRIO."	
+	\item [AM] http://googleonlinesecurity.blogspot.com/2011/08/fuzzing-at-scale.html
+	\item [AN] http://www.pwn2own.com/, http://www.pwn2own.com/2014/03/pwn2own-2014-lineup/
+	\item [AO] http://www.forbes.com/sites/andygreenberg/2012/03/23/shopping-for-zero-days-an-price-list-for-hackers-secret-software-exploits/
+	
 
 \end{itemize}
 
