@@ -362,7 +362,7 @@ There are several challenges involved with implementing DTA. First of all, accur
 
 Even worse is undertainting. Overtainting creates unnecessary work, but undertainting may lead us to miss taint propagations to vulnerable sinks. Undertainting typically occurs when we mishandle or fail to perceive information flows [C]. Taint can propagate via explicit or implicit flows, sometimes also called data and control dependencies respectively [G]. Explicit flows involve a tainted variable, x, which is used in an assignment expression to compute a new variable, y. In this situation, x taints y, and if y is involved in any further assignment to a variable z, then x taints z by transitivity. In contrast, implicit data flows involve a tainted variable used to affect control flow within a program which subsequently sets the value of another variable, for instance at a branch [D]. 
 
-Handling taint correctly is of great importance because of the existence of subtle implicit flow cases referenced by Clause, J. et al [D]. Implicit data flows are not always considered by dynamic tainting techniques [E], but for my project, implicit data flows are very important, so we need to implement DTA which catches both implicit and explicit flows.
+Handling taint correctly is of great importance because of the existence of subtle implicit flow cases referenced by Clause, J. et al [D]. Implicit data flows are not always considered by dynamic tainting techniques [E], but for our project, implicit data flows are very important, so we need to implement DTA which catches both implicit and explicit flows.
 
 TODO Finish brumley DTA
 TODO undertaint info flow code example
@@ -372,7 +372,7 @@ Use: https://www.ida.liu.se/~TDDC90/literature/papers/violating05.pdf
 [AJ]
 
 
-DTA has been used to implement smart mutation fuzzers [A, T, MORE], but we believe the technique we explore later is unique from and complementary to Bekrar's work. In [A], DTA is proposed as a way to intelligently decide which parts of user input should be mutated. In [T], dynamic taint analysis identified hot bytes, which were then modified randomly or with boundary values. We plan to add on to these ideas by allowing smarter mutations to be selected by backsolving to decide which values are most likely to result in new paths being explored. This has been done with symbolic execution before, but traditional symbolic execution is much more heavy-weight, both in time required to setup the environment and in overhead introduced to run the program, than my proposed approach.
+DTA has been used to implement smart mutation fuzzers [A, T, MORE], but we believe the technique we explore later is unique from and complementary to Bekrar's work. In [A], DTA is proposed as a way to intelligently decide which parts of user input should be mutated. In [T], dynamic taint analysis identified hot bytes, which were then modified randomly or with boundary values. We plan to add on to these ideas by allowing smarter mutations to be selected by backsolving to decide which values are most likely to result in new paths being explored. This has been done with symbolic execution before, but traditional symbolic execution is much more heavy-weight, both in time required to setup the environment and in overhead introduced to run the program, than our proposed approach.
 
 \section{Symbolic Execution}
 
@@ -410,7 +410,7 @@ TODO talk about how this is called many different things, and is a rather amorph
 
 Current research focuses on carefully deciding when and how to use symbolic execution [J, T, W]. So-called concolic execution mixes concrete and symbolic input, and various heuristics to determine when to resort to symbolic execution are in research.
 
-Concolic testing has been shown to improve runtime while still allowing both wide and deep inspection of a program's execution tree, although it often still requires source code to be instrumented [X, Y]. What We propose is similar to concolic testing, in that we are augmenting concrete execution with dynamic taint analysis to solve for mutations which will exercise new paths in the code. However, the lack of a heavyweight constraint solver and the ability to work on binaries without instrumenting or using source code in any way have, to the best of my knowledge, not yet been proposed.
+Concolic testing has been shown to improve runtime while still allowing both wide and deep inspection of a program's execution tree, although it often still requires source code to be instrumented [X, Y]. What We propose is similar to concolic testing, in that we are augmenting concrete execution with dynamic taint analysis to solve for mutations which will exercise new paths in the code. However, the lack of a heavyweight constraint solver and the ability to work on binaries without instrumenting or using source code in any way have, to the best of our knowledge, not yet been proposed.
 
 Koushik Sen defines concolic testing as combining "random tesing and symbolic execution to partly remove the limitations of random testing and symbolic execution based testing" [AB]. This differs from hybrid symbolic execution engines like Mayhem [H], which switch between different types of symbolic execution. Hybrid symbolic execution does not itself supplement fuzzing by adding concrete random values. Both imply a tradeoff between two types of analysis, however, and thus both, when implemented by different people, will differ in where they assign the tradeoff. Some concolic testing, for instance, will start with concrete values which are random, or NULLs for pointer values. After an execution, one of the symbolic constraints will be negated, to allow a new path to be explored, and the program will be run again with new random input [AB]. Various research aims to either use symbolic execution less [Q, R, X], pick better than random values [A], or pick better input bytes to give random values [A, E, T, AB].
 
@@ -432,7 +432,7 @@ We assume ASLR is disabled for the binary to be fuzzed. This allows the program 
 
 TODO in above make sure can catch stderr segfaults, segfaults go to shell's stderr, also a signal
 
-Current selective symbolic execution engines still appear to introduce significant overhead, between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others [J, K, L]. In contrast, basic block counting using Intel Pin, the framework we are leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for my proposed technique introduces greater levels of overhead, since we will be working at the instruction level instead of the basic block level, requiring more insertions for any given binary.
+Current selective symbolic execution engines still appear to introduce significant overhead, between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others [J, K, L]. In contrast, basic block counting using Intel Pin, the framework we are leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for our proposed technique introduces greater levels of overhead, since we will be working at the instruction level instead of the basic block level, requiring more insertions for any given binary.
 
 We are leveraging Intel PIN to perform dynamic binary instrumentation. We are testing dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, is such an example binary. 
 
@@ -442,7 +442,7 @@ There are allowable situations in programs which are outside the scope of this p
 
 \section{Implementation}
 
-We implement dynamic taint analysis for files as input sources. We are basing my implementation of DTA on Jonathan Salwan\'s work [N]. Currently we instrument the read syscall, watching for all reads executed, then tag user input at the byte level and follow it as it moves throughout the binary. We instrument binaries at the assembly instruction level using Intel Pin, which dynamically disassembles each instruction. Each instruction is handled differently based upon the following criteria:
+We implement dynamic taint analysis for files as input sources. We are basing our implementation of DTA on Jonathan Salwan\'s work [N]. Currently we instrument the read syscall, watching for all reads executed, then tag user input at the byte level and follow it as it moves throughout the binary. We instrument binaries at the assembly instruction level using Intel Pin, which dynamically disassembles each instruction. Each instruction is handled differently based upon the following criteria:
 
 \begin{itemize}
 	\item Is the instruction a conditional jump?
@@ -571,10 +571,10 @@ The parallel implementation seems to decrease time by somewhere around half, whi
 30.64user 9.71system 0:10.83elapsed 372\%CPU (0avgtext+0avgdata 12952maxresident)k
 0inputs+816outputs (0major+1368622minor)pagefaults 0swaps
 
-However, we have seen runs as high as ~13 seconds elapsed. Since my testing environment has 4GB ram and 4 virtual cores, 4 processes seems to give me the best speedup. We also tested with 2, 8, and 16 processes but didn't see a comparable speedup.
+However, we have seen runs as high as ~13 seconds elapsed. Since our testing environment has 4GB ram and 4 virtual cores, 4 processes seems to give me the best speedup. We also tested with 2, 8, and 16 processes but didn't see a comparable speedup.
 
 %
-%Currently have results for crackmes, give idea of my fuzzer vs. %peach fuzz, and where i plan to go. 
+%Currently have results for crackmes, give idea of our fuzzer vs. %peach fuzz, and where i plan to go. 
 
 \section{Lessons Learned}
 
