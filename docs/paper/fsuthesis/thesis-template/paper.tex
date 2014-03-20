@@ -78,7 +78,8 @@
   morestring=[b]"
 }
 
-\title{A Survey of Fuzzing and New Technique for Dynamic Analysis}
+\title{Dynamic Slice Backsolving}
+%\title{A Survey of Fuzzing and New Technique for Dynamic Analysis}
 \author{Clark Wood}
 \college{College of Arts and Science}
 \department{Department of Computer Science} % Delete if no department
@@ -131,6 +132,11 @@
 
 \chapter{Abstract}
 
+Finding bugs in software is a difficult but lucrative endeavour. Fuzzing is one technique for finding bugs, particularly exploitable vulnerabilities, employed by both software companies and nation-state actors. When no source code is available, fuzzing complex programs can prove difficult, and as techniques become more sophisticated they require more resources and time. We present a technique, dynamic slice backsolving, which, to the best of our knowledge, represents a novel way to reason about not only the location of user input bytes which contribute to interesting program behavior like branching, but also the exact byte value necessary to trigger a desire branch condition. We have implemented this technique in a fuzzer, which is able to reason about large and complex user input and reliably drive program execution down new code paths to explore new portions of compiled code.
+ 
+
+\chapter{Introduction}
+
 Fuzzing, or the feeding of manipulated input to processes to try and detect software bugs and vulnerabilities, is an integral, even required, part of the work conducted by both private-sector companies like Microsoft [Q] and Google [AM] and nation-state powers and contractors. In 2014, Pwn2Own paid out 850,000 USD to participants over two days for proof of zero-day exploitable vulnerabilities, for an average of 66,000 USD per exploit [AN]. Forbes suggests black market prices are considerably higher, peaking at over \$150,000 for modern browser exploits [AO].
 
 The software community knows that programmers write buggy software, even with debugging tools and access to source code for auditing purposes. Fuzzing, however, cannot even assume source code access, because interesting programs are not always open source. As an example, Internet Explorer, a prime exploitation target, is propietary software. Successful testing depends upon the fuzzer's ability to explore the binary and detect bugs without source code. In addition, each branch instruction in assembly language introduces two new possible paths, leading to an explosion of explorable paths as binaries grow in size and complexity. Following all or most these paths, and doing so in a timely manner, requires complex software and time-memory tradeoffs.
@@ -140,6 +146,8 @@ In this paper, we present our analysis of existing techniques for improving fuzz
 Our technique, dynamic slice backsolving, using dynamic taint analysis to watch user input. As user input is introduced, each byte is tracked separately and, when the program transforms or manipulates user input, those transformations are recorded. When branches which depend upon user input are reached, the recorded transformations, if possible, are reversed, backsolving for a new value of a particular byte in user input which will lead execution down a different path in the binary. After execution finishes, input test cases are mutated to reflect this new information, and a new execution test runs.
 
 The inspiration for this technique comes mainly from "A Taint Based Approach for Smart Fuzzing", which proposes a fuzzing tool architecture, involving vulnerability detection, followed by taint analysis based upon found vulnerabilities, which drives the generation of intelligent tests. Dynamic taint analysis tracks which bytes of user input are important in the binary, and these so-called "hot bytes" are made the focus of fuzzing attempts. The paper mentions it is valuable to be able to generate backward slices of program traces. This traces can be run and analyzed by programmers. In the spirit of automation, our work not only generates backward slices based on taint propagation, but also automatically solves these traces to find new byte values. Thus, for a subset of programs, we can determine not only the exact location of user input which determines a branch condition, but also generate precise values for both branch and non-branch cases.
+
+We have implemented this technique in a proof of concept fuzzer, stubble, which operates on x86 binaries. Stubble requires no access to source code, unlike many fuzzers utilizing symbolic execution, and automatically generates test files which exercise new paths in the input program. Program input, output, and interesting conditions like segfaults are recorded during execution, and taint propagation is recorded from user input sources to branch sinks. When a tainted branch is found, stubble automically backsolves the execution slice and generates a new test case which will drive the program down the opposite path explored in the current execution. Stubble is able to reason about hundreds of bytes of user input, for instance by performing oracle attacks on binaries which check user input against large secrets, requiring O(n) test cases to solve the secret with no previous information, where n is length of the secret. Stubble has also been parallized at the process level, allowing for an arbitrary number of independent bytes to be reasoned about concurrently. We believe dynamic slice backsolving is a reasonable complementary technique to dynamic taint analysis and symbolic execution for binary fuzzing.
 
 \chapter{Old-Abstract}
 
