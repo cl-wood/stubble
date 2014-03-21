@@ -111,8 +111,11 @@
 %\begin{dedication}
 %\end{dedication}
 
-%\begin{acknowledgments}
-%\end{acknowledgments}
+\begin{acknowledgments}
+SFS
+% Dr. Wang
+% Bret Whissel
+\end{acknowledgments}
 
 \tableofcontents
 %\listoftables
@@ -125,18 +128,17 @@
 %\begin{listofabbrevs}
 %\end{listofabbrevs}
 
-%\begin{abstract}
-%This is my abstract.
-%\end{abstract}
 
 \mainmatter
 
 %\input chapter1
 
-\chapter{Abstract}
+\begin{abstract}
 
 Finding software bugs is a difficult but lucrative endeavour. Fuzzing is one technique for finding bugs, particularly exploitable vulnerabilities, employed by both software companies and nation-state actors. However, when no source code is available, fuzzing complex programs effectively can prove difficult, and as techniques become more sophisticated they require more resources and time. We present a technique, automated dynamic slice backsolving, which, to the best of our knowledge, represents a novel way to reason about not only the location of user input bytes which contribute to interesting program behavior like branching, but also the exact byte value necessary to trigger a desire branch condition. We have implemented this technique in a fuzzer, which is able to reason about large and complex user input and reliably drive program execution down new code paths to explore new portions of compiled code.
- 
+
+\end{abstract}
+
 \chapter{Introduction}
 
 \section{Motivation}
@@ -165,7 +167,7 @@ Our work aims to address the code coverage problem in a similar way to symbolic 
 
 Because of these downsides, much research tries to attain more reasonable performance by using symbolic execution less or more wisely [J]. We focus instead on approximating symbolic execution's code coverage by using dynamic taint analysis to drive test case mutation. As the native program executes, we dynamically instrument the binary and record execution slices. Memory accesses, loads and stores, and transformations of tainted bytes are recorded, and then used to backsolved to give exact byte values and locations to explore in future runs. Our implementation of this technique requires no source code, no modification to a binary, no conversion to an IR, and no SMT solvers.
 
-In this paper, we present our analysis of existing techniques along with our own contributions and conclusions. We begin by exploring related work in Chapter 3, which sets the background and describes current fuzzers' techniques and limitations. In chapter 4, we describe our contributions, in the form of what is, to the best of our knowledge, a new technique for black box binary fuzzing, a proof of concept fuzzer which implements the technique, and testing results. Lastly, we describe possible future work and conclusions from the experience in Chapter 5.
+In this paper, we present our analysis of existing techniques along with our own contributions and conclusions. We begin by exploring related work in Chapter 2, which sets the background and describes current fuzzers' techniques and limitations. In chapter 3, we describe our contributions, in the form of what is, to the best of our knowledge, a new technique for black box binary fuzzing, a proof of concept fuzzer which implements the technique, and testing results. Lastly, we describe possible future work and conclusions from the experience in Chapter 4.
 
 Our technique, automated dynamic slice backsolving, uses dynamic taint analysis to watch user input. As user input is introduced, each byte is tracked separately and, when the program transforms or manipulates user input, those transformations are recorded. When branches which depend upon user input are reached, the recorded transformations, if possible, are reversed, backsolving for a new value of a particular byte in user input which will lead execution down a different path in the binary. After execution finishes, input test cases are mutated to reflect this new information, and a new execution test runs.
 
@@ -180,17 +182,6 @@ TODO add loop invariants experiments
  
 % Dynamic taint analysis is difficult because taint can propagate directly via assignment, or indirectly via affecting control flows which affect assignment [D], which make proper implementation tricky. The path explosion problem arises from the nature of assembly languages. Jump instructions, which may make up a decent percentage of machine instructions in programs, each multiply the total number of existing paths in a binary by two. Considering the size of binaries, this quickly leads to an un-tenably large set of possible paths to explore via conventional techniques like symbolic execution. And even if it is possible to explore all paths in a binary, analysts still need sample input which can trigger the vulnerable condition, perhaps proving that the binary is exploitable along the way. Such automated exploit generation is the subject of much research [H, I].
 
-% Example for stubble
-%\begin{lstlisting}[style=asmstyle]
-%call read					;instrument read syscall
-%mov eax, [ebp - val]		;taint propagates from val to eax reg
-%inc eax						;transform eax
-%mul eax, 5					;transform eax
-%cmp eax, 42					;cmp and jmp based on tainted reg value
-%jnz 0x8BADC0DE
-%\end{lstlisting}
-
-%If we already had a test case where the value read onto the stack, after the transformations, did not equal 42, then the cmp instruction would not set the zero flag, and we would jump to the memory location 0xBADC0DE. With dynamic taint analysis in place, we see taint introduced with the read syscall, then moved into the eax register (which is subsequently tainted). After some number of transformations, perhaps zero, to the value in the eax register, we see a compare instruction, which checks eax's value against an immediate value. Then we can keep track of specific taint sources, and can record any movements or transformations, we have all the necessary information to "solve" the branch. Once we reach the tainted branch, we know that user input can affect whether we jump or not, and consequently we can backsolve to find out how to affect the branch instruction. In particular, we know the conditional jump instruction jnz depends on the Z flag in the EFLAGS register. We record whatever instruction last modified each flag in EFLAGS, so we handle the compare instruction next. Because we have kept track of taint propagation, we know we can affect the value of eax, but not 42, since it is an immediate value, so we know we need to make the value in eax equal 42. We follow the instructions that have modified the value of eax and use any appropriate operands involved with the inverse operation of the one originally performed on the value to reverse the transformations to eax's value. Finally, we notice eax originally received taint when a value was moved from memory, which was read into memory using the read syscall.
 
 %This works similarly to a constraint solver, but constraint solving appears to be a traditional bottleneck, requiring generating symbolic input, usually in a different language like LLVM intermediate representation [V] and passing execution to the constraint solver.
 
@@ -433,9 +424,40 @@ Mitigates dealing with side effects, done by PANDA.
 
 \section{Automated Dynamic Slice Backsolving}
 
+We have developed a technique which, to the best of our knowledge, provides similar code coverage to symbolic execution by using dynamic taint analysis to record relevant program slices and drive test case mutation. As a program runs, the introduction and propagation of taint is recorded. Should taint flow to a sink of interest, the recorded slice is backsolved to find new byte values which will hopefully lead future program runs down new paths. Taint is generally introduced to the program by user input. This can come in the form of user-provided files, command line arguments, or stdin. When user input is detected, it is marked as tainted at the byte level. This means that if user input is conceptualized as a stream of bytes $b_0,b_1,...,b_n$, then the first byte is considered separate from the separate byte, and each is individually followed throughout program execution. This level of granularity introduces significantly more overhead than binary tainting, which marks bytes as either tainted or not tainted, but provides far greater detail into which bytes of user input affect which parts of a program.
+
+Once user input is captured and marked tainted, any memory accesses, loads and stores, and transformations of tainted bytes are recorded as they are encountered. This creates a slice of moves and alterations to the bytes, which can be followed like a trail of breadcrumbs back to the original position of the byte. This continues as the program executes until a conditional branch is reached. When a conditional branch instruction is reached, it is either taken or not taken, based upon the value of some comparison. If this branch depends upon tainted values, which have descended in one way or another from user input, then there is a strong possibility that the "road not taken" could be explored if only user input looked appropriate. In the case where any transformations to user input are reversible, we can backsolve these transformations and, based upon the comparison, modify the byte value so that it leads to the complement of the previous branch condition. Not only this, we can identify which byte $b_0,b_1,...,b_n$ to modify, since we have followed each byte from their introduction. Using this information, we can mutate the previous test case to create a new test which will result in very similar program behavior, with the exception of branching where before it did not branch, and vice versa.
+
+INSERT COOL FIGURE
+
+The idea for this technique is raised in [A], which suggests using dynamic taint analysis to identify "hot bytes" of user input, which affect important things in a program, and also to generate backward slices [AA]. Hot bytes become the target of fuzzing, with backward slices providing valuable context to analysts. Our contribution is the realization of this idea for a subset of cases, and the automation of solving these slices. Our hope is that by solving these slices automatically, we can identify not only the exact location but also the exact value of hot bytes. 
+
+we ignore ....loops, more TODO
+
+Our methodology focuses on following taint specifically up to tainted branches, to direct as much attention as possible to finding new paths to explore within the binary. This is of particular importance when source code is not available for analysis, which is common in vulnerability research. Compiled code can be disassembled or debugged, but compilation is a lossy process. Even industry de-compilers like Hex Rays cannot restore comments, since these are not preserved, and they cannot guarantee to reproduce the exact higher level language semantics, given only assembly language. Thus, our implementation relies on Intel Pin to dynamically disassemble compiled binaries.
+
+Consider the following example in Intel x86 assembly:
+
+% x86 example
+\begin{lstlisting}[style=asmstyle]
+call read					;instrument read syscall
+mov eax, [ebp - val]		;taint propagates from val to eax reg
+inc eax						;transform eax
+mul eax, 5					;transform eax
+cmp eax, 42					;cmp and jmp based on tainted reg value
+jnz 0x8BADC0DE
+\end{lstlisting}
+
+If we already had a test case where the value read onto the stack, after the transformations, did not equal 42, then the cmp instruction would not set the zero flag, and we would jump to the memory location 0xBADC0DE. With dynamic taint analysis in place, we see taint introduced with the read syscall, then moved into the eax register (which is subsequently tainted). After an arbitrary number of transformations, perhaps zero, to the value in the eax register, comes a compare instruction, which checks eax's value against an immediate value. Then we can keep track of specific taint sources, and can record any movements or transformations, we have all the necessary information to "solve" the branch. Once we reach the tainted branch, we know that user input can affect whether we jump or not, and consequently we can backsolve to find out how to affect the branch instruction. In particular, we know the conditional jump instruction jnz depends on the Z flag in the EFLAGS register. We record whatever instruction last modified each flag in EFLAGS, so we handle the compare instruction next. Because we have kept track of taint propagation, we know we can affect the value of eax, but not 42, since it is an immediate value, so we know we need to make the value in eax equal 42. We follow the instructions that have modified the value of eax and use any appropriate operands involved with the inverse operation of the one originally performed on the value to reverse the transformations to eax's value. Finally, we notice eax originally received taint when a value was moved from memory, which was read into memory using the read syscall.
+
+FROM INTRO
+We have implemented this technique in a proof of concept fuzzer, stubble, which operates on x86 binaries. Stubble dynamically instruments binaries, and automatically generates test files which exercise new paths in the input program. Program input, output, and interesting conditions like segfaults are recorded during execution, and taint propagation is recorded from user input sources to branch sinks. When a tainted branch is found, stubble automically backsolves the execution slice and generates a new test case which will drive the program down the opposite path explored in the current execution. Stubble is able to reason about large amounts of bytes of user input, for instance by performing oracle attacks on binaries which check user input against large secrets, requiring O(n) test cases to solve the secret with no previous information, where n is the length of the secret. Stubble has also been parallized at the process level, allowing for an arbitrary number of independent bytes to be reasoned about concurrently. We believe automated dynamic slice backsolving is a reasonable complementary technique to dynamic taint analysis and symbolic execution for binary fuzzing.
+END FROM INTRO
+
 \section{Design}
 
-Stubble architecture
+Stubble architecture, describe
+why intel pin and not dynamo rio, valgrind, etc.
 
 
 % Source: http://www.texample.net/tikz/examples/simple-flow-chart/
@@ -484,6 +506,8 @@ Stubble architecture
 
 Pintool, python specifics. Binarys, RE
 
+\section{Limitations}
+
 \section{Parallelization}
 
 MyPinToolMultiProcess, why process level instead of threads, etc.
@@ -528,8 +552,6 @@ As a demonstration we have run our fuzzer, Stubble, against various binaries whi
 
 After compiling with the Tiny C Compiler, which performs minimal optimization and doesn't add security measures, this binary and a default test file are given as input to Stubble, which will begin to dynamically generate run cases which will explore new paths within the binary. These test cases are fed back into the system, which continues to backsolve to find new ways to explore at branches, until there are no tainted bytes left for exploration.
 
-
-% (segfault? EIP? add vulnerability detection alg?). We have observed .... (insert graphs with password lengths, etc.)
 	
 \section{Results}
 
@@ -619,8 +641,6 @@ Fuzzers require intuitive but powerful test harnesses, so that users can easily 
 %Professional fuzzing products, like Peach Fuzzer
 
 %\section{Methodology}
-
-%We are currently instrumenting dummy programs which use a subset of all possible comparisons and arithmetic operations on tainted variables. If results appear promising we can try to make the fuzzer as complete as possible and begin running it on real-world applications. Achieving a noticeable speedup over modern symbolic execution would be the goal.
 
 %As of this writing we are moving towards fuzzing Linux utilities. Results for toy binaries are promising, with "crackme" type programs which ask for a secret being solved in approximately 2*n runs, where n is the length of the secret. There is, however, still some overtainting which must be accounted for.	
 %\section{Evaluation}

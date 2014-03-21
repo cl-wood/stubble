@@ -1,34 +1,35 @@
-\contentsline {frontmatter}{List of Figures}{iv}{chapter*.2}
-\contentsline {chapter}{\numberline {1}Abstract}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Introduction}{2}{chapter.2}
-\contentsline {section}{\numberline {2.1}Motivation}{2}{section.2.1}
-\contentsline {section}{\numberline {2.2}Problem Statement}{3}{section.2.2}
-\contentsline {section}{\numberline {2.3}Contributions}{4}{section.2.3}
-\contentsline {chapter}{\numberline {3}Background and Related Work}{6}{chapter.3}
-\contentsline {section}{\numberline {3.1}Microsoft SAGE}{6}{section.3.1}
-\contentsline {section}{\numberline {3.2}Fuzzing Web Applications}{7}{section.3.2}
-\contentsline {section}{\numberline {3.3}Taint-based Fuzzing}{10}{section.3.3}
-\contentsline {section}{\numberline {3.4}TODO Mayhem, AEG, Exploitable Bugs}{10}{section.3.4}
-\contentsline {section}{\numberline {3.5}Checksum-Aware Fuzzing}{11}{section.3.5}
-\contentsline {section}{\numberline {3.6}Intel PIN}{13}{section.3.6}
-\contentsline {section}{\numberline {3.7}Techniques}{15}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}Dynamic Taint Analysis}{15}{subsection.3.7.1}
-\contentsline {subsection}{\numberline {3.7.2}Symbolic Execution}{18}{subsection.3.7.2}
-\contentsline {subsection}{\numberline {3.7.3}Mixed and Concolic Execution}{20}{subsection.3.7.3}
-\contentsline {subsection}{\numberline {3.7.4}TODO Conversion to an Intermediate Representation}{21}{subsection.3.7.4}
-\contentsline {chapter}{\numberline {4}Contributions}{22}{chapter.4}
-\contentsline {section}{\numberline {4.1}Automated Dynamic Slice Backsolving}{22}{section.4.1}
-\contentsline {section}{\numberline {4.2}Design}{22}{section.4.2}
-\contentsline {section}{\numberline {4.3}Implementation}{22}{section.4.3}
-\contentsline {section}{\numberline {4.4}Parallelization}{22}{section.4.4}
-\contentsline {section}{\numberline {4.5}Testing}{23}{section.4.5}
-\contentsline {section}{\numberline {4.6}Results}{23}{section.4.6}
-\contentsline {chapter}{\numberline {5}Old Contributions}{24}{chapter.5}
-\contentsline {section}{\numberline {5.1}Assumptions and Scoping}{24}{section.5.1}
-\contentsline {section}{\numberline {5.2}Implementation}{25}{section.5.2}
-\contentsline {section}{\numberline {5.3}Results}{26}{section.5.3}
-\contentsline {section}{\numberline {5.4}Testing Harness}{27}{section.5.4}
-\contentsline {section}{\numberline {5.5}Parallelization}{28}{section.5.5}
-\contentsline {section}{\numberline {5.6}Lessons Learned}{28}{section.5.6}
-\contentsline {chapter}{\numberline {6}References}{29}{chapter.6}
-\contentsline {backmatter}{Biographical Sketch}{32}{chapter*.3}
+\contentsline {frontmatter}{List of Figures}{v}{chapter*.3}
+\contentsline {frontmatter}{Abstract}{1}{chapter*.4}
+\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Problem Statement}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Contributions}{4}{section.1.3}
+\contentsline {chapter}{\numberline {2}Background and Related Work}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Microsoft SAGE}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}Fuzzing Web Applications}{7}{section.2.2}
+\contentsline {section}{\numberline {2.3}Taint-based Fuzzing}{10}{section.2.3}
+\contentsline {section}{\numberline {2.4}TODO Mayhem, AEG, Exploitable Bugs}{10}{section.2.4}
+\contentsline {section}{\numberline {2.5}Checksum-Aware Fuzzing}{11}{section.2.5}
+\contentsline {section}{\numberline {2.6}Intel PIN}{13}{section.2.6}
+\contentsline {section}{\numberline {2.7}Techniques}{15}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Dynamic Taint Analysis}{15}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Symbolic Execution}{18}{subsection.2.7.2}
+\contentsline {subsection}{\numberline {2.7.3}Mixed and Concolic Execution}{20}{subsection.2.7.3}
+\contentsline {subsection}{\numberline {2.7.4}TODO Conversion to an Intermediate Representation}{21}{subsection.2.7.4}
+\contentsline {chapter}{\numberline {3}Contributions}{22}{chapter.3}
+\contentsline {section}{\numberline {3.1}Automated Dynamic Slice Backsolving}{22}{section.3.1}
+\contentsline {section}{\numberline {3.2}Design}{24}{section.3.2}
+\contentsline {section}{\numberline {3.3}Implementation}{25}{section.3.3}
+\contentsline {section}{\numberline {3.4}Limitations}{25}{section.3.4}
+\contentsline {section}{\numberline {3.5}Parallelization}{25}{section.3.5}
+\contentsline {section}{\numberline {3.6}Testing}{25}{section.3.6}
+\contentsline {section}{\numberline {3.7}Results}{25}{section.3.7}
+\contentsline {chapter}{\numberline {4}Old Contributions}{26}{chapter.4}
+\contentsline {section}{\numberline {4.1}Assumptions and Scoping}{26}{section.4.1}
+\contentsline {section}{\numberline {4.2}Implementation}{27}{section.4.2}
+\contentsline {section}{\numberline {4.3}Results}{28}{section.4.3}
+\contentsline {section}{\numberline {4.4}Testing Harness}{29}{section.4.4}
+\contentsline {section}{\numberline {4.5}Parallelization}{30}{section.4.5}
+\contentsline {section}{\numberline {4.6}Lessons Learned}{30}{section.4.6}
+\contentsline {chapter}{\numberline {5}References}{31}{chapter.5}
+\contentsline {backmatter}{Biographical Sketch}{34}{chapter*.5}
