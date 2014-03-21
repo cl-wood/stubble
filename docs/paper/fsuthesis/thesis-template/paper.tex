@@ -81,7 +81,7 @@
   morestring=[b]"
 }
 
-\title{Dynamic Slice Backsolving}
+\title{Automated Dynamic Slice Backsolving}
 %\title{A Survey of Fuzzing and New Technique for Dynamic Analysis}
 \author{Clark Wood}
 \college{College of Arts and Science}
@@ -135,69 +135,76 @@
 
 \chapter{Abstract}
 
-Finding bugs in software is a difficult but lucrative endeavour. Fuzzing is one technique for finding bugs, particularly exploitable vulnerabilities, employed by both software companies and nation-state actors. When no source code is available, fuzzing complex programs can prove difficult, and as techniques become more sophisticated they require more resources and time. We present a technique, dynamic slice backsolving, which, to the best of our knowledge, represents a novel way to reason about not only the location of user input bytes which contribute to interesting program behavior like branching, but also the exact byte value necessary to trigger a desire branch condition. We have implemented this technique in a fuzzer, which is able to reason about large and complex user input and reliably drive program execution down new code paths to explore new portions of compiled code.
+Finding software bugs is a difficult but lucrative endeavour. Fuzzing is one technique for finding bugs, particularly exploitable vulnerabilities, employed by both software companies and nation-state actors. However, when no source code is available, fuzzing complex programs effectively can prove difficult, and as techniques become more sophisticated they require more resources and time. We present a technique, automated dynamic slice backsolving, which, to the best of our knowledge, represents a novel way to reason about not only the location of user input bytes which contribute to interesting program behavior like branching, but also the exact byte value necessary to trigger a desire branch condition. We have implemented this technique in a fuzzer, which is able to reason about large and complex user input and reliably drive program execution down new code paths to explore new portions of compiled code.
  
-
 \chapter{Introduction}
 
 \section{Motivation}
 
 Fuzzing, or the feeding of manipulated input to processes to try and detect software bugs and vulnerabilities, is an integral, even required, part of the work conducted by both private-sector companies like Microsoft [Q] and Google [AM] and nation-state powers and contractors. In 2014, Pwn2Own paid out 850,000 USD to participants over two days for proof of zero-day exploitable vulnerabilities, for an average of 66,000 USD per exploit [AN]. Forbes suggests black market prices are considerably higher, peaking at over \$150,000 for modern browser exploits [AO].
 
+Because of the high market value of finding bugs, either to patch or exploit, many researchers create their own fuzzers, or use open source products like Peach [Z]. These fuzzers vary in purpose and sophistication. The simplest of fuzzers may have little understanding of the program it intends to fuzz, merely changing random bytes in user input and monitoring for interesting situations which suggest a bug has been found, such as segmentation faults. A log is produced, which can be analyzed by a programmer at a later date to try and identify the source of the crash. However, fuzzers of this variety, while adept at causing program crashes, tend to find shallow bugs or exit conditions. This is because, with no understanding of the inner workings of a program, a fuzzer is likely to fail checks at the start of a program over and over again [T]. As an example, fuzzing an application which implements HTML by mutating random input bytes will have to reproduce the complex markup tags required to produce valid HTML. It will expend valuable time and resources failing to create valid head and body tags, instead of finding deep bugs.
+
+In order to fuzz more smartly, researchers employ several techniques, two of which are significant for this paper. Dynamic Taint Analysis, or DTA, provides valuable information for guided fuzzing. DTA is a form of dynamic analysis, which marks user input as tainted at some level of granularity, and follows this taint as it propagates through the binary. Certain, task-dependent sinks are identified, and if taint flows to one of these sinks, a trace of program execution allows analysis to follow how taint sources are linked to these sinks. Symbolic execution first runs a program concretely to gather constraints on a particular element, then executes the program symbolically, giving these constraints over to some kind of solver which decides what values the element should given the recorded conditions. Symbolic execution improves code coverage, helping to guide fuzzers into deeper, more interesting parts of a program. DTA and symbolic execution, however, are computationally expensive, which leaves room for refinement of techniques by using the technique more wisely or modifying it. Our technique uses DTA to hopefully achieve greater code coverage than random testing, without having to convert code to an intermediate representation or outsource constraints to a solver like symbolic execution.
+
 \section{Problem Statement}
 
-The software community knows that programmers write buggy software, even with debugging tools and access to source code for auditing purposes. Fuzzing, however, cannot even assume source code access, because interesting programs are not always open source. As an example, Internet Explorer, a prime exploitation target, is propietary software. Successful testing depends upon the fuzzer's ability to explore the binary and detect bugs without source code. In addition, each branch instruction in assembly language introduces two new possible paths, leading to an explosion of explorable paths as binaries grow in size and complexity. Following all or most these paths, and doing so in a timely manner, requires complex software and time-memory tradeoffs.
+The software community knows that programmers write buggy software, even with debugging tools and access to source code for auditing purposes. Fuzzing, however, cannot even assume source code access, because interesting programs are not always open source. As an example, Internet Explorer, a prime exploitation target, is propietary software. Successful testing depends upon the fuzzer's ability to explore the binary as a black box and detect bugs without source code. Reasoning about the inner working of a complex application when one can only observe the relationship between input and output is hard. In addition, each branch instruction in assembly language introduces two new possible paths, leading to an explosion of explorable paths as binaries grow in size and complexity. Following all or most these paths, and doing so in a timely manner, requires complex software and time-memory tradeoffs. These two difficulties are called the code coverage problem and the path explosion problem [U] respectively. Many current fuzzers use techniques like dynamic taint analysis and symbolic execution to improve code coverage, and often employ various heuristics to mitigate the path explosion problem.
+
+Our work aims to address the code coverage problem in a similar way to symbolic execution, while sidestepping or avoiding entirely some of the negatives associated with symbolic execution. In particular, symbolic execution traditionally:
+
+\begin{itemize}
+	\item Requires source code access
+	\item Requires programmers to instrument code manually
+	\item Must convert code to an intermediate representation
+	\item Must emulate the IR in a virtual machine
+	\item Outsources constraint solving to heavyweight SMT solvers
+\end{itemize}
 
 \section{Contributions}
 
-In this paper, we present our analysis of existing techniques for improving fuzzers' code coverage and path exploration abilities, along with our own contributions and conclusions. We begin by exploring related work in Chapter 2, which describes current fuzzers architecture and limitations. Chapter 3 describes several fundamental techniques incorporated in most modern sophisticated fuzzers. In Chapter 4, we describe our contributions, in the form of what is, to the best of our knowledge, a new technique for black box binary fuzzing, a proof of concept fuzzer which implements the technique, and testing results. Lastly, we describe possible future work and conclusions from the experience in Chapter 5.
+Because of these downsides, much research tries to attain more reasonable performance by using symbolic execution less or more wisely [J]. We focus instead on approximating symbolic execution's code coverage by using dynamic taint analysis to drive test case mutation. As the native program executes, we dynamically instrument the binary and record execution slices. Memory accesses, loads and stores, and transformations of tainted bytes are recorded, and then used to backsolved to give exact byte values and locations to explore in future runs. Our implementation of this technique requires no source code, no modification to a binary, no conversion to an IR, and no SMT solvers.
 
-Our technique, dynamic slice backsolving, using dynamic taint analysis to watch user input. As user input is introduced, each byte is tracked separately and, when the program transforms or manipulates user input, those transformations are recorded. When branches which depend upon user input are reached, the recorded transformations, if possible, are reversed, backsolving for a new value of a particular byte in user input which will lead execution down a different path in the binary. After execution finishes, input test cases are mutated to reflect this new information, and a new execution test runs.
+In this paper, we present our analysis of existing techniques along with our own contributions and conclusions. We begin by exploring related work in Chapter 3, which sets the background and describes current fuzzers' techniques and limitations. In chapter 4, we describe our contributions, in the form of what is, to the best of our knowledge, a new technique for black box binary fuzzing, a proof of concept fuzzer which implements the technique, and testing results. Lastly, we describe possible future work and conclusions from the experience in Chapter 5.
 
-The inspiration for this technique comes mainly from "A Taint Based Approach for Smart Fuzzing", which proposes a fuzzing tool architecture, involving vulnerability detection, followed by taint analysis based upon found vulnerabilities, which drives the generation of intelligent tests. Dynamic taint analysis tracks which bytes of user input are important in the binary, and these so-called "hot bytes" are made the focus of fuzzing attempts. The paper mentions it is valuable to be able to generate backward slices of program traces. This traces can be run and analyzed by programmers. In the spirit of automation, our work not only generates backward slices based on taint propagation, but also automatically solves these traces to find new byte values. Thus, for a subset of programs, we can determine not only the exact location of user input which determines a branch condition, but also generate precise values for both branch and non-branch cases.
+Our technique, automated dynamic slice backsolving, uses dynamic taint analysis to watch user input. As user input is introduced, each byte is tracked separately and, when the program transforms or manipulates user input, those transformations are recorded. When branches which depend upon user input are reached, the recorded transformations, if possible, are reversed, backsolving for a new value of a particular byte in user input which will lead execution down a different path in the binary. After execution finishes, input test cases are mutated to reflect this new information, and a new execution test runs.
 
-We have implemented this technique in a proof of concept fuzzer, stubble, which operates on x86 binaries. Stubble requires no access to source code, unlike many fuzzers utilizing symbolic execution, and automatically generates test files which exercise new paths in the input program. Program input, output, and interesting conditions like segfaults are recorded during execution, and taint propagation is recorded from user input sources to branch sinks. When a tainted branch is found, stubble automically backsolves the execution slice and generates a new test case which will drive the program down the opposite path explored in the current execution. Stubble is able to reason about hundreds of bytes of user input, for instance by performing oracle attacks on binaries which check user input against large secrets, requiring O(n) test cases to solve the secret with no previous information, where n is length of the secret. Stubble has also been parallized at the process level, allowing for an arbitrary number of independent bytes to be reasoned about concurrently. We believe dynamic slice backsolving is a reasonable complementary technique to dynamic taint analysis and symbolic execution for binary fuzzing.
+The inspiration for this technique comes mainly from "A Taint Based Approach for Smart Fuzzing", which proposes a fuzzing tool architecture, involving vulnerability detection, followed by taint analysis based upon found vulnerabilities, which drives the generation of intelligent tests. Dynamic taint analysis tracks which bytes of user input are important in the binary, and these so-called "hot bytes" are made the focus of fuzzing attempts. The paper mentions it is valuable to be able to generate backward slices of program traces. These traces can then be run and analyzed by programmers. In the spirit of automation, our work not only generates backward slices based on taint propagation, but also automatically solves these traces to find new byte values. Thus, for a subset of programs, we can determine not only the exact location of user input which determines a branch condition, but also generate precise values for both branch and non-branch cases.
 
-\chapter{Old-Abstract}
+We have implemented this technique in a proof of concept fuzzer, stubble, which operates on x86 binaries. Stubble dynamically instruments binaries, and automatically generates test files which exercise new paths in the input program. Program input, output, and interesting conditions like segfaults are recorded during execution, and taint propagation is recorded from user input sources to branch sinks. When a tainted branch is found, stubble automically backsolves the execution slice and generates a new test case which will drive the program down the opposite path explored in the current execution. Stubble is able to reason about large amounts of bytes of user input, for instance by performing oracle attacks on binaries which check user input against large secrets, requiring O(n) test cases to solve the secret with no previous information, where n is the length of the secret. Stubble has also been parallized at the process level, allowing for an arbitrary number of independent bytes to be reasoned about concurrently. We believe automated dynamic slice backsolving is a reasonable complementary technique to dynamic taint analysis and symbolic execution for binary fuzzing.
 
-Finding exploitable bugs in binaries is a difficult but valuable endeavour. Fuzzing, or the feeding of controlled input into processes to try and detect vulnerable conditions, is one technique used by researchers and analysts. Because many project's source code is not made unavailable to protect intellectual property, applications tested for vulnerabilities are often considered black boxes. Reasoning about the inner working of a complex application when one can only observe the relationship between input and output is hard. In fact, for some situations, like properly implemented cryptography, it is provably hard. This piles difficulties onto an already complex problem, which current research attempts to solve or reduce. Among these issues this paper focuses on:
-	\begin{itemize}
-		\item efficient and thorough dynamic taint analysis
-		\item the path explosion problem [U], and
-		\item the code coverage problem. 
-	\end{itemize}
+TODO add loop invariants experiments
+
+%\chapter{Old-Abstract}
+
  
- Dynamic taint analysis is difficult because taint can propagate directly via assignment, or indirectly via affecting control flows which affect assignment [D], which make proper implementation tricky. The path explosion problem arises from the nature of assembly languages. Jump instructions, which may make up a decent percentage of machine instructions in programs, each multiply the total number of existing paths in a binary by two. Considering the size of binaries, this quickly leads to an un-tenably large set of possible paths to explore via conventional techniques like symbolic execution. And even if it is possible to explore all paths in a binary, analysts still need sample input which can trigger the vulnerable condition, perhaps proving that the binary is exploitable along the way. Such automated exploit generation is the subject of much research [H, I].
+% Dynamic taint analysis is difficult because taint can propagate directly via assignment, or indirectly via affecting control flows which affect assignment [D], which make proper implementation tricky. The path explosion problem arises from the nature of assembly languages. Jump instructions, which may make up a decent percentage of machine instructions in programs, each multiply the total number of existing paths in a binary by two. Considering the size of binaries, this quickly leads to an un-tenably large set of possible paths to explore via conventional techniques like symbolic execution. And even if it is possible to explore all paths in a binary, analysts still need sample input which can trigger the vulnerable condition, perhaps proving that the binary is exploitable along the way. Such automated exploit generation is the subject of much research [H, I].
 
-This work aims to reduce the severity of the latter two problems while being wary of the first during implementation. Chapter 2 explains ZZZZ, Chapter 3 AAAA etc....
+% Example for stubble
+%\begin{lstlisting}[style=asmstyle]
+%call read					;instrument read syscall
+%mov eax, [ebp - val]		;taint propagates from val to eax reg
+%inc eax						;transform eax
+%mul eax, 5					;transform eax
+%cmp eax, 42					;cmp and jmp based on tainted reg value
+%jnz 0x8BADC0DE
+%\end{lstlisting}
 
-Instead of trying to attain more reasonable performance by using symbolic execution less or more wisely [J], we focus instead on approximating symbolic execution by using dynamic taint analysis to drive mutation. This is possible by tracking taint at the instruction level, then backsolving from the jump to the source of taint to determine smarter ways to mutate user input and create new test cases. For instance, in the below example:
+%If we already had a test case where the value read onto the stack, after the transformations, did not equal 42, then the cmp instruction would not set the zero flag, and we would jump to the memory location 0xBADC0DE. With dynamic taint analysis in place, we see taint introduced with the read syscall, then moved into the eax register (which is subsequently tainted). After some number of transformations, perhaps zero, to the value in the eax register, we see a compare instruction, which checks eax's value against an immediate value. Then we can keep track of specific taint sources, and can record any movements or transformations, we have all the necessary information to "solve" the branch. Once we reach the tainted branch, we know that user input can affect whether we jump or not, and consequently we can backsolve to find out how to affect the branch instruction. In particular, we know the conditional jump instruction jnz depends on the Z flag in the EFLAGS register. We record whatever instruction last modified each flag in EFLAGS, so we handle the compare instruction next. Because we have kept track of taint propagation, we know we can affect the value of eax, but not 42, since it is an immediate value, so we know we need to make the value in eax equal 42. We follow the instructions that have modified the value of eax and use any appropriate operands involved with the inverse operation of the one originally performed on the value to reverse the transformations to eax's value. Finally, we notice eax originally received taint when a value was moved from memory, which was read into memory using the read syscall.
 
+%This works similarly to a constraint solver, but constraint solving appears to be a traditional bottleneck, requiring generating symbolic input, usually in a different language like LLVM intermediate representation [V] and passing execution to the constraint solver.
 
-\begin{lstlisting}[style=asmstyle]
-call read					;instrument read syscall
-mov eax, [ebp - val]		;taint propagates from val to eax reg
-inc eax						;transform eax
-mul eax, 5					;transform eax
-cmp eax, 42					;cmp and jmp based on tainted reg value
-jnz 0x8BADC0DE
-\end{lstlisting}
+%We propose to avoid using a constraint solver entirely, and instead backsolve completely in memory. This is easier to implement than many of the clever optimizations used by S2E and could result in speedup over symbolic execution.
 
-If we already had a test case where the value read onto the stack, after the transformations, did not equal 42, then the cmp instruction would not set the zero flag, and we would jump to the memory location 0xBADC0DE. With dynamic taint analysis in place, we see taint introduced with the read syscall, then moved into the eax register (which is subsequently tainted). After some number of transformations, perhaps zero, to the value in the eax register, we see a compare instruction, which checks eax's value against an immediate value. Then we can keep track of specific taint sources, and can record any movements or transformations, we have all the necessary information to "solve" the branch. Once we reach the tainted branch, we know that user input can affect whether we jump or not, and consequently we can backsolve to find out how to affect the branch instruction. In particular, we know the conditional jump instruction jnz depends on the Z flag in the EFLAGS register. We record whatever instruction last modified each flag in EFLAGS, so we handle the compare instruction next. Because we have kept track of taint propagation, we know we can affect the value of eax, but not 42, since it is an immediate value, so we know we need to make the value in eax equal 42. We follow the instructions that have modified the value of eax and use any appropriate operands involved with the inverse operation of the one originally performed on the value to reverse the transformations to eax's value. Finally, we notice eax originally received taint when a value was moved from memory, which was read into memory using the read syscall.
-
-This works similarly to a constraint solver, but constraint solving appears to be a traditional bottleneck, requiring generating symbolic input, usually in a different language like LLVM intermediate representation [V] and passing execution to the constraint solver.
-
-We propose to avoid using a constraint solver entirely, and instead backsolve completely in memory. This is easier to implement than many of the clever optimizations used by S2E and could result in speedup over symbolic execution.
-
-Because there are a finite number of conditional jumps, all of which depend on different flags or combinations of flags in the EFLAGS register, and a finite number of instructions that modify the EFLAGS register in x86, we can create cases for all possible ways jumps are decided. We only want to prove this is possible however, so we only implement a subset and instead comment on how to implement the other comparisons.
+%Because there are a finite number of conditional jumps, all of which depend on different flags or combinations of flags in the EFLAGS register, and a finite number of instructions that modify the EFLAGS register in x86, we can create cases for all possible ways jumps are decided. We only want to prove this is possible however, so we only implement a subset and instead comment on how to implement the other comparisons.
 
 \chapter{Background and Related Work}
 
-TODO fuzzing is a large field, hope to show "fuzzing" by detailing practical examples. Techniques chapter explains a more theoretical base.
+%TODO fuzzing is a large field, hope to show "fuzzing" by detailing practical examples. Techniques chapter explains a more theoretical base.
 
-\section{TODO White vs. Gray vs. Black box}
+%\section{TODO White vs. Gray vs. Black box}
 
-TODO Explain white vs. black box. How gray could bleed into black because of DBI. Talk about SAGE.
+%TODO Explain white vs. black box. How gray could bleed into black because of DBI. Talk about SAGE.
 
 \section{Microsoft SAGE}
 
@@ -211,9 +218,9 @@ In practice, because program termination is indeterminable, white box fuzzing co
 
 This is helpful for dealing with loops, which might evaluate or modify the same constraint many times. This technique is an example of a typical tradeoff for fuzzers. A lot of program execution time is spent in loops, but deep bugs can lurk in rarely exercised parts of a loop, so fuzzers must pick some heuristic for terminating the exploration of a loop, trading code coverage for running time.
 
-\section{Grey-box Evolutionary Fuzzing}
+%\section{Grey-box Evolutionary Fuzzing}
 
-TODO
+%TODO
 
 \section{Fuzzing Web Applications}
 
@@ -249,24 +256,24 @@ The GUI explorer handles the event space by exploring all possible sequences of 
 
 Similar to SimpIL [C], Kudzu tries to circumvent the issue of solving complicated constraints by first converting JavaScript into an intermediate language called JASIL. Strings, in particular, are parsed and partitioned into several sub types which are more uniform. For instance, one type handles strings which are semantically regular expressions, another handles strings which are the concatenation of two other strings. Although not as featureful as JavaScript strings, this IL captures a large enough number of String features to allow Kudzu to find previous unknown exploits in programs. Shortcomings include an incomplete support of String operations and JavaScript regular expressions, notably backreferences, which match a previously matched string in the regex. Although representation of strings is incomplete, Kudzu reasons well enough to find two new vulnerabilities, as well as 9 previous vulnerabilities [AD].
 
-\section{TODO Mutation vs. Generation?}
+%\section{TODO Mutation vs. Generation?}
 
-TODO Peach Fuzzer does both, overview with pictures?
+%TODO Peach Fuzzer does both, overview with pictures?
 
-\section{TODO Local vs. Network}
+%\section{TODO Local vs. Network}
 
-Do you have access to the program you are fuzzing?
+%Do you have access to the program you are fuzzing?
 
-\section{TODO Difficulties and Limitations}
+%\section{TODO Difficulties and Limitations}
 
-TODO Path explosion. Code coverage. Complex file formats which mean you create shallow errors over and over again.
+%TODO Path explosion. Code coverage. Complex file formats which mean you create shallow errors over and over again.
 
-TODO Limitations - one-way functions like bitwise shifts and checksums, cryptographic hashes. encryption.
+%TODO Limitations - one-way functions like bitwise shifts and checksums, cryptographic hashes. encryption.
 
-TODO add code examples
+%TODO add code examples
 %http://en.wikipedia.org/wiki/User_Datagram_Protocol#IPv4_Pseudo_Header
-IDEA write c program to checksum UDP packets and say whether they pass or not, have fuzzer "correct" packets to pass arbitrary, user decided checksum.
-update: probably will not work without noticeable modification, but could maybe notice the situation and reverse engineer the algorithm, then print it out or start making a lookup table?
+%IDEA write c program to checksum UDP packets and say whether they pass or not, have fuzzer "correct" packets to pass arbitrary, user decided checksum.
+%update: probably will not work without noticeable modification, but could maybe notice the situation and reverse engineer the algorithm, then print it out or start making a lookup table?
 
 \section{Taint-based Fuzzing}
 
@@ -274,7 +281,7 @@ The major impetus for this work is outlined in "A Taint Based Approach for Smart
 
 \section{TODO Mayhem, AEG, Exploitable Bugs}
 
-TODO AEG [I]?
+%TODO AEG [I]?
 
 While finding bugs of any sort enhances software by providing developers the opportunity to fix problems with their programs, finding bugs that lead to exploitable conditions are of special interest. A bug is exploitable if it allows adveraries to undermine confidentiality, integrity, or availability [CITE] via avenues such as information disclosure, denial of service, or remote execution of code. Because these bugs stand alone as a separate, particularly worrying class, efforts have been made to automate the process of proving whether an identified bug is also a vulnerability which can be exploited.
 
@@ -290,9 +297,9 @@ AEG required source code, where Mayhem needs access only a binary to execute. Ma
 TODO similar to Automatic patch-based exploit generation is possible: Techniques and
 implications, but mine doesn't require a patch?
 
-\section{TODO Argos: 0-Day Emulator}
+%\section{TODO Argos: 0-Day Emulator}
 
-http://www.few.vu.nl/argos/?page=3
+%http://www.few.vu.nl/argos/?page=3
 
 \section{Checksum-Aware Fuzzing}
 
@@ -364,20 +371,20 @@ Even worse is undertainting. Overtainting creates unnecessary work, but undertai
 
 Handling taint correctly is of great importance because of the existence of subtle implicit flow cases referenced by Clause, J. et al [D]. Implicit data flows are not always considered by dynamic tainting techniques [E], but for our project, implicit data flows are very important, so we need to implement DTA which catches both implicit and explicit flows.
 
-TODO Finish brumley DTA
-TODO undertaint info flow code example
+%TODO Finish brumley DTA
+%TODO undertaint info flow code example
 
-TODO one-way functs
-Use: https://www.ida.liu.se/~TDDC90/literature/papers/violating05.pdf
-[AJ]
+%TODO one-way functs
+%Use: https://www.ida.liu.se/~TDDC90/literature/papers/violating05.pdf
+%[AJ]
 
 
 DTA has been used to implement smart mutation fuzzers [A, T, MORE], but we believe the technique we explore later is unique from and complementary to Bekrar's work. In [A], DTA is proposed as a way to intelligently decide which parts of user input should be mutated. In [T], dynamic taint analysis identified hot bytes, which were then modified randomly or with boundary values. We plan to add on to these ideas by allowing smarter mutations to be selected by backsolving to decide which values are most likely to result in new paths being explored. This has been done with symbolic execution before, but traditional symbolic execution is much more heavy-weight, both in time required to setup the environment and in overhead introduced to run the program, than our proposed approach.
 
 \subsection{Symbolic Execution}
 
-TODO Add "All you ever wanted to know..." Stuff
-TODO more stuff from O
+%TODO Add "All you ever wanted to know..." Stuff
+%TODO more stuff from O
 
 Symbolic execution supplies symbolic instead of concrete values for input [O]. This technique has been used to effectively detect bugs in software [Q], although historically it has required access to source code, which makes traditional symbolic execution infeasible in many vulnerability research situations where source code is unavailable. In addition, symbolic execution often uses instruction translators like QEMU [K] and satisfiability modulo theorem solvers like Z3 [P], which introduce significant overhead. This makes it difficult for symbolic execution to scale past the order of tens of thousands of lines of code. 
 
@@ -424,7 +431,7 @@ Mitigates dealing with side effects, done by PANDA.
 
 \chapter{Contributions}
 
-\section{Dynamic Slice Backsolving}
+\section{Automated Dynamic Slice Backsolving}
 
 \section{Design}
 

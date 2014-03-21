@@ -6,38 +6,31 @@
 \BOOKMARK [1][-]{section.2.1}{Motivation}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.2}{Problem Statement}{chapter.2}% 7
 \BOOKMARK [1][-]{section.2.3}{Contributions}{chapter.2}% 8
-\BOOKMARK [0][-]{chapter.3}{Old-Abstract}{}% 9
-\BOOKMARK [0][-]{chapter.4}{Background and Related Work}{}% 10
-\BOOKMARK [1][-]{section.4.1}{TODO White vs. Gray vs. Black box}{chapter.4}% 11
-\BOOKMARK [1][-]{section.4.2}{Microsoft SAGE}{chapter.4}% 12
-\BOOKMARK [1][-]{section.4.3}{Grey-box Evolutionary Fuzzing}{chapter.4}% 13
-\BOOKMARK [1][-]{section.4.4}{Fuzzing Web Applications}{chapter.4}% 14
-\BOOKMARK [1][-]{section.4.5}{TODO Mutation vs. Generation?}{chapter.4}% 15
-\BOOKMARK [1][-]{section.4.6}{TODO Local vs. Network}{chapter.4}% 16
-\BOOKMARK [1][-]{section.4.7}{TODO Difficulties and Limitations}{chapter.4}% 17
-\BOOKMARK [1][-]{section.4.8}{Taint-based Fuzzing}{chapter.4}% 18
-\BOOKMARK [1][-]{section.4.9}{TODO Mayhem, AEG, Exploitable Bugs}{chapter.4}% 19
-\BOOKMARK [1][-]{section.4.10}{TODO Argos: 0-Day Emulator}{chapter.4}% 20
-\BOOKMARK [1][-]{section.4.11}{Checksum-Aware Fuzzing}{chapter.4}% 21
-\BOOKMARK [1][-]{section.4.12}{Intel PIN}{chapter.4}% 22
-\BOOKMARK [1][-]{section.4.13}{Techniques}{chapter.4}% 23
-\BOOKMARK [2][-]{subsection.4.13.1}{Dynamic Taint Analysis}{section.4.13}% 24
-\BOOKMARK [2][-]{subsection.4.13.2}{Symbolic Execution}{section.4.13}% 25
-\BOOKMARK [2][-]{subsection.4.13.3}{Mixed and Concolic Execution}{section.4.13}% 26
-\BOOKMARK [2][-]{subsection.4.13.4}{TODO Conversion to an Intermediate Representation}{section.4.13}% 27
-\BOOKMARK [0][-]{chapter.5}{Contributions}{}% 28
-\BOOKMARK [1][-]{section.5.1}{Dynamic Slice Backsolving}{chapter.5}% 29
-\BOOKMARK [1][-]{section.5.2}{Design}{chapter.5}% 30
-\BOOKMARK [1][-]{section.5.3}{Implementation}{chapter.5}% 31
-\BOOKMARK [1][-]{section.5.4}{Parallelization}{chapter.5}% 32
-\BOOKMARK [1][-]{section.5.5}{Testing}{chapter.5}% 33
-\BOOKMARK [1][-]{section.5.6}{Results}{chapter.5}% 34
-\BOOKMARK [0][-]{chapter.6}{Old Contributions}{}% 35
-\BOOKMARK [1][-]{section.6.1}{Assumptions and Scoping}{chapter.6}% 36
-\BOOKMARK [1][-]{section.6.2}{Implementation}{chapter.6}% 37
-\BOOKMARK [1][-]{section.6.3}{Results}{chapter.6}% 38
-\BOOKMARK [1][-]{section.6.4}{Testing Harness}{chapter.6}% 39
-\BOOKMARK [1][-]{section.6.5}{Parallelization}{chapter.6}% 40
-\BOOKMARK [1][-]{section.6.6}{Lessons Learned}{chapter.6}% 41
-\BOOKMARK [0][-]{chapter.7}{References}{}% 42
-\BOOKMARK [0][-]{chapter*.3}{Biographical Sketch}{}% 43
+\BOOKMARK [0][-]{chapter.3}{Background and Related Work}{}% 9
+\BOOKMARK [1][-]{section.3.1}{Microsoft SAGE}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.2}{Fuzzing Web Applications}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.3}{Taint-based Fuzzing}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.4}{TODO Mayhem, AEG, Exploitable Bugs}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.5}{Checksum-Aware Fuzzing}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.6}{Intel PIN}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.7}{Techniques}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.7.1}{Dynamic Taint Analysis}{section.3.7}% 17
+\BOOKMARK [2][-]{subsection.3.7.2}{Symbolic Execution}{section.3.7}% 18
+\BOOKMARK [2][-]{subsection.3.7.3}{Mixed and Concolic Execution}{section.3.7}% 19
+\BOOKMARK [2][-]{subsection.3.7.4}{TODO Conversion to an Intermediate Representation}{section.3.7}% 20
+\BOOKMARK [0][-]{chapter.4}{Contributions}{}% 21
+\BOOKMARK [1][-]{section.4.1}{Automated Dynamic Slice Backsolving}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.2}{Design}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.3}{Implementation}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.4}{Parallelization}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.5}{Testing}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.6}{Results}{chapter.4}% 27
+\BOOKMARK [0][-]{chapter.5}{Old Contributions}{}% 28
+\BOOKMARK [1][-]{section.5.1}{Assumptions and Scoping}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.2}{Implementation}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.3}{Results}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.4}{Testing Harness}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.5}{Parallelization}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.6}{Lessons Learned}{chapter.5}% 34
+\BOOKMARK [0][-]{chapter.6}{References}{}% 35
+\BOOKMARK [0][-]{chapter*.3}{Biographical Sketch}{}% 36
