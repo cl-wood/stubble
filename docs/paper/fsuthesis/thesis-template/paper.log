@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  21 MAR 2014 12:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  21 MAR 2014 14:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -872,7 +872,7 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
  [30]
-Overfull \hbox (129.02113pt too wide) in paragraph at lines 714--715
+Overfull \hbox (129.02113pt too wide) in paragraph at lines 715--716
 []\OT1/cmr/m/n/10.95 Mozilla De-vel-oper Net-work. https://developer.mozilla.or
 g/en-US/docs/Web/JavaScript/Reference/Global[]Objects/eval 
  []
@@ -881,7 +881,7 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
 
-Overfull \hbox (8.63889pt too wide) in paragraph at lines 724--725
+Overfull \hbox (8.63889pt too wide) in paragraph at lines 725--726
 []\OT1/cmr/m/n/10.95 http://www.forbes.com/sites/andygreenberg/2012/03/23/shopp
 ing-for-zero-days-an-price-list-
  []
@@ -889,14 +889,14 @@ ing-for-zero-days-an-price-list-
 [31] [32
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 760.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 760.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 761.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 761.
  (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 760.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 760.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 761.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 761.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: A78D10BBF63696F5D5E16E97A289D076;2062.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 760.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 761.
  ) 
 Here is how much of TeX's memory you used:
  25183 strings out of 493315
@@ -916,7 +916,7 @@ ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
 l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on paper.pdf (37 pages, 203077 bytes).
+Output written on paper.pdf (37 pages, 203101 bytes).
 PDF statistics:
  433 PDF objects out of 1000 (max. 8388607)
  380 compressed objects within 4 object streams
