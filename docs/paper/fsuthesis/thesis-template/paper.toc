@@ -24,12 +24,8 @@
 \contentsline {section}{\numberline {3.5}Parallelization}{25}{section.3.5}
 \contentsline {section}{\numberline {3.6}Testing}{25}{section.3.6}
 \contentsline {section}{\numberline {3.7}Results}{25}{section.3.7}
-\contentsline {chapter}{\numberline {4}Old Contributions}{26}{chapter.4}
-\contentsline {section}{\numberline {4.1}Assumptions and Scoping}{26}{section.4.1}
-\contentsline {section}{\numberline {4.2}Implementation}{27}{section.4.2}
-\contentsline {section}{\numberline {4.3}Results}{28}{section.4.3}
-\contentsline {section}{\numberline {4.4}Testing Harness}{29}{section.4.4}
-\contentsline {section}{\numberline {4.5}Parallelization}{30}{section.4.5}
-\contentsline {section}{\numberline {4.6}Lessons Learned}{30}{section.4.6}
-\contentsline {chapter}{\numberline {5}References}{31}{chapter.5}
-\contentsline {backmatter}{Biographical Sketch}{34}{chapter*.5}
+\contentsline {section}{\numberline {3.8}Testing Harness}{27}{section.3.8}
+\contentsline {section}{\numberline {3.9}Parallelization}{27}{section.3.9}
+\contentsline {section}{\numberline {3.10}Lessons Learned}{28}{section.3.10}
+\contentsline {chapter}{\numberline {4}References}{29}{chapter.4}
+\contentsline {backmatter}{Biographical Sketch}{32}{chapter*.5}

@@ -516,48 +516,12 @@ MyPinToolMultiProcess, why process level instead of threads, etc.
 
 \section{Results}
 
-\chapter{Old Contributions}
+To test stubble's ability to find new paths to explore in a given binary, programs were written in C, which opened a user-specified file and read several hundred bytes, then compared a subset of these bytes with a secret. The binary printed a success condition only if all bytes in user input were observed to be identical to its secret. Input to stubble consists of the binary in question and a seed input file. Input files were guaranteed to work appropriately (not crash the binary), but did not contain any signficant portion of the secret. Since the secret was multi-byte and random, it is possible that the input files contained small subsets of the secret.
 
 
-We have implemented a proof of concept fuzzer which uses dynamic taint analysis to record the operations performed on user input, then reverses these operations to solve for new paths to explore. The fuzzer currently records implicit and explicit taint flows between memory and registers. When the EFLAGS register is modified, it is checked whether a comparison instruction with tainted operands was the modifier, and if so this is also recorded. After an execution it publishes input, output, taint, and mutation data to a driver program, which reasons about possible user input locations and values one byte at a time. This means when branch decisions are determined by comparisons at the byte level, the fuzzer can guarantee a new path is taken, provided it can accurately backsolve information about the transformations performed on the byte.
+Secrets of length 1 to 50 were tested at regular intervals. It appears that, aside from some constant overhead, that test cases generated and time required to crack the binary  rise linearly with password length. The constant overhead is probably introduced from overtaint.
 
-\section{Assumptions and Scoping}
-
-We assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths. We have implemented the technique for the x86-32 architecture, because x86 is widespread, and vulnerabilities resulting from unsafe C code should persist across binaries, regardless of both the size and flavor of architecture (32 vs. 64-bit, ARM vs. x86 vs. PowerPC etc.), since compilers try to adhere to the C standard and vulnerabilities like buffer overflows exist at a C source code level. We also assume the presence of an algorithm which will detect an exploitable condition, provided it is given the proper binary and input to the binary, and an initial test case. The program concretely executes the binary once with the initial test case, recording taint propagation during execution. Stdin, stdout, and stderr are recorded for each run, for later analysis. After the initial run, the program automatically starts solving each byte by backsolving to try and find new paths.
-
-TODO in above make sure can catch stderr segfaults, segfaults go to shell's stderr, also a signal
-
-Current selective symbolic execution engines still appear to introduce significant overhead, between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others [J, K, L]. In contrast, basic block counting using Intel Pin, the framework we are leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for our proposed technique introduces greater levels of overhead, since we will be working at the instruction level instead of the basic block level, requiring more insertions for any given binary.
-
-We are leveraging Intel PIN to perform dynamic binary instrumentation. We are testing dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, is such an example binary. 
-
-There are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics, fuzzers tend to simply count loops and terminate after a set threshold is reached, and could be the subject of future research.
-
-% TODO We then plan to test against S2E and Peach Fuzzer [Z]. 
-
-\section{Implementation}
-
-We implement dynamic taint analysis for files as input sources. We are basing our implementation of DTA on Jonathan Salwan\'s work [N]. Currently we instrument the read syscall, watching for all reads executed, then tag user input at the byte level and follow it as it moves throughout the binary. We instrument binaries at the assembly instruction level using Intel Pin, which dynamically disassembles each instruction. Each instruction is handled differently based upon the following criteria:
-
-\begin{itemize}
-	\item Is the instruction a conditional jump?
-	\item Is the first operand a memory location or a register?
-	\item Is the first operand read or written?
-	\item Is the first (second if applicable) operand tainted?
-\end{itemize}
-	
-For example, move operations involving an untainted first operand and a tainted second operand generally spread taint, while those with a tainted first operand and an untainted second operand remove taint. Tainted branches trigger the backsolving technique. Various precautions, such as removing taint for an instruction like "xor eax, eax", must be taken. Lossy operations, like shifts, must be handled carefully to be backsolve-able, and checksums and cryptographic operations are not supported.
-	
-As a demonstration we have run our fuzzer, Stubble, against various binaries which open a file and check specific bytes in a file for specific character values. If all of these checks pass, then the program outputs a "win" string, otherwise it outputs a "lose" string. This can be thought of conceptually as an oracle attack, and is similar to reverse engineering "crackme" exercises. Given no knowledge of the secret key, and only able to query an oracle, a successful attack must discover the secret within a reasonable number of guess [CITE?].
-
-After compiling with the Tiny C Compiler, which performs minimal optimization and doesn't add security measures, this binary and a default test file are given as input to Stubble, which will begin to dynamically generate run cases which will explore new paths within the binary. These test cases are fed back into the system, which continues to backsolve to find new ways to explore at branches, until there are no tainted bytes left for exploration.
-
-	
-\section{Results}
-
-Secrets of length 1 to 50 were tested at various intervals. It appears that, aside from some constant overhead, that test cases generated and time required to crack the binary  rise linearly with password length. The constant overhead is probably introduced from overtaint.
-
-
+TODO explain how brute force fuzzers or regular oracles would solve, add their expected number of attempts to graph.
 (TODO time smaller oracle attacks)
 TODO attacks which transform input first to show ability to backsolve
 
@@ -632,6 +596,43 @@ TODO attacks which transform input first to show ability to backsolve
     }; 
 \end{axis}
 \end{tikzpicture}
+
+
+%\chapter{Old Contributions}
+
+
+%We have implemented a proof of concept fuzzer which uses dynamic taint analysis to record the operations performed on user input, then reverses these operations to solve for new paths to explore. The fuzzer currently records implicit and explicit taint flows between memory and registers. When the EFLAGS register is modified, it is checked whether a comparison instruction with tainted operands was the modifier, and if so this is also recorded. After an execution it publishes input, output, taint, and mutation data to a driver program, which reasons about possible user input locations and values one byte at a time. This means when branch decisions are determined by comparisons at the byte level, the fuzzer can guarantee a new path is taken, provided it can accurately backsolve information about the transformations performed on the byte.
+
+%\section{Assumptions and Scoping}
+
+%We assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths. We have implemented the technique for the x86-32 architecture, because x86 is widespread, and vulnerabilities resulting from unsafe C code should persist across binaries, regardless of both the size and flavor of architecture (32 vs. 64-bit, ARM vs. x86 vs. PowerPC etc.), since compilers try to adhere to the C standard and vulnerabilities like buffer overflows exist at a C source code level. We also assume the presence of an algorithm which will detect an exploitable condition, provided it is given the proper binary and input to the binary, and an initial test case. The program concretely executes the binary once with the initial test case, recording taint propagation during execution. Stdin, stdout, and stderr are recorded for each run, for later analysis. After the initial run, the program automatically starts solving each byte by backsolving to try and find new paths.
+
+%TODO in above make sure can catch stderr segfaults, segfaults go to shell's stderr, also a signal
+
+%Current selective symbolic execution engines still appear to introduce significant overhead, between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others [J, K, L]. In contrast, basic block counting using Intel Pin, the framework we are leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for our proposed technique introduces greater levels of overhead, since we will be working at the instruction level instead of the basic block level, requiring more insertions for any given binary.
+
+%We are leveraging Intel PIN to perform dynamic binary instrumentation. We are testing dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, is such an example binary. 
+
+%There are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics, fuzzers tend to simply count loops and terminate after a set threshold is reached, and could be the subject of future research.
+
+% TODO We then plan to test against S2E and Peach Fuzzer [Z]. 
+
+%\section{Implementation}
+
+%We implement dynamic taint analysis for files as input sources. We are basing our implementation of DTA on Jonathan Salwan\'s work [N]. Currently we instrument the read syscall, watching for all reads executed, then tag user input at the byte level and follow it as it moves throughout the binary. We instrument binaries at the assembly instruction level using Intel Pin, which dynamically disassembles each instruction. Each instruction is handled differently based upon the following criteria:
+
+%\begin{itemize}
+%	\item Is the instruction a conditional jump?
+%	\item Is the first operand a memory location or a register?
+%	\item Is the first operand read or written?
+%	\item Is the first (second if applicable) operand tainted?
+%\end{itemize}
+	
+%For example, move operations involving an untainted first operand and a tainted second operand generally spread taint, while those with a tainted first operand and an untainted second operand remove taint. Tainted branches trigger the backsolving technique. Various precautions, such as removing taint for an instruction like "xor eax, eax", must be taken. Lossy operations, like shifts, must be handled carefully to be backsolve-able, and checksums and cryptographic operations are not supported.
+	
+%As a demonstration we have run our fuzzer, Stubble, against various binaries which open a file and check specific bytes in a file for specific character values. If all of these checks pass, then the program outputs a "win" string, otherwise it outputs a "lose" string. This can be thought of conceptually as an oracle attack, and is similar to reverse engineering "crackme" exercises. Given no knowledge of the secret key, and only able to query an oracle, a successful attack must discover the secret within a reasonable number of guess [CITE?].
+
+%After compiling with the Tiny C Compiler, which performs minimal optimization and doesn't add security measures, this binary and a default test file are given as input to Stubble, which will begin to dynamically generate run cases which will explore new paths within the binary. These test cases are fed back into the system, which continues to backsolve to find new ways to explore at branches, until there are no tainted bytes left for exploration.
 	
 	
 \section{Testing Harness}
@@ -748,7 +749,7 @@ TODO difficulties with implementation
 % \bibliography{myrefs}
 
 \begin{biosketch}
-This is my biography.
+Clark Wood is a Scholarship for Service recipient studying computer science at Florida State University. His research and interests focus on information security.
 \end{biosketch}
 
 \end{document}
