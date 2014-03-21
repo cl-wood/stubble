@@ -24,8 +24,8 @@
 \contentsline {section}{\numberline {3.5}Parallelization}{25}{section.3.5}
 \contentsline {section}{\numberline {3.6}Testing}{25}{section.3.6}
 \contentsline {section}{\numberline {3.7}Results}{25}{section.3.7}
-\contentsline {section}{\numberline {3.8}Testing Harness}{27}{section.3.8}
-\contentsline {section}{\numberline {3.9}Parallelization}{27}{section.3.9}
+\contentsline {section}{\numberline {3.8}Testing Harness}{26}{section.3.8}
+\contentsline {section}{\numberline {3.9}Parallelization}{28}{section.3.9}
 \contentsline {section}{\numberline {3.10}Lessons Learned}{28}{section.3.10}
 \contentsline {chapter}{\numberline {4}References}{29}{chapter.4}
 \contentsline {backmatter}{Biographical Sketch}{32}{chapter*.5}

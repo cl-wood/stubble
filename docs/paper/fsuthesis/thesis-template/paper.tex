@@ -518,15 +518,18 @@ MyPinToolMultiProcess, why process level instead of threads, etc.
 
 To test stubble's ability to find new paths to explore in a given binary, programs were written in C, which opened a user-specified file and read several hundred bytes, then compared a subset of these bytes with a secret. The binary printed a success condition only if all bytes in user input were observed to be identical to its secret. Input to stubble consists of the binary in question and a seed input file. Input files were guaranteed to work appropriately (not crash the binary), but did not contain any signficant portion of the secret. Since the secret was multi-byte and random, it is possible that the input files contained small subsets of the secret.
 
+This bears a strong resemblance to the classic oracle attack in cryptography. Note, however, that stubble would be unable to reason effectively about cryptographic hashes or encryption because of properties like one-way functions and the avalanche effect.
 
-Secrets of length 1 to 50 were tested at regular intervals. It appears that, aside from some constant overhead, that test cases generated and time required to crack the binary  rise linearly with password length. The constant overhead is probably introduced from overtaint.
+In a traditional oracle attack, the adversary can derive a secret by testing one character at a time. This means an attacker can expect success within $\frac{mn}{2}$ tries on average, where m is the number of character possiblities and n is the length of the secret. Dumb fuzzers, which are unable to reason about the execution paths in a binary, do much worse by mutating random bytes and hoping to hit upon the secret by chance. This strategy can expect success within $\frac{m^n}{2}$ tries on average, since m-many possibilities must be tested for each byte in the secret independently. Stubble performs similarly to an attacker with access to an oracle, although because execution slices are backsolved its time complexity has a smaller constant than $\frac{m}{2}$. Expected number of tries is linear with secret length, as with an oracle attack, but stubble requires roughly two tries per byte, instead of having to test for all possible m.
+
+Secrets of length 1 to 50 were tested at regular intervals. It appears that, aside from some constant overhead, that test cases generated and time required to crack the binary rise linearly with password length as expected. The constant overhead is probably introduced from overtaint, which itself likely comes from dynamically linked libraries which are opened and read, and thereby mistakenly introduced as tainted input.
 
 TODO explain how brute force fuzzers or regular oracles would solve, add their expected number of attempts to graph.
 (TODO time smaller oracle attacks)
 TODO attacks which transform input first to show ability to backsolve
 
 \begin{figure}
-\caption{Fig. 1}
+\caption{Secret Guessing Test Cases}
 \begin{tikzpicture}
 \begin{axis}[
     title={Oracle Attack},
@@ -563,6 +566,8 @@ TODO attacks which transform input first to show ability to backsolve
 
 \end{figure}
 
+\begin{figure}
+\caption{Secret Guessing Time Elapsed}
 \begin{tikzpicture}
 \begin{axis}[
     title={Oracle Attack},
@@ -596,7 +601,7 @@ TODO attacks which transform input first to show ability to backsolve
     }; 
 \end{axis}
 \end{tikzpicture}
-
+\end{figure}
 
 %\chapter{Old Contributions}
 
