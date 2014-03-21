@@ -115,6 +115,7 @@
 SFS
 % Dr. Wang
 % Bret Whissel
+% Salwan
 \end{acknowledgments}
 
 \tableofcontents
@@ -136,6 +137,8 @@ SFS
 \begin{abstract}
 
 Finding software bugs is a difficult but lucrative endeavour. Fuzzing is one technique for finding bugs, particularly exploitable vulnerabilities, employed by both software companies and nation-state actors. However, when no source code is available, fuzzing complex programs effectively can prove difficult, and as techniques become more sophisticated they require more resources and time. We present a technique, automated dynamic slice backsolving, which, to the best of our knowledge, represents a novel way to reason about not only the location of user input bytes which contribute to interesting program behavior like branching, but also the exact byte value necessary to trigger a desire branch condition. We have implemented this technique in a fuzzer, which is able to reason about large and complex user input and reliably drive program execution down new code paths to explore new portions of compiled code.
+
+%TODO add RE protocol to abstract and intro once implemented
 
 \end{abstract}
 
@@ -163,7 +166,7 @@ Our work aims to address the code coverage problem in a similar way to symbolic 
 	\item Outsources constraint solving to heavyweight SMT solvers
 \end{itemize}
 
-\section{Contributions}
+\section{Contribution}
 
 Because of these downsides, much research tries to attain more reasonable performance by using symbolic execution less or more wisely [J]. We focus instead on approximating symbolic execution's code coverage by using dynamic taint analysis to drive test case mutation. As the native program executes, we dynamically instrument the binary and record execution slices. Memory accesses, loads and stores, and transformations of tainted bytes are recorded, and then used to backsolved to give exact byte values and locations to explore in future runs. Our implementation of this technique requires no source code, no modification to a binary, no conversion to an IR, and no SMT solvers.
 
@@ -175,7 +178,7 @@ The inspiration for this technique comes mainly from "A Taint Based Approach for
 
 We have implemented this technique in a proof of concept fuzzer, stubble, which operates on x86 binaries. Stubble dynamically instruments binaries, and automatically generates test files which exercise new paths in the input program. Program input, output, and interesting conditions like segfaults are recorded during execution, and taint propagation is recorded from user input sources to branch sinks. When a tainted branch is found, stubble automically backsolves the execution slice and generates a new test case which will drive the program down the opposite path explored in the current execution. Stubble is able to reason about large amounts of bytes of user input, for instance by performing oracle attacks on binaries which check user input against large secrets, requiring O(n) test cases to solve the secret with no previous information, where n is the length of the secret. Stubble has also been parallized at the process level, allowing for an arbitrary number of independent bytes to be reasoned about concurrently. We believe automated dynamic slice backsolving is a reasonable complementary technique to dynamic taint analysis and symbolic execution for binary fuzzing.
 
-TODO add loop invariants experiments
+
 
 %\chapter{Old-Abstract}
 
@@ -203,15 +206,13 @@ Microsoft's Scalable Automatic Guided Execution, or SAGE, is an example of a whi
 
 Because SAGE is propietary, the lack of detail about certain procedures raises questions. For instance, how does SAGE know when an instruction is new? There are a limited number of x86 instructions, which can be combined in an unlimited number of ways, which means it can be difficult to tell when a truly new instruction is executed, unless one keeps a directed cyclical graph of all explored instructions, and follows a run's progress down this graph during execution. In addition, problems integral to this work, such as code coverage and path explosion, must be addressed [Q].
 
-SAGE uses symbolic execution, and prunes paths taken with a propietary "generational search" algorithm. This algorithm prioritizes generating new test cases (TODO does it draw on the test case reduction and expansion algorithms discussed in that one paper???). It takes a set of all constraints and tries negating each constraint independently to generate a new test case. SAGE then symbolically re-executes the constraint set using TruScan [TODO CITE] [Q]. Similarly, s2e uses QEMU for instruction set emulation, and then appears to be a strong trend in white-box fuzzing. TODO ADV/DIS?
+SAGE uses symbolic execution, and prunes paths taken with a propietary "generational search" algorithm. This algorithm prioritizes generating new test cases. It takes a set of all constraints and tries negating each constraint independently to generate a new test case. SAGE then symbolically re-executes the constraint set using TruScan [TODO CITE] [Q]. Similarly, s2e uses QEMU for instruction set emulation, and then appears to be a strong trend in white-box fuzzing. TODO ADV/DIS?
 
 In practice, because program termination is indeterminable, white box fuzzing could run forever. And since programs at Microsoft can easily exceed one million lines of code, with complex control flow structures, pointer manipulation, and other difficult to account for code constructs, SAGE employes several performance enhancing techniques to keep fuzzing practical and economical. Symbolically executed instructions and local constraints are cached, and unrelated constraint elimination rids the execution of contraints not related to the constraint under test. How this is determined is anyone's guess, since it is impossible to know which constraints are independent until one has explored all the code in a program. SAGE also employs a flip count limit, allowing only so many negations of a particular constraint [Q]. 
 
 This is helpful for dealing with loops, which might evaluate or modify the same constraint many times. This technique is an example of a typical tradeoff for fuzzers. A lot of program execution time is spent in loops, but deep bugs can lurk in rarely exercised parts of a loop, so fuzzers must pick some heuristic for terminating the exploration of a loop, trading code coverage for running time.
 
-%\section{Grey-box Evolutionary Fuzzing}
-
-%TODO
+%\section{Grey-box Evolutionary Fuzzing} todo
 
 \section{Fuzzing Web Applications}
 
@@ -255,11 +256,6 @@ Similar to SimpIL [C], Kudzu tries to circumvent the issue of solving complicate
 
 %Do you have access to the program you are fuzzing?
 
-%\section{TODO Difficulties and Limitations}
-
-%TODO Path explosion. Code coverage. Complex file formats which mean you create shallow errors over and over again.
-
-%TODO Limitations - one-way functions like bitwise shifts and checksums, cryptographic hashes. encryption.
 
 %TODO add code examples
 %http://en.wikipedia.org/wiki/User_Datagram_Protocol#IPv4_Pseudo_Header
@@ -315,7 +311,9 @@ TaintScope implements DTA using PIN to instrument syscalls in binaries. PIN\_Add
 
 DTA is used to identify the so-called "hot bytes", which are then used as symbolic values later on, should test cases warrant further attention because of a crash or other interesting behavior. This strategy has netted TaintScope 27 new vulnerabilities across several different pieces of software, most of which operate on complicated file format specifications like PNG or PCAP files [T].
 
-\section{Intel PIN}
+\section{Intel Pin}
+
+% TODO check if mention Pin compiles from x86 to x86 adding pintool
 
 Heavyweight analysis techniques, like symbolic execution or dynamic taint analysis, which operate over an entire instruction set, must account for the idiosyncracies and diverse operations supported by the architecture. By leveraging a pre-existing framework like Intel Pin [M], new software can abstract away from architecture specific details like x86 variable length instructions and avoid re-inventing the wheel.
 
@@ -422,6 +420,8 @@ Mitigates dealing with side effects, done by PANDA.
 
 \chapter{Contributions}
 
+%TODO this tech helps with complex file formats which mean you create shallow errors over and over again.
+
 \section{Automated Dynamic Slice Backsolving}
 
 We have developed a technique which, to the best of our knowledge, provides similar code coverage to symbolic execution by using dynamic taint analysis to record relevant program slices and drive test case mutation. As a program runs, the introduction and propagation of taint is recorded. Should taint flow to a sink of interest, the recorded slice is backsolved to find new byte values which will hopefully lead future program runs down new paths. Taint is generally introduced to the program by user input. This can come in the form of user-provided files, command line arguments, or stdin. When user input is detected, it is marked as tainted at the byte level. This means that if user input is conceptualized as a stream of bytes $b_0,b_1,...,b_n$, then the first byte is considered separate from the separate byte, and each is individually followed throughout program execution. This level of granularity introduces significantly more overhead than binary tainting, which marks bytes as either tainted or not tainted, but provides far greater detail into which bytes of user input affect which parts of a program.
@@ -459,7 +459,13 @@ END FROM INTRO
 TODO Stubble architecture, describe
 why intel pin and not dynamo rio, valgrind, etc.
 
-Stubble consists of a pintool...
+Stubble consists of a pintool which implements DTA, and a Python driver which keeps track of test cases, input and output recorded during execution, and employs dynamic slice backsolving to drive mutation using taint analyses provided by the DTA pintool. Pintools are arbitrary C++ which Pin compiles and inserts into a given binary during instrumentation. The driver accepts a valid x86 binary and a seed test case. From the seed test case, the driver runs the pintool on the binary with the seed test case as input. While the binary runs, the pintool notes when taint in introduced or removed from memory or from registers. If a memory location or a register is tainted, then any operations which move this data elsewhere or use this data in an operation spread taint to the appropriate areas. Moving untainted data into a previously tainted location removes taint from the system. For instance, if the eax register is tainted, then adding eax and ebx and storing the result in ebx will taint the ebx register. However, should an operation move the value of ebx to eax, then eax will no longer be tainted. 
+
+In addition, whenever stubble encounters an instruction that modifies the EFLAGS register, such as the cmp instruction, it is checked to see whether either of the operands is tainted. When this is the case, user input has some level of control over the EFLAGS register, so the appropriate flag in the register is marked tainted. When a conditional jump instruction is reached, the corresponding flag of which is tainted, stubble begins to backsolve with the goal of providing a test case to explore the other side of the branch. After an execution it publishes input, output, taint, and mutation data to the driver, which reasons about possible user input locations and values one byte at a time. This means when branch decisions are determined by comparisons at the byte level, the fuzzer can guarantee a new path is taken, provided it can accurately backsolve information about the transformations performed on the byte.
+
+%The fuzzer currently records implicit and explicit taint flows between memory and registers. When the EFLAGS register is modified, it is checked whether a comparison instruction with tainted operands was the modifier, and if so this is also recorded. 
+
+%We also assume the presence of an algorithm which will detect an exploitable condition, provided it is given the proper binary and input to the binary, and an initial test case. The program concretely executes the binary once with the initial test case, recording taint propagation during execution. Stdin, stdout, and stderr are recorded for each run, for later analysis. After the initial run, the program automatically starts solving each byte by backsolving to try and find new paths.
 
 % Source: http://www.texample.net/tikz/examples/simple-flow-chart/
 
@@ -502,12 +508,21 @@ Stubble consists of a pintool...
 
 \end{tikzpicture}
 
+We assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths. We have implemented the technique for the x86-32 architecture, because Intel Pin works on a select few architectures, of which x86 is the most prevalent. Since x86 is quite widespread, and vulnerabilities resulting from unsafe C code should persist across binaries, regardless of both the size and flavor of architecture (32 vs. 64-bit, ARM vs. x86 vs. PowerPC etc.), this should be no issue. Compilers try to adhere to the C standard and vulnerabilities like buffer overflows exist at a C source code level. 
+
+Fuzzers require intuitive but powerful test harnesses, so that users can easily control how a binary is fuzzed and understand the results of fuzz testing. Currently, stubble records input, output, taint for each test executed, appending an auto-incrementing id to log files and separating results at the directory level. Stubble also keeps track of the mutations which have already been explored. Users can grep for interesting conditions like segfaults or unexpected output, then cross reference the test number with the observed taint flow, input file, and particular mutation tested.
+
 
 \section{Implementation}
 
 Pintool, python specifics. Binarys, RE
+how i implemented DTA
 
-\section{Limitations}
+\section{Challenges}
+
+% undertainting examples, general DTA issues and how we solved.
+
+%TODO Limitations - one-way functions like bitwise shifts and checksums, cryptographic hashes. encryption.
 
 \section{Parallelization}
 
@@ -525,7 +540,6 @@ In a traditional oracle attack, the adversary can derive a secret by testing one
 
 Secrets of length 1 to 50 were tested at regular intervals. It appears that, aside from some constant overhead, that test cases generated and time required to crack the binary rise linearly with password length as expected. The constant overhead is probably introduced from overtaint, which itself likely comes from dynamically linked libraries which are opened and read, and thereby mistakenly introduced as tainted input.
 
-TODO explain how brute force fuzzers or regular oracles would solve, add their expected number of attempts to graph.
 (TODO time smaller oracle attacks)
 TODO attacks which transform input first to show ability to backsolve
 
@@ -606,14 +620,11 @@ TODO attacks which transform input first to show ability to backsolve
 
 %\chapter{Old Contributions}
 
-
-%We have implemented a proof of concept fuzzer which uses dynamic taint analysis to record the operations performed on user input, then reverses these operations to solve for new paths to explore. The fuzzer currently records implicit and explicit taint flows between memory and registers. When the EFLAGS register is modified, it is checked whether a comparison instruction with tainted operands was the modifier, and if so this is also recorded. After an execution it publishes input, output, taint, and mutation data to a driver program, which reasons about possible user input locations and values one byte at a time. This means when branch decisions are determined by comparisons at the byte level, the fuzzer can guarantee a new path is taken, provided it can accurately backsolve information about the transformations performed on the byte.
-
 %\section{Assumptions and Scoping}
 
-%We assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths. We have implemented the technique for the x86-32 architecture, because x86 is widespread, and vulnerabilities resulting from unsafe C code should persist across binaries, regardless of both the size and flavor of architecture (32 vs. 64-bit, ARM vs. x86 vs. PowerPC etc.), since compilers try to adhere to the C standard and vulnerabilities like buffer overflows exist at a C source code level. We also assume the presence of an algorithm which will detect an exploitable condition, provided it is given the proper binary and input to the binary, and an initial test case. The program concretely executes the binary once with the initial test case, recording taint propagation during execution. Stdin, stdout, and stderr are recorded for each run, for later analysis. After the initial run, the program automatically starts solving each byte by backsolving to try and find new paths.
 
-%TODO in above make sure can catch stderr segfaults, segfaults go to shell's stderr, also a signal
+
+%TODO in above make sure can catch stderr segfaults, segfaults go to shell's stderr, also a signal, test this
 
 %Current selective symbolic execution engines still appear to introduce significant overhead, between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others [J, K, L]. In contrast, basic block counting using Intel Pin, the framework we are leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for our proposed technique introduces greater levels of overhead, since we will be working at the instruction level instead of the basic block level, requiring more insertions for any given binary.
 
@@ -640,11 +651,6 @@ TODO attacks which transform input first to show ability to backsolve
 
 %After compiling with the Tiny C Compiler, which performs minimal optimization and doesn't add security measures, this binary and a default test file are given as input to Stubble, which will begin to dynamically generate run cases which will explore new paths within the binary. These test cases are fed back into the system, which continues to backsolve to find new ways to explore at branches, until there are no tainted bytes left for exploration.
 	
-	
-\section{Testing Harness}
-
-Fuzzers require intuitive but powerful test harnesses, so that users can easily control how a binary is fuzzed and understand the results of fuzz testing. Currently, stubble records input, output, taint for each test executed, appending an auto-incrementing id to log files and separating results at the directory level. Stubble also keeps track of the mutations which have already been explored. A driver program keeps track of the observed taint which has already been explored, and selects a new byte to mutate. Users can grep for interesting conditions like segfaults or unexpected output, then cross reference the test number with the observed taint flow, input file, particular mutation tested.
-
 %Professional fuzzing products, like Peach Fuzzer
 
 %\section{Methodology}
@@ -674,10 +680,21 @@ However, we have seen runs as high as ~13 seconds elapsed. Since our testing env
 %
 %Currently have results for crackmes, give idea of our fuzzer vs. %peach fuzz, and where i plan to go. 
 
+\chapter{Conclusions}
+
+\section{Applications}
+
+TODO ways this technique could be used.
+TODO talk about why parallelization is good.
+
+\section{Future Work}
+
 \section{Lessons Learned}
 
 TODO overtainting, naive implementations had lots of it.
 TODO difficulties with implementation
+
+
 
 \chapter{References}
 
