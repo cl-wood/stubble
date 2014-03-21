@@ -13,6 +13,9 @@
 %\usepackage{filecontents}
 %\usepackage{pgfplotstable}
 
+%\usepackage[latin1]{inputenc}
+\usetikzlibrary{shapes,arrows}
+
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -137,7 +140,6 @@ Finding bugs in software is a difficult but lucrative endeavour. Fuzzing is one 
 
 \chapter{Introduction}
 
-
 \section{Motivation}
 
 Fuzzing, or the feeding of manipulated input to processes to try and detect software bugs and vulnerabilities, is an integral, even required, part of the work conducted by both private-sector companies like Microsoft [Q] and Google [AM] and nation-state powers and contractors. In 2014, Pwn2Own paid out 850,000 USD to participants over two days for proof of zero-day exploitable vulnerabilities, for an average of 66,000 USD per exploit [AN]. Forbes suggests black market prices are considerably higher, peaking at over \$150,000 for modern browser exploits [AO].
@@ -189,7 +191,7 @@ We propose to avoid using a constraint solver entirely, and instead backsolve co
 
 Because there are a finite number of conditional jumps, all of which depend on different flags or combinations of flags in the EFLAGS register, and a finite number of instructions that modify the EFLAGS register in x86, we can create cases for all possible ways jumps are decided. We only want to prove this is possible however, so we only implement a subset and instead comment on how to implement the other comparisons.
 
-\chapter{Fuzzing by Example}
+\chapter{Background and Related Work}
 
 TODO fuzzing is a large field, hope to show "fuzzing" by detailing practical examples. Techniques chapter explains a more theoretical base.
 
@@ -197,7 +199,7 @@ TODO fuzzing is a large field, hope to show "fuzzing" by detailing practical exa
 
 TODO Explain white vs. black box. How gray could bleed into black because of DBI. Talk about SAGE.
 
-\subsection{Microsoft SAGE}
+\section{Microsoft SAGE}
 
 Microsoft's Scalable Automatic Guided Execution, or SAGE, is an example of a white box fuzzer. Researchers at Microsoft developed SAGE to deal with large, complex programs which needed to be automatically tested for deep bugs. Microsoft considers SAGE, and whitebox fuzzing in general, so important that it requires the practice in its Security Development Lifecycle. The basic SAGE execution begins when a program to be fuzzed is first run concretely with known good input. During this run, the program is instrumented with Microsoft's AppVerifier to watch for bugs. Afterwards, SAGE receives a copy of the x86 instructions executed during this run, and symbolically executes the instructions, gathering constraints to be solved later by an SMT such as Z3. Once it has a set of these constraints, SAGE will negate each constraint in the set one by one and feed this new set to Z3. Sets that pass are ranked in descending order by the number of new instructions they reveal, and return into the start of the loop, to be executed concretely again [Q].
 
@@ -209,7 +211,7 @@ In practice, because program termination is indeterminable, white box fuzzing co
 
 This is helpful for dealing with loops, which might evaluate or modify the same constraint many times. This technique is an example of a typical tradeoff for fuzzers. A lot of program execution time is spent in loops, but deep bugs can lurk in rarely exercised parts of a loop, so fuzzers must pick some heuristic for terminating the exploration of a loop, trading code coverage for running time.
 
-\subsection{Grey-box Evolutionary Fuzzing}
+\section{Grey-box Evolutionary Fuzzing}
 
 TODO
 
@@ -265,8 +267,6 @@ TODO add code examples
 %http://en.wikipedia.org/wiki/User_Datagram_Protocol#IPv4_Pseudo_Header
 IDEA write c program to checksum UDP packets and say whether they pass or not, have fuzzer "correct" packets to pass arbitrary, user decided checksum.
 update: probably will not work without noticeable modification, but could maybe notice the situation and reverse engineer the algorithm, then print it out or start making a lookup table?
-
-\chapter{Related Work}
 
 \section{Taint-based Fuzzing}
 
@@ -333,11 +333,11 @@ Pin instruments at the trace level, JIT compiling a trace and caching it for re-
 
 This research leverages Pin to instrument arbitrary binaries at the instruction and syscall levels. Code is inserted to track taint introduced by user input, and recorded separately as it propagates. When taint reaches a branch, the recorded state information is used to work backwards through lossless operations to try and reason about the location and value of bytes which affect whether the branch is taken or not.
 
-\chapter{Techniques}
+\section{Techniques}
 
 Several valuable techniques for improving fuzzers' code coverage have evolved over the years. Two, in particular, inspire this work directly: Dynamic Taint Analysis and Symbolic Execution. Dynamic Taint Analysis, or DTA, provides valuable information for guided fuzzing. Symbolic execution improves code coverage by first running a program concretely to gather constraints on a particular element, then executes the program symbolically, giving these constraints over to some kind of SMT solver [CITE] to solve for what value the element should have under certain conditions. Concolic execution, which has spawned out of the desire to use symbolic execution more wisely due to performance constraints, aims for reasonable runtimes while maintaining good code coverage. These each come with their own drawbacks, a primary one of which is the lack of automated instrumentation. Historically, any amount of symbolic execution required a programmer to directly instrument source code, leading much current research to focus on automating as much as possible.
 
-\section{Dynamic Taint Analysis}
+\subsection{Dynamic Taint Analysis}
 
 DTA is a form of dynamic analysis, meaning analysis occurs during execution of a program. This can be contrasted with static analysis, where a program's source code is analyzed without executing the code. The IDA Pro Disassemble [AH], which takes a compiled C binary as input and statically disassembles it to produce some flavor of assembly code, is an example of a static program analysis tool, whereas a debugger, which instruments and executes a program, allowing users to manipulate and watch the process at runtime, is an example of a dynamic analysis tool.
 
@@ -374,7 +374,7 @@ Use: https://www.ida.liu.se/~TDDC90/literature/papers/violating05.pdf
 
 DTA has been used to implement smart mutation fuzzers [A, T, MORE], but we believe the technique we explore later is unique from and complementary to Bekrar's work. In [A], DTA is proposed as a way to intelligently decide which parts of user input should be mutated. In [T], dynamic taint analysis identified hot bytes, which were then modified randomly or with boundary values. We plan to add on to these ideas by allowing smarter mutations to be selected by backsolving to decide which values are most likely to result in new paths being explored. This has been done with symbolic execution before, but traditional symbolic execution is much more heavy-weight, both in time required to setup the environment and in overhead introduced to run the program, than our proposed approach.
 
-\section{Symbolic Execution}
+\subsection{Symbolic Execution}
 
 TODO Add "All you ever wanted to know..." Stuff
 TODO more stuff from O
@@ -402,7 +402,7 @@ Without utilizing symbolic execution, however, it is difficult to automatically 
 
 Call-chain-backward symbolic execution has been proposed by [R], although this technique achieved a backward symbolic execution by iteratively applying a forward execution from successively farther away points in the program and the reducing the set of possible symbolic inputs. In contrast, we propose to avoid symbolic execution, forward or backward, by backsolving concretely and then applying heuristics to generate concrete input which is highly likely to result in exploring a new path. Symbolic execution never occurs, although we believe in many situations an equal degree of precision in determining new paths can be attained.
 
-\section{Mixed and Concolic Execution}
+\subsection{Mixed and Concolic Execution}
 
 TODO TODO TODO [C] considers concolic execution to be when we first execute concretely and THEN execute the same thing symbolically. Mixed execution is when we execute once with both concrete and symbolic input--make sure other works stand by this distinction.
 
@@ -414,7 +414,7 @@ Concolic testing has been shown to improve runtime while still allowing both wid
 
 Koushik Sen defines concolic testing as combining "random tesing and symbolic execution to partly remove the limitations of random testing and symbolic execution based testing" [AB]. This differs from hybrid symbolic execution engines like Mayhem [H], which switch between different types of symbolic execution. Hybrid symbolic execution does not itself supplement fuzzing by adding concrete random values. Both imply a tradeoff between two types of analysis, however, and thus both, when implemented by different people, will differ in where they assign the tradeoff. Some concolic testing, for instance, will start with concrete values which are random, or NULLs for pointer values. After an execution, one of the symbolic constraints will be negated, to allow a new path to be explored, and the program will be run again with new random input [AB]. Various research aims to either use symbolic execution less [Q, R, X], pick better than random values [A], or pick better input bytes to give random values [A, E, T, AB].
 
-\section{TODO Conversion to an Intermediate Representation}
+\subsection{TODO Conversion to an Intermediate Representation}
 
 Used in javascript fuzzer [AD]
 Used in [C].
@@ -422,7 +422,71 @@ Mitigates dealing with side effects, done by PANDA.
 %http://www.cc.gatech.edu/~brendan/tzb_author.pdf
 %http://iris.lib.neu.edu/cgi/viewcontent.cgi?article=1097&context=elec_comp_theses
 
-\chapter{Contribution}
+\chapter{Contributions}
+
+\section{Dynamic Slice Backsolving}
+
+\section{Design}
+
+Stubble architecture
+
+
+% Source: http://www.texample.net/tikz/examples/simple-flow-chart/
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [block] (driver) {driver};
+    \node [cloud, left of=driver, node distance=3cm] (binary) {binary};
+    \node [cloud, right of=driver, node distance=3cm] (test case) {test case};
+    \node [block, below of=driver, node distance=4cm] (Pintool) {Pintool};
+    
+    \node [block, left of=Pintool, node distance=4cm] (input) {input/};    
+    \node [block, below of=Pintool, below of=input, node distance=2cm] (output) {output/};
+    \node [block, right of=output, node distance=4cm] (explored) {explored/};
+    
+    \node [decision, right of=Pintool, node distance=4cm] (decide) {More taint to explore?};
+    \node [block, right of=decide, node distance=4cm] (mutate) {mutate};
+    \node [block, below of=decide, node distance=4cm] (stop) {stop};
+    
+    % Draw edges
+    \path [line] (driver) -- (Pintool);
+    \path [line] (Pintool) -- (input);
+    \path [line] (Pintool) -- (output);
+    \path [line] (Pintool) -- (explored);
+    \path [line] (Pintool) -- (decide);
+    \path [line] (decide) -- node {yes} (mutate);
+    \path [line] (mutate) |- (test case);
+    \path [line] (decide) -- node {no}(stop);
+    \path [line,dashed] (binary) -- (driver);
+    \path [line,dashed] (test case) -- (driver);
+    \path [line, dashed] (explored) -- (decide);
+
+\end{tikzpicture}
+
+
+\section{Implementation}
+
+Pintool, python specifics. Binarys, RE
+
+\section{Parallelization}
+
+MyPinToolMultiProcess, why process level instead of threads, etc.
+
+\section{Testing}
+
+\section{Results}
+
+\chapter{Old Contributions}
+
 
 We have implemented a proof of concept fuzzer which uses dynamic taint analysis to record the operations performed on user input, then reverses these operations to solve for new paths to explore. The fuzzer currently records implicit and explicit taint flows between memory and registers. When the EFLAGS register is modified, it is checked whether a comparison instruction with tainted operands was the modifier, and if so this is also recorded. After an execution it publishes input, output, taint, and mutation data to a driver program, which reasons about possible user input locations and values one byte at a time. This means when branch decisions are determined by comparisons at the byte level, the fuzzer can guarantee a new path is taken, provided it can accurately backsolve information about the transformations performed on the byte.
 
