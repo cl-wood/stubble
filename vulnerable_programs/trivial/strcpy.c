@@ -14,8 +14,10 @@ int main (int argc, char *argv[])
     char str1[20];
     int res = read(fd, buf, 20);
 
+    strcpy(str1, buf);
 
     // Vuln. condition
+    /*
     if (buf[10] == 'A') {
         while (read(fd, buf, 50) > 0) {
             strcat(str1, buf);
@@ -27,6 +29,7 @@ int main (int argc, char *argv[])
     else {
         strcpy(str1, "Didn't work");
     }
+    */
 
     printf("%s\n",str1);
     close(fd);

@@ -47,7 +47,7 @@ bool IN_MAIN = false;
 /* ===================================================================== */
 /* User Libraries */
 /* ===================================================================== */
-#include "FollowExecution.h"
+//#include "FollowExecution.h"
 //#include "buffer_linux.h"
 //#include "DTA.h"
 //#include "FindUseAfterFree.h"
@@ -57,26 +57,43 @@ bool IN_MAIN = false;
 /* Instrumentation routines                                              */
 /* ===================================================================== */
 
-// Instrument main function, this starts the other instrumentation objects.
-/*
-VOID WatchMain(IMG img, VOID *v)
+// Instrument strcpy
+
+CHAR_PTR (*fptrstrcpy)(CHAR_PTR __dest, const CHAR_PTR __src);
+
+CHAR_PTR  mystrcpy(CHAR_PTR __dest, const CHAR_PTR __src) 
 {
-    // TODO might this work better?
-    for (IMG img = APP_ImgHead(); IMG_Valid(img); img = IMG_Next(img)) {
-        if (IMG_IsMainExecutable(img)) {
-            IMG_AddInstrumentFunction(LogMain, 0);
-        }
-    }
+    OutFile << CurrentTime() << "mystrcpy called " << endl;
+    OutFile.flush();
+    CHAR_PTR  res = fptrstrcpy(__dest, __src);
 
+    return res;
 }
-*/
 
+// Image load callback - inserts the probes.
+void ImgLoad(IMG img, VOID_PTR v) {
+    // Called every time a new image is loaded
+    if ((IMG_Name(img).find("libc.so") != string::npos)
+            || (IMG_Name(img).find("LIBC.SO") != string::npos)
+            || (IMG_Name(img).find("LIBC.so") != string::npos)) 
+    {
+
+        RTN rtnstrcpy = RTN_FindByName(img, "strcpy");
+        if (RTN_Valid(rtnstrcpy) && RTN_IsSafeForProbedReplacement(rtnstrcpy))
+        {
+            OutFile << CurrentTime() << "Inserting probe for strcpy at " << RTN_Address(rtnstrcpy) << endl;
+            OutFile.flush();
+            AFUNPTR fptr = (RTN_ReplaceProbed(rtnstrcpy, AFUNPTR(mystrcpy)));
+            fptrstrcpy = (CHAR_PTR  (*)(CHAR_PTR , const CHAR_PTR ))fptr;
+        }
+
+    }
 
 /* ===================================================================== */
 
 VOID Fini(INT32 code, VOID *v)
 {
-    FiniFollowExecution();
+    //FiniFollowExecution();
     //FiniFindUseAfterFree();
     //FiniDTA();
     //FiniBufferLinux();
@@ -111,8 +128,10 @@ int main(int argc, char *argv[])
     TaintFile << hex;
     TaintFile.setf(ios::showbase);
 
+    IMG_AddInstrumentFunction(ImgLoad, 0);
+
     // Init functions for modules
-    InitFollowExecution();
+    //InitFollowExecution();
     //InitFindUseAfterFree();
     //InitDTA();
     //InitBufferLinux();
@@ -124,7 +143,8 @@ int main(int argc, char *argv[])
     PIN_AddFiniFunction(Fini, 0);
 
     // Never returns
-    PIN_StartProgram();
+    //PIN_StartProgram();
+    PIN_StartProgramProbed(); // never returns
 
     return 0;
 }

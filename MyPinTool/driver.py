@@ -4,11 +4,12 @@ import os, shutil
 import subprocess
 from operator import itemgetter
 
+seed_value = ('0', '0', '0')
 
-def test(inputFile, taintFile, seed = ('0', '0', '0') ):
+def test(inputFile, taintFile, seed = seed_value):
 
     # First time, don't mutate
-    if seed != ('0', '0', '0'):
+    if seed != seed_value:
         mutate(inputFile, seed)
     else:
         print('Initial run')
@@ -92,7 +93,7 @@ def recordResults(inputFile, outputFile, taintSet, mutation, n):
     shutil.copy(outputFile.name, './output/output.' + str(n) )
 
     # Record mutation n (TODO and it's metadata or tree structure)
-    if mutation != ('0', '0', '0'):
+    if mutation != seed_value:
         open('./mutations/mutation.' + str(n), 'w').write(':'.join(mutation))
     
 
