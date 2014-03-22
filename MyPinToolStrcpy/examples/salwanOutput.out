@@ -1,0 +1,25 @@
+[INFO]      malloc(745) = b7fff918
+[INFO]      malloc(269) = b7fffc08
+[INFO]      malloc(f) = b7fffe78
+[INFO]      malloc(b8) = b7fffe88
+[INFO]      malloc(14) = b7ffff40
+[INFO]      malloc(1838) = b6573000
+[INFO]      malloc(1e) = b6574838
+[INFO]      malloc(272) = b6574858
+[INFO]      malloc(1e) = b6574ad0
+[INFO]      malloc(14) = b6574af0
+[INFO]      malloc(1c) = b6574b08
+[INFO]      malloc(30) = b6574b28
+[INFO]      malloc(30) = b6574b58
+[INFO]      malloc(220) = b6574b88
+[INFO]      malloc(70) = b6574da8
+[INFO]      malloc(208) = b6463000
+[INFO]      malloc(88) = b6463dc0
+[INFO]      malloc(20) = 804b008
+[INFO]      malloc(20) = 804b008
+[INFO]      free(804b008)
+[UAF in 804b008]    b623d69f: mov dword ptr [esi+0x8], edx
+[UAF in 804b008]    8048456: movzx eax, byte ptr [eax]
+[UAF in 804b008]    b623e10f: mov esi, dword ptr [edx+0x8]
+[INFO]      malloc(20) = 804b008
+
