@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <list>
 #include <unordered_map>
+#include <xed-flag-enum.h>
 
 int insCount = 0;
 list<UINT32> addressTainted;
@@ -32,7 +33,8 @@ VOID ModifiesEflags(ADDRINT ins, INT32 branchTaken, string insDis, CONTEXT* cont
 
     UINT32 tmp_flags = PIN_GetContextReg(context, REG_EFLAGS);
 
-    if (EFLAGS != tmp_flags) {
+    //if (EFLAGS != tmp_flags && tmp_flags & XED_FLAG_df) {
+    if (EFLAGS != tmp_flags && tmp_flags & XED_FLAG_of) {
         FlagsFile << insDis << ":\t" << PIN_GetContextReg(context, REG_EFLAGS) << endl;
 
         EFLAGS = tmp_flags;
