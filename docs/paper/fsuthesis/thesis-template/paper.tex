@@ -510,8 +510,10 @@ Fuzzers require intuitive but powerful test harnesses, so that users can easily 
 
 \section{Implementation}
 
+TODO
 Pintool, python specifics. Binarys, RE
 how i implemented DTA
+Pin's API
 
 \section{Challenges and Limitations}
 
@@ -689,11 +691,12 @@ TODO talk about why parallelization is good.
 
 Significant care has already been invested to keep Stubble easy to understand and maintain. Continuing to expand Stubble's functionality and developing it into a mature fuzzer is the long term goal. In order for Stubble to be useful to analysts, it must support the Windows operating system, more system calls and C library routines, and more vectors for user input. Intel Pin supports Windows, so in theory Stubble is compatible as well. In practice, Stubble currently makes assumptions about compilation and operating systems internals which are appropriate for Linux. In future development, these would be moved to a Linux branch, and a Windows branch would be forked, with common code re-used between the two. Stubble also only instruments the read syscall. Its features would need to be greatly expanded to handle both more relevant Linux system calls and their Windows equivalents. In addition, some system calls not only return success statuses, but also have side effects, which must be accounted for [C]. Lastly, the only input vector captured by Stubble currently is a read on a user supplied input file. There are many other ways taint could be introduced into a program, such as command line arguments, stdin, and input devices like keyboards and mice. Accurately recording alternative sources of user input has proved difficult. For example, command line arguments in Linux are pushed onto the stack before the main routine is called. If we instrument the main routine, we avoid catching all sorts of noisy reads on files that are unlikely to introduce taint, like system libraries. However, this makes argv inaccessible. Instrumenting the entire binary, dynamically loaded libraries and all, grabs argv, but introduces lots of noise. Better semantic for differentiating between noise and signal will be a necessity, for instance by maintaining a hardcoded list of names and sizes of standard libraries, so that they can be ignored.
 
-TODO Even without reading system resources, there appears to be an issue of overtainting in Stubble's implementation.
+TODO better "vuln disc." conditions like segfaults, taint reaching EIP.
 
 
 \section{Lessons Learned}
 
+TODO RE'd in IDA Pro a lot
 TODO learned about OS internals
 TODO difficulties with implementation
 
