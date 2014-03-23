@@ -5,9 +5,17 @@ sub ecx, eax:	647
 neg eax:	663
 cmp eax, 0x21:	647
 cmp eax, 0x21:	643
+cmp eax, 0x21:	643
+cmp eax, 0x21:	643
+cmp eax, 0x21:	647
+cmp eax, 0x21:	647
+cmp eax, 0x21:	647
+cmp eax, 0x21:	647
 cmp eax, 0x21:	647
 cmp eax, 0x21:	643
+cmp eax, 0x21:	643
 cmp ecx, 0xf:	659
+cmp ecx, 0xf:	663
 cmp ecx, 0xf:	663
 cmp eax, edi:	659
 cmp eax, edi:	643
@@ -20,8 +28,6 @@ cmp eax, edi:	643
 cmp eax, edi:	663
 cmp eax, edi:	647
 cmp eax, edi:	659
-cmp ecx, 0x23:	663
-add edx, ebx:	647
 cmp dl, 0xa:	659
 cmp ecx, 0x23:	663
 add edx, ebx:	647
@@ -43,8 +49,14 @@ add edx, ebx:	647
 cmp dl, 0xa:	659
 cmp ecx, 0x23:	663
 add edx, ebx:	647
-cmp esi, eax:	659
+cmp dl, 0xa:	659
+cmp ecx, 0x23:	663
+add edx, ebx:	647
 cmp esi, eax:	663
+cmp esi, eax:	663
+cmp esi, eax:	663
+cmp esi, eax:	659
+cmp edx, 0x1e:	663
 add edx, ebx:	647
 add edx, ebx:	643
 cmp edx, 0x1e:	659
@@ -80,13 +92,33 @@ cmp edx, 0x1e:	659
 add edx, ebx:	643
 cmp edx, 0x1e:	663
 add edx, ebx:	647
+cmp edx, esi:	647
 sub edx, ecx:	663
 cmp eax, edx:	531
 cmp dword ptr [ebx-0xcc], 0x1:	663
 cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx+0x1], 0x44:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
 cmp byte ptr [edx], 0x4c:	663
 cmp byte ptr [edx+0x1], 0x44:	659
-cmp dword ptr [edi], eax:	515
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp byte ptr [edx], 0x4c:	659
+cmp dword ptr [edi], eax:	519
 cmp eax, 0xffff:	659
 neg edi:	647
 neg eax:	659
@@ -95,37 +127,70 @@ neg ecx:	531
 cmp esi, ecx:	647
 shr ecx, 0x1:	583
 cmp eax, ebp:	643
-cmp eax, ebp:	647
 cmp eax, ebp:	643
 cmp eax, ebp:	647
 cmp eax, ebp:	643
 cmp eax, ebp:	647
+cmp eax, ebp:	647
+cmp eax, ebp:	643
 cmp eax, ebp:	643
 cmp eax, ebp:	647
+cmp eax, ebp:	647
+cmp eax, ebp:	643
+cmp eax, ebp:	647
+cmp eax, ebp:	643
 cmp eax, ebp:	643
 cmp eax, ebp:	647
 cmp dword ptr [ebp+0x8], eax:	643
 neg edx:	647
-cmp ecx, 0x6:	659
 cmp eax, dword ptr [ebp-0x94]:	647
+cmp ecx, 0x6:	659
+cmp eax, dword ptr [ebp-0x94]:	643
 cmp ecx, 0x6:	659
 cmp ecx, 0x2:	663
 cmp ecx, 0x3:	659
 cmp edi, dword ptr [edx+0x1ac]:	531
-cmp eax, dword ptr [ebp-0x94]:	647
+cmp eax, dword ptr [ebp-0x94]:	643
 cmp ecx, 0x6:	659
 cmp ecx, 0x2:	663
 cmp ecx, 0x3:	659
-cmp eax, dword ptr [ebp-0x94]:	643
+cmp eax, dword ptr [ebp-0x94]:	647
 cmp ecx, 0x6:	663
+cmp eax, dword ptr [ebp-0x94]:	643
+cmp ecx, 0x6:	659
+cmp eax, dword ptr [ebp-0x94]:	647
+cmp ecx, 0x6474e551:	663
+cmp ecx, 0x6474e552:	659
+cmp eax, dword ptr [ebp-0x94]:	647
+cmp eax, dword ptr [ebp-0x94]:	643
 cmp al, byte ptr [edx]:	647
 cmp eax, 0x21:	643
 cmp eax, 0x21:	647
 cmp eax, 0x21:	643
+cmp eax, 0x21:	643
+cmp eax, 0x21:	647
 cmp eax, 0x21:	647
 cmp eax, 0x21:	643
+cmp ecx, 0xfffffffc:	663
+sub ecx, eax:	647
+neg eax:	663
+cmp eax, 0x21:	647
+cmp eax, 0x21:	643
+cmp eax, 0x21:	643
+cmp eax, 0x21:	643
+cmp eax, 0x21:	643
+cmp eax, 0x21:	647
+cmp eax, 0x21:	647
+cmp eax, 0x21:	647
+cmp eax, 0x21:	647
+cmp eax, 0x21:	647
+cmp eax, 0x21:	643
+cmp eax, 0x21:	643
+cmp ecx, 0xf:	659
+cmp ecx, 0xf:	659
 cmp dword ptr [ebp-0x90], 0x2:	659
 cmp esi, 0x1:	663
+cmp eax, 0xffff:	663
 neg eax:	659
 cmp eax, ecx:	643
 neg ecx:	535
@@ -134,14 +199,20 @@ shr ecx, 0x1:	583
 cmp eax, edi:	643
 cmp esi, 0x2:	663
 cmp ecx, dword ptr [ebp-0x88]:	659
+cmp ecx, dword ptr [ebp-0x88]:	659
+cmp esi, 0x7:	659
 cmp ecx, dword ptr [ebp-0x88]:	663
 sub eax, dword ptr [edi]:	647
+cmp edx, 0x21:	647
 cmp edx, 0x21:	643
 cmp edx, 0x21:	647
+cmp edx, 0x21:	643
+cmp edx, 0x21:	643
 cmp edx, 0x21:	643
 cmp esi, 0xf:	659
 cmp esi, 0xf:	663
 add edx, eax:	647
+add esi, dword ptr [ecx+0x4]:	643
 add esi, dword ptr [ecx+0x4]:	643
 add esi, dword ptr [ecx+0x4]:	647
 sub edx, ecx:	659
@@ -154,13 +225,17 @@ sub edx, ecx:	659
 add ecx, 0xfefefeff:	531
 dec edx:	647
 sub edx, ecx:	659
+neg eax:	659
 cmp eax, ecx:	643
 neg ecx:	531
 cmp esi, ecx:	643
 shr ecx, 0x2:	519
 cmp dword ptr [ebx-0x1b0], eax:	643
 cmp dword ptr [ecx], 0x4:	659
+cmp dword ptr [esp+0x24], ecx:	659
+cmp dword ptr [esp+0x24], ecx:	659
 add esi, dword ptr [ecx]:	643
+cmp ecx, 0x20:	643
 add ebx, dword ptr [ebx+ecx*4]:	647
 cmp eax, 0x1:	663
 sbb dword ptr [ebp-0x2c], 0xffffffff:	531
@@ -243,10 +318,13 @@ shl eax, cl:	647
 sbb dword ptr [ebp-0x2c], 0xffffffff:	535
 shl eax, cl:	647
 cmp dword ptr [edx], 0x4:	659
+cmp dword ptr [ebp-0x1c], esi:	659
+cmp dword ptr [ebp-0x1c], esi:	659
 add edx, dword ptr [esi]:	643
 cmp dword ptr [esi+0x8], 0x2:	659
 cmp edi, ecx:	643
 cmp ecx, 0x20:	647
+add ebx, dword ptr [ebx+ecx*4]:	647
 neg eax:	531
 cmp esi, edi:	663
 sub edx, ecx:	659
@@ -260,6 +338,7 @@ sub edx, ecx:	663
 add ecx, 0xfefefeff:	535
 dec edx:	643
 cmp dword ptr [ebp-0x38], 0x1f:	659
+neg eax:	659
 cmp eax, ecx:	647
 neg ecx:	531
 cmp esi, ecx:	647
@@ -287,46 +366,70 @@ cmp esi, ecx:	647
 mul edx:	2567
 neg eax:	659
 neg eax:	647
+cmp eax, 0xfffff000:	647
 cmp eax, 0xffffffff:	659
 cmp eax, dword ptr [ebx+0x8fc]:	647
 cmp edx, esi:	643
-cmp edx, esi:	647
 cmp edx, esi:	643
 cmp edx, esi:	647
 cmp edx, esi:	643
 cmp edx, esi:	647
+cmp edx, esi:	647
+cmp edx, esi:	643
+cmp edx, esi:	643
+cmp edx, esi:	647
+cmp edx, esi:	647
 cmp edx, esi:	643
 cmp edx, esi:	647
 cmp edx, esi:	643
-cmp edx, esi:	647
-cmp dword ptr [ebp-0x1c], edx:	643
-cmp edx, esi:	647
-cmp edx, esi:	643
-cmp edx, esi:	647
-cmp edx, esi:	643
-cmp edx, esi:	647
-cmp edx, esi:	643
-cmp edx, esi:	647
 cmp edx, esi:	643
 cmp edx, esi:	647
 cmp dword ptr [ebp-0x1c], edx:	643
-cmp edx, esi:	647
+cmp edx, esi:	643
 cmp edx, esi:	643
 cmp edx, esi:	647
 cmp edx, esi:	643
 cmp edx, esi:	647
+cmp edx, esi:	647
 cmp edx, esi:	643
+cmp edx, esi:	643
+cmp edx, esi:	647
 cmp edx, esi:	647
 cmp edx, esi:	643
 cmp edx, esi:	647
 cmp edx, esi:	643
+cmp edx, esi:	643
 cmp edx, esi:	647
+cmp dword ptr [ebp-0x1c], edx:	643
+cmp edx, esi:	643
 cmp edx, esi:	643
 cmp edx, esi:	647
 cmp edx, esi:	643
 cmp edx, esi:	647
+cmp edx, esi:	647
+cmp edx, esi:	643
 cmp edx, esi:	643
 cmp edx, esi:	647
+cmp edx, esi:	647
+cmp edx, esi:	643
+cmp edx, esi:	647
+cmp edx, esi:	643
+cmp edx, esi:	643
+cmp edx, esi:	647
+cmp dword ptr [ebp-0x1c], edx:	647
+cmp edx, esi:	643
+cmp edx, esi:	643
+cmp edx, esi:	647
+cmp edx, esi:	643
+cmp edx, esi:	647
+cmp edx, esi:	647
+cmp edx, esi:	643
+cmp edx, esi:	643
+cmp edx, esi:	647
+cmp edx, esi:	647
+cmp edx, esi:	643
+cmp edx, esi:	647
+cmp edx, esi:	643
 cmp edx, esi:	643
 cmp edx, esi:	647
 cmp al, 0x2:	659
@@ -335,48 +438,70 @@ shl edx, 0x5:	519
 neg eax:	531
 cmp dword ptr [ebp-0x90], 0x3:	659
 cmp dl, cl:	663
+cmp dl, cl:	643
 add ebp, ecx:	531
+add edi, ecx:	531
 add ebp, 0x1:	599
 add esi, ebx:	531
+add ebp, ecx:	535
 add esi, 0x1:	599
-cmp ch, dl:	659
+add edi, ecx:	535
+cmp cl, dl:	659
 cmp edx, dword ptr [ebx+0x500]:	663
 cmp al, byte ptr [edx]:	659
+cmp al, byte ptr [edx]:	659
 cmp dl, cl:	647
+cmp dl, cl:	643
 add ebp, ecx:	531
+add edi, ecx:	531
 add ebp, 0x1:	599
-add esi, ebx:	531
+add esi, ebx:	535
+add ebp, ecx:	535
 add esi, 0x1:	599
-cmp ch, dl:	663
+add edi, ecx:	535
+cmp cl, dl:	663
+cmp cl, dl:	663
 sub edx, ecx:	659
 add ecx, 0xfefefeff:	531
-dec edx:	643
-sub edx, ecx:	659
-cmp eax, 0xfffff001:	515
+dec edx:	647
+sub edx, ecx:	663
+add ecx, 0xfefefeff:	535
+dec edx:	647
+sub ecx, 0xfefefeff:	535
+cmp al, 0x2:	659
+cmp eax, 0xfffff001:	519
 cmp eax, 0xfffff000:	519
 cmp eax, 0xfffff000:	647
 cmp eax, 0xfffff001:	535
 cmp eax, 0xffffffff:	659
 cmp ecx, 0x20:	647
+add ebx, dword ptr [ebx+ecx*4]:	647
 cmp ecx, 0x20:	643
 add ebx, dword ptr [ebx+ecx*4]:	647
 cmp eax, 0xffffffff:	659
+cmp ebp, 0x4:	659
+cmp ebp, 0x4:	659
 cmp ebp, 0x4:	663
 neg eax:	531
 sar esi, 0x1:	519
 cmp byte ptr [esp], cl:	659
+sub eax, edi:	659
+cmp ebp, edi:	659
 sar esi, 0x1:	515
 cmp byte ptr [esp], cl:	663
+sub eax, edi:	663
 cmp ebp, edi:	643
 sar esi, 0x1:	515
 cmp ebp, edi:	643
 sar esi, 0x1:	515
 cmp byte ptr [esp], cl:	647
+sub eax, edi:	647
 cmp ebp, edi:	663
 sar esi, 0x1:	515
 cmp ebp, edi:	659
 sar esi, 0x1:	515
 cmp byte ptr [esp], cl:	643
+sub eax, edi:	643
 cmp ebp, edi:	647
 sar esi, 0x1:	515
 cmp ebp, edi:	647
@@ -384,11 +509,16 @@ cmp ebp, edi:	663
 sar esi, 0x1:	519
 cmp cl, 0x9:	659
 cmp byte ptr [esp], cl:	643
-cmp eax, 0xfffff001:	515
-cmp eax, 0xffffffff:	535
+sub eax, edi:	643
+cmp eax, 0xfffff001:	519
+cmp eax, 0xffffffff:	531
+cmp eax, 0xfffff001:	535
+cmp ecx, 0x20:	647
+add ebx, dword ptr [ebx+ecx*4]:	647
 cmp ecx, 0x20:	647
 add ebx, dword ptr [ebx+ecx*4]:	643
 cmp ecx, edi:	647
+cmp dword ptr [ebp-0x24], esi:	647
 cmp edi, eax:	643
 cmp dword ptr [edi], 0x4:	663
 cmp edi, eax:	647
@@ -398,12 +528,14 @@ cmp dword ptr [edi], 0x4:	659
 cmp edi, eax:	643
 cmp dword ptr [edi], 0x4:	659
 cmp edi, eax:	647
+cmp eax, dword ptr [edx]:	647
+cmp ecx, 0x20:	647
 add ebx, dword ptr [ebx+ecx*4]:	643
 sbb eax, 0xffffffff:	531
 cmp ecx, 0x20:	647
 add ebx, dword ptr [ebx+ecx*4]:	643
 cmp edx, esi:	659
-cmp eax, 0xffffffff:	535
+cmp eax, 0xffffffff:	531
 sub edx, ecx:	659
 add ecx, 0xfefefeff:	531
 dec edx:	647
@@ -434,13 +566,17 @@ cmp eax, ecx:	647
 neg ecx:	531
 cmp esi, ecx:	647
 shr ecx, 0x1:	515
-cmp edx, 0xffffffff:	535
+cmp edx, 0xffffffff:	531
 cmp eax, 0xfffff000:	519
 sub edx, ecx:	659
 add ecx, 0xfefefeff:	531
-dec edx:	643
-sub edx, ecx:	659
+dec edx:	647
+sub edx, ecx:	663
+add ecx, 0xfefefeff:	535
+dec edx:	647
+sub ecx, 0xfefefeff:	535
 cmp esi, 0x1:	663
+cmp eax, 0xffff:	663
 neg eax:	659
 cmp eax, ecx:	647
 neg ecx:	531
@@ -474,6 +610,9 @@ neg ecx:	519
 cmp esi, ecx:	647
 shr ecx, 0x1:	515
 cmp byte ptr [eax-0x1], 0x2f:	663
+cmp byte ptr [eax-0x1], 0x2f:	663
+cmp byte ptr [eax-0x1], 0x2f:	663
+cmp edi, edx:	663
 cmp edx, dword ptr [ecx]:	647
 shr edx, 0x2:	2563
 cmp dword ptr [ebp-0x8c], esi:	647
@@ -490,6 +629,7 @@ cmp eax, 0x6:	663
 cmp esi, eax:	647
 cmp eax, 0x6:	659
 cmp esi, eax:	643
+cmp eax, 0x6474e551:	643
 cmp esi, eax:	647
 cmp eax, 0x6474e551:	663
 cmp eax, 0x6474e552:	659
@@ -498,12 +638,15 @@ cmp esi, eax:	643
 cmp eax, 0xfffff000:	647
 cmp eax, 0xffffffff:	659
 cmp esi, eax:	647
+cmp eax, 0xfffff000:	647
 cmp eax, 0xffffffff:	659
 neg ecx:	647
 cmp eax, dword ptr [ebp-0x9c]:	663
+cmp ecx, dword ptr [ebp-0x9c]:	663
 cmp eax, 0xfffff000:	647
 cmp eax, 0xffffffff:	659
 cmp eax, 0x21:	643
+cmp eax, 0x21:	647
 cmp eax, 0x21:	647
 cmp eax, 0x21:	643
 cmp eax, 0x21:	647
@@ -513,24 +656,52 @@ sub ecx, eax:	647
 neg eax:	663
 cmp eax, 0x21:	647
 cmp eax, 0x21:	643
+cmp eax, 0x21:	643
+cmp eax, 0x21:	643
 cmp eax, 0x21:	647
+cmp eax, 0x21:	647
+cmp eax, 0x21:	647
+cmp eax, 0x21:	647
+cmp eax, 0x21:	647
+cmp eax, 0x21:	643
 cmp eax, 0x21:	643
 cmp ecx, 0xf:	659
 cmp ecx, 0xf:	663
 cmp eax, 0x21:	643
+cmp ecx, 0xf:	659
 cmp ecx, 0xf:	659
 cmp ecx, 0xf:	663
 cmp eax, 0xfffff001:	535
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	643
+cmp eax, 0x7ffffffd:	659
 cmp eax, 0x7ffffffd:	659
 cmp eax, 0x7ffffffd:	663
 cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	647
 cmp eax, 0x7ffffffd:	663
 cmp dword ptr [ebp-0x80], edx:	519
 cmp dl, cl:	647
 cmp dl, cl:	659
 add ebp, ecx:	531
+add edi, ecx:	531
 add ebp, 0x1:	599
 add esi, ebx:	535
+add ebp, ecx:	535
 add esi, 0x1:	599
 add edi, ecx:	535
 add ebp, 0x1:	599
@@ -540,11 +711,23 @@ add esi, 0x1:	599
 add edi, ecx:	535
 cmp cl, dl:	659
 cmp edx, dword ptr [ebx+0x500]:	663
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	659
 cmp eax, 0x7ffffffd:	659
 cmp eax, 0x7ffffffd:	663
 cmp eax, 0x7ffffffd:	659
 cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	663
+cmp eax, 0x7ffffffd:	663
 cmp eax, 0x7ffffffd:	659
+cmp eax, 0x7ffffffd:	663
 cmp eax, 0x7ffffffd:	663
 cmp eax, 0x7ffffffd:	647
 cmp eax, 0x7ffffffd:	659
@@ -552,6 +735,7 @@ cmp eax, 0x7ffffffd:	663
 cmp eax, 0x7ffffffd:	647
 cmp eax, 0x7ffffffd:	663
 cmp eax, 0x7ffffffd:	659
+neg eax:	659
 cmp eax, ecx:	643
 neg ecx:	515
 cmp esi, ecx:	643
@@ -563,20 +747,42 @@ shr ecx, 0x2:	515
 cmp dword ptr [ebp-0x4c], edx:	663
 shr ecx, 0x2:	583
 cmp dword ptr [edi+0x4], edx:	663
-add eax, dword ptr [edx]:	643
-cmp dword ptr [ebp-0x40], edx:	663
+cmp ecx, esi:	663
+cmp al, byte ptr [edx]:	659
+cmp dword ptr [esi+0x8], edi:	643
+cmp dword ptr [ebp-0x40], eax:	659
+cmp eax, 0xffff:	663
 neg eax:	659
 cmp eax, ecx:	643
 neg ecx:	535
 cmp esi, ecx:	659
 add eax, dword ptr [edx]:	643
+cmp dword ptr [ebp-0x40], edx:	663
+cmp ecx, edx:	663
+cmp eax, 0xffff:	663
+neg eax:	659
+cmp eax, ecx:	647
+neg ecx:	531
+cmp esi, ecx:	663
+add eax, dword ptr [edx]:	643
 cmp al, byte ptr [edx]:	659
+cmp al, byte ptr [edx]:	659
+cmp dword ptr [esi+0x8], edi:	659
+cmp dword ptr [esi+0x8], edi:	659
 cmp dword ptr [ebp-0x40], eax:	663
+cmp dword ptr [esi+0x8], edi:	663
+cmp eax, 0xffff:	663
 neg eax:	659
 cmp eax, ecx:	643
-neg ecx:	531
+neg ecx:	535
 cmp esi, ecx:	659
 cmp dword ptr [ebp-0x40], edx:	663
+cmp ecx, edx:	663
+cmp ecx, edx:	663
+cmp ecx, edx:	663
+cmp ecx, edx:	663
+cmp ecx, edx:	663
+cmp eax, 0xffff:	663
 neg eax:	659
 cmp eax, ecx:	643
 neg ecx:	531
@@ -584,45 +790,61 @@ cmp esi, ecx:	659
 cmp eax, 0xffff:	663
 neg eax:	659
 neg eax:	647
+cmp eax, 0xfffff000:	647
 cmp eax, 0xffffffff:	659
 cmp eax, dword ptr [ebx+0x8fc]:	647
+cmp edx, ebp:	647
+neg eax:	647
+cmp eax, ecx:	647
 neg ecx:	519
 cmp esi, ecx:	647
 cmp eax, 0xffff:	659
+neg eax:	659
 cmp eax, ecx:	647
 neg ecx:	515
 cmp esi, ecx:	647
 cmp edi, dword ptr [ebp-0x88]:	663
 cmp eax, 0x20:	647
+cmp eax, 0x20:	647
 cmp eax, 0x20:	643
 cmp eax, 0x20:	647
+cmp eax, 0x20:	643
 cmp eax, 0x20:	643
 cmp eax, 0x20:	647
 cmp edx, ecx:	663
 cmp esi, edi:	647
 cmp esi, 0x8:	663
+cmp esi, 0x23:	663
+cmp esi, 0x29:	663
+cmp esi, 0x5:	663
 shl ecx, 0x5:	519
-cmp al, 0x6:	663
+shr eax, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	519
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
 add edx, ebx:	643
 cmp dl, 0xa:	663
 cmp esi, 0x2a:	647
+sub ecx, edx:	647
 cmp dl, 0xa:	663
 add edx, ebx:	647
 cmp dl, 0xa:	663
 add edx, ebx:	647
 cmp dl, 0xa:	663
 cmp esi, 0x2a:	647
+sub ecx, edx:	647
 cmp dl, 0xa:	663
 cmp esi, 0x2a:	647
+sub ecx, edx:	647
 cmp dl, 0xa:	663
 cmp esi, 0x2a:	647
+sub ecx, edx:	647
 cmp dl, 0xa:	663
 cmp esi, 0x2a:	647
 sub ecx, edx:	643
@@ -631,6 +853,7 @@ cmp esi, 0x2a:	647
 sub ecx, edx:	643
 cmp dl, 0xa:	663
 cmp esi, 0x2a:	647
+sub ecx, edx:	647
 cmp dl, 0xa:	663
 cmp esi, 0x2a:	647
 sub ecx, edx:	643
@@ -643,6 +866,7 @@ sub ecx, edx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -650,6 +874,7 @@ add edi, ecx:	515
 shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 add edi, ecx:	2563
+shl ecx, 0x5:	2563
 shl ecx, 0x5:	2691
 add edi, ecx:	2567
 shl ecx, 0x5:	2695
@@ -658,13 +883,6 @@ shl ecx, 0x5:	515
 shl ecx, 0x5:	2563
 add edi, ecx:	647
 add edi, ecx:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	659
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	2563
 shr edx, cl:	2567
@@ -673,39 +891,38 @@ shr edx, 0x1:	515
 cmp dword ptr [esp+0x5c], 0x1:	663
 cmp al, byte ptr [edx]:	659
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
 add edi, ecx:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	659
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
+shr edx, 0x5:	515
+shr edx, cl:	515
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	519
 shr edx, cl:	515
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
@@ -717,24 +934,28 @@ shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
 add edi, ecx:	519
 add edi, ecx:	515
+shl ecx, 0x5:	515
+add edi, ecx:	515
 shl ecx, 0x5:	643
 add edi, ecx:	647
 shr edx, 0x5:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	659
+shr edx, cl:	2563
+shr edx, cl:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	515
 shr edx, cl:	2567
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
@@ -742,6 +963,7 @@ add edi, ecx:	515
 shl ecx, 0x5:	647
 shl ecx, 0x5:	643
 add edi, ecx:	2567
+shl ecx, 0x5:	2567
 shl ecx, 0x5:	2695
 add edi, ecx:	643
 shl ecx, 0x5:	2563
@@ -758,7 +980,8 @@ add edi, ecx:	647
 add edi, ecx:	519
 shl ecx, 0x5:	515
 shr edx, 0x5:	519
-cmp al, 0x6:	663
+shr edx, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	519
 bt edx, eax:	583
 cmp al, 0x3:	659
@@ -768,6 +991,7 @@ add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
@@ -775,18 +999,20 @@ add edi, ecx:	519
 shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 add edi, ecx:	2563
+shl ecx, 0x5:	2563
 shl ecx, 0x5:	2695
 add edi, ecx:	643
 shl ecx, 0x5:	2563
 shr edx, 0x5:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+shr edx, cl:	2567
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	2563
 shr edx, 0x1:	2567
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -794,6 +1020,7 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
@@ -801,67 +1028,70 @@ add edi, ecx:	519
 shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 add edi, ecx:	2567
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2567
 shl ecx, 0x5:	515
 shl ecx, 0x5:	647
 add edi, ecx:	515
 add edi, ecx:	643
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
+add edi, ecx:	643
 add edi, ecx:	643
 shl ecx, 0x5:	2691
 add edi, ecx:	647
 add edi, ecx:	515
+shl ecx, 0x5:	515
 shl ecx, 0x5:	2567
 add edi, ecx:	519
+shl ecx, 0x5:	2567
+add edi, ecx:	2567
 shl ecx, 0x5:	2567
 shl ecx, 0x5:	519
 shl ecx, 0x5:	515
 shr edx, 0x5:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	659
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+shr edx, cl:	2567
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	519
 shr edx, cl:	515
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
 add edi, ecx:	515
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
 add edi, ecx:	2567
+shl ecx, 0x5:	2567
 shl ecx, 0x5:	2563
+add edi, ecx:	2563
 add edi, ecx:	515
 add edi, ecx:	2563
 shr edx, 0x5:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+shr edx, cl:	515
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	515
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
@@ -880,18 +1110,13 @@ shl ecx, 0x5:	2695
 add edi, ecx:	643
 shl ecx, 0x5:	2691
 add edi, ecx:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	659
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+shr eax, cl:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	515
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -899,20 +1124,16 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	515
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
 add edi, ecx:	643
 shl ecx, 0x5:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
+shr edx, cl:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 bt edx, eax:	583
 cmp al, 0x3:	659
@@ -922,59 +1143,60 @@ add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
 add edi, ecx:	515
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
+add edi, ecx:	2567
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2567
 add edi, ecx:	2567
 shl ecx, 0x5:	2563
 add edi, ecx:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
+shr edx, 0x5:	515
+shr edx, cl:	515
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	2567
 shr edx, 0x1:	519
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	519
 shl ecx, 0x5:	643
+shl ecx, 0x5:	643
+add edi, ecx:	643
 add edi, ecx:	2567
 add edi, ecx:	519
 shl ecx, 0x5:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
+cmp dword ptr [esp+0x5c], 0x1:	663
 cmp dword ptr [esp+0x5c], 0x1:	663
 cmp al, byte ptr [edx]:	659
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
@@ -985,18 +1207,20 @@ add edi, ecx:	2567
 shl ecx, 0x5:	2563
 add edi, ecx:	647
 shl ecx, 0x5:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+shr edx, 0x5:	2563
+shr edx, cl:	2563
 cmp dword ptr [esp+0x5c], 0x1:	663
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2691
@@ -1006,20 +1230,25 @@ add edi, ecx:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	519
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
 add edi, ecx:	643
+shl ecx, 0x5:	643
 shl ecx, 0x5:	2563
 add edi, ecx:	519
 shl ecx, 0x5:	2567
 add edi, ecx:	515
 shr edx, 0x5:	2563
-cmp al, 0x6:	663
+shr edx, cl:	2563
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	515
 shr edx, cl:	519
 shr edx, 0x1:	2563
 shr edx, 0x1:	2567
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -1027,6 +1256,7 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1035,26 +1265,20 @@ shl ecx, 0x5:	643
 add edi, ecx:	519
 shl ecx, 0x5:	647
 add edi, ecx:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	519
 shr edx, cl:	2567
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
@@ -1066,25 +1290,22 @@ shl ecx, 0x5:	2567
 shl ecx, 0x5:	519
 add edi, ecx:	515
 shl ecx, 0x5:	643
+shl ecx, 0x5:	643
+shl ecx, 0x5:	643
 add edi, ecx:	2567
 add edi, ecx:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
 cmp dword ptr [esp+0x5c], 0x1:	663
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2691
@@ -1093,13 +1314,16 @@ shl ecx, 0x5:	647
 add edi, ecx:	519
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2563
+add edi, ecx:	2563
 add edi, ecx:	515
 add edi, ecx:	519
 add edi, ecx:	515
-cmp al, 0x6:	663
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -1107,6 +1331,7 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1114,6 +1339,7 @@ add edi, ecx:	515
 shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 add edi, ecx:	2563
+shl ecx, 0x5:	2563
 shl ecx, 0x5:	2691
 add edi, ecx:	2563
 shl ecx, 0x5:	2691
@@ -1125,43 +1351,42 @@ shl ecx, 0x5:	519
 shl ecx, 0x5:	515
 add edi, ecx:	519
 shl ecx, 0x5:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	2563
+shr edx, cl:	2563
 cmp dword ptr [esp+0x5c], 0x1:	663
 cmp al, byte ptr [edx]:	659
 shr edx, cl:	2563
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
 add edi, ecx:	515
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
 add edi, ecx:	643
 add edi, ecx:	2567
 add edi, ecx:	515
 shr edx, 0x5:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
+shr edx, cl:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	515
+shr edx, 0x1:	515
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -1169,6 +1394,7 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1180,16 +1406,20 @@ shl ecx, 0x5:	515
 shl ecx, 0x5:	2563
 shl ecx, 0x5:	515
 add edi, ecx:	643
+shl ecx, 0x5:	643
 bt edx, eax:	583
 cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+sar eax, 0x1f:	583
 cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	659
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1197,12 +1427,14 @@ add edi, ecx:	519
 shl ecx, 0x5:	643
 add edi, ecx:	515
 shr edx, 0x5:	519
-cmp al, 0x6:	663
+shr edx, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	515
 shr edx, 0x1:	519
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -1210,6 +1442,7 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
@@ -1218,24 +1451,21 @@ shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 shl ecx, 0x5:	643
 add edi, ecx:	647
+add edi, ecx:	647
 add edi, ecx:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2691
@@ -1244,20 +1474,22 @@ shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 add edi, ecx:	2563
 shl ecx, 0x5:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+shr edx, 0x5:	2567
+shr edx, cl:	2567
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	515
 shr edx, cl:	2563
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1267,56 +1499,69 @@ shl ecx, 0x5:	643
 add edi, ecx:	2567
 shl ecx, 0x5:	2563
 shl ecx, 0x5:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
+add edi, ecx:	647
+shr eax, cl:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	519
 shl ecx, 0x5:	643
+shl ecx, 0x5:	643
+add edi, ecx:	643
 add edi, ecx:	2567
 add edi, ecx:	519
 shl ecx, 0x5:	647
 shl ecx, 0x5:	515
-cmp al, 0x6:	663
+cmp dword ptr [esp+0x5c], 0x1:	663
+cmp dword ptr [esp+0x5c], 0x1:	663
 cmp al, byte ptr [edx]:	659
 shr edx, cl:	515
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
 add edi, ecx:	515
-cmp al, 0x6:	663
+shr edx, 0x5:	515
+shr edx, cl:	515
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	2563
 shr edx, cl:	519
 shr edx, cl:	2567
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1329,18 +1574,12 @@ add edi, ecx:	515
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2563
 shr edx, 0x5:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	663
+shr edx, cl:	2567
+cmp dword ptr [esp+0x5c], 0x1:	663
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -1348,6 +1587,7 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1355,20 +1595,24 @@ add edi, ecx:	515
 shl ecx, 0x5:	647
 shl ecx, 0x5:	515
 add edi, ecx:	519
+shl ecx, 0x5:	519
 add edi, ecx:	515
 shl ecx, 0x5:	2563
-cmp al, 0x6:	663
+shr eax, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	2567
 shr edx, cl:	515
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2691
@@ -1387,51 +1631,59 @@ add edi, ecx:	2567
 shl ecx, 0x5:	2695
 add edi, ecx:	515
 shl ecx, 0x5:	2567
+shl ecx, 0x5:	2567
 add edi, ecx:	519
 shl ecx, 0x5:	515
+shl ecx, 0x5:	2563
 shl ecx, 0x5:	2563
 add edi, ecx:	515
 shl ecx, 0x5:	647
 shr edx, 0x5:	2567
-cmp al, 0x6:	663
+shr edx, cl:	2567
+shr edx, cl:	583
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	2567
 shr edx, cl:	2563
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
 add edi, ecx:	515
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
 add edi, ecx:	2567
+shl ecx, 0x5:	2567
 shl ecx, 0x5:	2563
+add edi, ecx:	2563
 add edi, ecx:	515
 add edi, ecx:	2563
 shr edx, 0x5:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+shr edx, cl:	515
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	519
+shr edx, 0x1:	519
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1439,31 +1691,41 @@ add edi, ecx:	515
 shl ecx, 0x5:	647
 shl ecx, 0x5:	515
 add edi, ecx:	519
+shl ecx, 0x5:	519
 add edi, ecx:	515
 shl ecx, 0x5:	2567
 shr edx, 0x5:	2563
-cmp al, 0x6:	663
+shr edx, cl:	2563
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	2563
 shr edx, 0x1:	515
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	663
+cmp esi, 0x23:	663
+cmp esi, 0x29:	663
+cmp esi, 0x5:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2691
 add edi, ecx:	519
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
 add edi, ecx:	2567
+shl ecx, 0x5:	2567
 shl ecx, 0x5:	515
 add edi, ecx:	519
 add edi, ecx:	515
@@ -1476,7 +1738,7 @@ add edi, ecx:	2563
 add edi, ecx:	515
 shl ecx, 0x5:	647
 shl ecx, 0x5:	519
-cmp al, 0x6:	663
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	2567
 bt edx, eax:	583
 cmp al, 0x3:	659
@@ -1486,6 +1748,7 @@ add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
@@ -1493,19 +1756,16 @@ add edi, ecx:	515
 shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 add edi, ecx:	2563
+shl ecx, 0x5:	2563
 shl ecx, 0x5:	2695
 add edi, ecx:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
+shr edx, cl:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	519
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -1513,6 +1773,7 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
@@ -1520,17 +1781,21 @@ add edi, ecx:	515
 shl ecx, 0x5:	647
 shl ecx, 0x5:	643
 add edi, ecx:	2563
-cmp al, 0x6:	663
+shl ecx, 0x5:	2563
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	2563
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2691
@@ -1549,13 +1814,7 @@ add edi, ecx:	2567
 shl ecx, 0x5:	2695
 add edi, ecx:	515
 shl ecx, 0x5:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
+shl ecx, 0x5:	2567
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	2567
 shr edx, cl:	515
@@ -1564,12 +1823,14 @@ shr edx, 0x1:	2563
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1577,43 +1838,19 @@ add edi, ecx:	519
 shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 add edi, ecx:	2567
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2567
 add edi, ecx:	647
 shr edx, 0x5:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	659
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
+shr edx, cl:	2567
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	2563
+shr edx, 0x1:	2563
 shr edx, 0x1:	519
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp edi, dword ptr [edx+0x21c]:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2695
-add edi, ecx:	515
-shl ecx, 0x5:	643
-shl ecx, 0x5:	647
-add edi, ecx:	2563
-shl ecx, 0x5:	2695
-add edi, ecx:	647
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2563
-add edi, ecx:	515
-shr edx, 0x5:	2567
-cmp al, 0x6:	663
-shr edx, cl:	519
-shr edx, 0x1:	583
 cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
@@ -1621,6 +1858,34 @@ add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2695
+add edi, ecx:	515
+shl ecx, 0x5:	643
+shl ecx, 0x5:	647
+add edi, ecx:	2563
+shl ecx, 0x5:	2563
+shl ecx, 0x5:	2695
+add edi, ecx:	647
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2563
+add edi, ecx:	515
+shr edx, 0x5:	2567
+shr edx, cl:	2567
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr edx, cl:	519
+shr edx, 0x1:	583
+bt edx, eax:	583
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp edi, dword ptr [edx+0x21c]:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
@@ -1628,13 +1893,14 @@ add edi, ecx:	515
 shl ecx, 0x5:	647
 shl ecx, 0x5:	643
 add edi, ecx:	2567
+shl ecx, 0x5:	2567
 shl ecx, 0x5:	2695
 add edi, ecx:	643
 shl ecx, 0x5:	2563
 add edi, ecx:	647
 add edi, ecx:	2567
 shl ecx, 0x5:	519
-cmp al, 0x6:	663
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	519
 shr edx, 0x1:	515
 bt edx, eax:	583
@@ -1645,10 +1911,12 @@ add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	515
+shl ecx, 0x5:	647
 shl ecx, 0x5:	647
 add edi, ecx:	2567
 shl ecx, 0x5:	2563
@@ -1657,7 +1925,8 @@ add edi, ecx:	647
 add edi, ecx:	2563
 shl ecx, 0x5:	2691
 shr edx, 0x5:	2567
-cmp al, 0x6:	663
+shr edx, cl:	2567
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	2563
 shr edx, 0x1:	519
 bt edx, eax:	583
@@ -1668,6 +1937,7 @@ add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1676,27 +1946,23 @@ shl ecx, 0x5:	643
 add edi, ecx:	519
 add edi, ecx:	643
 shr edx, 0x5:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	663
+shr edx, cl:	2567
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	515
 shr edx, cl:	2567
 shr edx, 0x1:	2563
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
@@ -1720,17 +1986,19 @@ shl ecx, 0x5:	2691
 add edi, ecx:	2567
 add edi, ecx:	515
 add edi, ecx:	519
-cmp al, 0x6:	663
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	515
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
@@ -1748,181 +2016,16 @@ add edi, ecx:	515
 shl ecx, 0x5:	643
 add edi, ecx:	515
 shr edx, 0x5:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
+shr edx, cl:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	515
+shr edx, 0x1:	2567
 shr edx, 0x1:	2567
 shr edx, 0x1:	515
 shr edx, 0x1:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp edi, dword ptr [edx+0x21c]:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	515
-shl ecx, 0x5:	2691
-add edi, ecx:	519
-shl ecx, 0x5:	647
-add edi, ecx:	519
-shl ecx, 0x5:	2695
-add edi, ecx:	519
-shl ecx, 0x5:	647
-add edi, ecx:	519
-shl ecx, 0x5:	515
-shl ecx, 0x5:	2567
-add edi, ecx:	643
-add edi, ecx:	647
-add edi, ecx:	2563
-shl ecx, 0x5:	2691
-add edi, ecx:	515
-shl ecx, 0x5:	2567
-shl ecx, 0x5:	2691
-add edi, ecx:	515
-shl ecx, 0x5:	2567
-cmp al, 0x6:	663
-shr edx, cl:	2563
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2695
-add edi, ecx:	519
-shl ecx, 0x5:	643
-shl ecx, 0x5:	647
-add edi, ecx:	2567
-shl ecx, 0x5:	2563
-shl ecx, 0x5:	515
-shl ecx, 0x5:	643
-add edi, ecx:	515
-shl ecx, 0x5:	2563
-add edi, ecx:	519
-shl ecx, 0x5:	643
-shl ecx, 0x5:	647
-add edi, ecx:	643
-shl ecx, 0x5:	2563
-add edi, ecx:	515
-add edi, ecx:	2563
-add edi, ecx:	515
-shl ecx, 0x5:	2691
-shl ecx, 0x5:	643
-add edi, ecx:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	659
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, cl:	2567
-bt edx, eax:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp edi, dword ptr [edx+0x21c]:	647
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2691
-add edi, ecx:	515
-shl ecx, 0x5:	647
-add edi, ecx:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, 0x1:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp edi, dword ptr [edx+0x21c]:	647
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	515
-shl ecx, 0x5:	2695
-add edi, ecx:	515
-shl ecx, 0x5:	647
-add edi, ecx:	519
-shl ecx, 0x5:	643
-shl ecx, 0x5:	519
-add edi, ecx:	515
-shr edx, 0x5:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr eax, cl:	515
-shr edx, 0x1:	2567
-shr edx, 0x1:	519
-bt edx, eax:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2695
-add edi, ecx:	515
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2563
-add edi, ecx:	647
-add edi, ecx:	643
-shl ecx, 0x5:	2695
-add edi, ecx:	647
-shl ecx, 0x5:	2695
-add edi, ecx:	2567
-shl ecx, 0x5:	647
-add edi, ecx:	643
-add edi, ecx:	647
-shl ecx, 0x5:	2567
-shl ecx, 0x5:	2691
-add edi, ecx:	2563
-shl ecx, 0x5:	2567
-shl ecx, 0x5:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	647
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr eax, cl:	2567
-shr edx, 0x1:	519
-shr edx, 0x1:	583
 cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
@@ -1930,22 +2033,77 @@ add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
-shl ecx, 0x5:	519
+shl ecx, 0x5:	515
 shl ecx, 0x5:	2691
 add edi, ecx:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
+shl ecx, 0x5:	647
+add edi, ecx:	519
+shl ecx, 0x5:	2695
+add edi, ecx:	519
+shl ecx, 0x5:	647
+add edi, ecx:	519
+shl ecx, 0x5:	515
+shl ecx, 0x5:	2567
+add edi, ecx:	643
+shl ecx, 0x5:	643
+add edi, ecx:	647
+add edi, ecx:	2563
+shl ecx, 0x5:	2691
+add edi, ecx:	515
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2691
+add edi, ecx:	515
+shl ecx, 0x5:	2567
+add edi, ecx:	2567
 cmp dword ptr [esp+0x5c], 0x1:	663
+shr edx, cl:	2563
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2695
+add edi, ecx:	519
+shl ecx, 0x5:	643
+shl ecx, 0x5:	647
+add edi, ecx:	2567
+shl ecx, 0x5:	2563
+shl ecx, 0x5:	2563
+shl ecx, 0x5:	515
+shl ecx, 0x5:	643
+add edi, ecx:	515
+add edi, ecx:	515
+shl ecx, 0x5:	2563
+add edi, ecx:	519
+shl ecx, 0x5:	643
+shl ecx, 0x5:	647
+add edi, ecx:	643
+shl ecx, 0x5:	2563
+add edi, ecx:	515
+add edi, ecx:	515
+add edi, ecx:	515
+add edi, ecx:	2563
+add edi, ecx:	515
+shl ecx, 0x5:	2691
+shl ecx, 0x5:	643
+add edi, ecx:	647
+shr eax, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr edx, cl:	2567
+bt edx, eax:	583
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -1953,6 +2111,117 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2691
+add edi, ecx:	515
+shl ecx, 0x5:	647
+shl ecx, 0x5:	647
+add edi, ecx:	2567
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2567
+add edi, ecx:	2567
+shr eax, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr edx, 0x1:	583
+bt edx, eax:	583
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp edi, dword ptr [edx+0x21c]:	647
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	515
+shl ecx, 0x5:	2695
+add edi, ecx:	515
+shl ecx, 0x5:	647
+add edi, ecx:	519
+shl ecx, 0x5:	643
+shl ecx, 0x5:	519
+add edi, ecx:	515
+shr edx, 0x5:	519
+shr edx, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr eax, cl:	515
+shr edx, 0x1:	2567
+shr edx, 0x1:	2567
+shr edx, 0x1:	519
+bt edx, eax:	583
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2695
+add edi, ecx:	515
+add edi, ecx:	515
+shl ecx, 0x5:	515
+add edi, ecx:	515
+add edi, ecx:	515
+shl ecx, 0x5:	519
+add edi, ecx:	519
+shl ecx, 0x5:	2563
+add edi, ecx:	647
+add edi, ecx:	643
+shl ecx, 0x5:	2695
+add edi, ecx:	647
+shl ecx, 0x5:	2695
+add edi, ecx:	2567
+shl ecx, 0x5:	647
+add edi, ecx:	643
+shl ecx, 0x5:	643
+add edi, ecx:	647
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2691
+add edi, ecx:	2563
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr eax, cl:	2567
+shr edx, 0x1:	519
+shr edx, 0x1:	583
+bt edx, eax:	583
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp edi, dword ptr [edx+0x21c]:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2691
+add edi, ecx:	519
+shr edx, 0x5:	519
+shr edx, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
+bt edx, eax:	583
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp edi, dword ptr [edx+0x21c]:	647
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -1961,17 +2230,11 @@ shl ecx, 0x5:	647
 shl ecx, 0x5:	643
 add edi, ecx:	2563
 shl ecx, 0x5:	647
+add edi, ecx:	647
 add edi, ecx:	2563
 add edi, ecx:	515
 add edi, ecx:	519
 shl ecx, 0x5:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	515
 shr edx, cl:	2563
@@ -1983,308 +2246,15 @@ add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
 add edi, ecx:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	663
-bt edx, eax:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	515
-shl ecx, 0x5:	2695
-add edi, ecx:	515
-shl ecx, 0x5:	2567
-shl ecx, 0x5:	2691
-add edi, ecx:	2563
-shl ecx, 0x5:	2567
-add edi, ecx:	647
-add edi, ecx:	515
-shl ecx, 0x5:	2567
-shl ecx, 0x5:	2695
-add edi, ecx:	2563
-shl ecx, 0x5:	515
-add edi, ecx:	519
-shl ecx, 0x5:	515
-add edi, ecx:	519
-shl ecx, 0x5:	647
-add edi, ecx:	519
-shl ecx, 0x5:	2567
-shl ecx, 0x5:	647
-add edi, ecx:	643
-shr edx, 0x5:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr eax, cl:	2563
-bt edx, eax:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp edi, dword ptr [edx+0x21c]:	647
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2695
-add edi, ecx:	519
-shl ecx, 0x5:	643
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2691
-add edi, ecx:	515
-shl ecx, 0x5:	643
-shl ecx, 0x5:	515
-shl ecx, 0x5:	643
-add edi, ecx:	519
-shl ecx, 0x5:	643
-add edi, ecx:	647
-shl ecx, 0x5:	2695
-add edi, ecx:	2563
-shr edx, 0x5:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	659
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr eax, cl:	2567
-shr edx, 0x1:	519
-shr edx, 0x1:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2691
-add edi, ecx:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, 0x1:	515
-shr edx, 0x1:	2567
-shr edx, 0x1:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp edi, dword ptr [edx+0x21c]:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	515
-shl ecx, 0x5:	2695
-add edi, ecx:	515
-shl ecx, 0x5:	643
-shl ecx, 0x5:	519
-add edi, ecx:	515
-shl ecx, 0x5:	519
-add edi, ecx:	515
-shl ecx, 0x5:	2691
-add edi, ecx:	515
-shl ecx, 0x5:	2695
-shl ecx, 0x5:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr eax, cl:	519
-shr edx, cl:	2563
-shr edx, 0x1:	2567
-bt edx, eax:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	515
-shl ecx, 0x5:	2695
-add edi, ecx:	515
-shl ecx, 0x5:	2567
-shl ecx, 0x5:	2695
-add edi, ecx:	2563
-shl ecx, 0x5:	2567
-add edi, ecx:	647
-add edi, ecx:	515
-shl ecx, 0x5:	647
-add edi, ecx:	2563
-shl ecx, 0x5:	2695
-add edi, ecx:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	659
 cmp dword ptr [esp+0x5c], 0x1:	663
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp edi, dword ptr [edx+0x21c]:	647
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2695
-add edi, ecx:	519
-shl ecx, 0x5:	643
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2695
-add edi, ecx:	519
-add edi, ecx:	515
-add edi, ecx:	2567
-add edi, ecx:	515
-shl ecx, 0x5:	2563
-shl ecx, 0x5:	643
-shr edx, 0x5:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, 0x1:	2563
-shr edx, 0x1:	519
-shr edx, 0x1:	2567
-bt edx, eax:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp edi, dword ptr [edx+0x21c]:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2691
-add edi, ecx:	515
-shl ecx, 0x5:	647
-add edi, ecx:	2567
-add edi, ecx:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr eax, cl:	2563
-shr edx, 0x1:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	515
-shl ecx, 0x5:	2695
-add edi, ecx:	519
-shl ecx, 0x5:	643
-add edi, ecx:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	663
-bt edx, eax:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp esi, 0x23:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	515
-shl ecx, 0x5:	2695
-add edi, ecx:	515
-shl ecx, 0x5:	647
-shl ecx, 0x5:	515
-add edi, ecx:	519
-shl ecx, 0x5:	515
-cmp al, 0x6:	663
-shr edx, cl:	519
-shr edx, 0x1:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp dl, 0xa:	659
-add edx, ebx:	643
-cmp esi, 0x8:	663
-cmp dl, 0xa:	659
-cmp esi, 0x2a:	663
-add edx, ebx:	643
-cmp esi, 0x8:	659
-cmp edi, dword ptr [edx+0x21c]:	643
-cmp esi, 0x7:	663
-cmp esi, 0xe:	659
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2695
-add edi, ecx:	515
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2563
-add edi, ecx:	647
-add edi, ecx:	643
-shl ecx, 0x5:	2695
-add edi, ecx:	647
-shl ecx, 0x5:	2695
-add edi, ecx:	2567
-shl ecx, 0x5:	643
-shr edx, 0x5:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	647
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, cl:	2563
-shr edx, 0x1:	583
 cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
@@ -2292,76 +2262,367 @@ add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
-shl ecx, 0x5:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	659
+shl ecx, 0x5:	515
+shl ecx, 0x5:	2695
+add edi, ecx:	515
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2691
+add edi, ecx:	2563
+shl ecx, 0x5:	2567
+add edi, ecx:	647
+add edi, ecx:	515
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2695
+add edi, ecx:	2563
+shl ecx, 0x5:	515
+add edi, ecx:	515
+shl ecx, 0x5:	515
+add edi, ecx:	519
+shl ecx, 0x5:	515
+add edi, ecx:	519
+shl ecx, 0x5:	647
+add edi, ecx:	519
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	647
+add edi, ecx:	643
+shr edx, 0x5:	2563
+shr edx, cl:	2563
 cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, cl:	515
-shr edx, 0x1:	583
+shr eax, cl:	2563
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp edi, dword ptr [edx+0x21c]:	647
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2695
+add edi, ecx:	519
+shl ecx, 0x5:	643
+shl ecx, 0x5:	519
+add edi, ecx:	519
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2691
+add edi, ecx:	515
+add edi, ecx:	515
+shl ecx, 0x5:	643
+shl ecx, 0x5:	515
+shl ecx, 0x5:	643
+add edi, ecx:	519
+shl ecx, 0x5:	643
+add edi, ecx:	647
+add edi, ecx:	647
+shl ecx, 0x5:	2695
+add edi, ecx:	2563
+shr edx, 0x5:	519
+shr edx, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr eax, cl:	2567
+shr edx, 0x1:	519
+shr edx, 0x1:	583
+bt edx, eax:	583
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
-shl ecx, 0x5:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	659
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2691
+add edi, ecx:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
-shr eax, cl:	519
-shr edx, cl:	515
-shr edx, 0x1:	519
+shr edx, 0x1:	515
+shr edx, 0x1:	2567
+shr edx, 0x1:	583
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
+shl ecx, 0x5:	515
+shl ecx, 0x5:	2695
+add edi, ecx:	515
+shl ecx, 0x5:	643
 shl ecx, 0x5:	519
+add edi, ecx:	515
+shl ecx, 0x5:	519
+add edi, ecx:	515
 shl ecx, 0x5:	2691
 add edi, ecx:	515
-shl ecx, 0x5:	647
-add edi, ecx:	2567
-shl ecx, 0x5:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
+shl ecx, 0x5:	2695
+shl ecx, 0x5:	515
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	519
-shr edx, 0x1:	2563
-shr edx, 0x1:	519
-shr edx, 0x1:	2563
+shr edx, cl:	2563
+shr edx, 0x1:	2567
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	515
+shl ecx, 0x5:	2695
+add edi, ecx:	515
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2695
+add edi, ecx:	2563
+shl ecx, 0x5:	2567
+add edi, ecx:	647
+add edi, ecx:	515
+shl ecx, 0x5:	647
+add edi, ecx:	2563
+shl ecx, 0x5:	2695
+add edi, ecx:	2567
+cmp dword ptr [esp+0x5c], 0x1:	663
+bt edx, eax:	583
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp edi, dword ptr [edx+0x21c]:	647
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
+shl ecx, 0x5:	2695
+add edi, ecx:	519
+shl ecx, 0x5:	643
+shl ecx, 0x5:	519
+add edi, ecx:	519
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2695
+add edi, ecx:	519
+add edi, ecx:	515
+add edi, ecx:	2567
+add edi, ecx:	515
+shl ecx, 0x5:	2563
+shl ecx, 0x5:	2563
+shl ecx, 0x5:	643
+shr edx, 0x5:	2563
+shr edx, cl:	2563
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr edx, 0x1:	2563
+shr edx, 0x1:	519
+shr edx, 0x1:	2567
 bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp edi, dword ptr [edx+0x21c]:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2691
+add edi, ecx:	515
+shl ecx, 0x5:	647
+shl ecx, 0x5:	647
+add edi, ecx:	2567
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2567
+add edi, ecx:	2567
+shl ecx, 0x5:	2567
+add edi, ecx:	519
+shr edx, 0x5:	519
+shr edx, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr eax, cl:	2563
+shr edx, 0x1:	583
 bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	515
+shl ecx, 0x5:	2695
+add edi, ecx:	519
+shl ecx, 0x5:	643
+add edi, ecx:	515
+cmp dword ptr [esp+0x5c], 0x1:	663
 bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	647
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	515
+shl ecx, 0x5:	2695
+add edi, ecx:	515
+shl ecx, 0x5:	647
+shl ecx, 0x5:	515
+add edi, ecx:	519
+shl ecx, 0x5:	515
+shr edx, 0x5:	515
+shr edx, cl:	515
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr edx, cl:	519
+shr edx, 0x1:	583
+bt edx, eax:	583
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	663
+cmp esi, 0x23:	663
+cmp esi, 0x29:	663
+cmp esi, 0x5:	663
+cmp dl, 0xa:	659
+cmp esi, 0x2a:	663
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp edi, dword ptr [edx+0x21c]:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2695
+add edi, ecx:	515
+add edi, ecx:	515
+shl ecx, 0x5:	515
+add edi, ecx:	515
+add edi, ecx:	515
+shl ecx, 0x5:	519
+add edi, ecx:	519
+shl ecx, 0x5:	2563
+add edi, ecx:	647
+add edi, ecx:	643
+shl ecx, 0x5:	2695
+add edi, ecx:	647
+shl ecx, 0x5:	2695
+add edi, ecx:	2567
+shl ecx, 0x5:	643
+shl ecx, 0x5:	643
+shr edx, 0x5:	2563
+shr edx, cl:	2563
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr edx, cl:	2563
+shr edx, 0x1:	583
+bt edx, eax:	583
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shr edx, 0x5:	519
+shr edx, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr edx, cl:	515
+shr edx, 0x1:	583
+bt edx, eax:	583
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	515
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr eax, cl:	519
+shr edx, cl:	515
+shr edx, 0x1:	519
+bt edx, eax:	583
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp edi, dword ptr [edx+0x21c]:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shl ecx, 0x5:	2691
+add edi, ecx:	515
+shl ecx, 0x5:	647
+shl ecx, 0x5:	647
+add edi, ecx:	2567
+shl ecx, 0x5:	2567
+shl ecx, 0x5:	2563
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr eax, cl:	519
+shr edx, 0x1:	2563
+shr edx, 0x1:	519
+shr edx, 0x1:	2563
+shr edx, 0x1:	2563
+shr edx, 0x1:	2563
+bt edx, eax:	583
+cmp dl, 0x2:	663
+cmp dl, 0xa:	659
+cmp al, 0x3:	659
+cmp al, 0x2:	663
+cmp dl, 0xa:	659
+add edx, ebx:	643
+cmp esi, 0x8:	659
+cmp esi, 0x23:	643
+cmp esi, 0x7:	663
+cmp esi, 0x29:	663
+cmp esi, 0xe:	659
+shl ecx, 0x5:	519
+shr edx, 0x5:	519
+shr edx, cl:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	519
 shr edx, cl:	515
@@ -2370,6 +2631,7 @@ shr edx, 0x1:	515
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -2377,34 +2639,36 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2691
 add edi, ecx:	519
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
 add edi, ecx:	2567
+shl ecx, 0x5:	2567
 shl ecx, 0x5:	2691
+add edi, ecx:	647
 add edi, ecx:	647
 add edi, ecx:	515
 shl ecx, 0x5:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	659
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+shr eax, cl:	519
+shr edx, cl:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	515
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
@@ -2421,11 +2685,13 @@ shl ecx, 0x5:	2567
 add edi, ecx:	519
 shl ecx, 0x5:	643
 add edi, ecx:	519
-cmp al, 0x6:	663
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	519
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -2433,38 +2699,36 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
 add edi, ecx:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	659
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	647
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	643
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, 0x1:	515
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
 add edi, ecx:	519
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
 add edi, ecx:	2563
+shl ecx, 0x5:	2563
+add edi, ecx:	647
 add edi, ecx:	647
 add edi, ecx:	2563
+shl ecx, 0x5:	643
 shl ecx, 0x5:	643
 add edi, ecx:	647
 add edi, ecx:	643
@@ -2472,31 +2736,27 @@ shl ecx, 0x5:	2695
 add edi, ecx:	643
 shl ecx, 0x5:	2691
 add edi, ecx:	2567
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
+shl ecx, 0x5:	2567
+add edi, ecx:	2567
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	519
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2695
 add edi, ecx:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-cmp al, byte ptr [edx]:	647
+shr edx, cl:	583
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	519
 shr edx, 0x1:	515
@@ -2504,6 +2764,7 @@ shr edx, 0x1:	519
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -2511,6 +2772,7 @@ cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	647
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
@@ -2527,8 +2789,11 @@ shl ecx, 0x5:	643
 add edi, ecx:	2567
 shl ecx, 0x5:	2563
 shr edx, 0x5:	2567
-cmp al, 0x6:	663
+shr edx, cl:	2567
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	515
+shr edx, 0x1:	515
+shr edx, 0x1:	515
 shr edx, 0x1:	2567
 bt edx, eax:	583
 cmp al, 0x3:	659
@@ -2538,6 +2803,7 @@ add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
@@ -2545,13 +2811,6 @@ add edi, ecx:	519
 shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 add edi, ecx:	2563
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	515
 cmp dword ptr [esp+0x5c], 0x1:	663
@@ -2561,38 +2820,39 @@ shr edx, 0x1:	2563
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2691
 add edi, ecx:	519
+shl ecx, 0x5:	519
 add edi, ecx:	515
 shl ecx, 0x5:	2691
 add edi, ecx:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	659
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	643
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	647
+add edi, ecx:	643
+shl ecx, 0x5:	643
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	2563
 shr edx, cl:	515
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	663
+cmp esi, 0x23:	663
+cmp esi, 0x29:	663
+cmp esi, 0x5:	663
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	515
@@ -2603,25 +2863,33 @@ shl ecx, 0x5:	515
 add edi, ecx:	519
 shl ecx, 0x5:	643
 add edi, ecx:	515
+shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	2567
-cmp al, 0x6:	663
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	2567
 shr edx, cl:	515
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
 add edx, ebx:	643
 cmp esi, 0x8:	663
+cmp esi, 0x23:	663
+cmp esi, 0x29:	663
+cmp esi, 0x5:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
 add edx, ebx:	643
 cmp esi, 0x8:	663
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x23:	663
+cmp esi, 0x29:	663
+cmp esi, 0x5:	663
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	515
@@ -2632,24 +2900,34 @@ shl ecx, 0x5:	515
 add edi, ecx:	519
 shl ecx, 0x5:	643
 add edi, ecx:	515
+shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	2563
-cmp al, 0x6:	663
+shr edx, 0x5:	2563
+shr eax, cl:	583
+shr edx, cl:	2563
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	2563
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
 add edx, ebx:	643
 cmp esi, 0x8:	663
+cmp esi, 0x23:	663
+cmp esi, 0x29:	663
+cmp esi, 0x5:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
 add edx, ebx:	643
 cmp esi, 0x8:	663
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x23:	663
+cmp esi, 0x29:	663
+cmp esi, 0x5:	663
 shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	515
@@ -2660,137 +2938,59 @@ shl ecx, 0x5:	515
 add edi, ecx:	519
 shl ecx, 0x5:	643
 add edi, ecx:	515
+shl ecx, 0x5:	515
 shl ecx, 0x5:	2695
 add edi, ecx:	2563
 shr edx, 0x5:	515
-cmp al, 0x6:	663
+shr edx, cl:	515
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	519
 shr edx, cl:	515
+shr edx, 0x1:	515
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
 add edx, ebx:	643
 cmp esi, 0x8:	663
+cmp esi, 0x23:	663
+cmp esi, 0x29:	663
+cmp esi, 0x5:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
 add edx, ebx:	643
 cmp dword ptr [ebp-0x94], esi:	647
 cmp esi, eax:	659
 shr esi, 0x8:	519
+shr edi, 0x4:	519
 cmp esi, 0xf:	659
+cmp eax, 0x20:	647
 cmp eax, 0x20:	647
 cmp eax, 0x20:	643
 cmp eax, 0x20:	647
+cmp eax, 0x20:	643
 cmp eax, 0x20:	643
 cmp eax, 0x20:	647
 cmp dword ptr [ebp+0x8], edi:	663
 cmp dword ptr [ebp-0x9c], esi:	647
 cmp dword ptr [ebp+0x8], edi:	663
 neg edx:	647
+cmp eax, ecx:	647
 cmp eax, 0xfffff001:	535
 cmp esi, eax:	643
 cmp eax, 0x20:	647
-cmp eax, 0x20:	643
 cmp eax, 0x20:	647
 cmp eax, 0x20:	643
 cmp eax, 0x20:	647
-cmp esi, 0x8:	663
-cmp esi, 0x23:	647
-shl ecx, 0x5:	515
-shl ecx, 0x5:	2695
-add edi, ecx:	515
-shl ecx, 0x5:	643
-shl ecx, 0x5:	647
-add edi, ecx:	2563
-shl ecx, 0x5:	2691
-add edi, ecx:	2567
-shl ecx, 0x5:	2695
-add edi, ecx:	519
-shl ecx, 0x5:	515
-shl ecx, 0x5:	2567
-add edi, ecx:	647
-add edi, ecx:	643
-shl ecx, 0x5:	519
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, cl:	519
-shr edx, 0x1:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp al, 0xa:	659
-cmp esi, 0x2a:	663
-add edx, ebx:	647
-cmp esi, 0x8:	663
-cmp esi, 0x23:	647
-shl ecx, 0x5:	515
-shr edx, 0x5:	519
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, 0x1:	583
-cmp al, 0x3:	659
-cmp al, 0x2:	663
-cmp al, 0xa:	659
-cmp esi, 0x2a:	663
-add edx, ebx:	647
-cmp esi, 0x8:	663
-cmp esi, 0x23:	647
-shl ecx, 0x5:	519
-bt edx, eax:	583
-cmp al, byte ptr [edx]:	647
-bt edx, eax:	583
-cmp al, byte ptr [edx]:	647
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, 0x1:	515
-shr edx, 0x1:	583
-cmp al, 0x3:	659
-cmp al, 0x2:	663
-cmp al, 0xa:	659
-cmp esi, 0x2a:	663
-add edx, ebx:	647
-cmp esi, 0x8:	663
-cmp esi, 0x23:	647
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2695
-add edi, ecx:	519
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, 0x1:	2563
-shr edx, 0x1:	2567
-shr edx, 0x1:	583
-cmp al, 0x3:	659
-cmp al, 0x2:	663
-cmp al, 0xa:	659
-cmp esi, 0x2a:	663
-add edx, ebx:	647
-cmp esi, 0x8:	663
-cmp esi, 0x23:	647
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2695
-add edi, ecx:	515
-cmp dword ptr [esp+0x5c], 0x1:	663
-shr edx, cl:	519
-bt edx, eax:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp al, 0x2:	663
-cmp al, 0xa:	659
-cmp esi, 0x2a:	663
-add edx, ebx:	647
-cmp esi, 0x8:	663
-cmp esi, 0x23:	647
-shl ecx, 0x5:	519
-shl ecx, 0x5:	2691
-add edi, ecx:	519
-shr edx, 0x5:	515
-bt edx, eax:	583
-cmp dl, 0x2:	663
-cmp dl, 0xa:	659
-cmp esi, 0x2a:	663
-add edx, ebx:	647
+cmp eax, 0x20:	643
+cmp eax, 0x20:	643
+cmp eax, 0x20:	647
 cmp esi, 0x8:	659
-cmp esi, 0x7:	663
 cmp esi, 0x23:	643
+cmp esi, 0x7:	663
 cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
@@ -2801,54 +3001,74 @@ shl ecx, 0x5:	643
 add edi, ecx:	2563
 shl ecx, 0x5:	2567
 add edi, ecx:	647
+shl ecx, 0x5:	647
 add edi, ecx:	643
 add edi, ecx:	515
 shl ecx, 0x5:	519
-cmp al, 0x6:	663
+shr edx, 0x5:	519
+shr edx, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	583
 shr edx, cl:	519
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	583
 cmp dword ptr [esp+0x5c], 0x1:	663
 cmp esi, 0x2a:	659
-add edx, ebx:	647
-cmp eax, 0x20:	643
+add edx, ebx:	643
+cmp dword ptr [ebp-0x94], esi:	647
+cmp esi, eax:	647
+cmp eax, 0x20:	647
 cmp eax, 0x20:	647
 cmp eax, 0x20:	643
 cmp eax, 0x20:	647
+cmp eax, 0x20:	643
+cmp eax, 0x20:	643
+cmp eax, 0x20:	647
+cmp dword ptr [ebp-0x9c], esi:	647
+neg edx:	647
+cmp eax, ecx:	647
+cmp eax, 0xfffff001:	535
 sub dword ptr [ebp-0x90], 0x4:	663
+sub eax, dword ptr [ebp-0xa0]:	519
 cmp esi, dword ptr [ecx]:	643
 cmp dword ptr [esp+0x18], edx:	663
+cmp dword ptr [ebx+0x848], eax:	663
+cmp eax, 0x20:	647
 cmp eax, 0x20:	647
 cmp eax, 0x20:	643
 cmp eax, 0x20:	647
+cmp eax, 0x20:	643
 cmp eax, 0x20:	643
 cmp eax, 0x20:	647
 cmp esi, 0x8:	659
 cmp esi, 0x23:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
 add edi, ecx:	519
 shl ecx, 0x5:	647
+shl ecx, 0x5:	647
 add edi, ecx:	2563
 shr edx, 0x5:	519
-cmp al, 0x6:	663
+shr edx, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
 cmp esi, 0x8:	659
 cmp edi, dword ptr [edx+0x21c]:	643
 cmp esi, 0x7:	663
+cmp esi, 0x29:	663
 cmp esi, 0xe:	659
 shl ecx, 0x5:	515
-bt edx, eax:	583
-cmp esi, dword ptr [edi+0x20]:	519
-cmp al, byte ptr [edx]:	659
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	519
 shr edx, cl:	515
@@ -2857,6 +3077,7 @@ bt edx, eax:	583
 cmp esi, dword ptr [edi+0x20]:	647
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 add edx, ebx:	643
@@ -2868,10 +3089,12 @@ add edi, ecx:	515
 shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 add edi, ecx:	2563
+shl ecx, 0x5:	2563
 shl ecx, 0x5:	2691
 add edi, ecx:	2567
 shl ecx, 0x5:	2695
 add edi, ecx:	519
+shl ecx, 0x5:	519
 shl ecx, 0x5:	2563
 add edi, ecx:	647
 add edi, ecx:	643
@@ -2880,6 +3103,7 @@ bt edx, eax:	583
 cmp esi, dword ptr [edi+0x20]:	643
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
@@ -2892,13 +3116,15 @@ add edi, ecx:	519
 shl ecx, 0x5:	643
 add edi, ecx:	515
 shr edx, 0x5:	519
-cmp al, 0x6:	663
+shr edx, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, cl:	515
 shr edx, 0x1:	519
 bt edx, eax:	583
 cmp esi, dword ptr [edi+0x20]:	647
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
@@ -2911,9 +3137,11 @@ shl ecx, 0x5:	2691
 add edi, ecx:	519
 shl ecx, 0x5:	647
 shr edx, 0x5:	2567
-cmp al, 0x6:	663
+shr edx, cl:	2567
+cmp dword ptr [esp+0x5c], 0x1:	663
 shr edx, 0x1:	519
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp esi, dword ptr [edi+0x20]:	643
 cmp al, 0x3:	659
 cmp al, 0x2:	663
@@ -2926,11 +3154,12 @@ shl ecx, 0x5:	519
 shl ecx, 0x5:	2691
 add edi, ecx:	519
 shl ecx, 0x5:	515
-cmp al, 0x6:	663
+cmp dword ptr [esp+0x5c], 0x1:	663
 bt edx, eax:	583
 cmp esi, dword ptr [edi+0x20]:	643
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
@@ -2943,6 +3172,7 @@ add edi, ecx:	515
 shl ecx, 0x5:	643
 shl ecx, 0x5:	647
 add edi, ecx:	2563
+shl ecx, 0x5:	2563
 shl ecx, 0x5:	2695
 add edi, ecx:	647
 shl ecx, 0x5:	2695
@@ -2951,11 +3181,16 @@ shl ecx, 0x5:	2691
 add edi, ecx:	519
 shl ecx, 0x5:	647
 add edi, ecx:	643
+shr eax, cl:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
 cmp dword ptr [esp+0x5c], 0x1:	663
 shr eax, cl:	519
+shr edx, cl:	519
 shr edx, 0x1:	583
+bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
@@ -2972,39 +3207,56 @@ bt edx, eax:	583
 cmp esi, dword ptr [edi+0x20]:	647
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp dl, 0xa:	659
 cmp esi, 0x2a:	663
 add edx, ebx:	643
 cmp dword ptr [ebp-0x94], esi:	647
-cmp eax, 0x20:	643
+cmp eax, 0x20:	647
 cmp eax, 0x20:	647
 cmp eax, 0x20:	643
 cmp eax, 0x20:	647
+cmp eax, 0x20:	643
+cmp eax, 0x20:	643
+cmp eax, 0x20:	647
+cmp dword ptr [ebp-0x9c], esi:	647
+neg edx:	647
+cmp eax, ecx:	647
 cmp eax, 0xfffff001:	535
 cmp edx, 0xfffffffd:	643
 cmp eax, 0xfffff001:	535
-add edi, edx:	531
-cmp dh, cl:	663
+sub eax, dword ptr [ebx-0x160]:	659
+add edi, edx:	535
+add edi, edx:	519
+add edi, edx:	535
+cmp dl, cl:	663
 cmp esi, dword ptr [esp+0x1c]:	659
 imul edx:	2563
 cmp eax, 0x40:	647
 cmp eax, 0xff:	659
 cmp eax, 0x49:	663
+cmp byte ptr [edx], cl:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	659
 shr esi, 0x1:	515
 cmp byte ptr [edx], cl:	663
 cmp ebp, dword ptr [esp+0x28]:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 shr esi, 0x1:	583
 cmp byte ptr [edx], cl:	663
 cmp eax, 0xff:	659
+cmp ebp, dword ptr [esp+0x28]:	659
 shr esi, 0x1:	519
 cmp byte ptr [edx], cl:	2695
 sbb eax, eax:	663
@@ -3013,17 +3265,21 @@ cmp byte ptr [edx], cl:	663
 cmp ebp, dword ptr [esp+0x28]:	659
 cmp byte ptr [edx], cl:	647
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 cmp byte ptr [edx], cl:	647
 sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	659
 cmp byte ptr [edx], cl:	643
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 shr esi, 0x1:	515
 cmp byte ptr [edx], cl:	647
 sbb eax, eax:	663
 cmp eax, 0x40:	647
 cmp eax, 0xff:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	659
@@ -3031,12 +3287,18 @@ shr esi, 0x1:	515
 cmp byte ptr [edx], cl:	647
 sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
+cmp byte ptr [edx], cl:	663
 cmp ebp, dword ptr [esp+0x28]:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 shr esi, 0x1:	583
 cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp eax, 0xff:	663
 cmp ebp, dword ptr [esp+0x28]:	659
 shr esi, 0x1:	519
 cmp byte ptr [edx], cl:	2695
@@ -3044,27 +3306,37 @@ sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	647
 cmp byte ptr [edx], cl:	663
 cmp ebp, dword ptr [esp+0x28]:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 shr esi, 0x1:	515
 imul edx:	2563
 imul edx:	2567
 cmp eax, 0x40:	647
 cmp eax, 0xff:	659
 cmp eax, 0x49:	663
+cmp byte ptr [edx], cl:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	659
 shr esi, 0x1:	515
 cmp byte ptr [edx], cl:	663
 cmp ebp, dword ptr [esp+0x28]:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 shr esi, 0x1:	583
 cmp byte ptr [edx], cl:	663
 cmp eax, 0xff:	659
+cmp ebp, dword ptr [esp+0x28]:	659
 shr esi, 0x1:	519
 cmp byte ptr [edx], cl:	2695
 sbb eax, eax:	663
@@ -3073,17 +3345,21 @@ cmp byte ptr [edx], cl:	663
 cmp ebp, dword ptr [esp+0x28]:	659
 cmp byte ptr [edx], cl:	647
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 cmp byte ptr [edx], cl:	647
 sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	659
 cmp byte ptr [edx], cl:	643
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 shr esi, 0x1:	515
 cmp byte ptr [edx], cl:	647
 sbb eax, eax:	663
 cmp eax, 0x40:	647
 cmp eax, 0xff:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	659
@@ -3091,12 +3367,18 @@ shr esi, 0x1:	515
 cmp byte ptr [edx], cl:	647
 sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
+cmp byte ptr [edx], cl:	663
 cmp ebp, dword ptr [esp+0x28]:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 shr esi, 0x1:	583
 cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp eax, 0xff:	663
 cmp ebp, dword ptr [esp+0x28]:	659
 shr esi, 0x1:	519
 cmp byte ptr [edx], cl:	2695
@@ -3104,57 +3386,46 @@ sbb eax, eax:	663
 cmp ebp, dword ptr [esp+0x28]:	647
 cmp byte ptr [edx], cl:	663
 cmp ebp, dword ptr [esp+0x28]:	659
+cmp byte ptr [edx], cl:	659
 sbb eax, eax:	663
+cmp ebp, dword ptr [esp+0x28]:	663
+cmp ebp, dword ptr [esp+0x28]:	663
 shr esi, 0x1:	515
 imul edx:	2567
 cmp edx, 0x2:	663
 cmp eax, 0x3:	659
+cmp eax, 0x3:	659
 cmp eax, 0x3:	663
 cmp edi, 0xc:	659
+cmp edx, ebp:	659
+cmp edx, ebp:	659
 cmp edx, ebp:	663
-rol ecx, 0x9:	519
-cmp eax, 0xfffff001:	515
-cmp eax, 0xfffff001:	519
-cmp eax, 0xfffff001:	535
-cmp eax, 0x58:	659
-cmp dl, cl:	663
-cmp dl, cl:	659
-add edi, ecx:	515
-add edi, ecx:	535
-cmp eax, 0xa00:	647
-cmp eax, 0xfffff000:	519
-cmp ecx, 0x7:	663
-cmp eax, 0xfffff000:	647
-cmp eax, 0xffffffff:	659
-cmp eax, 0xffffffff:	531
-cmp edi, 0xffffffff:	515
-cmp edi, 0xffffffff:	531
-cmp edi, 0xffffffff:	535
-cmp edi, 0xffffffff:	531
-cmp edi, 0xffffffff:	515
-cmp edi, 0xffffffff:	535
-cmp edi, 0xffffffff:	531
-cmp eax, 0xfffff001:	519
-cmp eax, 0xffffffff:	531
+cmp esi, dword ptr [esp+0x1c]:	663
+sub ebp, 0x4:	663
 shl ecx, 0x5:	515
-cmp dword ptr [esp+0x5c], 0x1:	663
+shl ecx, 0x5:	2695
+add edi, ecx:	515
+shl ecx, 0x5:	643
+shl ecx, 0x5:	647
+add edi, ecx:	2563
+shl ecx, 0x5:	2563
+shl ecx, 0x5:	2691
+add edi, ecx:	2567
+shl ecx, 0x5:	2695
+add edi, ecx:	519
+shl ecx, 0x5:	515
+shl ecx, 0x5:	2567
+add edi, ecx:	647
+add edi, ecx:	643
+shl ecx, 0x5:	519
 shr eax, cl:	519
-shr edx, cl:	515
-shr edx, 0x1:	519
+cmp dword ptr [esp+0x5c], 0x1:	663
+shr edx, cl:	519
+shr edx, 0x1:	583
 bt edx, eax:	583
 cmp dl, 0x2:	663
 cmp dl, 0xa:	659
+cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp cl, 0xa:	659
-cmp dword ptr [esi+0x20c], 0xffffffff:	531
-cmp dword ptr [ebp-0x20], ecx:	659
-cmp dword ptr [ebp-0x20], ecx:	663
-cmp esi, edx:	659
-cmp dword ptr [esi+0x20c], 0xffffffff:	535
-cmp dword ptr [ebp-0x20], ecx:	663
-cmp dword ptr [esi+0x20c], 0xffffffff:	531
-cmp dword ptr [ebp-0x1c], esi:	659
-cmp dword ptr [ebp-0x1c], esi:	663
-cmp edx, 0x8:	659
-cmp eax, 0xffffffff:	531
-cmp ebp, 0x2:	659
+rol edx, 0x9:	643

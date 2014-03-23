@@ -41,6 +41,7 @@ using namespace std;
 /* ===================================================================== */
 /* Global Variables */
 /* ===================================================================== */
+ofstream SignalFile;
 
 
 /* ===================================================================== */
@@ -50,9 +51,25 @@ using namespace std;
 
 /* ===================================================================== */
 
+
+//typedef BOOL(* LEVEL_PINCLIENT::INTERCEPT_SIGNAL_CALLBACK)(THREADID tid, INT32 sig, CONTEXT *ctxt, BOOL hasHandler, const EXCEPTION_INFO *pExceptInfo, VOID *v)
+    
+
+BOOL intercept_signal(THREADID tid, INT32 sig, CONTEXT *ctxt, BOOL hasHandler, const EXCEPTION_INFO *pExceptInfo, VOID *v)
+{
+    SignalFile << "[INTERCEPTED]\t" << sig << endl;
+    //SignalFile << EXCEPTION_INFO << endl;
+//print to 'signal.out', move signal.out to signal.#
+    return sig;
+}
+
+
 VOID Fini(INT32 code, VOID *v)
 {
+
     FiniStubble();
+    SignalFile.close();
+
 }
 
 /* ===================================================================== */
@@ -80,10 +97,14 @@ int main(int argc, char *argv[])
         return Usage();
     }
 
-    // Init functions for modules
+    // Init functions for modules and open recording files
     InitStubble();
+    SignalFile.open("signal.out");
 
     PIN_AddFiniFunction(Fini, 0);
+    
+    // Intercept segfault, signal 11
+    PIN_InterceptSignal(11, intercept_signal, 0);
 
     // Never returns
     PIN_StartProgram();
