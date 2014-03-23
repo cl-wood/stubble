@@ -51,15 +51,12 @@ ofstream SignalFile;
 
 /* ===================================================================== */
 
-
-//typedef BOOL(* LEVEL_PINCLIENT::INTERCEPT_SIGNAL_CALLBACK)(THREADID tid, INT32 sig, CONTEXT *ctxt, BOOL hasHandler, const EXCEPTION_INFO *pExceptInfo, VOID *v)
-    
-
 BOOL intercept_signal(THREADID tid, INT32 sig, CONTEXT *ctxt, BOOL hasHandler, const EXCEPTION_INFO *pExceptInfo, VOID *v)
 {
     SignalFile << "[INTERCEPTED]\t" << sig << endl;
-    //SignalFile << EXCEPTION_INFO << endl;
-//print to 'signal.out', move signal.out to signal.#
+//print to 'signal.out', move signal.out to results/signals/signal.#
+    SignalFile << PIN_ExceptionToString(pExceptInfo) << endl;
+
     return sig;
 }
 

@@ -52,10 +52,10 @@ add edx, ebx:	647
 cmp dl, 0xa:	659
 cmp ecx, 0x23:	663
 add edx, ebx:	647
-cmp esi, eax:	663
-cmp esi, eax:	663
-cmp esi, eax:	663
 cmp esi, eax:	659
+cmp esi, eax:	659
+cmp esi, eax:	659
+cmp esi, eax:	663
 cmp edx, 0x1e:	663
 add edx, ebx:	647
 add edx, ebx:	643
@@ -3029,7 +3029,6 @@ neg edx:	647
 cmp eax, ecx:	647
 cmp eax, 0xfffff001:	535
 sub dword ptr [ebp-0x90], 0x4:	663
-sub eax, dword ptr [ebp-0xa0]:	519
 cmp esi, dword ptr [ecx]:	643
 cmp dword ptr [esp+0x18], edx:	663
 cmp dword ptr [ebx+0x848], eax:	663
@@ -3226,7 +3225,7 @@ cmp eax, ecx:	647
 cmp eax, 0xfffff001:	535
 cmp edx, 0xfffffffd:	643
 cmp eax, 0xfffff001:	535
-sub eax, dword ptr [ebx-0x160]:	659
+sub eax, dword ptr [ebx-0x160]:	663
 add edi, edx:	535
 add edi, edx:	519
 add edi, edx:	535
@@ -3428,4 +3427,5 @@ cmp dl, 0xa:	659
 cmp al, 0x3:	659
 cmp al, 0x2:	663
 cmp cl, 0xa:	659
-rol edx, 0x9:	643
+rol ecx, 0x9:	643
+rol ecx, 0x9:	643

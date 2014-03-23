@@ -19,8 +19,8 @@ def test(inputFile, taintFile, seed = seed_value):
         '../pin/pin', 
         '-t', 'obj-ia32/MyPinTool.so', 
         #'--', '../vulnerable_programs/trivial/a.out', inputFile
-        '--', './a.out', inputFile
-        #'--', './simpleCrackme', inputFile
+        #'--', './a.out', inputFile
+        '--', './simpleCrackme', inputFile
         #'--', './simpleCrackme2', inputFile
         #'--', './simpleCrackme50', inputFile
         #'--', './strcpy', inputFile
