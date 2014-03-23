@@ -17,18 +17,17 @@
 \BOOKMARK [2][-]{subsection.2.7.1}{Dynamic Taint Analysis}{section.2.7}% 17
 \BOOKMARK [2][-]{subsection.2.7.2}{Symbolic Execution}{section.2.7}% 18
 \BOOKMARK [2][-]{subsection.2.7.3}{Mixed and Concolic Execution}{section.2.7}% 19
-\BOOKMARK [2][-]{subsection.2.7.4}{TODO Conversion to an Intermediate Representation}{section.2.7}% 20
-\BOOKMARK [0][-]{chapter.3}{Contributions}{}% 21
-\BOOKMARK [1][-]{section.3.1}{Automated Dynamic Slice Backsolving}{chapter.3}% 22
-\BOOKMARK [1][-]{section.3.2}{Design}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.3}{Implementation}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.4}{Challenges and Limitations}{chapter.3}% 25
-\BOOKMARK [1][-]{section.3.5}{Parallelization}{chapter.3}% 26
-\BOOKMARK [1][-]{section.3.6}{Testing}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.7}{Results}{chapter.3}% 28
-\BOOKMARK [0][-]{chapter.4}{Conclusions}{}% 29
-\BOOKMARK [1][-]{section.4.1}{Applications}{chapter.4}% 30
-\BOOKMARK [1][-]{section.4.2}{Future Work}{chapter.4}% 31
-\BOOKMARK [1][-]{section.4.3}{Lessons Learned}{chapter.4}% 32
-\BOOKMARK [0][-]{chapter.5}{References}{}% 33
-\BOOKMARK [0][-]{chapter*.5}{Biographical Sketch}{}% 34
+\BOOKMARK [0][-]{chapter.3}{Contributions}{}% 20
+\BOOKMARK [1][-]{section.3.1}{Automated Dynamic Slice Backsolving}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.2}{Design}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.3}{Implementation}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.4}{Challenges and Limitations}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.5}{Parallelization}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.6}{Testing}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.7}{Results}{chapter.3}% 27
+\BOOKMARK [0][-]{chapter.4}{Conclusions}{}% 28
+\BOOKMARK [1][-]{section.4.1}{Applications}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.2}{Future Work}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.3}{Lessons Learned}{chapter.4}% 31
+\BOOKMARK [0][-]{chapter.5}{References}{}% 32
+\BOOKMARK [0][-]{chapter*.5}{Biographical Sketch}{}% 33

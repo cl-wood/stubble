@@ -205,7 +205,7 @@ Microsoft's Scalable Automatic Guided Execution, or SAGE, is an example of a whi
 
 Because SAGE is propietary, the lack of detail about certain procedures raises questions. For instance, how does SAGE know when an instruction is new? There are a limited number of x86 instructions, which can be combined in an unlimited number of ways, which means it can be difficult to tell when a truly new instruction is executed, unless one keeps a directed cyclical graph of all explored instructions, and follows a run's progress down this graph during execution. In addition, problems integral to this work, such as code coverage and path explosion, must be addressed [Q].
 
-SAGE uses symbolic execution, and prunes paths taken with a propietary "generational search" algorithm. This algorithm prioritizes generating new test cases. It takes a set of all constraints and tries negating each constraint independently to generate a new test case. SAGE then symbolically re-executes the constraint set using TruScan [TODO CITE] [Q]. Similarly, s2e uses QEMU for instruction set emulation, and then appears to be a strong trend in white-box fuzzing. TODO ADV/DIS?
+SAGE uses symbolic execution, and prunes paths taken with a propietary "generational search" algorithm. This algorithm prioritizes generating new test cases. It takes a set of all constraints and tries negating each constraint independently to generate a new test case. SAGE then symbolically re-executes the constraint set using a trace analysis engine [Q]. Similarly, s2e uses QEMU for instruction set emulation, and then appears to be a strong trend in white-box fuzzing.
 
 In practice, because program termination is indeterminable, white box fuzzing could run forever. And since programs at Microsoft can easily exceed one million lines of code, with complex control flow structures, pointer manipulation, and other difficult to account for code constructs, SAGE employes several performance enhancing techniques to keep fuzzing practical and economical. Symbolically executed instructions and local constraints are cached, and unrelated constraint elimination rids the execution of contraints not related to the constraint under test. How this is determined is anyone's guess, since it is impossible to know which constraints are independent until one has explored all the code in a program. SAGE also employs a flip count limit, allowing only so many negations of a particular constraint [Q]. 
 
@@ -249,17 +249,12 @@ Similar to SimpIL [C], Kudzu tries to circumvent the issue of solving complicate
 
 %\section{TODO Mutation vs. Generation?}
 
-%TODO Peach Fuzzer does both, overview with pictures?
-
 %\section{TODO Local vs. Network}
 
 %Do you have access to the program you are fuzzing?
 
 
-%TODO add code examples
-%http://en.wikipedia.org/wiki/User_Datagram_Protocol#IPv4_Pseudo_Header
-%IDEA write c program to checksum UDP packets and say whether they pass or not, have fuzzer "correct" packets to pass arbitrary, user decided checksum.
-%update: probably will not work without noticeable modification, but could maybe notice the situation and reverse engineer the algorithm, then print it out or start making a lookup table?
+%TODO add code examples?
 
 \section{Taint-based Fuzzing}
 
@@ -269,21 +264,17 @@ The major impetus for this work is outlined in "A Taint Based Approach for Smart
 
 %TODO AEG [I]?
 
-While finding bugs of any sort enhances software by providing developers the opportunity to fix problems with their programs, finding bugs that lead to exploitable conditions are of special interest. A bug is exploitable if it allows adveraries to undermine confidentiality, integrity, or availability [CITE] via avenues such as information disclosure, denial of service, or remote execution of code. Because these bugs stand alone as a separate, particularly worrying class, efforts have been made to automate the process of proving whether an identified bug is also a vulnerability which can be exploited.
+While finding bugs of any sort enhances software by providing developers the opportunity to fix problems with their programs, finding bugs that lead to exploitable conditions are of special interest. A bug is exploitable if it allows adveraries to undermine confidentiality, integrity, or availability via avenues such as information disclosure, denial of service, or remote execution of code. Because these bugs stand alone as a separate, particularly worrying class, efforts have been made to automate the process of proving whether an identified bug is also a vulnerability which can be exploited.
 
 Mayhem, an exploitable bug-finding system, is an attempt to address this issue by exploring state space as efficiently as possible. The authors designed Mayhem to handle path explosion by monitoring system resources and balancing the need for concurrent exploration with the resources consumed by forking and running many processes. Mayhem accomplishes through hybrid symbolic execution, a technique which heuristically combines offline and online symbolic execution. Offline symbolic execution first runs a program concretely, instrumenting the process to gather information which will then be used by a separate symbolic execution engine. Online symbolic execution, instead, tries to explore the entire program symbolically by forking new processes at branches. [H]
 
 Mayhem improves fuzzing time performance by weaving between these two modes. It is implemented as a client-server architecture, with the client running code concretely and passing specific blocks to the server for symbolic execution. Only the server outputs results or further test cases to explore concretely. The client uses block-level dynamic taint analysis, passing control to the symbolic execution server when tainted branches or jumps are discovered. Mayhem modifies its behavior based on system memory constraints, beginning in online mode and switching to offline mode when a threshhold for memory resources is reached. Upon switching, Mayhem also saves checkpoints to save its work in an attempt to reduce exploring the same code twice. [H]
 
-TODO Mayhem techniques
-
 AEG required source code, where Mayhem needs access only a binary to execute. Mayhem is, however, limited to a subset of all system calls for the operating system it executes on. This is deliberate on the part of the authors, who reason that OS-wide symbolic execution introduces too much overhead. Of significance as an area of future research, Mayhem, and most other fuzzing technology explored, cannot reason about taint propagated through threading mechanisms [H].
 
 
-TODO similar to Automatic patch-based exploit generation is possible: Techniques and
+%TODO similar to Automatic patch-based exploit generation is possible: Techniques and
 implications, but mine doesn't require a patch?
-
-%\section{TODO Argos: 0-Day Emulator}
 
 %http://www.few.vu.nl/argos/?page=3
 
@@ -311,8 +302,6 @@ TaintScope implements DTA using PIN to instrument syscalls in binaries. PIN\_Add
 DTA is used to identify the so-called "hot bytes", which are then used as symbolic values later on, should test cases warrant further attention because of a crash or other interesting behavior. This strategy has netted TaintScope 27 new vulnerabilities across several different pieces of software, most of which operate on complicated file format specifications like PNG or PCAP files [T].
 
 \section{Intel Pin}
-
-% TODO check if mention Pin compiles from x86 to x86 adding pintool
 
 Heavyweight analysis techniques, like symbolic execution or dynamic taint analysis, which operate over an entire instruction set, must account for the idiosyncracies and diverse operations supported by the architecture. By leveraging a pre-existing framework like Intel Pin [M], new software can abstract away from architecture specific details like x86 variable length instructions and avoid re-inventing the wheel.
 
@@ -409,14 +398,6 @@ Concolic testing has been shown to improve runtime while still allowing both wid
 
 Koushik Sen defines concolic testing as combining "random tesing and symbolic execution to partly remove the limitations of random testing and symbolic execution based testing" [AB]. This differs from hybrid symbolic execution engines like Mayhem [H], which switch between different types of symbolic execution. Hybrid symbolic execution does not itself supplement fuzzing by adding concrete random values. Both imply a tradeoff between two types of analysis, however, and thus both, when implemented by different people, will differ in where they assign the tradeoff. Some concolic testing, for instance, will start with concrete values which are random, or NULLs for pointer values. After an execution, one of the symbolic constraints will be negated, to allow a new path to be explored, and the program will be run again with new random input [AB]. Various research aims to either use symbolic execution less [Q, R, X], pick better than random values [A], or pick better input bytes to give random values [A, E, T, AB].
 
-\subsection{TODO Conversion to an Intermediate Representation}
-
-Used in javascript fuzzer [AD]
-Used in [C].
-Mitigates dealing with side effects, done by PANDA.
-%http://www.cc.gatech.edu/~brendan/tzb_author.pdf
-%http://iris.lib.neu.edu/cgi/viewcontent.cgi?article=1097&context=elec_comp_theses
-
 \chapter{Contributions}
 
 %TODO this tech helps with complex file formats which mean you create shallow errors over and over again.
@@ -430,8 +411,6 @@ Once user input is captured and marked tainted, any memory accesses, loads and s
 INSERT COOL FIGURE
 
 The idea for this technique is raised in [A], which suggests using dynamic taint analysis to identify "hot bytes" of user input, which affect important things in a program, and also to generate backward slices [AA]. Hot bytes become the target of fuzzing, with backward slices providing valuable context to analysts. Our contribution is the realization of this idea for a subset of cases, and the automation of solving these slices. Our hope is that by solving these slices automatically, we can identify not only the exact location but also the relevant values of hot bytes. 
-
-we ignore ....loops, more TODO
 
 Our methodology focuses on following taint specifically up to tainted branches, to direct as much attention as possible to finding new paths to explore within the binary. This is of particular importance when source code is not available for analysis, which is common in vulnerability research. Compiled code can be disassembled or debugged, but compilation is a lossy process. Even industry de-compilers like Hex Rays cannot restore comments, since these are not preserved, and they cannot guarantee to reproduce the exact higher level language semantics, given only assembly language. Thus, our implementation relies on Intel Pin to dynamically disassemble compiled binaries.
 
@@ -453,8 +432,7 @@ We have implemented this technique in a proof of concept fuzzer, Stubble, which 
 
 \section{Design}
 
-TODO Stubble architecture, describe
-why intel pin and not dynamo rio, valgrind, etc.
+TODO why intel pin and not dynamo rio, valgrind, etc.
 
 Stubble consists of a pintool which implements DTA, and a Python driver which keeps track of test cases, input and output and segfaults recorded during execution, and employs dynamic slice backsolving to drive mutation using taint analyses provided by the DTA pintool. Pintools are arbitrary C++ which Pin compiles and inserts into a given binary during instrumentation. The driver accepts a valid x86 binary and a seed test case. From the seed test case, the driver runs the pintool on the binary with the seed test case as input. While the binary runs, the pintool notes when taint in introduced or removed from memory or from registers. If a memory location or a register is tainted, then any operations which move this data elsewhere or use this data in an operation spread taint to the appropriate areas. Moving untainted data into a previously tainted location removes taint from the system. For instance, if the eax register is tainted, then adding eax and ebx and storing the result in ebx will taint the ebx register. However, should an operation move the value of ebx to eax, then eax will no longer be tainted. 
 
@@ -568,8 +546,6 @@ In a traditional oracle attack, the adversary can derive a secret by testing one
 
 Secrets of length 1 to 50 were tested at regular intervals. It appears that, aside from some constant overhead, that test cases generated and time required to crack the binary rise linearly with password length as expected. The constant overhead is probably introduced from overtaint, which itself likely comes from dynamically linked libraries which are opened and read, and thereby mistakenly introduced as tainted input.
 
-TODO attacks which transform input first to show ability to backsolve
-
 \begin{figure}
 \caption{Secret Guessing Test Cases}
 \begin{tikzpicture}
@@ -638,32 +614,17 @@ TODO attacks which transform input first to show ability to backsolve
     		(40, 140)
     		(45, 157) 
     		(50, 172) 
-    }; 
-   
-% TODO find a way to label these
-
-
-    
-    
+    };     
 \end{axis}
 \end{tikzpicture}
 \end{figure}
 
-%\chapter{Old Contributions}
-
-%\section{Assumptions and Scoping}
-
-
-
-%TODO in above make sure can catch stderr segfaults, segfaults go to shell's stderr, also a signal, test this
-
+% TODO add these back in?
 %Current selective symbolic execution engines still appear to introduce significant overhead, between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others [J, K, L]. In contrast, basic block counting using Intel Pin, the framework we are leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for our proposed technique introduces greater levels of overhead, since we will be working at the instruction level instead of the basic block level, requiring more insertions for any given binary.
 
 %We are leveraging Intel PIN to perform dynamic binary instrumentation. We are testing dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, is such an example binary. 
 
 %There are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics, fuzzers tend to simply count loops and terminate after a set threshold is reached, and could be the subject of future research.
-
-% TODO We then plan to test against S2E and Peach Fuzzer [Z]. 
 
 %\section{Implementation}
 
