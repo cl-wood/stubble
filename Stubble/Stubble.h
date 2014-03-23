@@ -29,13 +29,18 @@ ofstream FlagsFile;
 /* Check instructions that modify EFLAGS                                 */
 /* ===================================================================== */
 // NOTE: this catches the initial change from EFLAGS is 0 to a valid EFLAGS, is it always 514?
-VOID ModifiesEflags(ADDRINT ins, INT32 branchTaken, string insDis, CONTEXT* context) {
+VOID ModifiesEflags(ADDRINT ins, string insDis, CONTEXT* context) {
 
     UINT32 tmp_flags = PIN_GetContextReg(context, REG_EFLAGS);
 
     //if (EFLAGS != tmp_flags && tmp_flags & XED_FLAG_df) {
-    if (EFLAGS != tmp_flags && tmp_flags & XED_FLAG_of) {
-        FlagsFile << insDis << ":\t" << PIN_GetContextReg(context, REG_EFLAGS) << endl;
+    if (EFLAGS != tmp_flags) {
+
+        // overflow, sign, zero, carry, and parity flags
+
+        if (tmp_flags & XED_FLAG_of) {
+            FlagsFile << insDis << ":\t" << PIN_GetContextReg(context, REG_EFLAGS) << endl;
+        }
 
         EFLAGS = tmp_flags;
     }
@@ -83,10 +88,7 @@ VOID Instructions(INS ins, VOID *v)
     else if (INS_HasFallThrough(ins) ) {
         INS_InsertCall(ins, IPOINT_AFTER, AFUNPTR(ModifiesEflags),
                        IARG_INST_PTR,
-                       IARG_BRANCH_TAKEN,
                        IARG_PTR, new string(INS_Disassemble(ins)),
-                       //IARG_PTR, new string(INS_Disassemble(last_instruction)),
-                       //IARG_REG_VALUE, REG_EFLAGS,      
                         IARG_CONST_CONTEXT,
                        IARG_END);
     }
