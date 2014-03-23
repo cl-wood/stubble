@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  23 MAR 2014 00:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  23 MAR 2014 14:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -862,12 +862,12 @@ File: lstlang3.sty 2004/09/05 1.3 listings language file
 Chapter 4.
 [32
 
-]
+] [33]
 Chapter 5.
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
-[33
+[34
 
 ]
 Missing character: There is no Ã in font cmr10!
@@ -875,8 +875,8 @@ Missing character: There is no ¸ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
- [34]
-Overfull \hbox (129.02113pt too wide) in paragraph at lines 731--732
+ [35]
+Overfull \hbox (129.02113pt too wide) in paragraph at lines 735--736
 []\OT1/cmr/m/n/10.95 Mozilla De-vel-oper Net-work. https://developer.mozilla.or
 g/en-US/docs/Web/JavaScript/Reference/Global[]Objects/eval 
  []
@@ -885,31 +885,44 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
 
-Overfull \hbox (8.63889pt too wide) in paragraph at lines 741--742
+Overfull \hbox (8.63889pt too wide) in paragraph at lines 745--746
 []\OT1/cmr/m/n/10.95 http://www.forbes.com/sites/andygreenberg/2012/03/23/shopp
 ing-for-zero-days-an-price-list-
  []
 
-[35] [36] [37
+[36]
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+ [37] [38
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 777.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 777.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 782.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 782.
  (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 777.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 777.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 782.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 782.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: E518E91ECE4E051ABCF7437AFBD59B2F;2115.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 777.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 782.
  ) 
 Here is how much of TeX's memory you used:
- 25190 strings out of 493315
- 572748 string characters out of 6137904
- 744149 words of memory out of 5000000
+ 25191 strings out of 493315
+ 572755 string characters out of 6137904
+ 744664 words of memory out of 5000000
  28091 multiletter control sequences out of 15000+600000
  8839 words of font info for 32 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 63i,11n,74p,1844b,1762s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,11n,74p,1957b,1762s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -920,10 +933,10 @@ ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
 l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on paper.pdf (42 pages, 210198 bytes).
+Output written on paper.pdf (43 pages, 213066 bytes).
 PDF statistics:
- 461 PDF objects out of 1000 (max. 8388607)
- 402 compressed objects within 5 object streams
- 111 named destinations out of 1000 (max. 500000)
+ 466 PDF objects out of 1000 (max. 8388607)
+ 406 compressed objects within 5 object streams
+ 112 named destinations out of 1000 (max. 500000)
  285 words of extra memory for PDF output out of 10000 (max. 10000000)
 

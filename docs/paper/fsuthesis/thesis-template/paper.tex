@@ -552,7 +552,7 @@ However, we have seen runs as high as ~13 seconds elapsed. Since our testing env
 
 To test stubble's ability to find new paths to explore in a given binary, programs were written in C, which opened a user-specified file and read several hundred bytes, then compared a subset of these bytes with a secret. The binary printed a success condition only if all bytes in user input were observed to be identical to its secret. Input to stubble consists of the binary in question and a seed input file. Input files were guaranteed to work appropriately (not crash the binary), but did not contain any signficant portion of the secret. Since the secret was multi-byte and random, it is possible that the input files contained small subsets of the secret.
 
-This bears a strong resemblance to the classic oracle attack in cryptography. Note as mentioned above, that stubble would be unable to reason effectively about cryptographic hashes or encryption because of properties like one-way functions and the avalanche effect.
+This bears a strong resemblance to the classic oracle attack in cryptography. Consider that incorrect guesses drive execution down one of many losing paths. If an attacker can discover new paths, decide how to get to them, and continue to drive closer and closer to the goal in a timely fashion, then they are effectively exploring new paths in a similar way to how we want a fuzzer to act. Namely, they continuously find and explore new code in the executable, testing over and over for some condition of interest. Note as mentioned above, that stubble would be unable to reason effectively about cryptographic hashes or encryption because of properties like one-way functions and the avalanche effect. Likewise, checksum, hashing, and encryption aware fuzzing is another, orthogonal topic of interest [T].
 
 In a traditional oracle attack, the adversary can derive a secret by testing one character at a time. This means an attacker can expect success within $\frac{mn}{2}$ tries on average, where m is the number of character possiblities and n is the length of the secret. Dumb fuzzers, which are unable to reason about the execution paths in a binary, do much worse by mutating random bytes and hoping to hit upon the secret by chance. This strategy can expect success within $\frac{m^n}{2}$ tries on average, since m-many possibilities must be tested for each byte in the secret independently. Stubble performs similarly to an attacker with access to an oracle, although because execution slices are backsolved its time complexity has a smaller constant than $\frac{m}{2}$. The expected number of tries is linear with secret length, as with an oracle attack, but stubble requires roughly two tries per byte, instead of having to test for all possible m.
 
@@ -680,17 +680,21 @@ TODO attacks which transform input first to show ability to backsolve
 
 \section{Applications}
 
+Some of the work involved in creating and testing Stubble feels spiritually similar to Netzob, a protocol reverse engineering tool which actively and passively infers protcol grammars and state machines [AQ]. Dynamic slice backsolving could be used to reverse engineer an unknown protcol by driving execution down increasingly newer and deeper paths. In order to do this, we must, by definition, more closely approximate valid input with each run, eventually mutating from random bytes to a valid protocol input.
+
 TODO ways this technique could be used.
 TODO talk about why parallelization is good.
 
 \section{Future Work}
 
-TODO instrument C library routines like strcpy and strcmp.
-% New types of user input like command line arguments. Can get at argv by passing it directly to driver?
+Significant care has already been invested to keep Stubble easy to understand and maintain. Continuing to expand Stubble's functionality and developing it into a mature fuzzer is the long term goal. In order for Stubble to be useful to analysts, it must support the Windows operating system, more system calls and C library routines, and more vectors for user input. Intel Pin supports Windows, so in theory Stubble is compatible as well. In practice, Stubble currently makes assumptions about compilation and operating systems internals which are appropriate for Linux. In future development, these would be moved to a Linux branch, and a Windows branch would be forked, with common code re-used between the two. Stubble also only instruments the read syscall. Its features would need to be greatly expanded to handle both more relevant Linux system calls and their Windows equivalents. In addition, some system calls not only return success statuses, but also have side effects, which must be accounted for [C]. Lastly, the only input vector captured by Stubble currently is a read on a user supplied input file. There are many other ways taint could be introduced into a program, such as command line arguments, stdin, and input devices like keyboards and mice. Accurately recording alternative sources of user input has proved difficult. For example, command line arguments in Linux are pushed onto the stack before the main routine is called. If we instrument the main routine, we avoid catching all sorts of noisy reads on files that are unlikely to introduce taint, like system libraries. However, this makes argv inaccessible. Instrumenting the entire binary, dynamically loaded libraries and all, grabs argv, but introduces lots of noise. Better semantic for differentiating between noise and signal will be a necessity, for instance by maintaining a hardcoded list of names and sizes of standard libraries, so that they can be ignored.
+
+TODO Even without reading system resources, there appears to be an issue of overtainting in Stubble's implementation.
+
 
 \section{Lessons Learned}
 
-TODO overtainting, naive implementations had lots of it.
+TODO learned about OS internals
 TODO difficulties with implementation
 
 
@@ -740,6 +744,7 @@ TODO difficulties with implementation
 	\item [AN] http://www.pwn2own.com/, http://www.pwn2own.com/2014/03/pwn2own-2014-lineup/
 	\item [AO] http://www.forbes.com/sites/andygreenberg/2012/03/23/shopping-for-zero-days-an-price-list-for-hackers-secret-software-exploits/
 	\item [AP] Braden, R., Borman, D., and C. Partridge, "Computing the Internet checksum", RFC 1071, September 1988.
+	\item [AQ] Bossert, Georges, Frédéric Guihéry, and Guillaume Hiet. "Netzob: un outil pour la rétro-conception de protocoles de communication." Actes du Symposium sur la sécurité des technologies de l'information et des communications. 2012.
 
 \end{itemize}
 
