@@ -112,10 +112,13 @@
 %\end{dedication}
 
 \begin{acknowledgments}
-SFS
-%Zhi Wang
+%Zhi Wang, for mentoringship, research, paper writing, sounding board
+
+SFS, for the generous funding, mentoring, networking opportunities which have given me the opportunity to study computer science. Specifically my co-principal investigators, Mike Burmester and Xiuwen Liu.
+
 %Bret Whissel
-% Salwan
+Jonathan Salwan, for his pintool code examples.
+
 \end{acknowledgments}
 
 \tableofcontents
@@ -173,7 +176,7 @@ Our technique, automated dynamic slice backsolving, uses dynamic taint analysis 
 
 The inspiration for this technique comes mainly from "A Taint Based Approach for Smart Fuzzing", which proposes a fuzzing tool architecture, involving vulnerability detection, followed by taint analysis based upon found vulnerabilities, which drives the generation of intelligent tests. Dynamic taint analysis tracks which bytes of user input are important in the binary, and these so-called "hot bytes" are made the focus of fuzzing attempts. The paper mentions it is valuable to be able to generate backward slices of program traces. These traces can then be run and analyzed by programmers. In the spirit of automation, our work not only generates backward slices based on taint propagation, but also automatically solves these traces to find new byte values. Thus, for a subset of programs, we can determine not only the exact location of user input which determines a branch condition, but also generate precise values for both branch and non-branch cases.
 
-We have implemented this technique in a proof of concept fuzzer, Stubble, which operates on x86 programs. Stubble dynamically instruments binaries, and automatically generates test files which exercise new paths in the input program. Program input, output, and interesting conditions like segfaults are recorded during execution, and taint propagation is recorded from user input sources to branch sinks. When a tainted branch is found, stubble automically backsolves the execution slice and generates a new test case which will drive the program down the opposite path explored in the current execution. 
+We have implemented this technique in a proof of concept fuzzer, Stubble, which operates on x86 programs. Stubble dynamically instruments binaries, and automatically generates test files which exercise new paths in the input program. Program input, output, and interesting conditions like segmentation fault signals are recorded during execution, and taint propagation is recorded from user input sources to branch sinks. When a tainted branch is found, stubble automically backsolves the execution slice and generates a new test case which will drive the program down the opposite path explored in the current execution. 
 
 To test Stubble's ability to dynamically discover new branches and generate test cases which will drive future runs down these new branches, we have designed several binaries which receive user input in the form of a file. These binaries open and read the file, comparing a subset of the file contents against a secret. If the file contains the secret, then a win condition is printed, otherwise a lose condition is printed. For the proof of concept, this win condition could be thought of as a segfault, or other interesting condition that suggests an exploitable condition exists. We show that stubble is able to discover all paths in the binary, particularly the interesting paths involving the win condition, without any prior knowledge of the secret. Stubble works similarly to an oracle attack, able to discover one character within the secret per run, and preserve work across runs to crack the secret in O(n) tests, where n is the secret length in characters. In contrast, random byte fuzzers, which exhaustively test all user input bytes which their model declares valid, run indefinitely and have no guarantee of discovering the win condition. We also present a key observation for improving path exploration in the x86 architecture, namely the finite number of conditional branch statements and instructions which modify the flags which branch statements use. Targetting these instructions specifically pays dividends. Lastly, we have also parallelized Stubble at the process level, allowing for an arbitrary number of independent bytes to be reasoned about concurrently. We believe automated dynamic slice backsolving is a reasonable complementary technique to dynamic taint analysis and symbolic execution for binary fuzzing, and that stubble provides a valuable proof of concept for future research into smart fuzzers.
 
@@ -453,7 +456,7 @@ We have implemented this technique in a proof of concept fuzzer, Stubble, which 
 TODO Stubble architecture, describe
 why intel pin and not dynamo rio, valgrind, etc.
 
-Stubble consists of a pintool which implements DTA, and a Python driver which keeps track of test cases, input and output recorded during execution, and employs dynamic slice backsolving to drive mutation using taint analyses provided by the DTA pintool. Pintools are arbitrary C++ which Pin compiles and inserts into a given binary during instrumentation. The driver accepts a valid x86 binary and a seed test case. From the seed test case, the driver runs the pintool on the binary with the seed test case as input. While the binary runs, the pintool notes when taint in introduced or removed from memory or from registers. If a memory location or a register is tainted, then any operations which move this data elsewhere or use this data in an operation spread taint to the appropriate areas. Moving untainted data into a previously tainted location removes taint from the system. For instance, if the eax register is tainted, then adding eax and ebx and storing the result in ebx will taint the ebx register. However, should an operation move the value of ebx to eax, then eax will no longer be tainted. 
+Stubble consists of a pintool which implements DTA, and a Python driver which keeps track of test cases, input and output and segfaults recorded during execution, and employs dynamic slice backsolving to drive mutation using taint analyses provided by the DTA pintool. Pintools are arbitrary C++ which Pin compiles and inserts into a given binary during instrumentation. The driver accepts a valid x86 binary and a seed test case. From the seed test case, the driver runs the pintool on the binary with the seed test case as input. While the binary runs, the pintool notes when taint in introduced or removed from memory or from registers. If a memory location or a register is tainted, then any operations which move this data elsewhere or use this data in an operation spread taint to the appropriate areas. Moving untainted data into a previously tainted location removes taint from the system. For instance, if the eax register is tainted, then adding eax and ebx and storing the result in ebx will taint the ebx register. However, should an operation move the value of ebx to eax, then eax will no longer be tainted. 
 
 In addition, whenever stubble encounters an instruction that modifies the EFLAGS register, such as the cmp instruction, it is checked to see whether either of the operands is tainted. When this is the case, user input has some level of control over the EFLAGS register, so the appropriate flag in the register is marked tainted. When a conditional jump instruction is reached, the corresponding flag of which is tainted, stubble begins to backsolve with the goal of providing a test case to explore the other side of the branch. After an execution it publishes input, output, taint, and mutation data to the driver, which reasons about possible user input locations and values one byte at a time. This means when branch decisions are determined by comparisons at the byte level, the fuzzer can guarantee a new path is taken, provided it can accurately backsolve information about the transformations performed on the byte.
 
@@ -478,9 +481,10 @@ This is made possible by a key observation about the x86 architecture. There are
     \node [cloud, right of=driver, node distance=3cm] (test case) {test case};
     \node [block, below of=driver, node distance=4cm] (Pintool) {Pintool};
     
-    \node [block, left of=Pintool, node distance=4cm] (input) {input/};    
-    \node [block, below of=Pintool, below of=input, node distance=2cm] (output) {output/};
-    \node [block, right of=output, node distance=4cm] (explored) {explored/};
+    %\node [block, left of=Pintool, node distance=4cm] (input) {input/};    
+    %\node [block, below of=Pintool, below of=input, node distance=2cm] (output) {output/};
+    %\node [block, right of=output, node distance=4cm] (explored) {explored/};
+	\node [block, left of=Pintool, node distance=4cm] (results) {results};    
     
     \node [decision, right of=Pintool, node distance=4cm] (decide) {More taint to explore?};
     \node [block, right of=decide, node distance=4cm] (mutate) {mutate};
@@ -488,16 +492,17 @@ This is made possible by a key observation about the x86 architecture. There are
     
     % Draw edges
     \path [line] (driver) -- (Pintool);
-    \path [line] (Pintool) -- (input);
-    \path [line] (Pintool) -- (output);
-    \path [line] (Pintool) -- (explored);
+    %\path [line] (Pintool) -- (input);
+    %\path [line] (Pintool) -- (output);
+    %\path [line] (Pintool) -- (explored);
+	\path [line] (Pintool) -- (results);    
     \path [line] (Pintool) -- (decide);
     \path [line] (decide) -- node {yes} (mutate);
     \path [line] (mutate) |- (test case);
     \path [line] (decide) -- node {no}(stop);
     \path [line,dashed] (binary) -- (driver);
     \path [line,dashed] (test case) -- (driver);
-    \path [line, dashed] (explored) -- (decide);
+    %\path [line, dashed] (explored) -- (decide);
 
 \end{tikzpicture}
 
@@ -514,6 +519,9 @@ TODO
 Pintool, python specifics. Binarys, RE
 how i implemented DTA
 Pin's API
+
+While finding and executing new code paths is valuable, a fuzzer without a vulnerability condition to monitor for cannot convey meaningful information to an analyst. There are many  ways to detect the presence of a possibly exploitable bug, such as watching for tainted data reaching the instruction pointer, or watching program output for strings that suggest error conditions. Since program output is saved after each run, this is one possible way to detect vulnerabilities with Stubble, however, we specifically wanted to catch segmentation faults, since these are often raised when data corrupts pointers or overflows buffers or stack frames. Stubble monitors for segfaults using the Pin API. A signal-intercepting callback function for signal number 11, segmentation fault, is registered before execution is handed off to the fuzzed program. When a segfault occurs, information about the exception is made recorded and published in the signals/ directory.
+
 
 \section{Challenges and Limitations}
 
@@ -560,7 +568,6 @@ In a traditional oracle attack, the adversary can derive a secret by testing one
 
 Secrets of length 1 to 50 were tested at regular intervals. It appears that, aside from some constant overhead, that test cases generated and time required to crack the binary rise linearly with password length as expected. The constant overhead is probably introduced from overtaint, which itself likely comes from dynamically linked libraries which are opened and read, and thereby mistakenly introduced as tainted input.
 
-(TODO time smaller oracle attacks)
 TODO attacks which transform input first to show ability to backsolve
 
 \begin{figure}
@@ -577,15 +584,14 @@ TODO attacks which transform input first to show ability to backsolve
     ymajorgrids=true,
     grid style=dashed,
 ]
- 
+   
 \addplot[
     color=blue,
     mark=square,
     ]
     coordinates {
     		(1,17)
-    		(4,20)
-    		(7,26)
+    		(5,26)
     		(10,28)
     		(15,38)
     		(20, 45)
@@ -611,7 +617,7 @@ TODO attacks which transform input first to show ability to backsolve
     xmin=0, xmax=55,
     ymin=10, ymax=200,
     xtick={0,10,20,30,40,50},
-    ytick={0,20,30,40,50,60,80,100,120,140,160,180,200},
+    ytick={0,20,40,60,80,100,120,140,160,180,200},
     ymajorgrids=true,
     grid style=dashed,
 ]
@@ -621,12 +627,11 @@ TODO attacks which transform input first to show ability to backsolve
     mark=square,
     ]
     coordinates {
-    		(1,0) % TODO time these first couple
-    		(4,0)
-    		(7,0)
-    		(10,0)
-    		(15,0)
-    		(20, 0)
+    		(1,19)
+    		(5,30)
+    		(10,31)
+    		(15,45)
+    		(20, 53)
     		(25, 101) 
     		(30, 112)
     		(35, 129) 
@@ -634,6 +639,12 @@ TODO attacks which transform input first to show ability to backsolve
     		(45, 157) 
     		(50, 172) 
     }; 
+   
+% TODO find a way to label these
+
+
+    
+    
 \end{axis}
 \end{tikzpicture}
 \end{figure}
@@ -779,7 +790,7 @@ TODO difficulties with implementation
 % \bibliography{myrefs}
 
 \begin{biosketch}
-Clark Wood is a Scholarship for Service recipient studying computer science at Florida State University. His research and interests focus on information security.
+Clark Wood is a Scholarship for Service recipient studying computer science at Florida State University. His research interests include reverse engineering, cryptography, networking and their intersection.
 \end{biosketch}
 
 \end{document}
