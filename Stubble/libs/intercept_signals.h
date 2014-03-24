@@ -54,12 +54,13 @@ ofstream SignalFile;
 
 /* ===================================================================== */
 
+
+// TODO print to 'signals.out', move signals.out to results/signals/signals.#
 BOOL intercept_signals(THREADID tid, INT32 sig, CONTEXT *ctxt, BOOL hasHandler, const EXCEPTION_INFO *pExceptInfo, VOID *v)
 {
-    SignalFile << "[INTERCEPTED]\t" << sig << endl;
-//print to 'signal.out', move signal.out to results/signals/signal.#
-    SignalFile << PIN_ExceptionToString(pExceptInfo) << endl;
 
+    SignalFile << "[INTERCEPTED]\t" << sig << endl;
+    SignalFile << PIN_ExceptionToString(pExceptInfo) << endl;
     return sig;
 }
 
@@ -67,10 +68,40 @@ BOOL intercept_signals(THREADID tid, INT32 sig, CONTEXT *ctxt, BOOL hasHandler, 
 VOID init_intercept_signals()
 {
 
-    SignalFile.open(results_dir + "signal.out");
+    SignalFile.open(results_dir + "signals.out");
 
-    // Intercept segfault, signal 11
-    PIN_InterceptSignal(11, intercept_signals, 0);
+    // Two signals we can't intercept, sigkill and sigstop
+    PIN_InterceptSignal(1, intercept_signals, 0);
+    PIN_InterceptSignal(2, intercept_signals, 0);
+    PIN_InterceptSignal(3, intercept_signals, 0);
+    PIN_InterceptSignal(4, intercept_signals, 0);
+    PIN_InterceptSignal(5, intercept_signals, 0);
+    PIN_InterceptSignal(6, intercept_signals, 0);
+    PIN_InterceptSignal(7, intercept_signals, 0);
+    PIN_InterceptSignal(8, intercept_signals, 0);
+    //PIN_InterceptSignal(9, intercept_signals, 0); // sigkill, can't handle
+    PIN_InterceptSignal(10, intercept_signals, 0);
+    PIN_InterceptSignal(11, intercept_signals, 0); // segfault
+    PIN_InterceptSignal(12, intercept_signals, 0);
+    PIN_InterceptSignal(13, intercept_signals, 0);
+    PIN_InterceptSignal(14, intercept_signals, 0);
+    PIN_InterceptSignal(15, intercept_signals, 0);
+    PIN_InterceptSignal(16, intercept_signals, 0);
+    PIN_InterceptSignal(17, intercept_signals, 0);
+    PIN_InterceptSignal(18, intercept_signals, 0);
+    PIN_InterceptSignal(19, intercept_signals, 0);
+    PIN_InterceptSignal(20, intercept_signals, 0);
+    PIN_InterceptSignal(21, intercept_signals, 0);
+    PIN_InterceptSignal(22, intercept_signals, 0);
+    //PIN_InterceptSignal(23, intercept_signals, 0); // sigstop, can't handle
+    PIN_InterceptSignal(24, intercept_signals, 0);
+    PIN_InterceptSignal(25, intercept_signals, 0);
+    PIN_InterceptSignal(26, intercept_signals, 0);
+    PIN_InterceptSignal(27, intercept_signals, 0);
+    PIN_InterceptSignal(28, intercept_signals, 0);
+    PIN_InterceptSignal(29, intercept_signals, 0);
+    PIN_InterceptSignal(30, intercept_signals, 0);
+    PIN_InterceptSignal(31, intercept_signals, 0);
 
 }
 

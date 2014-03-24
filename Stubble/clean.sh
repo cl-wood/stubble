@@ -4,5 +4,5 @@
 #rm -f buffer.out.*
 #cp fileLose.txt inputFile.txt
 #echo > taint/explored.0
-rm -f ./results/currentrun/*
+rm -f ./results/currentrun/*.out
 
