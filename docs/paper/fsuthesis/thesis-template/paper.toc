@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {2.1}Microsoft SAGE}{6}{section.2.1}
 \contentsline {section}{\numberline {2.2}Fuzzing Web Applications}{7}{section.2.2}
 \contentsline {section}{\numberline {2.3}Taint-based Fuzzing}{10}{section.2.3}
-\contentsline {section}{\numberline {2.4}TODO Mayhem, AEG, Exploitable Bugs}{10}{section.2.4}
+\contentsline {section}{\numberline {2.4}Mayhem, Exploitable Bugs}{10}{section.2.4}
 \contentsline {section}{\numberline {2.5}Checksum-Aware Fuzzing}{11}{section.2.5}
 \contentsline {section}{\numberline {2.6}Intel Pin}{13}{section.2.6}
 \contentsline {section}{\numberline {2.7}Techniques}{14}{section.2.7}
@@ -20,8 +20,7 @@
 \contentsline {section}{\numberline {3.2}Design}{25}{section.3.2}
 \contentsline {section}{\numberline {3.3}Implementation}{27}{section.3.3}
 \contentsline {section}{\numberline {3.4}Challenges and Limitations}{29}{section.3.4}
-\contentsline {section}{\numberline {3.5}Testing}{29}{section.3.5}
-\contentsline {section}{\numberline {3.6}Results}{29}{section.3.6}
+\contentsline {section}{\numberline {3.5}Results}{29}{section.3.5}
 \contentsline {chapter}{\numberline {4}Conclusions}{32}{chapter.4}
 \contentsline {section}{\numberline {4.1}Applications}{32}{section.4.1}
 \contentsline {section}{\numberline {4.2}Future Work}{32}{section.4.2}

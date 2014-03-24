@@ -10,7 +10,7 @@
 \BOOKMARK [1][-]{section.2.1}{Microsoft SAGE}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.2}{Fuzzing Web Applications}{chapter.2}% 11
 \BOOKMARK [1][-]{section.2.3}{Taint-based Fuzzing}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.4}{TODO Mayhem, AEG, Exploitable Bugs}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.4}{Mayhem, Exploitable Bugs}{chapter.2}% 13
 \BOOKMARK [1][-]{section.2.5}{Checksum-Aware Fuzzing}{chapter.2}% 14
 \BOOKMARK [1][-]{section.2.6}{Intel Pin}{chapter.2}% 15
 \BOOKMARK [1][-]{section.2.7}{Techniques}{chapter.2}% 16
@@ -22,10 +22,9 @@
 \BOOKMARK [1][-]{section.3.2}{Design}{chapter.3}% 22
 \BOOKMARK [1][-]{section.3.3}{Implementation}{chapter.3}% 23
 \BOOKMARK [1][-]{section.3.4}{Challenges and Limitations}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.5}{Testing}{chapter.3}% 25
-\BOOKMARK [1][-]{section.3.6}{Results}{chapter.3}% 26
-\BOOKMARK [0][-]{chapter.4}{Conclusions}{}% 27
-\BOOKMARK [1][-]{section.4.1}{Applications}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.2}{Future Work}{chapter.4}% 29
-\BOOKMARK [0][-]{chapter.5}{References}{}% 30
-\BOOKMARK [0][-]{chapter*.5}{Biographical Sketch}{}% 31
+\BOOKMARK [1][-]{section.3.5}{Results}{chapter.3}% 25
+\BOOKMARK [0][-]{chapter.4}{Conclusions}{}% 26
+\BOOKMARK [1][-]{section.4.1}{Applications}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.2}{Future Work}{chapter.4}% 28
+\BOOKMARK [0][-]{chapter.5}{References}{}% 29
+\BOOKMARK [0][-]{chapter*.5}{Biographical Sketch}{}% 30

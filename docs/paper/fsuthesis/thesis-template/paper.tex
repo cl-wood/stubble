@@ -265,16 +265,11 @@ Similar to SimpIL [C], Kudzu tries to circumvent the issue of solving complicate
 
 %Do you have access to the program you are fuzzing?
 
-
-%TODO add code examples?
-
 \section{Taint-based Fuzzing}
 
 The major impetus for this work is outlined in "A Taint Based Approach for Smart Fuzzing". This paper proposes a fuzzing tool architecture, involving vulnerability detection, followed by taint analysis based upon found vulnerabilities, which drives the generation of intelligent tests. As tests are run they are checked to ensure they provide adequate code coverage, and results are carefully monitored for interesting situations like crashes [A]. The paper also serves as an excellent explanation of the current state and future of fuzzing. In particular, they suggest combining taint analysis with backward slicing. The technique discussed in this paper boils down to an attempt to automatically solve slices like those introduced in [AA], which have been derived from taint analysis as much as possible.
 
-\section{TODO Mayhem, AEG, Exploitable Bugs}
-
-%TODO AEG [I]?
+\section{Mayhem, Exploitable Bugs}
 
 While finding bugs of any sort enhances software by providing developers the opportunity to fix problems with their programs, finding bugs that lead to exploitable conditions are of special interest. A bug is exploitable if it allows adveraries to undermine confidentiality, integrity, or availability via avenues such as information disclosure, denial of service, or remote execution of code. Because these bugs stand alone as a separate, particularly worrying class, efforts have been made to automate the process of proving whether an identified bug is also a vulnerability which can be exploited.
 
@@ -282,11 +277,10 @@ Mayhem, an exploitable bug-finding system, is an attempt to address this issue b
 
 Mayhem improves fuzzing time performance by weaving between these two modes. It is implemented as a client-server architecture, with the client running code concretely and passing specific blocks to the server for symbolic execution. Only the server outputs results or further test cases to explore concretely. The client uses block-level dynamic taint analysis, passing control to the symbolic execution server when tainted branches or jumps are discovered. Mayhem modifies its behavior based on system memory constraints, beginning in online mode and switching to offline mode when a threshhold for memory resources is reached. Upon switching, Mayhem also saves checkpoints to save its work in an attempt to reduce exploring the same code twice. [H]
 
-AEG required source code, where Mayhem needs access only a binary to execute. Mayhem is, however, limited to a subset of all system calls for the operating system it executes on. This is deliberate on the part of the authors, who reason that OS-wide symbolic execution introduces too much overhead. Of significance as an area of future research, Mayhem, and most other fuzzing technology explored, cannot reason about taint propagated through threading mechanisms [H].
+AEG [I], a previous work into automatically generating exploits given an exploitable condition, required source code, where Mayhem needs access only a binary to execute. Mayhem is, however, limited to a subset of all system calls for the operating system it executes on. This is deliberate on the part of the authors, who reason that OS-wide symbolic execution introduces too much overhead. Of significance as an area of future research, Mayhem, and most other fuzzing technology explored, cannot reason about taint propagated through threading mechanisms [H].
 
 
-%TODO similar to Automatic patch-based exploit generation is possible: Techniques and
-implications, but mine doesn't require a patch?
+%TODO similar to Automatic patch-based exploit generation is possible: Techniques and implications, but mine doesn't require a patch?
 
 %http://www.few.vu.nl/argos/?page=3
 
@@ -331,7 +325,7 @@ This research leverages Pin to instrument arbitrary binaries at the instruction 
 
 \section{Techniques}
 
-Several valuable techniques for improving fuzzers' code coverage have evolved over the years. Two, in particular, inspire this work directly: Dynamic Taint Analysis and Symbolic Execution. Dynamic Taint Analysis, or DTA, provides valuable information for guided fuzzing. Symbolic execution improves code coverage by first running a program concretely to gather constraints on a particular element, then executes the program symbolically, giving these constraints over to some kind of SMT solver [CITE] to solve for what value the element should have under certain conditions. Concolic execution, which has spawned out of the desire to use symbolic execution more wisely due to performance constraints, aims for reasonable runtimes while maintaining good code coverage. These each come with their own drawbacks, a primary one of which is the lack of automated instrumentation. Historically, any amount of symbolic execution required a programmer to directly instrument source code, leading much current research to focus on automating as much as possible.
+Several valuable techniques for improving fuzzers' code coverage have evolved over the years. Two, in particular, inspire this work directly: Dynamic Taint Analysis and Symbolic Execution. Dynamic Taint Analysis, or DTA, provides valuable information for guided fuzzing. Symbolic execution improves code coverage by first running a program concretely to gather constraints on a particular element, then executes the program symbolically, giving these constraints over to some kind of SMT solver to solve for what value the element should have under certain conditions. Concolic execution, which has spawned out of the desire to use symbolic execution more wisely due to performance constraints, aims for reasonable runtimes while maintaining good code coverage. These each come with their own drawbacks, a primary one of which is the lack of automated instrumentation. Historically, any amount of symbolic execution required a programmer to directly instrument source code, leading much current research to focus on automating as much as possible.
 
 \subsection{Dynamic Taint Analysis}
 
@@ -346,7 +340,7 @@ In [C], the authors summarize dynamic taint analysis and symbolic execution and 
 	\item what parts of the program have become tainted as a result
 \end{itemize}
 
-We can record taint at varying levels of granularity, with the tradeoff of finer-grained taint requiring greater system resources and slowing down analysis. Different types of taint may be more interesting to different kinds of fuzzers because different input comes from sources of varying trustedness [C]. For instance, we should probably trust raw, unsanitized user input we have read less than we trust a configuration file that only privileged users can modify. Both might be read in as input to a program, but the former is much more likely to contain malicious data like shellcode trying to exploit a vulnerability. Fuzzers have continued to drill down into finer and finer levels of granularity, from assigning everything with a generic binary value of tainted/not tainted to byte and even bit-level marking of which part of user input affected which variable. [CITE] [C] Note that this also expands taint's data type from a bit to something larger, and each tainted object requires this tag.
+We can record taint at varying levels of granularity, with the tradeoff of finer-grained taint requiring greater system resources and slowing down analysis. Different types of taint may be more interesting to different kinds of fuzzers because different input comes from sources of varying trustedness [C]. For instance, we should probably trust raw, unsanitized user input we have read less than we trust a configuration file that only privileged users can modify. Both might be read in as input to a program, but the former is much more likely to contain malicious data like shellcode trying to exploit a vulnerability. Fuzzers have continued to drill down into finer and finer levels of granularity, from assigning everything with a generic binary value of tainted/not tainted to byte-level marking of user input [C]. Note that this also expands taint's data type from a "tainted-not tainted" bit to a something type, and each tainted object requires this tag.
 
 Just as with taint introduction, we verify taint based on our overall objective. If we are worried about a binary being exploited to execute arbitrary code, we may instrument the EIP register. When we verify that taint has reached EIP, we know we stand a strong chance of having found an exploitable condition. Likewise, were we monitoring taint not in order to generate test cases for fuzzing, but to study a piece of malware, we might instead watch for when a particular routine, which we think is unpacking the malware, has finished, and the malware is now available in an unobfuscated form.
 
@@ -400,9 +394,9 @@ Call-chain-backward symbolic execution has been proposed by [R], although this t
 
 \subsection{Mixed and Concolic Execution}
 
-TODO TODO TODO [C] considers concolic execution to be when we first execute concretely and THEN execute the same thing symbolically. Mixed execution is when we execute once with both concrete and symbolic input--make sure other works stand by this distinction.
+% TODO TODO TODO [C] considers concolic execution to be when we first execute concretely and THEN execute the same thing symbolically. Mixed execution is when we execute once with both concrete and symbolic input--make sure other works stand by this distinction.
 
-TODO talk about how this is called many different things, and is a rather amorphous term.
+% TODO talk about how this is called many different things, and is a rather amorphous term.
 
 Current research focuses on carefully deciding when and how to use symbolic execution [J, T, W]. So-called concolic execution mixes concrete and symbolic input, and various heuristics to determine when to resort to symbolic execution are in research.
 
@@ -470,7 +464,7 @@ We have implemented this technique in a proof of concept fuzzer, Stubble, which 
 
 \section{Design}
 
-TODO why intel pin and not dynamo rio, valgrind, etc.
+% TODO why intel pin and not dynamo rio, valgrind, etc.
 
 Stubble consists of a pintool which implements DTA, and a Python driver which keeps track of test cases, input and output and segfaults recorded during execution, and employs dynamic slice backsolving to drive mutation using taint analyses provided by the DTA pintool. Pintools are arbitrary C++ which Pin compiles and inserts into a given binary during instrumentation. The driver accepts a valid x86 binary and a seed test case. From the seed test case, the driver runs the pintool on the binary with the seed test case as input. While the binary runs, the pintool notes when taint in introduced or removed from memory or from registers. If a memory location or a register is tainted, then any operations which move this data elsewhere or use this data in an operation spread taint to the appropriate areas. Moving untainted data into a previously tainted location removes taint from the system. For instance, if the eax register is tainted, then adding eax and ebx and storing the result in ebx will taint the ebx register. However, should an operation move the value of ebx to eax, then eax will no longer be tainted. 
 
@@ -487,10 +481,6 @@ This is made possible by a key observation about the x86 architecture. There are
     \node [cloud, left of=driver, node distance=3cm] (binary) {binary};
     \node [cloud, right of=driver, node distance=3cm] (test case) {test case};
     \node [block, below of=driver, node distance=4cm] (Pintool) {Pintool};
-    
-    %\node [block, left of=Pintool, node distance=4cm] (input) {input/};    
-    %\node [block, below of=Pintool, below of=input, node distance=2cm] (output) {output/};
-    %\node [block, right of=output, node distance=4cm] (explored) {explored/};
 	\node [block, left of=Pintool, node distance=4cm] (results) {results};    
     
     \node [decision, right of=Pintool, node distance=4cm] (decide) {More taint to explore?};
@@ -499,9 +489,6 @@ This is made possible by a key observation about the x86 architecture. There are
     
     % Draw edges
     \path [line] (driver) -- (Pintool);
-    %\path [line] (Pintool) -- (input);
-    %\path [line] (Pintool) -- (output);
-    %\path [line] (Pintool) -- (explored);
 	\path [line] (Pintool) -- (results);    
     \path [line] (Pintool) -- (decide);
     \path [line] (decide) -- node {yes} (mutate);
@@ -509,7 +496,6 @@ This is made possible by a key observation about the x86 architecture. There are
     \path [line] (decide) -- node {no}(stop);
     \path [line,dashed] (binary) -- (driver);
     \path [line,dashed] (test case) -- (driver);
-    %\path [line, dashed] (explored) -- (decide);
 
 \end{tikzpicture}
 
@@ -522,7 +508,6 @@ Fuzzers require intuitive but powerful test harnesses, so that users can easily 
 
 \section{Implementation}
 
-% TODO Binarys, RE?
 % TODO Pin's API more details?
 
 We implemented Stubble using Intel Pin. Pin instruments binaries by compiling a user-defined pintool and inserting the instrumentation code into the binary, converting directly from the target architecture to the same architecture, ex. from x86 to x86. The Pin API is very flexible, allowing for instrumentation at a binary-wide to an instruction-by-instruction level, and there exists an active community of developers. In particular, we base our work off of [N]. Because Stubble must reason about every taint propagation, we instrument at the instruction level, which introduces the most overhead. In addition to instrumenting each instruction, we also instrument the read system call. Taint is introduced when user input is read into memory. This section of memory, the contiguous memory addresses from read's buf parameter to buf + count, is marked tainted. 
@@ -533,7 +518,8 @@ Memory is conceived of as an unordered\_map of ints to (int, string) tuples. Thi
 
 While finding and executing new code paths is valuable, a fuzzer without a vulnerability condition to monitor for cannot convey meaningful information to an analyst. There are many  ways to detect the presence of a possibly exploitable bug, such as watching for tainted data reaching the instruction pointer, or watching program output for strings that suggest error conditions. Since program output is saved after each run, this is one possible way to detect vulnerabilities with Stubble, however, we specifically wanted to catch segmentation faults, since these are often raised when data corrupts pointers or overflows buffers or stack frames. Stubble monitors for segfaults using the Pin API. A signal-intercepting callback function for signal number 11, segmentation fault, is registered before execution is handed off to the fuzzed program. When a segfault occurs, information about the exception is made recorded and published in the signals/ directory.
 
-To test Stubble's ability to perform an oracle attack, we prepared C binaries which checked user input against a secret. After compiling with the Tiny C Compiler, which performs minimal optimization and doesn't add security measures like stack cookies, this binary and a default test file are given as input to Stubble.
+To test Stubble's ability to perform an oracle attack, we prepared C binaries which checked user input against a secret. After compiling with the Tiny C Compiler, which performs minimal optimization and doesn't add security measures like stack cookies, this binary and a default test file are given as input to Stubble. Secrets ranged in size from 1 to 50 characters. We started with secret of one character, embedded in an arbitrary position somewhere within the several hundred byte input file. To decide how to implement dynamic slice backsolving at the assembly level, we began by statically disassembling our binaries with IDA Pro [AH]. The ability to see control flow and instructions at a block level was invaluable during testing and development. After succeeding with smaller inputs we gradually increased the size of the secret.
+
 
 \section{Challenges and Limitations}
 
@@ -565,8 +551,6 @@ Note that dynamic slice backsolving requires transformations on tainted values t
 %0inputs+816outputs (0major+1368622minor)pagefaults 0swaps
 
 %However, we have seen runs as high as ~13 seconds elapsed. Since our testing environment has 4GB ram and 4 virtual cores, 4 processes seems to give me the best speedup. We also tested with 2, 8, and 16 processes but didn't see a comparable speedup.
-
-\section{Testing}
 
 \section{Results}
 
@@ -671,15 +655,23 @@ Secrets of length 1 to 50 were tested at regular intervals. It appears that, asi
 
 \section{Applications}
 
-Some of the work involved in creating and testing Stubble feels spiritually similar to Netzob, a protocol reverse engineering tool which actively and passively infers protcol grammars and state machines [AQ]. Dynamic slice backsolving could be used to reverse engineer an unknown protcol by driving execution down increasingly newer and deeper paths. In order to do this, we must, by definition, more closely approximate valid input with each run, eventually mutating from random bytes to a valid protocol input.
+% TODO more ways DSB and stubble could be used
 
-TODO ways this technique could be used.
+Dynamic Slice Backsolving would be useful when source code is not accessible, or when a user doesn't wish to instrument source code to symbolically execute a program. Other taint trackers and fuzzers could implement this technique, regardless of whether or not they require source code, to improve path exploration and help create useful mutations.
+
+Stubble could prove useful when analysts have access to a binary, but not its source code. Running Stubble on such a binary would produce tests which will execute different paths within the binary. These tests could be used as part of a test suite, to ensure that as many paths as possible are exercised during testing.
+
+Some of Stubble's functionality feels spiritually similar to Netzob, a protocol reverse engineering tool which actively and passively infers protcol grammars and state machines [AQ]. Dynamic slice backsolving could be used to reverse engineer an unknown protcol by driving execution down increasingly newer and deeper paths. By doing this, we must, by definition, more and more closely approximate valid input with each run, eventually mutating from random bytes to a valid protocol input. As an example, if an unknown protocol begins messages with an arbitrary string of bytes "ABC", an initial run would fail but notice that, had byte zero been "A", then a new branch could be explored. The second run would ensure that byte zero was "A", then similarly notice that had byte two been "B", yet a new branch would have been explored, and so on.
 
 \section{Future Work}
 
 Significant care has already been invested to keep Stubble easy to understand and maintain. Continuing to expand Stubble's functionality and developing it into a mature fuzzer is the long term goal. In order for Stubble to be useful to analysts, it must support the Windows operating system, more system calls and C library routines, and more vectors for user input. Intel Pin supports Windows, so in theory Stubble is compatible as well. In practice, Stubble currently makes assumptions about compilation and operating systems internals which are appropriate for Linux. In future development, these would be moved to a Linux branch, and a Windows branch would be forked, with common code re-used between the two. Stubble also only instruments the read syscall. Its features would need to be greatly expanded to handle both more relevant Linux system calls and their Windows equivalents. In addition, some system calls not only return success statuses, but also have side effects, which must be accounted for [C]. Lastly, the only input vector captured by Stubble currently is a read on a user supplied input file. There are many other ways taint could be introduced into a program, such as command line arguments, stdin, and input devices like keyboards and mice. Accurately recording alternative sources of user input has proved difficult. For example, command line arguments in Linux are pushed onto the stack before the main routine is called. If we instrument the main routine, we avoid catching all sorts of noisy reads on files that are unlikely to introduce taint, like system libraries. However, this makes argv inaccessible. Instrumenting the entire binary, dynamically loaded libraries and all, grabs argv, but introduces lots of noise. Better semantic for differentiating between noise and signal will be a necessity, for instance by maintaining a hardcoded list of names and sizes of standard libraries, so that they can be ignored.
 
-TODO better "vuln disc." conditions like segfaults, taint reaching EIP.
+There also remains research to be done regarding parallel taint tracking. We parallelized stubble at the process level, which resulted in speed improvements commensurate with the number of processes used. However, because of data dependencies, our naive implementation would not always discover and backsolve more complicated paths. We suspect solving this would require up-front analysis of data dependencies between bytes of user input before each fork off. 
+
+%Stubble would also benefit from better algorithms for discovering vulnerable conditions. Monitoring for segfaults and track taint to the instruction pointer, are good indicators, but we could also watch for memory accesses out of declared array boundaries and instrument unsafe C functions to monitor, for example, when 
+%heap overflows, etc...
+
 
 % TODO not sure if to put this section in?
 %\section{Experience and Lessons Learned}
