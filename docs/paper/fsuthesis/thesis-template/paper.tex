@@ -16,6 +16,17 @@
 %\usepackage[latin1]{inputenc}
 \usetikzlibrary{shapes,arrows}
 
+% Source: http://www.texample.net/tikz/examples/simple-flow-chart/
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -409,7 +420,33 @@ We have developed a technique which, to the best of our knowledge, provides simi
 
 Once user input is captured and marked tainted, any memory accesses, loads and stores, and transformations of tainted bytes are recorded as they are encountered. This creates a slice of operations involving the tainted bytes, which can be followed like a trail of breadcrumbs back to the original position of the byte. This continues as the program executes until a conditional branch is reached. When a conditional branch instruction is reached, it is either taken or not taken, based upon the value of some comparison. If the branch condition depends upon tainted values, which have descended in one way or another from user input, then there is a strong possibility that the "road not taken" could be explored if only user input looked appropriate. In the case where all transformations to user input are reversible, we can backsolve these transformations and, based upon the comparison, modify the byte value so that it leads to the complement of the previous branch condition. Not only this, we can identify which byte $b_0,b_1,...,b_n$ to modify, since we have followed each byte from their introduction. Using this information, we can mutate the previous test case to create a new test which will result in very similar program behavior, with the exception of branching where before it did not branch, and vice versa.
 
-TODO INSERT COOL FIGURE of custom data structure
+% TODO label this
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place input bytes
+    \node [block] (b0) {$b_0$};
+    \node [block, right of=b0, node distance=2.2cm] (b1) {$b_1$};
+    \node [block, right of=b1, node distance=2.2cm] (b2) {$b_2$};
+    \node [block, right of=b2, node distance=2.2cm] (bs) {...};
+    \node [block, right of=bs, node distance=2.2cm] (bn) {$b_n$};
+
+	% Place transformation, flag, and branch nodes 
+    \node [cloud, below of=b1] (t10) {$t_0$};
+    \node [cloud, below of=t10, left of=t10] (t11) {$t_1$};
+    \node [cloud, below of=t11, right of=t11] (flag) {flag};
+    \node [cloud, below of=flag] (branch) {branch};
+    \node [cloud, below of=bn] (flag1) {flag};
+    \node [cloud, below of=flag1] (branch1) {branch};
+    
+    % Draw edges
+    \path [line] (b1) -- (t10);
+    \path [line] (t10) -- (t11);
+    \path [line] (t11) -- (flag);
+    \path [line] (flag) -- (branch);
+    \path [line] (bn) -- (flag1);
+    \path [line] (flag1) -- (branch1);
+    %\path [line, dashed] (explored) -- (decide);
+
+\end{tikzpicture}
 
 The idea for this technique is raised in [A], which suggests using dynamic taint analysis to identify "hot bytes" of user input, which affect important things in a program, and also to generate backward slices [AA]. Hot bytes become the target of fuzzing, with backward slices providing valuable context to analysts. Our contribution is the realization of this idea for a subset of cases, and the automation of solving these slices. Our hope is that by solving these slices automatically, we can identify not only the exact location but also the relevant values of hot bytes. 
 
@@ -444,15 +481,6 @@ This is made possible by a key observation about the x86 architecture. There are
 
 % Source: http://www.texample.net/tikz/examples/simple-flow-chart/
 
-% Define block styles
-\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
-    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
-\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
-    text width=5em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{line} = [draw, -latex']
-\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
-    minimum height=2em]
-    
 \begin{tikzpicture}[node distance = 2cm, auto]
     % Place nodes
     \node [block] (driver) {driver};
@@ -494,31 +522,32 @@ Fuzzers require intuitive but powerful test harnesses, so that users can easily 
 
 \section{Implementation}
 
-TODO
-python specifics. Binarys, RE
-how i implemented DTA
-Pin's API
+% TODO Binarys, RE?
+% TODO Pin's API more details?
 
 We implemented Stubble using Intel Pin. Pin instruments binaries by compiling a user-defined pintool and inserting the instrumentation code into the binary, converting directly from the target architecture to the same architecture, ex. from x86 to x86. The Pin API is very flexible, allowing for instrumentation at a binary-wide to an instruction-by-instruction level, and there exists an active community of developers. In particular, we base our work off of [N]. Because Stubble must reason about every taint propagation, we instrument at the instruction level, which introduces the most overhead. In addition to instrumenting each instruction, we also instrument the read system call. Taint is introduced when user input is read into memory. This section of memory, the contiguous memory addresses from read's buf parameter to buf + count, is marked tainted. 
 
-There are two places we consider taint to propagate to and from, namely registers and memory locations. We also must record operations that transform tainted data, so that Stubble can backsolve the transformations later. We record this data in data structures derived from the vector, list, tuple and unordered\_map data structures from the C++ STL. The registers are represented as an enumerated array of tuples of (int, string). Registers start with tuples of (-1, ""), signifying that they are untainted. When registers become tainted, we insert values of (byteLocation, filename). Registers are altered as taint is overwritten or removed from the system, and since they only contain one value at a time, we mark the register as tainted by the specific byte in user input, using its location to refer to it. Memory is conceived of as an unordered\_map of ints to (int, string) tuples. This is similar to the registers, except the key is the memory location. Since there are a small set of registers it makes sense to design an array which contains all of them, but many diverse memory locations may become tainted throughout execution, so we instead use an unordered\_map. Memory is marked tainted or untainted similarly to registers. Lastly, we must record operations performed on tainted data. This is accomplished by representing user input as an array of lists. Each list entry is a string, marking one operation performed on the data. Stubble cross references each operation with the register and memory data structures to see which byte of user input should be updated with a transaction. After execution, a file of transactions for each byte of user input is printed, and the Python driver parses the operations recorded to backsolve new data values for each byte.
+There are two places we consider taint to propagate to and from, namely registers and memory locations. We also must record operations that transform tainted data, so that Stubble can backsolve the transformations later. We record this data in data structures derived from the vector, list, tuple and unordered\_map data structures from the C++ STL. The registers are represented as an enumerated array of tuples of (int, string). Registers start with tuples of (-1, ""), signifying that they are untainted. When registers become tainted, we insert values of (byteLocation, filename). Registers are altered as taint is overwritten or removed from the system, and since they only contain one value at a time, we mark the register as tainted by the specific byte in user input, using its location to refer to it. The EFLAGS register is a special case, since certain operations set specific flags, it is possible for one operation to taint the carry flag and for another to taint the overflow flag. Thus, we treat each of the important bits of EFLAGS as separate entries, with their own tuple devoted to them.
+
+Memory is conceived of as an unordered\_map of ints to (int, string) tuples. This is similar to the registers, except the key is the memory location. Since there are a small set of registers it makes sense to design an array which contains all of them, but many diverse memory locations may become tainted throughout execution, so we instead use an unordered\_map. Memory is marked tainted or untainted similarly to registers. Lastly, we must record operations performed on tainted data. This is accomplished by representing user input as an array of lists. Each list entry is a string, marking one operation performed on the data. Stubble cross references each operation with the register and memory data structures to see which byte of user input should be updated with a transaction. After execution, a file of transactions for each byte of user input is printed, and the Python driver parses the operations recorded to backsolve new data values for each byte.
 
 While finding and executing new code paths is valuable, a fuzzer without a vulnerability condition to monitor for cannot convey meaningful information to an analyst. There are many  ways to detect the presence of a possibly exploitable bug, such as watching for tainted data reaching the instruction pointer, or watching program output for strings that suggest error conditions. Since program output is saved after each run, this is one possible way to detect vulnerabilities with Stubble, however, we specifically wanted to catch segmentation faults, since these are often raised when data corrupts pointers or overflows buffers or stack frames. Stubble monitors for segfaults using the Pin API. A signal-intercepting callback function for signal number 11, segmentation fault, is registered before execution is handed off to the fuzzed program. When a segfault occurs, information about the exception is made recorded and published in the signals/ directory.
 
+To test Stubble's ability to perform an oracle attack, we prepared C binaries which checked user input against a secret. After compiling with the Tiny C Compiler, which performs minimal optimization and doesn't add security measures like stack cookies, this binary and a default test file are given as input to Stubble.
 
 \section{Challenges and Limitations}
-
-% undertainting examples, general DTA issues and how we solved.
 
 As a proof of concept, stubble lacks the featurefulness of a complete fuzzer. In particular, understanding more diverse types of user input, such as command line arguments, would prove valuable. Stubble currently only instruments the read syscall. When an appropriate input file is opened it marks all bytes read as tainted. A more featurefull fuzzer would instrument other system calls which could introduce taint, and would also handle C library functions which are the source of vulnerabilities, like unsafe string copying functions.
 
 Note that dynamic slice backsolving requires transformations on tainted values to be easily reversible. Because of various cryptographic properties, encryption and hashing algorithms are not possible to backsolve. In fact, any lossy or not one-to-one operations prove difficult. As an example, the UDP checksum algorithm [AP] calculates the checksum of a packet by iterating over a pseudo-header, summing over each octets 16-bit 1's complement. Because of the repeating summing, an overflow is possible, and any overflow bits are added in later on. This means two non-identical packet headers could result in the same checksum, and so although we can backsolve to the original packet, we cannot make reasonable mutations which will result in the checksum we desire.
 
-TODO we assume away shitty loops
+% TODO we assume away shitty loops
+%There are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics, fuzzers tend to simply count loops and terminate after a set threshold is reached, and could be the subject of future research.
 
+% TODO undertainting examples, general DTA issues and how we solved.?
+
+% Probably leave this out, parallelization didn't work out well b/c of input dependence
 %\section{Parallelization}
-
-%Because Stubble works at the process level, allowing one run to finish before generating a test file for the next, concurrency seems implementable. However, because 
 
 %We have implemented a parallel version of the pintool, mp.c, to fork and exec a user-specified number of processes. Because a tainted branch may only be reachable based upon previous branches taken, and also because of complex conditions involving loops, the problem is not embarassingly parallel. Results show an expected speedup for an application with decently independent input.
 
@@ -625,13 +654,8 @@ Secrets of length 1 to 50 were tested at regular intervals. It appears that, asi
 % TODO add these back in?
 %Current selective symbolic execution engines still appear to introduce significant overhead, between 6 and 78X overhead more than QEMU for S2E. Just QEMU is between 4 and 10 times slower on some benchmarks, closer to 15 on others [J, K, L]. In contrast, basic block counting using Intel Pin, the framework we are leveraging, introduced between 2 and 4X overhead [M]. However, the pintool needed for our proposed technique introduces greater levels of overhead, since we will be working at the instruction level instead of the basic block level, requiring more insertions for any given binary.
 
-%We are leveraging Intel PIN to perform dynamic binary instrumentation. We are testing dummy programs with many paths that are easy to backsolve, similar to the example above. A C program which uses sequential switch statements to check user input against a secret, when compiled with tcc, which performs very little optimization, is such an example binary. 
-
-%There are allowable situations in programs which are outside the scope of this program. For instance, programs can loop forever [X]. These can be dealt with using reasonable heuristics, fuzzers tend to simply count loops and terminate after a set threshold is reached, and could be the subject of future research.
 
 %\section{Implementation}
-
-%We implement dynamic taint analysis for files as input sources. We are basing our implementation of DTA on Jonathan Salwan\'s work [N]. Currently we instrument the read syscall, watching for all reads executed, then tag user input at the byte level and follow it as it moves throughout the binary. We instrument binaries at the assembly instruction level using Intel Pin, which dynamically disassembles each instruction. Each instruction is handled differently based upon the following criteria:
 
 %\begin{itemize}
 %	\item Is the instruction a conditional jump?
@@ -640,19 +664,9 @@ Secrets of length 1 to 50 were tested at regular intervals. It appears that, asi
 %	\item Is the first (second if applicable) operand tainted?
 %\end{itemize}
 	
-%For example, move operations involving an untainted first operand and a tainted second operand generally spread taint, while those with a tainted first operand and an untainted second operand remove taint. Tainted branches trigger the backsolving technique. Various precautions, such as removing taint for an instruction like "xor eax, eax", must be taken. Lossy operations, like shifts, must be handled carefully to be backsolve-able, and checksums and cryptographic operations are not supported.
+%For example, move operations involving an untainted first operand and a tainted second operand generally spread taint, while those with a tainted first operand and an untainted second operand remove taint. Tainted branches trigger the backsolving technique. Various precautions, such as removing taint for an instruction like "xor eax, eax", must be taken.
+
 	
-%As a demonstration we have run our fuzzer, Stubble, against various binaries which open a file and check specific bytes in a file for specific character values. If all of these checks pass, then the program outputs a "win" string, otherwise it outputs a "lose" string. This can be thought of conceptually as an oracle attack, and is similar to reverse engineering "crackme" exercises. Given no knowledge of the secret key, and only able to query an oracle, a successful attack must discover the secret within a reasonable number of guess [CITE?].
-
-%After compiling with the Tiny C Compiler, which performs minimal optimization and doesn't add security measures, this binary and a default test file are given as input to Stubble, which will begin to dynamically generate run cases which will explore new paths within the binary. These test cases are fed back into the system, which continues to backsolve to find new ways to explore at branches, until there are no tainted bytes left for exploration.
-	
-%Professional fuzzing products, like Peach Fuzzer
-
-%\section{Methodology}
-
-%As of this writing we are moving towards fuzzing Linux utilities. Results for toy binaries are promising, with "crackme" type programs which ask for a secret being solved in approximately 2*n runs, where n is the length of the secret. There is, however, still some overtainting which must be accounted for.	
-%\section{Evaluation}
-
 \chapter{Conclusions}
 
 \section{Applications}
@@ -667,12 +681,12 @@ Significant care has already been invested to keep Stubble easy to understand an
 
 TODO better "vuln disc." conditions like segfaults, taint reaching EIP.
 
+% TODO not sure if to put this section in?
+%\section{Experience and Lessons Learned}
 
-\section{Lessons Learned}
-
-TODO RE'd in IDA Pro a lot
-TODO learned about OS internals
-TODO difficulties with implementation
+%TODO RE'd in IDA Pro a lot
+%TODO learned about OS internals
+%TODO difficulties with implementation
 
 
 
