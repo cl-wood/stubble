@@ -117,6 +117,7 @@
 SFS, for the generous funding, mentoring, networking opportunities which have given me the opportunity to study computer science. Specifically my co-principal investigators, Mike Burmester and Xiuwen Liu.
 
 %Bret Whissel
+
 Jonathan Salwan, for his pintool code examples.
 
 \end{acknowledgments}
@@ -178,7 +179,7 @@ The inspiration for this technique comes mainly from "A Taint Based Approach for
 
 We have implemented this technique in a proof of concept fuzzer, Stubble, which operates on x86 programs. Stubble dynamically instruments binaries, and automatically generates test files which exercise new paths in the input program. Program input, output, and interesting conditions like segmentation fault signals are recorded during execution, and taint propagation is recorded from user input sources to branch sinks. When a tainted branch is found, stubble automically backsolves the execution slice and generates a new test case which will drive the program down the opposite path explored in the current execution. 
 
-To test Stubble's ability to dynamically discover new branches and generate test cases which will drive future runs down these new branches, we have designed several binaries which receive user input in the form of a file. These binaries open and read the file, comparing a subset of the file contents against a secret. If the file contains the secret, then a win condition is printed, otherwise a lose condition is printed. For the proof of concept, this win condition could be thought of as a segfault, or other interesting condition that suggests an exploitable condition exists. We show that stubble is able to discover all paths in the binary, particularly the interesting paths involving the win condition, without any prior knowledge of the secret. Stubble works similarly to an oracle attack, able to discover one character within the secret per run, and preserve work across runs to crack the secret in O(n) tests, where n is the secret length in characters. In contrast, random byte fuzzers, which exhaustively test all user input bytes which their model declares valid, run indefinitely and have no guarantee of discovering the win condition. We also present a key observation for improving path exploration in the x86 architecture, namely the finite number of conditional branch statements and instructions which modify the flags which branch statements use. Targetting these instructions specifically pays dividends. Lastly, we have also parallelized Stubble at the process level, allowing for an arbitrary number of independent bytes to be reasoned about concurrently. We believe automated dynamic slice backsolving is a reasonable complementary technique to dynamic taint analysis and symbolic execution for binary fuzzing, and that stubble provides a valuable proof of concept for future research into smart fuzzers.
+To test Stubble's ability to dynamically discover new branches and generate test cases which will drive future runs down these new branches, we have designed several binaries which receive user input in the form of a file. These binaries open and read the file, comparing a subset of the file contents against a secret. If the file contains the secret, then a win condition is printed, otherwise a lose condition is printed. For the proof of concept, this win condition could be thought of as a segfault, or other interesting condition that suggests an exploitable condition exists. We show that stubble is able to discover all paths in the binary, particularly the interesting paths involving the win condition, without any prior knowledge of the secret. Stubble works similarly to an oracle attack, able to discover one character within the secret per run, and preserve work across runs to crack the secret in O(n) tests, where n is the secret length in characters. In contrast, random byte fuzzers, which exhaustively test all user input bytes which their model declares valid, run indefinitely and have no guarantee of discovering the win condition. We also present a key observation for improving path exploration in the x86 architecture, namely the finite number of conditional branch statements and instructions which modify the flags which branch statements use. Targetting these instructions specifically pays dividends. We believe automated dynamic slice backsolving is a reasonable complementary technique to dynamic taint analysis and symbolic execution for binary fuzzing, and that stubble provides a valuable proof of concept for future research into smart fuzzers.
 
 %\chapter{Old-Abstract}
 
@@ -408,7 +409,7 @@ We have developed a technique which, to the best of our knowledge, provides simi
 
 Once user input is captured and marked tainted, any memory accesses, loads and stores, and transformations of tainted bytes are recorded as they are encountered. This creates a slice of operations involving the tainted bytes, which can be followed like a trail of breadcrumbs back to the original position of the byte. This continues as the program executes until a conditional branch is reached. When a conditional branch instruction is reached, it is either taken or not taken, based upon the value of some comparison. If the branch condition depends upon tainted values, which have descended in one way or another from user input, then there is a strong possibility that the "road not taken" could be explored if only user input looked appropriate. In the case where all transformations to user input are reversible, we can backsolve these transformations and, based upon the comparison, modify the byte value so that it leads to the complement of the previous branch condition. Not only this, we can identify which byte $b_0,b_1,...,b_n$ to modify, since we have followed each byte from their introduction. Using this information, we can mutate the previous test case to create a new test which will result in very similar program behavior, with the exception of branching where before it did not branch, and vice versa.
 
-INSERT COOL FIGURE
+TODO INSERT COOL FIGURE of custom data structure
 
 The idea for this technique is raised in [A], which suggests using dynamic taint analysis to identify "hot bytes" of user input, which affect important things in a program, and also to generate backward slices [AA]. Hot bytes become the target of fuzzing, with backward slices providing valuable context to analysts. Our contribution is the realization of this idea for a subset of cases, and the automation of solving these slices. Our hope is that by solving these slices automatically, we can identify not only the exact location but also the relevant values of hot bytes. 
 
@@ -494,9 +495,13 @@ Fuzzers require intuitive but powerful test harnesses, so that users can easily 
 \section{Implementation}
 
 TODO
-Pintool, python specifics. Binarys, RE
+python specifics. Binarys, RE
 how i implemented DTA
 Pin's API
+
+We implemented Stubble using Intel Pin. Pin instruments binaries by compiling a user-defined pintool and inserting the instrumentation code into the binary, converting directly from the target architecture to the same architecture, ex. from x86 to x86. The Pin API is very flexible, allowing for instrumentation at a binary-wide to an instruction-by-instruction level, and there exists an active community of developers. In particular, we base our work off of [N]. Because Stubble must reason about every taint propagation, we instrument at the instruction level, which introduces the most overhead. In addition to instrumenting each instruction, we also instrument the read system call. Taint is introduced when user input is read into memory. This section of memory, the contiguous memory addresses from read's buf parameter to buf + count, is marked tainted. 
+
+There are two places we consider taint to propagate to and from, namely registers and memory locations. We also must record operations that transform tainted data, so that Stubble can backsolve the transformations later. We record this data in data structures derived from the vector, list, tuple and unordered\_map data structures from the C++ STL. The registers are represented as an enumerated array of tuples of (int, string). Registers start with tuples of (-1, ""), signifying that they are untainted. When registers become tainted, we insert values of (byteLocation, filename). Registers are altered as taint is overwritten or removed from the system, and since they only contain one value at a time, we mark the register as tainted by the specific byte in user input, using its location to refer to it. Memory is conceived of as an unordered\_map of ints to (int, string) tuples. This is similar to the registers, except the key is the memory location. Since there are a small set of registers it makes sense to design an array which contains all of them, but many diverse memory locations may become tainted throughout execution, so we instead use an unordered\_map. Memory is marked tainted or untainted similarly to registers. Lastly, we must record operations performed on tainted data. This is accomplished by representing user input as an array of lists. Each list entry is a string, marking one operation performed on the data. Stubble cross references each operation with the register and memory data structures to see which byte of user input should be updated with a transaction. After execution, a file of transactions for each byte of user input is printed, and the Python driver parses the operations recorded to backsolve new data values for each byte.
 
 While finding and executing new code paths is valuable, a fuzzer without a vulnerability condition to monitor for cannot convey meaningful information to an analyst. There are many  ways to detect the presence of a possibly exploitable bug, such as watching for tainted data reaching the instruction pointer, or watching program output for strings that suggest error conditions. Since program output is saved after each run, this is one possible way to detect vulnerabilities with Stubble, however, we specifically wanted to catch segmentation faults, since these are often raised when data corrupts pointers or overflows buffers or stack frames. Stubble monitors for segfaults using the Pin API. A signal-intercepting callback function for signal number 11, segmentation fault, is registered before execution is handed off to the fuzzed program. When a segfault occurs, information about the exception is made recorded and published in the signals/ directory.
 
@@ -511,28 +516,26 @@ Note that dynamic slice backsolving requires transformations on tainted values t
 
 TODO we assume away shitty loops
 
-\section{Parallelization}
+%\section{Parallelization}
 
-TODO MyPinToolMultiProcess, why process level instead of threads, etc.
+%Because Stubble works at the process level, allowing one run to finish before generating a test file for the next, concurrency seems implementable. However, because 
 
+%We have implemented a parallel version of the pintool, mp.c, to fork and exec a user-specified number of processes. Because a tainted branch may only be reachable based upon previous branches taken, and also because of complex conditions involving loops, the problem is not embarassingly parallel. Results show an expected speedup for an application with decently independent input.
 
-We have implemented a parallel version of the pintool, mp.c, to fork and exec a user-specified number of processes. Because a tainted branch may only be reachable based upon previous branches taken, and also because of complex conditions involving loops, the problem is not embarassingly parallel. Results show an expected speedup for an application with decently independent input.
+%Sequential:
+%After several runs, I've seen performance ranging from ~33 seconds to 19 seconds.
+%26.12user 7.15system 0:33.42elapsed 99\%CPU (0avgtext+0avgdata 12964maxresident)k
+%0inputs+1496outputs (0major+1168365minor)pagefaults 0swaps
 
-Sequential:
-After several runs, I've seen performance ranging from ~33 seconds to 19 seconds.
-26.12user 7.15system 0:33.42elapsed 99\%CPU (0avgtext+0avgdata 12964maxresident)k
-0inputs+1496outputs (0major+1168365minor)pagefaults 0swaps
+%14.66user 4.67system 0:19.44elapsed 99\%CPU (0avgtext+0avgdata 12964maxresident)k
+%0inputs+1496outputs (0major+1168305minor)pagefaults 0swaps
 
-14.66user 4.67system 0:19.44elapsed 99\%CPU (0avgtext+0avgdata 12964maxresident)k
-0inputs+1496outputs (0major+1168305minor)pagefaults 0swaps
+%Parallel:
+%The parallel implementation seems to decrease time by somewhere around half, which makes sense considering the problem is not embarassingly parellel, and Intel Pin may try and use multiple cores during startup.
+%30.64user 9.71system 0:10.83elapsed 372\%CPU (0avgtext+0avgdata 12952maxresident)k
+%0inputs+816outputs (0major+1368622minor)pagefaults 0swaps
 
-Parallel:
-The parallel implementation seems to decrease time by somewhere around half, which makes sense considering the problem is not embarassingly parellel, and Intel Pin may try and use multiple cores during startup.
-30.64user 9.71system 0:10.83elapsed 372\%CPU (0avgtext+0avgdata 12952maxresident)k
-0inputs+816outputs (0major+1368622minor)pagefaults 0swaps
-
-However, we have seen runs as high as ~13 seconds elapsed. Since our testing environment has 4GB ram and 4 virtual cores, 4 processes seems to give me the best speedup. We also tested with 2, 8, and 16 processes but didn't see a comparable speedup.
-
+%However, we have seen runs as high as ~13 seconds elapsed. Since our testing environment has 4GB ram and 4 virtual cores, 4 processes seems to give me the best speedup. We also tested with 2, 8, and 16 processes but didn't see a comparable speedup.
 
 \section{Testing}
 
@@ -657,7 +660,6 @@ Secrets of length 1 to 50 were tested at regular intervals. It appears that, asi
 Some of the work involved in creating and testing Stubble feels spiritually similar to Netzob, a protocol reverse engineering tool which actively and passively infers protcol grammars and state machines [AQ]. Dynamic slice backsolving could be used to reverse engineer an unknown protcol by driving execution down increasingly newer and deeper paths. In order to do this, we must, by definition, more closely approximate valid input with each run, eventually mutating from random bytes to a valid protocol input.
 
 TODO ways this technique could be used.
-TODO talk about why parallelization is good.
 
 \section{Future Work}
 
