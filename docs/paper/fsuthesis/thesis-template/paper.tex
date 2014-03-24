@@ -10,10 +10,7 @@
 \usepackage{color}
 \usepackage{hyperref}
 \usepackage{pgfplots}
-%\usepackage{filecontents}
-%\usepackage{pgfplotstable}
 
-%\usepackage[latin1]{inputenc}
 \usetikzlibrary{shapes,arrows}
 
 % Source: http://www.texample.net/tikz/examples/simple-flow-chart/
@@ -45,7 +42,10 @@
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true,
-  tabsize=3
+  tabsize=3,
+  xleftmargin=2em,
+  xrightmargin=2em,
+  numbersep=8pt
 }
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -67,7 +67,10 @@
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true,
-  tabsize=3
+  tabsize=3,
+  xleftmargin=2em,
+  xrightmargin=2em,
+  numbersep=8pt
 }
 
 % Adapted from Lena Herrmann at http://lenaherrmann.net/2010/05/20/javascript-syntax-highlighting-in-the-latex-listings-package
@@ -83,13 +86,17 @@
   ndkeywordstyle=\color{darkgray}\bfseries,
   identifierstyle=\color{black},
   sensitive=false,
+  basicstyle={\small\ttfamily},
   numbers=left,
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
   commentstyle=\color{purple}\ttfamily,
   stringstyle=\color{red}\ttfamily,
   morestring=[b]',
-  morestring=[b]"
+  morestring=[b]",
+  xleftmargin=2em,
+  xrightmargin=2em,
+  numbersep=8pt
 }
 
 \title{Automated Dynamic Slice Backsolving}
@@ -98,7 +105,7 @@
 \college{College of Arts and Science}
 \department{Department of Computer Science} % Delete if no department
 \manuscripttype{Thesis}              % [Thesis, Dissertation, Treatise]
-\degree{Masters of Science}                 
+\degree{Master of Science}                 
 \semester{Spring}                            % [Spring, Summer, Fall]
 \degreeyear{2014}
 \defensedate{April 19, 2014}
@@ -151,7 +158,7 @@ Jonathan Salwan, for his pintool code examples.
 
 \begin{abstract}
 
-Finding software bugs is a difficult but lucrative endeavour, and fuzzing is one technique often employed for finding bugs, particularly exploitable vulnerabilities. However, when no source code is available, fuzzing complex programs effectively can prove difficult, and as techniques become more sophisticated they require more resources and time. We present a technique, automated dynamic slice backsolving, which, to the best of our knowledge, represents a novel way to improve fuzzers' code coverage, without resorting to heavyweight techniques like symbolic execution. We demonstrate this technique with a proof of concept fuzzer which explores paths in a binary to effectively reveal a secret, performing an oracle attack without an oracle. Our approach requires no source code, no manual instrumentation, and no symbolic execution, and, as our results show, can reliably discover and explore new execution paths in a timely fashion. We believe dynamic slice backsolving represents a potentially strong complementary technique for modern fuzzers to implement. In addition, we plan to release and continue development on Stubble's DTA framework, since we not aware of many freely available and active projects.
+Finding software bugs is a difficult but lucrative endeavour, and fuzzing is one technique often employed for finding bugs, particularly exploitable vulnerabilities. However, when no source code is available, fuzzing complex programs effectively can prove difficult, and as techniques become more sophisticated they require more resources and time. We present a technique, automated dynamic slice backsolving, which, to the best of our knowledge, represents a novel way to improve a black box fuzzer's code coverage, without resorting to heavyweight techniques like symbolic execution. We demonstrate this technique with a proof of concept fuzzer, Stubble, which implements our technique to explore paths in a binary and efficiently reveal a secret, performing an oracle attack without an oracle. Our approach requires no source code, no manual instrumentation, and no symbolic execution, and, as our results show, can reliably discover and explore new execution paths in a timely fashion. We believe dynamic slice backsolving presents a potentially strong complementary technique for modern fuzzers to implement.
 
 \end{abstract}
 
@@ -184,24 +191,13 @@ Because of these downsides, much research tries to attain more reasonable perfor
 
 In this paper, we present our analysis of existing techniques along with our own contributions and conclusions. We begin by exploring related work in Chapter 2, which sets the background and describes current fuzzers' techniques and limitations. In chapter 3, we describe our contributions, in the form of what is, to the best of our knowledge, a new technique for black box binary fuzzing, a proof of concept fuzzer which implements the technique, and testing results. Lastly, we describe possible future work and conclusions from the experience in Chapter 4.
 
-Our technique, automated dynamic slice backsolving, uses dynamic taint analysis to watch user input. As user input is introduced, each byte is tracked separately and, when the program transforms, uses, or moves user input, those actions are recorded. When branches which depend upon user input are reached, the recorded slice, if possible, are reversed, backsolving for a new value of a particular byte in user input which will lead execution down a different path in the binary. After execution finishes, input test cases are mutated to reflect this new information, and a new execution test runs.
+Our technique, automated dynamic slice backsolving, uses dynamic taint analysis to watch user input. As user input is introduced, each byte is tracked separately and, when the program transforms, uses, or moves user input, those actions are recorded. When branches which depend upon user input are reached, the recorded slice, if possible, are reversed, backsolving for a new value of a particular byte in user input which will lead execution down a different path in the binary. After execution finishes, input test cases are mutated to reflect this new information, and a new execution test runs. This is made possible by a key observation regarding the x86 architecture, namely, that a small number of conditional branch instructions are influenced solely by a few flags in the EFLAGS register. By watching closely how taint propagates to these flags, we are able to deduce how to mutate user input.
 
-The inspiration for this technique comes mainly from "A Taint Based Approach for Smart Fuzzing", which proposes a fuzzing tool architecture, involving vulnerability detection, followed by taint analysis based upon found vulnerabilities, which drives the generation of intelligent tests. Dynamic taint analysis tracks which bytes of user input are important in the binary, and these so-called "hot bytes" are made the focus of fuzzing attempts. The paper mentions it is valuable to be able to generate backward slices of program traces. These traces can then be run and analyzed by programmers. In the spirit of automation, our work not only generates backward slices based on taint propagation, but also automatically solves these traces to find new byte values. Thus, for a subset of programs, we can determine not only the exact location of user input which determines a branch condition, but also generate precise values for both branch and non-branch cases.
+The inspiration for this technique comes mainly from "A Taint Based Approach for Smart Fuzzing", which proposes a fuzzing tool architecture, involving vulnerability detection, followed by taint analysis based upon found vulnerabilities, which drives the generation of intelligent tests. Dynamic taint analysis tracks which bytes of user input are important in the binary, and these so-called "hot bytes" are made the focus of fuzzing attempts. The paper mentions it is valuable to be able to generate backward slices of program traces. These traces can then be run and analyzed by programmers. In the spirit of automation, our work not only generates backward slices based on taint propagation, but also automatically solves these traces to find new byte values. Thus, for a subset of programs, we can determine not only the exact location of user input which determines a branch condition, but also generate precise values for both branch and non-branch cases. This is similar to symbolic execution, but without fussing with manual program instrumentation or conversion to an intermediate representation, as with KLEE [V].
 
-We have implemented this technique in a proof of concept fuzzer, Stubble, which operates on x86 programs. Stubble dynamically instruments binaries, and automatically generates test files which exercise new paths in the input program. Program input, output, and interesting conditions like segmentation fault signals are recorded during execution, and taint propagation is recorded from user input sources to branch sinks. When a tainted branch is found, stubble automically backsolves the execution slice and generates a new test case which will drive the program down the opposite path explored in the current execution. 
+We have implemented this technique in a proof of concept fuzzer, Stubble, which operates on x86 programs. Stubble dynamically instruments binaries, and automatically generates test files which exercise new paths in the input program. Program input, output, and interesting conditions like segmentation fault signals are recorded during execution, and taint propagation is recorded from user input sources to branch sinks. When a tainted branch is found, Stubble automically backsolves the execution slice and generates a new test case which will drive the program down the opposite path explored in the current execution. Considering the distinct lack of black box dynamic taint analyzers, we plan to release Stubble as open source software.
 
 To test Stubble's ability to dynamically discover new branches and generate test cases which will drive future runs down these new branches, we have designed several binaries which receive user input in the form of a file. These binaries open and read the file, comparing a subset of the file contents against a secret. If the file contains the secret, then a win condition is printed, otherwise a lose condition is printed. For the proof of concept, this win condition could be thought of as a segfault, or other interesting condition that suggests an exploitable condition exists. We show that stubble is able to discover all paths in the binary, particularly the interesting paths involving the win condition, without any prior knowledge of the secret. Stubble works similarly to an oracle attack, able to discover one character within the secret per run, and preserve work across runs to crack the secret in O(n) tests, where n is the secret length in characters. In contrast, random byte fuzzers, which exhaustively test all user input bytes which their model declares valid, run indefinitely and have no guarantee of discovering the win condition. We also present a key observation for improving path exploration in the x86 architecture, namely the finite number of conditional branch statements and instructions which modify the flags which branch statements use. Targetting these instructions specifically pays dividends. We believe automated dynamic slice backsolving is a reasonable complementary technique to dynamic taint analysis and symbolic execution for binary fuzzing, and that stubble provides a valuable proof of concept for future research into smart fuzzers.
-
-%\chapter{Old-Abstract}
-
-% Dynamic taint analysis is difficult because taint can propagate directly via assignment, or indirectly via affecting control flows which affect assignment [D], which make proper implementation tricky. The path explosion problem arises from the nature of assembly languages. Jump instructions, which may make up a decent percentage of machine instructions in programs, each multiply the total number of existing paths in a binary by two. Considering the size of binaries, this quickly leads to an un-tenably large set of possible paths to explore via conventional techniques like symbolic execution. And even if it is possible to explore all paths in a binary, analysts still need sample input which can trigger the vulnerable condition, perhaps proving that the binary is exploitable along the way. Such automated exploit generation is the subject of much research [H, I].
-
-
-%This works similarly to a constraint solver, but constraint solving appears to be a traditional bottleneck, requiring generating symbolic input, usually in a different language like LLVM intermediate representation [V] and passing execution to the constraint solver.
-
-%We propose to avoid using a constraint solver entirely, and instead backsolve completely in memory. This is easier to implement than many of the clever optimizations used by S2E and could result in speedup over symbolic execution.
-
-%Because there are a finite number of conditional jumps, all of which depend on different flags or combinations of flags in the EFLAGS register, and a finite number of instructions that modify the EFLAGS register in x86, we can create cases for all possible ways jumps are decided. We only want to prove this is possible however, so we only implement a subset and instead comment on how to implement the other comparisons.
 
 \chapter{Background and Related Work}
 
@@ -231,6 +227,7 @@ Fuzzing is a reliable and inexpensive way to find vulnerabilities not only in co
 
 Web exploits such as cross site scripting (XSS) are possible because of language functionality like the eval method, which takes an arbitrary string as an input parameter and evaluates that string as if it were JavaScript source code [AE]. The authors of "A Symbolic Execution Framework for JavaScript" wrote Kudzu because of a perceived lack of sophisticated tools for fuzzing client-side Javascript. In particular, constraint solvers at the time seemed unable to reason about JavaScript string objects, which are used in various parts of the web to represent myriad types of data, and are then parsed by custom, open-source, and propietary libraries in order to cast from a string to another data type. As an example, consider the following snippet involving eval:
 
+\begin{figure}
 \begin{lstlisting}[style=jsstyle]
 // Let userInput = "2 + 2"
 var str = eval(userInput); 
@@ -240,6 +237,8 @@ if (str === 4) {
 	throw new Error;
 }
 \end{lstlisting}
+\caption{TODO}
+\end{figure}
 
 In this contrived example, catastrophe occurs when user input, when executed as JavaScript, returns the value 4. Without even considering the strange casting and equality rules which JavaScript operates under, there are multiple ways for user input to throw an error, making constraint solving particularly difficult. The case where userInput = "4" is straightforward, but other cases which do not look like the String "4" or the Number 4, but evaluate to it, can also trigger the error. According to the authors, before Kudzu, string solvers were unable to reason about regular expressions, string equality, or multiple variables [AD].
 
@@ -373,6 +372,7 @@ Symbolic execution supplies symbolic instead of concrete values for input [O]. T
 
 Symbolic execution is defined under SimpIL as execution under which return values from input sources are symbolic, instead of concrete. As the program executes, we pick up various constraints on these symbols from expressions and branches. For instance, we may start with a symbol s, which is then multiplied by a scalar 10, and then added to a constant 5 to calculate the offset for an effective address in an array. The symbol s is now constrained as s*10+5. When we encounter branch instructions, we inherit constraints based on whether or not the branch is taken. If we branch in the figure below, we now have the constraints x * 10 + 5 == 25 [C].
 
+\begin{figure}
 \begin{lstlisting}[style=cstyle]
 s = get_input();
 index = s * 10 + 5;
@@ -381,6 +381,8 @@ if A[index] == 25
 else
 	func2();
 \end{lstlisting}
+\caption{TODO}
+\end{figure}
 
 Because symbolic execution can reason about the constraints placed on input, it drastically reduces the amount of testing necessary to explore all possible branches [C]. With purely random testing in the above example, we would need to provide many different values for s to trigger the if statement and explore func1. If fact, only one value, s = 2, leads us down this path, where all other values jump to func2. Just for integer based evaluations, we would need to test half of all integer values to stand a reasonable chance at triggering both paths of any if statement. Symbolic execution, in contrast, solves for s = 2 and s $\neq$ 2, requiring only two separate executions to explore both paths. However, this precision comes at a cost. Symbolic execution doubles the number of paths which must be explored each time we encounter a  branch, since we can either take or not take each branch. Most optimizations for symbolic execution boil down to using symbolic execution less, parallelzing symbolic execution, or trying to simplify constraint formulas to make them easier to reason about [C]. Using symbolic execution less or more smartly falls into the realm of concolic and mixed execution. Parallelization introduces its own set of challenges, raised in [H], such as efficiently using resources by controlling the number of forked programs executing.
 
@@ -414,6 +416,7 @@ We have developed a technique which, to the best of our knowledge, provides simi
 
 Once user input is captured and marked tainted, any memory accesses, loads and stores, and transformations of tainted bytes are recorded as they are encountered. This creates a slice of operations involving the tainted bytes, which can be followed like a trail of breadcrumbs back to the original position of the byte. This continues as the program executes until a conditional branch is reached. When a conditional branch instruction is reached, it is either taken or not taken, based upon the value of some comparison. If the branch condition depends upon tainted values, which have descended in one way or another from user input, then there is a strong possibility that the "road not taken" could be explored if only user input looked appropriate. In the case where all transformations to user input are reversible, we can backsolve these transformations and, based upon the comparison, modify the byte value so that it leads to the complement of the previous branch condition. Not only this, we can identify which byte $b_0,b_1,...,b_n$ to modify, since we have followed each byte from their introduction. Using this information, we can mutate the previous test case to create a new test which will result in very similar program behavior, with the exception of branching where before it did not branch, and vice versa.
 
+\begin{figure}
 % TODO label this
 \begin{tikzpicture}[node distance = 2cm, auto]
     % Place input bytes
@@ -441,13 +444,15 @@ Once user input is captured and marked tainted, any memory accesses, loads and s
     %\path [line, dashed] (explored) -- (decide);
 
 \end{tikzpicture}
+\caption{TODO label}
+\end{figure}
 
 The idea for this technique is raised in [A], which suggests using dynamic taint analysis to identify "hot bytes" of user input, which affect important things in a program, and also to generate backward slices [AA]. Hot bytes become the target of fuzzing, with backward slices providing valuable context to analysts. Our contribution is the realization of this idea for a subset of cases, and the automation of solving these slices. Our hope is that by solving these slices automatically, we can identify not only the exact location but also the relevant values of hot bytes. 
 
 Our methodology focuses on following taint specifically up to tainted branches, to direct as much attention as possible to finding new paths to explore within the binary. This is of particular importance when source code is not available for analysis, which is common in vulnerability research. Compiled code can be disassembled or debugged, but compilation is a lossy process. Even industry de-compilers like Hex Rays cannot restore comments, since these are not preserved, and they cannot guarantee to reproduce the exact higher level language semantics, given only assembly language. Thus, our implementation relies on Intel Pin to dynamically disassemble compiled binaries.
 
 Consider the following example in Intel x86 assembly:
-
+\begin{figure}
 % x86 example
 \begin{lstlisting}[style=asmstyle]
 call read					;instrument read syscall
@@ -457,6 +462,7 @@ mul eax, 7					;transform eax
 cmp eax, 42					;cmp and jmp based on tainted reg value
 jnz 0x8BADC0DE
 \end{lstlisting}
+\end{figure}
 
 If we already had a test case where the value read onto the stack, after the transformations, did not equal 42, then the cmp instruction would not set the zero flag, or ZF, and we would jump to the memory location 0xBADC0DE. With dynamic taint analysis in place, we see taint introduced with the read syscall, then moved into the eax register (which is subsequently tainted). After an arbitrary number of transformations, perhaps zero, to the value in the eax register, comes a compare instruction, which checks eax's value against an immediate value. Then we can keep track of specific taint sources, and can record any movements or transformations, we have all the necessary information to "solve" the branch. Once we reach the tainted branch, we know that user input can affect whether we jump or not, and consequently we can backsolve to find out how to affect the branch instruction. In particular, we know the conditional jump instruction jnz depends on the Z flag in the EFLAGS register. We record whatever instruction last modified each flag in EFLAGS, so we handle the compare instruction next. Because we have kept track of taint propagation, we know we can affect the value of eax, but not 42, since it is an immediate value, so we know we need to make the value in eax equal 42. We follow the instructions that have modified the value of eax and use any appropriate operands involved with the inverse operation of the one originally performed on the value to reverse the transformations to eax's value. Finally, we notice eax originally received taint when a value was moved from memory, which was read into memory using the read syscall.
 
@@ -474,7 +480,7 @@ This is made possible by a key observation about the x86 architecture. There are
 
 
 % Source: http://www.texample.net/tikz/examples/simple-flow-chart/
-
+\begin{figure}
 \begin{tikzpicture}[node distance = 2cm, auto]
     % Place nodes
     \node [block] (driver) {driver};
@@ -498,6 +504,7 @@ This is made possible by a key observation about the x86 architecture. There are
     \path [line,dashed] (test case) -- (driver);
 
 \end{tikzpicture}
+\end{figure}
 
 We assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths. We have implemented the technique for the x86-32 architecture, because Intel Pin works on a few select architectures, of which x86 is the most prevalent. Since x86 is quite widespread, and vulnerabilities resulting from unsafe C code should persist across binaries, regardless of both the size and flavor of architecture (32 vs. 64-bit, ARM vs. x86 vs. PowerPC etc.), this should be no issue. Compilers try to adhere to the C standard and vulnerabilities like buffer overflows exist at a C source code level. 
 
@@ -519,7 +526,6 @@ Memory is conceived of as an unordered\_map of ints to (int, string) tuples. Thi
 While finding and executing new code paths is valuable, a fuzzer without a vulnerability condition to monitor for cannot convey meaningful information to an analyst. There are many  ways to detect the presence of a possibly exploitable bug, such as watching for tainted data reaching the instruction pointer, or watching program output for strings that suggest error conditions. Since program output is saved after each run, this is one possible way to detect vulnerabilities with Stubble, however, we specifically wanted to catch segmentation faults, since these are often raised when data corrupts pointers or overflows buffers or stack frames. Stubble monitors for segfaults using the Pin API. A signal-intercepting callback function for signal number 11, segmentation fault, is registered before execution is handed off to the fuzzed program. When a segfault occurs, information about the exception is made recorded and published in the signals/ directory.
 
 To test Stubble's ability to perform an oracle attack, we prepared C binaries which checked user input against a secret. After compiling with the Tiny C Compiler, which performs minimal optimization and doesn't add security measures like stack cookies, this binary and a default test file are given as input to Stubble. Secrets ranged in size from 1 to 50 characters. We started with secret of one character, embedded in an arbitrary position somewhere within the several hundred byte input file. To decide how to implement dynamic slice backsolving at the assembly level, we began by statically disassembling our binaries with IDA Pro [AH]. The ability to see control flow and instructions at a block level was invaluable during testing and development. After succeeding with smaller inputs we gradually increased the size of the secret.
-
 
 \section{Challenges and Limitations}
 
@@ -681,56 +687,96 @@ There also remains research to be done regarding parallel taint tracking. We par
 %TODO difficulties with implementation
 
 
+% TODO when done, convert to bibtex
+\begin{references}
+	[A] Bekrar, Sofia, et al. "A taint based approach for smart fuzzing." Software Testing, Verification and Validation (ICST), 2012 IEEE Fifth International Conference on. IEEE, 2012.
 
-\chapter{References}
+	[B] DeMott, J., Enbody, R., and Punch, W. "Revolutionizing the Field of Grey-box Attack Surface Testing with Evolutionary Fuzzing", BlackHat and Defcon 2007.
+	
+	[C] Schwartz, E.J., Avgerinos, T., Brumley, D. "All You Ever Wanted to Know About Dynamic Taint Analysis and Forward Symbolic Execution (but might have been afraid to ask)." 2010 IEEE Symposium on Security and Privacy.
 
-\begin{itemize}
-	\item [A] Bekrar, Sofia, et al. "A taint based approach for smart fuzzing." Software Testing, Verification and Validation (ICST), 2012 IEEE Fifth International Conference on. IEEE, 2012.
-	\item [B] DeMott, J., Enbody, R., and Punch, W. "Revolutionizing the Field of Grey-box Attack Surface Testing with Evolutionary Fuzzing", BlackHat and Defcon 2007.
-	\item [C] Schwartz, E.J., Avgerinos, T., Brumley, D. "All You Ever Wanted to Know About Dynamic Taint Analysis and Forward Symbolic Execution (but might have been afraid to ask)." 2010 IEEE Symposium on Security and Privacy.
-	\item [D] Clause, J. Li, W., Orso, A. "Dytan: a generic dynamic taint analysis framework". 2007 Int'l symposium on Software testing and analysis. ACM, 2007.
-	\item [E] Ajit, Beng Heng Ng Earlence Fernandes, Aluri Atul Prakash, and David Rodriguez Velazquez Zijiang Yang. "Beyond Instruction Level Taint Propagation." (2013).
-	\item [F] Yamaguchi, Fabian, Felix Lindner, and Konrad Rieck. "Vulnerability extrapolation: assisted discovery of vulnerabilities using machine learning." Proceedings of the 5th USENIX conference on Offensive technologies. USENIX Association, 2011.
-	\item [G] Bao, Tao, et al. "Strict control dependence and its effect on dynamic information flow analyses." Proceedings of the 19th international symposium on Software testing and analysis. ACM, 2010.
-	\item [H] Cha, Sang Kil, et al. "Unleashing mayhem on binary code." Security and Privacy (SP), 2012 IEEE Symposium on. IEEE, 2012.
-	\item [I] Avgerinos, Thanassis, et al. "AEG: Automatic Exploit Generation." NDSS. Vol. 11. 2011.
-	\item [J] Chipounov, Vitaly, Volodymyr Kuznetsov, and George Candea. "S2E: A platform for in-vivo multi-path analysis of software systems." ACM SIGARCH Computer Architecture News 39.1 (2011): 265-278.
-	\item [K] Bellard, Fabrice. "QEMU, a Fast and Portable Dynamic Translator." USENIX Annual Technical Conference, FREENIX Track. 2005.
-	\item [L] Guillon, Christophe. "Program Instrumentation with QEMU." 1st International QEMU Users’ Forum. 2011.
-	\item [M] Luk, Chi-Keung, et al. "Pin: building customized program analysis tools with dynamic instrumentation." Acm Sigplan Notices. Vol. 40. No. 6. ACM, 2005.
-	\item [N] Salwan, Jonathan. Shell-storm.org http://shell-storm.org/blog/Taint-analysis-and-pattern-matching-with-Pin/
-	\item [O] King, James C. "Symbolic execution and program testing." Communications of the ACM 19.7 (1976): 385-394.
-	\item [P] De Moura, Leonardo, and Nikolaj Bjørner. "Z3: An efficient SMT solver." Tools and Algorithms for the Construction and Analysis of Systems. Springer Berlin Heidelberg, 2008. 337-340.
-	\item [Q] Godefroid, Patrice, Michael Y. Levin, and David Molnar. "Sage: Whitebox fuzzing for security testing." Queue 10.1 (2012): 20.
-	\item [R] Ma, Kin-Keung, et al. "Directed symbolic execution." Static Analysis. Springer Berlin Heidelberg, 2011. 95-111.
-	\item [S] Boyer, Robert S., Bernard Elspas, and Karl N. Levitt. "SELECT—a formal system for testing and debugging programs by symbolic execution." ACM SigPlan Notices. Vol. 10. No. 6. ACM, 1975.
-	\item [T] Wang, Tielei, et al. "Checksum-aware fuzzing combined with dynamic taint analysis and symbolic execution." ACM Transactions on Information and System Security (TISSEC) 14.2 (2011): 15.
-	\item [U] Cadar, Cristian, and Koushik Sen. "Symbolic execution for software testing: three decades later." Communications of the ACM 56.2 (2013): 82-90.
-	\item [V] Cadar, Cristian, Daniel Dunbar, and Dawson R. Engler. "KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs." OSDI. Vol. 8. 2008.
-	\item [W] McCamant, Stephen, et al. Transformation-aware symbolic execution for system test generation. Tech. Rep. UCB/EECS-2013-125, University of California, Berkeley (Jun 2013), 2013.
-	\item [X] Majumdar, Rupak, and Koushik Sen. "Hybrid concolic testing." Software Engineering, 2007. ICSE 2007. 29th International Conference on. IEEE, 2007.
-	\item [Y] Sen, Koushik, Darko Marinov, and Gul Agha. CUTE: a concolic unit testing engine for C. Vol. 30. No. 5. ACM, 2005.
-	\item [Z] Eddington, Michael. "Peach fuzzing platform." Peach Fuzzer (2011).
-	\item [AA] Zhang, Xiangyu, Rajiv Gupta, and Youtao Zhang. "Precise dynamic slicing algorithms." Software Engineering, 2003. Proceedings. 25th International Conference on. IEEE, 2003.
-	\item [AB] Wang, Tielei, et al. "TaintScope: A checksum-aware directed fuzzing tool for automatic software vulnerability detection." Security and Privacy (SP), 2010 IEEE Symposium on. IEEE, 2010.
-	\item [AC] Sen, Koushik. "Concolic testing." Proceedings of the twenty-second IEEE/ACM international conference on Automated software engineering. ACM, 2007.
-	\item [AD] Saxena, Prateek, et al. "A symbolic execution framework for javascript." Security and Privacy (SP), 2010 IEEE Symposium on. IEEE, 2010.
-	\item [AE] Mozilla Developer Network. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/eval
-	\item [AF] The WebKit Open Source Project. http://www.webkit.org/
-	\item [AG] Portokalidis, Georgios, Asia Slowinska, and Herbert Bos. "Argos: an emulator for fingerprinting zero-day attacks for advertised honeypots with automatic signature generation." ACM SIGOPS Operating Systems Review. Vol. 40. No. 4. ACM, 2006.
-	\item [AH] Rescue, Data. "IDA Pro Disassembler." 2006-10-20). http://www. datarescue. com/idabase.
-	\item [AI] Garg, Sanjam, et al. "Candidate indistinguishability obfuscation and functional encryption for all circuits." Foundations of Computer Science (FOCS), 2013 IEEE 54th Annual Symposium on. IEEE, 2013.
-	\item [AJ] Oehlert, Peter. "Violating assumptions with fuzzing." Security \& Privacy, IEEE 3.2 (2005): 58-62.
-	\item [AK] Gilmore, John, and Sten Shebs. "GDB internals—a guide to the internals of the GNU debugger." Found in the doc directory of gdb distribution version 5.1 (2000).
-	\item [AL] Bruening, Derek, and Qin Zhao. "DynamoRIO."	
-	\item [AM] http://googleonlinesecurity.blogspot.com/2011/08/fuzzing-at-scale.html
-	\item [AN] http://www.pwn2own.com/, http://www.pwn2own.com/2014/03/pwn2own-2014-lineup/
-	\item [AO] http://www.forbes.com/sites/andygreenberg/2012/03/23/shopping-for-zero-days-an-price-list-for-hackers-secret-software-exploits/
-	\item [AP] Braden, R., Borman, D., and C. Partridge, "Computing the Internet checksum", RFC 1071, September 1988.
-	\item [AQ] Bossert, Georges, Frédéric Guihéry, and Guillaume Hiet. "Netzob: un outil pour la rétro-conception de protocoles de communication." Actes du Symposium sur la sécurité des technologies de l'information et des communications. 2012.
+	[D] Clause, J. Li, W., Orso, A. "Dytan: a generic dynamic taint analysis framework". 2007 Int'l symposium on Software testing and analysis. ACM, 2007.
+	
+	[E] Ajit, Beng Heng Ng Earlence Fernandes, Aluri Atul Prakash, and David Rodriguez Velazquez Zijiang Yang. "Beyond Instruction Level Taint Propagation." (2013).
+	
+	[F] Yamaguchi, Fabian, Felix Lindner, and Konrad Rieck. "Vulnerability extrapolation: assisted discovery of vulnerabilities using machine learning." Proceedings of the 5th USENIX conference on Offensive technologies. USENIX Association, 2011.
 
-\end{itemize}
+	[G] Bao, Tao, et al. "Strict control dependence and its effect on dynamic information flow analyses." Proceedings of the 19th international symposium on Software testing and analysis. ACM, 2010.
 
+	[H] Cha, Sang Kil, et al. "Unleashing mayhem on binary code." Security and Privacy (SP), 2012 IEEE Symposium on. IEEE, 2012.
+
+	[I] Avgerinos, Thanassis, et al. "AEG: Automatic Exploit Generation." NDSS. Vol. 11. 2011.
+
+	[J] Chipounov, Vitaly, Volodymyr Kuznetsov, and George Candea. "S2E: A platform for in-vivo multi-path analysis of software systems." ACM SIGARCH Computer Architecture News 39.1 (2011): 265-278.
+
+	[K] Bellard, Fabrice. "QEMU, a Fast and Portable Dynamic Translator." USENIX Annual Technical Conference, FREENIX Track. 2005.
+
+	[L] Guillon, Christophe. "Program Instrumentation with QEMU." 1st International QEMU Users’ Forum. 2011.
+
+	[M] Luk, Chi-Keung, et al. "Pin: building customized program analysis tools with dynamic instrumentation." Acm Sigplan Notices. Vol. 40. No. 6. ACM, 2005.
+
+	[N] Salwan, Jonathan. Shell-storm.org http://shell-storm.org/blog/Taint-analysis-and-pattern-matching-with-Pin/
+
+	[O] King, James C. "Symbolic execution and program testing." Communications of the ACM 19.7 (1976): 385-394.
+
+	[P] De Moura, Leonardo, and Nikolaj Bjørner. "Z3: An efficient SMT solver." Tools and Algorithms for the Construction and Analysis of Systems. Springer Berlin Heidelberg, 2008. 337-340.
+
+	[Q] Godefroid, Patrice, Michael Y. Levin, and David Molnar. "Sage: Whitebox fuzzing for security testing." Queue 10.1 (2012): 20.
+
+	[R] Ma, Kin-Keung, et al. "Directed symbolic execution." Static Analysis. Springer Berlin Heidelberg, 2011. 95-111.
+
+	[S] Boyer, Robert S., Bernard Elspas, and Karl N. Levitt. "SELECT—a formal system for testing and debugging programs by symbolic execution." ACM SigPlan Notices. Vol. 10. No. 6. ACM, 1975.
+
+	[T] Wang, Tielei, et al. "Checksum-aware fuzzing combined with dynamic taint analysis and symbolic execution." ACM Transactions on Information and System Security (TISSEC) 14.2 (2011): 15.
+
+	[U] Cadar, Cristian, and Koushik Sen. "Symbolic execution for software testing: three decades later." Communications of the ACM 56.2 (2013): 82-90.
+
+	[V] Cadar, Cristian, Daniel Dunbar, and Dawson R. Engler. "KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs." OSDI. Vol. 8. 2008.
+
+	[W] McCamant, Stephen, et al. Transformation-aware symbolic execution for system test generation. Tech. Rep. UCB/EECS-2013-125, University of California, Berkeley (Jun 2013), 2013.
+
+	[X] Majumdar, Rupak, and Koushik Sen. "Hybrid concolic testing." Software Engineering, 2007. ICSE 2007. 29th International Conference on. IEEE, 2007.
+
+	[Y] Sen, Koushik, Darko Marinov, and Gul Agha. CUTE: a concolic unit testing engine for C. Vol. 30. No. 5. ACM, 2005.
+
+	[Z] Eddington, Michael. "Peach fuzzing platform." Peach Fuzzer (2011).
+
+	[AA] Zhang, Xiangyu, Rajiv Gupta, and Youtao Zhang. "Precise dynamic slicing algorithms." Software Engineering, 2003. Proceedings. 25th International Conference on. IEEE, 2003.
+
+	[AB] Wang, Tielei, et al. "TaintScope: A checksum-aware directed fuzzing tool for automatic software vulnerability detection." Security and Privacy (SP), 2010 IEEE Symposium on. IEEE, 2010.
+
+	[AC] Sen, Koushik. "Concolic testing." Proceedings of the twenty-second IEEE/ACM international conference on Automated software engineering. ACM, 2007.
+
+	[AD] Saxena, Prateek, et al. "A symbolic execution framework for javascript." Security and Privacy (SP), 2010 IEEE Symposium on. IEEE, 2010.
+
+	[AE] Mozilla Developer Network. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/eval
+
+	[AF] The WebKit Open Source Project. http://www.webkit.org/
+
+	[AG] Portokalidis, Georgios, Asia Slowinska, and Herbert Bos. "Argos: an emulator for fingerprinting zero-day attacks for advertised honeypots with automatic signature generation." ACM SIGOPS Operating Systems Review. Vol. 40. No. 4. ACM, 2006.
+
+	[AH] Rescue, Data. "IDA Pro Disassembler." 2006-10-20). http://www. datarescue. com/idabase.
+
+	[AI] Garg, Sanjam, et al. "Candidate indistinguishability obfuscation and functional encryption for all circuits." Foundations of Computer Science (FOCS), 2013 IEEE 54th Annual Symposium on. IEEE, 2013.
+
+	[AJ] Oehlert, Peter. "Violating assumptions with fuzzing." Security \& Privacy, IEEE 3.2 (2005): 58-62.
+
+	[AK] Gilmore, John, and Sten Shebs. "GDB internals—a guide to the internals of the GNU debugger." Found in the doc directory of gdb distribution version 5.1 (2000).
+
+	[AL] Bruening, Derek, and Qin Zhao. "DynamoRIO."	
+
+	[AM] http://googleonlinesecurity.blogspot.com/2011/08/fuzzing-at-scale.html
+
+	[AN] http://www.pwn2own.com/, http://www.pwn2own.com/2014/03/pwn2own-2014-lineup/
+
+	[AO] http://www.forbes.com/sites/andygreenberg/2012/03/23/shopping-for-zero-days-an-price-list-for-hackers-secret-software-exploits/
+
+	[AP] Braden, R., Borman, D., and C. Partridge, "Computing the Internet checksum", RFC 1071, September 1988.
+
+	[AQ] Bossert, Georges, Frédéric Guihéry, and Guillaume Hiet. "Netzob: un outil pour la rétro-conception de protocoles de communication." Actes du Symposium sur la sécurité des technologies de l'information et des communications. 2012.
+
+
+\end{references}
 
 %\input chapter2
 %\input chapter3
