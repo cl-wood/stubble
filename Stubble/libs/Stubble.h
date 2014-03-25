@@ -4,25 +4,31 @@
 // Stubble.h
 // http://en.wikibooks.org/wiki/X86_Assembly/Control_Flow and the book in general is very helpful
 
+#include "syscalls.h"
+#include "intercept_signals.h"
+#include <iomanip>
 #include <sstream>
 #include <string>
 #include <algorithm>
-#include <iterator>
+#include <tuple>
+#include <unordered_map>
 #include <vector>
-#include <unordered_map>
-#include <list>
-#include <unordered_map>
-#include <xed-flag-enum.h>
-
-int insCount = 0;
-list<UINT32> addressTainted;
-list<REG> regsTainted;
+//#include <xed-flag-enum.h>
 
 /* Globals for Stubble */
 string results_dir = "./results/currentrun/";
+int UNTAINTED = -1;
+
+// Tainted Registers
+// TODO make registers an enumerated array of tuple(byteLocation, fileName), if untainted byteLocation = -1
+unordered_map<string, tuple<UINT32, string> > tainted_registers;
+
+
 
 // Array of registers to check for tainted writes
-REG registers[] = { REG_EDI, 
+REG registers[] = { 
+                    REG_EFLAGS,
+                    REG_EDI, 
                     REG_ESI, 
                     REG_EBP, 
                     REG_ESP, 
@@ -30,7 +36,6 @@ REG registers[] = { REG_EDI,
                     REG_ECX, 
                     REG_EBX, 
                     REG_EAX,  
-                    REG_EFLAGS,
                     REG_EIP,
                     REG_AL, 
                     REG_AH, 
@@ -53,53 +58,16 @@ REG registers[] = { REG_EDI,
 // File for recording taint propagation
 ofstream CondBranchFile;
 ofstream TaintRegsFile;
-
-//INS last_instruction;
-//BOOL taintedCmp = false;
-
+ofstream EflagsFile;
 
 // CATEGORIES and ICLASSes to consider
 //XED_CATEGORY_CMOV all cond. move instructions
 
-/* Check each instruction to see if it modifies EFLAGS. 
- * TODO Only catches if flag value changes. Ex, missed ZF=1->ZF=1 but now tainted.
- */
-/* 
-VOID CheckEflags(ADDRINT ins, string insDis, CONTEXT* context) {
-
-
-    UINT32 tmp_flags = PIN_GetContextReg(context, REG_EFLAGS);
-
-    // TODO
-    // Ensures the initial setting of EFLAGS is not recorded--not sure if needed
-    //if (START) {
-    //    EFLAGS = tmp_flags;
-    //    START = false;
-    //}
-
-    if (EFLAGS != tmp_flags) {
-
+        /*
         // Check to see if carry/offset/parity/sign/zero flags changed
         if (tmp_flags & XED_FLAG_cf) {
             FlagsFile << insDis << ":\t" << PIN_GetContextReg(context, REG_EFLAGS) << endl;
-        }
-        if (tmp_flags & XED_FLAG_of) {
-            FlagsFile << insDis << ":\t" << PIN_GetContextReg(context, REG_EFLAGS) << endl;
-        }
-        if (tmp_flags & XED_FLAG_pf) {
-            FlagsFile << insDis << ":\t" << PIN_GetContextReg(context, REG_EFLAGS) << endl;
-        }
-        if (tmp_flags & XED_FLAG_sf) {
-            FlagsFile << insDis << ":\t" << PIN_GetContextReg(context, REG_EFLAGS) << endl;
-        }
-        if (tmp_flags & XED_FLAG_zf) {
-            FlagsFile << insDis << ":\t" << PIN_GetContextReg(context, REG_EFLAGS) << endl;
-        }
-
-        EFLAGS = tmp_flags;
-    }
-}
- */
+        }*/
 
 /*    if (INS_OperandCount(ins) > 1 && INS_MemoryOperandIsRead(ins, 0) && INS_OperandIsReg(ins, 0)) {
         INS_InsertCall(
@@ -114,11 +82,38 @@ VOID CheckEflags(ADDRINT ins, string insDis, CONTEXT* context) {
         */
 //Calls taintReg(reg) VOID ReadMem(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT32 memOp, UINT32 sp)
 
+// Handles taint tracking for EFLAGS register's carry/overflow/parity/sign/zero flags
+VOID taint_eflags()
+{
+
+}
 
 // When tainted data is written to a register
-VOID taint_register(ADDRINT ins, string insDis, string regName, CONTEXT* context, REG reg) {
+//      1) Record in TaintRegsFile
+//      2) Update tainted_registers data structure
+VOID taint_register(ADDRINT ins, string insDis, string regName, string category, CONTEXT* context, REG reg) {
+    
+    TaintRegsFile << insDis << "\t[REG]\t" << regName << endl;
 
-    TaintRegsFile << insDis << ":\t" << regName << ":\t" << PIN_GetContextReg(context, reg) << endl;
+    // If EFLAGS tainted, figure out which flag
+    // TODO does this have to be instruction independent?
+    if (regName == "eflags") {
+        EflagsFile << insDis << "\t[CATEGORY]\t" << category << endl;
+    }
+
+    // Update tainted_registers
+    // tuple should be (memLoc, fileName)?
+    // TODO make the "0" memLoc
+    tainted_registers[regName] = tuple<UINT32, string>(0, insDis);
+
+}
+
+// Used when:
+//  1) untainted data written to register
+//  2) xor r1, r1
+VOID untaint_register(REG reg) {
+
+    tainted_registers[REG_StringShort(reg)] = tuple<UINT32, string>(UNTAINTED, "UNTAINTED");
 
 }
 
@@ -168,10 +163,12 @@ VOID Instructions(INS ins, VOID *v)
 
             if (INS_RegWContain(ins, reg) && INS_HasFallThrough(ins) ) {
 
+
                 INS_InsertCall(ins, IPOINT_AFTER, AFUNPTR(taint_register),
                         IARG_INST_PTR,
                         IARG_PTR, new string(INS_Disassemble(ins)),
                         IARG_PTR, new string(REG_StringShort(reg)),
+                        IARG_PTR, new string(CATEGORY_StringShort(INS_Category(ins) )),
                         IARG_CONST_CONTEXT,
                         IARG_UINT32, INS_OperandReg(ins, 0),
                         IARG_END);
@@ -203,19 +200,24 @@ VOID init_stubble()
     //ControlFlowFile << hex;
     //ControlFlowFile.setf(ios::showbase);
 
-
     CondBranchFile.open(results_dir + "branches.out");
     TaintRegsFile.open(results_dir + "taint_regs.out");
+    EflagsFile.open(results_dir + "eflags.out");
 
     INS_AddInstrumentFunction(Instructions, 0);
-    //PIN_AddSyscallEntryFunction(Syscall_entry, 0);
 
 }
 
 VOID fini_stubble()
 {
+    // iterate over DS to check
+    //for (string s : tainted_registers) {
+    //    cout << s << "\t" << get<0>(tainted_registers[s]) << endl;
+    //}
+
     CondBranchFile.close();
     TaintRegsFile.close();
+    EflagsFile.close();
 }
 
 #endif /* __STUBBLE_H__ */
