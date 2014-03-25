@@ -30,31 +30,20 @@ VOID Syscall_entry(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID 
     UINT32 start, size;
     //UINT32 read;
     if (PIN_GetSyscallNumber(ctx, std) == __NR_open) {
-        //TaintIntroductionFile << "BLAH " << PIN_GetSyscallArgument(ctx, std, 1);
-        TaintIntroductionFile << "OPEN " << PIN_GetSyscallArgument(ctx, std, 0) << " "
-                             << PIN_GetSyscallArgument(ctx, std, 1) << endl;
+        TaintIntroductionFile << "[OPEN]\t" << PIN_GetSyscallArgument(ctx, std, 0) << endl; 
     }
 
-    if (PIN_GetSyscallNumber(ctx, std) == __NR_read) {
-
-        //eipValue = PIN_GetContextReg(ctx, REG_EIP);
-        TaintIntroductionFile << "EIP value\t" << std::hex << endl;
+    // If syscall arg 0 is 0, then STDIN
+    if (PIN_GetSyscallNumber(ctx, std) == __NR_read && PIN_GetSyscallArgument(ctx, std, 0) == 0 ) {
 
         start = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 1)));
         size  = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 2)));
-        //UINT32 fd = static_cast<UINT32>((PIN_GetSyscallArgument(ctx, std, 0)));
-        //read  = static_cast<UINT32>((PIN_GetSyscallReturn(ctx, std)));
-
-        // Cheap trick for demo, will need to remove later?
-        if (size != 500) {
-            return; 
-        }
 
         for (i = 0; i < size; i++) {
             addressTainted.push_back(start+i);
         }
 
-        TaintIntroductionFile << "[TAINT]\t" << std::hex << start << ": " << start+size << " (read)" << endl;
+        TaintIntroductionFile << "[TAINT]\tfd: " << PIN_GetSyscallArgument(ctx, std, 0) << "\t" << std::hex << start << ": " << start+size << " (read)" << endl;
     }
 }
 

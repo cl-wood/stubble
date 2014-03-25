@@ -6,6 +6,7 @@
 
 #include "syscalls.h"
 #include "intercept_signals.h"
+
 #include <iomanip>
 #include <sstream>
 #include <string>
@@ -206,6 +207,10 @@ VOID init_stubble()
 
     INS_AddInstrumentFunction(Instructions, 0);
 
+    // Init libraries
+    init_intercept_signals();
+    init_syscalls();
+
 }
 
 VOID fini_stubble()
@@ -218,6 +223,9 @@ VOID fini_stubble()
     CondBranchFile.close();
     TaintRegsFile.close();
     EflagsFile.close();
+
+    fini_intercept_signals();
+    fini_syscalls();
 }
 
 #endif /* __STUBBLE_H__ */

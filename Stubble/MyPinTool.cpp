@@ -48,7 +48,6 @@ using namespace std;
 /* User Libraries */
 /* ===================================================================== */
 #include "libs/Stubble.h"
-//#include "libs/intercept_signals.h"
 
 /* ===================================================================== */
 
@@ -68,7 +67,6 @@ VOID Fini(INT32 code, VOID *v)
 {
 
     fini_stubble();
-    fini_intercept_signals();
 
 }
 
@@ -97,15 +95,8 @@ int main(int argc, char *argv[])
         return Usage();
     }
 
-    // Init functions for modules and open recording files
     init_stubble();
-    init_intercept_signals();
-    //SignalFile.open("signal.out");
-
     PIN_AddFiniFunction(Fini, 0);
-    
-    // Intercept segfault, signal 11
-    //PIN_InterceptSignal(11, intercept_signal, 0);
 
     // Never returns
     PIN_StartProgram();
