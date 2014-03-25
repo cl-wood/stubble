@@ -1,3 +1,8 @@
 Pin 2.12 kit 58423
-E: libs/Stubble.h:181 cannot insert IPOINT_AFTER on an instruction without a fall-through path
-       2 0xb7703192 call 0xb7706b70
+E: Attach to pid 3162 failed. 
+  The Operating System configuration prevents Pin from using the default (parent) injection mode.
+  To resolve this, either execute the following (as root):
+  $ echo 0 > /proc/sys/kernel/yama/ptrace_scope
+  Or use the "-injection child" option.
+  For more information, regarding child injection, see Injection section in the Pin User Manual.
+

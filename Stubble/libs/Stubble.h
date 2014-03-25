@@ -20,9 +20,10 @@
 string results_dir = "./results/currentrun/";
 int UNTAINTED = -1;
 
-// Tainted Registers
-// TODO make registers an enumerated array of tuple(byteLocation, fileName), if untainted byteLocation = -1
-unordered_map<string, tuple<UINT32, string> > tainted_registers;
+// Tainted registers and memory
+unordered_map<string, tuple<UINT32, string> > tainted_registers; // TODO make registers an enumerated array of tuple(byteLocation, fileName), if untainted byteLocation = -1
+extern unordered_map<UINT32, tuple<UINT32, string> > tainted_memory;
+
 
 
 
@@ -60,6 +61,7 @@ REG registers[] = {
 ofstream CondBranchFile;
 ofstream TaintRegsFile;
 ofstream EflagsFile;
+ofstream UnhandledFile;
 
 // CATEGORIES and ICLASSes to consider
 //XED_CATEGORY_CMOV all cond. move instructions
@@ -118,6 +120,16 @@ VOID untaint_register(REG reg) {
 
 }
 
+VOID taint_mem2reg(ADDRINT ins, string insDis, string regName, UINT32 mem, CONTEXT* context) 
+{
+    if (tainted_memory.count(mem) > 0) {
+        tainted_registers[regName] = tuple<UINT32, string>(0, ""); // TODO should the 0 be memory-loc or loc in user input?
+        TaintRegsFile << insDis << "\t[FLOW]\t" << mem << " to " << regName <<  endl;
+
+    }
+
+}
+
 /* ===================================================================== */
 /* Check conditional branch instructions                                 */
 /* ===================================================================== */
@@ -127,10 +139,6 @@ VOID conditional_branch(ADDRINT ins, INT32 branchTaken, string insDis) {
 }
 
 /*
-    // TODO PREDICATE_ZERO to get ZF == 0 or cases for all jumps and backsolve
-    //if (INS_Opcode(ins) == XED_ICLASS_JNZ) {
-        
-    //}
     if (INS_OperandCount(ins) > 1 && INS_MemoryOperandIsRead(ins, 0) && INS_OperandIsReg(ins, 0)) {
         INS_InsertCall(
     else if ( (INS_OperandCount(ins) > 1 && INS_MemoryOperandIsWritten(ins, 0) ) ) {
@@ -140,6 +148,10 @@ VOID conditional_branch(ADDRINT ins, INT32 branchTaken, string insDis) {
         && INS_OperandIsImmediate(ins, 1) ) { 
 */
 
+/* 
+ * Instrument instructions to track taint.
+ * If an instruction is not instrumented, record it in unhandled_instructions.out
+ */
 VOID Instructions(INS ins, VOID *v)
 {
 
@@ -156,15 +168,25 @@ VOID Instructions(INS ins, VOID *v)
     // TODO taint_memory can use INS_IsMemoryWrite(ins)
     // INS_IsStackWrite also could be useful
 
-    // Instruction writes EFLAGS register
     // TODO check for taint here instead of in function??
-    else {
+    // TODO figure out why this doesn't work without these 3
+    // Handled tainting and untainting of registers
+    else if (INS_OperandCount(ins) > 1 && INS_MemoryOperandIsRead(ins, 0) && INS_OperandIsReg(ins, 0)) {
 
+                INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(taint_mem2reg),
+                        IARG_INST_PTR,
+                        IARG_PTR, new string(INS_Disassemble(ins)),
+                        IARG_PTR, new string(REG_StringShort(INS_OperandReg(ins, 0) ) ),
+                        //IARG_UINT32, INS_OperandReg(ins, 1),
+                        IARG_MEMORYOP_EA, 0,
+                        IARG_CONST_CONTEXT,
+                        IARG_END);
+        }
+
+        /*
         for (REG reg : registers) {
-
+            // Writes to a register and is NOT 
             if (INS_RegWContain(ins, reg) && INS_HasFallThrough(ins) ) {
-
-
                 INS_InsertCall(ins, IPOINT_AFTER, AFUNPTR(taint_register),
                         IARG_INST_PTR,
                         IARG_PTR, new string(INS_Disassemble(ins)),
@@ -173,11 +195,19 @@ VOID Instructions(INS ins, VOID *v)
                         IARG_CONST_CONTEXT,
                         IARG_UINT32, INS_OperandReg(ins, 0),
                         IARG_END);
-
+                //break; // Not sure...but only one register should be written per instruction
             }
-
         } 
+        */
+    
+
+    // Put in "unhandle_instruction.out" for debugging
+    else {
+
+        UnhandledFile << INS_Disassemble(ins) << endl;
+
     }
+
 }
 
 // Instructions that modify flags register
@@ -204,6 +234,7 @@ VOID init_stubble()
     CondBranchFile.open(results_dir + "branches.out");
     TaintRegsFile.open(results_dir + "taint_regs.out");
     EflagsFile.open(results_dir + "eflags.out");
+    UnhandledFile.open(results_dir + "unhandled_instructions.out");
 
     INS_AddInstrumentFunction(Instructions, 0);
 
@@ -223,6 +254,7 @@ VOID fini_stubble()
     CondBranchFile.close();
     TaintRegsFile.close();
     EflagsFile.close();
+    UnhandledFile.close();
 
     fini_intercept_signals();
     fini_syscalls();
