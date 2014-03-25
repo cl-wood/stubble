@@ -4,6 +4,8 @@
 // Stubble.h
 // http://en.wikibooks.org/wiki/X86_Assembly/Control_Flow and the book in general is very helpful
 
+#include "syscalls.h"
+#include "intercept_signals.h"
 #include <iomanip>
 #include <sstream>
 #include <string>
@@ -17,11 +19,9 @@
 string results_dir = "./results/currentrun/";
 int UNTAINTED = -1;
 
-// Tainted Registers and Memory
-typedef unordered_map<string, tuple<UINT32, string> > taint_ds;
-taint_ds tainted_registers;
+// Tainted Registers
 // TODO make registers an enumerated array of tuple(byteLocation, fileName), if untainted byteLocation = -1
-taint_ds tainted_memory;
+unordered_map<string, tuple<UINT32, string> > tainted_registers;
 
 
 
@@ -60,10 +60,6 @@ ofstream CondBranchFile;
 ofstream TaintRegsFile;
 ofstream EflagsFile;
 
-//INS last_instruction;
-//BOOL taintedCmp = false;
-
-
 // CATEGORIES and ICLASSes to consider
 //XED_CATEGORY_CMOV all cond. move instructions
 
@@ -86,6 +82,11 @@ ofstream EflagsFile;
         */
 //Calls taintReg(reg) VOID ReadMem(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT32 memOp, UINT32 sp)
 
+// Handles taint tracking for EFLAGS register's carry/overflow/parity/sign/zero flags
+VOID taint_eflags()
+{
+
+}
 
 // When tainted data is written to a register
 //      1) Record in TaintRegsFile
