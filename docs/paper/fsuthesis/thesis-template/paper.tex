@@ -134,7 +134,7 @@
 
 SFS, for the generous funding, mentoring, networking opportunities which have given me the opportunity to study computer science. Specifically my co-principal investigators, Mike Burmester and Xiuwen Liu.
 
-%Bret Whissel
+Bret Whissel, for his LaTeX template and help.
 
 Jonathan Salwan, for his pintool code examples.
 
@@ -237,7 +237,7 @@ if (str === 4) {
 	throw new Error;
 }
 \end{lstlisting}
-\caption{TODO}
+\caption{Javascript Strings}
 \end{figure}
 
 In this contrived example, catastrophe occurs when user input, when executed as JavaScript, returns the value 4. Without even considering the strange casting and equality rules which JavaScript operates under, there are multiple ways for user input to throw an error, making constraint solving particularly difficult. The case where userInput = "4" is straightforward, but other cases which do not look like the String "4" or the Number 4, but evaluate to it, can also trigger the error. According to the authors, before Kudzu, string solvers were unable to reason about regular expressions, string equality, or multiple variables [AD].
@@ -381,7 +381,7 @@ if A[index] == 25
 else
 	func2();
 \end{lstlisting}
-\caption{TODO}
+\caption{Symbolic Execution}
 \end{figure}
 
 Because symbolic execution can reason about the constraints placed on input, it drastically reduces the amount of testing necessary to explore all possible branches [C]. With purely random testing in the above example, we would need to provide many different values for s to trigger the if statement and explore func1. If fact, only one value, s = 2, leads us down this path, where all other values jump to func2. Just for integer based evaluations, we would need to test half of all integer values to stand a reasonable chance at triggering both paths of any if statement. Symbolic execution, in contrast, solves for s = 2 and s $\neq$ 2, requiring only two separate executions to explore both paths. However, this precision comes at a cost. Symbolic execution doubles the number of paths which must be explored each time we encounter a  branch, since we can either take or not take each branch. Most optimizations for symbolic execution boil down to using symbolic execution less, parallelzing symbolic execution, or trying to simplify constraint formulas to make them easier to reason about [C]. Using symbolic execution less or more smartly falls into the realm of concolic and mixed execution. Parallelization introduces its own set of challenges, raised in [H], such as efficiently using resources by controlling the number of forked programs executing.
@@ -444,7 +444,7 @@ Once user input is captured and marked tainted, any memory accesses, loads and s
     %\path [line, dashed] (explored) -- (decide);
 
 \end{tikzpicture}
-\caption{TODO label}
+\caption{Dynamic Slice Backsolving}
 \end{figure}
 
 The idea for this technique is raised in [A], which suggests using dynamic taint analysis to identify "hot bytes" of user input, which affect important things in a program, and also to generate backward slices [AA]. Hot bytes become the target of fuzzing, with backward slices providing valuable context to analysts. Our contribution is the realization of this idea for a subset of cases, and the automation of solving these slices. Our hope is that by solving these slices automatically, we can identify not only the exact location but also the relevant values of hot bytes. 
@@ -462,6 +462,7 @@ mul eax, 7					;transform eax
 cmp eax, 42					;cmp and jmp based on tainted reg value
 jnz 0x8BADC0DE
 \end{lstlisting}
+\caption{x86 Backsolving}
 \end{figure}
 
 If we already had a test case where the value read onto the stack, after the transformations, did not equal 42, then the cmp instruction would not set the zero flag, or ZF, and we would jump to the memory location 0xBADC0DE. With dynamic taint analysis in place, we see taint introduced with the read syscall, then moved into the eax register (which is subsequently tainted). After an arbitrary number of transformations, perhaps zero, to the value in the eax register, comes a compare instruction, which checks eax's value against an immediate value. Then we can keep track of specific taint sources, and can record any movements or transformations, we have all the necessary information to "solve" the branch. Once we reach the tainted branch, we know that user input can affect whether we jump or not, and consequently we can backsolve to find out how to affect the branch instruction. In particular, we know the conditional jump instruction jnz depends on the Z flag in the EFLAGS register. We record whatever instruction last modified each flag in EFLAGS, so we handle the compare instruction next. Because we have kept track of taint propagation, we know we can affect the value of eax, but not 42, since it is an immediate value, so we know we need to make the value in eax equal 42. We follow the instructions that have modified the value of eax and use any appropriate operands involved with the inverse operation of the one originally performed on the value to reverse the transformations to eax's value. Finally, we notice eax originally received taint when a value was moved from memory, which was read into memory using the read syscall.
@@ -504,6 +505,7 @@ This is made possible by a key observation about the x86 architecture. There are
     \path [line,dashed] (test case) -- (driver);
 
 \end{tikzpicture}
+\caption{Stubble Architecture}
 \end{figure}
 
 We assume ASLR is disabled for the binary to be fuzzed. This allows the program to easily track and compare execution paths. We have implemented the technique for the x86-32 architecture, because Intel Pin works on a few select architectures, of which x86 is the most prevalent. Since x86 is quite widespread, and vulnerabilities resulting from unsafe C code should persist across binaries, regardless of both the size and flavor of architecture (32 vs. 64-bit, ARM vs. x86 vs. PowerPC etc.), this should be no issue. Compilers try to adhere to the C standard and vulnerabilities like buffer overflows exist at a C source code level. 
@@ -569,7 +571,6 @@ In a traditional oracle attack, the adversary can derive a secret by testing one
 Secrets of length 1 to 50 were tested at regular intervals. It appears that, aside from some constant overhead, that test cases generated and time required to crack the binary rise linearly with password length as expected. The constant overhead is probably introduced from overtaint, which itself likely comes from dynamically linked libraries which are opened and read, and thereby mistakenly introduced as tainted input.
 
 \begin{figure}
-\caption{Secret Guessing Test Cases}
 \begin{tikzpicture}
 \begin{axis}[
     title={Oracle Attack},
@@ -602,11 +603,10 @@ Secrets of length 1 to 50 were tested at regular intervals. It appears that, asi
     }; 
 \end{axis}
 \end{tikzpicture}
-
+\caption{Secret Guessing Test Cases}
 \end{figure}
 
 \begin{figure}
-\caption{Secret Guessing Time Elapsed}
 \begin{tikzpicture}
 \begin{axis}[
     title={Oracle Attack},
@@ -639,6 +639,7 @@ Secrets of length 1 to 50 were tested at regular intervals. It appears that, asi
     };     
 \end{axis}
 \end{tikzpicture}
+\caption{Secret Guessing Time Elapsed}
 \end{figure}
 
 % TODO add these back in?
