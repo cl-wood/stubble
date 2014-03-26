@@ -1,8 +1,2 @@
 Pin 2.12 kit 58423
-E: Attach to pid 3162 failed. 
-  The Operating System configuration prevents Pin from using the default (parent) injection mode.
-  To resolve this, either execute the following (as root):
-  $ echo 0 > /proc/sys/kernel/yama/ptrace_scope
-  Or use the "-injection child" option.
-  For more information, regarding child injection, see Injection section in the Pin User Manual.
-
+E: libs/Stubble.h:323: IARG_MEMORYOP_EA/IARG_MEMORYOP_MASKED_ON invalid memory operand index (1) on     89 0xb7750b70 push ebp
