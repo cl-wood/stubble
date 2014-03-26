@@ -6,7 +6,7 @@
 #include <unordered_map>
 
 // Extern from Stubble.h
-extern string results_dir;
+extern const string results_dir;
 
 list<UINT32> addressTainted;
 unordered_map<UINT32, tuple<UINT32, string> > tainted_memory;

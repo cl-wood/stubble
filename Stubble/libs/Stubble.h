@@ -14,18 +14,15 @@
 #include <tuple>
 #include <unordered_map>
 #include <vector>
-//#include <xed-flag-enum.h>
 
 /* Globals for Stubble */
-string results_dir = "./results/currentrun/";
-int UNTAINTED = -1;
+const string results_dir = "./results/currentrun/";
+const int UNTAINTED = -1;
+unsigned long INS_COUNT;
 
 // Tainted registers and memory
 unordered_map<string, tuple<UINT32, string> > tainted_registers; // TODO make registers an enumerated array of tuple(byteLocation, fileName), if untainted byteLocation = -1
 extern unordered_map<UINT32, tuple<UINT32, string> > tainted_memory;
-
-
-
 
 // Array of registers to check for tainted writes
 REG registers[] = { 
@@ -57,33 +54,13 @@ REG registers[] = {
                     REG_SP 
                    };
 
-// File for recording taint propagation
+// Files for recording various information
 ofstream CondBranchFile;
-ofstream TaintRegsFile;
+ofstream TaintFile;
 ofstream EflagsFile;
 ofstream UnhandledFile;
-
-// CATEGORIES and ICLASSes to consider
-//XED_CATEGORY_CMOV all cond. move instructions
-
-        /*
-        // Check to see if carry/offset/parity/sign/zero flags changed
-        if (tmp_flags & XED_FLAG_cf) {
-            FlagsFile << insDis << ":\t" << PIN_GetContextReg(context, REG_EFLAGS) << endl;
-        }*/
-
-/*    if (INS_OperandCount(ins) > 1 && INS_MemoryOperandIsRead(ins, 0) && INS_OperandIsReg(ins, 0)) {
-        INS_InsertCall(
-                ins, IPOINT_BEFORE, (AFUNPTR)ReadMem,
-                IARG_ADDRINT, INS_Address(ins),
-                IARG_PTR, new string(INS_Disassemble(ins)),
-                IARG_UINT32, INS_OperandCount(ins),
-                IARG_UINT32, INS_OperandReg(ins, 0),
-                IARG_MEMORYOP_EA, 0,
-                IARG_REG_VALUE, REG_STACK_PTR,
-                IARG_END);
-        */
-//Calls taintReg(reg) VOID ReadMem(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_r, UINT32 memOp, UINT32 sp)
+ofstream NopFile;
+ofstream OneOpFile;
 
 // Handles taint tracking for EFLAGS register's carry/overflow/parity/sign/zero flags
 VOID taint_eflags()
@@ -91,41 +68,132 @@ VOID taint_eflags()
 
 }
 
+VOID write_taint(string type, string source, string sink, string insDis)
+{
+
+    TaintFile << "[" << type << "] from\t" << sink << "\tto\t" << source << "\tby\t" << insDis << endl;
+
+}
+
 // When tainted data is written to a register
-//      1) Record in TaintRegsFile
+//      1) Record in TaintFile
 //      2) Update tainted_registers data structure
-VOID taint_register(ADDRINT ins, string insDis, string regName, string category, CONTEXT* context, REG reg) {
+VOID taint_register(string source, string sink, string insDis, string source_type)
+{
     
-    TaintRegsFile << insDis << "\t[REG]\t" << regName << endl;
 
     // If EFLAGS tainted, figure out which flag
     // TODO does this have to be instruction independent?
-    if (regName == "eflags") {
-        EflagsFile << insDis << "\t[CATEGORY]\t" << category << endl;
-    }
+    //if (regName == "eflags") {
+    //    EflagsFile << insDis << "\t[CATEGORY]\t" << category << endl;
+    //}
 
-    // Update tainted_registers
     // tuple should be (memLoc, fileName)?
-    // TODO make the "0" memLoc
-    tainted_registers[regName] = tuple<UINT32, string>(0, insDis);
+
+    // Check if taint source is register or memory
+    if (source_type == "REGISTER") {
+        tainted_registers[sink] = tuple<UINT32, string>(get<0>(tainted_registers[source]), insDis);
+    }
+    else if (source_type == "MEMORY") {
+
+    }
+    write_taint("TAINT", source, sink, insDis);
+
+}
+
+
+// Remove memory from  tainted_memory
+VOID untaint_memory(string source, string sink, string insDis)
+{
+
+    //tainted_memory[Uint32FromString(sink)] = tuple<UINT32, string>(UNTAINTED, "UNTAINTED");
+    write_taint("UNTAINT", source, sink, insDis);
 
 }
 
 // Used when:
 //  1) untainted data written to register
 //  2) xor r1, r1
-VOID untaint_register(REG reg) {
+VOID untaint_register(string source, string sink, string insDis)
+{
 
-    tainted_registers[REG_StringShort(reg)] = tuple<UINT32, string>(UNTAINTED, "UNTAINTED");
+    tainted_registers.erase(sink);
+    write_taint("UNTAINT", source, sink, insDis);
 
 }
 
-VOID taint_mem2reg(ADDRINT ins, string insDis, string regName, UINT32 mem, CONTEXT* context) 
+// Tainted memory location written to register
+VOID taint_mem2reg(string source, string sink, string insDis)
 {
-    if (tainted_memory.count(mem) > 0) {
-        tainted_registers[regName] = tuple<UINT32, string>(0, ""); // TODO should the 0 be memory-loc or loc in user input?
-        TaintRegsFile << insDis << "\t[FLOW]\t" << mem << " to " << regName <<  endl;
 
+    tainted_registers[sink] = tuple<UINT32, string>(0, ""); // TODO should the 0 be memory-loc or loc in user input?
+    write_taint("TAINT", source, sink, insDis);
+
+}
+
+// Check to see if reg tainted/untainted by memory
+VOID check_mem2reg(INS ins, string insDis, string regName, UINT32 mem, CONTEXT* context) 
+{
+    stringstream stream;
+    stream << std::hex << mem;
+    string source(stream.str() );
+
+    // Memory tainted, so register now tainted
+    if (tainted_memory.count(mem) > 0) {
+        taint_mem2reg(source, regName, insDis);
+    }
+
+    // Register tainted but memory not tainted, so register now untainted 
+    else if (tainted_registers.count(regName) > 0) {// && get<0>(tainted_registers[regName]) != UNTAINTED) {
+        untaint_register(source, regName, insDis);
+    }
+
+}
+
+VOID taint_reg2mem(string source, string sink, string insDis)
+{
+
+    tainted_registers[sink] = tuple<UINT32, string>(0, ""); // TODO should the 0 be memory-loc or loc in user input?
+    write_taint("TAINT", source, sink, insDis);
+
+}
+
+// Check to see if register value written to memory results in T/NT
+VOID check_reg2mem(INS ins, string insDis, string regName, UINT32 mem, CONTEXT* context) 
+{
+
+    stringstream stream;
+    stream << std::hex << mem;
+    string source(stream.str() );
+
+    // Memory tainted, so register now tainted
+    if (tainted_registers.count(regName) > 0) {
+        taint_reg2mem(source, regName, insDis);
+    }
+
+    // Register tainted but memory not tainted, so register now untainted 
+    else if (tainted_registers.count(regName) > 0) {// && get<0>(tainted_registers[regName]) != UNTAINTED) {
+        untaint_register(source, regName, insDis);
+    }
+
+}
+
+// TODO both regs could be tainted and r1 could be read AND WRITTEN, 
+// in which case we really should give r1 multiple taint values
+VOID op_reg_reg(INS ins, string insDis, string regName1, string regName2)
+{
+    if (tainted_registers.count(regName2) > 1) {
+        taint_register(regName2, regName1, insDis, "REGISTER");
+        cout << insDis << endl;
+    }
+
+}
+
+// If immediate value written to register, remove any taint in register
+VOID op_reg_imm(INS ins, string insDis, string regName)
+{
+    if (tainted_registers.count(regName) > 0) {
+        untaint_register("IMMEDIATE", regName, insDis);
     }
 
 }
@@ -133,9 +201,11 @@ VOID taint_mem2reg(ADDRINT ins, string insDis, string regName, UINT32 mem, CONTE
 /* ===================================================================== */
 /* Check conditional branch instructions                                 */
 /* ===================================================================== */
-VOID conditional_branch(ADDRINT ins, INT32 branchTaken, string insDis) {
+VOID conditional_branch(ADDRINT ins, INT32 branchTaken, string insDis) 
+{
 
     CondBranchFile << insDis << endl;
+
 }
 
 /*
@@ -155,75 +225,118 @@ VOID conditional_branch(ADDRINT ins, INT32 branchTaken, string insDis) {
 VOID Instructions(INS ins, VOID *v)
 {
 
-    // Conditional Branches
-    if (INS_Category(ins) == XED_CATEGORY_COND_BR) { 
-        
-        INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(conditional_branch),
-                       IARG_INST_PTR,
-                       IARG_BRANCH_TAKEN,
-                       IARG_PTR, new string(INS_Disassemble(ins)),
-                       IARG_END);
+    // Operations with 0 operands
+    if (INS_OperandCount(ins) == 0) {
+        NopFile << INS_Disassemble(ins) << endl;
     }
 
-    // TODO taint_memory can use INS_IsMemoryWrite(ins)
-    // INS_IsStackWrite also could be useful
+    // Operations with 1 operand
+    // Seems to include 'not's and 'data16's
+    else if (INS_OperandCount(ins) == 1) {
+        OneOpFile << INS_Disassemble(ins) << endl;
 
-    // TODO check for taint here instead of in function??
-    // TODO figure out why this doesn't work without these 3
-    // Handled tainting and untainting of registers
-    else if (INS_OperandCount(ins) > 1 && INS_MemoryOperandIsRead(ins, 0) && INS_OperandIsReg(ins, 0)) {
+        // Conditional branches
+        if (INS_Category(ins) == XED_CATEGORY_COND_BR) { 
 
-                INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(taint_mem2reg),
-                        IARG_INST_PTR,
-                        IARG_PTR, new string(INS_Disassemble(ins)),
-                        IARG_PTR, new string(REG_StringShort(INS_OperandReg(ins, 0) ) ),
-                        //IARG_UINT32, INS_OperandReg(ins, 1),
-                        IARG_MEMORYOP_EA, 0,
-                        IARG_CONST_CONTEXT,
-                        IARG_END);
+            INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(conditional_branch),
+                    IARG_INST_PTR,
+                    IARG_BRANCH_TAKEN,
+                    IARG_PTR, new string(INS_Disassemble(ins)),
+                    IARG_END);
+        }
+    }
+
+    // TODO ex., add r1, r2 gets r1 AND r2s taint if both are tainted...make DS ->list of tuples or something
+
+    // Taint status only changes when data is written
+    else if (INS_OperandWritten(ins, 0) || INS_OperandWritten(ins, 1) ) { 
+        
+        // 5 cases: 1) op reg, mem
+        //          2) op reg, reg
+        //          3) op reg, imm 
+
+        //          4) op mem, reg 
+        //          5) op mem, imm
+
+        // Case 2) reg, reg
+        if (INS_OperandIsReg(ins, 0) && INS_OperandIsReg(ins, 1) ) {
+
+            INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(op_reg_reg),
+                IARG_INST_PTR,
+                IARG_PTR, new string(INS_Disassemble(ins)),
+                IARG_PTR, new string(REG_StringShort(INS_OperandReg(ins, 0) ) ),
+                IARG_PTR, new string(REG_StringShort(INS_OperandReg(ins, 1) ) ),
+                IARG_END);
+
         }
 
+        // Case 3) op reg, imm
+        if (INS_OperandIsReg(ins, 0) && INS_OperandIsImmediate(ins, 1) ) {
+
+            // Remove taint, immediates can't be tainted
+            INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(op_reg_imm),
+                IARG_INST_PTR,
+                IARG_PTR, new string(INS_Disassemble(ins)),
+                IARG_PTR, new string(REG_StringShort(INS_OperandReg(ins, 0) ) ),
+                IARG_END);
+        }
+        //if (INS_OperandReg(ins, 0) && INS_OperandReg(ins, 1) ) {
+        //    cout << INS_Disassemble(ins) << endl;
+        //}
+
+
+    }
+
+
+        // 
+        // Operations with 2 operands
+        //
+        // TODO taint_memory can use INS_IsMemoryWrite(ins)
+        // INS_IsStackWrite also could be useful
+
+        // TODO check for taint here instead of in function??
+        // TODO figure out why this doesn't work without these 3
+        // Handled tainting and untainting of registers
+        //else if (INS_OperandIsReg(ins, 0) && INS_MemoryOperandIsRead(ins, 0) ) {
+
+        // Check all reads
         /*
-        for (REG reg : registers) {
-            // Writes to a register and is NOT 
-            if (INS_RegWContain(ins, reg) && INS_HasFallThrough(ins) ) {
-                INS_InsertCall(ins, IPOINT_AFTER, AFUNPTR(taint_register),
-                        IARG_INST_PTR,
-                        IARG_PTR, new string(INS_Disassemble(ins)),
-                        IARG_PTR, new string(REG_StringShort(reg)),
-                        IARG_PTR, new string(CATEGORY_StringShort(INS_Category(ins) )),
-                        IARG_CONST_CONTEXT,
-                        IARG_UINT32, INS_OperandReg(ins, 0),
-                        IARG_END);
-                //break; // Not sure...but only one register should be written per instruction
-            }
-        } 
-        */
-    
+           else if (INS_MemoryOperandIsRead(ins, 0) || INS_MemoryOperandIsRead(ins, 1) ) {
+
+
+        // if either in tainted memory
+
+        INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(check_mem2reg),
+        IARG_INST_PTR,
+        IARG_PTR, new string(INS_Disassemble(ins)),
+        IARG_PTR, new string(REG_StringShort(INS_OperandReg(ins, 0) ) ),
+        IARG_MEMORYOP_EA, 0,
+        IARG_CONST_CONTEXT,
+        IARG_END);
+        }
+
+        // Memory written
+        else if (INS_MemoryOperandIsWritten(ins, 0) && INS_OperandIsReg(ins, 1) ) {
+
+        INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(check_reg2mem),
+        IARG_INST_PTR,
+        IARG_PTR, new string(INS_Disassemble(ins)),
+        IARG_PTR, new string(REG_StringShort(INS_OperandReg(ins, 0) ) ),
+        IARG_MEMORYOP_EA, 0,
+        IARG_CONST_CONTEXT,
+        IARG_END);
+
+        }
+         */
 
     // Put in "unhandle_instruction.out" for debugging
     else {
-
         UnhandledFile << INS_Disassemble(ins) << endl;
-
     }
 
-}
+    INS_COUNT++;
 
-// Instructions that modify flags register
-//if (INS_Category(ins) == XED_CATEGORY_CMOV) { 
-//if (INS_Category(ins) == XED_CATEGORY_FLAGOP ||
-//    INS_Category(ins) == XED_CATEGORY_) { 
-/*
-   else if (INS_HasFallThrough(ins) ) {
-   INS_InsertCall(ins, IPOINT_AFTER, AFUNPTR(CheckEflags),
-   IARG_INST_PTR,
-   IARG_PTR, new string(INS_Disassemble(ins)),
-   IARG_CONST_CONTEXT,
-   IARG_END);
-   }
- */
-
+} // End Instructions
 
 
 VOID init_stubble()
@@ -232,15 +345,19 @@ VOID init_stubble()
     //ControlFlowFile.setf(ios::showbase);
 
     CondBranchFile.open(results_dir + "branches.out");
-    TaintRegsFile.open(results_dir + "taint_regs.out");
+    TaintFile.open(results_dir + "taint_regs.out");
     EflagsFile.open(results_dir + "eflags.out");
     UnhandledFile.open(results_dir + "unhandled_instructions.out");
+    NopFile.open(results_dir + "nops.out");
+    OneOpFile.open(results_dir + "one_ops.out");
 
     INS_AddInstrumentFunction(Instructions, 0);
 
     // Init libraries
     init_intercept_signals();
     init_syscalls();
+
+    INS_COUNT = 0;
 
 }
 
@@ -252,9 +369,11 @@ VOID fini_stubble()
     //}
 
     CondBranchFile.close();
-    TaintRegsFile.close();
+    TaintFile.close();
     EflagsFile.close();
     UnhandledFile.close();
+    NopFile.close();
+    OneOpFile.close();
 
     fini_intercept_signals();
     fini_syscalls();
