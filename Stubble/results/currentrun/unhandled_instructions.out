@@ -1,5088 +1,2481 @@
-call 0xb7711b70
-call 0xb7725e98
 ret 
-mov dword ptr [ebp-0x44], eax
-mov dword ptr [ebx-0x160], eax
-mov dword ptr [ebx-0x15c], edx
-mov dword ptr [ebx+0x564], edx
-mov dword ptr [ebp-0x34], esi
-mov dword ptr [ebx+0x55c], esi
-jnz 0xb7711bec
-jmp 0xb7711c01
-jnbe 0xb7711bc8
-mov dword ptr [ebx+eax*4+0x57c], edx
-jnz 0xb7711bec
-jz 0xb7711c8c
-jnbe 0xb7711e08
-mov dword ptr [ebx+ecx*4+0x55c], edx
-jz 0xb7711c01
-jnbe 0xb7711bc8
-jbe 0xb7711e20
-not ecx
-mov dword ptr [ebx+ecx*4+0x644], edx
-jmp 0xb7711be3
-jnbe 0xb7711f68
-mov dword ptr [ebx+eax*4+0x57c], edx
-jmp 0xb7711be3
-jnbe 0xb7711be3
-mov dword ptr [ebx+eax*4+0x57c], edx
-jmp 0xb7711bf8
-jnz 0xb7711bec
-jz 0xb7711c8c
-jz 0xb7711c1c
-jz 0xb7711c8c
-jz 0xb7711c1c
-add dword ptr [eax+0x4], edx
-jz 0xb7711c2c
-add dword ptr [eax+0x4], esi
-jz 0xb7711c3c
-add dword ptr [eax+0x4], edx
-jz 0xb7711c4c
-add dword ptr [eax+0x4], esi
-jz 0xb7711c5c
-add dword ptr [eax+0x4], edx
-jz 0xb7711c6c
-add dword ptr [eax+0x4], esi
-jz 0xb7711c7c
-add dword ptr [eax+0x4], edx
-jz 0xb7711c8c
-add dword ptr [eax+0x4], esi
-jz 0xb7711ca0
+jnz 0xb77acbec
+jmp 0xb77acc01
+jnbe 0xb77acbc8
+jnz 0xb77acbec
+jz 0xb77acc8c
+jnbe 0xb77ace08
+jz 0xb77acc01
+jnbe 0xb77acbc8
+jbe 0xb77ace20
+jmp 0xb77acbe3
+jnbe 0xb77acf68
+jmp 0xb77acbe3
+jnbe 0xb77acbe3
+jmp 0xb77acbf8
+jnz 0xb77acbec
+jz 0xb77acc8c
+jz 0xb77acc1c
+jz 0xb77acc8c
+jz 0xb77acc1c
+jz 0xb77acc2c
+jz 0xb77acc3c
+jz 0xb77acc4c
+jz 0xb77acc5c
+jz 0xb77acc6c
+jz 0xb77acc7c
+jz 0xb77acc8c
+jz 0xb77acca0
 cmp dword ptr [edx+0x4], 0x11
-jnz 0xb7712100
-jz 0xb7711cba
+jnz 0xb77ad100
+jz 0xb77accba
 cmp dword ptr [ecx+0x4], 0x8
-jnz 0xb77120d6
-jz 0xb7711cd1
+jnz 0xb77ad0d6
+jz 0xb77accd1
 test dword ptr [ecx+0x4], 0xfffffffe
-jnz 0xb77121a8
-jz 0xb7711ce8
+jnz 0xb77ad1a8
+jz 0xb77acce8
 test dword ptr [ecx+0x4], 0xfffffff7
-jnz 0xb771217e
-jnz 0xb7712154
-jnz 0xb7712154
-jnz 0xb771212a
-jnz 0xb7711e48
-jz 0xb771202f
-mov dword ptr [ebp-0x38], eax
-mov dword ptr [ebp-0x30], eax
-jz 0xb771204d
-mov dword ptr [ebp-0x3c], esi
-jz 0xb7711eb9
-mov dword ptr [ebp-0x3c], esi
-mov dword ptr [ebp-0x38], edx
-jnb 0xb7711ef7
+jnz 0xb77ad17e
+jnz 0xb77ad154
+jnz 0xb77ad154
+jnz 0xb77ad12a
+jnz 0xb77ace48
+jz 0xb77ad02f
+jz 0xb77ad04d
+jz 0xb77aceb9
+jnb 0xb77acef7
 cmp byte ptr [eax+0x4], 0x8
-jnz 0xb771205d
-jmp 0xb7711eee
-add dword ptr [edx], ecx
-jb 0xb7711ee0
-jz 0xb77120ac
+jnz 0xb77ad05d
+jmp 0xb77aceee
+jb 0xb77acee0
+jz 0xb77ad0ac
 cmp dword ptr [ebp-0x3c], edi
-mov dword ptr [ebp-0x40], edx
-mov dword ptr [ebp-0x48], esi
-jbe 0xb7711d1d
+jbe 0xb77acd1d
 cmp byte ptr [eax+0x4], 0x8
-jnz 0xb771205d
-add dword ptr [edx], ecx
-jb 0xb7711ee0
-jz 0xb77120ac
+jnz 0xb77ad05d
+jb 0xb77acee0
+jz 0xb77ad0ac
 cmp dword ptr [ebp-0x3c], edi
-mov dword ptr [ebp-0x40], edx
-mov dword ptr [ebp-0x48], esi
-jbe 0xb7711d1d
-mov dword ptr [ebp-0x30], edx
-jz 0xb7712087
-jnbe 0xb7711f95
-mov dword ptr [esi], eax
+jbe 0xb77acd1d
+jz 0xb77ad087
+jnbe 0xb77acf95
 cmp dword ptr [ebp-0x3c], edi
-jnbe 0xb7711f20
-jmp 0xb7711d1d
-mov dword ptr [ebp-0x30], edx
-jz 0xb7712087
-jnbe 0xb7711f95
-or byte ptr [ebx+0x6f0], 0x4
-jnz 0xb7711d70
-mov dword ptr [ebp-0x30], eax
-mov dword ptr [ebp-0x2c], edx
-jb 0xb7711d5f
-jnbe 0xb7711d5b
-jnz 0xb7711d41
-mov dword ptr [ebx-0x1b8], esi
-mov dword ptr [ebx-0x1b4], edi
-call 0xb7717720
-mov dword ptr [ebp-0x30], eax
-mov dword ptr [ebp-0x2c], edx
-jb 0xb7711d5f
-jnbe 0xb7711d5b
-jbe 0xb7711d5f
-jz 0xb77177a3
-mov dword ptr [esp+0x1c], ebx
-mov dword ptr [esp+0x20], esi
-mov dword ptr [esp+0x24], edi
-mov dword ptr [esp+0x28], ebp
-call 0xb7725e98
+jnbe 0xb77acf20
+jmp 0xb77acd1d
+jz 0xb77ad087
+jnbe 0xb77acf95
+jnz 0xb77acd70
+jb 0xb77acd5f
+jnbe 0xb77acd5b
+jnz 0xb77acd41
+jb 0xb77acd5f
+jnbe 0xb77acd5b
+jbe 0xb77acd5f
+jnz 0xb77acd41
+jz 0xb77b27a3
 ret 
-mov dword ptr [eax+0x178], edi
-jnz 0xb77177c8
-mov dword ptr [eax+0x17c], ebp
-mov dword ptr [eax+0x184], edx
-mov dword ptr [eax+0x188], edx
-mov dword ptr [eax+0x18c], edx
-mov dword ptr [eax+0x180], ebp
+jnz 0xb77b27c8
 ret 
-mov dword ptr [ebx+0x570], eax
-mov dword ptr [ebx+0x708], eax
-mov dword ptr [ebx+0x70c], eax
-mov dword ptr [ebx+0x710], eax
-mov dword ptr [ebx+0x540], eax
-mov dword ptr [esp+0x4], eax
-mov dword ptr [ebx+0x544], edx
-mov dword ptr [ebx-0xd0], ebp
-mov dword ptr [esp], eax
-call 0xb77221d0
-call 0xb7725e98
 ret 
-mov dword ptr [ebx-0xd0], eax
-mov dword ptr [ebx-0x164], edx
-mov dword ptr [ebx-0x168], eax
-mov dword ptr [ebx+0x91c], edx
-jz 0xb7722219
-jnz 0xb7722210
-mov dword ptr [ebx-0x2f0], eax
-mov dword ptr [esp+0x4c], ecx
-mov dword ptr [ebx-0x338], 0x0
-jz 0xb772253b
-jnz 0xb7722210
-mov dword ptr [ebx-0x2f0], eax
-mov dword ptr [esp+0x4c], ecx
-mov dword ptr [ebx-0x338], 0x0
-jz 0xb772253b
-mov dword ptr [esp+0x34], ecx
-mov dword ptr [esp+0x2c], 0x0
-mov dword ptr [esp+0x38], esi
-mov dword ptr [esp+0x30], edi
-mov word ptr [esp+0x26], cx
-mov dword ptr [esp+0x18], esi
-mov dword ptr [esp+0x1c], edi
-mov dword ptr [esp+0x14], ecx
-mov dword ptr [esp+0x3c], esi
-mov dword ptr [esp+0x28], edi
-jnbe 0xb77222c8
-jnz 0xb77222a8
-jmp 0xb77222d8
-jnbe 0xb77222c8
-mov dword ptr [esp+0x14], ecx
-jnz 0xb77222a8
-jmp 0xb77222d8
-mov dword ptr [esp+0x1c], ecx
-mov dword ptr [esp+0x18], edx
-jnz 0xb77222a8
-jmp 0xb77222d8
-mov dword ptr [esp+0x38], edx
-jnz 0xb77222a8
-jmp 0xb77222d8
-mov dword ptr [esp+0x28], ecx
-jnz 0xb77222a8
-jmp 0xb77222d8
-nop 
-jnz 0xb77222a8
-mov dword ptr [esp+0x4c], edx
-mov dword ptr [ebx-0x330], eax
-mov dword ptr [ebx-0x1ac], ecx
-mov dword ptr [ebx-0x338], edx
-mov dword ptr [ebx-0xcc], eax
-mov dword ptr [ebx-0x2fc], edx
-mov dword ptr [ebx-0x300], eax
-mov dword ptr [ebx-0x320], edx
-mov word ptr [ebx-0x308], ax
-mov dword ptr [ebx-0xd4], edx
-jz 0xb7722348
-jnz 0xb7722530
-jnz 0xb77222a8
-mov dword ptr [esp+0x4c], edx
-mov dword ptr [ebx-0x330], eax
-mov dword ptr [ebx-0x1ac], ecx
-mov dword ptr [ebx-0x338], edx
-mov dword ptr [ebx-0xcc], eax
-mov dword ptr [ebx-0x2fc], edx
-mov dword ptr [ebx-0x300], eax
-mov dword ptr [ebx-0x320], edx
-mov word ptr [ebx-0x308], ax
-mov dword ptr [ebx-0xd4], edx
-jz 0xb7722348
-jnz 0xb7722530
-jnz 0xb77222a8
-jmp 0xb77222d8
-mov dword ptr [esp+0x34], ecx
-jnz 0xb77222a8
-jmp 0xb77222d8
-mov dword ptr [esp+0x30], edx
-jnz 0xb77222a8
-jmp 0xb77222d8
-mov dword ptr [esp+0x3c], edx
-jnz 0xb77222a8
-jmp 0xb77222d8
-mov dword ptr [esp+0x2c], ecx
-jnz 0xb77222a8
-jmp 0xb77222d8
-mov dword ptr [esp+0x4c], edx
-mov dword ptr [ebx-0x330], eax
-mov dword ptr [ebx-0x1ac], ecx
-mov dword ptr [ebx-0x338], edx
-mov dword ptr [ebx-0xcc], eax
-mov dword ptr [ebx-0x2fc], edx
-mov dword ptr [ebx-0x300], eax
-mov dword ptr [ebx-0x320], edx
-mov word ptr [ebx-0x308], ax
-mov dword ptr [ebx-0xd4], edx
-jz 0xb7722348
-jnz 0xb7722530
-mov dword ptr [esp], 0x0
-call 0xb7723230
-mov dword ptr [ebx-0x1b0], ebp
-jmp 0xb7722348
-mov dword ptr [esp], 0x0
-call 0xb7723230
-mov dword ptr [esp], ebx
-mov dword ptr [esp+0x4], esi
-call 0xb7725e98
+jz 0xb77bd219
+jnz 0xb77bd210
+jz 0xb77bd53b
+jnz 0xb77bd210
+jz 0xb77bd53b
+jnbe 0xb77bd2c8
+jnz 0xb77bd2a8
+jmp 0xb77bd2d8
+jnbe 0xb77bd2c8
+jnz 0xb77bd2a8
+jmp 0xb77bd2d8
+jnz 0xb77bd2a8
+jmp 0xb77bd2d8
+jnz 0xb77bd2a8
+jmp 0xb77bd2d8
+jnz 0xb77bd2a8
+jmp 0xb77bd2d8
+jnz 0xb77bd2a8
+jz 0xb77bd348
+jnz 0xb77bd530
+jnz 0xb77bd2a8
+jz 0xb77bd348
+jnz 0xb77bd530
+jnz 0xb77bd2a8
+jmp 0xb77bd2d8
+jnz 0xb77bd2a8
+jmp 0xb77bd2d8
+jnz 0xb77bd2a8
+jmp 0xb77bd2d8
+jnz 0xb77bd2a8
+jmp 0xb77bd2d8
+jnz 0xb77bd2a8
+jmp 0xb77bd2d8
+jz 0xb77bd348
+jnz 0xb77bd530
+jmp 0xb77bd348
 ret 
 int 0x80
-mov dword ptr [ebx+0x908], eax
-jnbe 0xb7723270
+jnbe 0xb77be270
 ret 
-jz 0xb7722371
+jz 0xb77bd371
 cmp byte ptr [eax], 0x0
-jnz 0xb7722518
-mov dword ptr [ebx-0x338], 0x0
-mov dword ptr [esp], 0x0
-call 0xb7723290
-mov dword ptr [esp], eax
-call 0xb77255d0
-jz 0xb7725601
-jp 0xb77255f6
+jnz 0xb77bd518
+jz 0xb77c0601
+jp 0xb77c05f6
 cmp byte ptr [eax], dh
-jz 0xb7725686
+jz 0xb77c0686
 cmp byte ptr [eax], dh
-jz 0xb7725686
-jnb 0xb7725669
-jnz 0xb7725669
-jz 0xb7725686
-jz 0xb7725686
-jz 0xb7725686
+jz 0xb77c0686
+jnb 0xb77c0669
+jnz 0xb77c0669
+jz 0xb77c0686
+jz 0xb77c0686
+jz 0xb77c0686
 ret 
-mov dword ptr [ebx-0x334], eax
-jmp 0xb7722371
-mov dword ptr [esp], 0x0
-call 0xb7723290
-mov dword ptr [esp+0x10], ebx
-call 0xb7725e98
+jmp 0xb77bd371
 ret 
-mov dword ptr [esp+0x14], esi
-mov dword ptr [esp+0x18], edi
-jz 0xb77232f0
-jnz 0xb77232f0
-jz 0xb77232de
+jz 0xb77be2f0
+jnz 0xb77be2f0
+jz 0xb77be2de
 ret 
-jz 0xb7722544
-jnz 0xb772255e
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp], esi
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x8], eax
+jz 0xb77bd544
+jnz 0xb77bd55e
 call dword ptr [esp+0x74]
-call 0xb7725e98
 ret 
-mov dword ptr [ebp-0x7c], 0x0
-mov dword ptr [ebp-0x90], 0x0
-mov dword ptr [ebx+0x558], eax
-mov dword ptr [ebx+0x868], eax
-mov dword ptr [ebx+0x834], eax
-mov dword ptr [ebx+0x838], eax
-mov dword ptr [ebx+0x83c], eax
 cmp dword ptr [ebx-0xcc], 0x1
-mov dword ptr [ebp-0xa0], edx
-mov dword ptr [ebp-0x6c], eax
-not eax
-mov dword ptr [ebx-0x1c8], eax
-call 0xb7722970
-jz 0xb7722989
+jz 0xb77bd989
 cmp byte ptr [edx], 0x4c
-jz 0xb772298d
-jnz 0xb7722978
+jz 0xb77bd98d
+jnz 0xb77bd978
 cmp byte ptr [edx], 0x4c
-jz 0xb772298d
-jnz 0xb7722978
+jz 0xb77bd98d
+jnz 0xb77bd978
 ret 
 cmp byte ptr [edx+0x1], 0x44
-jnz 0xb772297d
+jnz 0xb77bd97d
 cmp byte ptr [edx+0x2], 0x5f
-jnz 0xb772297d
-mov dword ptr [eax], ecx
-jmp 0xb7722986
-jnz 0xb7722978
+jnz 0xb77bd97d
+jmp 0xb77bd986
+jnz 0xb77bd978
 ret 
-jz 0xb770e800
-jz 0xb770e7b4
-jnz 0xb770e7dc
-jnz 0xb7711998
-jz 0xb770e8c0
-jz 0xb770e8c0
+jz 0xb77a9800
+jz 0xb77a97b4
+jnz 0xb77a97dc
+jnz 0xb77ac998
+jz 0xb77a98c0
+jz 0xb77a98c0
 cmp dword ptr [edi], eax
-jnz 0xb770eb05
-mov dword ptr [ebp-0x98], edi
-mov dword ptr [ebp-0xa4], edi
-mov dword ptr [ebp-0xa8], edi
-mov dword ptr [ebp-0xb4], edi
-mov dword ptr [ebp-0xa0], edi
-mov dword ptr [ebx+0x560], eax
-jle 0xb770e97f
-mov dword ptr [ebp-0x88], edx
-mov dword ptr [ebp-0x7c], esi
+jnz 0xb77a9b05
+jle 0xb77a997f
 rep cmpsb byte ptr [esi], byte ptr [edi]
-mov dword ptr [esp+0x8], 0x0
-mov dword ptr [esp+0x4], 0x20000000
-mov dword ptr [esp], 0x0
-call 0xb77178c0
-call 0xb7725e98
 ret 
-mov dword ptr [esp], edx
-mov dword ptr [esp+0x1c], edx
-mov dword ptr [esp+0x24], eax
-mov dword ptr [esp+0x2c], ecx
-call 0xb77255d0
 ret 
-mov dword ptr [esp+0x28], edx
-jz 0xb7717ae0
-mov dword ptr [esp+0x4], 0x1
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x18], ecx
-call 0xb770d7e0
-not ecx
-jmp 0xb7717906
-mov dword ptr [esp+0x4], 0x1
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x18], ecx
-call 0xb770d7e0
+jz 0xb77b2ae0
+jmp 0xb77b2906
 jmp dword ptr [ebx+0x14]
-mov dword ptr [esp+0x14], esi
-mov dword ptr [esp+0x18], edi
-mov dword ptr [esp+0x10], ebx
-call 0xb7725e98
 ret 
-jnbe 0xb7722bba
-mov dword ptr [esp], edi
-call 0xb770d7d0
+jnbe 0xb77bdbba
 jmp dword ptr [ebx+0x10]
-call 0xb7725e98
 ret 
-mov dword ptr [esp], 0x8
-mov dword ptr [esp+0x4], eax
-call 0xb770d7c0
 jmp dword ptr [ebx+0xc]
-mov dword ptr [esp+0x20], ebx
-call 0xb7725e98
 ret 
-mov dword ptr [esp+0x24], esi
-mov dword ptr [esp+0x28], edi
-jz 0xb7722b08
-mov dword ptr [ebx+0x900], edx
-jnb 0xb7722a83
-jb 0xb7722aea
-mov dword ptr [ebx+0x8fc], ecx
-jmp 0xb7722a66
-mov dword ptr [ebx+0x900], edx
-jnb 0xb7722a83
-jb 0xb7722aea
-jz 0xb7722b27
-mov dword ptr [ebx+0x904], edx
-mov dword ptr [ebx+0x900], eax
+jz 0xb77bdb08
+jnb 0xb77bda83
+jb 0xb77bdaea
+jmp 0xb77bda66
+jnb 0xb77bda83
+jb 0xb77bdaea
+jz 0xb77bdb27
 ret 
 ret 
 ret 
-jz 0xb7717ad3
-mov dword ptr [eax+0x164], ecx
-mov dword ptr [esi+0x14], eax
-mov dword ptr [esi+0x1c], eax
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x18], ecx
-mov dword ptr [esp+0x4], edx
-call 0xb7725d20
-cld 
-jnz 0xb7725d76
-jbe 0xb7725d76
-jz 0xb7725d5d
-jnb 0xb7725d7b
-movsb byte ptr [edi], byte ptr [esi]
-jnb 0xb7725d81
-movsw word ptr [edi], word ptr [esi]
-rep movsd dword ptr [edi], dword ptr [esi]
-rep movsd dword ptr [edi], dword ptr [esi]
-jmp 0xb7725d6d
+jz 0xb77b2ad3
+jnz 0xb77c0d76
+jbe 0xb77c0d76
+jz 0xb77c0d5d
+jnb 0xb77c0d7b
+jnb 0xb77c0d81
+jmp 0xb77c0d6d
 ret 
-mov dword ptr [ecx+0xc], 0x1
-mov dword ptr [ecx+0x4], eax
-mov dword ptr [esi+0x4], eax
-mov byte ptr [esi+0x194], al
 test byte ptr [ebx-0x33f], 0x1
-jz 0xb7717b38
-mov dword ptr [esi+0x16c], edi
-mov dword ptr [esi+0x18], edx
-jz 0xb77179c6
-nop 
-mov dword ptr [esi+eax*8+0x258], esi
-jnz 0xb77179b8
-mov dword ptr [esi+0x1fc], 0x1
-jmp 0xb77179a0
-mov dword ptr [esi+0x16c], edi
-mov dword ptr [esi+0x18], edx
-jz 0xb77179c6
-nop 
-mov dword ptr [esi+eax*8+0x258], esi
-jnz 0xb77179b8
-mov dword ptr [esi+0x1cc], eax
-mov dword ptr [esi+0x1c8], 0x4
-jz 0xb77179fe
-mov dword ptr [esi+eax*8+0x258], esi
-jnz 0xb77179b8
-mov dword ptr [esi+0x1cc], eax
-mov dword ptr [esi+0x1c8], 0x4
-jz 0xb77179fe
-mov dword ptr [esi+0x1b8], eax
-jnz 0xb7717a0a
-jnz 0xb7717a0a
-jmp 0xb7717b47
-jz 0xb7717a1c
-jmp 0xb7717b08
-mov dword ptr [esi+eax*1+0x1b8], edi
-mov dword ptr [esi+0x1d0], eax
-jz 0xb7717ad3
-mov dword ptr [esp], eax
-call 0xb77255d0
+jz 0xb77b2b38
+jz 0xb77b29c6
+jnz 0xb77b29b8
+jmp 0xb77b29a0
+jz 0xb77b29c6
+jnz 0xb77b29b8
+jz 0xb77b29fe
+jnz 0xb77b29b8
+jz 0xb77b29fe
+jnz 0xb77b2a0a
+jnz 0xb77b2a0a
+jmp 0xb77b2b47
+jz 0xb77b2a1c
+jmp 0xb77b2b08
+jz 0xb77b2ad3
 ret 0xc
-mov dword ptr [ebp-0x7c], eax
-jz 0xb77112fc
-mov dword ptr [eax+0x150], edx
-mov word ptr [eax+0x158], cx
-mov dword ptr [edi+0x154], eax
-call 0xb7717800
-mov dword ptr [esp+0x2c], ebx
-call 0xb7725e98
+jz 0xb77ac2fc
 ret 
-mov dword ptr [esp+0x34], edi
-mov dword ptr [esp+0x38], ebp
-mov dword ptr [esp+0x30], esi
-mov dword ptr [esp+0x1c], eax
-mov dword ptr [esp], ebp
 call dword ptr [ebx+0x834]
-add dword ptr [eax+0x4], 0x1
 ret 
-jnz 0xb7717852
-jmp 0xb77178b1
-mov dword ptr [edx], eax
-jmp 0xb771785f
-add dword ptr [ebx+edx*1+0x44], 0x1
-mov dword ptr [eax+0x250], esi
-mov dword ptr [eax+0x254], edi
-mov dword ptr [ebx+0x534], esi
-mov dword ptr [ebx+0x538], edi
-mov dword ptr [esp], ebp
+jnz 0xb77b2852
+jmp 0xb77b28b1
+jmp 0xb77b285f
 call dword ptr [ebx+0x838]
-sub dword ptr [eax+0x4], 0x1
 ret 
 ret 
 cmp dword ptr [ebx+0x40], edi
-jnz 0xb77112d2
-add dword ptr [eax+0x190], 0x1
-mov dword ptr [eax+0x1b0], 0x0
-mov dword ptr [eax+0x1b4], 0x0
-mov dword ptr [eax+0x1ac], 0xffffffff
+jnz 0xb77ac2d2
 cmp dword ptr [ebp+0x8], eax
-mov dword ptr [ebp-0x94], eax
-jnb 0xb771129b
-mov byte ptr [ebp-0x80], 0x0
-mov dword ptr [ebp-0xb0], ecx
-mov dword ptr [ebp-0x98], edx
-mov dword ptr [ebp-0xa4], edi
-jmp 0xb770ec11
-jz 0xb770f472
-jbe 0xb770ebe7
-jz 0xb770f47f
-jz 0xb770f4bb
-jz 0xb770f48d
-jz 0xb770f4c8
-mov dword ptr [ebx+0x578], edi
-mov dword ptr [ebx+0x878], ecx
-jz 0xb77110f6
-mov byte ptr [ebp-0x80], 0x1
-jmp 0xb770ec02
-jnb 0xb770ec98
-jz 0xb770f472
-jbe 0xb770ebe7
-mov dword ptr [ebp-0x88], edi
-mov dword ptr [ebp-0xa0], edi
-jnb 0xb770f4fb
-mov dword ptr [edx+0x1ac], edi
-jbe 0xb770f512
-mov dword ptr [edx+0x1b0], ecx
+jnb 0xb77ac29b
+jmp 0xb77a9c11
+jz 0xb77aa472
+jbe 0xb77a9be7
+jz 0xb77aa47f
+jz 0xb77aa4bb
+jz 0xb77aa48d
+jz 0xb77aa4c8
+jz 0xb77ac0f6
+jmp 0xb77a9c02
+jnb 0xb77a9c98
+jz 0xb77aa472
+jbe 0xb77a9be7
+jnb 0xb77aa4fb
+jbe 0xb77aa512
 test byte ptr [eax+0x18], 0x1
-jz 0xb770ec02
-jbe 0xb770ec02
-mov dword ptr [edx+0x1b4], ecx
-jmp 0xb770ec02
-jbe 0xb770f512
-mov dword ptr [edx+0x1b0], ecx
+jz 0xb77a9c02
+jbe 0xb77a9c02
+jmp 0xb77a9c02
+jbe 0xb77aa512
 test byte ptr [eax+0x18], 0x1
-jz 0xb770ec02
-jbe 0xb770ec02
-mov dword ptr [edx+0x8], ecx
-jmp 0xb770ec02
-jz 0xb770ecbc
-mov dword ptr [edi+0x22c], ecx
-jnz 0xb770eccd
-mov dword ptr [edx+0x1b0], 0xffffffff
-jnz 0xb770ecde
-jnz 0xb770eccd
-mov dword ptr [edx+0x1b0], 0xffffffff
-jnz 0xb770ecde
-mov dword ptr [eax+0x1b4], 0xffffffff
-jz 0xb771127a
-jnz 0xb770ecde
-mov dword ptr [eax+0x1b4], 0xffffffff
-jz 0xb771127a
-jz 0xb770ed54
-jz 0xb771127a
-jz 0xb770ed54
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp], eax
-mov dword ptr [ebp-0xcc], edx
-call 0xb7725510
-jnz 0xb7725527
-jnz 0xb7725518
+jz 0xb77a9c02
+jbe 0xb77a9c02
+jmp 0xb77a9c02
+jz 0xb77a9cbc
+jnz 0xb77a9ccd
+jnz 0xb77a9cde
+jnz 0xb77a9ccd
+jnz 0xb77a9cde
+jz 0xb77ac27a
+jnz 0xb77a9cde
+jz 0xb77ac27a
+jz 0xb77a9d54
+jz 0xb77ac27a
+jz 0xb77a9d54
+jnz 0xb77c0527
+jnz 0xb77c0518
 ret 
 ret 
-jz 0xb770ed54
-mov dword ptr [ebx+0x894], 0x0
-mov dword ptr [ebx+0x890], edi
-mov dword ptr [ebx+0x898], 0x1
-jnz 0xb771122c
-mov dword ptr [edx+0x4], eax
+jz 0xb77a9d54
+jnz 0xb77ac22c
 test byte ptr [ebx+0x6f0], 0x4
-jz 0xb7711202
-jnz 0xb770ef1b
-jz 0xb770ef13
-jnz 0xb770eda0
-jbe 0xb770ed90
-jnbe 0xb770f533
-mov dword ptr [eax+ecx*4], edx
-jnz 0xb770eda0
-mov dword ptr [ecx+eax*4+0x20], edx
-jz 0xb770edc8
-jbe 0xb770ed90
-jnbe 0xb770f533
-jz 0xb770ee4c
-jz 0xb770edde
-add dword ptr [edx+0x4], eax
-jz 0xb770edeb
-jz 0xb770ee62
-jnz 0xb770f68e
-jz 0xb770ee79
-jz 0xb770ee79
+jz 0xb77ac202
+jnz 0xb77a9f1b
+jz 0xb77a9f13
+jnz 0xb77a9da0
+jbe 0xb77a9d90
+jnbe 0xb77aa533
+jnz 0xb77a9da0
+jz 0xb77a9dc8
+jbe 0xb77a9d90
+jnbe 0xb77aa533
+jz 0xb77a9e4c
+jz 0xb77a9dde
+jz 0xb77a9deb
+jz 0xb77a9e62
+jnz 0xb77aa68e
+jz 0xb77a9e79
+jz 0xb77a9e79
 cmp dword ptr [eax+0x4], 0xc
-jnz 0xb770fe14
-jz 0xb770ee90
-jz 0xb770ee90
+jnz 0xb77aae14
+jz 0xb77a9e90
+jz 0xb77a9e90
 cmp dword ptr [eax+0x4], 0x8
-jnz 0xb770fdea
-jz 0xb770eec7
-jz 0xb770eeff
+jnz 0xb77aadea
+jz 0xb77a9ec7
+jz 0xb77a9eff
 test byte ptr [ebx-0x340], 0x40
-mov dword ptr [ecx+0x204], eax
-jnz 0xb770f663
-jz 0xb770eeff
-jz 0xb770ef13
-mov dword ptr [eax+0x5c], 0x0
-call 0xb7717720
-call 0xb7717720
-jz 0xb77177a2
-mov dword ptr [eax+0x18c], edx
-mov dword ptr [eax+0x178], ecx
-mov dword ptr [eax+0x188], edx
+jnz 0xb77aa663
+jz 0xb77a9eff
+jz 0xb77a9f13
+jz 0xb77b27a2
 ret 
 cmp dword ptr [ebp-0x90], 0x2
-jz 0xb771118c
-jz 0xb771116f
-mov dword ptr [esp+0x8], 0x0
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], 0x0
-call 0xb77178c0
-mov dword ptr [esi+0x1cc], eax
-mov dword ptr [esi+0x1c8], 0x4
-jz 0xb77179fe
-mov dword ptr [esi+0x1b8], eax
-jnz 0xb7717a0a
-jmp 0xb7717b47
-jz 0xb7717a2b
+jz 0xb77ac18c
+jz 0xb77ac16f
+jz 0xb77b29fe
+jnz 0xb77b2a0a
+jmp 0xb77b2b47
+jz 0xb77b2a2b
 test byte ptr [esp+0x54], 0x8
-jz 0xb7717bd9
-mov dword ptr [esi+0x1bc], eax
-jmp 0xb7717a24
-jmp 0xb7717a24
-mov dword ptr [esi+eax*1+0x1b8], edi
-mov dword ptr [esi+0x1d0], eax
-jz 0xb7717ad3
-mov dword ptr [esp], eax
-call 0xb77255d0
-jz 0xb771116f
-mov dword ptr [ebp-0x88], ecx
-mov dword ptr [edi+0x150], edx
-mov word ptr [edi+0x158], si
-jnz 0xb770efc4
-jmp 0xb770efec
-jnz 0xb770efa0
-mov dword ptr [edi+0x8], esi
-mov word ptr [edi+0x15a], si
-jnz 0xb770efc4
-mov dword ptr [edi+0x1ac], eax
-add dword ptr [edi+0x1b0], eax
-add dword ptr [edi+0x1b4], eax
-mov dword ptr [edi], eax
-mov dword ptr [edi+0x8], ecx
-jz 0xb770f2db
-jz 0xb770f435
-jz 0xb7711145
-jz 0xb770efec
-jnz 0xb770f440
-mov dword ptr [edi], esi
-jb 0xb770f451
-mov dword ptr [edi+0x1b0], esi
+jz 0xb77b2bd9
+jmp 0xb77b2a24
+jmp 0xb77b2a24
+jz 0xb77b2ad3
+jz 0xb77ac16f
+jnz 0xb77a9fc4
+jmp 0xb77a9fec
+jnz 0xb77a9fa0
+jnz 0xb77a9fc4
+jz 0xb77aa2db
+jz 0xb77aa435
+jz 0xb77ac145
+jz 0xb77a9fec
+jnz 0xb77aa440
+jb 0xb77aa451
 test byte ptr [edx+0x18], 0x1
-jz 0xb770efb6
-jb 0xb770efb6
-mov dword ptr [edi+0x1b4], esi
-jmp 0xb770efb6
-jz 0xb770efec
-jnz 0xb770efa0
-mov dword ptr [edi+0x8], esi
-mov word ptr [edi+0x15a], si
-jnz 0xb770efc4
-mov dword ptr [edi+0x1ac], eax
-add dword ptr [edi+0x1b0], eax
-add dword ptr [edi+0x1b4], eax
-mov dword ptr [edi], eax
-mov dword ptr [edi+0x8], ecx
-jz 0xb770f2db
-mov dword ptr [ebp-0x88], esi
-jnz 0xb770f035
-jmp 0xb770f05d
-jbe 0xb770f028
-jnbe 0xb770f577
-mov dword ptr [edi+esi*4], ecx
-jnz 0xb770f035
-mov dword ptr [edi+edx*4+0x20], ecx
-jz 0xb770f05d
-jbe 0xb770f028
-jnbe 0xb770f577
-mov dword ptr [edi+esi*4], ecx
-jnz 0xb770f035
-jz 0xb770f231
-jz 0xb77110c5
-jz 0xb770f231
-jz 0xb77110c5
-mov dword ptr [ebx-0x140], ecx
-mov dword ptr [ebx-0x13c], edx
-mov dword ptr [edi+0x30], edx
-mov dword ptr [ebp-0x80], ecx
-jz 0xb770f0c3
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f0f5
-mov dword ptr [ebp-0x88], ecx
-mov dword ptr [ecx], esi
-mov dword ptr [ecx+0x4], esi
-mov dword ptr [edi+0x34], ecx
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f127
-mov dword ptr [ebp-0x88], ecx
-mov dword ptr [ecx], esi
-mov dword ptr [ecx+0x4], esi
-mov dword ptr [edi+0x38], ecx
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f159
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f18b
-mov dword ptr [ebp-0x88], ecx
-mov dword ptr [ecx], esi
-mov dword ptr [ecx+0x4], esi
-mov dword ptr [edi+0x64], ecx
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f1bd
-mov dword ptr [ebp-0x88], ecx
-mov dword ptr [ecx], esi
-mov dword ptr [ecx+0x4], esi
-mov dword ptr [edi+0x7c], ecx
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f1f5
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f1bd
-mov dword ptr [ebp-0x88], ecx
-mov dword ptr [ecx], esi
-mov dword ptr [ecx+0x4], esi
-mov dword ptr [edi+0x7c], ecx
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f1f5
-mov dword ptr [ebp-0x88], ecx
-mov dword ptr [ecx], esi
-mov dword ptr [ecx+0x4], esi
-mov dword ptr [edi+0xe4], ecx
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f231
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f1f5
-mov dword ptr [ebp-0x88], ecx
-mov dword ptr [ecx], esi
-mov dword ptr [ecx+0x4], esi
-mov dword ptr [edi+0xe4], ecx
-mov dword ptr [ebp-0x80], esi
-jz 0xb770f231
-mov dword ptr [ebp-0x88], ecx
-mov dword ptr [ecx], esi
-mov dword ptr [esi+0x4], eax
-mov dword ptr [edi+0x14c], esi
-jz 0xb771109b
-jz 0xb770f244
-jnz 0xb771108b
-jz 0xb770f258
-jz 0xb770f258
+jz 0xb77a9fb6
+jb 0xb77a9fb6
+jmp 0xb77a9fb6
+jz 0xb77a9fec
+jnz 0xb77a9fa0
+jnz 0xb77a9fc4
+jz 0xb77aa2db
+jnz 0xb77aa035
+jmp 0xb77aa05d
+jbe 0xb77aa028
+jnbe 0xb77aa577
+jnz 0xb77aa035
+jz 0xb77aa05d
+jbe 0xb77aa028
+jnbe 0xb77aa577
+jnz 0xb77aa035
+jz 0xb77aa231
+jz 0xb77ac0c5
+jz 0xb77aa231
+jz 0xb77ac0c5
+jz 0xb77aa0c3
+jz 0xb77aa0f5
+jz 0xb77aa127
+jz 0xb77aa159
+jz 0xb77aa18b
+jz 0xb77aa1bd
+jz 0xb77aa1f5
+jz 0xb77aa1bd
+jz 0xb77aa1f5
+jz 0xb77aa231
+jz 0xb77aa1f5
+jz 0xb77aa231
+jz 0xb77ac09b
+jz 0xb77aa244
+jnz 0xb77ac08b
+jz 0xb77aa258
+jz 0xb77aa258
 cmp dword ptr [eax+0x4], 0xc
-jnz 0xb770fe14
-jz 0xb770f26c
-jz 0xb770f26c
+jnz 0xb77aae14
+jz 0xb77aa26c
+jz 0xb77aa26c
 cmp dword ptr [eax+0x4], 0x8
-jnz 0xb770fdea
-jz 0xb770f29a
-jz 0xb770f29a
-mov dword ptr [edi+0x208], edx
-jz 0xb770f287
-mov dword ptr [edi+0x60], eax
-jz 0xb770f28f
-jz 0xb770f2ca
+jnz 0xb77aadea
+jz 0xb77aa29a
+jz 0xb77aa29a
+jz 0xb77aa287
+jz 0xb77aa28f
+jz 0xb77aa2ca
 test byte ptr [ebx-0x340], 0x40
-mov dword ptr [edi+0x204], eax
-jnz 0xb770fdbf
-jz 0xb770f2ca
-jz 0xb770f2db
-mov dword ptr [edi+0x5c], 0x0
-call 0xb7717720
-call 0xb7717720
-or byte ptr [edi+0x194], 0x4
-mov dword ptr [edi+0x1fc], 0x1
-mov dword ptr [eax+0x4], 0x1
-mov dword ptr [eax], edx
-jz 0xb770f375
-mov dword ptr [esp], esi
-call 0xb77255d0
-jnb 0xb7725669
-jnz 0xb7725669
-jnb 0xb7725669
-jnz 0xb7725669
-jnb 0xb7725669
-jnz 0xb7725669
-jnb 0xb7725669
-jz 0xb7725601
-jz 0xb7725686
-mov dword ptr [esp], eax
-mov dword ptr [ebp-0xcc], eax
-call 0xb770d7d0
-jz 0xb77110cc
-mov dword ptr [ebp-0x88], eax
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp], ecx
-mov dword ptr [esp+0x4], esi
-mov dword ptr [ebp-0xc8], ecx
-call 0xb7725d20
-rep movsd dword ptr [edi], dword ptr [esi]
-rep movsd dword ptr [edi], dword ptr [esi]
-rep movsb byte ptr [edi], byte ptr [esi]
-rep movsb byte ptr [edi], byte ptr [esi]
+jnz 0xb77aadbf
+jz 0xb77aa2ca
+jz 0xb77aa2db
+jz 0xb77aa375
+jnb 0xb77c0669
+jnz 0xb77c0669
+jnb 0xb77c0669
+jnz 0xb77c0669
+jnb 0xb77c0669
+jnz 0xb77c0669
+jnb 0xb77c0669
+jz 0xb77c0601
+jz 0xb77c0686
+jz 0xb77ac0cc
 ret 
-mov dword ptr [edx], eax
-jz 0xb770f375
-mov dword ptr [edi+0x4], ecx
-call 0xb7717800
-call 0xb7717800
-jnz 0xb7717850
-mov dword ptr [eax+0x10], esi
-mov dword ptr [esi+0xc], eax
-add dword ptr [ebx+edx*1+0x44], 0x1
-mov dword ptr [eax+0x250], esi
-mov dword ptr [eax+0x254], edi
-mov dword ptr [ebx+0x534], esi
-mov dword ptr [ebx+0x538], edi
-mov dword ptr [esp], ebp
+jz 0xb77aa375
+jnz 0xb77b2850
 call dword ptr [ebx+0x838]
-jnz 0xb770fd95
-jnz 0xb770fe80
+jnz 0xb77aad95
+jnz 0xb77aae80
 cmp dword ptr [ebx-0x1b0], eax
-mov dword ptr [edi+0x10], esi
-mov dword ptr [ebp-0x88], esi
-mov dword ptr [ebx+0x568], edi
-mov dword ptr [ebp-0xb4], esi
-mov dword ptr [ebx-0x1a8], edi
-jz 0xb770fe3e
-call 0xb7722790
-call 0xb7725e98
+jz 0xb77aae3e
 ret 
-mov dword ptr [esp+0x2c], ecx
-jz 0xb7722870
-jz 0xb7722870
-mov dword ptr [esp+0x20], edx
-mov dword ptr [esp+0x28], eax
-mov dword ptr [esp+0x24], 0x1
-jmp 0xb77227fc
+jz 0xb77bd870
+jz 0xb77bd870
+jmp 0xb77bd7fc
 cmp dword ptr [ecx], 0x4
-jnz 0xb77227e8
-mov dword ptr [esp+0x1c], ecx
-jnbe 0xb772284a
-jmp 0xb77227e8
-add dword ptr [esp+0x24], 0x1
-add dword ptr [esp+0x20], 0x20
+jnz 0xb77bd7e8
+jnbe 0xb77bd84a
+jmp 0xb77bd7e8
 cmp dword ptr [esp+0x24], ecx
-jz 0xb7722870
+jz 0xb77bd870
 cmp dword ptr [ecx], 0x4
-jnz 0xb77227e8
-mov dword ptr [esp+0x1c], ecx
-jnbe 0xb772284a
-mov dword ptr [esp+0x8], 0x14
-mov dword ptr [esp+0x4], ebp
-mov dword ptr [esp], edi
-call 0xb77258d0
-jnz 0xb77258f4
-jnz 0xb77258ed
+jnz 0xb77bd7e8
+jnbe 0xb77bd84a
+jnz 0xb77c08f4
+jnz 0xb77c08ed
 ret 
-jl 0xb77258e9
-jnl 0xb7725b10
-call 0xb7725e98
+jl 0xb77c08e9
+jnl 0xb77c0b10
 ret 
-jnz 0xb7725b87
-jnz 0xb7725b87
-jnz 0xb7725b87
-jnz 0xb7725b87
-jnz 0xb7725b87
+jnz 0xb77c0b87
+jnz 0xb77c0b87
+jnz 0xb77c0b87
+jnz 0xb77c0b87
+jnz 0xb77c0b87
 ret 
-jnz 0xb7722828
+jnz 0xb77bd828
 ret 
-js 0xb770fe5c
-jnz 0xb770fbec
-mov dword ptr [ebx-0x33c], eax
-jnle 0xb770f6c1
-call 0xb7714df0
-call 0xb7725e98
+js 0xb77aae5c
+jnz 0xb77aabec
+jnle 0xb77aa6c1
 ret 
-mov dword ptr [ebp-0x2c], eax
-mov dword ptr [esp], eax
-call 0xb771ae10
-call 0xb7725e98
 ret 
-mov dword ptr [ebp-0x40], eax
-mov dword ptr [ebp-0x48], edx
-mov dword ptr [ebp-0x44], ecx
-mov dword ptr [ebp-0x28], eax
-setnz byte ptr [ebp-0x3c]
-mov dword ptr [ebp-0x24], eax
-mov dword ptr [ebp-0x2c], edx
-jz 0xb771aeab
-data16 nop 
-sbb dword ptr [ebp-0x2c], 0xffffffff
-jz 0xb771aea1
-jnz 0xb771ae68
-jnz 0xb771ae68
-mov dword ptr [ebp-0x34], esi
-jz 0xb771af90
-jz 0xb771af90
-sbb dword ptr [ebp-0x2c], 0xffffffff
-jz 0xb771aea1
-jnz 0xb771ae68
-mov dword ptr [ebp-0x34], esi
-jz 0xb771af90
-mov dword ptr [ebp-0x20], edx
-mov dword ptr [ebp-0x30], eax
-mov dword ptr [ebp-0x1c], 0x1
-mov dword ptr [ebp-0x38], edi
-jmp 0xb771af04
+jz 0xb77b5eab
+jz 0xb77b5ea1
+jnz 0xb77b5e68
+jnz 0xb77b5e68
+jz 0xb77b5f90
+jz 0xb77b5f90
+jz 0xb77b5ea1
+jnz 0xb77b5e68
+jz 0xb77b5f90
+jmp 0xb77b5f04
 cmp dword ptr [edx], 0x4
-jnz 0xb771aef0
-jbe 0xb771aef0
-mov dword ptr [ebp-0x54], edx
-jmp 0xb771af49
-add dword ptr [ebp-0x1c], 0x1
-add dword ptr [ebp-0x20], 0x20
+jnz 0xb77b5ef0
+jbe 0xb77b5ef0
+jmp 0xb77b5f49
 cmp dword ptr [ebp-0x1c], esi
-jz 0xb771af90
+jz 0xb77b5f90
 cmp dword ptr [edx], 0x4
-jnz 0xb771aef0
-jbe 0xb771aef0
-mov dword ptr [ebp-0x54], edx
-jmp 0xb771af49
+jnz 0xb77b5ef0
+jbe 0xb77b5ef0
+jmp 0xb77b5f49
 cmp dword ptr [esi+0x8], 0x2
-jnz 0xb771af28
-jnz 0xb771af28
-mov dword ptr [esp+0x8], 0x4
-mov dword ptr [esp], eax
-mov dword ptr [ebp-0x4c], ecx
-mov dword ptr [esp+0x4], edx
-call 0xb77258d0
-jnb 0xb771aef0
+jnz 0xb77b5f28
+jnz 0xb77b5f28
+jnb 0xb77b5ef0
 cmp dword ptr [esi+0x8], 0x2
-jnz 0xb771af28
-jnz 0xb771af28
-mov dword ptr [esp+0x8], 0x4
-mov dword ptr [esp], eax
-mov dword ptr [ebp-0x4c], ecx
-mov dword ptr [esp+0x4], edx
-call 0xb77258d0
-jnz 0xb7725b87
+jnz 0xb77b5f28
+jnz 0xb77b5f28
+jnz 0xb77c0b87
 ret 
-jnz 0xb771af2b
-jbe 0xb771af2b
-add dword ptr [ebp-0x2c], ecx
-jmp 0xb771af94
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], eax
-call 0xb7724f90
+jnz 0xb77b5f2b
+jbe 0xb77b5f2b
+jmp 0xb77b5f94
 int 0x80
-jnb 0xb7724fab
+jnb 0xb77bffab
 ret 
-call 0xb7725e94
 ret 
-mov dword ptr [ecx+0x920], eax
 ret 
-jnz 0xb771afe4
-mov dword ptr [esp], 0x8
-call 0xb770d7d0
-mov dword ptr [ebp-0x38], eax
-mov dword ptr [ebp-0x2c], edx
-jz 0xb771b3f0
-mov dword ptr [ebp-0x1c], edi
-or dword ptr [ebx-0x2fc], eax
-or dword ptr [ebx-0x2f4], eax
-mov dword ptr [ebp-0x20], edx
-jnb 0xb771b3f0
-nop 
-mov dword ptr [esp], esi
-mov dword ptr [ebp-0x4c], ecx
-call 0xb77255d0
+jnz 0xb77b5fe4
+jz 0xb77b63f0
+jnb 0xb77b63f0
 cmp byte ptr [eax], dh
-jz 0xb7725686
-jz 0xb7725601
+jz 0xb77c0686
+jz 0xb77c0601
 cmp byte ptr [eax], dh
-jz 0xb7725686
-jnb 0xb7725669
-jnz 0xb7725669
-jnb 0xb7725669
+jz 0xb77c0686
+jnb 0xb77c0669
+jnz 0xb77c0669
+jnb 0xb77c0669
 test dword ptr [ebp-0x20], edx
-jz 0xb771b4dc
-mov dword ptr [ecx], esi
-mov dword ptr [ecx+0x4], eax
-jb 0xb771b038
-mov dword ptr [ebp-0x34], ecx
-jz 0xb771b12c
-sub dword ptr [ebp-0x38], 0x1
-jmp 0xb771b06a
-jb 0xb771b038
-mov dword ptr [ebp-0x34], ecx
-jz 0xb771b12c
-mov dword ptr [ebp-0x20], edi
-mov dword ptr [ebp-0x30], edx
-jz 0xb771b0b8
-jz 0xb771b113
-mov dword ptr [ebp-0x1c], edx
-mov dword ptr [edx], eax
-mov dword ptr [esp], eax
-mov dword ptr [ebp-0x4c], ecx
-call 0xb77255d0
-jnz 0xb771b0a8
-mov dword ptr [ebp-0x34], ecx
+jz 0xb77b64dc
+jb 0xb77b6038
+jz 0xb77b612c
+jmp 0xb77b606a
+jb 0xb77b6038
+jz 0xb77b612c
+jz 0xb77b60b8
+jz 0xb77b6113
+jnz 0xb77b60a8
 cmp byte ptr [ebp-0x3c], 0x0
-jz 0xb771b47e
-mov dword ptr [eax+0x4], edx
-mov dword ptr [eax], esi
+jz 0xb77b647e
 cmp dword ptr [ebp-0x38], edx
-mov dword ptr [eax], ecx
-mov dword ptr [eax+0x4], 0x3
-jnz 0xb771b4e5
-jz 0xb771b0b8
-jz 0xb771b113
-mov dword ptr [ebp-0x1c], edx
-mov dword ptr [edx], eax
-mov dword ptr [esp], eax
-mov dword ptr [ebp-0x4c], ecx
-call 0xb77255d0
-mov dword ptr [edx+0x4], eax
-mov dword ptr [ebp-0x24], edx
-mov dword ptr [ebp-0x28], eax
-add dword ptr [ebp-0x20], 0x1
-jnz 0xb771b0a8
-mov dword ptr [ebp-0x34], ecx
+jnz 0xb77b64e5
+jz 0xb77b60b8
+jz 0xb77b6113
+jnz 0xb77b60a8
 cmp byte ptr [ebp-0x3c], 0x0
-jz 0xb771b47e
-mov dword ptr [eax+0x4], edx
-mov dword ptr [eax], esi
+jz 0xb77b647e
 cmp dword ptr [ebp-0x38], edx
-mov dword ptr [eax], ecx
-mov dword ptr [eax+0x4], 0x3
-jnz 0xb771b4e5
+jnz 0xb77b64e5
 cmp dword ptr [ebp-0x38], 0x1
-jz 0xb771b400
+jz 0xb77b6400
 cmp dword ptr [ebp-0x38], 0x2
-mov dword ptr [ebp-0x1c], esi
-jbe 0xb771b1de
-nop 
-jnz 0xb771b1a0
-jnz 0xb771b1a0
+jbe 0xb77b61de
+jnz 0xb77b61a0
+jnz 0xb77b61a0
 cmp dword ptr [ebp-0x38], 0x3
-jz 0xb771b1d6
+jz 0xb77b61d6
 cmp dword ptr [ebp-0x38], 0x1f
-jnbe 0xb771b4c5
-jnz 0xb771b4c5
-mov dword ptr [ebp-0x30], edi
-mov dword ptr [ecx], edi
-mov dword ptr [esp], edx
-call 0xb770d7d0
-mov dword ptr [ebp-0x28], eax
-jz 0xb771b4c5
+jnbe 0xb77b64c5
+jnz 0xb77b64c5
+jz 0xb77b64c5
 cmp dword ptr [ebp-0x38], 0x2
-mov dword ptr [edx], eax
-mov dword ptr [edx+0x8], eax
-jz 0xb771b489
-mov dword ptr [ebp-0x20], esi
-mov dword ptr [ebp-0x3c], edi
-mov dword ptr [ebp-0x40], ecx
-nop 
-mov word ptr [eax], 0x6c74
-mov byte ptr [eax+0x2], 0x73
-mov byte ptr [eax+0x3], 0x2f
-jz 0xb771b2b8
-mov dword ptr [ebp-0x48], eax
-jmp 0xb771b278
-jz 0xb771b270
-mov dword ptr [esp+0x8], ecx
-mov dword ptr [esp], eax
-mov dword ptr [ebp-0x4c], edx
-mov dword ptr [esp+0x4], ecx
-call 0xb7725c60
-cld 
-jnb 0xb7725c76
-movsb byte ptr [edi], byte ptr [esi]
-jnb 0xb7725c7c
-movsw word ptr [edi], word ptr [esi]
-rep movsd dword ptr [edi], dword ptr [esi]
-jnb 0xb7725c7c
-movsw word ptr [edi], word ptr [esi]
-rep movsd dword ptr [edi], dword ptr [esi]
-rep movsd dword ptr [edi], dword ptr [esi]
+jz 0xb77b6489
+jz 0xb77b62b8
+jmp 0xb77b6278
+jz 0xb77b6270
+jnb 0xb77c0c76
+jnb 0xb77c0c7c
+jnb 0xb77c0c7c
 ret 
-mov byte ptr [eax], 0x2f
-mov dword ptr [ebp-0x48], eax
-jnz 0xb771b278
-mov dword ptr [esp], eax
-mov dword ptr [ebp-0x4c], edx
-mov dword ptr [esp+0x8], esi
-mov dword ptr [esp+0x4], edi
-call 0xb7725c60
-mov byte ptr [eax], 0x2f
-jnz 0xb771b248
-jz 0xb771b306
-nop 
-mov dword ptr [eax+0x4], 0x0
-jnz 0xb771b2f8
-mov word ptr [eax], 0x6c74
-mov byte ptr [eax+0x2], 0x73
-mov byte ptr [eax+0x3], 0x2f
-jz 0xb771b2b8
-mov dword ptr [ebp-0x48], eax
-jmp 0xb771b278
-jz 0xb771b2b5
-jz 0xb771b270
-mov dword ptr [esp+0x8], ecx
-mov dword ptr [esp], eax
-mov dword ptr [ebp-0x4c], edx
-mov dword ptr [esp+0x4], ecx
-call 0xb7725c60
-mov dword ptr [esp], eax
-mov dword ptr [ebp-0x4c], edx
-mov dword ptr [esp+0x8], esi
-mov dword ptr [esp+0x4], edi
-call 0xb7725c60
-mov dword ptr [eax+0x4], 0x0
-jnz 0xb771b2f8
-mov dword ptr [ebp-0x20], eax
-jz 0xb771b354
+jnz 0xb77b6278
+jnz 0xb77b6248
+jz 0xb77b6306
+jnz 0xb77b62f8
+jz 0xb77b62b8
+jmp 0xb77b6278
+jz 0xb77b62b5
+jz 0xb77b6270
+jnz 0xb77b62f8
+jz 0xb77b6354
 test dword ptr [ebp-0x20], eax
-jz 0xb771b34d
-add dword ptr [edx+0x4], edi
+jz 0xb77b634d
 test dword ptr [ebp-0x20], eax
-jnz 0xb771b338
-jnz 0xb771b330
-jnz 0xb771b310
+jnz 0xb77b6338
+jnz 0xb77b6330
+jnz 0xb77b6310
 test dword ptr [ebp-0x20], eax
-jz 0xb771b34d
-add dword ptr [edx+0x4], edi
+jz 0xb77b634d
 test dword ptr [ebp-0x20], eax
-jnz 0xb771b338
-jnz 0xb771b330
-jnz 0xb771b330
-jnz 0xb771b310
-mov dword ptr [ebp-0x20], 0x1
-shl dword ptr [ebp-0x20], cl
+jnz 0xb77b6338
+jnz 0xb77b6330
+jnz 0xb77b6330
+jnz 0xb77b6310
 cmp dword ptr [ebp-0x20], edx
-mov dword ptr [ebp-0x1c], edx
-jz 0xb771b3ba
-mov dword ptr [ebp-0x20], eax
-jz 0xb771b354
+jz 0xb77b63ba
+jz 0xb77b6354
 test dword ptr [ebp-0x20], eax
-jz 0xb771b34d
-add dword ptr [edx+0x4], edi
+jz 0xb77b634d
 test dword ptr [ebp-0x20], eax
-jnz 0xb771b338
-jnz 0xb771b310
-mov dword ptr [ebp-0x20], 0x1
-shl dword ptr [ebp-0x20], cl
+jnz 0xb77b6338
+jnz 0xb77b6310
 cmp dword ptr [ebp-0x20], edx
-mov dword ptr [ebp-0x1c], edx
-jz 0xb771b3ba
-jmp 0xb771b397
-jnz 0xb771b380
-mov dword ptr [ecx], esi
-jnz 0xb771b397
-mov dword ptr [eax], ecx
-jnz 0xb771b3c8
-mov dword ptr [ecx], esi
-jz 0xb771b3b2
-jnz 0xb771b380
-mov dword ptr [ecx], esi
-jnz 0xb771b397
-mov dword ptr [eax], ecx
-jnz 0xb771b3c8
-mov dword ptr [edi], eax
+jz 0xb77b63ba
+jmp 0xb77b6397
+jnz 0xb77b6380
+jnz 0xb77b6397
+jnz 0xb77b63c8
+jz 0xb77b63b2
+jnz 0xb77b6380
+jnz 0xb77b6397
+jnz 0xb77b63c8
 ret 0x4
-mov dword ptr [eax], ecx
-jnz 0xb771b3c8
-mov dword ptr [edi], eax
+jnz 0xb77b63c8
 ret 0x4
-mov dword ptr [esp], 0x14
-mov dword ptr [ebx-0xe8], eax
-call 0xb770d7d0
-mov dword ptr [ebx-0xe4], eax
-jz 0xb771515e
-mov dword ptr [ebp-0x38], edx
-mov dword ptr [esp], eax
-call 0xb770d7d0
-jz 0xb7722b27
-mov dword ptr [esp+0x14], 0x0
-mov dword ptr [esp+0x10], 0xffffffff
-mov dword ptr [esp+0xc], 0x22
-mov dword ptr [esp+0x8], 0x3
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp], 0x0
-call 0xb7725020
-jnz 0xb7725053
+jz 0xb77b015e
+jz 0xb77bdb27
+jnz 0xb77c0053
 int 0x80
-jnbe 0xb772505f
+jnbe 0xb77c005f
 ret 
-jz 0xb7722b38
-mov dword ptr [ebx+0x8fc], eax
-mov dword ptr [ebx+0x904], edx
-mov dword ptr [ebx+0x900], eax
+jz 0xb77bdb38
 ret 
-mov dword ptr [edi], eax
-jz 0xb7715239
-mov dword ptr [ebx+0x554], eax
-mov dword ptr [ebp-0x1c], eax
-mov dword ptr [ebp-0x30], eax
-mov dword ptr [ecx+0x4], eax
-mov dword ptr [ebp-0x34], eax
-mov dword ptr [ecx+0xc], eax
-mov dword ptr [ebp-0x20], edx
-mov dword ptr [ebp-0x24], eax
-mov dword ptr [ebp-0x28], edi
-mov dword ptr [ebx-0xe0], 0x0
-mov dword ptr [ecx+0x8], 0x0
-mov dword ptr [ecx+0x10], 0x14
-jz 0xb7714ef7
-mov dword ptr [ecx+edx*4+0x14], 0x0
-jnz 0xb7714ee8
-mov dword ptr [ecx+edx*4+0x14], 0x0
-jnz 0xb7714ee8
+jz 0xb77b0239
+jz 0xb77afef7
+jnz 0xb77afee8
+jnz 0xb77afee8
 cmp dword ptr [ebp-0x1c], edx
-jz 0xb7714f48
-mov dword ptr [ecx], eax
-mov dword ptr [edx], eax
-mov dword ptr [ebp-0x1c], edx
-mov dword ptr [eax+0x8], 0x0
-mov dword ptr [eax+0xc], edi
-mov dword ptr [eax+0x4], edx
-add dword ptr [ebp-0x20], 0x4
-mov dword ptr [eax+0x10], edx
+jz 0xb77aff48
 cmp byte ptr [edi], 0x2f
-mov dword ptr [ebp-0x34], edx
-jnz 0xb771520f
-jmp 0xb7714edf
-jz 0xb7714ef7
-mov dword ptr [ecx+edx*4+0x14], 0x0
-jnz 0xb7714ee8
+jnz 0xb77b020f
+jmp 0xb77afedf
+jz 0xb77afef7
+jnz 0xb77afee8
 cmp dword ptr [ebp-0x1c], edx
-jz 0xb7714f48
-mov dword ptr [ecx], 0x0
-mov dword ptr [ebx+0x8b4], 0x18
-mov dword ptr [eax], 0x0
-jz 0xb7714fb7
-jz 0xb7715134
-jz 0xb77150c2
-mov dword ptr [esi+0x1e8], 0xffffffff
-jz 0xb7715104
-mov dword ptr [esp], ecx
-call 0xb7714bd0
-mov dword ptr [esi+0x198], 0xffffffff
-jmp 0xb7714fb7
-jz 0xb77150b0
+jz 0xb77aff48
+jz 0xb77affb7
+jz 0xb77b0134
+jz 0xb77b00c2
+jz 0xb77b0104
+jmp 0xb77affb7
+jz 0xb77b00b0
 cmp byte ptr [eax], 0x0
-jz 0xb77150b0
-mov dword ptr [esp+0x4], 0x24
-mov dword ptr [esp], eax
-call 0xb7725350
-mov dword ptr [ebx-0xdc], 0xffffffff
+jz 0xb77b00b0
 ret 
-call 0xb771c9f0
-call 0xb7725e98
 ret 
-jz 0xb771ca38
+jz 0xb77b7a38
 cmp dword ptr [eax+0x4], 0x0
-jz 0xb771ca44
-jz 0xb771ca35
+jz 0xb77b7a44
+jz 0xb77b7a35
 cmp dword ptr [eax+0x4], 0x0
-jnz 0xb771ca12
-mov dword ptr [eax], 0x1
-jnz 0xb771ca1c
-jmp 0xb771ca1c
-mov dword ptr [eax+0x10], ecx
-mov dword ptr [eax+0x4], edx
-mov dword ptr [eax+0x8], edx
+jnz 0xb77b7a12
+jnz 0xb77b7a1c
+jmp 0xb77b7a1c
 ret 
-mov dword ptr [ebp-0xb0], eax
-mov dword ptr [eax+0xc], 0x0
-jnz 0xb770f6fe
-mov dword ptr [ebx+0x560], eax
-add dword ptr [ebx+0x44], 0x1
-mov byte ptr [ebx+0x6f0], al
-mov dword ptr [eax+0xc], esi
-add dword ptr [ebx+0x534], 0x1
-adc dword ptr [ebx+0x538], 0x0
+jnz 0xb77aa6fe
 cmp dword ptr [ebx-0x1d0], 0xfffffffe
-mov dword ptr [ebx+0x56c], eax
-jnz 0xb770f74c
+jnz 0xb77aa74c
 cmp dword ptr [eax], 0x1
-mov dword ptr [ebx-0x1d0], eax
-mov dword ptr [ebx+0x6ac], esi
-mov word ptr [ebx+0x6b4], ax
-jmp 0xb770f78a
-jnz 0xb770f778
-jmp 0xb770f7a2
-jz 0xb770f790
-jnz 0xb770f778
-jmp 0xb770f7a2
-mov dword ptr [ebx+0x7a4], eax
-mov dword ptr [ebx+0x7a8], eax
-jz 0xb770f7b7
-call 0xb771e650
-jnz 0xb770f95a
-mov dword ptr [ebp-0x98], 0x0
-jz 0xb770f7e2
-mov dword ptr [eax+0x4], edx
-jz 0xb770f7f5
-jz 0xb770f7f5
-mov dword ptr [eax+0x4], ecx
-mov dword ptr [eax+0xc], 0x1
-call 0xb771c9e0
-mov dword ptr [eax+0xc], 0x1
-call 0xb771c9e0
+jmp 0xb77aa78a
+jnz 0xb77aa778
+jmp 0xb77aa7a2
+jz 0xb77aa790
+jnz 0xb77aa778
+jmp 0xb77aa7a2
+jz 0xb77aa7b7
+jnz 0xb77aa95a
+jz 0xb77aa7e2
+jz 0xb77aa7f5
+jz 0xb77aa7f5
 ret 
-jnz 0xb770fd48
-jnz 0xb770fd1e
-jnz 0xb770fc68
-mov dword ptr [ebp-0x94], 0x0
-mov dword ptr [esp+0x4], 0x4
-mov dword ptr [ebp-0xa0], esi
-mov dword ptr [esp], esi
-call 0xb7724f90
-jz 0xb770fbf9
-jnz 0xb770feaa
-mov dword ptr [ebp-0x9c], edx
+jnz 0xb77aad48
+jnz 0xb77aad1e
+jnz 0xb77aac68
+jz 0xb77aabf9
+jnz 0xb77aaeaa
 cmp dword ptr [ebp-0x90], 0x3
-mov dword ptr [ebp-0xa0], eax
-mov dword ptr [ebp-0x80], edx
-mov dword ptr [esp], edx
-mov dword ptr [esp+0x4], 0x0
-call 0xb7719e20
-mov dword ptr [ebp-0x74], eax
-mov dword ptr [ebp-0x4c], ecx
-mov dword ptr [ebp-0x8c], edi
-mov dword ptr [edi+0x4], eax
-mov dword ptr [edi], 0x0
-mov dword ptr [edi+0x8], eax
-call 0xb7725e98
 ret 
-mov byte ptr [ecx+0x194], al
-jz 0xb771a95f
-mov dword ptr [ebp-0x50], esi
-mov dword ptr [eax-0xc], 0x0
-mov dword ptr [eax-0x4], eax
-mov dword ptr [eax-0x8], esi
-mov byte ptr [esi+0x194], dl
-jnz 0xb7719e9a
-mov dword ptr [ebp-0x64], eax
-mov dword ptr [ebp-0x50], esi
-mov dword ptr [ebp-0x68], eax
-mov dword ptr [eax+0x8], 0x0
-mov dword ptr [ebp-0x38], 0x0
-mov dword ptr [ebp-0x88], esi
-mov dword ptr [ebx+0x920], 0x0
-mov dword ptr [ebp-0x6c], edi
-mov dword ptr [ebp-0x84], 0x0
-mov dword ptr [ebp-0x80], 0x0
-mov dword ptr [ebp-0x5c], esi
-mov dword ptr [ebp-0x54], 0x0
-mov dword ptr [esi], 0x1
-jz 0xb771a12a
-mov dword ptr [ebp-0x64], 0x1
-mov dword ptr [ebp-0x50], eax
-jmp 0xb7719edf
-mov dword ptr [ebp-0x68], eax
-mov dword ptr [eax+0x8], 0x0
-mov dword ptr [ebp-0x38], 0x0
-mov dword ptr [ebp-0x88], esi
-mov dword ptr [ebx+0x920], 0x0
-mov dword ptr [ebp-0x6c], edi
-mov dword ptr [ebp-0x84], 0x0
-mov dword ptr [ebp-0x80], 0x0
-mov dword ptr [ebp-0x5c], esi
-mov dword ptr [ebp-0x54], 0x0
-mov dword ptr [esi], 0x1
-jz 0xb771a12a
-jz 0xb771a05d
-mov dword ptr [ebp-0x30], esi
-mov dword ptr [ebp-0x2c], esi
-mov dword ptr [ebp-0x58], eax
-mov dword ptr [ebp-0x24], eax
-mov dword ptr [ebp-0x28], esi
-jz 0xb771a079
-jnz 0xb7719f46
+jz 0xb77b595f
+jnz 0xb77b4e9a
+jz 0xb77b512a
+jmp 0xb77b4edf
+jz 0xb77b512a
+jz 0xb77b505d
+jz 0xb77b5079
+jnz 0xb77b4f46
 cmp dword ptr [ebp-0x74], esi
-jz 0xb7719f46
-jz 0xb7719f46
-jz 0xb771a05d
-mov dword ptr [ebp-0x30], esi
-mov dword ptr [ebp-0x2c], esi
-mov dword ptr [ebp-0x58], eax
-mov dword ptr [ebp-0x24], eax
-mov dword ptr [ebp-0x28], esi
-jz 0xb771a079
-mov dword ptr [ebp-0x4c], 0x0
-mov dword ptr [ebp-0x70], edx
-jmp 0xb7719fbb
-jnz 0xb771a62e
-mov dword ptr [esp+0x4], 0x24
-mov dword ptr [esp], edi
-call 0xb7725350
-jz 0xb77253b1
-jp 0xb772539d
-jz 0xb77254dd
-jz 0xb772550a
-jz 0xb77254dd
-jz 0xb772550a
-jnz 0xb77253b1
-jz 0xb77254dd
-jz 0xb772550a
-jnb 0xb77254e2
-jnz 0xb77254e2
-jnb 0xb77254c7
-jnz 0xb77254c7
-jnb 0xb77254e2
-jnz 0xb77254e2
-jz 0xb77254dd
-jz 0xb772550a
-jz 0xb77254dd
-jz 0xb772550a
-jz 0xb77254dd
-jz 0xb772550a
-jmp 0xb77254dd
+jz 0xb77b4f46
+jz 0xb77b4f46
+jz 0xb77b505d
+jz 0xb77b5079
+jmp 0xb77b4fbb
+jnz 0xb77b562e
+jz 0xb77c03b1
+jp 0xb77c039d
+jz 0xb77c04dd
+jz 0xb77c050a
+jz 0xb77c04dd
+jz 0xb77c050a
+jnz 0xb77c03b1
+jz 0xb77c04dd
+jz 0xb77c050a
+jnb 0xb77c04e2
+jnz 0xb77c04e2
+jnb 0xb77c04c7
+jnz 0xb77c04c7
+jnb 0xb77c04e2
+jnz 0xb77c04e2
+jz 0xb77c04dd
+jz 0xb77c050a
+jz 0xb77c04dd
+jz 0xb77c050a
+jz 0xb77c04dd
+jz 0xb77c050a
+jmp 0xb77c04dd
 ret 
-jnz 0xb771a728
-mov dword ptr [ebp-0x20], edi
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], eax
-call 0xb771bfe0
-call 0xb7725e98
+jnz 0xb77b5728
 ret 
-mov dword ptr [esp+0x14], eax
-mov dword ptr [esp+0x18], edx
-mov dword ptr [esp+0x1c], ecx
-mov dword ptr [esp+0x2c], 0x0
 call dword ptr [ebx+0x558]
-call 0xb7725e94
 ret 
 ret 
-mov dword ptr [esp+0x10], eax
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp+0x24], eax
-mov dword ptr [esp], eax
-call 0xb7725160
-mov dword ptr [eax], ebx
-mov dword ptr [eax+0x4], esi
-mov dword ptr [eax+0x8], edi
-mov dword ptr [eax+0x10], ecx
-mov dword ptr [eax+0x14], ecx
-mov dword ptr [eax+0xc], ebp
 ret 
-jnz 0xb771c080
-mov dword ptr [edx], eax
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp], edi
-call 0xb77152a0
-mov dword ptr [esp+0x30], ecx
-call 0xb7725e98
+jnz 0xb77b7080
 ret 
-js 0xb7715b6e
-jnb 0xb7715b44
-mov dword ptr [esp+0x2c], ecx
-jnz 0xb7715314
-jnz 0xb771530d
-jnz 0xb771530d
-call 0xb771d0d0
-call 0xb7725e98
+js 0xb77b0b6e
+jnb 0xb77b0b44
+jnz 0xb77b0314
+jnz 0xb77b030d
+jnz 0xb77b030d
 ret 
-mov dword ptr [esp], edi
-mov dword ptr [esp+0x4], eax
-call 0xb7725510
-jz 0xb771d121
-jnz 0xb771d10f
-nop 
-jmp 0xb771d130
-mov dword ptr [esp], edi
-mov dword ptr [esp+0x4], eax
-call 0xb7725510
-jnz 0xb771d108
+jz 0xb77b8121
+jnz 0xb77b810f
+jmp 0xb77b8130
+jnz 0xb77b8108
 ret 
-jz 0xb771d130
-mov dword ptr [esp], edi
-mov dword ptr [esp+0x4], eax
-call 0xb7725510
+jz 0xb77b8130
 ret 
-jz 0xb7715300
+jz 0xb77b0300
 ret 0xc
 test byte ptr [ebp+0x195], 0x1
-jz 0xb7715979
-jz 0xb7715340
-jnz 0xb771530d
-jz 0xb771530d
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x4], eax
-call 0xb7725510
-jz 0xb7715340
-jnz 0xb771530d
-jnz 0xb771530d
-call 0xb771d0d0
-jnz 0xb7725527
-jnz 0xb7725518
+jz 0xb77b0979
+jz 0xb77b0340
+jnz 0xb77b030d
+jz 0xb77b030d
+jz 0xb77b0340
+jnz 0xb77b030d
+jnz 0xb77b030d
+jnz 0xb77c0527
+jnz 0xb77c0518
 ret 
-jnz 0xb771530d
-call 0xb7712680
-jnz 0xb771544a
-jnz 0xb7715ace
-mov dword ptr [esp+0x4], 0x2f
-mov dword ptr [esp], esi
-mov byte ptr [esp+0x53], 0x0
-call 0xb7725350
-jz 0xb77154d3
-jz 0xb7715602
-mov dword ptr [esp], 0x0
-call 0xb7714a60
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x24], edx
-call 0xb77255d0
-mov dword ptr [esp+0x38], eax
-jnz 0xb7715a14
-jz 0xb7715805
-jz 0xb77158c8
-mov dword ptr [esp+0x48], ebp
-mov dword ptr [esp+0x44], esi
-mov byte ptr [esp+0x3c], 0x0
-mov dword ptr [esp+0x34], ecx
-mov dword ptr [esp+0x40], edi
-jmp 0xb77158fe
-mov dword ptr [esp+0x4], ebp
-mov dword ptr [esp], 0xf
-call 0xb7714d70
-mov dword ptr [esp+0x14], esi
-mov dword ptr [esp+0x18], edi
-jz 0xb7714dd8
-jz 0xb7714da0
+jnz 0xb77b030d
+jnz 0xb77b044a
+jnz 0xb77b0ace
+jz 0xb77b04d3
+jz 0xb77b0602
+jnz 0xb77b0a14
+jz 0xb77b0805
+jz 0xb77b08c8
+jmp 0xb77b08fe
+jz 0xb77afdd8
+jz 0xb77afda0
 ret 
 ret 
-jz 0xb77158f0
-mov dword ptr [esp+0x18], ecx
-mov dword ptr [esp+0x14], 0x4
-mov dword ptr [esp+0x10], eax
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp], eax
-call 0xb7712dc0
-jz 0xb7715625
-mov dword ptr [esp+0x4], ebp
-mov dword ptr [esp], 0xf
-call 0xb7714d70
+jz 0xb77b08f0
+jz 0xb77b0625
 cmp byte ptr [esp+0x3c], 0x0
-jz 0xb771580f
+jz 0xb77b080f
 cmp dword ptr [ebx-0xdc], 0xffffffff
-jnz 0xb7715527
-jmp 0xb7715577
-jz 0xb771550f
-jz 0xb771550f
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], 0xf
-mov dword ptr [esp+0x28], ecx
-call 0xb7714d70
-jz 0xb771550f
-mov dword ptr [esp+0x14], 0x4
-mov dword ptr [esp+0x4], ecx
-mov dword ptr [esp+0x34], eax
-mov dword ptr [esp+0x18], eax
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x10], edx
-mov dword ptr [esp], eax
-call 0xb7712dc0
+jnz 0xb77b0527
+jmp 0xb77b0577
+jz 0xb77b050f
+jz 0xb77b050f
+jz 0xb77b050f
 cmp dword ptr [ebx-0xdc], 0xffffffff
-jz 0xb771564b
-mov dword ptr [esp+0x10], eax
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp+0x18], edx
-mov dword ptr [esp+0x14], 0x2
-mov dword ptr [esp], eax
-call 0xb7712dc0
-jmp 0xb7715577
-setnz byte ptr [esp+0x34]
-jnz 0xb771577c
-jz 0xb771565a
+jz 0xb77b064b
+jmp 0xb77b0577
+jnz 0xb77b077c
+jz 0xb77b065a
 test byte ptr [ebx-0x340], 0x1
-jz 0xb77153dc
+jz 0xb77b03dc
 cmp byte ptr [esp+0x34], 0x0
-jz 0xb7715586
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], 0x1d
-mov dword ptr [esp+0x28], ecx
-call 0xb7714d70
-mov byte ptr [esp+0x34], 0x1
-jz 0xb771565a
-mov dword ptr [esp+0x18], eax
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x14], 0x4
-mov dword ptr [esp+0x10], edi
-mov dword ptr [esp+0x4], ecx
-mov dword ptr [esp], eax
-call 0xb7712dc0
-mov dword ptr [esp+0x48], ecx
-jnz 0xb7715aa2
-jnz 0xb7715709
-call 0xb7721bb0
-call 0xb7725e98
+jz 0xb77b0586
+jz 0xb77b065a
+jnz 0xb77b0aa2
+jnz 0xb77b0709
 ret 
-mov dword ptr [esp+0x28], eax
 test byte ptr [ebx-0x340], 0x1
-jnz 0xb7722155
-jz 0xb7721dc3
-jz 0xb7721d08
-call 0xb771cf40
-mov dword ptr [esp+0x8c], ebx
-call 0xb7725e98
-ret 
-mov dword ptr [esp+0x4], 0x80000
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x90], esi
-mov dword ptr [esp+0x94], edi
-mov dword ptr [esp+0x98], ebp
-call 0xb7724e60
-int 0x80
-jnb 0xb7724e7d
-ret 
-js 0xb771cfe0
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], 0x3
-call 0xb7724de0
-call 0xb7725e98
+jnz 0xb77bd155
+jz 0xb77bcdc3
+jz 0xb77bcd08
 ret 
 int 0x80
-jnbe 0xb7724e08
+jnb 0xb77bfe7d
 ret 
-js 0xb771cfad
-mov dword ptr [edi], eax
-jnz 0xb771cfe8
-mov dword ptr [esp], esi
-call 0xb7724ea0
-mov dword ptr [esp+0x14], 0x0
-mov dword ptr [esp+0x10], esi
-mov dword ptr [esp+0xc], 0x2
-mov dword ptr [esp+0x8], ebp
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], 0x0
-call 0xb7725020
-jmp 0xb771cfb2
-mov dword ptr [esp], esi
-call 0xb7724ea0
+js 0xb77b7fe0
+ret 
 int 0x80
-jnb 0xb7724eb7
+jnbe 0xb77bfe08
+ret 
+js 0xb77b7fad
+jnz 0xb77b7fe8
+jmp 0xb77b7fb2
+int 0x80
+jnb 0xb77bfeb7
 ret 
 ret 
-jz 0xb7721e6d
-jbe 0xb7721e61
-mov dword ptr [esp+0x8], 0xb
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], edi
-call 0xb77258d0
-jnz 0xb7725b87
-jnz 0xb7725b87
-jnz 0xb7725b9b
-jnz 0xb7725b9b
-jnz 0xb7725b9b
+jz 0xb77bce6d
+jbe 0xb77bce61
+jnz 0xb77c0b87
+jnz 0xb77c0b87
+jnz 0xb77c0b9b
+jnz 0xb77c0b9b
+jnz 0xb77c0b9b
 ret 
-jnz 0xb7721e7c
-mov dword ptr [ebx+0x8ec], edi
-mov dword ptr [ebx+0x8f4], eax
-jb 0xb7721e52
-mov dword ptr [esp+0x8], 0x14
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp], eax
-call 0xb77258d0
-jz 0xb7721bf0
-mov dword ptr [ebx+0x8f4], 0xffffffff
-jmp 0xb7721bf0
-mov dword ptr [esp+0x24], eax
-jz 0xb7721d20
-mov dword ptr [esp+0x20], esi
-sub dword ptr [esp+0x20], eax
-jz 0xb7721c46
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], esi
-call 0xb7725510
-jz 0xb7721da2
-jnz 0xb7721c1f
-mov dword ptr [esp+0x40], 0xffffffff
-mov dword ptr [esp+0x44], 0xffffffff
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], eax
-call 0xb7724f90
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], esi
-call 0xb7725510
-jz 0xb7721da2
-jnz 0xb7721c1f
-mov dword ptr [esp+0x40], 0xffffffff
-mov dword ptr [esp+0x44], 0xffffffff
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], eax
-call 0xb7724f90
-mov dword ptr [esp+0x40], eax
-mov dword ptr [esp+0x44], edx
-jmp 0xb7721c56
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], eax
-call 0xb7724f90
-mov dword ptr [esp+0x34], edx
-mov dword ptr [esp+0x30], eax
-mov dword ptr [esp+0x3c], edx
-mov dword ptr [esp+0x38], eax
-mov dword ptr [esp+0x48], eax
-js 0xb7721d08
+jnz 0xb77bce7c
+jb 0xb77bce52
+jz 0xb77bcbf0
+jmp 0xb77bcbf0
+jz 0xb77bcd20
+jz 0xb77bcc46
+jz 0xb77bcda2
+jnz 0xb77bcc1f
+jz 0xb77bcda2
+jnz 0xb77bcc1f
+jmp 0xb77bcc56
+js 0xb77bcd08
 cmp dword ptr [esp+0x20], edx
-jbe 0xb7721d08
-jmp 0xb7721ce9
-call 0xb7721a70
-data16 nop 
-mov byte ptr [esp], cl
-jz 0xb7721b68
-jnbe 0xb7721b48
-jnbe 0xb7721b95
-jbe 0xb7721b74
+jbe 0xb77bcd08
+jmp 0xb77bcce9
+jz 0xb77bcb68
+jnbe 0xb77bcb48
+jnbe 0xb77bcb95
+jbe 0xb77bcb74
 cmp byte ptr [esp], cl
-jnz 0xb7721b80
-mov byte ptr [esp], cl
-jnz 0xb7721a86
-jnbe 0xb7721b48
-jnbe 0xb7721b95
-mov dword ptr [esp], edi
-jnbe 0xb7721afc
+jnz 0xb77bcb80
+jnz 0xb77bca86
+jnbe 0xb77bcb48
+jnbe 0xb77bcb95
+jnbe 0xb77bcafc
 ret 
-jz 0xb7721ee0
-jnl 0xb7721cc0
-jle 0xb7721cc7
+jz 0xb77bcee0
+jnl 0xb77bccc0
+jle 0xb77bccc7
 cmp dword ptr [esp+0x20], edx
-jbe 0xb7721d08
-call 0xb7721a70
-jnle 0xb7721d08
+jbe 0xb77bcd08
+jnle 0xb77bcd08
 cmp dword ptr [esp+0x20], edx
-jbe 0xb7721d08
-call 0xb7721a70
-jnbe 0xb7721b33
-nop 
-add dword ptr [esp], 0x1
-jbe 0xb7721b10
-jz 0xb7721a78
-jz 0xb7721a78
+jbe 0xb77bcd08
+jnbe 0xb77bcb33
+jbe 0xb77bcb10
+jz 0xb77bca78
+jz 0xb77bca78
 ret 
-mov byte ptr [esp], cl
-jz 0xb7721b68
-jnbe 0xb7721b48
-jnbe 0xb7721b95
+jz 0xb77bcb68
+jnbe 0xb77bcb48
+jnbe 0xb77bcb95
 ret 
-mov dword ptr [esp+0x50], esi
-jle 0xb7721f3c
+jle 0xb77bcf3c
 cmp dword ptr [esp+0x20], edx
-jnbe 0xb7721f25
-jmp 0xb7721f3c
-call 0xb7721a70
-jz 0xb7721f08
-mov dword ptr [esp+0x58], edi
-mov dword ptr [esp+0x5c], edx
-jmp 0xb7721f54
-jle 0xb7721f7d
+jnbe 0xb77bcf25
+jmp 0xb77bcf3c
+jz 0xb77bcf08
+jmp 0xb77bcf54
+jle 0xb77bcf7d
 cmp dword ptr [esp+0x20], eax
-jbe 0xb7721fac
-call 0xb7721a70
-jnz 0xb7721fa3
+jbe 0xb77bcfac
+jnz 0xb77bcfa3
 cmp dword ptr [esp+0x20], eax
-mov dword ptr [esp+0x4c], eax
-jbe 0xb7721fa3
-jz 0xb7721fe8
-mov dword ptr [esp+0x54], eax
-not ecx
-mov dword ptr [esp+0x2c], eax
-not eax
-jnz 0xb7721fa3
-jz 0xb772202e
-jb 0xb7721fa3
-jnz 0xb7722137
-jnz 0xb7721fa3
+jbe 0xb77bcfa3
+jz 0xb77bcfe8
+jnz 0xb77bcfa3
+jz 0xb77bd02e
+jb 0xb77bcfa3
+jnz 0xb77bd137
+jnz 0xb77bcfa3
 cmp dword ptr [ebx-0x304], edx
-jnz 0xb7721fa3
-jz 0xb7722048
-jnz 0xb7721fa3
-jmp 0xb7722048
+jnz 0xb77bcfa3
+jz 0xb77bd048
+jnz 0xb77bcfa3
+jmp 0xb77bd048
 cmp dword ptr [ebx-0x304], edx
-jnz 0xb7721fa3
-jmp 0xb7721fac
+jnz 0xb77bcfa3
+jmp 0xb77bcfac
 test byte ptr [ebx-0x340], 0x1
-jz 0xb7721d10
-jz 0xb7721d08
-mov dword ptr [esp+0x4], ecx
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x1c], ecx
-call 0xb771d020
+jz 0xb77bcd10
+jz 0xb77bcd08
 ret 
-mov dword ptr [esp+0x3c], eax
-jz 0xb7715709
+jz 0xb77b0709
 cmp byte ptr [esp+0x34], 0x0
-jz 0xb77159c9
+jz 0xb77b09c9
 test byte ptr [eax+0x205], 0x8
-jnz 0xb7715a36
+jnz 0xb77b0a36
 cmp byte ptr [esp+0x34], 0x0
-jz 0xb7715a00
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0xc], 0x0
-mov dword ptr [esp+0x4], 0x8
-call 0xb7712800
-call 0xb7725e98
+jz 0xb77b0a00
 ret 
-mov dword ptr [ebp-0x20], edx
-mov dword ptr [ebp-0x30], eax
-mov dword ptr [ebp-0x34], ecx
-jnz 0xb7712cbd
-mov dword ptr [esp+0x4], 0x80000
-mov dword ptr [esp], eax
-call 0xb7724e60
-mov dword ptr [ebp-0x28], eax
-jz 0xb7712a5d
-mov dword ptr [ebx+0x920], 0x0
-mov dword ptr [edx], 0x0
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], eax
-call 0xb7724ed0
+jnz 0xb77adcbd
+jz 0xb77ada5d
 int 0x80
-jnb 0xb7724eed
+jnb 0xb77bfeed
 ret 
-jle 0xb7712bda
-mov dword ptr [edx], edi
-jbe 0xb7712867
-jle 0xb7712d48
-mov dword ptr [esp+0x8], 0x8
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], esi
-call 0xb77258d0
-jnz 0xb7725b87
-jnz 0xb7725b87
+jle 0xb77adbda
+jbe 0xb77ad867
+jle 0xb77add48
+jnz 0xb77c0b87
+jnz 0xb77c0b87
 ret 
-jnz 0xb7712d20
-jnz 0xb7712a6f
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp+0x8], 0x7
-mov dword ptr [esp], eax
-call 0xb77258d0
-jnz 0xb7725b87
-jnz 0xb7725b9b
-jnz 0xb7725b9b
-jnz 0xb7725b9b
+jnz 0xb77add20
+jnz 0xb77ada6f
+jnz 0xb77c0b87
+jnz 0xb77c0b9b
+jnz 0xb77c0b9b
+jnz 0xb77c0b9b
 ret 
-jnz 0xb7712a80
+jnz 0xb77ada80
 cmp dword ptr [edx+0x18], 0x1
-jnz 0xb7712d7d
+jnz 0xb77add7d
 cmp word ptr [edx+0x16], 0x3
-jnz 0xb7712a48
-jnz 0xb7712d8a
+jnz 0xb77ada48
+jnz 0xb77add8a
 cmp word ptr [edx+0x2e], 0x20
-jnz 0xb7712da0
-jnbe 0xb7712b28
-mov dword ptr [ebp-0x24], eax
+jnz 0xb77adda0
+jnbe 0xb77adb28
 cmp dword ptr [ebp-0x24], esi
-jnb 0xb7712a64
-jmp 0xb7712983
+jnb 0xb77ada64
+jmp 0xb77ad983
 cmp dword ptr [edi], 0x4
-jnz 0xb7712970
-jbe 0xb7712970
+jnz 0xb77ad970
+jbe 0xb77ad970
 cmp dword ptr [edi+0x1c], 0x3
-jbe 0xb7712970
-jnb 0xb7712a64
+jbe 0xb77ad970
+jnb 0xb77ada64
 cmp dword ptr [edi], 0x4
-jnz 0xb7712970
-jbe 0xb7712970
+jnz 0xb77ad970
+jbe 0xb77ad970
 cmp dword ptr [edi+0x1c], 0x3
-jbe 0xb7712970
-mov dword ptr [ebp-0x1c], esi
-jnbe 0xb7712ab8
-mov dword ptr [ebp-0x38], edi
-mov dword ptr [ebp-0x2c], edx
-jmp 0xb77129e4
-mov dword ptr [esp+0x8], 0x10
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x4], edx
-call 0xb77258d0
-jnz 0xb7725b87
-jnz 0xb7725b87
-jnz 0xb7725b87
-jnz 0xb7725b9b
-jnz 0xb7725b9b
-jnz 0xb7725b9b
+jbe 0xb77ad970
+jnbe 0xb77adab8
+jmp 0xb77ad9e4
+jnz 0xb77c0b87
+jnz 0xb77c0b87
+jnz 0xb77c0b87
+jnz 0xb77c0b9b
+jnz 0xb77c0b9b
+jnz 0xb77c0b9b
 ret 
-jnz 0xb77129c0
-jz 0xb7712cb1
-jnz 0xb7712a48
-jnbe 0xb7712aa8
-mov dword ptr [esp+0x8], 0x10
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x4], edx
-call 0xb77258d0
-jnz 0xb7725b87
+jnz 0xb77ad9c0
+jz 0xb77adcb1
+jnz 0xb77ada48
+jnbe 0xb77adaa8
+jnz 0xb77c0b87
 ret 
-jz 0xb7712a64
-jbe 0xb7712a64
-mov dword ptr [esp], eax
-call 0xb7724ea0
+jz 0xb77ada64
+jbe 0xb77ada64
 ret 
-jz 0xb7715709
-mov dword ptr [esp+0x24], edx
-call 0xb77122e0
-mov dword ptr [esp+0x10], ebx
-call 0xb7725e98
+jz 0xb77b0709
 ret 
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x14], esi
-mov dword ptr [esp+0x18], edi
-call 0xb77255d0
-mov dword ptr [esp], edi
-call 0xb770d7d0
-jz 0xb7712338
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], eax
-call 0xb7725d20
-jnb 0xb7725d81
-movsw word ptr [edi], word ptr [esi]
-rep movsd dword ptr [edi], dword ptr [esi]
-rep movsd dword ptr [edi], dword ptr [esi]
+jz 0xb77ad338
+jnb 0xb77c0d81
 ret 
-mov dword ptr [esp+0x54], eax
-jnz 0xb771558f
-mov dword ptr [esp], edx
-call 0xb7724ea0
+jnz 0xb77b058f
 test byte ptr [ebx-0x340], 0x1
-jz 0xb77153dc
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x24], edx
-call 0xb771d020
-jz 0xb7715ba3
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp+0x58], eax
-mov dword ptr [esp+0x10], ecx
-mov dword ptr [esp+0x18], eax
-mov dword ptr [esp+0x14], eax
-mov dword ptr [esp+0xc], ecx
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], eax
-call 0xb77133a0
-call 0xb7725e98
+jz 0xb77b03dc
+jz 0xb77b0ba3
 ret 
-mov dword ptr [ebp-0xb8], edx
-mov dword ptr [ebp-0xc0], eax
-call 0xb771c9f0
-jz 0xb771ca35
-mov dword ptr [eax], 0x1
-mov dword ptr [eax+0x10], ecx
-mov dword ptr [eax+0x4], edx
-mov dword ptr [eax+0x8], edx
+jz 0xb77b7a35
 ret 
 ret 
-mov dword ptr [ebp-0xbc], eax
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp], 0x3
-mov dword ptr [esp+0x4], edx
-call 0xb7724de0
-js 0xb771419c
-mov dword ptr [ebp-0xc4], edx
-jz 0xb77134a8
-mov dword ptr [ebp-0x8c], eax
-mov dword ptr [ebp-0x90], edx
-jmp 0xb771343f
+js 0xb77af19c
+jz 0xb77ae4a8
+jmp 0xb77ae43f
 test byte ptr [edi+0x195], 0x20
-jnz 0xb7713438
-jnz 0xb7713438
-jnz 0xb7713438
-jz 0xb77134a8
+jnz 0xb77ae438
+jnz 0xb77ae438
+jnz 0xb77ae438
+jz 0xb77ae4a8
 test byte ptr [edi+0x195], 0x20
-jnz 0xb7713438
-jnz 0xb7713438
-jnz 0xb771405f
+jnz 0xb77ae438
+jnz 0xb77ae438
+jnz 0xb77af05f
 test byte ptr [ebp+0x18], 0x4
-jnz 0xb7713ed6
+jnz 0xb77aeed6
 test byte ptr [ebx-0x340], 0x40
-jnz 0xb77141b0
-jz 0xb77136a0
-jnz 0xb7713f69
-mov byte ptr [ebp-0xa6], 0x0
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x4], ecx
-mov dword ptr [esp], eax
-call 0xb77178c0
-jnz 0xb7717a08
-jnz 0xb7717b08
-mov dword ptr [esi+eax*1+0x1b8], edi
-mov dword ptr [esi+0x1d0], eax
-jz 0xb7717ad3
-mov dword ptr [esi+0x1d0], eax
-jz 0xb7717ad3
-mov dword ptr [esp], eax
-call 0xb77255d0
-mov dword ptr [esp+0x1c], eax
-mov dword ptr [esp+0x20], eax
-jz 0xb7717b53
-mov dword ptr [esp+0x28], esi
-nop 
-mov dword ptr [esp+0x4], ebp
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x18], edx
-call 0xb770d7f0
-mov dword ptr [esp], edx
-call 0xb770d7d0
-jz 0xb7717bcf
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x4], edx
-call 0xb7725c60
-rep movsd dword ptr [edi], dword ptr [esi]
-jmp 0xb7717b8a
+jnz 0xb77af1b0
+jz 0xb77ae6a0
+jnz 0xb77aef69
+jnz 0xb77b2a08
+jnz 0xb77b2b08
+jz 0xb77b2ad3
+jz 0xb77b2ad3
+jz 0xb77b2b53
+jz 0xb77b2bcf
+jmp 0xb77b2b8a
 cmp byte ptr [eax-0x1], 0x2f
-jnz 0xb7717b88
-mov byte ptr [edx], 0x0
-jmp 0xb7717acd
+jnz 0xb77b2b88
+jmp 0xb77b2acd
 cmp byte ptr [eax-0x1], 0x2f
-jnz 0xb7717b88
-mov byte ptr [edx], 0x0
-jmp 0xb7717acd
-mov dword ptr [esi+0x1a8], edi
+jnz 0xb77b2b88
+jmp 0xb77b2acd
 ret 0xc
-jz 0xb7713f93
-mov dword ptr [edi+0x154], eax
-mov dword ptr [ebp-0xc8], edx
-mov dword ptr [ebp-0x90], edx
-mov word ptr [edi+0x158], ax
-jnbe 0xb7713d29
-mov dword ptr [ebp-0x8c], edx
-mov dword ptr [ebp-0xcc], esp
-mov dword ptr [ebp-0xb4], edx
+jz 0xb77aef93
+jnbe 0xb77aed29
 cmp dword ptr [ebp-0x8c], esi
-mov dword ptr [ebp-0xac], edx
-jnb 0xb7713ef6
-mov byte ptr [ebp-0xa5], 0x0
-mov dword ptr [ebp-0x90], 0x0
-mov dword ptr [ebp-0xb0], 0x7
-mov dword ptr [ebp-0xd0], edx
-jmp 0xb771361b
-jz 0xb77137b8
-jbe 0xb77135d8
-jz 0xb77137e0
-mov dword ptr [edi+0x150], eax
-jmp 0xb7713600
-jnb 0xb7713808
-jz 0xb77137b8
-jbe 0xb77135d8
-jz 0xb77136d8
-jnz 0xb7713600
-mov dword ptr [edi+0x8], eax
-mov word ptr [edi+0x15a], ax
-jnb 0xb7713808
-mov dword ptr [ebp-0x9c], eax
-jnz 0xb7713f44
-mov dword ptr [ebp-0x94], eax
-mov dword ptr [ebp-0x98], eax
-jnz 0xb7713f4e
-add dword ptr [ebp-0x90], 0x1
-mov dword ptr [ebp-0xa4], ecx
-mov dword ptr [eax], ecx
-mov dword ptr [eax+0x8], ecx
-mov dword ptr [eax+0x4], ecx
+jnb 0xb77aeef6
+jmp 0xb77ae61b
+jz 0xb77ae7b8
+jbe 0xb77ae5d8
+jz 0xb77ae7e0
+jmp 0xb77ae600
+jnb 0xb77ae808
+jz 0xb77ae7b8
+jbe 0xb77ae5d8
+jz 0xb77ae6d8
+jnz 0xb77ae600
+jnb 0xb77ae808
+jnz 0xb77aef44
+jnz 0xb77aef4e
 cmp dword ptr [ebp-0x90], 0x1
-mov dword ptr [eax+0xc], ecx
-mov dword ptr [eax+0x10], edx
-jbe 0xb771379c
-mov dword ptr [eax+0x14], edx
-jmp 0xb7713600
-mov byte ptr [ebp-0xa5], cl
-mov dword ptr [eax+0x14], edx
-jmp 0xb7713600
-jz 0xb77137e0
-jz 0xb77137c8
-jnz 0xb7713600
-jz 0xb7713600
-mov dword ptr [edi+0x234], eax
-mov dword ptr [edi+0x238], eax
-jnz 0xb77137f0
-mov dword ptr [edi+0x23c], 0x0
-mov dword ptr [edi+0x230], eax
-mov dword ptr [edi+0x22c], eax
-jnz 0xb7713f9b
-mov dword ptr [edi+0x23c], eax
-jmp 0xb771366b
-mov dword ptr [edi+0x230], eax
-mov dword ptr [edi+0x22c], eax
-jnz 0xb7713f9b
-call 0xb771e650
-mov dword ptr [esp+0x2c], ebx
-call 0xb7725e98
+jbe 0xb77ae79c
+jmp 0xb77ae600
+jmp 0xb77ae600
+jz 0xb77ae7e0
+jz 0xb77ae7c8
+jnz 0xb77ae600
+jz 0xb77ae600
+jnz 0xb77ae7f0
+jnz 0xb77aef9b
+jmp 0xb77ae66b
+jnz 0xb77aef9b
 ret 
-mov dword ptr [esp+0x30], esi
-mov dword ptr [esp+0x34], edi
-mov dword ptr [esp+0x38], ebp
 cmp byte ptr [ebx+0x844], 0x0
-jnz 0xb771e69a
-mov dword ptr [ebx+0x848], eax
+jnz 0xb77b969a
 ret 
-mov dword ptr [edi+0x244], eax
-jmp 0xb7713600
-mov dword ptr [ebp-0xb0], edx
-jmp 0xb7713600
-mov dword ptr [edi+0x248], eax
-mov dword ptr [edi+0x24c], eax
-jmp 0xb7713600
-jz 0xb7713ef6
-mov dword ptr [ebp-0x9c], ecx
+jmp 0xb77ae600
+jmp 0xb77ae600
+jmp 0xb77ae600
+jz 0xb77aeef6
 cmp dword ptr [ebp-0xc8], 0x3
-mov dword ptr [ebp-0x94], edx
-jnz 0xb77143ad
-mov dword ptr [esp+0x14], ecx
-mov dword ptr [esp+0xc], 0x802
-mov dword ptr [esp+0x10], edx
-mov dword ptr [esp+0x8], ecx
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp], eax
-call 0xb7725020
-mov dword ptr [edi+0x1ac], eax
-jz 0xb7713a10
-mov dword ptr [edi+0x1b0], edx
+jnz 0xb77af3ad
+jz 0xb77aea10
 cmp byte ptr [ebp-0xa5], 0x0
-mov dword ptr [edi], eax
-jnz 0xb7713a20
-or byte ptr [edi+0x195], 0x40
-mov dword ptr [ebp-0xb4], eax
-jz 0xb77138f8
-mov dword ptr [edi+0x1b4], eax
-jz 0xb7713daa
-jbe 0xb77139ad
-mov dword ptr [ebp-0x98], edx
-mov dword ptr [ebp-0x9c], eax
-mov dword ptr [ebp-0xa4], ecx
-jbe 0xb77139a1
-jnb 0xb7713a5a
-jbe 0xb77138e0
-mov dword ptr [esp+0x14], ecx
-mov dword ptr [esp+0xc], 0x812
-mov dword ptr [esp+0x10], ecx
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp+0x8], ecx
-mov dword ptr [esp], eax
-call 0xb7725020
-jnz 0xb77138e0
-jmp 0xb7713e49
-mov dword ptr [ebp-0xb4], eax
-jz 0xb77138f8
-mov dword ptr [edi+0x1b4], eax
-jz 0xb7713daa
-jbe 0xb77139ad
-jz 0xb7713daa
-jbe 0xb77139ad
-mov dword ptr [ebp-0x98], edx
-mov dword ptr [ebp-0x9c], eax
-mov dword ptr [ebp-0xa4], ecx
-jbe 0xb77139a1
+jnz 0xb77aea20
+jz 0xb77ae8f8
+jz 0xb77aedaa
+jbe 0xb77ae9ad
+jbe 0xb77ae9a1
+jnb 0xb77aea5a
+jbe 0xb77ae8e0
+jnz 0xb77ae8e0
+jmp 0xb77aee49
+jz 0xb77ae8f8
+jz 0xb77aedaa
+jbe 0xb77ae9ad
+jz 0xb77aedaa
+jbe 0xb77ae9ad
+jbe 0xb77ae9a1
 test byte ptr [ebp-0xb4], 0x2
-jz 0xb77143fe
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp], edx
-mov dword ptr [ebp-0xd4], ecx
-call 0xb7725c10
-cld 
-jecxz 0xb7725c4d
-jz 0xb7725c39
-jp 0xb7725c2e
-rep stosd dword ptr [edi]
-rep stosd dword ptr [edi]
-rep stosb byte ptr [edi]
+jz 0xb77af3fe
+jecxz 0xb77c0c4d
+jz 0xb77c0c39
+jp 0xb77c0c2e
 ret 
-jz 0xb77141d4
-jb 0xb7713e07
-jnb 0xb7713a5a
-mov dword ptr [esp+0x14], 0x0
-mov dword ptr [esp+0x10], 0xffffffff
-mov dword ptr [esp+0xc], 0x32
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp], ecx
-mov dword ptr [esp+0x4], eax
-call 0xb7725020
-jnz 0xb77139ad
-jmp 0xb7713f5e
-jz 0xb7713e89
-mov dword ptr [edi+0x8], edx
-jz 0xb7713e7e
-mov dword ptr [ebp-0x90], ecx
-jnz 0xb7713cc1
-jbe 0xb7713cb0
-jnbe 0xb7713ce0
-mov dword ptr [edi+ecx*4], edx
-jmp 0xb7713cb4
-mov dword ptr [edi+eax*4+0x20], edx
-jz 0xb7713a8d
-jbe 0xb7713cb0
-jnbe 0xb7713ce0
-jbe 0xb7713cfb
-not ecx
-mov dword ptr [eax+ecx*4+0xc8], edx
-jmp 0xb7713cb4
-jbe 0xb7713d95
-jnbe 0xb7713cb4
-mov dword ptr [ecx+eax*4], edx
-jmp 0xb7713cb4
-jz 0xb7713a8d
-jbe 0xb7713cb0
-jnbe 0xb7713ce0
-mov dword ptr [edi+ecx*4], edx
-jmp 0xb7713cb4
-jz 0xb7713af1
-jz 0xb7713a9b
-add dword ptr [eax+0x4], esi
-jz 0xb7713aa5
-add dword ptr [eax+0x4], esi
-jz 0xb7713aaf
-add dword ptr [eax+0x4], esi
-jz 0xb7713ab9
-add dword ptr [eax+0x4], esi
-jz 0xb7713ac3
-jz 0xb7713acd
-add dword ptr [eax+0x4], esi
-jz 0xb7713ad7
-add dword ptr [eax+0x4], esi
-jz 0xb7713ae4
-add dword ptr [eax+0x4], esi
-jz 0xb7713af1
-add dword ptr [eax+0x4], esi
-jz 0xb7713b04
-jnz 0xb771444d
-jz 0xb7713b04
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp+0x8], 0x73
-mov dword ptr [esp], eax
-call 0xb7722c40
-jz 0xb7713b18
+jz 0xb77af1d4
+jb 0xb77aee07
+jnb 0xb77aea5a
+jnz 0xb77ae9ad
+jmp 0xb77aef5e
+jz 0xb77aee89
+jz 0xb77aee7e
+jnz 0xb77aecc1
+jbe 0xb77aecb0
+jnbe 0xb77aece0
+jmp 0xb77aecb4
+jz 0xb77aea8d
+jbe 0xb77aecb0
+jnbe 0xb77aece0
+jbe 0xb77aecfb
+jmp 0xb77aecb4
+jbe 0xb77aed95
+jnbe 0xb77aecb4
+jmp 0xb77aecb4
+jz 0xb77aea8d
+jbe 0xb77aecb0
+jnbe 0xb77aece0
+jmp 0xb77aecb4
+jz 0xb77aeaf1
+jz 0xb77aea9b
+jz 0xb77aeaa5
+jz 0xb77aeaaf
+jz 0xb77aeab9
+jz 0xb77aeac3
+jz 0xb77aeacd
+jz 0xb77aead7
+jz 0xb77aeae4
+jz 0xb77aeaf1
+jz 0xb77aeb04
+jnz 0xb77af44d
+jz 0xb77aeb04
+jz 0xb77aeb18
 cmp dword ptr [eax+0x4], 0xc
-jnz 0xb7714480
-jz 0xb7713b2c
-jz 0xb7713b2c
+jnz 0xb77af480
+jz 0xb77aeb2c
+jz 0xb77aeb2c
 cmp dword ptr [eax+0x4], 0x8
-jnz 0xb77144aa
-jz 0xb7713b57
-mov dword ptr [edi+0x208], eax
-jz 0xb7713b46
-mov dword ptr [edi+0x60], edx
-jz 0xb7713b4d
-mov dword ptr [edi+0x78], edx
-jz 0xb7713b57
-jz 0xb7713b4d
-mov dword ptr [edi+0x78], edx
-jz 0xb7713b57
-mov dword ptr [edi+0x80], edx
-jz 0xb7713e73
-jz 0xb7713b57
-mov dword ptr [edi+0x80], edx
-jz 0xb7713e73
+jnz 0xb77af4aa
+jz 0xb77aeb57
+jz 0xb77aeb46
+jz 0xb77aeb4d
+jz 0xb77aeb57
+jz 0xb77aeb4d
+jz 0xb77aeb57
+jz 0xb77aee73
+jz 0xb77aeb57
+jz 0xb77aee73
 test byte ptr [ebx-0x340], 0x40
-mov dword ptr [edi+0x204], eax
-jnz 0xb77142e9
-jz 0xb7713e73
+jnz 0xb77af2e9
+jz 0xb77aee73
 test byte ptr [ebx-0x340], 0x40
-mov dword ptr [edi+0x204], eax
-jnz 0xb77142e9
-jz 0xb7713b8d
-jmp 0xb7713b8d
-jz 0xb7713b9e
-mov dword ptr [edi+0x5c], 0x0
-jnz 0xb771427e
-jz 0xb7713f06
-jnz 0xb771427e
-jz 0xb7713f06
-mov dword ptr [edi+0x150], eax
-not eax
+jnz 0xb77af2e9
+jz 0xb77aeb8d
+jmp 0xb77aeb8d
+jz 0xb77aeb9e
+jnz 0xb77af27e
+jz 0xb77aef06
+jnz 0xb77af27e
+jz 0xb77aef06
 test dword ptr [ebp-0xb0], eax
-jnz 0xb7714217
-jz 0xb7713be6
-mov dword ptr [edi+0x22c], eax
-mov dword ptr [esp], edx
-call 0xb7724ea0
-jnz 0xb7714669
-jz 0xb7713e58
+jnz 0xb77af217
+jz 0xb77aebe6
+jnz 0xb77af669
+jz 0xb77aee58
 test byte ptr [ebx-0x340], 0x40
-mov dword ptr [edi+0x154], edx
-jnz 0xb77145f8
+jnz 0xb77af5f8
 cmp dword ptr [ebp-0xc8], 0x2
-jnz 0xb7713c11
-mov byte ptr [edi+0x194], al
-jmp 0xb7713c11
+jnz 0xb77aec11
+jmp 0xb77aec11
 test byte ptr [ebx-0x340], 0x40
-mov dword ptr [edi+0x154], edx
-jnz 0xb77145f8
-call 0xb7717720
+jnz 0xb77af5f8
 test byte ptr [ebp+0x18], 0x8
-jnz 0xb7713c46
-jnz 0xb7714599
+jnz 0xb77aec46
+jnz 0xb77af599
 test byte ptr [edi+0x204], 0x20
-mov dword ptr [ebx+0x53c], eax
-mov dword ptr [edi+0x1dc], edx
-mov dword ptr [edi+0x1d8], eax
-mov dword ptr [edi+0x1e4], edx
-mov dword ptr [edi+0x1e0], eax
-jnz 0xb7714579
-call 0xb7717800
-jnz 0xb7717850
-mov dword ptr [eax+0x10], esi
-mov dword ptr [esi+0xc], eax
-add dword ptr [ebx+edx*1+0x44], 0x1
-mov dword ptr [eax+0x250], esi
-mov dword ptr [eax+0x254], edi
-mov dword ptr [ebx+0x534], esi
-mov dword ptr [ebx+0x538], edi
-mov dword ptr [esp], ebp
+jnz 0xb77af579
+jnz 0xb77b2850
 call dword ptr [ebx+0x838]
-jnz 0xb77144d4
+jnz 0xb77af4d4
 ret 
 ret 0xc
-mov dword ptr [esi+0x14], eax
 ret 
-mov dword ptr [edx], eax
-mov dword ptr [eax], 0x0
-mov dword ptr [edx], 0x0
-mov byte ptr [eax], 0x0
 ret 0x8
-jnz 0xb771a1a0
+jnz 0xb77b51a0
 test byte ptr [eax+0x194], 0x60
-jnz 0xb7719f98
-add dword ptr [ebp-0x64], 0x1
-mov dword ptr [edx+0x8], 0x0
-mov dword ptr [edx+0x4], eax
-mov dword ptr [edx], 0x0
-mov dword ptr [ecx+0x8], edx
-mov byte ptr [eax+0x194], cl
-mov dword ptr [ebp-0x68], edx
-jmp 0xb7719f98
-jz 0xb7719fae
-mov dword ptr [ecx+edx*4], eax
-mov dword ptr [ebp-0x4c], edx
-jz 0xb771a080
-jnz 0xb771a62e
-jz 0xb771a080
-jnz 0xb771a62e
-mov dword ptr [esp+0x4], 0x24
-mov dword ptr [esp], edi
-call 0xb7725350
-jnz 0xb7719fae
-mov dword ptr [esp+0x4], 0x24
-mov dword ptr [esp], edi
-call 0xb7725350
-jz 0xb771a0f7
-mov dword ptr [eax+esi*4], 0x0
-mov dword ptr [esp], eax
-call 0xb770d7d0
-jz 0xb771a11c
-nop 
-jz 0xb771ac08
-jnz 0xb771a108
-mov dword ptr [ebp-0x6c], eax
-mov dword ptr [ebp-0x50], esi
-jmp 0xb7719f25
-mov dword ptr [ebp-0x54], 0x0
-mov dword ptr [esi], 0x1
-jz 0xb771a12a
-jz 0xb771a05d
-mov dword ptr [ebp-0x30], esi
-mov dword ptr [ebp-0x2c], esi
-mov dword ptr [ebp-0x58], eax
-mov dword ptr [ebp-0x24], eax
-mov dword ptr [ebp-0x28], esi
-jz 0xb771a079
-mov dword ptr [ebp-0x54], esi
-jbe 0xb7719f46
+jnz 0xb77b4f98
+jmp 0xb77b4f98
+jz 0xb77b4fae
+jz 0xb77b5080
+jnz 0xb77b562e
+jz 0xb77b5080
+jnz 0xb77b562e
+jnz 0xb77b4fae
+jz 0xb77b50f7
+jz 0xb77b511c
+jz 0xb77b5c08
+jnz 0xb77b5108
+jmp 0xb77b4f25
+jz 0xb77b512a
+jz 0xb77b505d
+jz 0xb77b5079
+jbe 0xb77b4f46
 cmp dword ptr [ebp-0x80], edx
-mov dword ptr [ebp-0x54], esi
-jz 0xb771ac14
-mov dword ptr [ebp-0x84], eax
-mov dword ptr [ebp-0x80], esi
-jmp 0xb7719f46
-jnb 0xb77254c7
-jnz 0xb77254c7
-jnb 0xb77254e2
-jnz 0xb77254e2
-jnb 0xb77254c7
-jnz 0xb77254c7
-jz 0xb771a973
-mov dword ptr [eax], edx
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x4], ecx
-call 0xb7725d20
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], eax
-call 0xb7725d20
-or byte ptr [ecx+0x196], 0x1
-mov dword ptr [ecx+0x1f0], esi
-jz 0xb771a11c
-nop 
-jz 0xb771ac08
-jnz 0xb771a108
-jnz 0xb7719f54
-jnz 0xb7719f54
-mov dword ptr [ebp-0x4c], 0x0
-jz 0xb771a0f7
-mov dword ptr [ebp-0x58], 0x0
-jmp 0xb771a235
-jnz 0xb771a255
-jz 0xb771a255
-mov dword ptr [ebx+0x920], esi
-mov dword ptr [ebp-0x6c], eax
-jz 0xb771a281
-mov dword ptr [esp], eax
-call 0xb770d7d0
-mov dword ptr [ebp-0x5c], eax
-jz 0xb771abd9
-mov dword ptr [ebp-0x50], 0x0
-mov dword ptr [ecx+0x160], esi
-mov dword ptr [ecx+0x15c], eax
-jnz 0xb771ab59
-mov dword ptr [edi+ecx*4], eax
-and byte ptr [eax+0x194], 0x9f
-jnz 0xb771a2c9
-jnz 0xb771ab59
-mov dword ptr [edi+ecx*4], eax
-and byte ptr [eax+0x194], 0x9f
-jnz 0xb771a2c9
+jz 0xb77b5c14
+jmp 0xb77b4f46
+jnb 0xb77c04c7
+jnz 0xb77c04c7
+jnb 0xb77c04e2
+jnz 0xb77c04e2
+jnb 0xb77c04c7
+jnz 0xb77c04c7
+jz 0xb77b5973
+jz 0xb77b511c
+jz 0xb77b5c08
+jnz 0xb77b5108
+jnz 0xb77b4f54
+jnz 0xb77b4f54
+jz 0xb77b50f7
+jmp 0xb77b5235
+jnz 0xb77b5255
+jz 0xb77b5255
+jz 0xb77b5281
+jz 0xb77b5bd9
+jnz 0xb77b5b59
+jnz 0xb77b52c9
+jnz 0xb77b5b59
+jnz 0xb77b52c9
 test byte ptr [ebx-0x33f], 0x8
-mov dword ptr [ebp-0x50], ecx
-jnz 0xb771aafa
-mov dword ptr [ebp-0x68], edx
-jnz 0xb771aad0
-jz 0xb771aaa5
-jbe 0xb771a355
-mov dword ptr [ebp-0x64], ecx
-mov dword ptr [esp+0x8], ecx
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], eax
-call 0xb7725d20
+jnz 0xb77b5afa
+jnz 0xb77b5ad0
+jz 0xb77b5aa5
+jbe 0xb77b5355
 cmp dword ptr [ebp-0x50], 0x1
-jbe 0xb771a5b3
-jmp 0xb771a479
-mov dword ptr [ebp-0x7c], esp
-mov dword ptr [ebp-0x60], ecx
-mov dword ptr [esp], ecx
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x4], 0x0
-call 0xb7725c10
-rep stosb byte ptr [edi]
-mov dword ptr [ebp-0x4c], 0x1
-mov dword ptr [ebp-0x74], esi
-mov dword ptr [ebp-0x78], ecx
-mov dword ptr [ebp-0x54], 0x2
-add word ptr [edx+esi*2], 0x1
+jbe 0xb77b55b3
+jmp 0xb77b5479
 cmp dword ptr [ebp-0x4c], edx
-mov dword ptr [ebp-0x70], eax
-jnb 0xb771a518
-jnz 0xb771a507
-jmp 0xb771a50d
+jnb 0xb77b5518
+jnz 0xb77b5507
+jmp 0xb77b550d
 cmp dword ptr [ebp-0x4c], edi
-jb 0xb771a4f0
+jb 0xb77b54f0
 cmp dword ptr [ebp-0x50], esi
-mov dword ptr [ebp-0x4c], esi
-jz 0xb771a5b0
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp], eax
-call 0xb7725c10
-mov dword ptr [ebp-0x54], edx
-jmp 0xb771a4c8
-add word ptr [edx+esi*2], 0x1
+jz 0xb77b55b0
+jmp 0xb77b54c8
 cmp dword ptr [ebp-0x4c], edx
-mov dword ptr [ebp-0x70], eax
-jnb 0xb771a518
-jnz 0xb771a507
-jmp 0xb771a50d
+jnb 0xb77b5518
+jnz 0xb77b5507
+jmp 0xb77b550d
 cmp dword ptr [ebp-0x50], esi
-mov dword ptr [ebp-0x4c], esi
-jz 0xb771a5b0
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp], eax
-call 0xb7725c10
-mov dword ptr [eax+ecx*1], 0x0
-or byte ptr [edx+0x196], 0x1
-mov dword ptr [edx+0x1f0], eax
-jz 0xb771a5e2
-mov dword ptr [esp], ecx
-call 0xb771f4c0
-jnz 0xb771acb4
+jz 0xb77b55b0
+jz 0xb77b55e2
+jnz 0xb77b5cb4
 ret 0x8
-add dword ptr [ebx-0x150], eax
-adc dword ptr [ebx-0x14c], edx
-jz 0xb770f8f1
-or byte ptr [edx+0x194], 0x10
-jnz 0xb770f8e0
-mov dword ptr [edx+0xc], eax
-jz 0xb770f90d
-or byte ptr [edx+0x194], 0x10
-jnz 0xb770f8e0
-mov dword ptr [edx+0xc], eax
-jz 0xb770f90d
-mov dword ptr [eax+0x10], edx
-jbe 0xb770f94e
+jz 0xb77aa8f1
+jnz 0xb77aa8e0
+jz 0xb77aa90d
+jnz 0xb77aa8e0
+jz 0xb77aa90d
+jbe 0xb77aa94e
 cmp dword ptr [edi+0x4], edx
-jz 0xb7710a9d
-jmp 0xb770f947
-jnz 0xb770f938
-mov byte ptr [ebp-0x94], 0x0
-jmp 0xb770ff87
+jz 0xb77aba9d
+jmp 0xb77aa947
+jnz 0xb77aa938
+jmp 0xb77aaf87
 cmp dword ptr [edi+ecx*4], eax
-jz 0xb770ff0a
-jnz 0xb770f938
-mov byte ptr [ebp-0x94], 0x0
-jmp 0xb770ff87
-mov dword ptr [ebx+0x56c], eax
-jnz 0xb7710fb3
-jbe 0xb770ff34
-mov dword ptr [ebx+0x568], edx
-jz 0xb770ff4f
-mov dword ptr [ebx+0x568], edx
-jz 0xb770ff4f
-jz 0xb7710d4e
-jnz 0xb7710d24
-mov dword ptr [eax+0xc], esi
-jz 0xb7710703
-jnz 0xb77106d9
-mov byte ptr [ebp-0x94], 0x1
-mov dword ptr [edx+0x10], edi
-mov dword ptr [ebp-0x54], eax
-mov dword ptr [ebp-0x50], eax
-call 0xb771c0c0
-mov byte ptr [ebp-0x94], 0x1
-jmp 0xb770ff87
-mov dword ptr [ebp-0x54], eax
-mov dword ptr [ebp-0x50], eax
-call 0xb771c0c0
-mov dword ptr [esp+0x2c], ebx
-call 0xb7725e98
+jz 0xb77aaf0a
+jnz 0xb77aa938
+jmp 0xb77aaf87
+jnz 0xb77abfb3
+jbe 0xb77aaf34
+jz 0xb77aaf4f
+jz 0xb77aaf4f
+jz 0xb77abd4e
+jnz 0xb77abd24
+jz 0xb77ab703
+jnz 0xb77ab6d9
+jmp 0xb77aaf87
 ret 
-mov dword ptr [esp+0x30], esi
-mov dword ptr [esp+0x34], edi
-mov dword ptr [esp+0x38], ebp
-mov dword ptr [esp+0x1c], ecx
 call dword ptr [ebx+0x558]
-mov dword ptr [esi], 0x0
-mov dword ptr [ebx+0x8b8], edi
-mov dword ptr [esp+0x1c], edx
-mov dword ptr [esp+0x18], eax
-mov dword ptr [esp], ecx
-mov dword ptr [esp+0x4], ebx
-call 0xb7725e98
 ret 
-mov dword ptr [esp+0x8], esi
-call 0xb771d9c0
-call 0xb7725e98
 ret 
-mov dword ptr [esp+0xc], edx
-jz 0xb771da24
-jmp 0xb771d9f1
+jz 0xb77b8a24
+jmp 0xb77b89f1
 test byte ptr [esi+0x195], 0x2
-jnz 0xb771d9e8
-call 0xb771d550
-mov dword ptr [ebp-0x48], eax
-mov dword ptr [ebp-0x58], edx
-call 0xb7725e98
+jnz 0xb77b89e8
 ret 
-mov dword ptr [ebp-0x60], ecx
-jz 0xb771d8d1
-mov dword ptr [ebp-0x54], eax
-mov dword ptr [ebp-0x68], esi
-mov dword ptr [ebp-0x6c], edi
-jz 0xb771d742
+jz 0xb77b88d1
+jz 0xb77b8742
 cmp word ptr [esi], 0x1
-mov dword ptr [ebp-0x5c], esi
-jnz 0xb771d8f8
-mov dword ptr [ebp-0x40], 0x0
-mov dword ptr [ebp-0x4c], 0x0
-jz 0xb771d79b
+jnz 0xb77b88f8
+jz 0xb77b879b
 cmp dword ptr [ebp-0x40], edx
-mov dword ptr [ebp-0x40], edx
-jz 0xb771d79b
-jnz 0xb771d780
-jnz 0xb771d7ad
+jz 0xb77b879b
+jnz 0xb77b8780
+jnz 0xb77b87ad
 ret 
-jnz 0xb771d9f1
+jnz 0xb77b89f1
 ret 
-mov dword ptr [ebp-0x40], ecx
-jnz 0xb771d7ad
+jnz 0xb77b87ad
 ret 
-mov dword ptr [esp+0x4], 0x10
-mov dword ptr [esp], esi
-mov dword ptr [ebp-0x3c], esi
-call 0xb770d7e0
-mov dword ptr [eax+0x170], edi
-jz 0xb771d9af
-mov dword ptr [eax+0x174], esi
-mov dword ptr [edx+0x1a4], eax
-jz 0xb771d86b
-mov dword ptr [ebp-0x44], edi
-mov dword ptr [ebp-0x40], esi
-jmp 0xb771d81a
-jz 0xb771d7a2
-mov dword ptr [ebp-0x3c], edi
-jmp 0xb771d892
+jz 0xb77b89af
+jz 0xb77b886b
+jmp 0xb77b881a
+jz 0xb77b87a2
+jmp 0xb77b8892
 test byte ptr [eax+0x2], 0x1
-jnz 0xb771d8bf
-mov dword ptr [edx+0x4], edi
-mov dword ptr [edx], ecx
-mov dword ptr [edx+0xc], 0x0
-jnz 0xb771d890
+jnz 0xb77b88bf
+jnz 0xb77b8890
 ret 
-jnz 0xb771d890
+jnz 0xb77b8890
 ret 
 test byte ptr [eax+0x2], 0x1
-jnz 0xb771d8bf
-mov dword ptr [edx+0x4], edi
-mov dword ptr [edx], ecx
-mov dword ptr [edx+0xc], 0x0
-jnz 0xb771d890
+jnz 0xb77b88bf
+jnz 0xb77b8890
 ret 
-mov dword ptr [ebp-0x40], 0x0
-mov dword ptr [ebp-0x4c], 0x0
-mov dword ptr [ebp-0x64], esi
-mov dword ptr [ebp-0x50], eax
-jnz 0xb771d5fb
-jmp 0xb771d6b8
-call 0xb771d0d0
-jz 0xb771d5f0
-mov dword ptr [ebp-0x50], esi
-jnz 0xb771d8e3
-jmp 0xb771d622
-jz 0xb771d6b8
-call 0xb771d0d0
-mov dword ptr [ebp-0x70], edi
-mov dword ptr [ebp-0x3c], edi
+jnz 0xb77b85fb
+jmp 0xb77b86b8
+jz 0xb77b85f0
+jnz 0xb77b88e3
+jmp 0xb77b8622
+jz 0xb77b86b8
 cmp byte ptr [eax], 0x0
-mov dword ptr [ebp-0x44], edi
-jnz 0xb771d659
-mov dword ptr [esp+0xc], edi
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp], edi
-call 0xb771d1b0
-mov dword ptr [esp+0xc], edi
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp], edi
-call 0xb771d1b0
-call 0xb7725e98
+jnz 0xb77b8659
 ret 
-mov dword ptr [ebp-0x48], eax
 test byte ptr [ebx-0x340], 0x10
-jnz 0xb771d479
-jz 0xb771d3c8
-jz 0xb771d44f
+jnz 0xb77b8479
+jz 0xb77b83c8
+jz 0xb77b844f
 cmp word ptr [esi], 0x1
-jnz 0xb771d222
+jnz 0xb77b8222
 cmp dword ptr [esi+0x8], edi
-jz 0xb771d2e8
-jz 0xb771d320
+jz 0xb77b82e8
+jz 0xb77b8320
 cmp word ptr [esi], 0x1
-jz 0xb771d206
-mov dword ptr [esp+0x10], 0x0
-mov dword ptr [esp+0xc], 0xa
-mov dword ptr [esp+0x8], eax
-mov byte ptr [ebp-0x19], 0x0
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], eax
-call 0xb7722f10
+jz 0xb77b8206
 cmp dword ptr [esi+0x8], edi
-jz 0xb771d2e8
-jz 0xb771d320
+jz 0xb77b82e8
+jz 0xb77b8320
 cmp word ptr [esi], 0x1
-jz 0xb771d206
-mov dword ptr [ebp-0x4c], ecx
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], eax
-call 0xb7725510
-jnz 0xb771d20f
+jz 0xb77b8206
+jnz 0xb77b820f
 ret 0x10
-or dword ptr [ebp-0x4c], eax
 cmp dword ptr [ebp-0x40], eax
-mov dword ptr [ebp-0x40], eax
-jnz 0xb771d620
-jz 0xb771d750
-mov dword ptr [ebp-0x5c], esi
-jmp 0xb771d5c8
-mov dword ptr [ebp-0x70], edi
-mov dword ptr [ebp-0x3c], edi
+jnz 0xb77b8620
+jz 0xb77b8750
+jmp 0xb77b85c8
 cmp byte ptr [eax], 0x0
-mov dword ptr [ebp-0x44], edi
-jnz 0xb771d659
-mov dword ptr [esp+0xc], edi
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp], edi
-call 0xb771d1b0
-jz 0xb771d79b
+jnz 0xb77b8659
+jz 0xb77b879b
 cmp dword ptr [ebp-0x40], edx
-mov dword ptr [ebp-0x40], edx
-jz 0xb771d79b
-jnz 0xb771d780
-jnz 0xb771d780
-mov dword ptr [ebp-0x40], ecx
-jnz 0xb771d7ad
+jz 0xb77b879b
+jnz 0xb77b8780
+jnz 0xb77b8780
+jnz 0xb77b87ad
 ret 
 cmp dword ptr [ebp-0x3c], edx
-jbe 0xb771d853
-mov dword ptr [edx+0x8], ecx
-mov dword ptr [edx+0x4], esi
-mov dword ptr [edx], ecx
-mov dword ptr [edx+0xc], ecx
-jnz 0xb771d818
-jz 0xb771d868
+jbe 0xb77b8853
+jnz 0xb77b8818
+jz 0xb77b8868
 cmp dword ptr [ebp-0x3c], edx
-jbe 0xb771d853
-mov dword ptr [edx+0x8], ecx
-mov dword ptr [edx+0x4], esi
-mov dword ptr [edx], ecx
-mov dword ptr [edx+0xc], ecx
-jnz 0xb771d818
-jz 0xb771d868
-jz 0xb771d7a2
-mov dword ptr [ebp-0x3c], edi
-jmp 0xb771d892
-jz 0xb7711b47
-jnz 0xb7711b58
+jbe 0xb77b8853
+jnz 0xb77b8818
+jz 0xb77b8868
+jz 0xb77b87a2
+jmp 0xb77b8892
+jz 0xb77acb47
+jnz 0xb77acb58
 ret 
 ret 
-mov dword ptr [esi], edx
-mov dword ptr [ebx+0x8b8], eax
 ret 
-mov byte ptr [ebp-0xb0], dl
-jnz 0xb770ffd3
-call 0xb770dbe8
-call 0xb7725e98
+jnz 0xb77aafd3
 ret 
 cmp dword ptr [ebx+0x860], 0x0
-mov dword ptr [ebx+0x850], esi
-jnz 0xb770dd7b
-mov dword ptr [esp+0x4], 0x1
-mov dword ptr [esp], eax
-call 0xb770d7e0
+jnz 0xb77a8d7b
 cmp dword ptr [ebx+0x8c], 0x0
-mov dword ptr [ebx+0x84c], eax
-mov dword ptr [eax], edx
-mov dword ptr [eax+0x4], 0x0
-jz 0xb770dc70
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp+0x8], 0x2ed
-mov dword ptr [esp], eax
-call 0xb7722c40
-jmp 0xb770dc8b
-jnz 0xb770dc7a
-jz 0xb770dcbd
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp+0x8], 0x2f9
-mov dword ptr [esp], eax
-call 0xb7722c40
+jz 0xb77a8c70
+jmp 0xb77a8c8b
+jnz 0xb77a8c7a
+jz 0xb77a8cbd
 cmp dword ptr [edx+0x234], 0x0
-jz 0xb770dc88
-mov dword ptr [eax+ecx*8+0xc], edx
-jnz 0xb770dc7a
-jz 0xb770dcbd
-jnz 0xb770dc7a
-jz 0xb770dcbd
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp+0x8], 0x2f9
-mov dword ptr [esp], eax
-call 0xb7722c40
-call 0xb771e760
-call 0xb7725e98
+jz 0xb77a8c88
+jnz 0xb77a8c7a
+jz 0xb77a8cbd
+jnz 0xb77a8c7a
+jz 0xb77a8cbd
 ret 
-mov dword ptr [esp+0x38], ecx
-jz 0xb771e95a
-jnz 0xb771e930
-jz 0xb771e8ed
-mov dword ptr [esp+0x3c], ecx
-jz 0xb771e906
-mov dword ptr [esp+0x20], 0x0
-mov dword ptr [esp+0x2c], 0x0
-mov dword ptr [esp+0x34], 0x0
-mov dword ptr [esp+0x30], 0x0
-mov dword ptr [esp+0x24], 0x40
-jmp 0xb771e82a
+jz 0xb77b995a
+jnz 0xb77b9930
+jz 0xb77b98ed
+jz 0xb77b9906
+jmp 0xb77b982a
 cmp dword ptr [esp+0x24], ecx
-mov dword ptr [esp+0x24], eax
-mov dword ptr [esp+0x28], edx
-jnb 0xb771e7d8
-mov dword ptr [esp+0x1c], edx
-jbe 0xb771e89f
-mov dword ptr [esp+0x34], ecx
-mov dword ptr [esp+0x30], ecx
-mov dword ptr [edi+0x240], eax
-mov dword ptr [esp+0x2c], eax
-jmp 0xb771e803
-mov dword ptr [edi+0x240], eax
-mov dword ptr [esp+0x2c], eax
-jmp 0xb771e803
-add dword ptr [esp+0x20], 0x1
-jz 0xb771e8b0
+jnb 0xb77b97d8
+jbe 0xb77b989f
+jmp 0xb77b9803
+jmp 0xb77b9803
+jz 0xb77b98b0
 cmp dword ptr [esp+0x20], ecx
-jz 0xb771e906
+jz 0xb77b9906
 cmp dword ptr [esp+0x24], ecx
-mov dword ptr [esp+0x24], eax
-mov dword ptr [esp+0x28], edx
-jnb 0xb771e7d8
-mov dword ptr [ebx+0x858], ecx
+jnb 0xb77b97d8
 div dword ptr [esp+0x24]
-mov dword ptr [ebx+0x854], eax
-mov dword ptr [ebx+0x85c], ecx
 ret 
-call 0xb771ea80
-mov dword ptr [esp+0x2c], ebx
-call 0xb7725e98
 ret 
-mov dword ptr [esp+0x30], esi
-mov dword ptr [esp+0x38], ebp
-mov dword ptr [esp+0x34], edi
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], eax
-call 0xb770d7c0
-jz 0xb771eb5d
-jnz 0xb771eb40
-jnz 0xb771eb50
-rep stosd dword ptr [edi]
-rep stosd dword ptr [edi]
-jnz 0xb771eb30
-jnz 0xb771eb10
-call 0xb771e5f0
-mov dword ptr [esp+0x10], ebx
-call 0xb7725e98
+jz 0xb77b9b5d
+jnz 0xb77b9b40
+jnz 0xb77b9b50
+jnz 0xb77b9b30
+jnz 0xb77b9b10
 ret 
-mov dword ptr [esp+0x14], esi
-mov dword ptr [esp+0x4], 0x8
-mov dword ptr [esp+0x18], edi
-mov dword ptr [esp], edx
-call 0xb770d7e0
-jz 0xb771e648
-mov dword ptr [eax], esi
-mov dword ptr [edi+0x4], edx
+jz 0xb77b9648
 ret 
-jz 0xb771eb1e
+jz 0xb77b9b1e
 ret 
-jnz 0xb770dcf1
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], 0x2
-call 0xb771d0a0
-mov dword ptr [ebx+0x860], eax
-mov dword ptr [edx], edx
-mov dword ptr [edx+0x8], edx
-mov dword ptr [esp+0x10], 0xffffffff
-mov dword ptr [edx+0x10], eax
-mov dword ptr [esp+0x14], edx
-mov dword ptr [esp+0x18], 0xfffff
-mov dword ptr [esp+0x1c], 0x51
+jnz 0xb77a8cf1
 int 0x80
-jnz 0xb770dd4d
-mov byte ptr [ebx+0x8a0], 0x1
-jmp 0xb770dd7b
+jnz 0xb77a8d4d
+jmp 0xb77a8d7b
 ret 
-mov dword ptr [ebp-0x98], eax
-jnz 0xb770ffe2
-call 0xb770dd84
-call 0xb7725e98
+jnz 0xb77aafe2
 ret 
-jnz 0xb770ddfc
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x1c], 0x0
-call 0xb7724e60
-mov dword ptr [esp+0x1c], eax
-and dword ptr [esp+0x1c], 0xffffff00
-mov dword ptr gs:[0x14], ecx
+jnz 0xb77a8dfc
 cmp dword ptr [ebx-0x174], 0x0
-jz 0xb770de3d
-jnz 0xb770de2e
-jmp 0xb770de31
-mov dword ptr gs:[0x18], eax
-mov dword ptr [ebx-0x170], eax
-mov dword ptr [ebx-0xd4], 0x0
+jz 0xb77a8e3d
+jnz 0xb77a8e2e
+jmp 0xb77a8e31
 ret 
-jnz 0xb77105df
-jz 0xb77105d2
-jnz 0xb77105d2
-jmp 0xb771010d
-mov dword ptr [ebx+0x48], eax
-mov dword ptr [ebx-0x328], eax
-mov dword ptr [ebx-0x324], edx
-mov dword ptr [ebx-0x1bc], eax
-jnz 0xb77103c2
-jz 0xb77102a9
-jz 0xb77101b6
-mov dword ptr [ebp-0x80], ecx
-or dword ptr [ebx-0x314], ecx
-mov dword ptr [ebp-0xa0], eax
-mov dword ptr [ebp-0x9c], edx
-mov byte ptr [ebp-0xa4], cl
-mov dword ptr [ebp-0x90], edx
-jmp 0xb7710366
-jnz 0xb77102f0
-mov dword ptr [ebx+0x8a8], eax
-mov dword ptr [ebx+0x8ac], edx
-jz 0xb7710201
-call 0xb771da30
-jnz 0xb77103a3
-and byte ptr [edi+0x196], 0xfe
-jz 0xb7710349
-mov dword ptr [esp+0xc], ecx
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp], edi
-mov dword ptr [esp+0x4], eax
-call 0xb7717ed0
-mov dword ptr [eax+0x8], 0x1
-jz 0xb7710310
-jmp 0xb77103a3
-and byte ptr [edi+0x196], 0xfe
-jz 0xb7710349
-mov dword ptr [esp+0xc], ecx
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp], edi
-mov dword ptr [esp+0x4], eax
-call 0xb7717ed0
-jz 0xb771035c
+jnz 0xb77ab5df
+jz 0xb77ab5d2
+jnz 0xb77ab5d2
+jmp 0xb77ab10d
+jnz 0xb77ab3c2
+jz 0xb77ab2a9
+jz 0xb77ab1b6
+jmp 0xb77ab366
+jnz 0xb77ab2f0
+jz 0xb77ab201
+jnz 0xb77ab3a3
+jz 0xb77ab349
+jz 0xb77ab310
+jmp 0xb77ab3a3
+jz 0xb77ab349
+jz 0xb77ab35c
 cmp byte ptr [ebx+0x8a0], 0x0
-jnz 0xb77103b7
-sub dword ptr [ebp-0x90], 0x4
-jnz 0xb77102f0
-sub dword ptr [ebp-0x90], 0x4
-jnz 0xb77102f0
-mov dword ptr [ebx+0x8a8], eax
-mov dword ptr [ebx+0x8ac], edx
-jz 0xb7710201
-call 0xb771da30
-call 0xb7725e98
+jnz 0xb77ab3b7
+jnz 0xb77ab2f0
+jnz 0xb77ab2f0
+jz 0xb77ab201
 ret 
-jnz 0xb7717f02
-or dword ptr [ebp+0x14], eax
+jnz 0xb77b2f02
 test byte ptr [eax+0x194], 0x4
-jnz 0xb7718378
-jz 0xb7718380
-jz 0xb7717f1d
+jnz 0xb77b3378
+jz 0xb77b3380
+jz 0xb77b2f1d
 test byte ptr [ebx-0x340], 0x20
-mov dword ptr [ebp-0xa4], 0x0
-jz 0xb7717f35
-jmp 0xb7719835
+jz 0xb77b2f35
+jmp 0xb77b4835
 test byte ptr [ebx-0x340], 0x20
-mov dword ptr [ebp-0xa4], esi
-jnz 0xb771981b
-jnz 0xb7719b46
-mov dword ptr [ebp-0xac], 0x0
-mov dword ptr [ebp-0xa0], eax
-jz 0xb7717f71
-jnz 0xb77183b0
-mov dword ptr [ebp+eax*1-0x58], 0x0
-jb 0xb7717f73
-jz 0xb771880d
-jnz 0xb77183dc
-mov dword ptr [eax+0x4], edx
-jnz 0xb7719863
-mov dword ptr [eax+0x8], edx
-jmp 0xb7717f71
-mov dword ptr [ebp+eax*1-0x58], 0x0
-jb 0xb7717f73
-jz 0xb771880d
-mov dword ptr [ebp-0x58], esi
-mov dword ptr [ebp-0x54], eax
-jz 0xb7718820
-mov dword ptr [ebp+eax*1-0x58], 0x0
-jb 0xb7717f73
-jz 0xb771880d
-mov dword ptr [ebp-0x58], esi
-mov dword ptr [ebp-0x54], eax
-jz 0xb7718820
-mov dword ptr [ebp-0x50], edx
-mov dword ptr [ebp-0x88], ecx
-jz 0xb7717fdb
+jnz 0xb77b481b
+jnz 0xb77b4b46
+jz 0xb77b2f71
+jnz 0xb77b33b0
+jb 0xb77b2f73
+jz 0xb77b380d
+jnz 0xb77b33dc
+jnz 0xb77b4863
+jmp 0xb77b2f71
+jb 0xb77b2f73
+jz 0xb77b380d
+jz 0xb77b3820
+jb 0xb77b2f73
+jz 0xb77b380d
+jz 0xb77b3820
+jz 0xb77b2fdb
 cmp dword ptr [ecx+0x4], 0x11
-jz 0xb77187a4
-mov dword ptr [ebp-0xb0], edi
-mov dword ptr [ebp-0x94], edi
-mov dword ptr [ebp-0x7c], edi
-mov dword ptr [ebp-0xa8], edi
-mov dword ptr [ebp-0x80], ecx
-mov dword ptr [ebp-0x84], eax
-jz 0xb77183f0
-mov dword ptr [ebp-0x80], ecx
-mov dword ptr [ebp-0x84], edx
+jz 0xb77b37a4
+jz 0xb77b33f0
 cmp dword ptr [ebp-0x84], edx
-jz 0xb7719047
-jnz 0xb77187e2
-jnz 0xb7718a17
-mov dword ptr [ebp-0x44], ecx
-mov dword ptr [ebp-0x48], edx
-mov dword ptr [ebp-0x3c], ecx
-jmp 0xb7717fdb
-mov dword ptr [ebp-0xb0], edi
-mov dword ptr [ebp-0x94], edi
-mov dword ptr [ebp-0x7c], edi
-mov dword ptr [ebp-0xa8], edi
-mov dword ptr [ebp-0x80], ecx
-mov dword ptr [ebp-0x84], eax
-jz 0xb77183f0
-mov dword ptr [ebp-0x88], edi
-jnb 0xb7718075
-jnz 0xb77190be
-mov dword ptr [ebp-0x98], eax
-jz 0xb7718447
-jz 0xb7718447
-jnb 0xb7718447
+jz 0xb77b4047
+jnz 0xb77b37e2
+jnz 0xb77b3a17
+jmp 0xb77b2fdb
+jz 0xb77b33f0
+jnb 0xb77b3075
+jnz 0xb77b40be
+jz 0xb77b3447
+jz 0xb77b3447
+jnb 0xb77b3447
 cmp byte ptr [esi+0x4], 0x8
-jnz 0xb771925b
-jmp 0xb771843e
-add dword ptr [eax], edx
-jnbe 0xb7718430
-jz 0xb771882e
+jnz 0xb77b425b
+jmp 0xb77b343e
+jnbe 0xb77b3430
+jz 0xb77b382e
 cmp dword ptr [ebp-0x84], edi
-mov dword ptr [ebp-0x9c], eax
-jbe 0xb771806d
+jbe 0xb77b306d
 cmp byte ptr [esi+0x4], 0x8
-jnz 0xb771925b
-add dword ptr [eax], edx
-jnbe 0xb7718430
-jz 0xb771882e
+jnz 0xb77b425b
+jnbe 0xb77b3430
+jz 0xb77b382e
 cmp dword ptr [ebp-0x84], edi
-mov dword ptr [ebp-0x9c], eax
-jbe 0xb771806d
-mov dword ptr [ebp-0xb4], esi
-mov dword ptr [ebp-0x8c], edi
-nop 
-mov dword ptr [ebp-0x88], edx
-mov dword ptr [ebp-0x90], ecx
-mov dword ptr [ebp-0x64], edx
-mov dword ptr [ebp-0xc0], edi
-jz 0xb771924f
-jz 0xb7718640
-jz 0xb7718768
-jz 0xb7719691
-jnz 0xb7718778
-jbe 0xb7718798
-mov dword ptr [ecx+0x21c], edi
-mov dword ptr [ecx+0x220], edx
-jz 0xb77185f8
-jz 0xb77185f8
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x10], 0x0
-mov dword ptr [esp+0xc], 0x1
-mov dword ptr [esp], edi
-call 0xb77168a0
-mov dword ptr [ebp-0x60], eax
-mov dword ptr [ebp-0x74], edx
-call 0xb7725e98
+jbe 0xb77b306d
+jz 0xb77b424f
+jz 0xb77b3640
+jz 0xb77b3768
+jz 0xb77b4691
+jnz 0xb77b3778
+jbe 0xb77b3798
+jz 0xb77b35f8
+jz 0xb77b35f8
 ret 
-mov dword ptr [ebp-0x78], ecx
-jz 0xb77168e3
-data16 nop 
-jnz 0xb77168d0
-add dword ptr [ebx+0x54c], 0x1
-mov dword ptr [ebp-0x58], 0xffffffff
-mov dword ptr [ebp-0x50], 0x0
-mov dword ptr [ebp-0x4c], 0x0
-jz 0xb7716913
-jnz 0xb77168d0
-add dword ptr [ebx+0x54c], 0x1
-mov dword ptr [ebp-0x58], 0xffffffff
-mov dword ptr [ebp-0x50], 0x0
-mov dword ptr [ebp-0x4c], 0x0
-jz 0xb7716913
+jz 0xb77b18e3
+jnz 0xb77b18d0
+jz 0xb77b1913
+jnz 0xb77b18d0
+jz 0xb77b1913
 test dword ptr [ebp+0x14], 0xfffffffa
-jnz 0xb7717690
-jnz 0xb7716c30
-mov dword ptr [ebp-0x7c], 0x0
-jz 0xb7716c61
-mov dword ptr [ebp-0x64], edi
-jmp 0xb7716959
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x10], edx
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x24], ecx
-mov dword ptr [esp+0x20], ecx
-mov dword ptr [esp+0x1c], ecx
-mov dword ptr [esp+0x18], ecx
-mov dword ptr [esp+0x14], ecx
-mov dword ptr [esp], edx
-mov dword ptr [esp+0x4], eax
-call 0xb7716000
-mov dword ptr [esp+0x70], eax
-mov dword ptr [esp+0x24], edx
-call 0xb7725e98
+jnz 0xb77b2690
+jnz 0xb77b1c30
+jz 0xb77b1c61
+jmp 0xb77b1959
 ret 
-mov dword ptr [esp+0x78], eax
-mov dword ptr [esp+0x68], eax
-mov dword ptr [esp+0x60], eax
-mov dword ptr [esp+0x7c], eax
-mov dword ptr [esp+0x1c], eax
-mov dword ptr [esp+0x34], ecx
-mov dword ptr [esp+0x44], ebp
-mov dword ptr [esp+0x30], edx
-mov dword ptr [esp+0x5c], 0x0
-mov dword ptr [esp+0x58], 0x0
-mov dword ptr [esp+0x6c], esi
-jz 0xb7716170
+jz 0xb77b1170
 test byte ptr [esp+0x7c], 0x2
-jz 0xb77160b9
+jz 0xb77b10b9
 test byte ptr [esi+0x194], 0x3
-jz 0xb7716170
+jz 0xb77b1170
 test byte ptr [esi+0x195], 0x20
-jnz 0xb7716170
+jnz 0xb77b1170
 test byte ptr [ebx-0x340], 0x8
-jnz 0xb77166d8
-mov dword ptr [esp+0x28], edx
-jz 0xb7716170
-mov dword ptr [esp+0x38], eax
-mov dword ptr [esp+0x74], eax
-jz 0xb771665d
-jnz 0xb7716710
-mov dword ptr [esp+0x64], 0x0
+jnz 0xb77b16d8
+jz 0xb77b1170
+jz 0xb77b165d
+jnz 0xb77b1710
 cmp dword ptr [esp+0x5c], 0x1
-jz 0xb7716190
-mov dword ptr [esp+0x40], ecx
-jz 0xb77167f0
+jz 0xb77b1190
+jz 0xb77b17f0
 div dword ptr [esp+0x28]
-mov dword ptr [esp+0x64], eax
-jz 0xb771613f
-jmp 0xb77166b5
-mov dword ptr [esp+0x2c], ebp
-jz 0xb7716856
-jecxz 0xb7716856
-jecxz 0xb7716856
-jecxz 0xb7716856
-jecxz 0xb7716856
-jecxz 0xb7716856
-mov dword ptr [esp+0x40], eax
-mov dword ptr [ecx], eax
-jmp 0xb7716673
+jz 0xb77b113f
+jmp 0xb77b16b5
+jz 0xb77b1856
+jecxz 0xb77b1856
+jecxz 0xb77b1856
+jecxz 0xb77b1856
+jecxz 0xb77b1856
+jecxz 0xb77b1856
+jmp 0xb77b1673
 div dword ptr [esp+0x28]
-mov dword ptr [esp+0x64], eax
-jz 0xb771613f
-jmp 0xb77166b5
-call 0xb7715e70
-mov dword ptr [esp+0x30], esi
-mov dword ptr [esp+0x2c], ebx
-mov dword ptr [esp+0x34], edi
-mov dword ptr [esp+0x38], ebp
-call 0xb7725e98
+jz 0xb77b113f
+jmp 0xb77b16b5
 ret 
-jz 0xb7715faa
+jz 0xb77b0faa
 cmp word ptr [esi+0xe], 0x0
 test dword ptr [edi+0x24], edx
-jnz 0xb7715f80
-jnb 0xb7715f80
-jz 0xb7715ea4
-jmp 0xb7715f2d
+jnz 0xb77b0f80
+jnb 0xb77b0f80
+jz 0xb77b0ea4
+jmp 0xb77b0f2d
 ret 
-jz 0xb7716698
-mov dword ptr [esp+0x44], ebp
-jmp 0xb7716198
-mov dword ptr [esp+0x64], eax
-jz 0xb77167de
-call 0xb7715e70
-jz 0xb7715ee6
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], eax
-call 0xb7725510
-jnz 0xb7715f80
-jz 0xb7715f48
-jz 0xb7715fb9
-jmp 0xb7715f2d
-mov dword ptr [esp+0x44], ebp
-jmp 0xb771613f
+jz 0xb77b1698
+jmp 0xb77b1198
+jz 0xb77b17de
+jz 0xb77b0ee6
+jnz 0xb77b0f80
+jz 0xb77b0f48
+jz 0xb77b0fb9
+jmp 0xb77b0f2d
+jmp 0xb77b113f
 cmp dword ptr [esp+0x5c], 0x1
-jz 0xb7716190
-jnz 0xb7716170
-jz 0xb7716170
-jz 0xb7716170
-call 0xb771d0d0
+jz 0xb77b1190
+jnz 0xb77b1170
+jz 0xb77b1170
+jz 0xb77b1170
 cmp dword ptr [esp+0x1c], edi
-jnbe 0xb7716079
+jnbe 0xb77b1079
 ret 
-mov dword ptr [esp+0x5c], 0x0
-mov dword ptr [esp+0x58], 0x0
-mov dword ptr [esp+0x6c], esi
-jz 0xb7716170
+jz 0xb77b1170
 test byte ptr [esp+0x7c], 0x2
-jz 0xb77160b9
+jz 0xb77b10b9
 test byte ptr [esi+0x194], 0x3
-jz 0xb7716170
+jz 0xb77b1170
 div dword ptr [esp+0x28]
-jz 0xb7716137
-jmp 0xb771674b
-jnz 0xb7716740
-mov dword ptr [esp+0x64], eax
-call 0xb7715e70
-jnz 0xb77167e7
-jnz 0xb7716740
-mov dword ptr [esp+0x64], eax
-call 0xb7715e70
-jz 0xb7715f48
-jz 0xb7715fb9
-jz 0xb7715f88
-mov dword ptr [esp+0x4], ecx
-mov dword ptr [esp+0x1c], edx
-mov dword ptr [esp], eax
-call 0xb7725510
-jz 0xb7715f2d
-jmp 0xb7715f1d
-jnz 0xb77166c9
-jmp 0xb7716740
-mov dword ptr [esp+0x44], ebp
-jmp 0xb7716198
-jz 0xb77161e0
-jz 0xb7716210
-jnz 0xb7716146
-mov dword ptr [esp+0x34], eax
-mov dword ptr [eax], edx
-mov dword ptr [ecx+0x4], eax
+jz 0xb77b1137
+jmp 0xb77b174b
+jnz 0xb77b1740
+jnz 0xb77b17e7
+jnz 0xb77b1740
+jz 0xb77b0f48
+jz 0xb77b0fb9
+jz 0xb77b0f88
+jz 0xb77b0f2d
+jmp 0xb77b0f1d
+jnz 0xb77b16c9
+jmp 0xb77b1740
+jmp 0xb77b1198
+jz 0xb77b11e0
+jz 0xb77b1210
+jnz 0xb77b1146
 ret 
-jle 0xb7716948
-jz 0xb7716c61
-jz 0xb77169c9
-jz 0xb7716a20
-mov dword ptr [ebp-0x64], 0x0
-jz 0xb7716d26
-jz 0xb77174cf
-jnz 0xb771715a
-mov dword ptr [ecx], eax
+jle 0xb77b1948
+jz 0xb77b1c61
+jz 0xb77b19c9
+jz 0xb77b1a20
+jz 0xb77b1d26
+jz 0xb77b24cf
+jnz 0xb77b215a
 ret 0x14
-mov dword ptr [eax+0x228], ecx
-mov dword ptr [eax+0x224], edi
-jz 0xb7718788
-jz 0xb7719671
-jbe 0xb7718660
-add dword ptr [esi], eax
-jmp 0xb7718640
-add dword ptr [ebp-0x8c], 0x8
+jz 0xb77b3788
+jz 0xb77b4671
+jbe 0xb77b3660
+jmp 0xb77b3640
 cmp dword ptr [ebp-0x84], esi
-jnbe 0xb7718480
-jmp 0xb771806d
-mov dword ptr [ebp-0x88], edx
-mov dword ptr [ebp-0x90], ecx
-mov dword ptr [ebp-0x64], edx
-mov dword ptr [ebp-0xc0], edi
-jz 0xb771924f
-jz 0xb7718640
-jz 0xb7718768
-jmp 0xb77185d0
-jz 0xb7719671
-jbe 0xb7718660
-call 0xb7717e60
-jz 0xb7718640
-jbe 0xb7719713
-mov dword ptr [edi], ecx
-jmp 0xb7718640
-jz 0xb7718640
-mov dword ptr [edi], eax
-jmp 0xb7718640
-jz 0xb7719691
-jnz 0xb7718778
-jbe 0xb7718798
-mov dword ptr [ecx+0x21c], edi
-mov dword ptr [ecx+0x220], edx
-jz 0xb77185f8
-jz 0xb77185f8
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x10], 0x0
-mov dword ptr [esp+0xc], 0x1
-mov dword ptr [esp], edi
-call 0xb77168a0
-jnz 0xb7716837
-mov dword ptr [esp+0x40], eax
-mov dword ptr [ecx], eax
-jmp 0xb7716673
-jnz 0xb7716788
-data16 nop 
+jnbe 0xb77b3480
+jmp 0xb77b306d
+jz 0xb77b424f
+jz 0xb77b3640
+jz 0xb77b3768
+jmp 0xb77b35d0
+jz 0xb77b4671
+jbe 0xb77b3660
+jz 0xb77b3640
+jbe 0xb77b4713
+jmp 0xb77b3640
+jz 0xb77b3640
+jmp 0xb77b3640
+jz 0xb77b4691
+jnz 0xb77b3778
+jbe 0xb77b3798
+jz 0xb77b35f8
+jz 0xb77b35f8
+jnz 0xb77b1837
+jmp 0xb77b1673
+jnz 0xb77b1788
 cmp dword ptr [esp+0x1c], edi
-jnbe 0xb7716079
+jnbe 0xb77b1079
 ret 
-mov dword ptr [esp+0x44], ebp
-jmp 0xb7716137
-mov dword ptr [esp+0x64], 0x0
+jmp 0xb77b1137
 cmp dword ptr [esp+0x5c], 0x1
-jz 0xb7716190
-jnz 0xb7716170
-jz 0xb7716170
-jz 0xb7715f88
-jnz 0xb7715f80
-jnz 0xb7715f80
-mov dword ptr [esi+0x1fc], 0x1
-jmp 0xb77169f3
-mov dword ptr [esi], eax
-jmp 0xb7718640
-jz 0xb77161ae
+jz 0xb77b1190
+jnz 0xb77b1170
+jz 0xb77b1170
+jz 0xb77b0f88
+jnz 0xb77b0f80
+jnz 0xb77b0f80
+jmp 0xb77b19f3
+jmp 0xb77b3640
+jz 0xb77b11ae
 cmp dword ptr [ebp], 0x0
-jnz 0xb7716146
-mov dword ptr [ebp], eax
-mov dword ptr [ebp+0x4], eax
-jmp 0xb7716146
-jnz 0xb7716170
-jz 0xb7716170
-jz 0xb7716170
-call 0xb771d0d0
-jmp 0xb771857a
-jz 0xb7715f2d
-jnle 0xb7715f2d
-js 0xb7715f80
-mov dword ptr [ebp-0xb8], 0x1
-jnz 0xb77196d6
-jbe 0xb77196d6
-setz byte ptr [ebp-0xc1]
-or byte ptr [ebp-0xc1], cl
-mov dword ptr [ebp-0xb8], edi
-jnz 0xb7718513
-add dword ptr [ebx+0x550], 0x1
-mov dword ptr [ebp-0x64], ecx
-jmp 0xb77185c8
-jz 0xb7718788
-jz 0xb7719671
-jbe 0xb7718660
-jnz 0xb7716b10
-jz 0xb77169a7
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x10], edx
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x24], ecx
-mov dword ptr [esp+0x20], ecx
-mov dword ptr [esp+0x1c], ecx
-mov dword ptr [esp+0x18], ecx
-mov dword ptr [esp+0x14], ecx
-mov dword ptr [esp], edx
-mov dword ptr [esp+0x4], eax
-call 0xb7716000
-jz 0xb7716c61
-jz 0xb77169c9
-jz 0xb7716a20
-jz 0xb7716c75
-jz 0xb7716c7c
-jz 0xb7716c8c
-mov dword ptr [ecx], 0x0
-jmp 0xb7716a0d
+jnz 0xb77b1146
+jmp 0xb77b1146
+jnz 0xb77b1170
+jz 0xb77b1170
+jz 0xb77b1170
+jmp 0xb77b357a
+jz 0xb77b0f2d
+jnle 0xb77b0f2d
+js 0xb77b0f80
+jnz 0xb77b46d6
+jbe 0xb77b46d6
+jnz 0xb77b3513
+jmp 0xb77b35c8
+jz 0xb77b3788
+jz 0xb77b4671
+jbe 0xb77b3660
+jnz 0xb77b1b10
+jz 0xb77b19a7
+jz 0xb77b1c61
+jz 0xb77b19c9
+jz 0xb77b1a20
+jz 0xb77b1c75
+jz 0xb77b1c7c
+jz 0xb77b1c8c
+jmp 0xb77b1a0d
 ret 0x14
-jz 0xb77185e5
-jmp 0xb77185d5
-jbe 0xb7718660
-call 0xb7717e60
-data16 nop 
-jz 0xb7715f2d
-call 0xb771d0d0
-mov dword ptr [ebp-0x80], eax
-add dword ptr [ebp-0x94], 0x10
+jz 0xb77b35e5
+jmp 0xb77b35d5
+jbe 0xb77b3660
+jz 0xb77b0f2d
 cmp dword ptr [ebp-0x94], esi
-jnz 0xb77187f9
-mov dword ptr [ebp+eax*1-0x38], 0x0
-jb 0xb771808d
-jz 0xb771903c
-jmp 0xb771800c
-mov dword ptr [ebp-0x84], eax
-jz 0xb77183f0
-mov dword ptr [ebp-0x88], edi
-jnb 0xb7718075
-jnz 0xb77190be
-jnz 0xb77190dd
-add dword ptr [edi], ecx
+jnz 0xb77b37f9
+jb 0xb77b308d
+jz 0xb77b403c
+jmp 0xb77b300c
+jz 0xb77b33f0
+jnb 0xb77b3075
+jnz 0xb77b40be
+jnz 0xb77b40dd
 cmp dword ptr [ebp-0x84], esi
-jnbe 0xb7718038
-mov dword ptr [ebp-0x80], eax
-add dword ptr [ebp-0x94], 0x10
+jnbe 0xb77b3038
 cmp dword ptr [ebp-0x94], esi
-jnz 0xb77187f9
-jnz 0xb77190be
-jnz 0xb77190dd
-add dword ptr [edi], ecx
+jnz 0xb77b37f9
+jnz 0xb77b40be
+jnz 0xb77b40dd
 cmp dword ptr [ebp-0x84], esi
-jnbe 0xb7718038
-jnz 0xb7719947
-jnz 0xb7719105
-mov dword ptr [edi], eax
-jmp 0xb7718062
-jz 0xb77199af
-call 0xb7717e60
-jnz 0xb77199c2
-call 0xb5a71173
+jnbe 0xb77b3038
+jnz 0xb77b4947
+jnz 0xb77b4105
+jmp 0xb77b3062
+jz 0xb77b49af
+jnz 0xb77b49c2
 ret 
 cmp dword ptr [ebx+0x36c0], 0x0
-jnz 0xb59c181a
-call 0xb595cc80
-mov dword ptr [esp+0x14], ebx
-call 0xb5a71173
+jnz 0xb5a5681a
 ret 
-mov dword ptr [esp+0x18], esi
-mov dword ptr [esp+0x1c], edi
-mov dword ptr [esp+0x20], ebp
-mov dword ptr [ebx+0x36c4], eax
-jnz 0xb595ccc8
-jnz 0xb595ccc8
-jz 0xb595ce28
-mov dword ptr [ebx+0x36d4], edx
-mov dword ptr [esp+0x10], ecx
-mov dword ptr [ebx+0x36d0], ecx
-mov dword ptr [ebx+0x36cc], edi
-mov dword ptr [ebx+0x36f0], ecx
-mov dword ptr [ebx+0x36c8], eax
-jz 0xb595cea0
-jz 0xb595cec0
-mov dword ptr [esp], 0x1
-mov dword ptr [esp+0xc], ecx
-jmp 0xb595cce5
-mov dword ptr [esp+0xc], eax
-jbe 0xb595cf00
+jnz 0xb59f1cc8
+jnz 0xb59f1cc8
+jz 0xb59f1e28
+jz 0xb59f1ea0
+jz 0xb59f1ec0
+jmp 0xb59f1ce5
+jbe 0xb59f1f00
 test dword ptr [esp+0x10], 0x10000000
-mov dword ptr [esp], 0x1
-jz 0xb595cce5
-mov dword ptr [ebx+0x36f0], edx
-mov dword ptr [esp], 0x1
-jmp 0xb595cce5
+jz 0xb59f1ce5
+jmp 0xb59f1ce5
 test dword ptr [esp+0xc], 0x8000000
-jz 0xb595cd00
-jz 0xb595cde0
-mov dword ptr [ebx+0x36e8], esi
-mov dword ptr [ebx+0x36ec], edi
-mov dword ptr [ebx+0x36c0], ebp
+jz 0xb59f1d00
+jz 0xb59f1de0
 ret 
 test dword ptr [esp+0xc], 0x10000000
-jz 0xb595cdf1
-or dword ptr [ebx+0x36f0], 0x40
+jz 0xb59f1df1
 test dword ptr [esp+0xc], 0x1000
-jz 0xb595ce05
-or dword ptr [ebx+0x36f0], 0x80
+jz 0xb59f1e05
 test byte ptr [ebx+0x36e2], 0x1
-jz 0xb595cd00
+jz 0xb59f1d00
 test byte ptr [ebx+0x36e2], 0x1
-jz 0xb595cd00
-or dword ptr [ebx+0x36f0], 0x100
-jmp 0xb595cd00
-mov dword ptr [ebx+0x36e8], esi
-mov dword ptr [ebx+0x36ec], edi
-mov dword ptr [ebx+0x36c0], ebp
+jz 0xb59f1d00
+jmp 0xb59f1d00
 ret 
 test dword ptr [ebx+0x36d4], 0x4000000
-jz 0xb59c1832
+jz 0xb5a56832
 ret 
-mov dword ptr [edi], eax
-jmp 0xb7718062
+jmp 0xb77b3062
 cmp dword ptr [ebp-0x84], esi
-jnbe 0xb7718038
-mov dword ptr [ebp-0x80], eax
-add dword ptr [ebp-0x94], 0x10
+jnbe 0xb77b3038
 cmp dword ptr [ebp-0x94], esi
-jnz 0xb77187f9
-mov dword ptr [ebp+eax*1-0x38], 0x0
-jb 0xb771808d
-call 0xb5a71173
+jnz 0xb77b37f9
+jb 0xb77b308d
 ret 
 cmp dword ptr [ebx+0x36c0], 0x0
-jnz 0xb59c2d9a
-call 0xb595cc80
+jnz 0xb5a57d9a
 test dword ptr [ebx+0x36d0], 0x200
-jz 0xb59c2dc4
+jz 0xb5a57dc4
 test dword ptr [ebx+0x36d0], 0x100000
-jz 0xb59c2dc4
+jz 0xb5a57dc4
 ret 
-call 0xb5a71173
 ret 
 cmp dword ptr [ebx+0x36c0], 0x0
-jnz 0xb59c800a
-call 0xb595cc80
+jnz 0xb5a5d00a
 test dword ptr [ebx+0x36d4], 0x4000000
-jz 0xb59c802a
+jz 0xb5a5d02a
 test dword ptr [ebx+0x36f0], 0x4
-jz 0xb59c8032
+jz 0xb5a5d032
 ret 
 ret 
-call 0xb5a71173
 ret 
 cmp dword ptr [ebx+0x36c0], 0x0
-jnz 0xb59dc87a
-call 0xb595cc80
+jnz 0xb5a7187a
 test dword ptr [ebx+0x36d4], 0x4000000
-jz 0xb59dc892
+jz 0xb5a71892
 ret 
-mov dword ptr [ebp+eax*1-0x38], 0x0
-jb 0xb771808d
-jz 0xb771903c
-mov dword ptr [ebp-0x38], esi
-mov dword ptr [ebp-0x34], edi
-jz 0xb77180db
-jmp 0xb77180de
-jz 0xb77180f2
+jb 0xb77b308d
+jz 0xb77b403c
+jz 0xb77b30db
+jmp 0xb77b30de
+jz 0xb77b30f2
 cmp dword ptr [eax+0x4], 0x7
-jz 0xb7718d22
-mov dword ptr [ebp-0x9c], eax
-mov dword ptr [ebp-0x7c], edx
-mov dword ptr [ebp-0xa4], ecx
-mov dword ptr [ebp-0xa8], eax
-mov dword ptr [ebp-0x8c], edx
-mov dword ptr [ebp-0x90], edx
+jz 0xb77b3d22
 cmp dword ptr [ebp+0x8], edi
-jz 0xb7718169
-jnz 0xb7718cf0
-jz 0xb7718cf0
-jz 0xb7718d76
-jnb 0xb7718169
-nop 
-mov dword ptr [esi+edx*1], edi
-jnbe 0xb7718d00
-jmp 0xb7718169
-jz 0xb7718d76
+jz 0xb77b3169
+jnz 0xb77b3cf0
+jz 0xb77b3cf0
+jz 0xb77b3d76
+jnb 0xb77b3169
+jnbe 0xb77b3d00
+jmp 0xb77b3169
+jz 0xb77b3d76
 cmp dword ptr [ebp-0x8c], ecx
-mov dword ptr [ebp-0x94], eax
-jbe 0xb7718328
-mov dword ptr [ebp-0x88], esi
-mov dword ptr [ebp-0xc0], ecx
-mov dword ptr [ebp-0x84], edx
-mov dword ptr [ebp-0x5c], edx
-jz 0xb7718bb0
-add dword ptr [ebp-0x9c], 0x10
+jbe 0xb77b3328
+jz 0xb77b3bb0
 cmp dword ptr [ebp-0x9c], esi
-jnz 0xb7719070
-jnz 0xb7719ad1
-or byte ptr [eax+0x194], 0x4
-jnz 0xb7719500
-mov dword ptr [ebp-0x80], eax
-jmp 0xb771811b
-mov dword ptr [ebp-0x8c], edx
-mov dword ptr [ebp-0x90], edx
+jnz 0xb77b4070
+jnz 0xb77b4ad1
+jnz 0xb77b4500
+jmp 0xb77b311b
 cmp dword ptr [ebp+0x8], edi
-jz 0xb7718169
-jnz 0xb7718cf0
-jz 0xb7718cf0
-jz 0xb7718378
-call 0xb7717de0
-mov dword ptr [esp+0x14], ebx
-call 0xb7725e98
+jz 0xb77b3169
+jnz 0xb77b3cf0
+jz 0xb77b3cf0
+jz 0xb77b3378
 ret 
-mov dword ptr [esp+0x18], esi
-jz 0xb7717e32
-mov dword ptr [esp+0x8], 0x1
-mov dword ptr [esp+0x4], ecx
-mov dword ptr [esp], eax
-call 0xb77250c0
+jz 0xb77b2e32
 int 0x80
-jnb 0xb77250dd
+jnb 0xb77c00dd
 ret 
-js 0xb7717e3e
+js 0xb77b2e3e
 ret 
-data16 nop 
 ret 
-jz 0xb771035c
+jz 0xb77ab35c
 cmp byte ptr [ebx+0x8a0], 0x0
-jnz 0xb77103b7
-sub dword ptr [ebp-0x90], 0x4
-jnz 0xb77102f0
-mov dword ptr [esp], edi
-call 0xb771f280
-mov dword ptr [esp+0x1c], ebx
-call 0xb7725e98
+jnz 0xb77ab3b7
+jnz 0xb77ab2f0
 ret 
-mov dword ptr [esp+0x20], esi
-mov dword ptr [esp+0x28], ebp
-mov dword ptr [esp+0x24], edi
-jmp 0xb771f2b2
-jb 0xb771f2f8
-jnz 0xb771f2b0
-jnz 0xb771f343
-mov dword ptr [ebp+esi*8+0xc], eax
-mov dword ptr [ebp+esi*8+0x8], eax
+jmp 0xb77ba2b2
+jb 0xb77ba2f8
+jnz 0xb77ba2b0
+jnz 0xb77ba343
 ret 
-nop 
-jmp 0xb771035c
-mov dword ptr [ebp-0x88], edx
-jmp 0xb7717fc7
-jz 0xb7717fdb
+jmp 0xb77ab35c
+jmp 0xb77b2fc7
+jz 0xb77b2fdb
 cmp dword ptr [ecx+0x4], 0x11
-jz 0xb77187a4
-mov dword ptr [ebp-0xb0], edi
-mov dword ptr [ebp-0x94], edi
-mov dword ptr [ebp-0x7c], edi
-mov dword ptr [ebp-0xa8], edi
-mov dword ptr [ebp-0x80], ecx
-mov dword ptr [ebp-0x84], eax
-jz 0xb77183f0
-jz 0xb771882e
+jz 0xb77b37a4
+jz 0xb77b33f0
+jz 0xb77b382e
 cmp dword ptr [ebp-0x84], edi
-mov dword ptr [ebp-0x9c], eax
-jbe 0xb771806d
-mov dword ptr [ebp-0xb4], esi
-mov dword ptr [ebp-0x8c], edi
-nop 
-mov dword ptr [ebp-0x88], edx
-mov dword ptr [ebp-0x90], ecx
-mov dword ptr [ebp-0x64], edx
-mov dword ptr [ebp-0xc0], edi
-jz 0xb771924f
+jbe 0xb77b306d
+jz 0xb77b424f
 cmp dword ptr [ebp-0x84], edi
-mov dword ptr [ebp-0x9c], esi
-jbe 0xb771806d
-mov dword ptr [ebp-0x88], edi
-mov dword ptr [ebp-0x90], edi
-mov dword ptr [ebp-0x68], edi
-jz 0xb7719cdc
-jz 0xb77189c0
-jz 0xb77189e0
-jz 0xb7719a6d
-jnz 0xb77189ea
-jmp 0xb77188dd
-mov dword ptr [eax+0x220], edx
-mov dword ptr [eax+0x21c], edi
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x10], 0x0
-mov dword ptr [esp+0xc], 0x1
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], edx
-call 0xb77168a0
-mov dword ptr [eax+0x228], edx
-mov dword ptr [eax+0x224], ecx
-jz 0xb77189f4
-mov dword ptr [ebp-0xb4], eax
-add dword ptr [ebp-0xb4], eax
-jz 0xb7719c39
-jnbe 0xb77185ea
-mov dword ptr [esi], eax
-jmp 0xb77189c0
-add dword ptr [ebp-0x88], 0x8
+jbe 0xb77b306d
+jz 0xb77b4cdc
+jz 0xb77b39c0
+jz 0xb77b39e0
+jz 0xb77b4a6d
+jnz 0xb77b39ea
+jmp 0xb77b38dd
+jz 0xb77b39f4
+jz 0xb77b4c39
+jnbe 0xb77b35ea
+jmp 0xb77b39c0
 cmp dword ptr [ebp-0x84], esi
-jnbe 0xb7718850
-jmp 0xb771806d
-mov dword ptr [ebp-0x90], edi
-mov dword ptr [ebp-0x68], edi
-jz 0xb7719cdc
-jz 0xb77189c0
-jz 0xb77189e0
-jz 0xb7719a6d
-jnz 0xb77189ea
-jbe 0xb7719064
-mov dword ptr [eax+0x220], edx
-mov dword ptr [eax+0x21c], edi
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x10], 0x0
-mov dword ptr [esp+0xc], 0x1
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], edx
-call 0xb77168a0
-mov dword ptr [ebp-0xb4], 0x0
-jz 0xb771896c
-jmp 0xb771895d
-jnbe 0xb77185ea
-jz 0xb77189c0
-jnbe 0xb7719967
-jb 0xb7719959
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], esi
-call 0xb7725d20
-add dword ptr [ebp-0x88], 0x8
+jnbe 0xb77b3850
+jmp 0xb77b306d
+jz 0xb77b4cdc
+jz 0xb77b39c0
+jz 0xb77b39e0
+jz 0xb77b4a6d
+jnz 0xb77b39ea
+jbe 0xb77b4064
+jz 0xb77b396c
+jmp 0xb77b395d
+jnbe 0xb77b35ea
+jz 0xb77b39c0
+jnbe 0xb77b4967
+jb 0xb77b4959
 cmp dword ptr [ebp-0x84], esi
-jnbe 0xb7718850
-jmp 0xb771806d
-mov dword ptr [ebp-0x9c], eax
-mov dword ptr [ebp-0x7c], edx
-mov dword ptr [ebp-0xa4], ecx
-mov dword ptr [ebp-0xa8], eax
-mov dword ptr [ebp-0x8c], edx
-mov dword ptr [ebp-0x90], edx
+jnbe 0xb77b3850
+jmp 0xb77b306d
 cmp dword ptr [ebp+0x8], edi
-jz 0xb7718169
-jnz 0xb7718cf0
-jz 0xb7718cf0
+jz 0xb77b3169
+jnz 0xb77b3cf0
+jz 0xb77b3cf0
 cmp dword ptr [ebp-0x8c], ecx
-jbe 0xb7718328
-mov dword ptr [ebp-0x88], esi
-mov dword ptr [ebp-0x84], eax
-mov dword ptr [ebp-0x60], eax
-jz 0xb7719010
-jz 0xb7718ee0
+jbe 0xb77b3328
+jz 0xb77b4010
+jz 0xb77b3ee0
 ret 
 cmp byte ptr [ebp-0xb0], 0x0
-jnz 0xb771021b
-jz 0xb771021b
-add dword ptr [ebx+0x864], 0x1
-call 0xb771eb70
-call 0xb7725e98
+jnz 0xb77ab21b
+jz 0xb77ab21b
 ret 
-mov dword ptr [esp+0x2c], eax
-jz 0xb771ed22
-mov dword ptr [esp+0x18], 0x0
-mov dword ptr [esp+0x24], 0x0
-mov dword ptr [esp+0x28], edx
-mov dword ptr [esp+0x20], ecx
-jnb 0xb771ecd1
-jb 0xb771ed18
-jmp 0xb771ec81
-jz 0xb771ec61
+jz 0xb77b9d22
+jnb 0xb77b9cd1
+jb 0xb77b9d18
+jmp 0xb77b9c81
+jz 0xb77b9c61
 cmp dword ptr [esp+0x18], edx
-mov dword ptr [esp+0x18], edx
-jnbe 0xb771ebe8
-mov dword ptr [eax], 0xffffffff
-mov byte ptr [eax+0x4], 0x0
+jnbe 0xb77b9be8
 cmp dword ptr [edx], esi
-jnbe 0xb771ec6c
+jnbe 0xb77b9c6c
 cmp dword ptr [eax+0x244], esi
-jnz 0xb771ed2e
-mov dword ptr [esp+0x1c], ecx
-jb 0xb771ed58
-jb 0xb771ed82
-mov dword ptr [esp+0x14], ecx
-mov byte ptr [ecx+0x4], 0x1
-mov dword ptr [ecx], edx
-mov dword ptr [esp+0x8], ebp
-mov dword ptr [esp], edx
-mov dword ptr [esp+0x4], eax
-call 0xb7725c60
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp+0x8], ecx
-mov dword ptr [esp], eax
-call 0xb7725c10
+jnz 0xb77b9d2e
+jb 0xb77b9d58
+jb 0xb77b9d82
 cmp dword ptr [edx], esi
-jbe 0xb771eccb
+jbe 0xb77b9ccb
 cmp dword ptr [ebx+0x848], eax
-jb 0xb771ed18
-jz 0xb771ec61
-mov dword ptr [edx], ecx
+jb 0xb77b9d18
+jz 0xb77b9c61
 ret 
 cmp byte ptr [ebx+0x8a0], 0x0
-jnz 0xb77103fb
-mov dword ptr [eax], eax
-mov dword ptr [eax+0x8], eax
-mov dword ptr [ebp-0x28], 0xffffffff
-mov dword ptr [edx+0x10], eax
-mov dword ptr [ebp-0x24], edx
-mov dword ptr [ebp-0x20], 0xfffff
-mov dword ptr [ebp-0x1c], 0x51
+jnz 0xb77ab3fb
 int 0x80
 cmp dword ptr [ebx-0x1bc], ecx
-jnz 0xb77105a8
-jz 0xb771053c
-call 0xb7722570
+jnz 0xb77ab5a8
+jz 0xb77ab53c
 cmp byte ptr [ebp-0x94], 0x0
-jz 0xb7710417
-mov dword ptr [ebp-0x90], eax
-mov dword ptr [ebp-0x8c], edx
-and byte ptr [ebx+0x6f0], 0xfb
-mov dword ptr [esp+0xc], 0x0
-mov dword ptr [esp+0x8], 0x0
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], esi
-call 0xb7717ed0
-mov dword ptr [ebp-0x54], eax
-jmp 0xb7717fdb
-jz 0xb7718640
-jz 0xb7718768
-jz 0xb7719691
-jnz 0xb7718778
-jbe 0xb7718798
-mov dword ptr [ecx+0x21c], edi
-mov dword ptr [ecx+0x220], edx
-jz 0xb77185f8
-jz 0xb77185f8
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x10], 0x0
-mov dword ptr [esp+0xc], 0x1
-mov dword ptr [esp], edi
-call 0xb77168a0
-jmp 0xb7718538
-mov dword ptr [ecx+0x21c], edi
-mov dword ptr [ecx+0x220], edx
-jz 0xb77185f8
-jz 0xb77185f8
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x10], 0x0
-mov dword ptr [esp+0xc], 0x1
-mov dword ptr [esp], edi
-call 0xb77168a0
-add dword ptr [ebx+0x8a8], eax
-adc dword ptr [ebx+0x8ac], edx
-jmp 0xb7710417
-call 0xb7722570
+jz 0xb77ab417
+jmp 0xb77b2fdb
+jz 0xb77b3640
+jz 0xb77b3768
+jz 0xb77b4691
+jnz 0xb77b3778
+jbe 0xb77b3798
+jz 0xb77b35f8
+jz 0xb77b35f8
+jmp 0xb77b3538
+jz 0xb77b35f8
+jz 0xb77b35f8
+jmp 0xb77ab417
 ret 
-jnz 0xb77104df
-call 0xb771c9f0
-mov dword ptr [eax+0xc], 0x0
-call 0xb771c9e0
+jnz 0xb77ab4df
 ret 
-call 0xb7722190
-call 0xb7725e98
 ret 
-jnbe 0xb77221c9
-mov dword ptr [esp], eax
-mov dword ptr [esp+0x4], edx
-call 0xb7725080
+jnbe 0xb77bd1c9
 int 0x80
-jnb 0xb772509b
+jnb 0xb77c009b
 ret 
-mov dword ptr [ebx+0x8ec], 0x0
 ret 
 ret 
 ret 
 test byte ptr [ebx-0x340], 0x80
-mov dword ptr [ebp-0x20], eax
-mov dword ptr [ebp-0x1c], edx
-jnz 0xb771209f
+jnz 0xb77ad09f
 ret 
-call 0xb770e180
 ret 
-call 0xb771c280
-call 0xb7725e98
 ret 
-mov dword ptr [esp+0x1c], ecx
-mov dword ptr [esp+0x18], edx
-jnz 0xb771c2fb
-jnz 0xb771c327
-jz 0xb771c2f1
-nop 
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp], edx
-call 0xb771c140
-mov dword ptr [esp+0x2c], ebx
-mov dword ptr [esp+0x38], ebp
-mov dword ptr [esp+0x30], esi
-mov dword ptr [esp+0x34], edi
-call 0xb7725e98
+jnz 0xb77b72fb
+jnz 0xb77b7327
+jz 0xb77b72f1
 ret 
-jnz 0xb771c20f
-mov byte ptr [eax+0x194], dl
-jz 0xb771c237
-jz 0xb771c228
-jz 0xb771c20f
-jmp 0xb771c196
+jnz 0xb77b720f
+jz 0xb77b7237
+jz 0xb77b7228
+jz 0xb77b720f
+jmp 0xb77b7196
 ret 
-jnz 0xb771c2c8
+jnz 0xb77b72c8
 ret 0x4
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp], edx
-call 0xb771c140
 test byte ptr [ebx-0x340], 0x2
-jnz 0xb771c242
-jz 0xb771c1c9
-mov dword ptr [esp+0x18], eax
-mov dword ptr [esp+0x8], ecx
-mov dword ptr [esp], ebp
-mov dword ptr [esp+0x4], ecx
-mov dword ptr [esp+0x1c], ebx
-call 0xb5a71173
+jnz 0xb77b7242
+jz 0xb77b71c9
 ret 
-mov dword ptr [esp+0x20], esi
-mov dword ptr [esp+0x24], edi
-mov dword ptr [esp+0x28], ebp
-jz 0xb595c7d0
-jnz 0xb595c7d0
-mov dword ptr [ebx+0x40], 0x1
-mov dword ptr [ebx+0x36bc], esi
-mov dword ptr [ebx+0x36b8], edi
-mov dword ptr [eax], ebp
-mov dword ptr [esp+0x8], ebp
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp], esi
-call 0xb5a34d80
-mov dword ptr [ebx+0x40], 0x0
+jz 0xb59f17d0
+jnz 0xb59f17d0
 cmp word ptr [edx+0x38], ax
-jz 0xb595c794
-mov dword ptr [esp], eax
-call 0xb5971750
-mov dword ptr [ebx+0x36bc], esi
-mov dword ptr [ebx+0x36b8], edi
-mov dword ptr [eax], ebp
-mov dword ptr [esp+0x8], ebp
-mov dword ptr [esp+0x4], edi
-mov dword ptr [esp], esi
-call 0xb5a34d80
-mov dword ptr [esp+0x14], esi
-mov dword ptr [esp+0x10], ebx
-call 0xb5a71173
+jz 0xb59f1794
 ret 
-mov dword ptr [esp+0x18], edi
-jz 0xb5a34dd1
-jz 0xb5a34dd1
-mov dword ptr [esp+0x4], 0x2f
-mov dword ptr [esp], edi
-call 0xb59c19a0
-jz 0xb59c1a43
-jnz 0xb59c19ca
-jz 0xb59c1b56
-jz 0xb59c1b56
-jz 0xb59c1a43
-jnz 0xb59c19e3
-jnb 0xb59c1b2c
-jnz 0xb59c1b2c
-jnb 0xb59c1a0a
-jnz 0xb59c1a20
-jnb 0xb59c1b29
-jnz 0xb59c1b29
-jnz 0xb59c1a36
-jmp 0xb59c1a40
-jnz 0xb59c1a40
-jnb 0xb59c1b2c
-jnz 0xb59c1b2c
-jnb 0xb59c1b2c
-jnz 0xb59c1b2c
-jnb 0xb59c1a0a
-jnb 0xb59c1a0d
-jnz 0xb59c1a23
-jnb 0xb59c1b26
-jnz 0xb59c1b26
-jnb 0xb59c1a10
-jnz 0xb59c1a26
-jnb 0xb59c1b23
-jnz 0xb59c1b23
-jnb 0xb59c1a13
-jnz 0xb59c1b32
-jz 0xb59c1b56
-jnz 0xb59c1b3d
-jz 0xb59c1b56
-jnz 0xb59c1b3d
-jz 0xb59c1b56
-jz 0xb59c1b56
-jnz 0xb59c1b4b
-jz 0xb59c1b56
+jz 0xb5ac9dd1
+jz 0xb5ac9dd1
+jz 0xb5a56a43
+jnz 0xb5a569ca
+jz 0xb5a56b56
+jz 0xb5a56b56
+jz 0xb5a56a43
+jnz 0xb5a569e3
+jnb 0xb5a56b2c
+jnz 0xb5a56b2c
+jnb 0xb5a56a0a
+jnz 0xb5a56a20
+jnb 0xb5a56b29
+jnz 0xb5a56b29
+jnz 0xb5a56a36
+jmp 0xb5a56a40
+jnz 0xb5a56a40
+jnb 0xb5a56b2c
+jnz 0xb5a56b2c
+jnb 0xb5a56b2c
+jnz 0xb5a56b2c
+jnb 0xb5a56a0a
+jnb 0xb5a56a0d
+jnz 0xb5a56a23
+jnb 0xb5a56b26
+jnz 0xb5a56b26
+jnb 0xb5a56a10
+jnz 0xb5a56a26
+jnb 0xb5a56b23
+jnz 0xb5a56b23
+jnb 0xb5a56a13
+jnz 0xb5a56b32
+jz 0xb5a56b56
+jnz 0xb5a56b3d
+jz 0xb5a56b56
+jnz 0xb5a56b3d
+jz 0xb5a56b56
+jz 0xb5a56b56
+jnz 0xb5a56b4b
+jz 0xb5a56b56
 ret 
-jz 0xb5a34de8
-mov dword ptr [edx], eax
-mov dword ptr [eax], edx
+jz 0xb5ac9de8
 ret 
-jmp 0xb596af50
-mov dword ptr [esp], ebx
-call 0xb5a71173
+jmp 0xb59fff50
 ret 
-mov dword ptr [esp+0x4], esi
-mov dword ptr [eax+ecx*1], esi
-mov dword ptr [eax+ecx*1], esi
-mov dword ptr [eax+edx*1], ecx
 ret 
-jz 0xb771c20f
-mov dword ptr [esp+0x1c], ecx
-jz 0xb771c20f
-data16 nop 
-mov dword ptr [esp], ebp
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], edx
+jz 0xb77b720f
+jz 0xb77b720f
 call dword ptr [edi+esi*4]
-call 0xb5a71173
 ret 
-jnz 0xb595c465
-mov dword ptr [ebx+0xda4], edx
-mov dword ptr [eax], edx
-mov dword ptr [ebx+0xda0], ecx
-mov byte ptr [ecx+0x46], 0xb8
-mov byte ptr [edx+0x46], 0xb8
-mov dword ptr [eax], ecx
-mov dword ptr [esi], eax
-mov dword ptr [ebx+0xd9c], eax
-mov dword ptr [ebx+0x960], eax
-mov byte ptr [eax+0x46], 0xb8
+jnz 0xb59f1465
 ret 
 ret 
-jnz 0xb771c1f0
+jnz 0xb77b71f0
 ret 
-mov dword ptr [esp], ebp
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], edx
 call dword ptr [edi+esi*4]
-call 0xb5a71173
 ret 
-jz 0xb595c4a2
-jz 0xb595c4af
-jz 0xb595c61a
-call 0xb59dc480
-jbe 0xb59dc588
-mov byte ptr [esp+0x3e], 0x0
-mov byte ptr [esp+0x3f], 0x0
-mov dword ptr [esp+0x1c], 0x1
-mov dword ptr [esp+0x2c], 0x1
-mov dword ptr [esp+0x18], eax
+jz 0xb59f14a2
+jz 0xb59f14af
+jz 0xb59f161a
+jbe 0xb5a71588
 cmp dword ptr [esp+0x1c], 0x1
-mov dword ptr [esp+0x28], edx
-mov dword ptr [esp+0x24], ecx
-mov dword ptr [esp+0x20], ebp
-jz 0xb59dc550
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], edi
-call 0xb59dc1d0
-mov dword ptr [esp+0x2c], ebp
-jmp 0xb59dc4d3
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], edi
-call 0xb59dc1d0
-call 0xb5a71173
+jz 0xb5a71550
+jmp 0xb5a714d3
 ret 
-mov dword ptr [esp+0x2c], eax
-js 0xb59dc2c8
-jz 0xb59dc2c8
-jmp 0xb59dc2a5
-jnz 0xb59dc220
-mov byte ptr [eax], 0x1
-jnz 0xb59dc29e
+js 0xb5a712c8
+jz 0xb5a712c8
+jmp 0xb5a712a5
+jnz 0xb5a71220
+jnz 0xb5a7129e
 ret 
-jz 0xb59dc2f8
-jnz 0xb59dc258
-jnz 0xb59dc258
-mov byte ptr [esp+0x38], al
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp+0x10], ebp
-mov dword ptr [esp+0xc], 0x8
-mov dword ptr [esp+0x8], 0x44
-mov dword ptr [esp], eax
-call 0xb59751a0
-jnz 0xb59751c3
-jmp 0xb59751f6
-mov dword ptr [esp], edx
-mov dword ptr [esp+0x4], edi
+jz 0xb5a712f8
+jnz 0xb5a71258
+jnz 0xb5a71258
+jnz 0xb5a0a1c3
+jmp 0xb5a0a1f6
 cmp byte ptr [edx], cl
-jz 0xb59dbfc8
+jz 0xb5a70fc8
 ret 
-jnl 0xb59751b8
-mov dword ptr [esp+0x28], esi
-jb 0xb59751c3
+jnl 0xb5a0a1b8
+jb 0xb5a0a1c3
 ret 
-jz 0xb59dc29e
-jz 0xb59dc3a0
-jz 0xb59dc2e8
-jz 0xb59dc2c8
-jnz 0xb59dc220
-mov byte ptr [eax], 0x1
-jnz 0xb59dc29e
-jz 0xb59751f8
-jnb 0xb59751f6
-mov dword ptr [esp], edx
-mov dword ptr [esp+0x4], edi
+jz 0xb5a7129e
+jz 0xb5a713a0
+jz 0xb5a712e8
+jz 0xb5a712c8
+jnz 0xb5a71220
+jnz 0xb5a7129e
+jz 0xb5a0a1f8
+jnb 0xb5a0a1f6
 ret 
 ret 
-jnz 0xb59dc580
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], edi
-call 0xb59dc1d0
-jz 0xb59dc2c8
-jmp 0xb59dc339
-setz byte ptr [esp+0x2b]
-jnz 0xb59dc358
+jnz 0xb5a71580
+jz 0xb5a712c8
+jmp 0xb5a71339
+jnz 0xb5a71358
 cmp byte ptr [esp+0x2b], 0x0
-jz 0xb59dc358
-jz 0xb59dc372
-jz 0xb59dc3cf
-jz 0xb59dc435
-jnz 0xb59dc46c
-jmp 0xb59dc2ca
+jz 0xb5a71358
+jz 0xb5a71372
+jz 0xb5a713cf
+jz 0xb5a71435
+jnz 0xb5a7146c
+jmp 0xb5a712ca
 ret 
-jnz 0xb59dc580
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], edi
-call 0xb59dc1d0
+jnz 0xb5a71580
 ret 
-call 0xb59dc480
-jnz 0xb59dc368
+jnz 0xb5a71368
 cmp byte ptr [esp+0x2b], 0x0
-jz 0xb59dc368
-jz 0xb59dc372
-jnz 0xb59dc310
-jnz 0xb59dc310
-jz 0xb59dc3cf
-jz 0xb59dc401
-jz 0xb59dc410
-jnz 0xb59dc319
-jmp 0xb59dc372
-jz 0xb59dc410
-jz 0xb59dc2c8
-setz byte ptr [esp+0x2b]
-jnz 0xb59dc358
+jz 0xb5a71368
+jz 0xb5a71372
+jnz 0xb5a71310
+jnz 0xb5a71310
+jz 0xb5a713cf
+jz 0xb5a71401
+jz 0xb5a71410
+jnz 0xb5a71319
+jmp 0xb5a71372
+jz 0xb5a71410
+jz 0xb5a712c8
+jnz 0xb5a71358
 cmp byte ptr [esp+0x2b], 0x0
-jz 0xb59dc358
-jle 0xb595c6e5
-mov dword ptr [esp+0x14], edi
-mov dword ptr [esp+0x10], edi
-jle 0xb595c69d
-mov dword ptr [esp+0x1c], ebp
-mov dword ptr [esp+0x18], esi
-jz 0xb595c695
-jnz 0xb595c506
-mov dword ptr [esp+0x14], eax
-jz 0xb595c5a3
-jz 0xb595c5b2
-jnle 0xb595c610
-jle 0xb595c5da
-jmp 0xb595c5b2
-jle 0xb595c5da
-mov dword ptr [ebx+0x178], eax
-mov dword ptr [ebx+0x174], esi
-mov dword ptr [ebx+0x180], edx
-mov dword ptr [ebx+0x17c], eax
-jle 0xb595c49a
-mov dword ptr [ebx+0x164], ebp
-mov dword ptr [ebx+0x168], eax
-mov dword ptr [ebx+0x16c], ebp
-mov dword ptr [ebx+0x170], eax
-ret 
-call 0xb5a71173
-ret 
-jnz 0xb595c73e
-mov dword ptr [ecx+0x500], eax
-mov dword ptr [ecx+0x504], edx
+jz 0xb5a71358
+jle 0xb59f16e5
+jle 0xb59f169d
+jz 0xb59f1695
+jnz 0xb59f1506
+jz 0xb59f15a3
+jz 0xb59f15b2
+jnle 0xb59f1610
+jle 0xb59f15da
+jmp 0xb59f15b2
+jle 0xb59f15da
+jle 0xb59f149a
 ret 
 ret 
-jnz 0xb771c18b
-jmp 0xb771c20f
-push 0x80486b0
-push 0x8048640
-push 0x80485d6
-call 0x8048790
+jnz 0xb59f173e
+ret 
+ret 
+jnz 0xb77b718b
+jmp 0xb77b720f
 jmp dword ptr [0x804986c]
-call 0xb5a71173
 ret 
-jz 0xb595c90d
-mov dword ptr [edx], ecx
-jz 0xb595c868
-mov dword ptr [esp+0x8], 0x0
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], eax
-call 0xb5976a20
-jmp 0xb595c844
-mov dword ptr [edx], ecx
-jz 0xb595c868
-mov dword ptr [esp+0x8], 0x0
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], eax
-call 0xb5976a20
-call 0xb5a71173
+jz 0xb59f190d
+jz 0xb59f1868
+jmp 0xb59f1844
+jz 0xb59f1868
 ret 
-mov dword ptr [esp+0xc], eax
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], eax
-call 0xb59769c0
-call 0xb5a71173
 ret 
-mov dword ptr [esp], eax
-call 0xb5976870
-call 0xb5a71173
 ret 
 cmp dword ptr gs:[0xc], 0x0
-jz 0xb5976894
-lock cmpxchg dword ptr [ebx+0x11c0], ecx
-jnz 0xb5976a5a
-jz 0xb5976984
-cmpxchg dword ptr [ebx+0x11c0], ecx
-jnz 0xb5976a5a
-jz 0xb5976984
-nop 
-jz 0xb59768f2
-mov dword ptr [edi+0x4], 0x0
-jz 0xb5976956
-jmp 0xb59768b8
-mov dword ptr [eax+0x4], 0x1
-jmp 0xb597691c
-mov dword ptr [edx], 0x1
-add dword ptr [ebx+0x37e0], 0x1
-adc dword ptr [ebx+0x37e4], 0x0
+jz 0xb5a0b894
+jnz 0xb5a0ba5a
+jz 0xb5a0b984
+jnz 0xb5a0ba5a
+jz 0xb5a0b984
+jz 0xb5a0b8f2
+jz 0xb5a0b956
+jmp 0xb5a0b8b8
+jmp 0xb5a0b91c
 cmp dword ptr gs:[0xc], 0x0
-jz 0xb597693b
-lock sub dword ptr [ebx+0x11c0], 0x1
-jnz 0xb5976a6a
+jz 0xb5a0b93b
+jnz 0xb5a0ba6a
 ret 
-sub dword ptr [ebx+0x11c0], 0x1
-jnz 0xb5976a6a
+jnz 0xb5a0ba6a
 ret 
-jz 0xb5976a0b
-mov dword ptr [eax+0x4], edx
-mov dword ptr [eax+0x8], edx
-mov dword ptr [eax+0xc], edx
-mov dword ptr [eax], 0x4
+jz 0xb5a0ba0b
 ret 
 ret 
-jnz 0xb595c9b6
-jz 0xb595c89a
-mov dword ptr [esp], edx
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], eax
-call 0x80486e0
+jnz 0xb59f19b6
+jz 0xb59f189a
 ret 
-call 0x80486bc
-call 0x80486e0
 ret 
 jz 0x80486da
-call 0x0
 ret 
 jz 0x8048699
-mov dword ptr [esp], ebp
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], eax
 call dword ptr [ebx+edi*4-0x10e0]
 ret 
-jnz 0xb595c972
-jnz 0xb595c94e
-mov dword ptr [esp], eax
-call 0xb59718a0
-mov dword ptr [edx], ebx
-mov dword ptr [edx+0x4], esi
-mov dword ptr [edx+0x8], edi
-mov dword ptr [edx+0x10], ecx
-mov dword ptr [edx+0x14], ecx
-mov dword ptr [edx+0xc], ebp
-mov dword ptr [edx+0x18], eax
+jnz 0xb59f1972
+jnz 0xb59f194e
 ret 
-jnz 0xb595c914
-mov dword ptr [esp+0x40], eax
-mov dword ptr [esp+0x44], eax
-mov dword ptr gs:[0x80], eax
-mov dword ptr [esp+0x4], ecx
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp], eax
-call 0x80487a0
+jnz 0xb59f1914
 jmp dword ptr [0x8049870]
-mov dword ptr [esp+0x14], esi
-mov dword ptr [esp+0x10], ebx
-call 0xb5a71173
 ret 
-mov dword ptr [esp+0x18], edi
-jnz 0xb59ace49
-jz 0xb59ace45
+jnz 0xb5a41e49
+jz 0xb5a41e45
 cmp dword ptr gs:[0xc], 0x0
-jz 0xb59ace36
-cmpxchg dword ptr [edx], ecx
-jnz 0xb59aced2
-mov dword ptr [edx+0x8], edi
-add dword ptr [edx+0x4], 0x1
-jnb 0xb59ace94
-mov dword ptr [esi+0x4], edx
+jz 0xb5a41e36
+jnz 0xb5a41ed2
+jnb 0xb5a41e94
 test dword ptr [esi], 0x8000
-jnz 0xb59ace82
-mov dword ptr [esp], esi
-call 0xb59b6b30
-call 0xb5a71173
+jnz 0xb5a41e82
 ret 
 cmp byte ptr [esi+0x46], 0x0
-jnz 0xb59b6b6a
-jz 0xb59b6bff
-jnz 0xb59b6c10
-mov dword ptr [esi+0x68], 0xffffffff
-jz 0xb59b6bc8
+jnz 0xb5a4bb6a
+jz 0xb5a4bbff
+jnz 0xb5a4bc10
+jz 0xb5a4bbc8
 test dword ptr [esi], 0x800
-jnz 0xb59b6be5
-jb 0xb59b6c40
+jnz 0xb5a4bbe5
+jb 0xb5a4bc40
 test dword ptr [esi], 0x100
-jnz 0xb59b6c28
-jz 0xb59b6c50
-call 0xb59b6650
-jz 0xb59b6baa
-mov dword ptr [esp], esi
-call 0xb59b6910
-mov dword ptr [esp], esi
+jnz 0xb5a4bc28
+jz 0xb5a4bc50
+jz 0xb5a4bbaa
 call dword ptr [eax+0x14]
-mov dword ptr [esp], esi
 call dword ptr [eax+0x10]
-mov dword ptr [esp+0x20], esi
-mov dword ptr [esp+0x1c], ebx
-call 0xb5a71173
 ret 
-mov dword ptr [esp+0x24], edi
-mov dword ptr [esp+0x28], ebp
-jnz 0xb59b5f10
-jb 0xb59b5ea0
-jz 0xb59b5eb8
-jz 0xb59b5ecd
-mov dword ptr [esp], eax
-call 0xb595a300
-mov dword ptr [esp], esi
-call 0xb59b6d00
-jz 0xb59b6d18
+jnz 0xb5a4af10
+jb 0xb5a4aea0
+jz 0xb5a4aeb8
+jz 0xb5a4aecd
+jz 0xb5a4bd18
 ret 
 test byte ptr [esi], 0x2
-jz 0xb59b6d24
-jle 0xb59b6d3a
-mov dword ptr [esp], esi
+jz 0xb5a4bd24
+jle 0xb5a4bd3a
 call dword ptr [eax+0x34]
-mov dword ptr [esp], esi
 call dword ptr [eax+0x34]
-mov dword ptr [esp+0x90], esi
-mov dword ptr [esp+0x98], ebp
-mov dword ptr [esp+0x8c], ebx
-call 0xb5a71173
 ret 
-mov dword ptr [esp+0x94], edi
-js 0xb59a8ac8
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp], esi
+js 0xb5a3dac8
 call dword ptr [eax+0x48]
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp], 0x3
-mov dword ptr [esp+0x4], eax
-call 0xb5a22a60
-call 0xb5a71173
 ret 
 call dword ptr gs:[0x10]
 ret 
-jnbe 0xb5a22a8d
+jnbe 0xb5ab7a8d
 ret 
 ret 
-js 0xb59a8ac8
-jz 0xb59a8b50
-jle 0xb59a8ac8
-jmp 0xb59a8ad2
-mov dword ptr [esp+0x14], 0x0
-mov dword ptr [esp+0x10], 0xffffffff
-mov dword ptr [esp+0xc], 0x22
-mov dword ptr [esp+0x8], 0x3
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], 0x0
-call 0xb5a30180
-jnz 0xb5a301b8
+js 0xb5a3dac8
+jz 0xb5a3db50
+jle 0xb5a3dac8
+jmp 0xb5a3dad2
+jnz 0xb5ac51b8
 call dword ptr gs:[0x10]
-jnbe 0xb5a301c4
+jnbe 0xb5ac51c4
 ret 
-jz 0xb59a8bc0
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp+0xc], 0x1
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp], esi
-call 0xb59b6c80
-mov dword ptr [esp+0x18], esi
-mov dword ptr [esp+0x14], ebx
-call 0xb5a71173
+jz 0xb5a3dbc0
 ret 
-jz 0xb59b6ca6
+jz 0xb5a4bca6
 test byte ptr [esi], 0x1
-jz 0xb59b6ce0
-mov dword ptr [esi+0x1c], eax
-mov dword ptr [esi+0x20], eax
-jnz 0xb59b6cd0
-mov dword ptr [esi+0x1c], eax
-mov dword ptr [esi+0x20], eax
-jnz 0xb59b6cd0
-or dword ptr [esi], 0x1
-ret 
-and dword ptr [esi], 0xfffffffe
+jz 0xb5a4bce0
+jnz 0xb5a4bcd0
+jnz 0xb5a4bcd0
 ret 
 ret 
-jnz 0xb59b6d0f
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp], esi
-mov dword ptr [esp+0xc], 0x0
-mov dword ptr [esp+0x4], eax
-call 0xb59b6c80
 ret 
-jmp 0xb59b5d83
-jz 0xb59b5e20
-jnz 0xb59b5ddf
-jz 0xb59b5f08
-mov dword ptr [esp], esi
-call 0xb59b6890
-jnbe 0xb59b68d8
-jnz 0xb59b68d0
+jnz 0xb5a4bd0f
+ret 
+jmp 0xb5a4ad83
+jz 0xb5a4ae20
+jnz 0xb5a4addf
+jz 0xb5a4af08
+jnbe 0xb5a4b8d8
+jnz 0xb5a4b8d0
 cmp dword ptr [esi+0x8], eax
-mov dword ptr [esi+0xc], ecx
-jnb 0xb59b68b5
-mov dword ptr [esi+0x4], eax
-mov dword ptr [esi+0x18], eax
-mov dword ptr [esi+0x10], eax
-mov dword ptr [esi], edx
+jnb 0xb5a4b8b5
 ret 
-mov dword ptr [esi+0x4], eax
-mov dword ptr [esi+0xc], eax
-mov dword ptr [esi+0x8], eax
-mov dword ptr [esi+0x18], eax
-mov dword ptr [esi+0x14], eax
-mov dword ptr [esi+0x10], eax
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x8], edx
 call dword ptr [ecx+0x38]
 test byte ptr [eax+0x3c], 0x2
-jnz 0xb59b5446
-mov dword ptr [esp+0xc], ecx
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x4], eax
-jmp 0xb5a23890
+jnz 0xb5a4a446
+jmp 0xb5ab8890
 cmp dword ptr gs:[0xc], 0x0
-jnz 0xb5a238bc
+jnz 0xb5ab88bc
 call dword ptr gs:[0x10]
-jnb 0xb5a238ed
+jnb 0xb5ab88ed
 ret 
-jle 0xb59b5ea8
-add dword ptr [esi+0x8], eax
-jz 0xb59b5e81
-mov dword ptr [esi+0x4c], eax
-mov dword ptr [esi+0x50], edx
+jle 0xb5a4aea8
+jz 0xb5a4ae81
 ret 
 ret 
-jz 0xb59b6da0
-mov dword ptr [esi+0x4], edx
+jz 0xb5a4bda0
 ret 
 ret 
-jmp 0xb59ace5a
+jmp 0xb5a41e5a
 test dword ptr [esi], 0x8000
-jnz 0xb59ace82
-sub dword ptr [edx+0x4], 0x1
-jnz 0xb59ace82
-mov dword ptr [edx+0x8], 0x0
+jnz 0xb5a41e82
+jnz 0xb5a41e82
 cmp dword ptr gs:[0xc], 0x0
-jz 0xb59ace7d
-sub dword ptr [edx], 0x1
-jnz 0xb59acede
+jz 0xb5a41e7d
+jnz 0xb5a41ede
 ret 
-mov byte ptr [ebp-0x1], al
-mov dword ptr [ebp-0x8], eax
 jnz 0x804860e
-mov dword ptr [ebp-0x8], eax
 jz 0x804862c
-call 0x80487b0
 jmp dword ptr [0x8049874]
-call 0xb5a71173
 ret 
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], eax
-call 0xb59878c0
-call 0xb5a71173
 ret 
-mov dword ptr [ebp-0x484], eax
 cmp byte ptr [esi+0x46], 0x0
-mov dword ptr [ebp-0x49c], edx
-jnz 0xb598791b
-jz 0xb5987a9c
-jnz 0xb5987ab0
-mov dword ptr [esi+0x68], 0xffffffff
-jnz 0xb5989d70
-jz 0xb598a082
+jnz 0xb5a1c91b
+jz 0xb5a1ca9c
+jnz 0xb5a1cab0
+jnz 0xb5a1ed70
+jz 0xb5a1f082
 cmp byte ptr [esi+0x46], 0x0
-jnz 0xb5987957
-jz 0xb5987ad1
-jnz 0xb5987ae8
-mov dword ptr [esi+0x68], 0xffffffff
-jnz 0xb5987af8
-jnz 0xb5987ab9
-jz 0xb5987960
-call 0xb598c8f0
-mov dword ptr [ebp-0x46c], eax
-mov dword ptr [esp+0x4], 0x25
-mov dword ptr [esp], edx
-call 0xb59c4210
-jz 0xb59c4273
-jz 0xb59c436d
-jz 0xb59c436d
-jnb 0xb59c434f
-jnz 0xb59c434f
-jnb 0xb59c434f
-jnz 0xb59c434f
-jnb 0xb59c434c
-jnz 0xb59c434c
-jnb 0xb59c434c
-jnz 0xb59c434c
-jnb 0xb59c4349
-jnz 0xb59c4349
-jnb 0xb59c4349
-jnz 0xb59c4349
-jz 0xb59c436d
-jz 0xb59c436d
-jz 0xb59c436d
+jnz 0xb5a1c957
+jz 0xb5a1cad1
+jnz 0xb5a1cae8
+jnz 0xb5a1caf8
+jnz 0xb5a1cab9
+jz 0xb5a1c960
+jz 0xb5a59273
+jz 0xb5a5936d
+jz 0xb5a5936d
+jnb 0xb5a5934f
+jnz 0xb5a5934f
+jnb 0xb5a5934f
+jnz 0xb5a5934f
+jnb 0xb5a5934c
+jnz 0xb5a5934c
+jnb 0xb5a5934c
+jnz 0xb5a5934c
+jnb 0xb5a59349
+jnz 0xb5a59349
+jnb 0xb5a59349
+jnz 0xb5a59349
+jz 0xb5a5936d
+jz 0xb5a5936d
+jz 0xb5a5936d
 ret 
 test dword ptr [esi], 0x8000
-mov dword ptr [ebp-0x494], 0x0
-mov dword ptr [ebp-0x490], eax
-mov dword ptr [ebp-0x470], eax
-jnz 0xb59879f4
-mov dword ptr [ebp-0x494], ecx
-jnz 0xb5987cb8
-mov dword ptr [ebp-0x420], esi
-mov dword ptr [ebp-0x424], eax
-jz 0xb59879f0
+jnz 0xb5a1c9f4
+jnz 0xb5a1ccb8
+jz 0xb5a1c9f0
 cmp dword ptr gs:[0xc], 0x0
-jz 0xb59879e1
-lock cmpxchg dword ptr [edx], ecx
-jnz 0xb598cb17
-mov dword ptr [edx+0x8], edi
-add dword ptr [edx+0x4], 0x1
-mov dword ptr [ebp-0x480], eax
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x4], edx
+jz 0xb5a1c9e1
+jnz 0xb5a21b17
 call dword ptr [eax+0x1c]
-cmpxchg dword ptr [edx], ecx
-jnz 0xb598cb17
-mov dword ptr [edx+0x8], edi
-add dword ptr [edx+0x4], 0x1
-mov dword ptr [ebp-0x480], eax
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x4], edx
+jnz 0xb5a21b17
 call dword ptr [eax+0x1c]
-mov dword ptr [esp+0x30], esi
-mov dword ptr [esp+0x2c], ebx
-call 0xb5a71173
 ret 
-mov dword ptr [esp+0x34], edi
-mov dword ptr [esp+0x38], ebp
-jz 0xb59b530c
-jz 0xb59b5388
-jbe 0xb59b5320
-jz 0xb59b5308
-mov dword ptr [esp+0x4], 0xffffffff
-mov dword ptr [esp], edi
+jz 0xb5a4a30c
+jz 0xb5a4a388
+jbe 0xb5a4a320
+jz 0xb5a4a308
 call dword ptr [eax+0xc]
-mov dword ptr [esp+0x20], esi
-mov dword ptr [esp+0x1c], ebx
-call 0xb5a71173
 ret 
-mov dword ptr [esp+0x24], edi
-mov dword ptr [esp+0x28], ebp
-jnz 0xb59b60f8
-jz 0xb59b6000
-jz 0xb59b6120
-jz 0xb59b6120
-jnz 0xb59b6160
-jz 0xb59b60e8
-mov dword ptr [esp], esi
-call 0xb59b6d00
-jnbe 0xb59a8b90
-or dword ptr [esi], 0x200
-jnle 0xb59a8ab4
-jmp 0xb59a8ac8
-mov dword ptr [esi+0xc], edx
-mov dword ptr [esi+0x4], edx
-mov dword ptr [esi+0x8], edx
-jmp 0xb59b600e
-jnz 0xb59b6160
-jz 0xb59b60e8
-mov dword ptr [esi+0x18], ebp
-mov dword ptr [esi+0x4], eax
-mov dword ptr [esi+0xc], eax
-mov dword ptr [esi+0x14], edx
-mov dword ptr [esi+0x10], edx
-mov dword ptr [esi], eax
-jnle 0xb59b5fb4
-jz 0xb59b5fb4
-mov dword ptr [esi+0x18], edx
-jmp 0xb59b5fb4
-jz 0xb59b60c8
+jnz 0xb5a4b0f8
+jz 0xb5a4b000
+jz 0xb5a4b120
+jz 0xb5a4b120
+jnz 0xb5a4b160
+jz 0xb5a4b0e8
+jnbe 0xb5a3db90
+jnle 0xb5a3dab4
+jmp 0xb5a3dac8
+jmp 0xb5a4b00e
+jnz 0xb5a4b160
+jz 0xb5a4b0e8
+jnle 0xb5a4afb4
+jz 0xb5a4afb4
+jmp 0xb5a4afb4
+jz 0xb5a4b0c8
 cmp dword ptr [esi+0x20], edx
-jz 0xb59b6088
-mov byte ptr [edx], al
-mov dword ptr [esi+0x14], edx
-jnz 0xb59b6060
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x4], eax
-call 0xb59b5d10
-jz 0xb59b5d39
-mov dword ptr [esp], esi
-call 0xb59b4660
+jz 0xb5a4b088
+jnz 0xb5a4b060
+jz 0xb5a4ad39
 ret 
-jmp 0xb59b5feb
+jmp 0xb5a4afeb
 ret 
-jz 0xb59b53d8
-jbe 0xb59b535f
-jnz 0xb59b53f0
-jz 0xb59b5308
-mov dword ptr [esp+0x8], ebp
-mov dword ptr [esp], edi
-mov dword ptr [esp+0x4], ecx
-call 0xb59b6db0
-call 0xb5a71173
+jz 0xb5a4a3d8
+jbe 0xb5a4a35f
+jnz 0xb5a4a3f0
+jz 0xb5a4a308
 ret 
-jz 0xb59b6e6e
-jnb 0xb59b6e1d
-jnbe 0xb59b6e48
-jz 0xb59b6e68
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp], edi
+jz 0xb5a4be6e
+jnb 0xb5a4be1d
+jnbe 0xb5a4be48
+jz 0xb5a4be68
 call dword ptr [eax+0xc]
-jz 0xb59b60c8
+jz 0xb5a4b0c8
 cmp dword ptr [esi+0x20], edx
-jz 0xb59b6088
-mov byte ptr [edx], al
-mov dword ptr [esi+0x14], edx
-jnz 0xb59b6060
-jz 0xb59b5fe4
-jz 0xb59b6060
+jz 0xb5a4b088
+jnz 0xb5a4b060
+jz 0xb5a4afe4
+jz 0xb5a4b060
 ret 
-jz 0xb59b6e68
-jmp 0xb59b6de0
-jnb 0xb59b6e1d
-jnbe 0xb59b6e48
-jz 0xb59b6e1b
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x4], eax
-call 0xb59b5d10
+jz 0xb5a4be68
+jmp 0xb5a4bde0
+jnb 0xb5a4be1d
+jnbe 0xb5a4be48
+jz 0xb5a4be1b
 test dword ptr [eax], 0x1000
-mov dword ptr [esp+0x10], esi
-mov dword ptr [esp+0x18], ebp
-mov dword ptr [esp+0x14], edi
-jz 0xb59b46e8
-mov dword ptr [eax+0x4c], 0xffffffff
-mov dword ptr [eax+0x50], 0xffffffff
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x4], ebp
-mov dword ptr [esp], esi
+jz 0xb5a496e8
 call dword ptr [eax+0x3c]
-jz 0xb59b4689
-mov dword ptr [esp+0xc], 0x1
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp], esi
+jz 0xb5a49689
 call dword ptr [ecx+0x40]
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp+0x4], ebp
-mov dword ptr [esp], esi
 call dword ptr [eax+0x3c]
-jle 0xb59b4810
-jmp 0xb59b47a8
+jle 0xb5a49810
+jmp 0xb5a497a8
 test byte ptr [ebp+0x3c], 0x2
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], eax
-jnz 0xb59b4816
-call 0xb5a23910
+jnz 0xb5a49816
 cmp dword ptr gs:[0xc], 0x0
-jnz 0xb5a2393c
+jnz 0xb5ab893c
 call dword ptr gs:[0x10]
-jnb 0xb5a2396d
+jnb 0xb5ab896d
 ret 
-jns 0xb59b47a0
-or dword ptr [ebp], 0x20
-mov dword ptr [esp+0x18], esi
-mov dword ptr [esp+0x1c], edi
-js 0xb59b47f6
-mov dword ptr [ebp+0x4c], esi
-mov dword ptr [ebp+0x50], edi
+jns 0xb5a497a0
+js 0xb5a497f6
 ret 
-jle 0xb59b4808
+jle 0xb5a49808
 test byte ptr [ebp+0x3c], 0x2
-mov dword ptr [esp+0x8], edi
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], eax
-jnz 0xb59b4816
-call 0xb5a23910
-jmp 0xb59b47cf
-mov dword ptr [esp+0x18], esi
-mov dword ptr [esp+0x1c], edi
-js 0xb59b47f6
-mov dword ptr [ebp+0x4c], esi
-mov dword ptr [ebp+0x50], edi
+jnz 0xb5a49816
+jmp 0xb5a497cf
+js 0xb5a497f6
 ret 
 ret 
-jnz 0xb59b4730
-mov dword ptr [esi+0xc], edx
-mov dword ptr [esi+0x4], edx
-mov dword ptr [esi+0x8], edx
-mov dword ptr [esi+0x14], edx
-mov dword ptr [esi+0x10], edx
-jle 0xb59b4758
-mov dword ptr [esi+0x18], edx
+jnz 0xb5a49730
+jle 0xb5a49758
 ret 
 test dword ptr [esi], 0x202
-jnz 0xb59b46d1
-jmp 0xb59b46ce
-mov dword ptr [esi+0x18], edx
+jnz 0xb5a496d1
+jmp 0xb5a496ce
 ret 
 ret 
-jnz 0xb59b5fe4
-jmp 0xb59b5feb
+jnz 0xb5a4afe4
+jmp 0xb5a4afeb
 ret 
 ret 
-jmp 0xb59b5308
+jmp 0xb5a4a308
 ret 
 cmp dword ptr [ebp-0x480], eax
-jz 0xb5987b20
-mov dword ptr [ebp-0x480], 0xffffffff
-mov dword ptr [ebp-0x4a0], 0x0
-mov dword ptr [ebp-0x48c], 0x0
-mov dword ptr [esp], eax
-call 0xb595a300
+jz 0xb5a1cb20
 cmp byte ptr [edx], 0x0
-jz 0xb5987a3b
-jnz 0xb5988da4
-jnz 0xb5988da4
-mov dword ptr [ebp-0x4a0], 0x0
-mov dword ptr [ebp-0x48c], 0x0
-mov dword ptr [esp], eax
-call 0xb595a300
+jz 0xb5a1ca3b
+jnz 0xb5a1dda4
+jnz 0xb5a1dda4
 jmp dword ptr [ebx+0x30]
-push 0x30
-jmp 0xb595a260
+jmp 0xb59ef260
 push dword ptr [ebx+0x4]
 jmp dword ptr [ebx+0x8]
-call 0xb771b510
-call 0xb7725e98
 ret 
-mov dword ptr [esp+0x2c], eax
-mov dword ptr [esp+0x3c], ecx
-jnz 0xb771b655
+jnz 0xb77b6655
 test byte ptr [ecx+0xd], 0x3
-jnz 0xb771b651
-jz 0xb771b628
-jnz 0xb771b63c
-mov dword ptr [esp+0xc], edi
-mov dword ptr [esp+0x10], 0x0
-mov dword ptr [esp+0x8], 0x1
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp], edx
-call 0xb77168a0
-jnz 0xb771b67f
-jz 0xb771b630
-jz 0xb771b638
-jz 0xb771b6b2
-jnz 0xb771b61d
-mov dword ptr [ebp], eax
+jnz 0xb77b6651
+jz 0xb77b6628
+jnz 0xb77b663c
+jnz 0xb77b667f
+jz 0xb77b6630
+jz 0xb77b6638
+jz 0xb77b66b2
+jnz 0xb77b661d
 ret 
-mov dword ptr [esp], eax
 ret 0xc
-call 0xb5a71173
 ret 
-jnz 0xb59bd13e
-jz 0xb59bd150
-jnz 0xb59bd108
+jnz 0xb5a5213e
+jz 0xb5a52150
+jnz 0xb5a52108
 ret 
-mov dword ptr [esp], eax
-call 0xb595a300
-call 0xb5a71173
 test dword ptr [esi], 0x8000
-jnz 0xb5987a80
-sub dword ptr [edx+0x4], 0x1
-jz 0xb5987c58
-jnz 0xb5987c81
-mov dword ptr [edx+0x8], 0x0
+jnz 0xb5a1ca80
+jz 0xb5a1cc58
+jnz 0xb5a1cc81
 cmp dword ptr gs:[0xc], 0x0
-jz 0xb5987c6a
-lock sub dword ptr [edx], 0x1
-jnz 0xb598cb23
-jz 0xb5987a8e
-sub dword ptr [edx], 0x1
-jnz 0xb598cb23
-jz 0xb5987a8e
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], edx
+jz 0xb5a1cc6a
+jnz 0xb5a21b23
+jz 0xb5a1ca8e
+jnz 0xb5a21b23
+jz 0xb5a1ca8e
 ret 
 ret 
 jmp 0x804863a
 leave 
 ret 
-mov dword ptr [esp], eax
-call 0xb59767f0
-call 0xb5a71173
 ret 
-mov dword ptr [esp+0x8], 0x1
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], eax
-call 0xb5976700
-call 0xb5a71173
 ret 
-mov dword ptr [esp+0x1c], eax
-jz 0xb59767b9
-jz 0xb59767b0
-mov dword ptr [ebp+0x4], eax
-jz 0xb5976798
-jz 0xb5976778
-jnz 0xb5976733
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp+0x4], esi
-mov dword ptr [esp], edx
-call 0xb7725e98
+jz 0xb5a0b7b9
+jz 0xb5a0b7b0
+jz 0xb5a0b798
+jz 0xb5a0b778
+jnz 0xb5a0b733
 ret 
-mov dword ptr [ebp-0x44], esi
-mov dword ptr [ebp-0x2c], 0x0
-mov dword ptr [ebp-0x40], 0x0
-mov dword ptr [ebp-0x24], 0x0
-mov dword ptr [ebp-0x4c], esi
-mov dword ptr [ebp-0x50], esi
-mov dword ptr [ebp-0x34], esi
-js 0xb771c822
-mov dword ptr [ebp-0x3c], esi
-mov dword ptr [ebp-0x38], esi
-mov dword ptr [ebp-0x30], eax
-mov dword ptr [ebp-0x48], esi
-jmp 0xb771c690
-mov dword ptr [esp], esi
+js 0xb77b7822
+jmp 0xb77b7690
 call dword ptr [esi+ebx*1]
-jz 0xb771c670
-jnz 0xb771c670
-setz byte ptr [ebp-0x1c]
-jbe 0xb771c6ef
-jnz 0xb771c8a0
-mov dword ptr [ebp-0x24], esi
-mov dword ptr [ebp-0x40], ecx
-mov dword ptr [ebp-0x20], 0x0
-jmp 0xb771c707
+jz 0xb77b7670
+jnz 0xb77b7670
+jbe 0xb77b76ef
+jnz 0xb77b78a0
+jmp 0xb77b7707
 cmp dword ptr [eax+0x14], eax
-jnz 0xb771c700
-jbe 0xb771c97e
-mov dword ptr [esi+ecx*4], eax
-mov dword ptr [eax+0x20c], ecx
-add dword ptr [eax+0x190], 0x1
-jnz 0xb771c707
-mov dword ptr [ebp-0x20], ecx
-jnz 0xb771c937
-mov dword ptr [esp], esi
-call 0xb771c3b0
-call 0xb7725e98
+jnz 0xb77b7700
+jbe 0xb77b797e
+jnz 0xb77b7707
+jnz 0xb77b7937
 ret 
-mov dword ptr [ebp-0x38], eax
-mov dword ptr [ebp-0x2c], edx
-mov dword ptr [ebp-0x40], ecx
-mov dword ptr [ebp-0x48], esp
-jz 0xb771c4fe
-mov dword ptr [ebp-0x20], edx
-mov dword ptr [ebp-0x28], ecx
-mov dword ptr [esp], ecx
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0x4], 0x0
-call 0xb7725c10
-mov dword ptr [ebp-0x4c], edx
-mov dword ptr [ebp-0x24], ecx
-mov dword ptr [ebp-0x44], edx
-jmp 0xb771c46c
-mov dword ptr [ebp-0x34], eax
-mov word ptr [esi+edx*2], cx
-mov word ptr [ebp-0x2e], cx
-jnz 0xb771c430
+jz 0xb77b74fe
+jmp 0xb77b746c
+jnz 0xb77b7430
 cmp dword ptr [esi+0x20c], 0xffffffff
-jz 0xb771c430
+jz 0xb77b7430
 cmp dword ptr [ebp-0x20], ecx
-mov dword ptr [ebp-0x1c], ecx
-jnb 0xb771c430
-jnz 0xb771c4c7
-jmp 0xb771c4cd
-jnz 0xb771c5b5
-sub dword ptr [ebp-0x1c], 0x1
+jnb 0xb77b7430
+jnz 0xb77b74c7
+jmp 0xb77b74cd
+jnz 0xb77b75b5
 cmp dword ptr [ebp-0x20], ecx
-jb 0xb771c4b0
-mov dword ptr [ebp-0x20], esi
-jnz 0xb771c441
-jnz 0xb771c4c7
-jmp 0xb771c4cd
-jnz 0xb771c4c0
-jnz 0xb771c5b5
-sub dword ptr [ebp-0x1c], 0x1
+jb 0xb77b74b0
+jnz 0xb77b7441
+jnz 0xb77b74c7
+jmp 0xb77b74cd
+jnz 0xb77b74c0
+jnz 0xb77b75b5
 cmp dword ptr [ebp-0x20], ecx
-jb 0xb771c4b0
-jz 0xb771c508
-jnz 0xb771c4c0
-jnz 0xb771c5b5
-sub dword ptr [ebp-0x1c], 0x1
+jb 0xb77b74b0
+jz 0xb77b7508
+jnz 0xb77b74c0
+jnz 0xb77b75b5
 cmp dword ptr [ebp-0x20], ecx
-jb 0xb771c4b0
-mov dword ptr [ebp-0x20], esi
-jnz 0xb771c441
+jb 0xb77b74b0
+jnz 0xb77b7441
 ret 0x4
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp], eax
-call 0xb7725c10
-mov dword ptr [ebp-0x24], esi
-mov dword ptr [ebp-0x34], eax
-mov word ptr [esi+edx*2], cx
-mov word ptr [ebp-0x2e], cx
-jnz 0xb771c430
+jnz 0xb77b7430
 cmp dword ptr [esi+0x20c], 0xffffffff
-jz 0xb771c430
+jz 0xb77b7430
 cmp dword ptr [ebp-0x20], ecx
-mov dword ptr [ebp-0x1c], ecx
-jnb 0xb771c430
-stosb byte ptr [edi]
-jz 0xb7725c4d
-stosb byte ptr [edi]
-jz 0xb7725c4d
-jnz 0xb7725c39
-mov dword ptr [ebp-0x20], esi
-jz 0xb771c4fb
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp+0x8], edx
-mov dword ptr [esp], eax
-call 0xb7725c10
+jnb 0xb77b7430
+jz 0xb77c0c4d
+jz 0xb77c0c4d
+jnz 0xb77c0c39
+jz 0xb77b74fb
 ret 0x4
-mov dword ptr [esp], esi
 call dword ptr [ebx+0x838]
-jz 0xb771c67c
-mov dword ptr [ebp-0x1c], 0x0
-jz 0xb771c7fd
-mov byte ptr [esi+0x194], al
-jz 0xb771c858
-jz 0xb771c7e2
+jz 0xb77b767c
+jz 0xb77b77fd
+jz 0xb77b7858
+jz 0xb77b77e2
 test byte ptr [ebx-0x340], 0x2
-jz 0xb771c7a8
+jz 0xb77b77a8
 cmp byte ptr [eax], 0x0
-jnz 0xb771c87c
-jnz 0xb771c7fd
-jnz 0xb771c8fa
-sub dword ptr [esi+0x190], 0x1
-add dword ptr [ebp-0x1c], 0x1
+jnz 0xb77b787c
+jnz 0xb77b77fd
+jnz 0xb77b78fa
 cmp dword ptr [ebp-0x1c], esi
-jnz 0xb771c770
-jz 0xb771c7fd
-mov byte ptr [esi+0x194], al
-jz 0xb771c858
+jnz 0xb77b7770
+jz 0xb77b77fd
+jz 0xb77b7858
 test byte ptr [ebx-0x340], 0x2
-jnz 0xb771c86c
-sub dword ptr [esi+0x190], 0x1
-add dword ptr [ebp-0x1c], 0x1
+jnz 0xb77b786c
 cmp dword ptr [ebp-0x1c], esi
-jnz 0xb771c770
-sub dword ptr [ebp-0x30], 0x4c
-sub dword ptr [ebp-0x34], 0x1
-jns 0xb771c690
-jnz 0xb771c83e
-sub dword ptr [ebp-0x30], 0x4c
-sub dword ptr [ebp-0x34], 0x1
-jns 0xb771c690
-jnz 0xb771c83e
-mov dword ptr [ebp-0x2c], 0x1
-jnz 0xb771c62b
+jnz 0xb77b7770
+jns 0xb77b7690
+jnz 0xb77b783e
+jns 0xb77b7690
+jnz 0xb77b783e
+jnz 0xb77b762b
 test byte ptr [ebx-0x340], 0x80
-jnz 0xb771c8d0
+jnz 0xb77b78d0
 ret 
-jmp 0xb5976730
-jz 0xb59767b0
-mov dword ptr [ebp+0x4], eax
-jz 0xb5976798
-jz 0xb5976778
-mov dword ptr [edi], eax
-jnz 0xb59767e1
+jmp 0xb5a0b730
+jz 0xb5a0b7b0
+jz 0xb5a0b798
+jz 0xb5a0b778
+jnz 0xb5a0b7e1
 cmp byte ptr [esp+0x1c], 0x0
-jz 0xb59767d9
-jnb 0xb59767d9
+jz 0xb5a0b7d9
+jnb 0xb5a0b7d9
 call dword ptr [edi]
-call 0xb5a71173
 ret 
-mov dword ptr [esp], 0x0
-call 0xb59b7420
-call 0xb5a71173
 ret 
-mov dword ptr [esp+0x1c], 0x0
-jz 0xb59b74a1
-mov dword ptr [esp+0x1c], edx
-jnz 0xb59b7650
-mov dword ptr [esp+0x20], eax
-mov dword ptr [esp+0x24], 0x0
-jz 0xb59b749a
-mov dword ptr [esp+0x14], 0x0
-jz 0xb59b7580
-mov dword ptr [esp+0x18], edx
-mov dword ptr [ebx+0x189c], esi
-jz 0xb59b750e
-jnz 0xb59b750e
-jle 0xb59b7610
+jz 0xb5a4c4a1
+jnz 0xb5a4c650
+jz 0xb5a4c49a
+jz 0xb5a4c580
+jz 0xb5a4c50e
+jnz 0xb5a4c50e
+jle 0xb5a4c610
 cmp byte ptr [esi+0x46], 0x0
-jz 0xb59b75c6
-nop 
-jz 0xb59b7558
+jz 0xb5a4c5c6
+jz 0xb5a4c558
 cmp dword ptr [esi+0x14], edx
-jbe 0xb59b7528
-jmp 0xb59b75d7
-jz 0xb59b7558
+jbe 0xb5a4c528
+jmp 0xb5a4c5d7
+jz 0xb5a4c558
 test dword ptr [esi], 0x8000
-jnz 0xb59b7558
-sub dword ptr [edx+0x4], 0x1
-jnz 0xb59b7558
-mov dword ptr [ebx+0x189c], 0x0
-jz 0xb59b7608
-jnz 0xb59b74c8
-jz 0xb59b7591
-jmp 0xb59b7578
-jnz 0xb59b74c8
-jz 0xb59b7591
-sub dword ptr [ebx+0x1894], 0x1
-jz 0xb59b7628
-mov dword ptr [ebx+0x189c], esi
-jz 0xb59b750e
-jnz 0xb59b750e
-jz 0xb59b750a
-jz 0xb59b75ba
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], edx
+jnz 0xb5a4c558
+jnz 0xb5a4c558
+jz 0xb5a4c608
+jnz 0xb5a4c4c8
+jz 0xb5a4c591
+jmp 0xb5a4c578
+jnz 0xb5a4c4c8
+jz 0xb5a4c591
+jz 0xb5a4c628
+jz 0xb5a4c50e
+jnz 0xb5a4c50e
+jz 0xb5a4c50a
+jz 0xb5a4c5ba
 ret 
-mov dword ptr [esp+0x1c], eax
-jz 0xb59b77a2
-nop 
-jnz 0xb59b7790
-jz 0xb59b7790
-mov dword ptr [esi+0x68], 0xffffffff
-jnz 0xb59b76b8
+jz 0xb5a4c7a2
+jnz 0xb5a4c790
+jz 0xb5a4c790
+jnz 0xb5a4c6b8
 ret 
-jnz 0xb59b7790
-jz 0xb59b7790
-jz 0xb59b7790
-jz 0xb59b7837
-jz 0xb59b7820
+jnz 0xb5a4c790
+jz 0xb5a4c790
+jz 0xb5a4c790
+jz 0xb5a4c837
+jz 0xb5a4c820
 cmp dword ptr gs:[0xc], 0x0
-jz 0xb59b7705
-cmpxchg dword ptr [edx], ecx
-jz 0xb59b77b0
-mov dword ptr [esp+0x18], ecx
-call 0xb5a0a4f0
-jmp 0xb59b774e
-mov dword ptr [eax+0x8], edi
-mov dword ptr [eax+0x4], 0x1
+jz 0xb5a4c705
+jz 0xb5a4c7b0
+jmp 0xb5a4c74e
 cmp byte ptr [ebx+0x18a4], 0x0
-jnz 0xb59b776a
-jz 0xb59b77b8
-mov dword ptr [esp+0x8], 0x0
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], esi
+jnz 0xb5a4c76a
+jz 0xb5a4c7b8
 call dword ptr [eax+0x2c]
-mov dword ptr [esi], eax
-mov dword ptr [ebx+0x18a8], esi
-mov dword ptr [esi+0x60], edx
-mov dword ptr [esi+0x5c], eax
-mov dword ptr [esi+0x64], eax
-jmp 0xb59b776a
-mov dword ptr [esp+0x8], 0x0
-mov dword ptr [esp+0x4], 0x0
-mov dword ptr [esp], esi
+jmp 0xb5a4c76a
 call dword ptr [eax+0x2c]
-mov dword ptr [esp+0x14], ebx
-call 0xb5a71173
 ret 
-mov dword ptr [esp+0x18], esi
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x4], eax
-call 0xb59b6f60
-mov dword ptr [esp+0x10], esi
-mov dword ptr [esp+0x14], edi
-mov dword ptr [esp+0x18], ebp
-mov dword ptr [esp], esi
 call dword ptr [eax+0x30]
-call 0xb5a71173
 ret 
-jbe 0xb59b4f04
-jle 0xb59b4f60
-mov dword ptr [esp], esi
-mov dword ptr [esp+0x4], edx
-mov dword ptr [esp+0x8], eax
-call 0xb59b22a0
-jnz 0xb59b4f28
-mov dword ptr [esi+0x4c], 0xffffffff
-mov dword ptr [esi+0x50], 0xffffffff
+jbe 0xb5a49f04
+jle 0xb5a49f60
+jnz 0xb5a49f28
 ret 
-jz 0xb59b7020
-jz 0xb59b6f9d
-jnz 0xb59b7000
-or dword ptr [esi], 0x2
-mov dword ptr [esp+0x8], eax
-mov dword ptr [esp+0xc], 0x0
-mov dword ptr [esp+0x4], eax
-mov dword ptr [esp], esi
-call 0xb59b6c80
-or dword ptr [esi], 0x1
+jz 0xb5a4c020
+jz 0xb5a4bf9d
+jnz 0xb5a4c000
 ret 
-mov dword ptr [esi+0x18], 0x0
-mov dword ptr [esi+0x14], 0x0
-mov dword ptr [esi+0x10], 0x0
-mov dword ptr [esi+0x8], 0x0
-mov dword ptr [esi+0x4], 0x0
-mov dword ptr [esi+0xc], 0x0
 ret 
-jz 0xb59b5010
-mov dword ptr [esi+0x18], eax
-mov dword ptr [esi+0x14], eax
-mov dword ptr [esi+0x10], eax
-mov dword ptr [esi+0xc], eax
-mov dword ptr [esi+0x4], eax
-mov dword ptr [esi+0x8], eax
+jz 0xb5a4a010
 ret 
-jnz 0xb59b77f0
-mov dword ptr [esi+0x68], 0xffffffff
-jnz 0xb59b76b8
+jnz 0xb5a4c7f0
+jnz 0xb5a4c6b8
 ret 
-jz 0xb59b7790
-sub dword ptr [edx+0x4], 0x1
-jnz 0xb59b7790
-mov dword ptr [edx+0x8], 0x0
+jz 0xb5a4c790
+jnz 0xb5a4c790
 cmp dword ptr gs:[0xc], 0x0
-jz 0xb59b780f
-sub dword ptr [edx], 0x1
-jnz 0xb59b7f9e
-jmp 0xb59b7790
-jb 0xb59767d0
-mov dword ptr [esp], esi
-call 0xb59fdb04
+jz 0xb5a4c80f
+jnz 0xb5a4cf9e
+jmp 0xb5a4c790
+jb 0xb5a0b7d0
 call dword ptr gs:[0x10]
