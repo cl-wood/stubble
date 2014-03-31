@@ -297,9 +297,11 @@ VOID op_mem_reg(UINT32 insAddr, std::string insDis, REG reg_r, UINT32 memOp, UIN
     if (tainted_memory.count(memOp) > 0 && 
             (!REG_valid(reg_r) || tainted_registers.count(regString) == 0) ) {
         untaint_memory(regString, memOp, insDis);
-        
+        return;    
     }
-    else { // memory not tainted, register is tainted
+
+    // memory not tainted, register is tainted
+    if (tainted_memory.count(memOp) == 0 && tainted_registers.count(regString) > 0) { 
         taint_memory(regString, memOp, insDis);
     } 
 
