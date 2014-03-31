@@ -1,1 +1,0 @@
-jnz 0x804860e	by	cmp eax, 0x58 from user input 0

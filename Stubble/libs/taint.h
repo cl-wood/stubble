@@ -15,7 +15,6 @@
 
 /* Globals for Stubble */
 extern const string results_dir; 
-extern unsigned long INS_COUNT;
 
 // Taint globals
 const int UNTAINTED = -1;
@@ -73,6 +72,7 @@ extern unordered_map<ADDRINT, tuple<UINT32, string> > tainted_memory;
 REGSET instruction_registers; 
 
 // Files for recording various information
+ofstream BacksolveFile;
 ofstream CondBranchFile;
 ofstream TaintFile;
 ofstream EflagsFile;
@@ -156,7 +156,7 @@ VOID untaint_register(REG reg, string insDis)
         tainted_registers.erase(regString);
 
         if (DEBUG) {
-            TaintFile << INS_COUNT << ":" << userInputByte << "\t" 
+            TaintFile << userInputByte << ":\t" 
                   << "UNTAINT REG\t" << regString << "\t" << insDis << endl;
         }
     }
@@ -192,7 +192,7 @@ VOID taint_register(REG reg, string source, string source_type, string insDis)
 
         tainted_registers[regString] = tuple<UINT32, string>(userInputByte, "");
         if (DEBUG) {
-            TaintFile << INS_COUNT << ":" << userInputByte << "\t"
+            TaintFile << userInputByte << ":\t" 
                   << "TAINT REG\t" << regString << "\t" << insDis << endl;
         }
     }
@@ -213,13 +213,13 @@ VOID untaint_memory(string source, ADDRINT sink, string insDis)
     if (tainted_registers.count(source) > 0) {
         UINT32 userInputByte = get<0>(tainted_registers[source]);
         if (DEBUG) {
-            TaintFile << INS_COUNT << ":" << userInputByte << "\t"
+            TaintFile << userInputByte << ":\t"
               << "UNTAINT MEM\t" << StringFromAddrint(sink) << "\t" << insDis << endl;
         }
     }
     else {
         if (DEBUG) {
-            TaintFile << INS_COUNT << ":IMM" << "\t"
+            TaintFile << ":IMM" << "\t"
               << "UNTAINT MEM\t" << StringFromAddrint(sink) << "\t" << insDis << endl;
         }
         
@@ -246,7 +246,7 @@ VOID taint_memory(string source, ADDRINT sink, string insDis)
 
     tainted_memory[sink] = tuple<UINT32, string>(userInputByte, insDis);
     if (DEBUG) {
-        TaintFile << INS_COUNT << ":" << userInputByte << "\t"
+        TaintFile << userInputByte << ":\t"
         << "TAINT MEM\t" << StringFromAddrint(sink) << "\t" << insDis << endl;
     }
 
@@ -338,7 +338,7 @@ VOID followData(UINT32 insAddr, string insDis, REG reg)
     string regString = REG_StringShort(reg);
     if (tainted_registers.count(regString) > 0) {
         if (DEBUG) {
-            TaintFile << INS_COUNT << ":" << get<0>(tainted_registers[regString]) << "\t"
+            TaintFile << ":" << get<0>(tainted_registers[regString]) << "\t"
             << "[FOLLOW]\t\t" << insDis << endl;
         }
     }
@@ -379,14 +379,15 @@ VOID diff_eflags(INS ins, string insDis, REG reg, CONTEXT* context)
         // Check ZF
         if ( (new_eflags_value & ZF) != (eflags.value & ZF) ) 
         {
+
             UINT32 userInputByte = get<0>(tainted_registers[regString]);
 
             eflags.ZF_tainted = true;
             eflags.ZF_instruction = insDis;
             eflags.ZF_user_input_byte = userInputByte;
             if (DEBUG) {
-                EflagsFile << new_eflags_value << "\t" << insDis << endl;
-                TaintFile << INS_COUNT << ":" << userInputByte << "\t"
+                //EflagsFile << new_eflags_value << "\t" << insDis << endl;
+                TaintFile << userInputByte << ":\t"
                       << "TAINT ZF\t" << insDis << endl;
             }
         }
@@ -409,10 +410,16 @@ VOID conditional_branch(ADDRINT ins, string insDis)
 {
     if (eflags.ZF_tainted) {
 
+        BacksolveFile << eflags.ZF_user_input_byte << ":" << eflags.ZF_instruction << endl;
+
         if (DEBUG) {
-            CondBranchFile << insDis << "\tby\t" << eflags.ZF_instruction 
-                       << " from user input " << eflags.ZF_user_input_byte << endl;
+
+            //CondBranchFile << insDis << "\tby\t" << eflags.ZF_instruction 
+            //           << " from user input " << eflags.ZF_user_input_byte << endl;
+            TaintFile << eflags.ZF_user_input_byte << ":\tTAINT BR\tby ZF\t" << eflags.ZF_instruction << endl;
+
         }
+
     }
 }
 
@@ -512,6 +519,7 @@ VOID Instructions(INS ins, VOID *v)
         }
     }
 
+/*
     if (INS_OperandCount(ins) > 1 && INS_OperandIsReg(ins, 0)){
         INS_InsertCall(
                 ins, IPOINT_BEFORE, (AFUNPTR)followData,
@@ -520,14 +528,17 @@ VOID Instructions(INS ins, VOID *v)
                 IARG_UINT32, INS_RegR(ins, 0),
                 IARG_END);
     }
+*/
 
-    INS_COUNT++;
+    //INS_COUNT++;
 
 } // End Instructions
 
 
 VOID init_taint()
 {
+
+    BacksolveFile.open(results_dir + "backsolve.out");
 
     if (DEBUG) {
         CondBranchFile.open(results_dir + "branches.out");
@@ -538,13 +549,15 @@ VOID init_taint()
     }
 
     INS_AddInstrumentFunction(Instructions, 0);
-
     INS_COUNT = 0;
 
 }
 
 VOID fini_taint()
 {
+
+    BacksolveFile.close();
+
     if (DEBUG) {
         CondBranchFile.close();
         TaintFile.close();
