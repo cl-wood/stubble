@@ -47,11 +47,13 @@ VOID Syscall_entry(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID 
 
         }
 
-        SyscallsFile << INS_COUNT << ":\t" << "READ fd " << PIN_GetSyscallArgument(ctx, std, 0) << ":[" 
+        if (DEBUG) {
+            SyscallsFile << INS_COUNT << ":\t" << "READ fd " << PIN_GetSyscallArgument(ctx, std, 0) << ":[" 
                      << StringFromAddrint(start) << ", " << StringFromAddrint(start + size) << "]" <<endl;
 
-        TaintFile << INS_COUNT << ":\t" << "READ fd " << PIN_GetSyscallArgument(ctx, std, 0) << ":[" 
+            TaintFile << INS_COUNT << ":\t" << "READ fd " << PIN_GetSyscallArgument(ctx, std, 0) << ":[" 
                      << StringFromAddrint(start) << ", " << StringFromAddrint(start + size) << "]" << endl;
+        }
 
     }
 
@@ -59,8 +61,8 @@ VOID Syscall_entry(THREADID thread_id, CONTEXT *ctx, SYSCALL_STANDARD std, VOID 
 
 VOID init_syscalls()
 {
-    SyscallsFile.open(results_dir + "syscalls.out");
 
+    SyscallsFile.open(results_dir + "syscalls.out");
     PIN_AddSyscallEntryFunction(Syscall_entry, 0);
 
 }

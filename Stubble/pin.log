@@ -1,2 +1,0 @@
-Pin 2.12 kit 58423
-E: libs/Stubble.h:397: IARG_MEMORYOP_EA/IARG_MEMORYOP_MASKED_ON invalid memory operand index (0) on    159 0xb772bbbf jnz 0xb772bbec

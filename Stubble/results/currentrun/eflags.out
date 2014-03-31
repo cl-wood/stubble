@@ -280,11 +280,11 @@
 582	or byte ptr [ebx+0x6f0], 0x4
 514	or eax, dword ptr [ebx-0x1b8]
 582	sub eax, dword ptr [ebp-0x30]
-534	sbb edx, dword ptr [ebp-0x2c]
+530	sbb edx, dword ptr [ebp-0x2c]
 582	cmp edi, edx
 646	sub ecx, 0x1
 514	sub eax, dword ptr [ebp-0x30]
-518	sbb edx, dword ptr [ebp-0x2c]
+534	sbb edx, dword ptr [ebp-0x2c]
 582	cmp edi, edx
 582	cmp esi, eax
 659	sub ecx, 0x1
@@ -292,29 +292,29 @@
 530	sbb edx, dword ptr [ebp-0x2c]
 582	cmp edi, edx
 582	cmp esi, eax
-643	sub ecx, 0x1
+647	sub ecx, 0x1
+514	sub eax, dword ptr [ebp-0x30]
+518	sbb edx, dword ptr [ebp-0x2c]
+582	cmp edi, edx
+582	cmp esi, eax
+514	sub ecx, 0x1
 514	sub eax, dword ptr [ebp-0x30]
 514	sbb edx, dword ptr [ebp-0x2c]
 582	cmp edi, edx
 582	cmp esi, eax
-534	sub ecx, 0x1
-514	sub eax, dword ptr [ebp-0x30]
-530	sbb edx, dword ptr [ebp-0x2c]
-582	cmp edi, edx
-582	cmp esi, eax
-534	sub ecx, 0x1
+518	sub ecx, 0x1
 582	test edx, edx
 646	sub esp, 0x2c
-642	add ebx, 0x168bb
+646	add ebx, 0x168bb
 662	test ebp, ecx
 582	add edx, 0x10
 642	shl esi, 0x2
 514	sub edx, esi
 642	add esp, 0x2c
-646	sub esp, 0x5c
+642	sub esp, 0x5c
 646	add ebx, 0xbe20
 646	add eax, 0x4
-646	test esi, esi
+642	test esi, esi
 642	add edx, 0x4
 658	test ecx, ecx
 646	add edx, 0x4
@@ -332,56 +332,8 @@
 646	add edx, 0x4
 646	test ecx, ecx
 642	add edx, 0x4
-658	test ecx, ecx
-646	add edx, 0x4
-646	test ecx, ecx
-642	add edx, 0x4
-646	test ecx, ecx
-646	add edx, 0x4
-642	test ecx, ecx
-642	add edx, 0x4
 662	test ecx, ecx
-642	add edx, 0x4
-642	test ecx, ecx
 646	add edx, 0x4
-642	test ecx, ecx
-646	add edx, 0x4
-646	test ecx, ecx
-646	add edx, 0x4
-662	test ecx, ecx
-642	add edx, 0x4
-642	test ecx, ecx
-642	add edx, 0x4
-642	test ecx, ecx
-642	add edx, 0x4
-646	test ecx, ecx
-642	add edx, 0x4
-658	test ecx, ecx
-646	add edx, 0x4
-646	test ecx, ecx
-642	add edx, 0x4
-646	test ecx, ecx
-646	add edx, 0x4
-642	test ecx, ecx
-642	add edx, 0x4
-658	test ecx, ecx
-646	add edx, 0x4
-646	test ecx, ecx
-642	add edx, 0x4
-646	test ecx, ecx
-646	add edx, 0x4
-642	test ecx, ecx
-646	add edx, 0x4
-662	test ecx, ecx
-642	add edx, 0x4
-642	test ecx, ecx
-646	add edx, 0x4
-642	test ecx, ecx
-646	add edx, 0x4
-646	test ecx, ecx
-646	add edx, 0x4
-662	test ecx, ecx
-642	add edx, 0x4
 642	test ecx, ecx
 642	add edx, 0x4
 642	test ecx, ecx
@@ -391,9 +343,17 @@
 658	test ecx, ecx
 642	add edx, 0x4
 646	test ecx, ecx
-642	add edx, 0x4
+646	add edx, 0x4
 646	test ecx, ecx
 646	add edx, 0x4
+642	test ecx, ecx
+646	add edx, 0x4
+658	test ecx, ecx
+642	add edx, 0x4
+646	test ecx, ecx
+642	add edx, 0x4
+646	test ecx, ecx
+642	add edx, 0x4
 642	test ecx, ecx
 642	add edx, 0x4
 662	test ecx, ecx
@@ -404,43 +364,83 @@
 646	add edx, 0x4
 646	test ecx, ecx
 642	add edx, 0x4
-658	test ecx, ecx
+662	test ecx, ecx
 646	add edx, 0x4
-646	test ecx, ecx
-642	add edx, 0x4
-646	test ecx, ecx
-642	add edx, 0x4
 642	test ecx, ecx
 642	add edx, 0x4
-658	test ecx, ecx
+642	test ecx, ecx
 646	add edx, 0x4
 646	test ecx, ecx
+646	add edx, 0x4
+658	test ecx, ecx
 642	add edx, 0x4
+646	test ecx, ecx
+646	add edx, 0x4
 646	test ecx, ecx
 646	add edx, 0x4
 642	test ecx, ecx
 646	add edx, 0x4
 662	test ecx, ecx
-646	add edx, 0x4
+642	add edx, 0x4
+642	test ecx, ecx
+642	add edx, 0x4
 642	test ecx, ecx
 646	add edx, 0x4
-642	test ecx, ecx
+646	test ecx, ecx
+642	add edx, 0x4
+658	test ecx, ecx
 642	add edx, 0x4
 646	test ecx, ecx
 642	add edx, 0x4
-662	test ecx, ecx
-642	add edx, 0x4
-642	test ecx, ecx
-642	add edx, 0x4
-642	test ecx, ecx
-642	add edx, 0x4
 646	test ecx, ecx
 646	add edx, 0x4
+642	test ecx, ecx
+642	add edx, 0x4
 658	test ecx, ecx
 646	add edx, 0x4
 646	test ecx, ecx
 642	add edx, 0x4
 646	test ecx, ecx
+646	add edx, 0x4
+642	test ecx, ecx
+642	add edx, 0x4
+662	test ecx, ecx
+646	add edx, 0x4
+642	test ecx, ecx
+642	add edx, 0x4
+642	test ecx, ecx
+642	add edx, 0x4
+646	test ecx, ecx
+642	add edx, 0x4
+662	test ecx, ecx
+646	add edx, 0x4
+642	test ecx, ecx
+642	add edx, 0x4
+642	test ecx, ecx
+646	add edx, 0x4
+646	test ecx, ecx
+646	add edx, 0x4
+658	test ecx, ecx
+646	add edx, 0x4
+646	test ecx, ecx
+646	add edx, 0x4
+646	test ecx, ecx
+642	add edx, 0x4
+642	test ecx, ecx
+642	add edx, 0x4
+658	test ecx, ecx
+642	add edx, 0x4
+646	test ecx, ecx
+642	add edx, 0x4
+646	test ecx, ecx
+642	add edx, 0x4
+642	test ecx, ecx
+646	add edx, 0x4
+662	test ecx, ecx
+646	add edx, 0x4
+642	test ecx, ecx
+642	add edx, 0x4
+642	test ecx, ecx
 582	test edx, edx
 514	xor ebp, ebp
 582	xor esi, esi
@@ -470,62 +470,62 @@
 530	cmp edx, 0x1e
 647	add edx, ebx
 647	add eax, 0x8
-662	test edx, edx
+658	test edx, edx
 518	sub edx, 0x3
 582	cmp edx, 0x1e
 663	add edx, ebx
 647	add eax, 0x8
-642	test edx, edx
+646	test edx, edx
 514	sub edx, 0x3
 514	cmp edx, 0x1e
 659	add edx, ebx
 643	add eax, 0x8
-658	test edx, edx
+662	test edx, edx
 518	sub edx, 0x3
 514	cmp edx, 0x1e
 663	add edx, ebx
 647	add eax, 0x8
-646	test edx, edx
+642	test edx, edx
 514	sub edx, 0x3
 514	cmp edx, 0x1e
 659	add edx, ebx
 643	add eax, 0x8
-658	test edx, edx
+662	test edx, edx
 514	sub edx, 0x3
 518	cmp edx, 0x1e
 663	add edx, ebx
 643	add eax, 0x8
-646	test edx, edx
+642	test edx, edx
 518	sub edx, 0x3
 518	cmp edx, 0x1e
 663	add edx, ebx
 647	add eax, 0x8
-662	test edx, edx
+658	test edx, edx
 514	sub edx, 0x3
 514	cmp edx, 0x1e
 659	add edx, ebx
 643	add eax, 0x8
-642	test edx, edx
+646	test edx, edx
 518	sub edx, 0x3
 518	cmp edx, 0x1e
-663	add edx, ebx
-643	add eax, 0x8
-662	test edx, edx
-514	sub edx, 0x3
-518	cmp edx, 0x1e
-659	add edx, ebx
-643	add eax, 0x8
-642	test edx, edx
-514	sub edx, 0x3
-514	cmp edx, 0x1e
 663	add edx, ebx
 643	add eax, 0x8
 658	test edx, edx
+514	sub edx, 0x3
+518	cmp edx, 0x1e
+659	add edx, ebx
+643	add eax, 0x8
+646	test edx, edx
+514	sub edx, 0x3
+514	cmp edx, 0x1e
+663	add edx, ebx
+643	add eax, 0x8
+662	test edx, edx
 518	sub edx, 0x3
 518	cmp edx, 0x1e
 663	add edx, ebx
 643	add eax, 0x8
-646	test edx, edx
+642	test edx, edx
 514	sub edx, 0x3
 514	cmp edx, 0x1e
 659	add edx, ebx
@@ -549,27 +549,27 @@
 582	cmp edx, esi
 647	add esp, 0x8
 642	test eax, eax
-646	cmp byte ptr [eax], 0x0
+642	cmp byte ptr [eax], 0x0
 518	and edx, eax
 518	cmp byte ptr [eax], dh
 518	inc eax
-642	xor edx, edx
+646	xor edx, edx
 582	add eax, 0x4
-658	sub edx, ecx
+662	sub edx, ecx
 663	add ecx, 0xfefefeff
 662	dec edx
 646	sub eax, 0x4
-658	sub ecx, 0xfefefeff
+662	sub ecx, 0xfefefeff
 534	cmp cl, 0x0
 518	inc eax
-646	test ch, ch
+642	test ch, ch
 514	shr ecx, 0x10
 518	inc eax
-646	cmp cl, 0x0
+642	cmp cl, 0x0
 518	inc eax
-642	sub eax, dword ptr [esp+0x4]
+646	sub eax, dword ptr [esp+0x4]
 514	sub esp, 0x1c
-642	add ebx, 0xad64
+646	add ebx, 0xad64
 662	test esi, esi
 518	test eax, eax
 582	cmp edi, 0x0
@@ -578,7 +578,7 @@
 531	test eax, eax
 582	add ebx, 0x1f8d5
 662	sub esp, 0x10c
-642	cmp dword ptr [ebx-0xcc], 0x1
+646	cmp dword ptr [ebx-0xcc], 0x1
 663	sbb eax, eax
 663	and eax, 0x9
 582	test edx, edx
@@ -608,78 +608,78 @@
 646	test edx, edx
 642	cmp byte ptr [edx], 0x4c
 534	add ecx, 0x4
-658	test edx, edx
-646	cmp byte ptr [edx], 0x4c
-530	add ecx, 0x4
-646	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-530	add ecx, 0x4
-646	test edx, edx
-646	cmp byte ptr [edx], 0x4c
-659	add ecx, 0x4
-642	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-534	add ecx, 0x4
 662	test edx, edx
+646	cmp byte ptr [edx], 0x4c
+530	add ecx, 0x4
+642	test edx, edx
 642	cmp byte ptr [edx], 0x4c
-659	add ecx, 0x4
+530	add ecx, 0x4
 642	test edx, edx
 646	cmp byte ptr [edx], 0x4c
+659	add ecx, 0x4
+646	test edx, edx
+642	cmp byte ptr [edx], 0x4c
 534	add ecx, 0x4
-642	test edx, edx
+658	test edx, edx
+642	cmp byte ptr [edx], 0x4c
+659	add ecx, 0x4
+646	test edx, edx
+646	cmp byte ptr [edx], 0x4c
+534	add ecx, 0x4
+646	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 582	cmp byte ptr [edx+0x1], 0x44
 534	add ecx, 0x4
-646	test edx, edx
+642	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 534	add ecx, 0x4
-662	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-534	add ecx, 0x4
-642	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-530	add ecx, 0x4
-642	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-659	add ecx, 0x4
-646	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-530	add ecx, 0x4
 658	test edx, edx
-646	cmp byte ptr [edx], 0x4c
+642	cmp byte ptr [edx], 0x4c
 534	add ecx, 0x4
 646	test edx, edx
 642	cmp byte ptr [edx], 0x4c
-659	add ecx, 0x4
+530	add ecx, 0x4
 646	test edx, edx
+642	cmp byte ptr [edx], 0x4c
+659	add ecx, 0x4
+642	test edx, edx
+642	cmp byte ptr [edx], 0x4c
+530	add ecx, 0x4
+662	test edx, edx
+646	cmp byte ptr [edx], 0x4c
+534	add ecx, 0x4
+642	test edx, edx
+642	cmp byte ptr [edx], 0x4c
+659	add ecx, 0x4
+642	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 530	add ecx, 0x4
-642	test edx, edx
+646	test edx, edx
 642	cmp byte ptr [edx], 0x4c
 514	add ecx, 0x4
-658	test edx, edx
+662	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 530	add ecx, 0x4
-646	test edx, edx
+642	test edx, edx
 642	cmp byte ptr [edx], 0x4c
 659	add ecx, 0x4
-646	test edx, edx
+642	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 534	add ecx, 0x4
-642	test edx, edx
+646	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 582	cmp byte ptr [edx+0x1], 0x44
 659	add ecx, 0x4
-662	test edx, edx
+658	test edx, edx
 642	cmp byte ptr [edx], 0x4c
 659	add ecx, 0x4
-642	test edx, edx
+646	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 514	add ecx, 0x4
-642	test edx, edx
+646	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 659	add ecx, 0x4
-646	test edx, edx
+642	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 659	add ecx, 0x4
 662	test edx, edx
@@ -707,76 +707,76 @@
 642	cmp byte ptr [edx], 0x4c
 582	cmp byte ptr [edx+0x1], 0x44
 659	add ecx, 0x4
-662	test edx, edx
-646	cmp byte ptr [edx], 0x4c
-659	add ecx, 0x4
-642	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-534	add ecx, 0x4
-642	test edx, edx
-646	cmp byte ptr [edx], 0x4c
-582	cmp byte ptr [edx+0x1], 0x44
-514	add ecx, 0x4
-646	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-534	add ecx, 0x4
 658	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 659	add ecx, 0x4
 646	test edx, edx
 642	cmp byte ptr [edx], 0x4c
-659	add ecx, 0x4
+534	add ecx, 0x4
 646	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-534	add ecx, 0x4
-642	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-534	add ecx, 0x4
-658	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 582	cmp byte ptr [edx+0x1], 0x44
 514	add ecx, 0x4
-646	test edx, edx
-642	cmp byte ptr [edx], 0x4c
-530	add ecx, 0x4
-646	test edx, edx
-646	cmp byte ptr [edx], 0x4c
-534	add ecx, 0x4
 642	test edx, edx
-646	cmp byte ptr [edx], 0x4c
-659	add ecx, 0x4
+642	cmp byte ptr [edx], 0x4c
+534	add ecx, 0x4
 662	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 659	add ecx, 0x4
 642	test edx, edx
-646	cmp byte ptr [edx], 0x4c
-534	add ecx, 0x4
-642	test edx, edx
 642	cmp byte ptr [edx], 0x4c
 659	add ecx, 0x4
+642	test edx, edx
+642	cmp byte ptr [edx], 0x4c
+534	add ecx, 0x4
 646	test edx, edx
 642	cmp byte ptr [edx], 0x4c
 534	add ecx, 0x4
 662	test edx, edx
-642	cmp byte ptr [edx], 0x4c
+646	cmp byte ptr [edx], 0x4c
 582	cmp byte ptr [edx+0x1], 0x44
 514	add ecx, 0x4
 642	test edx, edx
 642	cmp byte ptr [edx], 0x4c
 530	add ecx, 0x4
 642	test edx, edx
-642	cmp byte ptr [edx], 0x4c
+646	cmp byte ptr [edx], 0x4c
 534	add ecx, 0x4
 646	test edx, edx
 646	cmp byte ptr [edx], 0x4c
 659	add ecx, 0x4
 658	test edx, edx
 646	cmp byte ptr [edx], 0x4c
-530	add ecx, 0x4
+659	add ecx, 0x4
+646	test edx, edx
+646	cmp byte ptr [edx], 0x4c
+534	add ecx, 0x4
+646	test edx, edx
+642	cmp byte ptr [edx], 0x4c
+659	add ecx, 0x4
+642	test edx, edx
+642	cmp byte ptr [edx], 0x4c
+534	add ecx, 0x4
+658	test edx, edx
+642	cmp byte ptr [edx], 0x4c
+582	cmp byte ptr [edx+0x1], 0x44
+514	add ecx, 0x4
 646	test edx, edx
 642	cmp byte ptr [edx], 0x4c
 530	add ecx, 0x4
 646	test edx, edx
+642	cmp byte ptr [edx], 0x4c
+534	add ecx, 0x4
+642	test edx, edx
+646	cmp byte ptr [edx], 0x4c
+659	add ecx, 0x4
+662	test edx, edx
+646	cmp byte ptr [edx], 0x4c
+530	add ecx, 0x4
+642	test edx, edx
+642	cmp byte ptr [edx], 0x4c
+530	add ecx, 0x4
+642	test edx, edx
 582	test eax, eax
 582	test eax, eax
 582	test edi, edi
@@ -784,7 +784,7 @@
 519	xor ecx, ecx
 582	add ebx, 0x16737
 662	sub esp, 0x3c
-646	and edx, eax
+642	and edx, eax
 514	cmp byte ptr [eax], dh
 582	sub eax, dword ptr [esp+0x4]
 582	test ebp, ebp
@@ -799,9 +799,9 @@
 662	imul edi, esi
 514	cmp eax, 0xffff
 659	sub esp, 0x18
-642	add ebx, 0xb4b7
+646	add ebx, 0xb4b7
 662	sub esp, 0x2c
-646	add ebx, 0xb5c0
+642	add ebx, 0xb5c0
 646	test ecx, ecx
 582	neg edi
 647	and ecx, edi
@@ -811,8 +811,8 @@
 647	neg ecx
 531	cmp esi, ecx
 647	add esp, 0x2c
-642	add esp, 0x18
-642	add esp, 0x1c
+646	add esp, 0x18
+646	add esp, 0x1c
 642	test eax, eax
 642	xor ecx, esi
 514	and ecx, 0x3
@@ -866,11 +866,11 @@
 582	add edi, 0x15c
 658	test dl, dl
 582	add esp, 0x3c
-646	sub esp, 0xc
-642	test eax, eax
+642	sub esp, 0xc
+646	test eax, eax
 642	xor edx, edx
 582	sub esp, 0x3c
-642	add ebx, 0x167f4
+646	add ebx, 0x167f4
 662	add dword ptr [eax+0x4], 0x1
 514	imul edx, edi, 0x4c
 518	test esi, esi
@@ -880,7 +880,7 @@
 514	adc edi, 0x0
 582	sub dword ptr [eax+0x4], 0x1
 582	add esp, 0x3c
-646	cmp dword ptr [ebx+0x40], edi
+642	cmp dword ptr [ebx+0x40], edi
 582	xor esi, esi
 582	add dword ptr [eax+0x190], 0x1
 514	shl eax, 0x5
@@ -982,7 +982,7 @@
 659	test edi, edi
 646	add ebx, 0x16737
 662	sub esp, 0x3c
-646	and edx, eax
+642	and edx, eax
 514	cmp byte ptr [eax], dh
 582	sub eax, dword ptr [esp+0x4]
 582	test ebp, ebp
@@ -997,9 +997,9 @@
 662	imul edi, esi
 518	cmp eax, 0xffff
 663	sub esp, 0x18
-642	add ebx, 0xb4b7
+646	add ebx, 0xb4b7
 662	sub esp, 0x2c
-646	add ebx, 0xb5c0
+642	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -1007,8 +1007,8 @@
 643	neg ecx
 535	cmp esi, ecx
 643	add esp, 0x2c
-642	add esp, 0x18
-642	add esp, 0x1c
+646	add esp, 0x18
+646	add esp, 0x1c
 642	test eax, eax
 646	xor ecx, esi
 518	and ecx, 0x3
@@ -1032,8 +1032,8 @@
 643	test byte ptr [esp+0x54], 0x8
 582	test dl, dl
 582	add esp, 0x3c
-646	sub esp, 0xc
-642	test eax, eax
+642	sub esp, 0xc
+646	test eax, eax
 646	add edx, eax
 642	test esi, esi
 514	cmp esi, 0x2
@@ -1168,9 +1168,9 @@
 514	inc eax
 646	sub eax, dword ptr [esp+0x4]
 534	sub esp, 0x18
-646	add ebx, 0xb4b7
+642	add ebx, 0xb4b7
 662	sub esp, 0x2c
-646	add ebx, 0xb5c0
+642	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -1178,8 +1178,8 @@
 643	neg ecx
 531	cmp esi, ecx
 643	add esp, 0x2c
-642	add esp, 0x18
-642	test eax, eax
+646	add esp, 0x18
+646	test eax, eax
 642	xor ecx, esi
 518	and ecx, 0x3
 582	cld 
@@ -1190,7 +1190,7 @@
 518	test eax, eax
 582	xor edx, edx
 582	sub esp, 0x3c
-642	add ebx, 0x167f4
+646	add ebx, 0x167f4
 662	add dword ptr [eax+0x4], 0x1
 514	imul edx, edi, 0x4c
 518	test esi, esi
@@ -1201,12 +1201,12 @@
 514	adc edi, 0x0
 582	sub dword ptr [eax+0x4], 0x1
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	cmp eax, dword ptr [edi+0x10]
 582	cmp dword ptr [ebx-0x1b0], eax
 643	add ebx, 0xb867
 662	sub esp, 0x20c
-646	test ecx, ecx
+642	test ecx, ecx
 646	test eax, eax
 514	add eax, 0x1
 518	cmp dword ptr [ecx], 0x4
@@ -1234,17 +1234,17 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x20c
-646	test eax, eax
+642	test eax, eax
 518	test edx, edx
 582	cmp eax, 0x20617
 518	add ebx, 0x19205
 662	sub esp, 0x4c
 642	add ebx, 0x131e5
 662	sub esp, 0x5c
-642	and eax, dword ptr [ebx-0x300]
+646	and eax, dword ptr [ebx-0x300]
 518	and eax, dword ptr [ebx-0x2fc]
 582	test edx, edx
-646	or ecx, dword ptr [ebp-0x28]
+642	or ecx, dword ptr [ebp-0x28]
 518	xor edi, edi
 582	xor esi, esi
 582	shrd eax, edx, cl
@@ -1615,8 +1615,8 @@
 646	add eax, 0x1
 518	and eax, 0xfffffff0
 514	sub esp, eax
-646	and edx, 0xfffffff0
-642	test esi, esi
+642	and edx, 0xfffffff0
+646	test esi, esi
 642	add edi, esi
 642	shl eax, 0x14
 582	or dword ptr [ebx-0x2fc], eax
@@ -1914,7 +1914,7 @@
 514	shl edi, 0x3
 514	add edx, edi
 518	sub esp, 0x18
-642	add ebx, 0xb4b7
+646	add ebx, 0xb4b7
 662	sub esp, 0x2c
 642	add ebx, 0xb5c0
 646	test ecx, ecx
@@ -1924,8 +1924,8 @@
 647	neg ecx
 531	cmp esi, ecx
 647	add esp, 0x2c
-642	add esp, 0x18
-642	test eax, eax
+646	add esp, 0x18
+646	test eax, eax
 642	add eax, edi
 646	cmp dword ptr [ebp-0x38], 0x2
 514	sub esi, 0x1
@@ -1944,8 +1944,8 @@
 514	shl eax, cl
 514	test eax, edx
 514	sub edi, 0x8
-662	cld 
-662	shr ecx, 0x1
+658	cld 
+658	shr ecx, 0x1
 514	shr ecx, 0x1
 514	add eax, 0x1
 646	sub esi, 0x1
@@ -1968,7 +1968,7 @@
 514	shl eax, cl
 514	test eax, edx
 582	sub edi, 0x8
-662	sub esi, 0x1
+658	sub esi, 0x1
 582	cld 
 582	shr ecx, 0x1
 514	shr ecx, 0x1
@@ -1984,8 +1984,8 @@
 514	shl eax, cl
 514	test eax, edx
 514	sub edi, 0x8
-662	cld 
-662	shr ecx, 0x1
+658	cld 
+658	shr ecx, 0x1
 514	shr ecx, 0x1
 514	add eax, 0x1
 642	sub esi, 0x1
@@ -2004,7 +2004,7 @@
 514	shl eax, cl
 514	test eax, edx
 582	sub edi, 0x8
-662	sub esi, 0x1
+658	sub esi, 0x1
 582	cld 
 582	shr ecx, 0x1
 514	shr ecx, 0x1
@@ -2413,9 +2413,9 @@
 646	sub edx, 0x1
 582	sub esp, 0x4
 642	sub esp, 0x18
-646	add ebx, 0xb4b7
+642	add ebx, 0xb4b7
 662	sub esp, 0x2c
-646	add ebx, 0xb5c0
+642	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -2423,15 +2423,15 @@
 647	neg ecx
 519	cmp esi, ecx
 647	add esp, 0x2c
-642	add esp, 0x18
+646	add esp, 0x18
 642	test eax, eax
 646	mul edx
 2567	shr edx, 0x4
 518	imul eax, edx, 0x4d8
 514	sub esp, 0x18
-646	add ebx, 0xb4b7
+642	add ebx, 0xb4b7
 662	sub esp, 0x2c
-646	add ebx, 0xb5c0
+642	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -2445,7 +2445,7 @@
 659	cmp eax, dword ptr [ebx+0x8fc]
 647	add eax, edi
 646	add esp, 0x2c
-642	add esp, 0x18
+646	add esp, 0x18
 642	test eax, eax
 646	add edi, 0x10
 642	shl eax, 0x2
@@ -2650,16 +2650,16 @@
 582	xor edx, edx
 582	cmp dword ptr [ebp-0x90], 0x3
 659	sub esp, 0x9c
-646	and eax, 0xfffffff0
+642	and eax, 0xfffffff0
 518	sub esp, eax
 646	and edi, 0xfffffff0
-642	add ebx, 0x14191
+646	add ebx, 0x14191
 662	and eax, 0xffffff9f
 582	or eax, 0x20
 514	test eax, eax
 582	xor eax, eax
 582	add eax, edi
-642	test eax, eax
+646	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [ebp-0x74], esi
 582	test eax, eax
@@ -2707,7 +2707,7 @@
 582	test eax, eax
 582	add ebx, 0x12019
 662	sub esp, 0xd4
-646	add ecx, 0x1fe1b
+642	add ecx, 0x1fe1b
 662	xor eax, eax
 582	test eax, eax
 582	sub esp, 0x14
@@ -2723,7 +2723,7 @@
 582	test al, 0x20
 582	add ebx, 0x10f24
 662	sub esp, 0x10
-646	cmp al, byte ptr [edx]
+642	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -2739,7 +2739,7 @@
 582	test al, 0x20
 582	add ebx, 0x10f24
 662	sub esp, 0x10
-646	cmp al, byte ptr [edx]
+642	cmp al, byte ptr [edx]
 530	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -2769,7 +2769,7 @@
 582	test al, 0x20
 582	add ebx, 0x10f24
 662	sub esp, 0x10
-646	cmp al, byte ptr [edx]
+642	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -2875,7 +2875,7 @@
 582	test edi, edi
 642	test eax, eax
 582	sub esp, 0x1c
-646	cmp esi, 0xffffffff
+642	cmp esi, 0xffffffff
 582	xor edx, edx
 582	add esp, 0x1c
 646	test al, al
@@ -2886,7 +2886,7 @@
 582	cmp al, 0x2
 659	add ecx, 0x198
 658	sub esp, 0x1c
-646	cmp esi, 0xffffffff
+642	cmp esi, 0xffffffff
 582	xor edx, edx
 582	add esp, 0x1c
 646	test al, al
@@ -2895,7 +2895,7 @@
 642	test al, al
 514	cmp byte ptr [esp+0x34], 0x0
 514	sub esp, 0x1c
-646	cmp esi, 0xffffffff
+642	cmp esi, 0xffffffff
 582	xor edx, edx
 582	add esp, 0x1c
 646	test al, al
@@ -2906,7 +2906,7 @@
 646	test byte ptr [ebx-0x340], 0x1
 582	test edi, edi
 582	sub esp, 0x9c
-646	add ebx, 0x110ae
+642	add ebx, 0x110ae
 662	cmp eax, 0xfffff001
 519	test eax, eax
 514	add ebx, 0x9216
@@ -2952,10 +2952,10 @@
 663	add esi, edi
 642	sub dword ptr [esp+0x20], eax
 518	test esi, esi
-646	xor ebp, ebp
+642	xor ebp, ebp
 582	cmp al, byte ptr [edx]
 582	inc ecx
-642	inc edx
+646	inc edx
 642	test al, al
 518	cmp al, byte ptr [edx]
 518	test eax, eax
@@ -2963,7 +2963,7 @@
 514	cmp ebp, 0x4
 659	cmp al, byte ptr [edx]
 582	inc ecx
-642	inc edx
+646	inc edx
 642	test al, al
 518	cmp al, byte ptr [edx]
 514	test eax, eax
@@ -2971,7 +2971,7 @@
 514	cmp ebp, 0x4
 659	cmp al, byte ptr [edx]
 582	inc ecx
-642	inc edx
+646	inc edx
 642	test al, al
 518	cmp al, byte ptr [edx]
 514	test eax, eax
@@ -2979,23 +2979,23 @@
 518	cmp ebp, 0x4
 663	cmp al, byte ptr [edx]
 582	inc ecx
-642	inc edx
+646	inc edx
 646	test al, al
 518	cmp al, byte ptr [edx]
 582	inc ecx
-646	inc edx
+642	inc edx
 642	test al, al
 518	cmp al, byte ptr [edx]
 582	inc ecx
-646	inc edx
+642	inc edx
 642	test al, al
 514	cmp al, byte ptr [edx]
 582	inc ecx
-642	inc edx
+646	inc edx
 646	test al, al
 518	cmp al, byte ptr [edx]
 582	inc ecx
-658	inc edx
+662	inc edx
 646	test al, al
 582	xor eax, eax
 582	test eax, eax
@@ -3014,7 +3014,7 @@
 518	xor ebp, ebp
 582	add edx, dword ptr [esp+0x24]
 646	sub esp, 0x8
-662	test cl, cl
+658	test cl, cl
 518	cmp cl, 0x9
 518	cmp cl, 0x9
 518	cmp byte ptr [esp], cl
@@ -3046,7 +3046,7 @@
 514	cmp dword ptr [esp+0x20], edx
 514	add edx, dword ptr [esp+0x24]
 646	sub esp, 0x8
-662	test cl, cl
+658	test cl, cl
 518	cmp cl, 0x9
 518	cmp cl, 0x9
 518	cmp byte ptr [esp], cl
@@ -3084,7 +3084,7 @@
 514	cmp dword ptr [esp+0x20], edx
 514	add edx, dword ptr [esp+0x24]
 646	sub esp, 0x8
-662	test cl, cl
+658	test cl, cl
 518	cmp cl, 0x9
 518	cmp cl, 0x9
 518	cmp byte ptr [esp], cl
@@ -3116,7 +3116,7 @@
 515	cmp dword ptr [esp+0x20], edx
 514	add edx, dword ptr [esp+0x24]
 646	sub esp, 0x8
-662	test cl, cl
+658	test cl, cl
 518	cmp cl, 0x9
 518	cmp cl, 0x9
 518	cmp byte ptr [esp], cl
@@ -3148,7 +3148,7 @@
 518	cmp dword ptr [esp+0x20], edx
 518	add edx, dword ptr [esp+0x24]
 642	sub esp, 0x8
-662	test cl, cl
+658	test cl, cl
 518	cmp cl, 0x9
 518	cmp cl, 0x9
 518	cmp byte ptr [esp], cl
@@ -3180,7 +3180,7 @@
 518	cmp dword ptr [esp+0x20], edx
 518	add edx, dword ptr [esp+0x24]
 646	sub esp, 0x8
-662	test cl, cl
+658	test cl, cl
 518	cmp cl, 0x9
 518	cmp cl, 0x9
 518	cmp byte ptr [esp], cl
@@ -3218,7 +3218,7 @@
 514	cmp dword ptr [esp+0x20], edx
 514	add edx, dword ptr [esp+0x24]
 642	sub esp, 0x8
-662	test cl, cl
+658	test cl, cl
 518	cmp cl, 0x9
 518	cmp cl, 0x9
 518	cmp byte ptr [esp], cl
@@ -3256,7 +3256,7 @@
 515	cmp dword ptr [esp+0x20], edx
 514	add edx, dword ptr [esp+0x24]
 646	sub esp, 0x8
-662	test cl, cl
+658	test cl, cl
 518	cmp cl, 0x9
 518	cmp cl, 0x9
 518	cmp byte ptr [esp], cl
@@ -3319,7 +3319,7 @@
 514	cmp dword ptr [esp+0x20], edx
 514	add edx, dword ptr [esp+0x24]
 646	sub esp, 0x8
-662	test cl, cl
+658	test cl, cl
 518	cmp cl, 0x9
 518	cmp cl, 0x9
 518	cmp byte ptr [esp], cl
@@ -3370,13 +3370,13 @@
 642	cmp dword ptr [ebx-0x304], edx
 582	test byte ptr [ebx-0x340], 0x1
 582	add esp, 0x6c
-646	test eax, eax
+642	test eax, eax
 642	cmp byte ptr [esp+0x34], 0x0
 514	test byte ptr [eax+0x205], 0x8
 582	cmp byte ptr [esp+0x34], 0x0
 514	add ebx, 0x1b7f5
 662	sub esp, 0x5c
-642	test edx, edx
+646	test edx, edx
 582	cmp eax, 0xfffff001
 519	cmp eax, 0xffffffff
 535	xor edi, edi
@@ -3387,19 +3387,19 @@
 518	cmp edi, 0x33
 530	cmp edi, 0x33
 530	add esi, 0x4
-658	cmp ecx, 0x1
+662	cmp ecx, 0x1
 514	cmp ecx, 0x20
 647	add ebx, 0x1259
 662	add ebx, dword ptr [ebx+ecx*4]
 647	add edx, ecx
 658	add esi, ecx
-646	cmp eax, ecx
+642	cmp eax, ecx
 582	cmp eax, ecx
 582	xor eax, eax
 582	test eax, eax
 582	test al, al
 582	add eax, 0xd
-658	cmp ecx, 0x1
+662	cmp ecx, 0x1
 518	cmp ecx, 0x20
 647	add ebx, 0x1259
 662	add ebx, dword ptr [ebx+ecx*4]
@@ -3418,32 +3418,32 @@
 582	shl esi, 0x5
 514	cmp ecx, edi
 647	add esi, dword ptr [ebp-0x24]
-646	cmp dword ptr [ebp-0x24], esi
+642	cmp dword ptr [ebp-0x24], esi
 647	cmp dword ptr [edi], 0x4
 514	add edi, 0x20
-642	shl eax, 0x5
-514	add eax, dword ptr [ebp-0x24]
-646	cmp edi, eax
-643	cmp dword ptr [edi], 0x4
-663	add edi, 0x20
 646	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x24]
-646	cmp edi, eax
+642	cmp edi, eax
+643	cmp dword ptr [edi], 0x4
+663	add edi, 0x20
+642	shl eax, 0x5
+514	add eax, dword ptr [ebp-0x24]
+642	cmp edi, eax
 647	cmp dword ptr [edi], 0x4
 659	add edi, 0x20
 642	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x24]
-646	cmp edi, eax
-643	cmp dword ptr [edi], 0x4
-659	add edi, 0x20
-642	shl eax, 0x5
-514	add eax, dword ptr [ebp-0x24]
-646	cmp edi, eax
+642	cmp edi, eax
 643	cmp dword ptr [edi], 0x4
 659	add edi, 0x20
 646	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x24]
-646	cmp edi, eax
+642	cmp edi, eax
+643	cmp dword ptr [edi], 0x4
+659	add edi, 0x20
+642	shl eax, 0x5
+514	add eax, dword ptr [ebp-0x24]
+642	cmp edi, eax
 647	cmp dword ptr [edi], 0x4
 582	cmp ecx, 0x1f
 530	cmp dword ptr [edi+0x1c], 0x3
@@ -3455,7 +3455,7 @@
 662	add ebx, dword ptr [ebx+ecx*4]
 643	add edx, ecx
 646	add esi, ecx
-642	cmp eax, ecx
+646	cmp eax, ecx
 582	cmp eax, ecx
 514	cmp al, cl
 514	sbb eax, eax
@@ -3493,7 +3493,7 @@
 518	cmp edx, esi
 659	cmp eax, 0xffffffff
 535	sub esp, 0x1c
-646	add ebx, 0x1bd14
+642	add ebx, 0x1bd14
 662	and edx, eax
 514	cmp byte ptr [eax], dh
 514	inc eax
@@ -3551,9 +3551,9 @@
 518	inc eax
 646	sub eax, dword ptr [esp+0x4]
 534	sub esp, 0x18
-642	add ebx, 0xb4b7
+646	add ebx, 0xb4b7
 662	sub esp, 0x2c
-642	add ebx, 0xb5c0
+646	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -3561,8 +3561,8 @@
 647	neg ecx
 531	cmp esi, ecx
 647	add esp, 0x2c
-646	add esp, 0x18
-646	test eax, eax
+642	add esp, 0x18
+642	test eax, eax
 642	xor ecx, esi
 518	and ecx, 0x3
 514	cld 
@@ -3575,7 +3575,7 @@
 582	cmp edx, 0xffffffff
 535	add ebx, 0x1ac55
 662	sub esp, 0x11c
-642	xor eax, eax
+646	xor eax, eax
 582	add ebx, 0x11608
 662	test edx, edx
 582	cmp dword ptr [eax+0x4], 0x0
@@ -3642,14 +3642,14 @@
 663	and ecx, 0x80
 582	test esi, esi
 582	sub esp, 0x1c
-642	or eax, esi
+646	or eax, esi
 514	add ebx, 0xb46e
 662	imul edi, esi
 518	cmp eax, 0xffff
 663	sub esp, 0x18
-646	add ebx, 0xb4b7
+642	add ebx, 0xb4b7
 662	sub esp, 0x2c
-646	add ebx, 0xb5c0
+642	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -3657,8 +3657,8 @@
 647	neg ecx
 531	cmp esi, ecx
 663	add esp, 0x2c
-642	add esp, 0x18
-642	add esp, 0x1c
+646	add esp, 0x18
+646	add esp, 0x1c
 642	test eax, eax
 642	xor ecx, esi
 646	and ecx, 0x3
@@ -3738,9 +3738,9 @@
 582	add eax, 0x1
 518	cmp al, 0x2f
 582	sub esp, 0x18
-642	add ebx, 0xb4b7
+646	add ebx, 0xb4b7
 662	sub esp, 0x2c
-642	add ebx, 0xb5c0
+646	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -3748,7 +3748,7 @@
 647	neg ecx
 519	cmp esi, ecx
 647	add esp, 0x2c
-646	add esp, 0x18
+642	add esp, 0x18
 646	test eax, eax
 642	cld 
 642	shr ecx, 0x1
@@ -3766,29 +3766,29 @@
 530	cmp byte ptr [eax-0x1], 0x2f
 582	cmp edi, edx
 663	add esp, 0x3c
-646	sub esp, 0xc
-642	test eax, eax
+642	sub esp, 0xc
+646	test eax, eax
 642	shl esi, 0x5
 514	add edx, esi
 518	cmp edx, dword ptr [ecx]
 647	and eax, 0xfffff0
 518	sub esp, eax
-642	shr edx, 0x2
-2567	shl edx, 0x2
+646	shr edx, 0x2
+2563	shl edx, 0x2
 646	add esi, dword ptr [ebp-0x8c]
-646	cmp dword ptr [ebp-0x8c], esi
+642	cmp dword ptr [ebp-0x8c], esi
 647	cmp eax, 0x6
 582	add esi, 0x20
-642	shl eax, 0x5
+646	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x8c]
-646	cmp esi, eax
+642	cmp esi, eax
 643	cmp eax, 0x6
 659	cmp eax, 0x1
 514	cmp eax, 0x2
 514	add esi, 0x20
-646	shl eax, 0x5
+642	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x8c]
-646	cmp esi, eax
+642	cmp esi, eax
 647	cmp eax, 0x6
 659	cmp eax, 0x1
 582	test eax, ecx
@@ -3811,7 +3811,7 @@
 518	add esi, 0x20
 642	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x8c]
-646	cmp esi, eax
+642	cmp esi, eax
 643	cmp eax, 0x6
 659	cmp eax, 0x1
 582	test eax, ecx
@@ -3833,24 +3833,24 @@
 518	sar edx, cl
 514	and edx, 0xf
 518	add esi, 0x20
-642	shl eax, 0x5
+646	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x8c]
-646	cmp esi, eax
+642	cmp esi, eax
 643	cmp eax, 0x6
 663	cmp eax, 0x1
 514	cmp eax, 0x2
 582	shr eax, 0x3
 518	add esi, 0x20
-646	shl eax, 0x5
+642	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x8c]
-646	cmp esi, eax
+642	cmp esi, eax
 647	cmp eax, 0x6
 659	cmp eax, 0x1
 518	cmp eax, 0x2
 514	add esi, 0x20
-642	shl eax, 0x5
+646	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x8c]
-646	cmp esi, eax
+642	cmp esi, eax
 643	cmp eax, 0x6
 514	cmp eax, 0x6474e551
 643	cmp eax, 0x6474e552
@@ -3862,34 +3862,34 @@
 582	and eax, 0x3
 514	cmp al, 0x1
 582	sub esp, 0x3c
-642	add ebx, 0xf9a4
+646	add ebx, 0xf9a4
 662	cmp byte ptr [ebx+0x844], 0x0
 582	add esp, 0x3c
-642	add esi, 0x20
+646	add esi, 0x20
 646	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x8c]
-646	cmp esi, eax
+642	cmp esi, eax
 647	cmp eax, 0x6
 530	cmp eax, 0x6474e551
 663	cmp eax, 0x6474e552
 659	cmp eax, 0x7
 530	add esi, 0x20
-646	shl eax, 0x5
+642	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x8c]
-646	cmp esi, eax
+642	cmp esi, eax
 647	cmp eax, 0x6
 534	cmp eax, 0x6474e551
 582	add esi, 0x20
-642	shl eax, 0x5
+646	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x8c]
-646	cmp esi, eax
+642	cmp esi, eax
 643	cmp eax, 0x6
 530	cmp eax, 0x6474e551
 514	cmp eax, 0x6474e552
 582	add esi, 0x20
-646	shl eax, 0x5
+642	shl eax, 0x5
 514	add eax, dword ptr [ebp-0x8c]
-646	cmp esi, eax
+642	cmp esi, eax
 582	test eax, eax
 514	sub edx, eax
 514	cmp dword ptr [ebp-0xc8], 0x3
@@ -3907,7 +3907,7 @@
 646	test eax, eax
 514	cmp eax, edx
 582	add esi, 0x18
-646	cmp esi, eax
+642	cmp esi, eax
 647	cmp edx, eax
 518	sub edx, eax
 518	add eax, dword ptr [edi]
@@ -3939,7 +3939,7 @@
 582	cmp eax, 0xfffff000
 647	cmp eax, 0xffffffff
 659	add esi, 0x18
-662	cmp esi, eax
+658	cmp esi, eax
 582	test edx, edx
 514	add edx, esi
 642	test edx, edx
@@ -4093,18 +4093,18 @@
 646	test byte ptr [ebx-0x340], 0x40
 582	test edx, edx
 642	sub esp, 0x2c
-646	add ebx, 0x168bb
+642	add ebx, 0x168bb
 662	test ebp, ecx
 582	add edx, 0x10
 642	shl esi, 0x2
 518	sub edx, esi
 642	add esp, 0x2c
-642	test byte ptr [ebp+0x18], 0x8
+646	test byte ptr [ebp+0x18], 0x8
 582	test eax, eax
 582	test byte ptr [edi+0x204], 0x20
 582	test eax, eax
 582	sub esp, 0x3c
-642	add ebx, 0x167f4
+646	add ebx, 0x167f4
 662	add dword ptr [eax+0x4], 0x1
 514	imul edx, edi, 0x4c
 518	test esi, esi
@@ -4117,16 +4117,16 @@
 514	adc edi, 0x0
 582	sub dword ptr [eax+0x4], 0x1
 582	add esp, 0x3c
-642	test esi, esi
+646	test esi, esi
 582	add esp, 0x26c
-642	sub esp, 0xc
+646	sub esp, 0xc
 646	add esp, 0x14
-646	add esp, 0xd4
+642	add esp, 0xd4
 646	sub esp, 0x8
 646	test edx, edx
 582	test byte ptr [eax+0x194], 0x60
 582	sub esp, 0x20
-642	and edx, 0xfffffff0
+646	and edx, 0xfffffff0
 642	add dword ptr [ebp-0x64], 0x1
 514	and ecx, 0xffffff9f
 514	or ecx, 0x20
@@ -4187,10 +4187,10 @@
 534	and eax, 0xfffffff0
 514	and edx, 0xffff0
 518	sub esp, edx
-642	and esi, 0xfffffff0
-646	add edx, eax
-642	cmp dword ptr [ebp-0x80], edx
-519	test eax, eax
+646	and esi, 0xfffffff0
+642	add edx, eax
+646	cmp dword ptr [ebp-0x80], edx
+515	test eax, eax
 642	test eax, eax
 514	cmp eax, 0x1
 582	add edi, dword ptr [esi+0x4]
@@ -4251,10 +4251,10 @@
 662	xor eax, eax
 582	test eax, eax
 582	sub esp, 0x14
-642	and edx, 0x3
+646	and edx, 0x3
 514	test dl, dl
 514	sub esp, 0x26c
-646	add ebx, 0x18d46
+642	add ebx, 0x18d46
 662	test ecx, ecx
 582	cmp edx, dword ptr [ebx+0x500]
 663	imul eax, dword ptr [esp+0x288], 0x4c
@@ -4263,14 +4263,14 @@
 582	test al, 0x20
 582	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	test byte ptr [ebp+0x195], 0x1
 582	test edx, edx
@@ -4279,7 +4279,7 @@
 582	test al, 0x20
 582	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 530	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -4344,21 +4344,21 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x10
-646	test eax, eax
+642	test eax, eax
 514	add esp, 0x26c
-646	sub esp, 0xc
-642	add esp, 0x14
-642	add esp, 0xd4
-646	sub esp, 0x8
-642	test edx, edx
+642	sub esp, 0xc
+646	add esp, 0x14
+646	add esp, 0xd4
+642	sub esp, 0x8
+646	test edx, edx
 582	test byte ptr [eax+0x194], 0x60
 582	sub esp, 0x20
-646	and edx, 0xfffffff0
-642	add dword ptr [ebp-0x64], 0x1
+642	and edx, 0xfffffff0
+646	add dword ptr [ebp-0x64], 0x1
 518	and ecx, 0xffffff9f
 518	or ecx, 0x20
 514	test edx, edx
-646	add edx, 0x1
+642	add edx, 0x1
 514	add esi, 0x8
 658	test eax, eax
 514	cmp eax, 0x1
@@ -4482,11 +4482,11 @@
 659	add esi, 0x8
 662	test eax, eax
 582	test ecx, ecx
-646	add edi, 0x1
+642	add edi, 0x1
 514	sub esp, 0x18
-642	add ebx, 0xb4b7
+646	add ebx, 0xb4b7
 662	sub esp, 0x2c
-642	add ebx, 0xb5c0
+646	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -4495,10 +4495,10 @@
 515	cmp esi, ecx
 643	add esp, 0x2c
 646	add esp, 0x18
-642	test eax, eax
+646	test eax, eax
 646	shl edi, 0x2
 514	xor ecx, esi
-514	and ecx, 0x3
+518	and ecx, 0x3
 582	cld 
 582	cmp ecx, 0x3
 518	test esi, 0x3
@@ -4514,7 +4514,7 @@
 582	or byte ptr [ecx+0x196], 0x1
 514	test eax, eax
 514	test eax, eax
-642	test edx, edx
+646	test edx, edx
 582	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [ebp-0x74], esi
@@ -4529,9 +4529,9 @@
 582	test eax, eax
 514	test eax, eax
 582	sub esp, 0x18
-642	add ebx, 0xb4b7
+646	add ebx, 0xb4b7
 662	sub esp, 0x2c
-642	add ebx, 0xb5c0
+646	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -4540,7 +4540,7 @@
 531	cmp esi, ecx
 647	add esp, 0x2c
 646	add esp, 0x18
-642	test eax, eax
+646	test eax, eax
 642	xor ecx, ecx
 582	test edi, edi
 582	add ecx, 0x1
@@ -4550,7 +4550,7 @@
 582	add ecx, 0x1
 514	and byte ptr [eax+0x194], 0x9f
 514	test edx, edx
-642	test edi, edi
+646	test edi, edi
 582	add ecx, 0x1
 518	and byte ptr [eax+0x194], 0x9f
 518	test edx, edx
@@ -4569,8 +4569,8 @@
 514	add edx, edx
 518	and eax, 0xfffffff0
 514	sub esp, eax
-646	cld 
-646	and edx, 0x3
+642	cld 
+642	and edx, 0x3
 582	shr ecx, 0x2
 515	and edx, 0x3
 514	imul eax, eax, 0x1010101
@@ -4597,10 +4597,10 @@
 514	test esi, esi
 582	test ecx, ecx
 582	sub esp, 0x8
-642	sub eax, dword ptr [ebp-0xa0]
-515	sbb edx, dword ptr [ebp-0x9c]
+646	sub eax, dword ptr [ebp-0xa0]
+519	sbb edx, dword ptr [ebp-0x9c]
 582	add dword ptr [ebx-0x150], eax
-514	adc dword ptr [ebx-0x14c], edx
+518	adc dword ptr [ebx-0x14c], edx
 582	test esi, esi
 518	sub eax, 0x1
 514	or byte ptr [edx+0x194], 0x10
@@ -4628,18 +4628,18 @@
 582	xor eax, eax
 582	test edx, edx
 582	sub esp, 0x3c
-642	add ebx, 0x11f34
+646	add ebx, 0x11f34
 662	add ecx, 0x1fe1b
 662	sub esp, 0xc
-646	add ebx, 0x1c4df
+642	add ebx, 0x1c4df
 662	sub esp, 0x1c
-646	add ebx, 0x10632
+642	add ebx, 0x10632
 662	test eax, eax
 642	xor edi, edi
 582	xor eax, eax
 582	test byte ptr [esi+0x195], 0x2
 582	sub esp, 0x8c
-646	add ebx, 0x10a94
+642	add ebx, 0x10a94
 662	test eax, eax
 518	test esi, esi
 582	test eax, eax
@@ -4650,7 +4650,7 @@
 646	xor eax, eax
 582	test byte ptr [esi+0x195], 0x2
 582	sub esp, 0x8c
-646	add ebx, 0x10a94
+642	add ebx, 0x10a94
 662	test eax, eax
 642	test esi, esi
 582	test eax, eax
@@ -4665,14 +4665,14 @@
 582	test edi, edi
 514	add esi, 0x1
 518	sub esp, 0x1c
-642	or eax, esi
+646	or eax, esi
 514	add ebx, 0xb46e
 662	imul edi, esi
 518	cmp eax, 0xffff
 663	sub esp, 0x18
 642	add ebx, 0xb4b7
 662	sub esp, 0x2c
-642	add ebx, 0xb5c0
+646	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -4681,8 +4681,8 @@
 535	cmp esi, ecx
 659	add esp, 0x2c
 646	add esp, 0x18
-642	add esp, 0x1c
-642	test edi, edi
+646	add esp, 0x1c
+646	test edi, edi
 646	test esi, esi
 582	test ecx, ecx
 642	add eax, dword ptr [edx]
@@ -4701,7 +4701,7 @@
 642	xor eax, eax
 582	test byte ptr [esi+0x195], 0x2
 582	sub esp, 0x8c
-646	add ebx, 0x10a94
+642	add ebx, 0x10a94
 662	test eax, eax
 642	test esi, esi
 642	add esi, edi
@@ -4711,19 +4711,19 @@
 518	test eax, eax
 642	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 582	add esp, 0x10
-642	xor eax, eax
+646	xor eax, eax
 582	test eax, eax
 582	test esi, esi
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -4734,12 +4734,12 @@
 659	test eax, eax
 646	test esi, esi
 582	add esp, 0x10
-642	xor eax, eax
+646	xor eax, eax
 582	test eax, eax
 582	test esi, esi
 642	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 530	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -4750,12 +4750,12 @@
 659	test eax, eax
 646	test esi, esi
 582	add esp, 0x10
-642	xor eax, eax
+646	xor eax, eax
 582	test eax, eax
 582	test esi, esi
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 530	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -4820,7 +4820,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x10
-642	test eax, eax
+646	test eax, eax
 514	test eax, eax
 582	add esi, dword ptr [esi+0x8]
 646	and edi, 0x2
@@ -4828,7 +4828,7 @@
 662	cmp byte ptr [eax], 0x0
 514	add ebx, 0x10e43
 662	sub esp, 0x6c
-642	test byte ptr [ebx-0x340], 0x10
+646	test byte ptr [ebx-0x340], 0x10
 582	test eax, eax
 642	test esi, esi
 514	add esi, dword ptr [edx]
@@ -4892,7 +4892,7 @@
 582	xor esi, esi
 582	or dword ptr [ebp-0x4c], eax
 582	sub esp, 0x10
-646	and eax, 0x7fff
+642	and eax, 0x7fff
 514	cmp dword ptr [ebp-0x40], eax
 663	test eax, eax
 514	add esi, eax
@@ -4901,7 +4901,7 @@
 646	cmp byte ptr [eax], 0x0
 514	add ebx, 0x10e43
 662	sub esp, 0x6c
-642	test byte ptr [ebx-0x340], 0x10
+646	test byte ptr [ebx-0x340], 0x10
 582	test eax, eax
 642	test esi, esi
 514	add esi, dword ptr [edx]
@@ -4989,7 +4989,7 @@
 582	xor esi, esi
 582	or dword ptr [ebp-0x4c], eax
 582	sub esp, 0x10
-646	and eax, 0x7fff
+642	and eax, 0x7fff
 518	cmp dword ptr [ebp-0x40], eax
 514	test eax, eax
 514	add esi, eax
@@ -4998,7 +4998,7 @@
 662	cmp byte ptr [eax], 0x0
 514	add ebx, 0x10e43
 662	sub esp, 0x6c
-642	test byte ptr [ebx-0x340], 0x10
+646	test byte ptr [ebx-0x340], 0x10
 582	test eax, eax
 642	test esi, esi
 514	add esi, dword ptr [edx]
@@ -5058,7 +5058,7 @@
 582	xor esi, esi
 582	or dword ptr [ebp-0x4c], eax
 582	sub esp, 0x10
-646	and eax, 0x7fff
+642	and eax, 0x7fff
 518	cmp dword ptr [ebp-0x40], eax
 514	test eax, eax
 582	test eax, eax
@@ -5194,14 +5194,14 @@
 582	test edi, edi
 514	add esi, 0x1
 518	sub esp, 0x1c
-642	or eax, esi
+646	or eax, esi
 514	add ebx, 0xb46e
 662	imul edi, esi
 514	cmp eax, 0xffff
 663	sub esp, 0x18
 642	add ebx, 0xb4b7
 662	sub esp, 0x2c
-642	add ebx, 0xb5c0
+646	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -5210,8 +5210,8 @@
 531	cmp esi, ecx
 659	add esp, 0x2c
 646	add esp, 0x18
-642	add esp, 0x1c
-642	test edi, edi
+646	add esp, 0x1c
+646	test edi, edi
 642	test esi, esi
 642	add esi, dword ptr [edx]
 642	add eax, esi
@@ -5469,7 +5469,7 @@
 646	xor eax, eax
 582	test byte ptr [esi+0x195], 0x2
 582	sub esp, 0x8c
-646	add ebx, 0x10a94
+642	add ebx, 0x10a94
 662	test eax, eax
 646	test esi, esi
 582	test eax, eax
@@ -5500,14 +5500,14 @@
 582	test edi, edi
 518	add esi, 0x1
 514	sub esp, 0x1c
-642	or eax, esi
+646	or eax, esi
 518	add ebx, 0xb46e
 662	imul edi, esi
 514	cmp eax, 0xffff
 663	sub esp, 0x18
 642	add ebx, 0xb4b7
 662	sub esp, 0x2c
-642	add ebx, 0xb5c0
+646	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -5516,8 +5516,8 @@
 531	cmp esi, ecx
 659	add esp, 0x2c
 646	add esp, 0x18
-642	add esp, 0x1c
-642	test edi, edi
+646	add esp, 0x1c
+646	test edi, edi
 642	test esi, esi
 582	test ecx, ecx
 642	add eax, dword ptr [edx]
@@ -5564,21 +5564,21 @@
 582	add esp, 0x1c
 646	test eax, eax
 582	add esp, 0xc
-646	add esp, 0x3c
-646	test ecx, ecx
+642	add esp, 0x3c
+642	test ecx, ecx
 582	xor edx, edx
 582	add ebx, 0x2040e
 662	sub esp, 0x20
-642	cmp dword ptr [ebx+0x860], 0x0
+646	cmp dword ptr [ebx+0x860], 0x0
 582	sub esp, 0x1c
-646	or eax, esi
+642	or eax, esi
 518	add ebx, 0xb46e
 662	imul edi, esi
 514	cmp eax, 0xffff
 663	sub esp, 0x18
 646	add ebx, 0xb4b7
 662	sub esp, 0x2c
-642	add ebx, 0xb5c0
+646	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -5592,9 +5592,9 @@
 659	cmp eax, dword ptr [ebx+0x8fc]
 647	add eax, edi
 646	add esp, 0x2c
-646	add esp, 0x18
+642	add esp, 0x18
 646	add esp, 0x1c
-642	cmp dword ptr [ebx+0x8c], 0x0
+646	cmp dword ptr [ebx+0x8c], 0x0
 582	xor ecx, ecx
 582	test edx, edx
 642	cmp dword ptr [edx+0x234], 0x0
@@ -5609,7 +5609,7 @@
 582	cmp esi, ecx
 582	add ebx, 0xf897
 662	sub esp, 0x4c
-642	test ecx, ecx
+646	test ecx, ecx
 646	test eax, eax
 582	test edi, edi
 642	test ecx, ecx
@@ -5634,10 +5634,10 @@
 646	imul eax, dword ptr [esp+0x24]
 518	add eax, 0x4c0
 514	add esp, 0x4c
-646	sub esp, 0x3c
+642	sub esp, 0x3c
 646	add ebx, 0xf574
 662	sub esp, 0x2c
-642	add ebx, 0xb5c0
+646	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 647	and edx, eax
@@ -5645,7 +5645,7 @@
 647	neg ecx
 519	cmp esi, ecx
 647	add esp, 0x2c
-646	test eax, eax
+642	test eax, eax
 642	test esi, 0x1
 582	test edi, 0x2
 582	xor eax, eax
@@ -5653,17 +5653,17 @@
 518	test dl, 0x2
 582	and edx, 0x1
 582	sub esp, 0x1c
-642	add ebx, 0xfa04
+646	add ebx, 0xfa04
 662	add edx, 0x10
 518	sub esp, 0x1c
-646	or eax, esi
+642	or eax, esi
 514	add ebx, 0xb46e
 662	imul edi, esi
 518	cmp eax, 0xffff
 659	sub esp, 0x18
-642	add ebx, 0xb4b7
+646	add ebx, 0xb4b7
 662	sub esp, 0x2c
-642	add ebx, 0xb5c0
+646	add ebx, 0xb5c0
 646	test ecx, ecx
 646	neg eax
 659	and edx, eax
@@ -5672,23 +5672,23 @@
 515	cmp esi, ecx
 647	add esp, 0x2c
 646	add esp, 0x18
-642	add esp, 0x1c
-642	test eax, eax
 646	add esp, 0x1c
 646	test eax, eax
-646	add esp, 0x3c
+646	add esp, 0x1c
 642	test eax, eax
+646	add esp, 0x3c
+646	test eax, eax
 646	test eax, eax
 582	add esp, 0x20
-646	test eax, eax
+642	test eax, eax
 582	add ebx, 0x20275
 662	sub esp, 0x24
-642	test eax, eax
-642	and dword ptr [esp+0x1c], 0xffffff00
-646	cmp dword ptr [ebx-0x174], 0x0
+646	test eax, eax
+646	and dword ptr [esp+0x1c], 0xffffff00
+518	cmp dword ptr [ebx-0x174], 0x0
 514	test eax, eax
-642	add esp, 0x24
-642	test eax, eax
+646	add esp, 0x24
+646	test eax, eax
 582	test edx, edx
 582	xor esi, esi
 582	add eax, 0x15c
@@ -12055,7 +12055,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -12105,18 +12105,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -12133,7 +12133,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -12167,7 +12167,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -12224,7 +12224,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -12511,7 +12511,7 @@
 642	test ecx, ecx
 518	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -12712,7 +12712,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -12729,12 +12729,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -12751,7 +12751,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -12759,14 +12759,14 @@
 642	test eax, eax
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	add edi, 0x1
 514	cmp dword ptr [esp+0x1c], edi
@@ -12803,7 +12803,7 @@
 642	test eax, eax
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 530	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -12814,7 +12814,7 @@
 659	test eax, eax
 646	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	add edi, 0x1
 514	cmp dword ptr [esp+0x1c], edi
@@ -12840,7 +12840,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -12968,7 +12968,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -13020,7 +13020,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 646	shl ecx, 0x5
@@ -13091,7 +13091,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -13104,12 +13104,12 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -13134,12 +13134,12 @@
 514	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -13152,7 +13152,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -13182,7 +13182,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -13239,7 +13239,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -13291,7 +13291,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 662	shl ecx, 0x5
@@ -13543,7 +13543,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -13600,7 +13600,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -13652,7 +13652,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -13957,18 +13957,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -13985,7 +13985,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -14015,7 +14015,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -14072,7 +14072,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 582	test edx, edx
@@ -14123,7 +14123,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -14275,7 +14275,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -14332,7 +14332,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -14384,7 +14384,7 @@
 646	test ecx, ecx
 518	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -14754,7 +14754,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -14771,12 +14771,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -14793,7 +14793,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -14823,7 +14823,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -14880,7 +14880,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -14932,7 +14932,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -15120,7 +15120,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -15133,12 +15133,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -15151,12 +15151,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -15177,7 +15177,7 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -15211,7 +15211,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -15268,7 +15268,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -15320,7 +15320,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -15508,7 +15508,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -15525,12 +15525,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -15547,7 +15547,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -15577,7 +15577,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -15634,7 +15634,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -15686,7 +15686,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -15783,7 +15783,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -15796,12 +15796,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -15814,12 +15814,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -15836,7 +15836,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -15866,7 +15866,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -15923,7 +15923,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 582	test edx, edx
@@ -15974,7 +15974,7 @@
 642	test ecx, ecx
 518	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -16188,7 +16188,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -16201,12 +16201,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -16219,12 +16219,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -16245,7 +16245,7 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -16279,7 +16279,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -16336,7 +16336,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -16388,7 +16388,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -16537,7 +16537,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -16554,12 +16554,12 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -16576,7 +16576,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -16584,14 +16584,14 @@
 646	test eax, eax
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	add edi, 0x1
 514	cmp dword ptr [esp+0x1c], edi
@@ -16613,7 +16613,7 @@
 646	test eax, eax
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 530	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -16624,7 +16624,7 @@
 659	test eax, eax
 646	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	add edi, 0x1
 514	cmp dword ptr [esp+0x1c], edi
@@ -16650,7 +16650,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -16778,7 +16778,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -16830,7 +16830,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -16978,7 +16978,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -17035,7 +17035,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -17087,7 +17087,7 @@
 646	test ecx, ecx
 518	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -17340,18 +17340,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -17364,7 +17364,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -17402,7 +17402,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -17459,7 +17459,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -17511,7 +17511,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 646	shl ecx, 0x5
@@ -17621,7 +17621,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -17634,12 +17634,12 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -17652,7 +17652,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -17682,7 +17682,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -17739,7 +17739,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -17791,7 +17791,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -17953,7 +17953,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -17966,12 +17966,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -17984,12 +17984,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -18010,7 +18010,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -18044,7 +18044,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -18101,7 +18101,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -18153,7 +18153,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -18354,18 +18354,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -18378,7 +18378,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -18408,7 +18408,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -18465,7 +18465,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -18517,7 +18517,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -18773,14 +18773,14 @@
 646	test eax, eax
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	add edi, 0x1
 514	cmp dword ptr [esp+0x1c], edi
@@ -18802,7 +18802,7 @@
 646	test eax, eax
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 530	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -18813,7 +18813,7 @@
 659	test eax, eax
 646	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	add edi, 0x1
 514	cmp dword ptr [esp+0x1c], edi
@@ -18839,7 +18839,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -18999,7 +18999,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -19051,7 +19051,7 @@
 642	test ecx, ecx
 518	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -19174,7 +19174,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -19187,12 +19187,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -19205,12 +19205,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -19227,7 +19227,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -19261,7 +19261,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -19318,7 +19318,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -19371,7 +19371,7 @@
 582	xor edi, edi
 582	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -19545,7 +19545,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -19562,12 +19562,12 @@
 514	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -19641,7 +19641,7 @@
 582	test ebp, ebp
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 518	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -19693,7 +19693,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -19764,18 +19764,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -19788,7 +19788,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -19822,7 +19822,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -19879,7 +19879,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -19931,7 +19931,7 @@
 646	test ecx, ecx
 518	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -20067,7 +20067,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -20080,12 +20080,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -20098,12 +20098,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -20116,7 +20116,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -20146,7 +20146,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -20203,7 +20203,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -20255,7 +20255,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -20381,7 +20381,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -20438,7 +20438,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -20490,7 +20490,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -20638,7 +20638,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -20695,7 +20695,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -20747,7 +20747,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -20935,18 +20935,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -20963,7 +20963,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -20971,14 +20971,14 @@
 646	test eax, eax
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	add edi, 0x1
 514	cmp dword ptr [esp+0x1c], edi
@@ -21000,7 +21000,7 @@
 646	test eax, eax
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 530	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -21011,7 +21011,7 @@
 659	test eax, eax
 646	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	add edi, 0x1
 514	cmp dword ptr [esp+0x1c], edi
@@ -21049,7 +21049,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -21189,7 +21189,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -21241,7 +21241,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -21312,18 +21312,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -21336,7 +21336,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -21370,7 +21370,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -21427,7 +21427,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -21479,7 +21479,7 @@
 642	test ecx, ecx
 518	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -21654,7 +21654,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -21667,12 +21667,12 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -21685,7 +21685,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -21715,7 +21715,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -21772,7 +21772,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -21824,7 +21824,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -21960,18 +21960,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -22000,7 +22000,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -22034,7 +22034,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -22091,7 +22091,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -22143,7 +22143,7 @@
 646	test ecx, ecx
 518	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -22461,18 +22461,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -22485,7 +22485,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -22515,7 +22515,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -22572,7 +22572,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -22624,7 +22624,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -22812,7 +22812,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -22825,12 +22825,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -22843,12 +22843,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -22869,7 +22869,7 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -22903,7 +22903,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -22960,7 +22960,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -23012,7 +23012,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -23148,18 +23148,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -23188,7 +23188,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -23222,7 +23222,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -23279,7 +23279,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -23362,7 +23362,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -23628,18 +23628,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -23656,7 +23656,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -23694,7 +23694,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -23751,7 +23751,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 582	test edx, edx
@@ -23802,7 +23802,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -23912,7 +23912,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -23925,12 +23925,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -23943,12 +23943,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -23969,7 +23969,7 @@
 514	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -24003,7 +24003,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -24060,7 +24060,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -24112,7 +24112,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -24209,18 +24209,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -24237,7 +24237,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -24271,7 +24271,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -24328,7 +24328,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -24380,7 +24380,7 @@
 646	test ecx, ecx
 518	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 658	shl ecx, 0x5
@@ -24633,7 +24633,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -24646,12 +24646,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -24664,12 +24664,12 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -24682,7 +24682,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -24720,7 +24720,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -24777,7 +24777,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -24829,7 +24829,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -24952,7 +24952,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -24969,12 +24969,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -24991,7 +24991,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -25029,7 +25029,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -25086,7 +25086,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -25138,7 +25138,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -25326,18 +25326,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -25354,7 +25354,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -25384,7 +25384,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -25441,7 +25441,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 582	test edx, edx
@@ -25492,7 +25492,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -25654,18 +25654,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -25682,7 +25682,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -25716,7 +25716,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -25773,7 +25773,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 582	test edx, edx
@@ -25824,7 +25824,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -25960,18 +25960,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -25988,7 +25988,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -26022,7 +26022,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -26079,7 +26079,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 582	test edx, edx
@@ -26130,7 +26130,7 @@
 642	test ecx, ecx
 518	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -26253,7 +26253,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -26266,12 +26266,12 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -26284,7 +26284,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -26318,7 +26318,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -26375,7 +26375,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -26427,7 +26427,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -26667,18 +26667,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -26695,7 +26695,7 @@
 663	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -26729,7 +26729,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -26786,7 +26786,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -26838,7 +26838,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -27039,7 +27039,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -27052,12 +27052,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -27070,12 +27070,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -27092,7 +27092,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -27134,7 +27134,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -27191,7 +27191,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -27243,7 +27243,7 @@
 646	test ecx, ecx
 518	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -27548,18 +27548,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -27572,7 +27572,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -27602,7 +27602,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -27659,7 +27659,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -27711,7 +27711,7 @@
 646	test ecx, ecx
 518	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -28081,7 +28081,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -28098,12 +28098,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -28120,7 +28120,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -28158,7 +28158,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -28215,7 +28215,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -28267,7 +28267,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -28403,7 +28403,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -28416,12 +28416,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -28434,12 +28434,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -28460,7 +28460,7 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -28490,7 +28490,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -28547,7 +28547,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -28599,7 +28599,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 646	shl ecx, 0x5
@@ -28709,7 +28709,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -28722,12 +28722,12 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -28740,7 +28740,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -28782,7 +28782,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -28839,7 +28839,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -28891,7 +28891,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -29290,7 +29290,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -29347,7 +29347,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 582	test edx, edx
@@ -29398,7 +29398,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -29469,7 +29469,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -29482,12 +29482,12 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -29500,7 +29500,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -29530,7 +29530,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -29587,7 +29587,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -29640,7 +29640,7 @@
 582	xor edi, edi
 582	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -29827,7 +29827,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -29844,12 +29844,12 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -29866,7 +29866,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -29954,7 +29954,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -30025,7 +30025,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -30038,12 +30038,12 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -30056,7 +30056,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -30098,7 +30098,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -30155,7 +30155,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -30207,7 +30207,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -30564,7 +30564,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -30577,12 +30577,12 @@
 530	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -30595,12 +30595,12 @@
 530	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -30613,7 +30613,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -30643,7 +30643,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -30700,7 +30700,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -30752,7 +30752,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -31034,7 +31034,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -31091,7 +31091,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -31143,7 +31143,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -31214,7 +31214,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -31227,12 +31227,12 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -31245,7 +31245,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -31283,7 +31283,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -31340,7 +31340,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -31392,7 +31392,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -31609,7 +31609,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -31666,7 +31666,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -31718,7 +31718,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -32000,7 +32000,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -32057,7 +32057,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -32109,7 +32109,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -32349,7 +32349,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -32362,12 +32362,12 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -32380,7 +32380,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -32422,7 +32422,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -32479,7 +32479,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -32531,7 +32531,7 @@
 642	test ecx, ecx
 518	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -32745,7 +32745,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -32758,12 +32758,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -32776,12 +32776,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -32802,7 +32802,7 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -32840,7 +32840,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -32897,7 +32897,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -32949,7 +32949,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 642	shl ecx, 0x5
@@ -33059,7 +33059,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -33072,12 +33072,12 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -33090,7 +33090,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -33128,7 +33128,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -33185,7 +33185,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -33237,7 +33237,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -33360,18 +33360,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -33400,7 +33400,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -33438,7 +33438,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -33495,7 +33495,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -33578,7 +33578,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 646	shl ecx, 0x5
@@ -33899,7 +33899,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -33956,7 +33956,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 582	test edx, edx
@@ -34007,7 +34007,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -34086,7 +34086,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -34143,7 +34143,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -34195,7 +34195,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -34274,7 +34274,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -34331,7 +34331,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -34383,7 +34383,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -34493,7 +34493,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -34506,12 +34506,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -34524,12 +34524,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -34550,7 +34550,7 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -34600,7 +34600,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -34657,7 +34657,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -34709,7 +34709,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -34759,7 +34759,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -34772,12 +34772,12 @@
 530	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -34790,12 +34790,12 @@
 530	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -34808,7 +34808,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -34846,7 +34846,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -34903,7 +34903,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -34955,7 +34955,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -35117,7 +35117,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -35134,12 +35134,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -35156,7 +35156,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -35186,7 +35186,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -35243,7 +35243,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -35295,7 +35295,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -35509,18 +35509,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -35533,7 +35533,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -35563,7 +35563,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -35620,7 +35620,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -35672,7 +35672,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 646	shl ecx, 0x5
@@ -35730,7 +35730,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -35743,12 +35743,12 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -35787,7 +35787,7 @@
 646	test eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 518	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -35839,7 +35839,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -36108,7 +36108,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -36165,7 +36165,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -36217,7 +36217,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -36288,7 +36288,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -36301,12 +36301,12 @@
 530	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -36319,12 +36319,12 @@
 530	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -36337,7 +36337,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -36375,7 +36375,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -36432,7 +36432,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -36484,7 +36484,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -36659,18 +36659,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -36687,7 +36687,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -36729,7 +36729,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -36786,7 +36786,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 582	test edx, edx
@@ -36837,7 +36837,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -36934,7 +36934,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -36947,12 +36947,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -36965,12 +36965,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -36987,7 +36987,7 @@
 643	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -36995,14 +36995,14 @@
 646	test eax, eax
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
 518	test eax, eax
 514	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	add edi, 0x1
 514	cmp dword ptr [esp+0x1c], edi
@@ -37024,7 +37024,7 @@
 646	test eax, eax
 646	add ebx, 0x10f24
 662	sub esp, 0x10
-642	cmp al, byte ptr [edx]
+646	cmp al, byte ptr [edx]
 530	test eax, eax
 514	test esi, esi
 646	cmp al, byte ptr [edx]
@@ -37035,7 +37035,7 @@
 659	test eax, eax
 646	test esi, esi
 582	add esp, 0x10
-646	xor eax, eax
+642	xor eax, eax
 582	test eax, eax
 582	add edi, 0x1
 514	cmp dword ptr [esp+0x1c], edi
@@ -37065,7 +37065,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -37177,7 +37177,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -37229,7 +37229,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -37391,7 +37391,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -37404,12 +37404,12 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -37422,12 +37422,12 @@
 514	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -37440,7 +37440,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -37474,7 +37474,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -37531,7 +37531,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -37583,7 +37583,7 @@
 646	test ecx, ecx
 518	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -37771,18 +37771,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -37811,7 +37811,7 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -37841,7 +37841,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -37898,7 +37898,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -37982,7 +37982,7 @@
 646	test ecx, ecx
 518	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -38170,18 +38170,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -38210,7 +38210,7 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -38244,7 +38244,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -38301,7 +38301,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -38385,7 +38385,7 @@
 646	test ecx, ecx
 518	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -38560,18 +38560,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -38600,7 +38600,7 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -38634,7 +38634,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -38691,7 +38691,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -38748,7 +38748,7 @@
 646	add dword ptr [ebp-0x8c], 0x8
 658	cmp dword ptr [ebp-0x84], esi
 582	add dword ptr [ebp-0x94], 0x10
-642	cmp dword ptr [ebp-0x94], esi
+646	cmp dword ptr [ebp-0x94], esi
 647	add eax, esi
 646	test edx, edx
 514	cmp esi, eax
@@ -38803,7 +38803,7 @@
 582	add ebx, 0x1317fa
 662	cmp dword ptr [ebx+0x36c0], 0x0
 582	sub esp, 0x24
-646	xor eax, eax
+642	xor eax, eax
 582	add ebx, 0x196372
 662	cmp ecx, 0x6c65746e
 582	cmp esi, 0x756e6547
@@ -38830,7 +38830,7 @@
 518	test dword ptr [esp+0xc], 0x1000
 582	test byte ptr [ebx+0x36e2], 0x1
 582	add esp, 0x24
-646	test dword ptr [ebx+0x36d4], 0x4000000
+642	test dword ptr [ebx+0x36d4], 0x4000000
 518	add esi, 0x8
 662	cmp dword ptr [ebp-0x84], esi
 518	add edi, dword ptr [esi]
@@ -38869,7 +38869,7 @@
 518	add esi, 0x8
 646	cmp dword ptr [ebp-0x84], esi
 582	add dword ptr [ebp-0x94], 0x10
-646	cmp dword ptr [ebp-0x94], esi
+642	cmp dword ptr [ebp-0x94], esi
 582	xor eax, eax
 582	add eax, 0x4
 514	cmp eax, 0x20
@@ -38900,7 +38900,7 @@
 582	test eax, eax
 646	cmp dword ptr [ebp-0x8c], ecx
 582	add dword ptr [ebp-0x9c], 0x10
-646	cmp dword ptr [ebp-0x9c], esi
+642	cmp dword ptr [ebp-0x9c], esi
 647	add edx, esi
 582	cmp dword ptr [ebp+0x8], edi
 663	test edi, edi
@@ -38908,13 +38908,13 @@
 582	test eax, eax
 646	cmp dword ptr [ebp-0x8c], ecx
 582	add dword ptr [ebp-0x9c], 0x10
-642	cmp dword ptr [ebp-0x9c], esi
+646	cmp dword ptr [ebp-0x9c], esi
 582	test ecx, ecx
 582	or byte ptr [eax+0x194], 0x4
 514	test edx, edx
 582	test eax, eax
 514	sub esp, 0x1c
-646	add ebx, 0x1620e
+642	add ebx, 0x1620e
 662	add ecx, dword ptr [eax]
 646	neg edx
 647	and eax, ecx
@@ -38925,14 +38925,14 @@
 518	cmp eax, 0xfffff001
 535	test eax, eax
 582	add esp, 0x1c
-642	test eax, eax
+646	test eax, eax
 514	cmp byte ptr [ebx+0x8a0], 0x0
 514	sub esp, 0x2c
-642	add ebx, 0xed70
+646	add ebx, 0xed70
 646	cmp esi, eax
 643	add eax, 0x1
 514	add esp, 0x2c
-646	sub dword ptr [ebp-0x90], 0x4
+642	sub dword ptr [ebp-0x90], 0x4
 582	sub esi, 0x1
 514	test esi, esi
 514	test eax, eax
@@ -39001,7 +39001,7 @@
 582	or edx, eax
 514	add eax, dword ptr [edi]
 514	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 514	shl ecx, 0x5
@@ -39214,7 +39214,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -39222,12 +39222,12 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -39240,12 +39240,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -39253,7 +39253,7 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -39282,7 +39282,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -39373,7 +39373,7 @@
 583	add eax, 0x3
 518	cmp eax, ecx
 514	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -39417,7 +39417,7 @@
 582	or edx, eax
 514	add eax, dword ptr [edi]
 530	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 514	shl ecx, 0x5
@@ -39513,18 +39513,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -39532,7 +39532,7 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -39561,7 +39561,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -39616,7 +39616,7 @@
 583	add eax, 0x3
 518	cmp eax, ecx
 514	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -39660,7 +39660,7 @@
 582	or edx, eax
 514	add eax, dword ptr [edi]
 518	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 514	shl ecx, 0x5
@@ -39730,7 +39730,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -39738,12 +39738,12 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -39756,12 +39756,12 @@
 518	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -39769,7 +39769,7 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -39802,7 +39802,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -39849,7 +39849,7 @@
 583	add eax, 0x3
 518	cmp eax, ecx
 514	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -39893,7 +39893,7 @@
 582	or edx, eax
 514	add eax, dword ptr [edi]
 530	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 518	shl ecx, 0x5
@@ -39950,7 +39950,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -39961,7 +39961,7 @@
 582	test ebp, ebp
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 518	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -40009,7 +40009,7 @@
 582	or edx, eax
 582	add eax, dword ptr [edi]
 530	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 518	shl ecx, 0x5
@@ -40183,18 +40183,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -40211,7 +40211,7 @@
 659	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -40294,7 +40294,7 @@
 514	or edx, eax
 514	add eax, dword ptr [edi]
 514	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 518	shl ecx, 0x5
@@ -40360,7 +40360,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -40403,7 +40403,7 @@
 583	add eax, 0x3
 518	cmp eax, ecx
 514	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -40438,7 +40438,7 @@
 582	add dword ptr [ebp-0x88], 0x8
 514	cmp dword ptr [ebp-0x84], esi
 582	add dword ptr [ebp-0x94], 0x10
-642	cmp dword ptr [ebp-0x94], esi
+646	cmp dword ptr [ebp-0x94], esi
 647	add eax, esi
 582	test edx, edx
 582	cmp edx, ecx
@@ -40446,7 +40446,7 @@
 582	test eax, eax
 582	cmp dword ptr [ebp-0x84], edi
 582	add dword ptr [ebp-0x94], 0x10
-646	cmp dword ptr [ebp-0x94], esi
+642	cmp dword ptr [ebp-0x94], esi
 582	xor eax, eax
 582	add eax, 0x4
 514	cmp eax, 0x20
@@ -40477,7 +40477,7 @@
 582	test eax, eax
 582	cmp dword ptr [ebp-0x8c], ecx
 582	add dword ptr [ebp-0x9c], 0x10
-646	cmp dword ptr [ebp-0x9c], esi
+642	cmp dword ptr [ebp-0x9c], esi
 647	add edx, esi
 582	cmp dword ptr [ebp+0x8], edi
 530	test edi, edi
@@ -40486,7 +40486,7 @@
 582	test eax, eax
 582	cmp dword ptr [ebp-0x8c], ecx
 582	add dword ptr [ebp-0x9c], 0x10
-642	cmp dword ptr [ebp-0x9c], esi
+646	cmp dword ptr [ebp-0x9c], esi
 582	test ecx, ecx
 582	or byte ptr [eax+0x194], 0x4
 518	test edx, edx
@@ -40496,13 +40496,13 @@
 663	sub esi, 0x1
 582	test esi, esi
 582	sub eax, dword ptr [ebp-0xa0]
-2582	sbb edx, dword ptr [ebp-0x9c]
+2578	sbb edx, dword ptr [ebp-0x9c]
 582	test eax, eax
 582	cmp byte ptr [ebp-0xb0], 0x0
 582	test edi, edi
 514	add dword ptr [ebx+0x864], 0x1
 514	sub esp, 0x3c
-646	add ebx, 0xf484
+642	add ebx, 0xf484
 662	test eax, eax
 646	xor eax, eax
 582	test ecx, ecx
@@ -40531,7 +40531,7 @@
 642	add eax, esi
 514	cmp dword ptr [ebx+0x848], eax
 663	add esp, 0x3c
-646	cmp byte ptr [ebx+0x8a0], 0x0
+642	cmp byte ptr [ebx+0x8a0], 0x0
 514	cmp dword ptr [ebx-0x1bc], ecx
 582	test al, al
 582	cmp byte ptr [ebp-0x94], 0x0
@@ -40613,7 +40613,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -40710,18 +40710,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -40738,7 +40738,7 @@
 647	test eax, eax
 646	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -40794,7 +40794,7 @@
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -40851,7 +40851,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -40903,7 +40903,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -40982,7 +40982,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -41062,7 +41062,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -41110,7 +41110,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 642	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -41298,7 +41298,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -41306,12 +41306,12 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -41324,12 +41324,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -41337,7 +41337,7 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -41367,7 +41367,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -41491,7 +41491,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -41539,7 +41539,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 514	add edx, 0x1
 646	shl ecx, 0x5
@@ -41610,18 +41610,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -41629,7 +41629,7 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -41663,7 +41663,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -41751,7 +41751,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -41799,7 +41799,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -41870,18 +41870,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -41889,7 +41889,7 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -41923,7 +41923,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -42011,7 +42011,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 582	test edx, edx
@@ -42058,7 +42058,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 642	shl ecx, 0x5
@@ -42142,18 +42142,18 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 582	test edx, edx
 582	cmp al, 0x6
 663	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 518	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -42161,7 +42161,7 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -42191,7 +42191,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -42283,7 +42283,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -42331,7 +42331,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 658	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -42519,7 +42519,7 @@
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 514	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -42527,12 +42527,12 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -42545,12 +42545,12 @@
 534	test eax, eax
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 514	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 518	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -42558,7 +42558,7 @@
 582	test dword ptr [edi+0x24], edx
 514	xor esi, esi
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 582	test eax, eax
 582	cmp dword ptr [esp+0x5c], 0x1
 663	test ecx, ecx
@@ -42610,7 +42610,7 @@
 518	shl eax, 0x4
 514	add eax, dword ptr [esp+0x38]
 642	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 518	xor edx, edx
@@ -42667,7 +42667,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 642	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -42715,7 +42715,7 @@
 646	test ecx, ecx
 514	add eax, dword ptr [ecx]
 646	sub esp, 0xcc
-642	add ebx, 0x1773f
+646	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -42794,7 +42794,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-646	add ebx, 0x1816d
+642	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -42874,7 +42874,7 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-646	test eax, eax
+642	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
@@ -42899,14 +42899,14 @@
 643	add dword ptr [ebp-0x8c], 0x8
 646	cmp dword ptr [ebp-0x84], esi
 582	add dword ptr [ebp-0x94], 0x10
-642	cmp dword ptr [ebp-0x94], esi
+646	cmp dword ptr [ebp-0x94], esi
 647	add eax, esi
 582	test edx, edx
 582	cmp edx, ecx
 582	test eax, eax
 646	cmp dword ptr [ebp-0x84], edi
 582	add dword ptr [ebp-0x94], 0x10
-646	cmp dword ptr [ebp-0x94], esi
+642	cmp dword ptr [ebp-0x94], esi
 582	xor eax, eax
 582	add eax, 0x4
 514	cmp eax, 0x20
@@ -42935,19 +42935,19 @@
 582	test eax, eax
 646	cmp dword ptr [ebp-0x8c], ecx
 582	add dword ptr [ebp-0x9c], 0x10
-646	cmp dword ptr [ebp-0x9c], esi
+642	cmp dword ptr [ebp-0x9c], esi
 647	add edx, esi
 582	cmp dword ptr [ebp+0x8], edi
 582	test eax, eax
 646	cmp dword ptr [ebp-0x8c], ecx
 582	add dword ptr [ebp-0x9c], 0x10
-642	cmp dword ptr [ebp-0x9c], esi
+646	cmp dword ptr [ebp-0x9c], esi
 582	test ecx, ecx
 582	or byte ptr [eax+0x194], 0x4
 514	test edx, edx
 582	test eax, eax
 514	sub esp, 0x1c
-646	add ebx, 0x1620e
+642	add ebx, 0x1620e
 662	add ecx, dword ptr [eax]
 646	neg edx
 647	and eax, ecx
@@ -42958,10 +42958,10 @@
 518	cmp eax, 0xfffff001
 535	test eax, eax
 582	add esp, 0x1c
-642	sub eax, dword ptr [ebp-0x90]
+646	sub eax, dword ptr [ebp-0x90]
 514	sbb edx, dword ptr [ebp-0x8c]
 582	add dword ptr [ebx+0x8a8], eax
-534	adc dword ptr [ebx+0x8ac], edx
+530	adc dword ptr [ebx+0x8ac], edx
 582	test ecx, ecx
 582	xor edx, edx
 582	xor eax, eax
@@ -42971,26 +42971,26 @@
 642	test ecx, ecx
 582	add ebx, 0xbe6a
 662	sub esp, 0x18
-646	cmp edx, 0xfffffffd
+642	cmp edx, 0xfffffffd
 643	cmp eax, 0xfffff001
 535	add esp, 0x18
-642	add esp, 0x5c
-642	sub eax, dword ptr [ebx-0x160]
-2578	sbb edx, dword ptr [ebx-0x15c]
+646	add esp, 0x5c
+646	sub eax, dword ptr [ebx-0x160]
+2562	sbb edx, dword ptr [ebx-0x15c]
 514	test byte ptr [ebx-0x340], 0x80
 582	add esp, 0x5c
-646	add ebx, 0x1fe62
+642	add ebx, 0x1fe62
 662	sub edx, eax
 514	and esp, 0xfffffff0
-642	xor ebp, ebp
+646	xor ebp, ebp
 582	add ebx, 0x11d75
 662	sub esp, 0x2c
-646	test eax, eax
+642	test eax, eax
 582	test ecx, ecx
 582	test esi, esi
 518	sub ebp, 0x4
 514	sub esp, 0x3c
-642	add ebx, 0x11e9f
+646	add ebx, 0x11e9f
 662	test dl, 0x8
 582	or edx, 0x8
 518	test dl, dl
@@ -43000,7 +43000,7 @@
 642	sub esi, 0x1
 514	sub ebp, 0x4
 582	sub esp, 0x3c
-642	add ebx, 0x11e9f
+646	add ebx, 0x11e9f
 662	test dl, 0x8
 582	or edx, 0x8
 518	test dl, dl
@@ -43009,13 +43009,13 @@
 582	test edx, edx
 646	add edx, dword ptr [eax]
 646	sub esp, 0x2c
-646	add ebx, 0x1968a4
+642	add ebx, 0x1968a4
 662	test eax, eax
 582	cmp word ptr [edx+0x38], ax
 582	sub esp, 0x1c
 646	add ebx, 0xbe26c
 662	test esi, esi
-646	test edi, edi
+642	test edi, edi
 646	xor eax, eax
 582	shl ecx, 0x10
 518	test esi, 0x3
@@ -43079,14 +43079,14 @@
 582	test eax, eax
 642	add eax, 0x1
 646	add esp, 0x1c
-642	add esp, 0x2c
-642	sub esp, 0x8
-646	add ebx, 0x18809f
+646	add esp, 0x2c
+646	sub esp, 0x8
+642	add ebx, 0x18809f
 662	add esi, 0x100
 646	add esi, 0x200
 646	add ecx, 0x200
 646	add esp, 0x8
-642	test edx, edx
+646	test edx, edx
 646	add edi, dword ptr [edx+0x4]
 642	shr ecx, 0x2
 518	test ecx, ecx
@@ -43097,14 +43097,14 @@
 514	cmp esi, dword ptr [esp+0x1c]
 659	add ebx, 0x196b87
 662	sub esp, 0x2c
-642	test eax, eax
+646	test eax, eax
 514	cmp eax, 0x1
 582	cmp edx, 0x1
 518	sub esp, 0x40
-646	cmp dword ptr [esp+0x1c], 0x1
+642	cmp dword ptr [esp+0x1c], 0x1
 582	xor al, al
 582	sub esp, 0x4c
-646	add ebx, 0x116e22
+642	add ebx, 0x116e22
 662	test edx, edx
 518	sub ecx, 0xb9
 518	imul edx
@@ -43117,7 +43117,7 @@
 659	cmp eax, 0x49
 663	xor ebp, ebp
 582	sub esp, 0x10
-642	test eax, eax
+646	test eax, eax
 518	add esi, ebp
 518	shr esi, 0x1
 518	imul edi, esi
@@ -43183,7 +43183,7 @@
 646	cmp ebp, dword ptr [esp+0x28]
 582	xor edi, edi
 582	add esp, 0x10
-642	test eax, eax
+646	test eax, eax
 582	shr esi, 0x8
 518	test esi, esi
 518	and eax, 0xff
@@ -43192,7 +43192,7 @@
 659	cmp eax, 0x49
 518	xor ebp, ebp
 582	sub esp, 0x10
-642	test eax, eax
+646	test eax, eax
 518	add esi, ebp
 518	shr esi, 0x1
 518	imul edi, esi
@@ -43258,7 +43258,7 @@
 646	cmp ebp, dword ptr [esp+0x28]
 582	xor edi, edi
 582	add esp, 0x10
-642	test eax, eax
+646	test eax, eax
 582	shr esi, 0x8
 518	test esi, esi
 518	and eax, 0xff
@@ -43267,7 +43267,7 @@
 659	cmp eax, 0x49
 659	xor ebp, ebp
 582	sub esp, 0x10
-642	test eax, eax
+646	test eax, eax
 518	add esi, ebp
 518	shr esi, 0x1
 518	imul edi, esi
@@ -43333,7 +43333,7 @@
 646	cmp ebp, dword ptr [esp+0x28]
 582	xor edi, edi
 582	add esp, 0x10
-642	test eax, eax
+646	test eax, eax
 582	shr esi, 0x8
 514	test esi, esi
 514	and eax, 0xff
@@ -43342,7 +43342,7 @@
 663	cmp eax, 0x49
 534	xor ebp, ebp
 582	sub esp, 0x10
-642	test eax, eax
+646	test eax, eax
 518	add esi, ebp
 518	shr esi, 0x1
 518	imul edi, esi
@@ -43399,14 +43399,14 @@
 514	cmp ebp, dword ptr [esp+0x28]
 582	xor edi, edi
 582	add esp, 0x10
-642	test eax, eax
+646	test eax, eax
 582	shr esi, 0x8
 582	test esi, esi
 582	xor eax, eax
 582	add esp, 0x4c
-642	test eax, eax
+646	test eax, eax
 582	sub esp, 0x4c
-646	add ebx, 0x116e22
+642	add ebx, 0x116e22
 662	test edx, edx
 518	sub ecx, 0xb9
 518	imul edx
@@ -43439,14 +43439,14 @@
 518	add edx, 0x1
 514	imul eax, edx
 518	add esp, 0x4c
-642	test eax, eax
+646	test eax, eax
 518	add esp, 0x40
 646	cmp edx, 0x1
 518	sub esp, 0x40
-646	cmp dword ptr [esp+0x1c], 0x1
+642	cmp dword ptr [esp+0x1c], 0x1
 582	xor al, al
 582	sub esp, 0x4c
-646	add ebx, 0x116e22
+642	add ebx, 0x116e22
 662	test edx, edx
 518	sub ecx, 0xb9
 534	imul edx
@@ -43459,7 +43459,7 @@
 659	cmp eax, 0x49
 663	xor ebp, ebp
 582	sub esp, 0x10
-642	test eax, eax
+646	test eax, eax
 518	add esi, ebp
 518	shr esi, 0x1
 518	imul edi, esi
@@ -43525,7 +43525,7 @@
 646	cmp ebp, dword ptr [esp+0x28]
 582	xor edi, edi
 582	add esp, 0x10
-642	test eax, eax
+646	test eax, eax
 582	shr esi, 0x8
 518	test esi, esi
 518	and eax, 0xff
@@ -43534,7 +43534,7 @@
 659	cmp eax, 0x49
 518	xor ebp, ebp
 582	sub esp, 0x10
-642	test eax, eax
+646	test eax, eax
 518	add esi, ebp
 518	shr esi, 0x1
 518	imul edi, esi
@@ -43600,7 +43600,7 @@
 646	cmp ebp, dword ptr [esp+0x28]
 582	xor edi, edi
 582	add esp, 0x10
-642	test eax, eax
+646	test eax, eax
 582	shr esi, 0x8
 518	test esi, esi
 518	and eax, 0xff
@@ -43609,7 +43609,7 @@
 659	cmp eax, 0x49
 659	xor ebp, ebp
 582	sub esp, 0x10
-642	test eax, eax
+646	test eax, eax
 518	add esi, ebp
 518	shr esi, 0x1
 518	imul edi, esi
@@ -43675,7 +43675,7 @@
 646	cmp ebp, dword ptr [esp+0x28]
 582	xor edi, edi
 582	add esp, 0x10
-642	test eax, eax
+646	test eax, eax
 582	shr esi, 0x8
 514	test esi, esi
 514	and eax, 0xff
@@ -43684,7 +43684,7 @@
 663	cmp eax, 0x49
 534	xor ebp, ebp
 582	sub esp, 0x10
-642	test eax, eax
+646	test eax, eax
 518	add esi, ebp
 518	shr esi, 0x1
 518	imul edi, esi
@@ -43741,14 +43741,14 @@
 514	cmp ebp, dword ptr [esp+0x28]
 582	xor edi, edi
 582	add esp, 0x10
-642	test eax, eax
+646	test eax, eax
 582	shr esi, 0x8
 582	test esi, esi
 582	xor eax, eax
 582	add esp, 0x4c
-642	test eax, eax
+646	test eax, eax
 582	sub esp, 0x4c
-646	add ebx, 0x116e22
+642	add ebx, 0x116e22
 662	test edx, edx
 518	sub ecx, 0xb9
 534	imul edx
@@ -43820,7 +43820,7 @@
 518	add edx, 0x1
 514	imul eax, edx
 518	add esp, 0x4c
-642	test eax, eax
+646	test eax, eax
 518	add esp, 0x40
 646	test ebp, ebp
 518	cmp edi, 0x3
@@ -43861,17 +43861,17 @@
 518	and ebp, 0xffffff00
 518	sar eax, 0x1
 518	add esp, 0x2c
-646	add esi, 0x1
+642	add esi, 0x1
 514	cmp esi, dword ptr [esp+0x1c]
 663	add ebx, 0x1968ea
 662	or eax, dword ptr [ecx+0x500]
-518	add esi, 0x1
+514	add esi, 0x1
 518	cmp esi, dword ptr [esp+0x1c]
 582	add esp, 0x3c
 642	sub esi, 0x1
 514	sub ebp, 0x4
 663	sub esp, 0x3c
-642	add ebx, 0x11e9f
+646	add ebx, 0x11e9f
 662	test dl, 0x8
 582	or edx, 0x8
 514	test dl, dl
@@ -43879,20 +43879,20 @@
 582	add esp, 0x3c
 642	sub esi, 0x1
 582	add esp, 0x2c
-642	xor ebp, ebp
+646	xor ebp, ebp
 582	and esp, 0xfffffff0
-642	add ebx, 0x1967e7
+646	add ebx, 0x1967e7
 662	sub esp, 0x5c
-642	test edx, edx
+646	test edx, edx
 582	xor ecx, ecx
 582	test eax, eax
 646	add ebx, 0x17c5da
 662	sub esp, 0x18
-646	sub esp, 0x18
-642	add ebx, 0x17c637
+642	sub esp, 0x18
+646	add ebx, 0x17c637
 662	xor eax, eax
 582	sub esp, 0x1c
-642	add ebx, 0x17c77d
+646	add ebx, 0x17c77d
 662	cmp dword ptr gs:[0xc], 0x0
 582	cmpxchg dword ptr [ebx+0x11c0], ecx
 582	test ebp, ebp
@@ -43906,34 +43906,34 @@
 582	add esp, 0x1c
 642	test eax, eax
 646	xor edx, dword ptr gs:[0x18]
-514	rol edx, 0x9
-515	xor eax, eax
+646	rol edx, 0x9
+646	xor eax, eax
 582	add esp, 0x18
-642	add esp, 0x18
-646	and edi, 0x2
+646	add esp, 0x18
+642	and edi, 0x2
 582	test esi, esi
 514	xor edi, edi
 582	add ebx, 0x1215
 534	sub esp, 0x1c
-646	sub esp, 0x8
-642	add ebx, 0x119b
+642	sub esp, 0x8
+646	add ebx, 0x119b
 534	test eax, eax
 582	add esp, 0x8
-646	sub esi, eax
+642	sub esi, eax
 582	sar esi, 0x2
 582	test esi, esi
 582	add esp, 0x1c
-646	test esi, esi
+642	test esi, esi
 582	test edi, edi
 582	xor eax, eax
 582	xor ecx, dword ptr gs:[0x18]
-518	rol ecx, 0x9
-518	xor ecx, dword ptr gs:[0x18]
-518	rol ecx, 0x9
-518	test eax, eax
+646	rol ecx, 0x9
+647	xor ecx, dword ptr gs:[0x18]
+642	rol ecx, 0x9
+643	test eax, eax
 582	sub esp, 0x8
-642	sub esp, 0x1c
-658	add ebx, 0x1461fc
+646	sub esp, 0x1c
+662	add ebx, 0x1461fc
 662	and eax, 0x8000
 582	cmp edi, dword ptr [edx+0x8]
 646	cmp dword ptr gs:[0xc], 0x0
@@ -43952,8 +43952,8 @@
 582	test eax, eax
 582	test eax, eax
 582	sub esp, 0x18
-662	sub esp, 0x2c
-658	add ebx, 0x13d2ac
+658	sub esp, 0x2c
+662	add ebx, 0x13d2ac
 662	test al, 0x4
 582	cmp edx, dword ptr [esi+0x8]
 582	test edx, edx
@@ -43962,13 +43962,13 @@
 658	test eax, eax
 582	test byte ptr [esi], 0x2
 582	sub esp, 0x9c
-658	add ebx, 0x14a599
+662	add ebx, 0x14a599
 662	test ebp, ebp
 582	sub esp, 0x1c
-662	add ebx, 0xd0596
+658	add ebx, 0xd0596
 662	cmp eax, 0xfffff000
 519	add esp, 0x1c
-662	test eax, eax
+658	test eax, eax
 582	and eax, 0xf000
 518	cmp eax, 0x2000
 518	test edi, edi
@@ -43979,15 +43979,15 @@
 647	cmp eax, 0xffffffff
 659	add edi, eax
 646	sub esp, 0x1c
-662	add ebx, 0x13c36c
+658	add ebx, 0x13c36c
 662	test eax, eax
 582	test eax, eax
 514	and dword ptr [esi], 0xfffffffe
 646	add esp, 0x1c
-662	add esp, 0x9c
+658	add esp, 0x9c
 662	cmp eax, 0xffffffff
 531	add esp, 0x18
-662	test eax, 0x202
+658	test eax, 0x202
 582	sub esp, 0x18
 658	cmp eax, dword ptr [esi+0x10]
 582	test dh, 0x1
@@ -43995,7 +43995,7 @@
 582	and dh, 0xf7
 514	xor eax, eax
 582	add esp, 0x18
-662	sub edx, eax
+658	sub edx, eax
 518	test byte ptr [eax+0x3c], 0x2
 582	cmp dword ptr gs:[0xc], 0x0
 582	cmp eax, 0xfffff001
@@ -44004,24 +44004,24 @@
 642	and edx, ebp
 646	cmp edx, 0xffffffff
 582	add esp, 0x2c
-658	cmp eax, 0xffffffff
+662	cmp eax, 0xffffffff
 535	add edx, 0x1
 642	add esp, 0x18
 662	add esp, 0x14
-658	test dword ptr [esi], 0x8000
+662	test dword ptr [esi], 0x8000
 582	sub dword ptr [edx+0x4], 0x1
 582	cmp dword ptr gs:[0xc], 0x0
 582	sub dword ptr [edx], 0x1
 582	add esp, 0x1c
-658	add esp, 0x4
-658	cmp eax, 0x58
+662	add esp, 0x4
+662	cmp eax, 0x58
 582	cmp eax, 0x58
 582	test eax, eax
 514	sub esp, 0x18
-658	add ebx, 0x161827
+662	add ebx, 0x161827
 662	add ebx, 0x16b72f
 662	sub esp, 0x56c
-662	cmp byte ptr [esi+0x46], 0x0
+658	cmp byte ptr [esi+0x46], 0x0
 582	test eax, eax
 518	test eax, eax
 582	test dl, 0x8
@@ -44078,7 +44078,7 @@
 582	add dword ptr [edx+0x4], 0x1
 514	sub eax, dword ptr [ebp+0xc]
 518	sub esp, 0x3c
-658	xor eax, eax
+662	xor eax, eax
 582	add ebx, 0x13dd6a
 662	test esi, esi
 518	and eax, 0xa00
@@ -44088,7 +44088,7 @@
 582	add edx, ebp
 518	test edx, edx
 518	sub esp, 0x2c
-662	add ebx, 0x13d07c
+658	add ebx, 0x13d07c
 662	test cl, 0x8
 582	test ch, 0x8
 582	test eax, eax
@@ -44096,13 +44096,13 @@
 662	test eax, eax
 582	test byte ptr [esi], 0x2
 582	sub esp, 0x9c
-662	add ebx, 0x14a599
+658	add ebx, 0x14a599
 662	test ebp, ebp
 514	sub esp, 0x1c
-658	add ebx, 0xd0596
+662	add ebx, 0xd0596
 662	cmp eax, 0xfffff000
 519	add esp, 0x1c
-658	test eax, eax
+662	test eax, eax
 582	and eax, 0xf000
 518	cmp eax, 0x2000
 582	shrd eax, edx, 0x8
@@ -44120,15 +44120,15 @@
 647	cmp eax, 0xffffffff
 659	add edi, eax
 646	sub esp, 0x1c
-658	add ebx, 0x13c36c
+662	add ebx, 0x13c36c
 662	test eax, eax
 582	test eax, eax
 514	and dword ptr [esi], 0xfffffffe
 646	add esp, 0x1c
-658	add esp, 0x9c
+662	add esp, 0x9c
 658	cmp eax, 0xffffffff
 531	add esp, 0x18
-658	test ch, 0x1
+662	test ch, 0x1
 582	cmp ebp, edx
 518	or ah, 0x8
 514	test ebp, ebp
@@ -44139,8 +44139,8 @@
 582	sub esp, 0x18
 662	test esi, esi
 582	add esp, 0x18
-658	add esp, 0x2c
-662	cmp eax, 0xffffffff
+662	add esp, 0x2c
+658	cmp eax, 0xffffffff
 531	xor edx, edx
 582	sub ecx, dword ptr [edi+0x1c]
 518	cmp ecx, 0x7f
@@ -44151,13 +44151,13 @@
 518	add ecx, dword ptr [esp+0x44]
 518	xor eax, eax
 582	sub esp, 0x2c
-658	add ebx, 0x13c23e
+662	add ebx, 0x13c23e
 662	test edx, edx
 518	cmp ecx, edx
 582	test ebp, ebp
 518	add esi, 0x1
 514	sub esp, 0x2c
-658	add ebx, 0x13d07c
+662	add ebx, 0x13d07c
 662	test cl, 0x8
 582	test ch, 0x8
 514	test eax, eax
@@ -44169,13 +44169,13 @@
 514	cmp edi, 0xa
 534	and eax, 0xff
 514	add esp, 0x2c
-662	cmp eax, 0xffffffff
+658	cmp eax, 0xffffffff
 531	sub ebp, 0x1
 514	cmp ecx, edx
 514	test ebp, ebp
 514	add esi, 0x1
 514	sub esp, 0x2c
-658	add ebx, 0x13d07c
+662	add ebx, 0x13d07c
 662	test cl, 0x8
 582	test ch, 0x8
 514	test eax, eax
@@ -44187,13 +44187,13 @@
 514	cmp edi, 0xa
 518	and eax, 0xff
 518	add esp, 0x2c
-662	cmp eax, 0xffffffff
+658	cmp eax, 0xffffffff
 515	sub ebp, 0x1
 514	cmp ecx, edx
 514	test ebp, ebp
 514	add esi, 0x1
 518	sub esp, 0x2c
-658	add ebx, 0x13d07c
+662	add ebx, 0x13d07c
 662	test cl, 0x8
 582	test ch, 0x8
 514	test eax, eax
@@ -44205,13 +44205,13 @@
 514	cmp edi, 0xa
 530	and eax, 0xff
 514	add esp, 0x2c
-662	cmp eax, 0xffffffff
+658	cmp eax, 0xffffffff
 531	sub ebp, 0x1
 518	cmp ecx, edx
 518	test ebp, ebp
 518	add esi, 0x1
 518	sub esp, 0x2c
-658	add ebx, 0x13d07c
+662	add ebx, 0x13d07c
 662	test cl, 0x8
 582	test ch, 0x8
 514	test eax, eax
@@ -44223,13 +44223,13 @@
 514	cmp edi, 0xa
 530	and eax, 0xff
 514	add esp, 0x2c
-662	cmp eax, 0xffffffff
+658	cmp eax, 0xffffffff
 535	sub ebp, 0x1
 518	cmp ecx, edx
 514	test ebp, ebp
 518	add esi, 0x1
 514	sub esp, 0x2c
-658	add ebx, 0x13d07c
+662	add ebx, 0x13d07c
 662	test cl, 0x8
 582	test ch, 0x8
 514	test eax, eax
@@ -44241,13 +44241,13 @@
 514	cmp edi, 0xa
 530	and eax, 0xff
 518	add esp, 0x2c
-662	cmp eax, 0xffffffff
+658	cmp eax, 0xffffffff
 535	sub ebp, 0x1
 514	cmp ecx, edx
 518	test ebp, ebp
 514	add esi, 0x1
 514	sub esp, 0x2c
-658	add ebx, 0x13d07c
+662	add ebx, 0x13d07c
 662	test cl, 0x8
 582	test ch, 0x8
 514	test eax, eax
@@ -44259,13 +44259,13 @@
 514	cmp edi, 0xa
 534	and eax, 0xff
 518	add esp, 0x2c
-662	cmp eax, 0xffffffff
+658	cmp eax, 0xffffffff
 535	sub ebp, 0x1
 518	cmp ecx, edx
 518	test ebp, ebp
 518	add esi, 0x1
 518	sub esp, 0x2c
-658	add ebx, 0x13d07c
+662	add ebx, 0x13d07c
 662	test cl, 0x8
 582	test ch, 0x8
 514	test eax, eax
@@ -44277,13 +44277,13 @@
 514	cmp edi, 0xa
 514	and eax, 0xff
 514	add esp, 0x2c
-662	cmp eax, 0xffffffff
+658	cmp eax, 0xffffffff
 535	sub ebp, 0x1
 514	cmp ecx, edx
 514	test ebp, ebp
 514	add esi, 0x1
 514	sub esp, 0x2c
-658	add ebx, 0x13d07c
+662	add ebx, 0x13d07c
 662	test cl, 0x8
 582	test ch, 0x8
 514	test eax, eax
@@ -44295,13 +44295,13 @@
 514	cmp edi, 0xa
 534	and eax, 0xff
 518	add esp, 0x2c
-662	cmp eax, 0xffffffff
+658	cmp eax, 0xffffffff
 535	sub ebp, 0x1
 514	cmp ecx, edx
 514	test ebp, ebp
 514	add esi, 0x1
 518	sub esp, 0x2c
-658	add ebx, 0x13d07c
+662	add ebx, 0x13d07c
 662	test cl, 0x8
 582	test ch, 0x8
 514	test eax, eax
@@ -44314,9 +44314,9 @@
 582	sub edx, eax
 518	xor eax, eax
 582	sub esp, 0x18
-662	test esi, esi
+658	test esi, esi
 518	sub esp, 0x1c
-658	test dword ptr [eax], 0x1000
+662	test dword ptr [eax], 0x1000
 582	cmp eax, edx
 582	sub esp, 0x20
 646	test eax, eax
@@ -44331,29 +44331,29 @@
 518	test edi, edi
 646	test eax, eax
 518	add esp, 0x20
-646	test ax, ax
+642	test ax, ax
 582	test ebp, ebp
 646	test dword ptr [esi], 0x202
 518	add esp, 0x1c
-658	cmp esi, eax
+662	cmp esi, eax
 582	sub eax, 0x1
 582	add esp, 0x18
-662	cmp eax, 0xffffffff
+658	cmp eax, 0xffffffff
 531	and eax, 0xff
 518	add esp, 0x2c
-662	cmp eax, 0xffffffff
+658	cmp eax, 0xffffffff
 531	sub ebp, 0x1
 582	cmp ecx, edx
 582	test ebp, ebp
 582	sub eax, ebp
 518	add esp, 0x2c
-662	sub ebp, eax
+658	sub ebp, eax
 582	sub eax, ebp
 518	add esp, 0x3c
-658	cmp dword ptr [ebp-0x480], eax
+662	cmp dword ptr [ebp-0x480], eax
 582	cmp byte ptr [edx], 0x0
 582	sub esp, 0x4c
-658	add ebx, 0x12ada
+662	add ebx, 0x12ada
 662	add ebp, dword ptr [eax+0x4]
 642	shr edi, 0x8
 514	shl ecx, 0x4
@@ -44369,7 +44369,7 @@
 514	test eax, eax
 582	add eax, dword ptr [ecx]
 662	sub esp, 0xcc
-662	add ebx, 0x1773f
+658	add ebx, 0x1773f
 662	test al, al
 518	add edx, 0x1
 646	shl ecx, 0x5
@@ -44397,7 +44397,7 @@
 582	test ecx, ecx
 582	test eax, eax
 642	sub esp, 0x8c
-662	add ebx, 0x17fdb
+658	add ebx, 0x17fdb
 662	shr edx, 0x5
 518	cmp esi, dword ptr [esp+0xbc]
 642	test byte ptr [esp+0x7c], 0x2
@@ -44448,7 +44448,7 @@
 514	shl eax, 0x4
 518	add eax, dword ptr [esp+0x38]
 646	sub esp, 0x3c
-658	add ebx, 0x1816d
+662	add ebx, 0x1816d
 662	and eax, 0xf
 514	test edx, edx
 514	xor edx, edx
@@ -44505,13 +44505,13 @@
 582	xor eax, eax
 582	test eax, eax
 582	add esp, 0x3c
-658	test eax, eax
+662	test eax, eax
 646	shr dl, 0x4
 514	cmp dl, 0x2
 663	cmp dl, 0xa
 659	cmp dl, 0x1
 582	add esp, 0x8c
-662	cmp eax, 0x0
+658	cmp eax, 0x0
 514	test eax, eax
 646	test edx, edx
 646	and eax, 0x3
@@ -44521,7 +44521,7 @@
 663	test eax, eax
 514	test edx, 0x804
 582	sub esp, 0x14
-642	test eax, eax
+646	test eax, eax
 582	test ecx, ecx
 646	test esi, esi
 642	add eax, dword ptr [ecx+0x4]
@@ -44534,21 +44534,21 @@
 662	test eax, eax
 582	test ecx, ecx
 582	add esp, 0x18
-658	add ebx, 0x135f4a
+662	add ebx, 0x135f4a
 662	sub esp, 0x18
 662	test eax, eax
 582	test ecx, ecx
 582	add esp, 0x18
-658	test dword ptr [esi], 0x8000
+662	test dword ptr [esi], 0x8000
 582	sub dword ptr [edx+0x4], 0x1
 582	cmp dword ptr gs:[0xc], 0x0
 582	sub dword ptr [edx], 0x1
 582	test edx, edx
 582	add esp, 0x18
-658	add esp, 0x4
-658	add ebx, 0x17c80a
+662	add esp, 0x4
+662	add ebx, 0x17c80a
 662	sub esp, 0x18
-646	sub esp, 0x2c
+642	sub esp, 0x2c
 642	add ebx, 0x17c8f4
 662	test ebp, ebp
 642	test eax, eax
@@ -44558,7 +44558,7 @@
 642	cmp edx, 0x3
 514	cmp edx, 0x4
 582	ror eax, 0x9
-582	xor eax, dword ptr gs:[0x18]
+583	xor eax, dword ptr gs:[0x18]
 646	add ebx, 0x11a05
 662	sub esp, 0x5c
 642	sub esi, 0x1
@@ -44573,7 +44573,7 @@
 514	test edi, edi
 582	and esi, 0xfffffff0
 514	sub esp, esi
-646	and esi, 0xfffffff0
+642	and esi, 0xfffffff0
 646	xor ecx, ecx
 582	cmp dword ptr [eax+0x14], eax
 582	cmp edx, ecx
@@ -44605,8 +44605,8 @@
 582	add eax, eax
 514	and edx, 0xfffffff0
 514	sub esp, edx
-642	cld 
-642	and edx, 0x3
+646	cld 
+646	and edx, 0x3
 582	shr ecx, 0x2
 514	and edx, 0x3
 582	imul eax, eax, 0x1010101
@@ -44665,7 +44665,7 @@
 531	cmp dword ptr [ebp-0x20], ecx
 582	cmp esi, edx
 582	sub esp, 0x4
-646	sub dword ptr [eax+0x4], 0x1
+642	sub dword ptr [eax+0x4], 0x1
 582	test ecx, ecx
 514	test al, 0x8
 514	and eax, 0xfffffff7
@@ -44709,8 +44709,8 @@
 514	cmp edi, ebp
 663	add ebx, 0x13b977
 662	sub esp, 0x2c
-642	sub esp, 0x3c
-646	add ebx, 0x13bbd0
+646	sub esp, 0x3c
+642	add ebx, 0x13bbd0
 646	test edi, edi
 582	test esi, esi
 642	test edi, edi
@@ -44734,7 +44734,7 @@
 582	test edi, edi
 582	test ecx, ecx
 582	add esp, 0x3c
-646	test esi, esi
+642	test esi, esi
 642	and ebp, 0x2
 514	test esi, esi
 642	and ebp, 0x2
@@ -44752,28 +44752,28 @@
 582	or eax, 0x1
 642	sub eax, edx
 518	sub esp, 0x1c
-646	add ebx, 0x13e040
+642	add ebx, 0x13e040
 646	sub esp, 0x1c
 646	sub esp, 0x14
-642	add ebx, 0x13e142
+646	add ebx, 0x13e142
 662	cmp edx, eax
 582	sub eax, dword ptr [esi+0x8]
 582	xor eax, eax
 582	add esp, 0x14
-642	cmp eax, 0xffffffff
+646	cmp eax, 0xffffffff
 531	test ebp, ebp
 582	or dword ptr [esi], 0x2
 646	sub esp, 0x1c
-642	add ebx, 0x13c36c
+646	add ebx, 0x13c36c
 662	test eax, eax
 646	test byte ptr [esi], 0x1
 514	test eax, eax
 582	or dword ptr [esi], 0x1
 646	add esp, 0x1c
-646	add esp, 0x1c
+642	add esp, 0x1c
 642	test eax, eax
 642	add esp, 0x1c
-642	cmp ebp, 0x2
+646	cmp ebp, 0x2
 659	test edx, edx
 646	sub dword ptr [edx+0x4], 0x1
 582	cmp dword ptr gs:[0xc], 0x0
@@ -44784,5 +44784,5 @@
 514	cmp edx, 0x8
 582	test esi, esi
 582	add esp, 0x2c
-646	add edi, 0x4
+642	add edi, 0x4
 646	cmp edi, ebp

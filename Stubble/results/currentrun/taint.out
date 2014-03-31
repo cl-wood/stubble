@@ -1,4 +1,4 @@
-10897:	READ fd 0:[0xb5843000, 0xb5844000]
+10897:	READ fd 0:[0xb57e7000, 0xb57e8000]
 10932:0	TAINT REG	al	movzx eax, byte ptr [eax]
 10932:0	TAINT REG	ah	movzx eax, byte ptr [eax]
 10932:0	TAINT REG	ax	movzx eax, byte ptr [eax]
@@ -19,7 +19,7 @@
 10963:0	TAINT REG	ax	mov eax, ecx
 10963:0	TAINT REG	eax	mov eax, ecx
 10963:0	[FOLLOW]		mov eax, ecx
-10978:0	TAINT MEM	0xbfe7af77	mov byte ptr [ebp-0x1], al
+10978:0	TAINT MEM	0xbfb41197	mov byte ptr [ebp-0x1], al
 10978:0	UNTAINT REG	al	mov eax, 0x0
 10978:0	UNTAINT REG	ah	mov eax, 0x0
 10978:0	UNTAINT REG	ax	mov eax, 0x0
