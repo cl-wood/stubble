@@ -1,0 +1,3445 @@
+sub esp, 0x5c
+add ebx, 0x1c482
+sub esi, dword ptr [ebx]
+test eax, eax
+cmp eax, 0x21
+add edx, 0x8
+test eax, eax
+test eax, eax
+sub ecx, eax
+cmp ecx, 0xf
+sub ecx, eax
+add edx, 0x8
+test eax, eax
+cmp eax, 0x21
+sar ecx, 0x1
+cmp ecx, 0xfffffffc
+sub ecx, eax
+cmp ecx, 0xb
+add eax, 0x100001cc
+neg eax
+sub ecx, eax
+cmp ecx, 0xa
+add eax, 0x100000c0
+neg eax
+add edx, 0x8
+test eax, eax
+test eax, eax
+test eax, eax
+test eax, eax
+test eax, eax
+add dword ptr [eax+0x4], edx
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+add dword ptr [eax+0x4], edx
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+add dword ptr [eax+0x4], edx
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+add dword ptr [eax+0x4], edx
+test eax, eax
+add dword ptr [eax+0x4], esi
+test edx, edx
+cmp dword ptr [edx+0x4], 0x11
+test eax, eax
+cmp dword ptr [ecx+0x4], 0x8
+test ecx, ecx
+test dword ptr [ecx+0x4], 0xfffffffe
+test ecx, ecx
+test dword ptr [ecx+0x4], 0xfffffff7
+test edi, edi
+test edi, edi
+test esi, esi
+test ecx, ecx
+test eax, eax
+test ecx, ecx
+add esi, dword ptr [ebp-0x38]
+shr esi, 0x3
+cmp esi, ecx
+test edx, edx
+add ecx, esi
+sub edx, esi
+cmp ecx, dword ptr [ebp-0x3c]
+add esi, dword ptr [ebp-0x38]
+add esi, edx
+cmp eax, edi
+add edx, dword ptr [eax]
+cmp byte ptr [eax+0x4], 0x8
+add eax, 0x8
+add dword ptr [edx], ecx
+cmp eax, edi
+test esi, esi
+cmp dword ptr [ebp-0x3c], edi
+add edx, ecx
+cmp byte ptr [eax+0x4], 0x8
+add eax, 0x8
+add dword ptr [edx], ecx
+cmp eax, edi
+test esi, esi
+cmp dword ptr [ebp-0x3c], edi
+add edx, dword ptr [edi]
+and ecx, 0xff
+shr esi, 0x8
+shl esi, 0x4
+add esi, dword ptr [ebp-0x38]
+add eax, dword ptr [edx+ebx*1]
+and edx, 0xf
+cmp dl, 0xa
+sub ecx, 0x6
+cmp ecx, 0x23
+add edx, ebx
+add edi, 0x8
+cmp dword ptr [ebp-0x3c], edi
+add edx, dword ptr [edi]
+and ecx, 0xff
+shr esi, 0x8
+shl esi, 0x4
+add esi, dword ptr [ebp-0x38]
+add eax, dword ptr [edx+ebx*1]
+and edx, 0xf
+cmp dl, 0xa
+sub ecx, 0x6
+cmp ecx, 0x23
+add edx, ebx
+or byte ptr [ebx+0x6f0], 0x4
+or eax, dword ptr [ebx-0x1b8]
+sub eax, dword ptr [ebp-0x30]
+sbb edx, dword ptr [ebp-0x2c]
+cmp edi, edx
+sub ecx, 0x1
+sub eax, dword ptr [ebp-0x30]
+sbb edx, dword ptr [ebp-0x2c]
+cmp edi, edx
+cmp esi, eax
+sub ecx, 0x1
+test edx, edx
+sub esp, 0x2c
+add ebx, 0x168bb
+test ebp, ecx
+add edx, 0x10
+shl esi, 0x2
+sub edx, esi
+add esp, 0x2c
+sub esp, 0x5c
+add ebx, 0xbe20
+add eax, 0x4
+test esi, esi
+add edx, 0x4
+test ecx, ecx
+test edx, edx
+add edx, 0x4
+test ecx, ecx
+test edx, edx
+xor ebp, ebp
+xor esi, esi
+xor edi, edi
+sub edx, 0x3
+cmp edx, 0x1e
+add edx, ebx
+add eax, 0x8
+test edx, edx
+sub edx, 0x3
+cmp edx, 0x1e
+add edx, ebx
+add eax, 0x8
+test edx, edx
+add eax, 0x8
+xor ecx, ecx
+test edx, edx
+add eax, 0x8
+test edx, edx
+add eax, 0x8
+test edx, edx
+add eax, 0x8
+test edx, edx
+test ecx, ecx
+test ebp, ebp
+add eax, 0x8
+test edx, edx
+test ecx, ecx
+test ebp, ebp
+add eax, 0x8
+test edx, edx
+add eax, 0x8
+test edx, edx
+add eax, 0x8
+test edx, edx
+add eax, 0x8
+test edx, edx
+add eax, 0x8
+test edx, edx
+test ecx, ecx
+test ebp, ebp
+sub esp, 0x8
+add ebx, 0xadbd
+xor eax, eax
+cmp edx, esi
+add esp, 0x8
+test eax, eax
+cmp byte ptr [eax], 0x0
+and edx, eax
+cmp byte ptr [eax], dh
+cmp byte ptr [eax], dh
+inc eax
+xor edx, edx
+add eax, 0x4
+sub edx, ecx
+add ecx, 0xfefefeff
+dec edx
+xor edx, ecx
+and edx, 0x1010100
+sub eax, 0x4
+sub ecx, 0xfefefeff
+cmp cl, 0x0
+inc eax
+test ch, ch
+shr ecx, 0x10
+inc eax
+cmp cl, 0x0
+inc eax
+sub eax, dword ptr [esp+0x4]
+sub esp, 0x1c
+add ebx, 0xad64
+test esi, esi
+test eax, eax
+cmp edi, 0x0
+add esp, 0x1c
+cmp eax, edx
+test eax, eax
+add ebx, 0x1f8d5
+sub esp, 0x10c
+cmp dword ptr [ebx-0xcc], 0x1
+sbb eax, eax
+and eax, 0x9
+test edx, edx
+cmp byte ptr [edx], 0x4c
+add ecx, 0x4
+test edx, edx
+cmp byte ptr [edx], 0x4c
+add ecx, 0x4
+test edx, edx
+cmp byte ptr [edx+0x1], 0x44
+cmp byte ptr [edx+0x2], 0x5f
+add ecx, 0x4
+add edx, 0x3
+add ecx, 0x4
+test edx, edx
+test eax, eax
+cmp al, 0x3d
+xor edx, edx
+test al, al
+test eax, eax
+test edi, edi
+test esi, esi
+cmp dword ptr [edi], eax
+cmp eax, 0x1
+rep cmpsb byte ptr [esi], byte ptr [edi]
+xor ecx, ecx
+add ebx, 0x16737
+sub esp, 0x3c
+sub eax, dword ptr [esp+0x4]
+test ebp, ebp
+and esi, 0x20000000
+cmp esi, 0x1
+sbb ecx, ecx
+and ecx, 0x80
+test esi, esi
+sub esp, 0x1c
+or eax, esi
+add ebx, 0xb46e
+imul edi, esi
+cmp eax, 0xffff
+sub esp, 0x18
+add ebx, 0xb4b7
+sub esp, 0x2c
+add ebx, 0xb5c0
+test ecx, ecx
+neg eax
+and edx, eax
+cmp eax, ecx
+neg ecx
+cmp esi, ecx
+neg edi
+and ecx, edi
+neg eax
+and edx, eax
+cmp eax, ecx
+neg ecx
+cmp esi, ecx
+neg eax
+and edi, eax
+add esp, 0x2c
+add esp, 0x18
+add esp, 0x1c
+test eax, eax
+xor ecx, esi
+and ecx, 0x3
+cld 
+cmp ecx, 0x3
+test esi, 0x3
+shr ecx, 0x1
+shr ecx, 0x1
+and ecx, 0x3
+and eax, 0xfffffffc
+or eax, ecx
+test byte ptr [ebx-0x33f], 0x1
+xor eax, eax
+test ebp, ebp
+add eax, 0x1
+cmp eax, ebp
+xor eax, eax
+test ebp, ebp
+add eax, 0x1
+cmp eax, ebp
+xor edx, edx
+imul eax, dword ptr [esp+0x58], 0x4c
+test eax, eax
+add eax, 0x1
+cmp eax, ebp
+xor edx, edx
+imul eax, dword ptr [esp+0x58], 0x4c
+test eax, eax
+add eax, 0x15c
+test edi, edi
+test edi, edi
+test edx, edx
+xor eax, eax
+add edi, 0x15c
+test dl, dl
+add esp, 0x3c
+sub esp, 0xc
+test eax, eax
+xor edx, edx
+sub esp, 0x3c
+add ebx, 0x167f4
+add dword ptr [eax+0x4], 0x1
+imul edx, edi, 0x4c
+test esi, esi
+imul edx, edi, 0x4c
+add dword ptr [ebx+edx*1+0x44], 0x1
+add esi, 0x1
+adc edi, 0x0
+sub dword ptr [eax+0x4], 0x1
+add esp, 0x3c
+cmp dword ptr [ebx+0x40], edi
+xor esi, esi
+add dword ptr [eax+0x190], 0x1
+shl eax, 0x5
+add eax, dword ptr [ebp+0x8]
+cmp dword ptr [ebp+0x8], eax
+neg edx
+cmp ecx, 0x6
+cmp ecx, 0x6474e551
+cmp ecx, 0x2
+cmp ecx, 0x3
+cmp ecx, 0x1
+add ecx, dword ptr [edx]
+test edi, edi
+add eax, 0x20
+cmp eax, dword ptr [ebp-0x94]
+cmp ecx, 0x6
+and edi, ecx
+add edi, dword ptr [ebp-0xa0]
+cmp edi, dword ptr [edx+0x1ac]
+add ecx, dword ptr [eax+0x14]
+add ecx, dword ptr [ebp-0xa0]
+cmp ecx, dword ptr [edx+0x1b0]
+test byte ptr [eax+0x18], 0x1
+cmp ecx, dword ptr [edx+0x1b4]
+add ecx, dword ptr [eax+0x14]
+add ecx, dword ptr [ebp-0xa0]
+cmp ecx, dword ptr [edx+0x1b0]
+test byte ptr [eax+0x18], 0x1
+cmp ecx, dword ptr [edx+0x1b4]
+add ecx, dword ptr [edx]
+test ecx, ecx
+add ecx, dword ptr [edi]
+test edx, edx
+test eax, eax
+test edx, edx
+test eax, eax
+test edi, edi
+test eax, eax
+test edi, edi
+test eax, eax
+test edi, edi
+test eax, eax
+add edi, dword ptr [eax+0x4]
+cmp al, byte ptr [edx]
+inc ecx
+inc edx
+test al, al
+xor eax, eax
+test eax, eax
+test ecx, ecx
+test byte ptr [ebx+0x6f0], 0x4
+test dl, dl
+test edx, edx
+add esi, 0x20
+test eax, eax
+cmp eax, 0x21
+sub ecx, eax
+cmp ecx, 0xf
+sub ecx, eax
+add edx, 0x8
+test eax, eax
+add edx, 0x8
+test eax, eax
+cmp eax, 0x21
+sub ecx, eax
+cmp ecx, 0xf
+test eax, eax
+test edx, edx
+add dword ptr [edx+0x4], eax
+test edx, edx
+test eax, eax
+cmp eax, 0x7
+test edx, edx
+test edx, edx
+cmp dword ptr [eax+0x4], 0xc
+test edi, edi
+test edi, edi
+cmp dword ptr [eax+0x4], 0x8
+test eax, eax
+test eax, eax
+test byte ptr [ebx-0x340], 0x40
+test al, 0x1
+test esi, esi
+test edx, edx
+add edx, 0x8
+cmp dword ptr [ebp-0x90], 0x2
+test edi, edi
+xor edx, edx
+imul eax, dword ptr [esp+0x58], 0x4c
+test eax, eax
+add eax, 0x15c
+test edi, edi
+add edi, 0x15c
+cmp eax, edi
+test byte ptr [esp+0x54], 0x8
+xor eax, eax
+test dl, dl
+sub esp, 0xc
+test eax, eax
+add edx, eax
+test esi, esi
+cmp esi, 0x2
+add ecx, 0x1
+add edx, 0x20
+shr esi, 0x3
+cmp ecx, dword ptr [ebp-0x88]
+sub eax, dword ptr [edi]
+add dword ptr [edi+0x1b0], eax
+add dword ptr [edi+0x1b4], eax
+add ecx, eax
+test ecx, ecx
+cmp esi, 0x1
+cmp esi, 0x7
+add ecx, 0x1
+add edx, 0x20
+cmp ecx, dword ptr [ebp-0x88]
+test esi, esi
+add esi, dword ptr [edx+0x14]
+cmp esi, dword ptr [edi+0x1b0]
+test byte ptr [edx+0x18], 0x1
+cmp esi, dword ptr [edi+0x1b4]
+add ecx, 0x1
+add edx, 0x20
+cmp ecx, dword ptr [ebp-0x88]
+cmp esi, 0x2
+add ecx, 0x1
+add edx, 0x20
+shr esi, 0x3
+cmp ecx, dword ptr [ebp-0x88]
+sub eax, dword ptr [edi]
+add dword ptr [edi+0x1b0], eax
+add dword ptr [edi+0x1b4], eax
+add ecx, eax
+test ecx, ecx
+test edx, edx
+cmp edx, 0x21
+sub esi, edx
+cmp esi, 0xf
+sub esi, edx
+add ecx, 0x8
+test edx, edx
+add ecx, 0x8
+test edx, edx
+cmp edx, 0x21
+sub esi, edx
+cmp esi, 0xf
+sub esi, edx
+add ecx, 0x8
+test edx, edx
+test eax, eax
+test edx, edx
+test eax, eax
+test edx, edx
+add edx, eax
+test ecx, ecx
+test esi, esi
+add edx, 0x1
+add esi, dword ptr [ecx+0x4]
+test esi, esi
+add edx, 0x1
+add esi, dword ptr [ecx+0x4]
+test esi, esi
+test esi, esi
+add edx, 0x1
+add esi, dword ptr [ecx+0x4]
+test esi, esi
+add edx, 0x1
+add esi, dword ptr [ecx+0x4]
+test esi, esi
+test esi, esi
+add edx, 0x1
+add esi, dword ptr [ecx+0x4]
+test esi, esi
+add edx, 0x1
+add esi, dword ptr [ecx+0x4]
+test esi, esi
+test esi, esi
+add edx, 0x1
+add esi, dword ptr [ecx+0x4]
+test esi, esi
+add eax, dword ptr [ecx+0x4]
+cmp edx, 0x8
+test eax, eax
+cmp eax, 0x7
+test esi, esi
+test esi, esi
+cmp dword ptr [eax+0x4], 0xc
+test ecx, ecx
+test ecx, ecx
+cmp dword ptr [eax+0x4], 0x8
+test eax, eax
+test eax, eax
+test dl, 0x2
+test dl, 0x4
+test eax, eax
+test byte ptr [ebx-0x340], 0x40
+test al, 0x1
+test edx, edx
+or byte ptr [edi+0x194], 0x4
+test eax, eax
+add esi, dword ptr [eax+0x4]
+add eax, 0x4
+sub edx, ecx
+add ecx, 0xfefefeff
+dec edx
+xor edx, ecx
+and edx, 0x1010100
+add eax, 0x4
+sub edx, ecx
+add ecx, 0xfefefeff
+dec edx
+xor edx, ecx
+and edx, 0x1010100
+add eax, 0x4
+sub edx, ecx
+add ecx, 0xfefefeff
+dec edx
+xor edx, ecx
+and edx, 0x1010100
+add eax, 0x4
+sub edx, ecx
+add ecx, 0xfefefeff
+dec edx
+xor edx, ecx
+and edx, 0x1010100
+sub eax, 0x4
+sub ecx, 0xfefefeff
+cmp cl, 0x0
+test eax, eax
+shr ecx, 0x2
+and eax, 0x3
+test eax, eax
+xor edx, edx
+xor edx, edx
+test ecx, ecx
+imul edx, edi, 0x4c
+add dword ptr [ebx+edx*1+0x44], 0x1
+add esi, 0x1
+adc edi, 0x0
+test eax, eax
+cmp eax, dword ptr [edi+0x10]
+cmp dword ptr [ebx-0x1b0], eax
+add ebx, 0xb867
+sub esp, 0x20c
+test ecx, ecx
+test eax, eax
+add eax, 0x1
+cmp dword ptr [ecx], 0x4
+add esi, dword ptr [ecx]
+cmp ecx, 0xc
+add dword ptr [esp+0x24], 0x1
+add dword ptr [esp+0x20], 0x20
+cmp dword ptr [esp+0x24], ecx
+cmp dword ptr [ecx], 0x4
+add esi, dword ptr [ecx]
+cmp ecx, 0xc
+cmp ecx, 0x1
+cmp cl, byte ptr [edx]
+xor eax, eax
+cmp ecx, 0x20
+add ebx, 0x1259
+add ebx, dword ptr [ebx+ecx*4]
+add edx, ecx
+add esi, ecx
+cmp eax, ecx
+cmp eax, ecx
+cmp eax, ecx
+cmp eax, ecx
+cmp eax, ecx
+xor eax, eax
+test eax, eax
+add esp, 0x20c
+test eax, eax
+test edx, edx
+cmp eax, 0x20617
+add ebx, 0x19205
+sub esp, 0x4c
+add ebx, 0x131e5
+sub esp, 0x5c
+and eax, dword ptr [ebx-0x300]
+and eax, dword ptr [ebx-0x2fc]
+test edx, edx
+or ecx, dword ptr [ebp-0x28]
+xor edi, edi
+xor esi, esi
+shrd eax, edx, cl
+shr edx, cl
+test cl, 0x20
+and eax, 0x1
+cmp eax, 0x1
+sbb dword ptr [ebp-0x2c], 0xffffffff
+add esi, 0x1
+shl eax, cl
+test cl, 0x20
+xor eax, eax
+and eax, dword ptr [ebp-0x28]
+and edx, dword ptr [ebp-0x24]
+or edx, eax
+and eax, dword ptr [ebp-0x28]
+and edx, dword ptr [ebp-0x24]
+or edx, eax
+test esi, esi
+test eax, eax
+shrd eax, edx, cl
+shr edx, cl
+test cl, 0x20
+and eax, 0x1
+cmp eax, 0x1
+sbb dword ptr [ebp-0x2c], 0xffffffff
+add esi, 0x1
+shl eax, cl
+test cl, 0x20
+xor eax, eax
+and eax, dword ptr [ebp-0x28]
+and edx, dword ptr [ebp-0x24]
+or edx, eax
+test esi, esi
+add eax, 0x1
+cmp dword ptr [edx], 0x4
+add edx, dword ptr [esi]
+cmp ecx, 0xc
+add dword ptr [ebp-0x1c], 0x1
+add dword ptr [ebp-0x20], 0x20
+cmp dword ptr [ebp-0x1c], esi
+cmp dword ptr [edx], 0x4
+add edx, dword ptr [esi]
+cmp ecx, 0xc
+cmp dword ptr [esi+0x8], 0x2
+cmp edi, 0x4
+add edi, 0x3
+add eax, 0x3
+and edi, 0xfffffffc
+and eax, 0xfffffffc
+add esi, eax
+sub edi, dword ptr [ebp-0x54]
+cmp edi, ecx
+cmp dword ptr [esi+0x8], 0x2
+cmp edi, 0x4
+cmp eax, ecx
+xor eax, eax
+test eax, eax
+cmp eax, 0xa
+add esi, 0x18
+add dword ptr [ebp-0x2c], ecx
+cmp eax, 0xfffff001
+add ecx, 0x9050
+neg eax
+or eax, 0xffffffff
+test eax, eax
+add eax, 0x1
+and eax, 0xfffffff0
+sub esp, eax
+and edx, 0xfffffff0
+test esi, esi
+add edi, esi
+shl eax, 0x14
+or dword ptr [ebx-0x2fc], eax
+or dword ptr [ebx-0x2f4], eax
+cmp esi, edi
+xor edi, edi
+inc eax
+cmp byte ptr [eax], dh
+inc eax
+xor edx, 0x2
+cmp byte ptr [eax], dh
+inc eax
+xor edx, edx
+add eax, 0x4
+sub edx, ecx
+add ecx, 0xfefefeff
+dec edx
+xor edx, ecx
+and edx, 0x1010100
+add eax, 0x4
+sub edx, ecx
+add ecx, 0xfefefeff
+dec edx
+shl edx, cl
+test dword ptr [ebp-0x20], edx
+add edi, 0x1
+cmp ecx, dword ptr [ebp-0x1c]
+or esi, dword ptr [ebp-0x28]
+sub dword ptr [ebp-0x38], 0x1
+cmp ecx, dword ptr [ebp-0x1c]
+or esi, dword ptr [ebp-0x28]
+xor esi, esi
+shrd eax, edx, cl
+shr edx, cl
+test cl, 0x20
+and eax, 0x1
+test eax, eax
+add ecx, 0x1
+or edx, esi
+cmp byte ptr [ebp-0x3c], 0x0
+add eax, dword ptr [ebp-0x2c]
+add edx, 0x1
+shl eax, 0x3
+add eax, dword ptr [ebp-0x2c]
+cmp dword ptr [ebp-0x38], edx
+shrd eax, edx, cl
+shr edx, cl
+test cl, 0x20
+and eax, 0x1
+test eax, eax
+xor eax, eax
+xor edx, edx
+test cl, 0x20
+shl edx, cl
+shl eax, cl
+xor edx, eax
+add dword ptr [ebp-0x20], 0x1
+xor eax, edi
+add ecx, 0x1
+or edx, esi
+cmp byte ptr [ebp-0x3c], 0x0
+add eax, dword ptr [ebp-0x2c]
+add edx, 0x1
+shl eax, 0x3
+add eax, dword ptr [ebp-0x2c]
+cmp dword ptr [ebp-0x38], edx
+cmp dword ptr [ebp-0x38], 0x1
+add edx, 0x5
+cmp dword ptr [ebp-0x38], 0x2
+add edx, edx
+add eax, 0x1
+cmp esi, eax
+add eax, 0x1
+cmp esi, eax
+cmp dword ptr [ebp-0x38], 0x3
+cmp dword ptr [ebp-0x38], 0x1f
+sub ecx, dword ptr [ebp-0x34]
+shr eax, cl
+test eax, eax
+sub ecx, 0x2
+shl edx, cl
+shl edi, cl
+shl edi, 0x3
+add edx, edi
+test eax, eax
+add eax, edi
+cmp dword ptr [ebp-0x38], 0x2
+sub esi, 0x1
+shl edx, cl
+sub edx, 0x2
+add eax, 0x4
+test ecx, ecx
+shl eax, cl
+test eax, edx
+sub edi, 0x8
+cld 
+shr ecx, 0x1
+shr ecx, 0x1
+shr ecx, 0x1
+add eax, 0x1
+sub esi, 0x1
+add eax, 0x1
+test edx, edx
+shl edx, cl
+test edx, edx
+add eax, 0x8
+cmp eax, ecx
+sub edx, 0x2
+add eax, 0x4
+test ecx, ecx
+sub edi, 0x8
+sub esi, 0x1
+shl eax, cl
+test eax, edx
+sub edi, 0x8
+add eax, 0x8
+cmp eax, ecx
+sub ecx, 0x1
+shl eax, cl
+test eax, eax
+sub eax, 0x1
+test dword ptr [ebp-0x20], eax
+sub eax, 0x1
+add edi, 0x1
+add dword ptr [edx+0x4], edi
+add edx, 0x8
+test dword ptr [ebp-0x20], eax
+add edx, 0x8
+test eax, eax
+test ecx, ecx
+sub eax, 0x1
+test dword ptr [ebp-0x20], eax
+sub eax, 0x1
+add edi, 0x1
+add dword ptr [edx+0x4], edi
+add edx, 0x8
+test dword ptr [ebp-0x20], eax
+add edx, 0x8
+test eax, eax
+add edx, 0x8
+test eax, eax
+test ecx, ecx
+shl dword ptr [ebp-0x20], cl
+sub edx, 0x2
+add eax, 0x10
+cmp dword ptr [ebp-0x20], edx
+sub ecx, 0x1
+shl eax, cl
+test eax, eax
+sub eax, 0x1
+test dword ptr [ebp-0x20], eax
+sub eax, 0x1
+add edi, 0x1
+add dword ptr [edx+0x4], edi
+add edx, 0x8
+test dword ptr [ebp-0x20], eax
+test ecx, ecx
+shl dword ptr [ebp-0x20], cl
+sub edx, 0x2
+add eax, 0x10
+cmp dword ptr [ebp-0x20], edx
+sub edx, 0x1
+test dl, 0x1
+sub esi, dword ptr [ebp-0x28]
+add ecx, 0x8
+cmp edx, dword ptr [ebp-0x20]
+sub ecx, edx
+shl esi, cl
+add ecx, 0x4
+add eax, 0x8
+sub edx, 0x1
+sub edi, dword ptr [ebp-0x28]
+add esi, dword ptr [eax+edi*1-0x1c]
+add ecx, 0x8
+cmp edx, dword ptr [ebp-0x20]
+sub edx, 0x1
+test dl, 0x1
+sub esi, dword ptr [ebp-0x28]
+add ecx, 0x8
+cmp edx, dword ptr [ebp-0x20]
+sub ecx, edx
+shl esi, cl
+add ecx, 0x4
+add eax, 0x8
+sub edx, 0x1
+add ecx, 0x4
+add eax, 0x8
+sub edx, 0x1
+sub esp, 0x4
+test eax, eax
+mul edx
+shr edx, 0x4
+imul eax, edx, 0x4d8
+neg eax
+and edi, eax
+test ebp, 0xfff
+shr ebp, 0xc
+cmp eax, 0xfffff000
+cmp eax, 0xffffffff
+cmp eax, dword ptr [ebx+0x8fc]
+add eax, edi
+add esp, 0x2c
+test eax, eax
+add edi, 0x10
+shl eax, 0x2
+add eax, ecx
+xor edx, edx
+test esi, esi
+add edx, 0x1
+cmp edx, esi
+add edx, 0x1
+cmp edx, esi
+cmp dword ptr [ebp-0x1c], edx
+add ecx, dword ptr [ebp-0x24]
+add edx, 0x4
+add dword ptr [ebp-0x20], 0x4
+add eax, dword ptr [ebp-0x24]
+cmp byte ptr [edi], 0x2f
+xor edx, edx
+test esi, esi
+add edx, 0x1
+cmp edx, esi
+cmp dword ptr [ebp-0x1c], edx
+test esi, esi
+and eax, 0x3
+cmp al, 0x2
+test eax, eax
+test eax, eax
+add edx, dword ptr [ecx+0x4]
+test ecx, ecx
+cmp byte ptr [eax], 0x0
+xor edx, edx
+add ebx, 0x11608
+test edx, edx
+imul eax, edx, 0x4c
+cmp dword ptr [eax+0x4], 0x0
+test ecx, ecx
+cmp dword ptr [eax+0x4], 0x0
+test ecx, ecx
+imul edx, edx, 0x4c
+test eax, eax
+add dword ptr [ebx+0x44], 0x1
+and eax, 0xfffffffc
+or eax, 0x1
+add dword ptr [ebx+0x534], 0x1
+adc dword ptr [ebx+0x538], 0x0
+cmp dword ptr [ebx-0x1d0], 0xfffffffe
+cmp dword ptr [eax], 0x1
+sbb eax, eax
+add esi, eax
+shl edx, 0x5
+add esi, edx
+test eax, eax
+sub eax, 0x1
+sub esi, 0x20
+cmp ecx, 0x6474e552
+test eax, eax
+test eax, eax
+test eax, eax
+test eax, eax
+test eax, eax
+test eax, eax
+test eax, eax
+test eax, eax
+test esi, esi
+test eax, eax
+test eax, eax
+xor esi, esi
+xor edx, edx
+cmp dword ptr [ebp-0x90], 0x3
+sub esp, 0x9c
+and eax, 0xfffffff0
+sub esp, eax
+and edi, 0xfffffff0
+add ebx, 0x14191
+and eax, 0xffffff9f
+or eax, 0x20
+test eax, eax
+add ecx, 0x4
+add eax, 0xc
+and edx, 0xffffff9f
+or edx, 0x20
+cmp ecx, dword ptr [ebp-0x50]
+add eax, 0x1
+shl eax, 0x2
+add eax, edi
+test eax, eax
+xor eax, eax
+add eax, edi
+test eax, eax
+test eax, eax
+test eax, eax
+test eax, eax
+cmp dword ptr [ebp-0x74], esi
+test ax, ax
+test eax, eax
+test eax, eax
+cmp eax, 0x1
+add edi, dword ptr [esi+0x4]
+xor ecx, ecx
+shl edx, 0x10
+or edx, ecx
+and edi, 0x3
+xor cl, byte ptr [eax]
+xor cl, dl
+inc eax
+cmp dl, cl
+cmp cl, 0x0
+inc eax
+dec edi
+cmp dl, cl
+cmp cl, 0x0
+inc eax
+add ebp, ecx
+xor ebp, ecx
+add edi, ecx
+or ebp, 0xfefefeff
+add ebp, 0x1
+xor ebx, edx
+add esi, ebx
+xor esi, ebx
+add ebp, ecx
+or esi, 0xfefefeff
+add esi, 0x1
+xor ebp, ecx
+add edi, ecx
+or ebp, 0xfefefeff
+add ebp, 0x1
+sub eax, 0x4
+cmp cl, dl
+cmp cl, 0x0
+inc eax
+cmp ch, dl
+cmp ch, 0x0
+shr ecx, 0x10
+inc eax
+cmp cl, dl
+cmp cl, 0x0
+xor eax, eax
+test eax, eax
+add ebx, 0x12019
+sub esp, 0xd4
+add ecx, 0x1fe1b
+xor eax, eax
+test eax, eax
+sub esp, 0x14
+and edx, 0x3
+test dl, dl
+sub esp, 0x26c
+add ebx, 0x18d46
+test ecx, ecx
+cmp edx, dword ptr [ebx+0x500]
+imul eax, dword ptr [esp+0x288], 0x4c
+test ebp, ebp
+test al, 0x2
+test al, 0x20
+add ebx, 0x10f24
+sub esp, 0x10
+test eax, eax
+test esi, esi
+test eax, eax
+add esp, 0x10
+test esi, esi
+add esp, 0x10
+xor eax, eax
+test eax, eax
+add esp, 0x26c
+test byte ptr [ebp+0x195], 0x1
+test ebp, ebp
+test al, 0x2
+test edx, edx
+add eax, dword ptr [edx+0x4]
+test ebp, ebp
+test al, 0x2
+test al, 0x20
+cmp al, byte ptr [edx]
+inc ecx
+inc edx
+test al, al
+xor eax, eax
+test eax, eax
+test dl, 0x40
+and ebp, 0x10000000
+test eax, eax
+test eax, eax
+test edi, edi
+add eax, 0x1
+and edx, 0x1
+test edi, edi
+test eax, eax
+sub esp, 0x1c
+cmp esi, 0xffffffff
+test esi, esi
+add esp, 0x1c
+xor edx, edx
+add esp, 0x1c
+test al, al
+and eax, 0x4000000
+test esi, esi
+cmp byte ptr [esp+0x3c], 0x0
+cmp dword ptr [ebx-0xdc], 0xffffffff
+test eax, eax
+and eax, 0x3
+cmp al, 0x2
+add ecx, 0x198
+test al, al
+test edi, edi
+and eax, 0x4000000
+cmp dword ptr [ebx-0xdc], 0xffffffff
+test edi, edi
+and eax, 0x4000000
+test edi, edi
+test al, al
+cmp edx, 0xffffffff
+test byte ptr [ebx-0x340], 0x1
+cmp byte ptr [esp+0x34], 0x0
+test al, al
+and eax, 0x4000000
+and ecx, 0x4000000
+test eax, eax
+add ebx, 0xc447
+sub esp, 0x6c
+test byte ptr [ebx-0x340], 0x1
+test edi, edi
+cmp edi, 0xffffffff
+sub esp, 0x9c
+add ebx, 0x110ae
+cmp eax, 0xfffff001
+test eax, eax
+add ebx, 0x9216
+cmp eax, 0xfffff000
+test eax, eax
+test eax, eax
+cmp eax, 0xfffff001
+add esp, 0x9c
+cmp eax, 0xffffffff
+cmp esi, 0x10
+cmp eax, ecx
+cmp eax, ecx
+cmp al, cl
+cmp eax, ecx
+cmp al, byte ptr [edx-0x1]
+xor eax, eax
+test eax, eax
+add edx, 0x30
+cmp esi, edx
+test eax, eax
+cmp eax, 0xffffffff
+add esi, edi
+sub dword ptr [esp+0x20], eax
+test esi, esi
+xor ebp, ebp
+test eax, eax
+add ebp, 0x1
+cmp ebp, 0x4
+test eax, eax
+add ebp, 0x1
+cmp ebp, 0x4
+xor eax, eax
+xor edx, edx
+test cl, 0x20
+shl edx, cl
+shl eax, cl
+sub edi, 0x1
+sar esi, 0x1
+cmp dword ptr [esp+0x20], edx
+xor ebp, ebp
+add edx, dword ptr [esp+0x24]
+sub esp, 0x8
+test cl, cl
+cmp cl, 0x9
+cmp cl, 0x9
+cmp cl, 0x9
+cmp byte ptr [esp], cl
+add eax, 0x1
+add edx, 0x1
+test cl, cl
+cmp cl, 0x9
+cmp cl, 0x9
+sub esi, 0x30
+cmp al, 0x9
+add esp, 0x8
+sub eax, edi
+cmp eax, 0x0
+cmp ebp, edi
+shr esi, 0x1f
+add esi, eax
+sar esi, 0x1
+cmp dword ptr [esp+0x20], edx
+add edx, dword ptr [esp+0x24]
+cmp ebp, edi
+shr esi, 0x1f
+add esi, eax
+sar esi, 0x1
+cmp dword ptr [esp+0x20], edx
+add edx, dword ptr [esp+0x24]
+cmp dl, 0x9
+add dword ptr [esp], 0x1
+cmp dl, 0x9
+cmp esi, ecx
+cmp esi, ecx
+add esp, 0x8
+sub eax, ecx
+test cl, cl
+cmp cl, 0x9
+cmp cl, 0x9
+add esp, 0x8
+neg eax
+test esi, esi
+cmp dword ptr [esp+0x20], edx
+add edx, dword ptr [esp+0x24]
+test eax, eax
+xor ecx, ecx
+cmp esi, dword ptr [esp+0x50]
+cmp dword ptr [esp+0x20], eax
+add edx, eax
+and eax, 0xfffffffd
+cmp eax, 0x1
+cmp dword ptr [esp+0x20], eax
+test edi, edi
+and ecx, dword ptr [esp+0x34]
+and ecx, dword ptr [esp+0x54]
+and eax, dword ptr [esp+0x38]
+or eax, 0x800f0000
+and eax, dword ptr [esp+0x2c]
+or eax, ecx
+test eax, eax
+cmp eax, dword ptr [ebp+0xc]
+test ecx, ecx
+or eax, dword ptr [esp+0x54]
+add edi, dword ptr [esp+0x4c]
+cmp dword ptr [ebx-0x304], edx
+and eax, 0xf0000
+xor eax, dword ptr [esp+0x44]
+or eax, dword ptr [esp+0x5c]
+add edi, dword ptr [esp+0x4c]
+cmp dword ptr [ebx-0x304], edx
+test byte ptr [ebx-0x340], 0x1
+test ecx, ecx
+add esp, 0x6c
+test eax, eax
+cmp byte ptr [esp+0x34], 0x0
+test byte ptr [eax+0x205], 0x8
+cmp byte ptr [esp+0x34], 0x0
+add ebx, 0x1b7f5
+sub esp, 0x5c
+test edx, edx
+cmp eax, 0xffffffff
+xor edi, edi
+sub eax, edi
+cmp eax, 0xfffff001
+test eax, eax
+add edi, dword ptr [edx]
+cmp edi, 0x33
+cmp edi, 0x33
+add esi, 0x4
+cmp eax, ecx
+cmp eax, ecx
+xor eax, eax
+test eax, eax
+test al, al
+add eax, 0xd
+cmp eax, ecx
+cmp al, cl
+cmp eax, ecx
+cmp al, byte ptr [edx-0x1]
+xor eax, eax
+test eax, eax
+cmp dword ptr [edx+0x18], 0x1
+cmp word ptr [edx+0x16], 0x3
+cmp eax, 0x3
+cmp word ptr [edx+0x2e], 0x20
+shl esi, 0x5
+cmp ecx, edi
+add esi, dword ptr [ebp-0x24]
+cmp dword ptr [ebp-0x24], esi
+cmp dword ptr [edi], 0x4
+cmp ecx, 0x1f
+cmp dword ptr [edi+0x1c], 0x3
+add edi, 0x20
+shl eax, 0x5
+add eax, dword ptr [ebp-0x24]
+cmp edi, eax
+cmp dword ptr [edi], 0x4
+cmp ecx, 0x1f
+cmp dword ptr [edi+0x1c], 0x3
+add eax, ecx
+cmp eax, dword ptr [edx]
+cmp eax, ecx
+cmp eax, ecx
+cmp eax, ecx
+cmp al, cl
+cmp ah, ch
+shr eax, 0x10
+shr ecx, 0x10
+cmp al, cl
+sbb eax, eax
+sbb eax, 0xffffffff
+test eax, eax
+test ecx, ecx
+test esi, esi
+add edx, 0x3
+add eax, 0x3
+and edx, 0xfffffffc
+and eax, 0xfffffffc
+cmp eax, edx
+sub edi, eax
+add esi, eax
+cmp eax, ecx
+xor eax, eax
+test esi, esi
+and ecx, 0xff
+and edx, 0xff
+shl ecx, 0x8
+and eax, 0xff
+add edx, ecx
+shl edx, 0x8
+add edx, eax
+cmp edx, esi
+cmp eax, 0xffffffff
+sub esp, 0x1c
+add ebx, 0x1bd14
+test eax, eax
+shr ecx, 0x1
+add esp, 0x1c
+test eax, eax
+test byte ptr [ebx-0x340], 0x1
+test ebp, ebp
+cmp edx, 0xffffffff
+add ebx, 0x1ac55
+sub esp, 0x11c
+xor eax, eax
+test ecx, ecx
+imul edx, edx, 0x4c
+test eax, eax
+imul eax, dword ptr [ebp+0x20], 0x4c
+test edi, edi
+test byte ptr [edi+0x195], 0x20
+xor edx, ecx
+xor eax, esi
+or edx, eax
+xor edx, dword ptr [edi+0x1dc]
+xor eax, dword ptr [edi+0x1d8]
+or edx, eax
+test edi, edi
+test byte ptr [edi+0x195], 0x20
+xor edx, ecx
+xor eax, esi
+or edx, eax
+test ecx, ecx
+test byte ptr [ebp+0x18], 0x4
+test byte ptr [ebx-0x340], 0x40
+test eax, eax
+cmp eax, 0x1
+test eax, eax
+test edx, edx
+xor eax, eax
+add edi, 0x15c
+test dl, dl
+test dl, dl
+xor ecx, ecx
+add eax, 0x1
+cmp al, 0x2f
+test eax, eax
+cmp byte ptr [eax-0x1], 0x2f
+cmp edi, edx
+cmp byte ptr [eax-0x1], 0x2f
+cmp edi, edx
+add esp, 0x3c
+sub esp, 0xc
+test eax, eax
+shl esi, 0x5
+add edx, esi
+cmp edx, dword ptr [ecx]
+and eax, 0xfffff0
+sub esp, eax
+shr edx, 0x2
+shl edx, 0x2
+add esi, dword ptr [ebp-0x8c]
+cmp dword ptr [ebp-0x8c], esi
+cmp eax, 0x6
+cmp eax, 0x6474e551
+add esi, 0x20
+shl eax, 0x5
+add eax, dword ptr [ebp-0x8c]
+cmp esi, eax
+cmp eax, 0x6
+cmp eax, 0x1
+cmp eax, 0x2
+shr eax, 0x3
+add esi, 0x20
+shl eax, 0x5
+add eax, dword ptr [ebp-0x8c]
+cmp esi, eax
+test eax, ecx
+sub ecx, 0x1
+sub eax, dword ptr [ebp-0x98]
+test ecx, eax
+neg edx
+add dword ptr [ebp-0x90], 0x1
+and ecx, edx
+add ecx, dword ptr [esi+0x10]
+add ecx, dword ptr [eax+0x8]
+and ecx, edx
+add ecx, dword ptr [esi+0x14]
+and edx, dword ptr [ebp-0x98]
+cmp dword ptr [ebp-0x90], 0x1
+and ecx, 0x7
+shl ecx, 0x2
+sar edx, cl
+and edx, 0xf
+cmp edx, dword ptr [eax-0x14]
+and ecx, 0x7
+shl ecx, 0x2
+sar edx, cl
+and edx, 0xf
+cmp eax, 0x6474e551
+cmp eax, 0x6474e552
+cmp eax, 0x7
+test eax, eax
+test eax, eax
+and eax, 0x3
+cmp al, 0x1
+sub eax, 0x1
+and eax, dword ptr [esi+0x8]
+and eax, 0x3
+cmp al, 0x1
+sub esp, 0x3c
+add ebx, 0xf9a4
+cmp byte ptr [ebx+0x844], 0x0
+add esp, 0x3c
+test eax, eax
+sub edx, eax
+cmp dword ptr [ebp-0xc8], 0x3
+and eax, dword ptr [ebx-0x1d0]
+cmp eax, 0xffffffff
+add edx, eax
+sub eax, dword ptr [edx*4]
+cmp byte ptr [ebp-0xa5], 0x0
+or byte ptr [edi+0x195], 0x40
+test al, 0x4
+add eax, dword ptr [edi]
+test eax, eax
+cmp eax, edx
+add edx, dword ptr [edi]
+add eax, dword ptr [edi]
+neg ecx
+and eax, dword ptr [ebp-0xa4]
+cmp eax, dword ptr [ebp-0x9c]
+cmp ecx, dword ptr [ebp-0x98]
+add esi, 0x18
+cmp esi, eax
+cmp edx, eax
+sub edx, eax
+add eax, dword ptr [edi]
+cmp eax, 0xffffffff
+test al, 0x4
+add eax, dword ptr [edi]
+test eax, eax
+cmp eax, edx
+test eax, eax
+cmp eax, edx
+add edx, dword ptr [edi]
+add eax, dword ptr [edi]
+neg ecx
+and eax, dword ptr [ebp-0xa4]
+cmp eax, dword ptr [ebp-0x9c]
+cmp ecx, dword ptr [ebp-0x98]
+test byte ptr [ebp-0xb4], 0x2
+sub eax, dword ptr [ebp-0x98]
+cld 
+and edx, 0x3
+shr ecx, 0x2
+and edx, 0x3
+imul eax, eax, 0x1010101
+test al, 0x2
+cmp ecx, dword ptr [ebp-0x9c]
+add esi, 0x18
+cmp esi, eax
+sub eax, ecx
+cmp eax, 0xffffffff
+test edx, edx
+add edx, esi
+test edx, edx
+test eax, eax
+cmp eax, 0x21
+sub ecx, eax
+cmp ecx, 0xf
+sub ecx, eax
+add edx, 0x8
+test eax, eax
+cmp eax, 0x21
+sub ecx, eax
+cmp ecx, 0xf
+sar ecx, 0x1
+cmp ecx, 0xfffffffc
+sub ecx, eax
+cmp ecx, 0xb
+sub ecx, eax
+cmp ecx, 0xa
+add eax, 0x100000c0
+neg eax
+add edx, 0x8
+test eax, eax
+cmp eax, 0x21
+sub ecx, eax
+cmp ecx, 0xf
+sub ecx, eax
+test esi, esi
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+add dword ptr [eax+0x4], esi
+test eax, eax
+cmp eax, 0x7
+cmp eax, 0x11
+test eax, eax
+cmp dword ptr [eax+0x4], 0xc
+test eax, eax
+test eax, eax
+cmp dword ptr [eax+0x4], 0x8
+test edx, edx
+test al, 0x2
+test al, 0x4
+test al, 0x8
+test al, 0x4
+test al, 0x8
+test eax, eax
+test al, 0x8
+test eax, eax
+test byte ptr [ebx-0x340], 0x40
+test eax, eax
+test byte ptr [ebx-0x340], 0x40
+test al, 0x1
+test esi, esi
+and edx, 0x40
+test eax, eax
+and edx, 0x40
+test eax, eax
+add eax, dword ptr [edi]
+and eax, 0x1
+test dword ptr [ebp-0xb0], eax
+test eax, eax
+add eax, dword ptr [edi]
+test eax, eax
+and edx, 0x3
+cmp dl, 0x1
+add edx, eax
+test byte ptr [ebx-0x340], 0x40
+cmp dword ptr [ebp-0xc8], 0x2
+and eax, 0xfffffffc
+add edx, eax
+test byte ptr [ebx-0x340], 0x40
+test byte ptr [ebp+0x18], 0x8
+test eax, eax
+test byte ptr [edi+0x204], 0x20
+test eax, eax
+test ecx, ecx
+imul edx, edi, 0x4c
+add dword ptr [ebx+edx*1+0x44], 0x1
+add esi, 0x1
+adc edi, 0x0
+test esi, esi
+add esp, 0x26c
+sub esp, 0xc
+add esp, 0x14
+add esp, 0xd4
+sub esp, 0x8
+test edx, edx
+test byte ptr [eax+0x194], 0x60
+sub esp, 0x20
+and edx, 0xfffffff0
+add dword ptr [ebp-0x64], 0x1
+and ecx, 0xffffff9f
+or ecx, 0x20
+test edx, edx
+add edx, 0x1
+add esi, 0x8
+test eax, eax
+cmp eax, 0x1
+add esi, 0x8
+test eax, eax
+cmp eax, 0x1
+add edi, dword ptr [esi+0x4]
+and eax, 0xfffffffd
+cmp eax, 0x7ffffffd
+add edi, dword ptr [esi+0x4]
+test ecx, ecx
+add edi, 0x1
+test eax, eax
+test eax, eax
+test edx, edx
+test eax, eax
+test eax, eax
+test eax, eax
+shl eax, 0x2
+cmp eax, dword ptr [ebp-0x84]
+add eax, 0xf
+and eax, 0xfffffff0
+and edx, 0xffff0
+sub esp, edx
+and esi, 0xfffffff0
+add edx, eax
+cmp dword ptr [ebp-0x80], edx
+xor ebx, edx
+add esi, ebx
+xor esi, ebx
+add ebp, ecx
+or esi, 0xfefefeff
+add esi, 0x1
+xor ebp, ecx
+add edi, ecx
+or ebp, 0xfefefeff
+add ebp, 0x1
+xor ebx, edx
+add esi, ebx
+xor esi, ebx
+add ebp, ecx
+or esi, 0xfefefeff
+add esi, 0x1
+test eax, eax
+shl edi, 0x2
+or byte ptr [ecx+0x196], 0x1
+test eax, eax
+test eax, eax
+test edx, edx
+test edi, edi
+test esi, esi
+test ecx, ecx
+test eax, eax
+test eax, eax
+test eax, eax
+test eax, eax
+xor ecx, ecx
+test edi, edi
+add ecx, 0x1
+and byte ptr [eax+0x194], 0x9f
+test edx, edx
+test edi, edi
+add ecx, 0x1
+and byte ptr [eax+0x194], 0x9f
+test edx, edx
+test byte ptr [ebx-0x33f], 0x8
+cmp edx, esi
+test edi, edi
+cmp edx, 0x1
+shl ecx, 0x2
+cmp dword ptr [ebp-0x50], 0x1
+add edx, edx
+and eax, 0xfffffff0
+sub esp, eax
+sub esi, 0x1
+add word ptr [edx+esi*2], 0x1
+cmp dword ptr [ebp-0x4c], edx
+test eax, eax
+sub edi, 0x1
+sub edx, 0x4
+cmp dword ptr [ebp-0x4c], edi
+cmp dword ptr [ebp-0x50], esi
+sub edx, dword ptr [ebp-0x54]
+add edx, edx
+add edx, 0x1
+add word ptr [edx+esi*2], 0x1
+cmp dword ptr [ebp-0x4c], edx
+test eax, eax
+cmp dword ptr [ebp-0x50], esi
+sub edx, dword ptr [ebp-0x54]
+add edx, edx
+or byte ptr [edx+0x196], 0x1
+test esi, esi
+test ecx, ecx
+sub esp, 0x8
+sub eax, dword ptr [ebp-0xa0]
+sbb edx, dword ptr [ebp-0x9c]
+add dword ptr [ebx-0x150], eax
+adc dword ptr [ebx-0x14c], edx
+test esi, esi
+sub eax, 0x1
+or byte ptr [edx+0x194], 0x10
+test eax, eax
+test eax, eax
+sub eax, 0x1
+or byte ptr [edx+0x194], 0x10
+test eax, eax
+test eax, eax
+cmp esi, 0x1
+cmp dword ptr [edi+0x4], edx
+add ecx, 0x1
+cmp ecx, esi
+cmp dword ptr [edi+ecx*4], eax
+add ecx, 0x1
+cmp ecx, esi
+test edx, edx
+add ecx, 0x1
+xor edx, edx
+cmp esi, ecx
+test esi, esi
+test esi, esi
+cmp esi, ecx
+cmp ecx, edx
+test edx, edx
+cmp eax, dword ptr [edx+0x10]
+xor eax, eax
+test edx, edx
+xor eax, eax
+test edx, edx
+sub esp, 0x3c
+add ebx, 0x11f34
+sub esp, 0xc
+add ebx, 0x1c4df
+sub esp, 0x1c
+add ebx, 0x10632
+test eax, eax
+xor edi, edi
+xor eax, eax
+test byte ptr [esi+0x195], 0x2
+sub esp, 0x8c
+add ebx, 0x10a94
+test eax, eax
+test esi, esi
+add esi, edi
+cmp word ptr [esi], 0x1
+test eax, eax
+add eax, dword ptr [edx]
+and edx, 0x7fff
+cmp dword ptr [ebp-0x40], edx
+test edx, edx
+add eax, edx
+and edx, 0x7fff
+cmp ecx, edx
+test edx, edx
+test edi, edi
+test eax, eax
+or edi, eax
+test esi, esi
+add esp, 0x1c
+test edi, edi
+add esi, 0x1
+test edi, edi
+test esi, esi
+add esi, dword ptr [edx]
+add eax, esi
+test ecx, ecx
+add eax, dword ptr [edx]
+test byte ptr [eax+0x2], 0x1
+and edx, 0x7fff
+shl edx, 0x4
+add ecx, esi
+add edx, dword ptr [ebp-0x3c]
+test edx, edx
+test edx, edx
+add eax, edx
+test byte ptr [eax+0x2], 0x1
+and edx, 0x7fff
+shl edx, 0x4
+add ecx, esi
+add edx, dword ptr [ebp-0x3c]
+test edx, edx
+add edi, dword ptr [esi+0x4]
+imul eax, dword ptr [edx+0x18], 0x4c
+test eax, eax
+test eax, eax
+test eax, eax
+add esi, dword ptr [esi+0x8]
+test esi, esi
+and edi, 0x2
+add edi, dword ptr [esi+0x8]
+cmp byte ptr [eax], 0x0
+add ebx, 0x10e43
+sub esp, 0x6c
+test byte ptr [ebx-0x340], 0x10
+test eax, eax
+test esi, esi
+add esi, dword ptr [edx]
+cmp word ptr [esi], 0x1
+cmp dword ptr [esi+0x8], edi
+test eax, eax
+add esi, eax
+cmp word ptr [esi], 0x1
+cmp dword ptr [esi+0x8], edi
+test eax, eax
+add esi, eax
+cmp word ptr [esi], 0x1
+add eax, ecx
+test eax, eax
+xor esi, esi
+or dword ptr [ebp-0x4c], eax
+sub esp, 0x10
+and eax, 0x7fff
+cmp dword ptr [ebp-0x40], eax
+test eax, eax
+test eax, eax
+add esi, eax
+add esi, eax
+and edi, 0x2
+add edi, dword ptr [esi+0x8]
+cmp byte ptr [eax], 0x0
+test eax, eax
+add eax, dword ptr [edx]
+and edx, 0x7fff
+cmp dword ptr [ebp-0x40], edx
+test edx, edx
+add eax, edx
+and edx, 0x7fff
+cmp ecx, edx
+test edx, edx
+add eax, edx
+and edx, 0x7fff
+cmp ecx, edx
+test edx, edx
+test edi, edi
+and edx, 0x7fff
+cmp dword ptr [ebp-0x3c], edx
+shl edx, 0x4
+and cx, 0x8000
+add edx, dword ptr [ebp-0x44]
+add ecx, edi
+add ecx, dword ptr [esi+0x4]
+test edx, edx
+test eax, eax
+add eax, edx
+and edx, 0x7fff
+cmp dword ptr [ebp-0x3c], edx
+shl edx, 0x4
+and cx, 0x8000
+add edx, dword ptr [ebp-0x44]
+add ecx, edi
+add ecx, dword ptr [esi+0x4]
+test edx, edx
+test eax, eax
+test ecx, ecx
+add eax, dword ptr [edx]
+test eax, eax
+test ecx, ecx
+add esp, 0xc
+add esp, 0xc
+add esp, 0x3c
+test ecx, ecx
+xor edx, edx
+add ebx, 0x2040e
+sub esp, 0x20
+cmp dword ptr [ebx+0x860], 0x0
+cmp dword ptr [ebx+0x8c], 0x0
+xor ecx, ecx
+test edx, edx
+cmp esi, ecx
+cmp dword ptr [edx+0x234], 0x0
+inc ecx
+test edx, edx
+cmp esi, ecx
+test edx, edx
+cmp esi, ecx
+add ebx, 0xf897
+sub esp, 0x4c
+test ecx, ecx
+test eax, eax
+test edi, edi
+test ecx, ecx
+neg eax
+and esi, eax
+cmp dword ptr [esp+0x24], ecx
+sub edx, dword ptr [esp+0x30]
+cmp edx, ebp
+sub edx, esi
+xor edx, edx
+add eax, dword ptr [esp+0x2c]
+div ecx
+add edx, ebp
+add edx, dword ptr [esp+0x28]
+imul eax, ecx
+add eax, esi
+cmp eax, edx
+sub ecx, ebp
+add dword ptr [esp+0x20], 0x1
+test edi, edi
+cmp dword ptr [esp+0x20], ecx
+neg eax
+and esi, eax
+cmp dword ptr [esp+0x24], ecx
+sub edx, dword ptr [esp+0x30]
+cmp edx, ebp
+xor edx, edx
+div dword ptr [esp+0x24]
+imul eax, dword ptr [esp+0x24]
+add eax, 0x4c0
+add esp, 0x4c
+sub esp, 0x3c
+add ebx, 0xf574
+test eax, eax
+test esi, 0x1
+test edi, 0x2
+xor eax, eax
+shr ecx, 0x2
+test dl, 0x2
+and edx, 0x1
+sub esp, 0x1c
+add ebx, 0xfa04
+add edx, 0x10
+test eax, eax
+add esp, 0x1c
+test eax, eax
+add esp, 0x3c
+test eax, eax
+test eax, eax
+add esp, 0x20
+test eax, eax
+add ebx, 0x20275
+sub esp, 0x24
+test eax, eax
+and dword ptr [esp+0x1c], 0xffffff00
+cmp dword ptr [ebx-0x174], 0x0
+test eax, eax
+xor eax, ecx
+add esp, 0x24
+test eax, eax
+test edx, edx
+test eax, eax
+xor esi, esi
+add eax, 0x15c
+and ch, 0x2
+test al, al
+test ecx, ecx
+xor ecx, ecx
+test edi, edi
+or dword ptr [ebx-0x314], ecx
+test esi, esi
+sub eax, dword ptr [ebp-0xa0]
+sbb edx, dword ptr [ebp-0x9c]
+test eax, eax
+test eax, eax
+and byte ptr [edi+0x196], 0xfe
+cmp edi, dword ptr [ebp-0x88]
+xor eax, eax
+test edx, edx
+test eax, eax
+and byte ptr [edi+0x196], 0xfe
+cmp edi, dword ptr [ebp-0x88]
+xor eax, eax
+test edx, edx
+test eax, eax
+cmp byte ptr [ebx+0x8a0], 0x0
+sub dword ptr [ebp-0x90], 0x4
+sub esi, 0x1
+test esi, esi
+sub dword ptr [ebp-0x90], 0x4
+sub esi, 0x1
+test esi, esi
+sub eax, dword ptr [ebp-0xa0]
+sbb edx, dword ptr [ebp-0x9c]
+test eax, eax
+sub esp, 0xdc
+add ebx, 0x1611c
+test edi, 0x8000000
+xor eax, eax
+test edx, edx
+or dword ptr [ebp+0x14], eax
+test byte ptr [eax+0x194], 0x4
+test esi, esi
+test ecx, ecx
+test byte ptr [ebx-0x340], 0x20
+and esi, 0x1
+test byte ptr [ebx-0x340], 0x20
+test edx, edx
+test eax, eax
+test esi, esi
+xor eax, eax
+add eax, 0x4
+cmp eax, 0x20
+test eax, eax
+test edx, edx
+test ecx, ecx
+xor eax, eax
+add eax, 0x4
+cmp eax, 0x20
+test eax, eax
+test edx, edx
+add eax, 0x4
+cmp eax, 0x20
+test eax, eax
+test edx, edx
+shr ecx, 0x3
+cmp ecx, edx
+test ecx, ecx
+cmp dword ptr [ecx+0x4], 0x11
+and edi, 0x2000000
+xor edx, edx
+add eax, esi
+test edx, edx
+add edx, ecx
+cmp dword ptr [ebp-0x84], edx
+test edx, edx
+test eax, eax
+and edi, 0x2000000
+xor edx, edx
+add eax, esi
+test edx, edx
+cmp esi, eax
+add edi, dword ptr [esi]
+cmp edx, 0x7
+cmp edx, ecx
+test eax, eax
+cmp esi, edi
+add eax, dword ptr [esi]
+cmp byte ptr [esi+0x4], 0x8
+add esi, 0x8
+add dword ptr [eax], edx
+cmp edi, esi
+test eax, eax
+cmp dword ptr [ebp-0x84], edi
+add eax, edx
+cmp byte ptr [esi+0x4], 0x8
+add esi, 0x8
+add dword ptr [eax], edx
+cmp edi, esi
+test eax, eax
+cmp dword ptr [ebp-0x84], edi
+and esi, 0xff
+shr edx, 0x8
+shl edx, 0x4
+add edx, dword ptr [ebp-0x98]
+add ecx, dword ptr [edi]
+cmp esi, 0x8
+test esi, esi
+shr dl, 0x4
+test dl, dl
+cmp edi, dword ptr [edx+0x21c]
+cmp esi, 0x23
+cmp esi, 0x7
+or edx, ecx
+test dl, dl
+cmp edx, 0x1
+cmp esi, 0x29
+cmp esi, 0xe
+or ecx, edx
+xor edx, edx
+cmp esi, 0x5
+add edx, edx
+or edx, ecx
+and eax, 0x7fff
+shl eax, 0x4
+add edi, eax
+test ecx, ecx
+add eax, dword ptr [ecx]
+sub esp, 0xcc
+add ebx, 0x1773f
+test al, al
+add edx, 0x1
+shl ecx, 0x5
+add edi, ecx
+add edi, eax
+test al, al
+add dword ptr [ebx+0x54c], 0x1
+test esi, esi
+add edx, 0x1
+shl ecx, 0x5
+add edi, ecx
+add edi, eax
+test al, al
+add dword ptr [ebx+0x54c], 0x1
+test esi, esi
+test dword ptr [ebp+0x14], 0xfffffffa
+test ecx, ecx
+test eax, eax
+sub esp, 0x8c
+add ebx, 0x17fdb
+shr edx, 0x5
+cmp esi, dword ptr [esp+0xbc]
+test byte ptr [esp+0x7c], 0x2
+test byte ptr [esi+0x194], 0x3
+test byte ptr [esi+0x195], 0x20
+test byte ptr [ebx-0x340], 0x8
+test edx, edx
+test eax, eax
+and edx, dword ptr [esi+0x17c]
+shr eax, cl
+shr edx, cl
+shr edx, cl
+and eax, edx
+test al, 0x1
+cmp dword ptr [esp+0x5c], 0x1
+cmp ecx, 0xffffffff
+xor edx, edx
+div dword ptr [esp+0x28]
+test eax, eax
+test ecx, ecx
+shl eax, 0x4
+add eax, ecx
+shl eax, 0x4
+add eax, ecx
+shl eax, 0x4
+add eax, ecx
+shl eax, 0x4
+add ebp, 0x5
+add eax, ecx
+xor edx, edx
+div dword ptr [esp+0x28]
+test eax, eax
+shl eax, 0x4
+add eax, dword ptr [esp+0x38]
+sub esp, 0x3c
+add ebx, 0x1816d
+and eax, 0xf
+test edx, edx
+xor edx, edx
+cmp word ptr [esi+0xe], 0x0
+test dword ptr [edi+0x24], edx
+bt edx, eax
+cmp al, 0x6
+xor esi, esi
+add esp, 0x3c
+test eax, eax
+test eax, eax
+shl eax, 0x4
+add eax, dword ptr [esp+0x38]
+cmp esi, dword ptr [edi+0x20]
+add eax, dword ptr [esi]
+test eax, eax
+test ebp, ebp
+test eax, eax
+xor esi, esi
+cmp dword ptr [esp+0x5c], 0x1
+test ecx, ecx
+test eax, eax
+test eax, eax
+add edi, 0x1
+cmp dword ptr [esp+0x1c], edi
+xor eax, eax
+add esp, 0x8c
+cmp esi, dword ptr [esp+0xbc]
+test byte ptr [esp+0x7c], 0x2
+test byte ptr [esi+0x194], 0x3
+xor edx, edx
+div dword ptr [esp+0x28]
+test eax, eax
+xor edx, eax
+shr edx, 0x1
+sub edx, dword ptr [eax+0x18c]
+sar eax, 0x2
+shl eax, 0x4
+add eax, dword ptr [esp+0x38]
+add esi, 0x4
+test al, 0x1
+xor edx, eax
+shr edx, 0x1
+sub edx, dword ptr [eax+0x18c]
+sar eax, 0x2
+shl eax, 0x4
+add eax, dword ptr [esp+0x38]
+test ebp, ebp
+test eax, eax
+and eax, 0x7fff
+shl eax, 0x4
+add eax, dword ptr [edx+0x170]
+cmp edx, dword ptr [ebp+0x4]
+test eax, eax
+test eax, eax
+shr dl, 0x4
+cmp dl, 0x2
+cmp dl, 0xa
+cmp dl, 0x1
+add esp, 0x8c
+cmp eax, 0x0
+test eax, eax
+test edx, edx
+and eax, 0x3
+cmp al, 0x3
+and eax, 0x3
+cmp al, 0x2
+test eax, eax
+test edx, 0x804
+sub esp, 0x14
+test edi, edi
+add eax, dword ptr [edi]
+and edx, 0xf
+cmp dl, 0xa
+cmp esi, 0x2a
+add edx, ebx
+add dword ptr [esi], eax
+add dword ptr [ebp-0x8c], 0x8
+cmp dword ptr [ebp-0x84], esi
+and esi, 0xff
+shr edx, 0x8
+shl edx, 0x4
+add edx, dword ptr [ebp-0x98]
+add ecx, dword ptr [edi]
+cmp esi, 0x8
+test esi, esi
+shr dl, 0x4
+test dl, dl
+add eax, dword ptr [edi]
+and edx, 0xf
+cmp dl, 0xa
+cmp esi, 0x2a
+xor ecx, ecx
+test eax, eax
+cmp ecx, 0x1
+add ecx, dword ptr [eax+0x4]
+sub ecx, edx
+test edi, edi
+cmp edi, dword ptr [edx+0x21c]
+cmp esi, 0x23
+cmp esi, 0x7
+or edx, ecx
+test dl, dl
+cmp edx, 0x1
+cmp esi, 0x29
+cmp esi, 0xe
+or ecx, edx
+xor edx, edx
+cmp esi, 0x5
+add edx, edx
+or edx, ecx
+and eax, 0x7fff
+shl eax, 0x4
+add edi, eax
+test ecx, ecx
+add eax, dword ptr [ecx]
+shl eax, 0x4
+inc ebp
+add eax, ecx
+and edx, eax
+and eax, 0xfffffff
+shr edx, 0x18
+xor eax, edx
+test ecx, ecx
+test eax, eax
+add edi, 0x1
+cmp dword ptr [esp+0x1c], edi
+xor eax, eax
+add esp, 0x8c
+cmp dword ptr [esp+0x5c], 0x1
+test ecx, ecx
+test eax, eax
+and eax, 0x7fff
+shl eax, 0x4
+add eax, dword ptr [edx+0x170]
+cmp edx, dword ptr [ebp+0x4]
+test eax, eax
+test edx, edx
+test edx, edx
+cmp dword ptr [ebp], 0x0
+test ecx, ecx
+test eax, eax
+test eax, eax
+xor edi, edi
+test eax, eax
+shl eax, 0x1e
+and ecx, 0x7fff
+sar eax, 0x1f
+add eax, 0x3
+cmp eax, ecx
+test dx, dx
+cmp esi, 0x23
+cmp esi, 0x7
+or dl, cl
+cmp ecx, 0x1
+cmp esi, 0x29
+cmp esi, 0xe
+or byte ptr [ebp-0xc1], cl
+xor ecx, ecx
+cmp esi, 0x5
+or edi, dword ptr [ebp-0xb8]
+cmp edi, dword ptr [ecx+0x220]
+add dword ptr [ebx+0x550], 0x1
+test edi, edi
+add eax, dword ptr [edi]
+and edx, 0xf
+cmp dl, 0xa
+cmp esi, 0x2a
+add edi, 0x4
+xor edx, edx
+test eax, eax
+test eax, eax
+test edx, edx
+and eax, 0x3
+cmp al, 0x3
+test eax, eax
+shr al, 0x4
+cmp al, 0x2
+test edx, edx
+xor esi, esi
+xor eax, eax
+test ecx, ecx
+cmp esi, 0x2a
+xor ecx, ecx
+test eax, eax
+add dword ptr [ebp-0x94], 0x10
+cmp dword ptr [ebp-0x94], esi
+xor eax, eax
+add eax, 0x4
+cmp eax, 0x20
+test eax, eax
+add eax, esi
+test edx, edx
+cmp esi, eax
+add edi, dword ptr [esi]
+cmp edx, 0x7
+test eax, eax
+add dword ptr [edi], ecx
+add esi, 0x8
+cmp dword ptr [ebp-0x84], esi
+add dword ptr [ebp-0x94], 0x10
+cmp dword ptr [ebp-0x94], esi
+add edi, dword ptr [esi]
+cmp edx, 0x7
+test eax, eax
+add dword ptr [edi], ecx
+add esi, 0x8
+cmp dword ptr [ebp-0x84], esi
+cmp edx, 0x29
+shr ecx, 0x8
+test ecx, ecx
+cmp edx, 0x2a
+add eax, dword ptr [edx]
+test edx, edx
+add ebx, 0x1317fa
+cmp dword ptr [ebx+0x36c0], 0x0
+sub esp, 0x24
+xor eax, eax
+add ebx, 0x196372
+cmp ecx, 0x6c65746e
+cmp esi, 0x756e6547
+cmp edx, 0x49656e69
+shr esi, 0x8
+and esi, 0xf
+or ecx, 0x8
+shr edi, 0x4
+shr ecx, 0xc
+and edi, 0xf
+and ecx, 0xf0
+cmp esi, 0xf
+cmp esi, 0x6
+add edi, ecx
+cmp ecx, 0x15
+test dword ptr [esp+0x10], 0x10000000
+or edx, 0x3b
+test dword ptr [esp+0xc], 0x8000000
+xor ecx, ecx
+and eax, 0x6
+cmp eax, 0x6
+add esp, 0x24
+test dword ptr [esp+0xc], 0x10000000
+or dword ptr [ebx+0x36f0], 0x40
+test dword ptr [esp+0xc], 0x1000
+or dword ptr [ebx+0x36f0], 0x80
+test byte ptr [ebx+0x36e2], 0x1
+test byte ptr [ebx+0x36e2], 0x1
+or dword ptr [ebx+0x36f0], 0x100
+add esp, 0x24
+test dword ptr [ebx+0x36d4], 0x4000000
+add esi, 0x8
+cmp dword ptr [ebp-0x84], esi
+add dword ptr [ebp-0x94], 0x10
+cmp dword ptr [ebp-0x94], esi
+xor eax, eax
+add eax, 0x4
+cmp eax, 0x20
+add ebx, 0x13027a
+cmp dword ptr [ebx+0x36c0], 0x0
+test dword ptr [ebx+0x36d0], 0x200
+test dword ptr [ebx+0x36d0], 0x100000
+add ebx, 0x12b00a
+cmp dword ptr [ebx+0x36c0], 0x0
+test dword ptr [ebx+0x36d4], 0x4000000
+test dword ptr [ebx+0x36f0], 0x4
+add ebx, 0x11679a
+cmp dword ptr [ebx+0x36c0], 0x0
+test dword ptr [ebx+0x36d4], 0x4000000
+add eax, 0x4
+cmp eax, 0x20
+test eax, eax
+test ecx, ecx
+xor edx, edx
+xor edi, edi
+xor esi, esi
+test eax, eax
+cmp dword ptr [eax+0x4], 0x7
+add edx, esi
+cmp dword ptr [ebp+0x8], edi
+test edi, edi
+test edx, edx
+test eax, eax
+cmp esi, ecx
+add eax, 0xc
+add edi, edx
+cmp ecx, eax
+test eax, eax
+cmp dword ptr [ebp-0x8c], ecx
+shr edx, 0x8
+shl edx, 0x4
+add esi, dword ptr [edi-0x8]
+add edx, dword ptr [ebp-0x90]
+cmp esi, 0x8
+add dword ptr [ebp-0x9c], 0x10
+cmp dword ptr [ebp-0x9c], esi
+test ecx, ecx
+or byte ptr [eax+0x194], 0x4
+test edx, edx
+add edx, esi
+cmp dword ptr [ebp+0x8], edi
+test edi, edi
+test edx, edx
+test eax, eax
+sub esp, 0x1c
+add ebx, 0x1620e
+add ecx, dword ptr [eax]
+neg edx
+and eax, ecx
+add ecx, dword ptr [esi+0x24c]
+and ecx, edx
+cmp eax, ecx
+sub ecx, eax
+cmp eax, 0xfffff001
+test eax, eax
+add esp, 0x1c
+test eax, eax
+cmp byte ptr [ebx+0x8a0], 0x0
+sub dword ptr [ebp-0x90], 0x4
+sub esi, 0x1
+test esi, esi
+sub esp, 0x2c
+add ebx, 0xed70
+cmp esi, eax
+sub esi, eax
+test eax, eax
+test esi, esi
+add eax, 0x1
+add esp, 0x2c
+test ecx, ecx
+cmp dword ptr [ecx+0x4], 0x11
+and edi, 0x2000000
+xor edx, edx
+add eax, esi
+test edx, edx
+test eax, eax
+cmp dword ptr [ebp-0x84], edi
+and esi, 0xff
+shr edx, 0x8
+shl edx, 0x4
+add edx, dword ptr [ebp-0x98]
+add ecx, dword ptr [edi]
+cmp esi, 0x8
+cmp dword ptr [ebp-0x84], edi
+add edi, dword ptr [esi]
+and esi, 0xff
+shr edi, 0x8
+shl edi, 0x4
+add edi, dword ptr [ebp-0x98]
+cmp esi, 0x8
+test esi, esi
+shr al, 0x4
+test al, al
+cmp edi, dword ptr [eax+0x21c]
+cmp esi, 0x7
+cmp esi, 0x23
+or eax, edx
+test al, al
+xor eax, eax
+cmp esi, 0x5
+add eax, eax
+or edx, eax
+add eax, dword ptr [edi]
+sub esp, 0x14
+test ecx, ecx
+add dword ptr [ebp-0xb4], eax
+and eax, 0xf
+cmp al, 0xa
+cmp esi, 0x2a
+add edx, ebx
+add dword ptr [ebp-0x88], 0x8
+cmp dword ptr [ebp-0x84], esi
+add edi, dword ptr [esi]
+and esi, 0xff
+shr edi, 0x8
+shl edi, 0x4
+add edi, dword ptr [ebp-0x98]
+cmp esi, 0x8
+test esi, esi
+shr al, 0x4
+test al, al
+cmp edi, dword ptr [eax+0x21c]
+cmp esi, 0x7
+cmp esi, 0x23
+or eax, edx
+test al, al
+cmp eax, 0x1
+cmp esi, 0x29
+cmp esi, 0xe
+or edx, eax
+xor eax, eax
+cmp esi, 0x5
+add eax, eax
+or edx, eax
+add eax, dword ptr [edi]
+test edx, edx
+cmp esi, 0x2a
+add edx, ebx
+test edx, edx
+cmp edx, ecx
+cmp ecx, edx
+add dword ptr [ebp-0x88], 0x8
+cmp dword ptr [ebp-0x84], esi
+add edx, esi
+cmp dword ptr [ebp+0x8], edi
+test edi, edi
+test edx, edx
+cmp dword ptr [ebp-0x8c], ecx
+add esi, dword ptr [edi-0x8]
+and esi, 0xff
+shr eax, 0x8
+shl eax, 0x4
+add eax, dword ptr [ebp-0x90]
+cmp esi, 0x8
+test esi, esi
+cmp byte ptr [ebp-0xb0], 0x0
+test edi, edi
+add dword ptr [ebx+0x864], 0x1
+sub esp, 0x3c
+add ebx, 0xf484
+test eax, eax
+xor eax, eax
+test ecx, ecx
+cmp esi, dword ptr [ecx]
+add eax, esi
+cmp edx, eax
+test eax, eax
+cmp dword ptr [esp+0x18], edx
+cmp ecx, 0x1
+add esi, 0x1
+cmp dword ptr [edx], esi
+cmp dword ptr [eax+0x244], esi
+cmp ecx, ebp
+cmp edx, dword ptr [esp+0x1c]
+sub ecx, edx
+sub ecx, ebp
+add esi, 0x1
+cmp dword ptr [edx], esi
+add edi, 0x8
+add eax, esi
+cmp dword ptr [ebx+0x848], eax
+test eax, eax
+add esp, 0x3c
+cmp byte ptr [ebx+0x8a0], 0x0
+cmp dword ptr [ebx-0x1bc], ecx
+test al, al
+cmp byte ptr [ebp-0x94], 0x0
+and byte ptr [ebx+0x6f0], 0xfb
+add eax, ecx
+test esi, esi
+shr dl, 0x4
+test dl, dl
+cmp edi, dword ptr [edx+0x21c]
+cmp esi, 0x23
+cmp esi, 0x7
+or edx, ecx
+test dl, dl
+cmp edx, 0x1
+cmp esi, 0x29
+cmp esi, 0xe
+or ecx, edx
+xor edx, edx
+cmp esi, 0x5
+add edx, edx
+or edx, ecx
+and eax, 0x7fff
+shl eax, 0x4
+add edi, eax
+test ecx, ecx
+add eax, dword ptr [ecx]
+xor edx, edx
+cmp esi, 0x5
+add edx, edx
+or edx, ecx
+and eax, 0x7fff
+shl eax, 0x4
+add edi, eax
+test ecx, ecx
+add eax, dword ptr [ecx]
+sub eax, dword ptr [ebp-0x90]
+sbb edx, dword ptr [ebp-0x8c]
+add dword ptr [ebx+0x8a8], eax
+adc dword ptr [ebx+0x8ac], edx
+test ecx, ecx
+xor edx, edx
+xor eax, eax
+add ebx, 0xbe6a
+sub esp, 0x18
+cmp edx, 0xfffffffd
+cmp eax, 0xfffff001
+add esp, 0x18
+add esp, 0x5c
+sub eax, dword ptr [ebx-0x160]
+sbb edx, dword ptr [ebx-0x15c]
+test byte ptr [ebx-0x340], 0x80
+add esp, 0x5c
+add ebx, 0x1fe62
+sub edx, eax
+and esp, 0xfffffff0
+xor ebp, ebp
+add ebx, 0x11d75
+sub esp, 0x2c
+test eax, eax
+test ecx, ecx
+test esi, esi
+sub ebp, 0x4
+sub esp, 0x3c
+add ebx, 0x11e9f
+test dl, 0x8
+or edx, 0x8
+test dl, dl
+test edx, edx
+test edi, edi
+add esp, 0x3c
+sub esi, 0x1
+add esp, 0x2c
+sub ebp, 0x4
+test byte ptr [ebx-0x340], 0x2
+test edx, edx
+add edx, dword ptr [eax]
+sub esp, 0x2c
+add ebx, 0x1968a4
+test eax, eax
+test eax, eax
+cmp word ptr [edx+0x38], ax
+sub esp, 0x1c
+add ebx, 0xbe26c
+test esi, esi
+test edi, edi
+xor eax, eax
+shl ecx, 0x10
+test esi, 0x3
+cmp cl, dl
+or dl, dl
+or dl, dl
+inc esi
+test esi, 0x3
+cmp cl, dl
+add edi, edx
+xor edi, edx
+or edi, 0xfefefeff
+inc edi
+xor edx, ecx
+add edi, edx
+xor edi, edx
+or edi, 0xfefefeff
+inc edi
+add edi, edx
+xor edi, edx
+or edi, 0xfefefeff
+inc edi
+sub esi, 0x4
+sub esi, 0x4
+sub esi, 0x4
+test edx, 0xff0000
+test dh, dh
+add esi, 0x10
+add edi, edx
+xor edi, edx
+or edi, 0xfefefeff
+inc edi
+add esi, 0x10
+add edi, edx
+xor edi, edx
+or edi, 0xfefefeff
+inc edi
+xor edx, ecx
+add edi, edx
+xor edx, ecx
+add edi, edx
+xor edi, edx
+or edi, 0xfefefeff
+inc edi
+add edi, edx
+xor edi, edx
+or edi, 0xfefefeff
+inc edi
+xor edx, ecx
+add edi, edx
+xor edi, edx
+or edi, 0xfefefeff
+inc edi
+add edi, edx
+xor edi, edx
+or edi, 0xfefefeff
+inc edi
+xor edx, ecx
+add edi, edx
+add esi, 0x4
+add esi, 0x4
+add esi, 0x4
+cmp dl, cl
+test dl, dl
+cmp dh, cl
+test dl, dl
+cmp dh, cl
+test dh, dh
+test dh, dh
+shr edx, 0x10
+cmp dl, cl
+test dl, dl
+test eax, eax
+add eax, 0x1
+add esp, 0x1c
+add esp, 0x2c
+sub esp, 0x8
+add ebx, 0x18809f
+add esi, 0x100
+add esi, 0x200
+add ecx, 0x200
+add esp, 0x8
+test edx, edx
+add edi, dword ptr [edx+0x4]
+shr ecx, 0x2
+test ecx, ecx
+xor esi, esi
+add ebx, 0x196bf9
+test eax, eax
+add esi, 0x1
+cmp esi, dword ptr [esp+0x1c]
+add esp, 0x3c
+add ebx, 0x196b87
+sub esp, 0x2c
+test eax, eax
+cmp eax, 0x1
+cmp eax, 0x2
+cmp edx, 0x1
+sub esp, 0x40
+cmp dword ptr [esp+0x1c], 0x1
+xor al, al
+sub esp, 0x4c
+add ebx, 0x116e22
+test edx, edx
+sub ecx, 0xb9
+imul edx
+sar ecx, 0x1f
+sub edx, ecx
+test esi, esi
+and eax, 0xff
+cmp eax, 0x40
+cmp edi, 0x9
+xor eax, eax
+add esp, 0x4c
+cmp eax, 0xff
+cmp eax, 0x49
+cmp edi, 0x9
+xor ebp, ebp
+sub esp, 0x10
+test eax, eax
+add esi, ebp
+shr esi, 0x1
+imul edi, esi
+add edi, dword ptr [esp+0x24]
+cmp byte ptr [edx], cl
+sbb eax, eax
+or eax, 0x1
+cmp eax, 0x0
+cmp ebp, dword ptr [esp+0x28]
+xor edi, edi
+add esp, 0x10
+test eax, eax
+cmp ecx, edi
+cmp dl, 0x6
+shr esi, 0x8
+test esi, esi
+and eax, 0xff
+cmp eax, 0x40
+cmp edi, 0x9
+cmp ebp, dword ptr [esp+0x28]
+add esi, ebp
+shr esi, 0x1
+imul edi, esi
+add edi, dword ptr [esp+0x24]
+xor edi, edi
+add esp, 0x10
+xor eax, eax
+add esp, 0x4c
+test eax, eax
+xor ecx, ecx
+and edx, 0x1f
+xor esi, esi
+shr eax, 0x5
+and eax, 0x7
+cmp eax, 0x1
+cmp edx, 0x1
+cmp byte ptr [esp+0x2b], 0x0
+cmp edi, 0x3
+sub eax, 0xb9
+sub eax, edi
+cmp eax, 0x1
+cmp eax, 0x2
+shr eax, 0x16
+and edx, 0xfff
+add edx, 0x1
+add eax, 0x1
+imul eax, edx
+add ecx, 0x1
+shr edx, 0xc
+and edx, 0x3ff
+imul eax, ecx
+add edx, 0x1
+imul eax, edx
+add esp, 0x4c
+test eax, eax
+add esp, 0x40
+cmp edx, 0x2
+cmp byte ptr [esp+0x2b], 0x0
+test edi, edi
+cmp edi, 0x6
+cmp eax, 0x2
+sub eax, 0xb9
+sub eax, edi
+cmp edi, 0x9
+cmp edi, 0xc
+add esi, 0x1
+cmp eax, 0x3
+cmp edi, 0xc
+add esi, 0x1
+and edx, 0x1f
+shr eax, 0x5
+and eax, 0x7
+cmp eax, 0x1
+cmp edx, 0x1
+cmp byte ptr [esp+0x2b], 0x0
+test ebp, ebp
+cmp edi, 0x3
+xor edi, edi
+add edi, 0x1
+test al, 0x1f
+shr edx, 0x5
+and edx, 0x7
+cmp edx, ebp
+shr eax, 0xe
+and eax, 0x3ff
+add edi, 0x1
+add ecx, 0x1
+test ecx, ecx
+test ebp, ebp
+test esi, esi
+xor edx, edx
+div ecx
+test esi, esi
+sar eax, 0x1
+xor al, al
+sar edx, 0x1
+test ebp, ebp
+sar eax, 0x1
+and ebp, 0xffffff00
+sar eax, 0x1
+add esp, 0x2c
+add ebx, 0x1968ea
+or eax, dword ptr [ecx+0x500]
+and edi, 0x3
+xor ebp, ebp
+and esp, 0xfffffff0
+add ebx, 0x1967e7
+sub esp, 0x5c
+test edx, edx
+xor ecx, ecx
+test edx, edx
+test eax, eax
+xor ecx, ecx
+test eax, eax
+add ebx, 0x17c5da
+sub esp, 0x18
+sub esp, 0x18
+add ebx, 0x17c637
+xor eax, eax
+sub esp, 0x1c
+add ebx, 0x17c77d
+cmp dword ptr gs:[0xc], 0x0
+lock cmpxchg dword ptr [ebx+0x11c0], ecx
+test ebp, ebp
+cmpxchg dword ptr [ebx+0x11c0], ecx
+test ebp, ebp
+xor eax, eax
+test esi, esi
+test edx, edx
+add dword ptr [ebx+0x37e0], 0x1
+adc dword ptr [ebx+0x37e4], 0x0
+cmp dword ptr gs:[0xc], 0x0
+lock sub dword ptr [ebx+0x11c0], 0x1
+add esp, 0x1c
+sub dword ptr [ebx+0x11c0], 0x1
+add esp, 0x1c
+test eax, eax
+xor edx, dword ptr gs:[0x18]
+rol edx, 0x9
+xor eax, eax
+add esp, 0x18
+add esp, 0x18
+and edi, 0x2
+test esi, esi
+xor edi, edi
+add ebx, 0x1215
+sub esp, 0x1c
+sub esp, 0x8
+add ebx, 0x119b
+test eax, eax
+add esp, 0x8
+sub esi, eax
+sar esi, 0x2
+test esi, esi
+add esp, 0x1c
+test esi, esi
+test edi, edi
+xor eax, eax
+xor ecx, dword ptr gs:[0x18]
+rol ecx, 0x9
+xor ecx, dword ptr gs:[0x18]
+rol ecx, 0x9
+test eax, eax
+sub esp, 0x8
+sub esp, 0x1c
+add ebx, 0x1461fc
+and eax, 0x8000
+cmp edi, dword ptr [edx+0x8]
+cmp dword ptr gs:[0xc], 0x0
+cmpxchg dword ptr [edx], ecx
+add dword ptr [edx+0x4], 0x1
+cmp edx, dword ptr [esi+0x8]
+add edx, 0x1
+test dword ptr [esi], 0x8000
+sub esp, 0x14
+add ebx, 0x13c4c2
+cmp byte ptr [esi+0x46], 0x0
+test ecx, ecx
+test eax, eax
+test eax, eax
+test dword ptr [esi], 0x800
+cmp edx, dword ptr [esi+0x8]
+test dword ptr [esi], 0x100
+test eax, eax
+test eax, eax
+sub esp, 0x18
+sub esp, 0x2c
+add ebx, 0x13d2ac
+test al, 0x4
+cmp edx, dword ptr [esi+0x8]
+test edx, edx
+test eax, eax
+sub esp, 0x18
+test eax, eax
+add esp, 0x18
+test byte ptr [esi], 0x2
+test eax, eax
+sub esp, 0x9c
+add ebx, 0x14a599
+test ebp, ebp
+sub esp, 0x1c
+add ebx, 0xd0596
+cmp eax, 0xfffff000
+add esp, 0x1c
+test eax, eax
+and eax, 0xf000
+cmp eax, 0x2000
+test edi, edi
+and eax, 0xfffff000
+test ebp, 0xfff
+shr ebp, 0xc
+cmp eax, 0xfffff000
+cmp eax, 0xffffffff
+add edi, eax
+sub esp, 0x1c
+add ebx, 0x13c36c
+test eax, eax
+test byte ptr [esi], 0x1
+test eax, eax
+test eax, eax
+or dword ptr [esi], 0x1
+add esp, 0x1c
+and dword ptr [esi], 0xfffffffe
+add esp, 0x1c
+add esp, 0x9c
+cmp eax, 0xffffffff
+add esp, 0x18
+test eax, 0x202
+and eax, 0x8000
+cmp ebp, dword ptr [edx+0x8]
+sub esp, 0x18
+cmp eax, dword ptr [esi+0x10]
+test dh, 0x1
+cmp dword ptr [esi+0x8], eax
+and dh, 0xf7
+xor eax, eax
+add esp, 0x18
+sub edx, eax
+test byte ptr [eax+0x3c], 0x2
+cmp dword ptr gs:[0xc], 0x0
+cmp eax, 0xfffff001
+cmp eax, 0x0
+add dword ptr [esi+0x8], eax
+and edx, ebp
+cmp edx, 0xffffffff
+sar edx, 0x1f
+add eax, edi
+adc edx, ebp
+add esp, 0x2c
+add esp, 0x2c
+cmp eax, 0xffffffff
+add edx, 0x1
+add esp, 0x18
+add esp, 0x14
+test dword ptr [esi], 0x8000
+sub dword ptr [edx+0x4], 0x1
+cmp dword ptr gs:[0xc], 0x0
+sub dword ptr [edx], 0x1
+add esp, 0x1c
+add esp, 0x4
+cmp eax, 0x58
+test eax, eax
+sub esp, 0x18
+add ebx, 0x161827
+add ebx, 0x16b72f
+sub esp, 0x56c
+cmp byte ptr [esi+0x46], 0x0
+test eax, eax
+test eax, eax
+test dl, 0x8
+test eax, eax
+cmp byte ptr [esi+0x46], 0x0
+test eax, eax
+test eax, eax
+and edx, 0x2
+cmp eax, 0xffffffff
+and edx, 0x2
+shl edx, 0x10
+test al, 0x3
+cmp dl, cl
+test cl, cl
+xor ecx, edx
+add edi, ecx
+xor edi, ecx
+or edi, 0xfefefeff
+inc edi
+xor ecx, edx
+add edi, ecx
+xor edi, ecx
+or edi, 0xfefefeff
+inc edi
+xor ecx, edx
+add edi, ecx
+xor edi, ecx
+or edi, 0xfefefeff
+inc edi
+xor ecx, edx
+add edi, ecx
+xor edi, ecx
+or edi, 0xfefefeff
+inc edi
+xor ecx, edx
+add edi, ecx
+xor edi, ecx
+or edi, 0xfefefeff
+inc edi
+xor ecx, edx
+add edi, ecx
+xor edi, ecx
+or edi, 0xfefefeff
+inc edi
+add eax, 0x4
+add eax, 0x4
+test cl, cl
+cmp cl, dl
+inc eax
+test ch, ch
+test dword ptr [esi], 0x8000
+test ecx, ecx
+cmp edi, dword ptr [edx+0x8]
+xor eax, eax
+cmp dword ptr gs:[0xc], 0x0
+lock cmpxchg dword ptr [edx], ecx
+add dword ptr [edx+0x4], 0x1
+sub eax, dword ptr [ebp+0xc]
+cmpxchg dword ptr [edx], ecx
+add dword ptr [edx+0x4], 0x1
+sub eax, dword ptr [ebp+0xc]
+sub esp, 0x3c
+xor eax, eax
+add ebx, 0x13dd6a
+test esi, esi
+and eax, 0xa00
+cmp eax, 0xa00
+cmp eax, ecx
+xor edx, edx
+add edx, ebp
+test edx, edx
+sub esp, 0x2c
+add ebx, 0x13d07c
+test cl, 0x8
+test ch, 0x8
+test eax, eax
+test eax, eax
+test ch, 0x1
+cmp ebp, edx
+shrd eax, edx, 0x8
+and ecx, 0xfffff000
+and eax, 0xfff
+or ecx, eax
+sub ecx, 0x88
+cmp ecx, 0x7
+or dword ptr [esi], 0x200
+test edi, edi
+test ch, 0x1
+cmp ebp, edx
+or ah, 0x8
+test ebp, ebp
+and ecx, 0x202
+cmp edi, 0xffffffff
+cmp dword ptr [esi+0x20], edx
+add edx, 0x1
+test al, 0x2
+sub edx, eax
+xor eax, eax
+sub esp, 0x18
+test esi, esi
+add esp, 0x18
+add esp, 0x2c
+cmp eax, 0xffffffff
+xor edx, edx
+sub ecx, dword ptr [edi+0x1c]
+cmp ecx, 0x7f
+xor edx, edx
+div ecx
+sub ecx, edx
+test ebp, ebp
+add ecx, dword ptr [esp+0x44]
+xor eax, eax
+sub esp, 0x2c
+add ebx, 0x13c23e
+test edx, edx
+cmp ecx, edx
+sub edx, ecx
+cmp ebp, edx
+cmp edx, 0x14
+test ebp, ebp
+add esi, 0x1
+cmp edi, 0xffffffff
+cmp dword ptr [esi+0x20], edx
+add edx, 0x1
+test al, 0x2
+test ah, 0x2
+cmp edi, 0xa
+and eax, 0xff
+add esp, 0x2c
+cmp eax, 0xffffffff
+sub ebp, 0x1
+cmp ecx, edx
+sub edx, ecx
+cmp ebp, edx
+cmp edx, 0x14
+test edx, edx
+sub edx, eax
+sub esp, 0x1c
+test dword ptr [eax], 0x1000
+cmp eax, edx
+sub edx, eax
+sar eax, 0x1f
+sub esp, 0x20
+test eax, eax
+test byte ptr [ebp+0x3c], 0x2
+cmp dword ptr gs:[0xc], 0x0
+cmp eax, 0xfffff001
+test eax, eax
+or dword ptr [ebp], 0x20
+sub edx, edi
+test edi, edi
+sar edi, 0x1f
+add esi, dword ptr [esp+0x18]
+adc edi, dword ptr [esp+0x1c]
+test eax, eax
+add esp, 0x20
+sub edi, eax
+add esi, eax
+test edi, edi
+test byte ptr [ebp+0x3c], 0x2
+sub edx, edi
+test edi, edi
+sar edi, 0x1f
+add esi, dword ptr [esp+0x18]
+adc edi, dword ptr [esp+0x1c]
+test eax, eax
+add esp, 0x20
+test eax, eax
+add esp, 0x20
+test ax, ax
+test ebp, ebp
+add esp, 0x1c
+test dword ptr [esi], 0x202
+add esp, 0x1c
+cmp esi, eax
+sub eax, 0x1
+add esp, 0x18
+cmp eax, 0xffffffff
+and eax, 0xff
+add esp, 0x2c
+sub eax, ebp
+add esp, 0x2c
+sub ebp, eax
+sub eax, ebp
+add esp, 0x3c
+cmp dword ptr [ebp-0x480], eax
+cmp byte ptr [edx], 0x0
+test eax, eax
+test edi, edi
+sub esp, 0x4c
+add ebx, 0x12ada
+add ebp, dword ptr [eax+0x4]
+shr edi, 0x8
+shl ecx, 0x4
+add ecx, dword ptr [edx+0x4]
+add ebp, edx
+cmp al, 0x7
+test byte ptr [ecx+0xd], 0x3
+test eax, eax
+and edx, 0x7fff
+shl edx, 0x4
+add edx, dword ptr [esi+0x170]
+test edi, edi
+test eax, eax
+add eax, dword ptr [ecx]
+sub esp, 0x14
+test eax, eax
+test ecx, ecx
+test esi, esi
+add eax, dword ptr [ecx+0x4]
+and ecx, 0xf
+cmp cl, 0xa
+test edx, edx
+add esp, 0x4c
+add ebx, 0x135f4a
+sub esp, 0x18
+test eax, eax
+test ecx, ecx
+test cl, 0x2
+add esp, 0x18
+test dword ptr [esi], 0x8000
+sub dword ptr [edx+0x4], 0x1
+test edx, edx
+cmp dword ptr gs:[0xc], 0x0
+lock sub dword ptr [edx], 0x1
+test edx, edx
+sub dword ptr [edx], 0x1
+test edx, edx
+ror eax, 0x9
+xor eax, dword ptr gs:[0x18]
+add esp, 0x18
+add esp, 0x4
+add ebx, 0x17c80a
+sub esp, 0x18
+sub esp, 0x2c
+add ebx, 0x17c8f4
+test ebp, ebp
+test eax, eax
+sub eax, 0x1
+shl edx, 0x4
+add edx, ebp
+cmp edx, 0x3
+cmp edx, 0x4
+cmp edx, 0x2
+ror eax, 0x9
+xor eax, dword ptr gs:[0x18]
+ror eax, 0x9
+xor eax, dword ptr gs:[0x18]
+add ebx, 0x11a05
+sub esp, 0x5c
+sub esi, 0x1
+imul eax, esi, 0x4c
+test edx, edx
+shr cl, 0x3
+and ecx, 0x1
+cmp ecx, dword ptr [ebp-0x2c]
+test ecx, ecx
+cmp ecx, dword ptr [ebp-0x40]
+test edi, edi
+and esi, 0xfffffff0
+sub esp, esi
+and esi, 0xfffffff0
+xor ecx, ecx
+cmp dword ptr [eax+0x14], eax
+cmp edx, ecx
+add ecx, 0x1
+add dword ptr [eax+0x190], 0x1
+test eax, eax
+cmp ecx, edx
+xor ecx, ecx
+sub esp, 0x5c
+add ebx, 0x11c42
+cmp edx, 0x1
+xor edx, edx
+test ecx, ecx
+add eax, eax
+and edx, 0xfffffff0
+sub esp, edx
+add ecx, 0x1
+sub edx, 0x1
+add ecx, 0x1
+cmp esi, eax
+cmp dword ptr [esi+0x20c], 0xffffffff
+cmp dword ptr [ebp-0x20], ecx
+test eax, eax
+test eax, eax
+sub dword ptr [ebp-0x1c], 0x1
+sub edi, 0x4
+cmp dword ptr [ebp-0x20], ecx
+cmp esi, edx
+test eax, eax
+test edx, edx
+test eax, eax
+sub dword ptr [ebp-0x1c], 0x1
+sub edi, 0x4
+cmp dword ptr [ebp-0x20], ecx
+add eax, 0x4
+cmp esi, edx
+test edx, edx
+test eax, eax
+sub dword ptr [ebp-0x1c], 0x1
+sub edi, 0x4
+cmp dword ptr [ebp-0x20], ecx
+cmp esi, edx
+sub edx, dword ptr [ebp-0x24]
+add edx, edx
+add esi, 0x1
+add ecx, 0x1
+cmp esi, eax
+cmp dword ptr [esi+0x20c], 0xffffffff
+cmp dword ptr [ebp-0x20], ecx
+dec ecx
+dec ecx
+xor edx, 0x1
+cmp esi, edx
+sub edx, dword ptr [ebp-0x24]
+add edx, edx
+add esi, 0x1
+sub esp, 0x4
+test ecx, ecx
+test al, 0x8
+and eax, 0xfffffff7
+test eax, eax
+test edx, edx
+test byte ptr [ebx-0x340], 0x2
+cmp byte ptr [eax], 0x0
+test eax, eax
+test eax, eax
+sub dword ptr [esi+0x190], 0x1
+add dword ptr [ebp-0x1c], 0x1
+cmp dword ptr [ebp-0x1c], esi
+test al, 0x8
+and eax, 0xfffffff7
+test eax, eax
+test byte ptr [ebx-0x340], 0x2
+sub dword ptr [esi+0x190], 0x1
+add dword ptr [ebp-0x1c], 0x1
+cmp dword ptr [ebp-0x1c], esi
+sub dword ptr [ebp-0x30], 0x4c
+sub dword ptr [ebp-0x34], 0x1
+test edi, edi
+sub dword ptr [ebp-0x30], 0x4c
+sub dword ptr [ebp-0x34], 0x1
+test edi, edi
+test esi, esi
+test byte ptr [ebx-0x340], 0x80
+test eax, eax
+sub eax, 0x1
+shl edx, 0x4
+add edx, ebp
+cmp edx, 0x3
+cmp edx, 0x4
+test eax, eax
+cmp byte ptr [esp+0x1c], 0x0
+cmp edi, ebp
+add ebx, 0x13b977
+sub esp, 0x2c
+sub esp, 0x3c
+add ebx, 0x13bbd0
+test edi, edi
+test edx, edx
+cmp edx, dword ptr [ebx+0x1898]
+test esi, esi
+test edi, edi
+and eax, 0x8000
+test eax, eax
+cmp byte ptr [esi+0x46], 0x0
+test edi, edi
+cmp dword ptr [esi+0x14], edx
+test edi, edi
+test dword ptr [esi], 0x8000
+sub dword ptr [edx+0x4], 0x1
+cmp ebp, eax
+test esi, esi
+test edi, edi
+test esi, esi
+test edi, edi
+sub dword ptr [ebx+0x1894], 0x1
+test edi, edi
+and eax, 0x8000
+cmp ecx, dword ptr [edx+0x8]
+test ecx, ecx
+ror eax, 0x9
+xor eax, dword ptr gs:[0x18]
+add esp, 0x3c
+test esi, esi
+and ebp, 0x2
+and edx, 0x1008
+cmp edx, 0x8
+test esi, esi
+add esp, 0x2c
+and ebp, 0x2
+and edx, 0x1008
+cmp edx, 0x8
+test eax, eax
+test edx, edx
+cmp edi, dword ptr [edx+0x8]
+cmp dword ptr gs:[0xc], 0x0
+cmpxchg dword ptr [edx], ecx
+test eax, eax
+xor ebp, ebp
+cmp byte ptr [ebx+0x18a4], 0x0
+test al, 0x1
+or eax, 0x1
+sub eax, edx
+sub esp, 0x1c
+add ebx, 0x13e040
+sub esp, 0x1c
+sub esp, 0x14
+add ebx, 0x13e142
+cmp edx, eax
+test ecx, ecx
+sub eax, edx
+sar eax, 0x2
+sub eax, dword ptr [esi+0x8]
+xor eax, eax
+add esp, 0x14
+cmp eax, 0xffffffff
+test ebp, ebp
+test edi, edi
+or dword ptr [esi], 0x2
+or dword ptr [esi], 0x1
+add esp, 0x1c
+add esp, 0x1c
+test eax, eax
+add esp, 0x1c
+cmp ebp, 0x2
+test esi, esi
+add esp, 0x2c
+test edx, edx
+sub dword ptr [edx+0x4], 0x1
+cmp dword ptr gs:[0xc], 0x0
+sub dword ptr [edx], 0x1
+add edi, 0x4
+cmp edi, ebp

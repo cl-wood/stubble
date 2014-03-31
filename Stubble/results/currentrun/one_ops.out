@@ -1,0 +1,10 @@
+not ecx
+not eax
+not ecx
+cld 
+cld 
+not ecx
+not eax
+cld 
+not ecx
+not eax

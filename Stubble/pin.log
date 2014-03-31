@@ -1,2 +1,2 @@
 Pin 2.12 kit 58423
-E: libs/Stubble.h:323: IARG_MEMORYOP_EA/IARG_MEMORYOP_MASKED_ON invalid memory operand index (1) on     89 0xb7750b70 push ebp
+E: Unable to load /home/musashi/research/stubble/Stubble/obj-ia32/MyPinTool.so: /home/musashi/research/stubble/Stubble/obj-ia32/MyPinTool.so: undefined symbol: addressTainted

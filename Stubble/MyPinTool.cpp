@@ -30,6 +30,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 END_LEGAL */
 
 #include "pin.H"
+#include <boost/config.hpp>
 #include <asm/unistd.h>
 #include <fstream>
 #include <iostream>

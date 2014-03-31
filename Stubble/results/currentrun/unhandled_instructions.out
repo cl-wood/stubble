@@ -1,0 +1,5092 @@
+call 0xb76f0b70
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0x44], eax
+mov dword ptr [ebx-0x160], eax
+mov dword ptr [ebx-0x15c], edx
+mov dword ptr [ebx+0x564], edx
+mov dword ptr [ebp-0x34], esi
+mov dword ptr [ebx+0x55c], esi
+jnz 0xb76f0bec
+jmp 0xb76f0c01
+jnbe 0xb76f0bc8
+mov dword ptr [ebx+eax*4+0x57c], edx
+jnz 0xb76f0bec
+jz 0xb76f0c8c
+jnbe 0xb76f0e08
+mov dword ptr [ebx+ecx*4+0x55c], edx
+jz 0xb76f0c01
+jnbe 0xb76f0bc8
+jbe 0xb76f0e20
+not ecx
+mov dword ptr [ebx+ecx*4+0x644], edx
+jmp 0xb76f0be3
+jnbe 0xb76f0f68
+mov dword ptr [ebx+eax*4+0x57c], edx
+jmp 0xb76f0be3
+jnbe 0xb76f0be3
+mov dword ptr [ebx+eax*4+0x57c], edx
+jmp 0xb76f0bf8
+jnz 0xb76f0bec
+jz 0xb76f0c8c
+jz 0xb76f0c1c
+jz 0xb76f0c8c
+jz 0xb76f0c1c
+add dword ptr [eax+0x4], edx
+jz 0xb76f0c2c
+add dword ptr [eax+0x4], esi
+jz 0xb76f0c3c
+add dword ptr [eax+0x4], edx
+jz 0xb76f0c4c
+add dword ptr [eax+0x4], esi
+jz 0xb76f0c5c
+add dword ptr [eax+0x4], edx
+jz 0xb76f0c6c
+add dword ptr [eax+0x4], esi
+jz 0xb76f0c7c
+add dword ptr [eax+0x4], edx
+jz 0xb76f0c8c
+add dword ptr [eax+0x4], esi
+jz 0xb76f0ca0
+cmp dword ptr [edx+0x4], 0x11
+jnz 0xb76f1100
+jz 0xb76f0cba
+cmp dword ptr [ecx+0x4], 0x8
+jnz 0xb76f10d6
+jz 0xb76f0cd1
+test dword ptr [ecx+0x4], 0xfffffffe
+jnz 0xb76f11a8
+jz 0xb76f0ce8
+test dword ptr [ecx+0x4], 0xfffffff7
+jnz 0xb76f117e
+jnz 0xb76f1154
+jnz 0xb76f1154
+jnz 0xb76f112a
+jnz 0xb76f0e48
+jz 0xb76f102f
+mov dword ptr [ebp-0x38], eax
+mov dword ptr [ebp-0x30], eax
+jz 0xb76f104d
+mov dword ptr [ebp-0x3c], esi
+jz 0xb76f0eb9
+mov dword ptr [ebp-0x3c], esi
+mov dword ptr [ebp-0x38], edx
+jnb 0xb76f0ef7
+cmp byte ptr [eax+0x4], 0x8
+jnz 0xb76f105d
+jmp 0xb76f0eee
+add dword ptr [edx], ecx
+jb 0xb76f0ee0
+jz 0xb76f10ac
+cmp dword ptr [ebp-0x3c], edi
+mov dword ptr [ebp-0x40], edx
+mov dword ptr [ebp-0x48], esi
+jbe 0xb76f0d1d
+cmp byte ptr [eax+0x4], 0x8
+jnz 0xb76f105d
+add dword ptr [edx], ecx
+jb 0xb76f0ee0
+jz 0xb76f10ac
+cmp dword ptr [ebp-0x3c], edi
+mov dword ptr [ebp-0x40], edx
+mov dword ptr [ebp-0x48], esi
+jbe 0xb76f0d1d
+mov dword ptr [ebp-0x30], edx
+jz 0xb76f1087
+jnbe 0xb76f0f95
+mov dword ptr [esi], eax
+cmp dword ptr [ebp-0x3c], edi
+jnbe 0xb76f0f20
+jmp 0xb76f0d1d
+mov dword ptr [ebp-0x30], edx
+jz 0xb76f1087
+jnbe 0xb76f0f95
+or byte ptr [ebx+0x6f0], 0x4
+jnz 0xb76f0d70
+mov dword ptr [ebp-0x30], eax
+mov dword ptr [ebp-0x2c], edx
+jb 0xb76f0d5f
+jnbe 0xb76f0d5b
+jnz 0xb76f0d41
+mov dword ptr [ebx-0x1b8], esi
+mov dword ptr [ebx-0x1b4], edi
+call 0xb76f6720
+mov dword ptr [ebp-0x30], eax
+mov dword ptr [ebp-0x2c], edx
+jb 0xb76f0d5f
+jnbe 0xb76f0d5b
+jbe 0xb76f0d5f
+jnz 0xb76f0d41
+mov dword ptr [ebx-0x1b8], esi
+mov dword ptr [ebx-0x1b4], edi
+call 0xb76f6720
+jz 0xb76f67a3
+mov dword ptr [esp+0x1c], ebx
+mov dword ptr [esp+0x20], esi
+mov dword ptr [esp+0x24], edi
+mov dword ptr [esp+0x28], ebp
+call 0xb7704e98
+ret 
+mov dword ptr [eax+0x178], edi
+jnz 0xb76f67c8
+mov dword ptr [eax+0x17c], ebp
+mov dword ptr [eax+0x184], edx
+mov dword ptr [eax+0x188], edx
+mov dword ptr [eax+0x18c], edx
+mov dword ptr [eax+0x180], ebp
+ret 
+mov dword ptr [ebx+0x570], eax
+mov dword ptr [ebx+0x708], eax
+mov dword ptr [ebx+0x70c], eax
+mov dword ptr [ebx+0x710], eax
+mov dword ptr [ebx+0x540], eax
+mov dword ptr [esp+0x4], eax
+mov dword ptr [ebx+0x544], edx
+mov dword ptr [ebx-0xd0], ebp
+mov dword ptr [esp], eax
+call 0xb77011d0
+call 0xb7704e98
+ret 
+mov dword ptr [ebx-0xd0], eax
+mov dword ptr [ebx-0x164], edx
+mov dword ptr [ebx-0x168], eax
+mov dword ptr [ebx+0x91c], edx
+jz 0xb7701219
+jnz 0xb7701210
+mov dword ptr [ebx-0x2f0], eax
+mov dword ptr [esp+0x4c], ecx
+mov dword ptr [ebx-0x338], 0x0
+jz 0xb770153b
+jnz 0xb7701210
+mov dword ptr [ebx-0x2f0], eax
+mov dword ptr [esp+0x4c], ecx
+mov dword ptr [ebx-0x338], 0x0
+jz 0xb770153b
+mov dword ptr [esp+0x34], ecx
+mov dword ptr [esp+0x2c], 0x0
+mov dword ptr [esp+0x38], esi
+mov dword ptr [esp+0x30], edi
+mov word ptr [esp+0x26], cx
+mov dword ptr [esp+0x18], esi
+mov dword ptr [esp+0x1c], edi
+mov dword ptr [esp+0x14], ecx
+mov dword ptr [esp+0x3c], esi
+mov dword ptr [esp+0x28], edi
+jnbe 0xb77012c8
+jnz 0xb77012a8
+jmp 0xb77012d8
+jnbe 0xb77012c8
+mov dword ptr [esp+0x14], ecx
+jnz 0xb77012a8
+jmp 0xb77012d8
+mov dword ptr [esp+0x1c], ecx
+mov dword ptr [esp+0x18], edx
+jnz 0xb77012a8
+jmp 0xb77012d8
+mov dword ptr [esp+0x38], edx
+jnz 0xb77012a8
+jmp 0xb77012d8
+mov dword ptr [esp+0x28], ecx
+jnz 0xb77012a8
+jmp 0xb77012d8
+nop 
+jnz 0xb77012a8
+mov dword ptr [esp+0x4c], edx
+mov dword ptr [ebx-0x330], eax
+mov dword ptr [ebx-0x1ac], ecx
+mov dword ptr [ebx-0x338], edx
+mov dword ptr [ebx-0xcc], eax
+mov dword ptr [ebx-0x2fc], edx
+mov dword ptr [ebx-0x300], eax
+mov dword ptr [ebx-0x320], edx
+mov word ptr [ebx-0x308], ax
+mov dword ptr [ebx-0xd4], edx
+jz 0xb7701348
+jnz 0xb7701530
+jnz 0xb77012a8
+mov dword ptr [esp+0x4c], edx
+mov dword ptr [ebx-0x330], eax
+mov dword ptr [ebx-0x1ac], ecx
+mov dword ptr [ebx-0x338], edx
+mov dword ptr [ebx-0xcc], eax
+mov dword ptr [ebx-0x2fc], edx
+mov dword ptr [ebx-0x300], eax
+mov dword ptr [ebx-0x320], edx
+mov word ptr [ebx-0x308], ax
+mov dword ptr [ebx-0xd4], edx
+jz 0xb7701348
+jnz 0xb7701530
+jnz 0xb77012a8
+jmp 0xb77012d8
+mov dword ptr [esp+0x34], ecx
+jnz 0xb77012a8
+jmp 0xb77012d8
+mov dword ptr [esp+0x30], edx
+jnz 0xb77012a8
+jmp 0xb77012d8
+mov dword ptr [esp+0x3c], edx
+jnz 0xb77012a8
+jmp 0xb77012d8
+mov dword ptr [esp+0x2c], ecx
+jnz 0xb77012a8
+jmp 0xb77012d8
+mov dword ptr [esp+0x4c], edx
+mov dword ptr [ebx-0x330], eax
+mov dword ptr [ebx-0x1ac], ecx
+mov dword ptr [ebx-0x338], edx
+mov dword ptr [ebx-0xcc], eax
+mov dword ptr [ebx-0x2fc], edx
+mov dword ptr [ebx-0x300], eax
+mov dword ptr [ebx-0x320], edx
+mov word ptr [ebx-0x308], ax
+mov dword ptr [ebx-0xd4], edx
+jz 0xb7701348
+jnz 0xb7701530
+mov dword ptr [esp], 0x0
+call 0xb7702230
+mov dword ptr [ebx-0x1b0], ebp
+jmp 0xb7701348
+mov dword ptr [esp], 0x0
+call 0xb7702230
+mov dword ptr [esp], ebx
+mov dword ptr [esp+0x4], esi
+call 0xb7704e98
+ret 
+int 0x80
+mov dword ptr [ebx+0x908], eax
+jnbe 0xb7702270
+ret 
+jz 0xb7701371
+cmp byte ptr [eax], 0x0
+jnz 0xb7701518
+mov dword ptr [ebx-0x338], 0x0
+mov dword ptr [esp], 0x0
+call 0xb7702290
+mov dword ptr [esp], eax
+call 0xb77045d0
+jz 0xb7704601
+jp 0xb77045f6
+cmp byte ptr [eax], dh
+jz 0xb7704686
+cmp byte ptr [eax], dh
+jz 0xb7704686
+jnb 0xb7704669
+jnz 0xb7704669
+jz 0xb7704686
+jz 0xb7704686
+jz 0xb7704686
+ret 
+mov dword ptr [ebx-0x334], eax
+jmp 0xb7701371
+mov dword ptr [esp], 0x0
+call 0xb7702290
+mov dword ptr [esp+0x10], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x14], esi
+mov dword ptr [esp+0x18], edi
+jz 0xb77022f0
+jnz 0xb77022f0
+jz 0xb77022de
+ret 
+jz 0xb7701544
+jnz 0xb770155e
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp], esi
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x8], eax
+call dword ptr [esp+0x74]
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0x7c], 0x0
+mov dword ptr [ebp-0x90], 0x0
+mov dword ptr [ebx+0x558], eax
+mov dword ptr [ebx+0x868], eax
+mov dword ptr [ebx+0x834], eax
+mov dword ptr [ebx+0x838], eax
+mov dword ptr [ebx+0x83c], eax
+cmp dword ptr [ebx-0xcc], 0x1
+mov dword ptr [ebp-0xa0], edx
+mov dword ptr [ebp-0x6c], eax
+not eax
+mov dword ptr [ebx-0x1c8], eax
+call 0xb7701970
+jz 0xb7701989
+cmp byte ptr [edx], 0x4c
+jz 0xb770198d
+jnz 0xb7701978
+cmp byte ptr [edx], 0x4c
+jz 0xb770198d
+jnz 0xb7701978
+ret 
+cmp byte ptr [edx+0x1], 0x44
+jnz 0xb770197d
+cmp byte ptr [edx+0x2], 0x5f
+jnz 0xb770197d
+mov dword ptr [eax], ecx
+jmp 0xb7701986
+jnz 0xb7701978
+ret 
+jz 0xb76ed800
+jz 0xb76ed7b4
+jnz 0xb76ed7dc
+jnz 0xb76f0998
+jz 0xb76ed8c0
+jz 0xb76ed8c0
+cmp dword ptr [edi], eax
+jnz 0xb76edb05
+mov dword ptr [ebp-0x98], edi
+mov dword ptr [ebp-0xa4], edi
+mov dword ptr [ebp-0xa8], edi
+mov dword ptr [ebp-0xb4], edi
+mov dword ptr [ebp-0xa0], edi
+mov dword ptr [ebx+0x560], eax
+jle 0xb76ed97f
+mov dword ptr [ebp-0x88], edx
+mov dword ptr [ebp-0x7c], esi
+rep cmpsb byte ptr [esi], byte ptr [edi]
+mov dword ptr [esp+0x8], 0x0
+mov dword ptr [esp+0x4], 0x20000000
+mov dword ptr [esp], 0x0
+call 0xb76f68c0
+call 0xb7704e98
+ret 
+mov dword ptr [esp], edx
+mov dword ptr [esp+0x1c], edx
+mov dword ptr [esp+0x24], eax
+mov dword ptr [esp+0x2c], ecx
+call 0xb77045d0
+ret 
+mov dword ptr [esp+0x28], edx
+jz 0xb76f6ae0
+mov dword ptr [esp+0x4], 0x1
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x18], ecx
+call 0xb76ec7e0
+not ecx
+jmp 0xb76f6906
+mov dword ptr [esp+0x4], 0x1
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x18], ecx
+call 0xb76ec7e0
+jmp dword ptr [ebx+0x14]
+mov dword ptr [esp+0x14], esi
+mov dword ptr [esp+0x18], edi
+mov dword ptr [esp+0x10], ebx
+call 0xb7704e98
+ret 
+jnbe 0xb7701bba
+mov dword ptr [esp], edi
+call 0xb76ec7d0
+jmp dword ptr [ebx+0x10]
+call 0xb7704e98
+ret 
+mov dword ptr [esp], 0x8
+mov dword ptr [esp+0x4], eax
+call 0xb76ec7c0
+jmp dword ptr [ebx+0xc]
+mov dword ptr [esp+0x20], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x24], esi
+mov dword ptr [esp+0x28], edi
+jz 0xb7701b08
+mov dword ptr [ebx+0x900], edx
+jnb 0xb7701a83
+jb 0xb7701aea
+mov dword ptr [ebx+0x8fc], ecx
+jmp 0xb7701a66
+mov dword ptr [ebx+0x900], edx
+jnb 0xb7701a83
+jb 0xb7701aea
+jz 0xb7701b27
+mov dword ptr [ebx+0x904], edx
+mov dword ptr [ebx+0x900], eax
+ret 
+ret 
+ret 
+jz 0xb76f6ad3
+mov dword ptr [eax+0x164], ecx
+mov dword ptr [esi+0x14], eax
+mov dword ptr [esi+0x1c], eax
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x18], ecx
+mov dword ptr [esp+0x4], edx
+call 0xb7704d20
+cld 
+jnz 0xb7704d76
+jbe 0xb7704d76
+jz 0xb7704d5d
+jnb 0xb7704d7b
+movsb byte ptr [edi], byte ptr [esi]
+jnb 0xb7704d81
+movsw word ptr [edi], word ptr [esi]
+rep movsd dword ptr [edi], dword ptr [esi]
+rep movsd dword ptr [edi], dword ptr [esi]
+jmp 0xb7704d6d
+ret 
+mov dword ptr [ecx+0xc], 0x1
+mov dword ptr [ecx+0x4], eax
+mov dword ptr [esi+0x4], eax
+mov byte ptr [esi+0x194], al
+test byte ptr [ebx-0x33f], 0x1
+jz 0xb76f6b38
+mov dword ptr [esi+0x16c], edi
+mov dword ptr [esi+0x18], edx
+jz 0xb76f69c6
+nop 
+mov dword ptr [esi+eax*8+0x258], esi
+jnz 0xb76f69b8
+mov dword ptr [esi+0x1fc], 0x1
+jmp 0xb76f69a0
+mov dword ptr [esi+0x16c], edi
+mov dword ptr [esi+0x18], edx
+jz 0xb76f69c6
+nop 
+mov dword ptr [esi+eax*8+0x258], esi
+jnz 0xb76f69b8
+mov dword ptr [esi+0x1cc], eax
+mov dword ptr [esi+0x1c8], 0x4
+jz 0xb76f69fe
+mov dword ptr [esi+eax*8+0x258], esi
+jnz 0xb76f69b8
+mov dword ptr [esi+0x1cc], eax
+mov dword ptr [esi+0x1c8], 0x4
+jz 0xb76f69fe
+mov dword ptr [esi+0x1b8], eax
+jnz 0xb76f6a0a
+jnz 0xb76f6a0a
+jmp 0xb76f6b47
+jz 0xb76f6a1c
+jmp 0xb76f6b08
+mov dword ptr [esi+eax*1+0x1b8], edi
+mov dword ptr [esi+0x1d0], eax
+jz 0xb76f6ad3
+mov dword ptr [esp], eax
+call 0xb77045d0
+ret 0xc
+mov dword ptr [ebp-0x7c], eax
+jz 0xb76f02fc
+mov dword ptr [eax+0x150], edx
+mov word ptr [eax+0x158], cx
+mov dword ptr [edi+0x154], eax
+call 0xb76f6800
+mov dword ptr [esp+0x2c], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x34], edi
+mov dword ptr [esp+0x38], ebp
+mov dword ptr [esp+0x30], esi
+mov dword ptr [esp+0x1c], eax
+mov dword ptr [esp], ebp
+call dword ptr [ebx+0x834]
+add dword ptr [eax+0x4], 0x1
+ret 
+jnz 0xb76f6852
+jmp 0xb76f68b1
+mov dword ptr [edx], eax
+jmp 0xb76f685f
+add dword ptr [ebx+edx*1+0x44], 0x1
+mov dword ptr [eax+0x250], esi
+mov dword ptr [eax+0x254], edi
+mov dword ptr [ebx+0x534], esi
+mov dword ptr [ebx+0x538], edi
+mov dword ptr [esp], ebp
+call dword ptr [ebx+0x838]
+sub dword ptr [eax+0x4], 0x1
+ret 
+ret 
+cmp dword ptr [ebx+0x40], edi
+jnz 0xb76f02d2
+add dword ptr [eax+0x190], 0x1
+mov dword ptr [eax+0x1b0], 0x0
+mov dword ptr [eax+0x1b4], 0x0
+mov dword ptr [eax+0x1ac], 0xffffffff
+cmp dword ptr [ebp+0x8], eax
+mov dword ptr [ebp-0x94], eax
+jnb 0xb76f029b
+mov byte ptr [ebp-0x80], 0x0
+mov dword ptr [ebp-0xb0], ecx
+mov dword ptr [ebp-0x98], edx
+mov dword ptr [ebp-0xa4], edi
+jmp 0xb76edc11
+jz 0xb76ee472
+jbe 0xb76edbe7
+jz 0xb76ee47f
+jz 0xb76ee4bb
+jz 0xb76ee48d
+jz 0xb76ee4c8
+mov dword ptr [ebx+0x578], edi
+mov dword ptr [ebx+0x878], ecx
+jz 0xb76f00f6
+mov byte ptr [ebp-0x80], 0x1
+jmp 0xb76edc02
+jnb 0xb76edc98
+jz 0xb76ee472
+jbe 0xb76edbe7
+mov dword ptr [ebp-0x88], edi
+mov dword ptr [ebp-0xa0], edi
+jnb 0xb76ee4fb
+mov dword ptr [edx+0x1ac], edi
+jbe 0xb76ee512
+mov dword ptr [edx+0x1b0], ecx
+test byte ptr [eax+0x18], 0x1
+jz 0xb76edc02
+jbe 0xb76edc02
+mov dword ptr [edx+0x1b4], ecx
+jmp 0xb76edc02
+jbe 0xb76ee512
+mov dword ptr [edx+0x1b0], ecx
+test byte ptr [eax+0x18], 0x1
+jz 0xb76edc02
+jbe 0xb76edc02
+mov dword ptr [edx+0x8], ecx
+jmp 0xb76edc02
+jz 0xb76edcbc
+mov dword ptr [edi+0x22c], ecx
+jnz 0xb76edccd
+mov dword ptr [edx+0x1b0], 0xffffffff
+jnz 0xb76edcde
+jnz 0xb76edccd
+mov dword ptr [edx+0x1b0], 0xffffffff
+jnz 0xb76edcde
+mov dword ptr [eax+0x1b4], 0xffffffff
+jz 0xb76f027a
+jnz 0xb76edcde
+mov dword ptr [eax+0x1b4], 0xffffffff
+jz 0xb76f027a
+jz 0xb76edd54
+jz 0xb76f027a
+jz 0xb76edd54
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp], eax
+mov dword ptr [ebp-0xcc], edx
+call 0xb7704510
+jnz 0xb7704527
+jnz 0xb7704518
+ret 
+ret 
+jz 0xb76edd54
+mov dword ptr [ebx+0x894], 0x0
+mov dword ptr [ebx+0x890], edi
+mov dword ptr [ebx+0x898], 0x1
+jnz 0xb76f022c
+mov dword ptr [edx+0x4], eax
+test byte ptr [ebx+0x6f0], 0x4
+jz 0xb76f0202
+jnz 0xb76edf1b
+jz 0xb76edf13
+jnz 0xb76edda0
+jbe 0xb76edd90
+jnbe 0xb76ee533
+mov dword ptr [eax+ecx*4], edx
+jnz 0xb76edda0
+mov dword ptr [ecx+eax*4+0x20], edx
+jz 0xb76eddc8
+jbe 0xb76edd90
+jnbe 0xb76ee533
+jz 0xb76ede4c
+jz 0xb76eddde
+add dword ptr [edx+0x4], eax
+jz 0xb76eddeb
+jz 0xb76ede62
+jnz 0xb76ee68e
+jz 0xb76ede79
+jz 0xb76ede79
+cmp dword ptr [eax+0x4], 0xc
+jnz 0xb76eee14
+jz 0xb76ede90
+jz 0xb76ede90
+cmp dword ptr [eax+0x4], 0x8
+jnz 0xb76eedea
+jz 0xb76edec7
+jz 0xb76edeff
+test byte ptr [ebx-0x340], 0x40
+mov dword ptr [ecx+0x204], eax
+jnz 0xb76ee663
+jz 0xb76edeff
+jz 0xb76edf13
+mov dword ptr [eax+0x5c], 0x0
+call 0xb76f6720
+call 0xb76f6720
+jz 0xb76f67a2
+mov dword ptr [eax+0x18c], edx
+mov dword ptr [eax+0x178], ecx
+mov dword ptr [eax+0x188], edx
+ret 
+cmp dword ptr [ebp-0x90], 0x2
+jz 0xb76f018c
+jz 0xb76f016f
+mov dword ptr [esp+0x8], 0x0
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], 0x0
+call 0xb76f68c0
+mov dword ptr [esi+0x1cc], eax
+mov dword ptr [esi+0x1c8], 0x4
+jz 0xb76f69fe
+mov dword ptr [esi+0x1b8], eax
+jnz 0xb76f6a0a
+jmp 0xb76f6b47
+jz 0xb76f6a2b
+test byte ptr [esp+0x54], 0x8
+jz 0xb76f6bd9
+mov dword ptr [esi+0x1bc], eax
+jmp 0xb76f6a24
+jmp 0xb76f6a24
+mov dword ptr [esi+eax*1+0x1b8], edi
+mov dword ptr [esi+0x1d0], eax
+jz 0xb76f6ad3
+mov dword ptr [esp], eax
+call 0xb77045d0
+jz 0xb76f016f
+mov dword ptr [ebp-0x88], ecx
+mov dword ptr [edi+0x150], edx
+mov word ptr [edi+0x158], si
+jnz 0xb76edfc4
+jmp 0xb76edfec
+jnz 0xb76edfa0
+mov dword ptr [edi+0x8], esi
+mov word ptr [edi+0x15a], si
+jnz 0xb76edfc4
+mov dword ptr [edi+0x1ac], eax
+add dword ptr [edi+0x1b0], eax
+add dword ptr [edi+0x1b4], eax
+mov dword ptr [edi], eax
+mov dword ptr [edi+0x8], ecx
+jz 0xb76ee2db
+jz 0xb76ee435
+jz 0xb76f0145
+jz 0xb76edfec
+jnz 0xb76ee440
+mov dword ptr [edi], esi
+jb 0xb76ee451
+mov dword ptr [edi+0x1b0], esi
+test byte ptr [edx+0x18], 0x1
+jz 0xb76edfb6
+jb 0xb76edfb6
+mov dword ptr [edi+0x1b4], esi
+jmp 0xb76edfb6
+jz 0xb76edfec
+jnz 0xb76edfa0
+mov dword ptr [edi+0x8], esi
+mov word ptr [edi+0x15a], si
+jnz 0xb76edfc4
+mov dword ptr [edi+0x1ac], eax
+add dword ptr [edi+0x1b0], eax
+add dword ptr [edi+0x1b4], eax
+mov dword ptr [edi], eax
+mov dword ptr [edi+0x8], ecx
+jz 0xb76ee2db
+mov dword ptr [ebp-0x88], esi
+jnz 0xb76ee035
+jmp 0xb76ee05d
+jbe 0xb76ee028
+jnbe 0xb76ee577
+mov dword ptr [edi+esi*4], ecx
+jnz 0xb76ee035
+mov dword ptr [edi+edx*4+0x20], ecx
+jz 0xb76ee05d
+jbe 0xb76ee028
+jnbe 0xb76ee577
+mov dword ptr [edi+esi*4], ecx
+jnz 0xb76ee035
+jz 0xb76ee231
+jz 0xb76f00c5
+jz 0xb76ee231
+jz 0xb76f00c5
+mov dword ptr [ebx-0x140], ecx
+mov dword ptr [ebx-0x13c], edx
+mov dword ptr [edi+0x30], edx
+mov dword ptr [ebp-0x80], ecx
+jz 0xb76ee0c3
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee0f5
+mov dword ptr [ebp-0x88], ecx
+mov dword ptr [ecx], esi
+mov dword ptr [ecx+0x4], esi
+mov dword ptr [edi+0x34], ecx
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee127
+mov dword ptr [ebp-0x88], ecx
+mov dword ptr [ecx], esi
+mov dword ptr [ecx+0x4], esi
+mov dword ptr [edi+0x38], ecx
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee159
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee18b
+mov dword ptr [ebp-0x88], ecx
+mov dword ptr [ecx], esi
+mov dword ptr [ecx+0x4], esi
+mov dword ptr [edi+0x64], ecx
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee1bd
+mov dword ptr [ebp-0x88], ecx
+mov dword ptr [ecx], esi
+mov dword ptr [ecx+0x4], esi
+mov dword ptr [edi+0x7c], ecx
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee1f5
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee1bd
+mov dword ptr [ebp-0x88], ecx
+mov dword ptr [ecx], esi
+mov dword ptr [ecx+0x4], esi
+mov dword ptr [edi+0x7c], ecx
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee1f5
+mov dword ptr [ebp-0x88], ecx
+mov dword ptr [ecx], esi
+mov dword ptr [ecx+0x4], esi
+mov dword ptr [edi+0xe4], ecx
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee231
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee1f5
+mov dword ptr [ebp-0x88], ecx
+mov dword ptr [ecx], esi
+mov dword ptr [ecx+0x4], esi
+mov dword ptr [edi+0xe4], ecx
+mov dword ptr [ebp-0x80], esi
+jz 0xb76ee231
+mov dword ptr [ebp-0x88], ecx
+mov dword ptr [ecx], esi
+mov dword ptr [esi+0x4], eax
+mov dword ptr [edi+0x14c], esi
+jz 0xb76f009b
+jz 0xb76ee244
+jnz 0xb76f008b
+jz 0xb76ee258
+jz 0xb76ee258
+cmp dword ptr [eax+0x4], 0xc
+jnz 0xb76eee14
+jz 0xb76ee26c
+jz 0xb76ee26c
+cmp dword ptr [eax+0x4], 0x8
+jnz 0xb76eedea
+jz 0xb76ee29a
+jz 0xb76ee29a
+mov dword ptr [edi+0x208], edx
+jz 0xb76ee287
+mov dword ptr [edi+0x60], eax
+jz 0xb76ee28f
+jz 0xb76ee2ca
+test byte ptr [ebx-0x340], 0x40
+mov dword ptr [edi+0x204], eax
+jnz 0xb76eedbf
+jz 0xb76ee2ca
+jz 0xb76ee2db
+mov dword ptr [edi+0x5c], 0x0
+call 0xb76f6720
+call 0xb76f6720
+or byte ptr [edi+0x194], 0x4
+mov dword ptr [edi+0x1fc], 0x1
+mov dword ptr [eax+0x4], 0x1
+mov dword ptr [eax], edx
+jz 0xb76ee375
+mov dword ptr [esp], esi
+call 0xb77045d0
+jnb 0xb7704669
+jnz 0xb7704669
+jnb 0xb7704669
+jnz 0xb7704669
+jnb 0xb7704669
+jnz 0xb7704669
+jnb 0xb7704669
+jz 0xb7704601
+jz 0xb7704686
+mov dword ptr [esp], eax
+mov dword ptr [ebp-0xcc], eax
+call 0xb76ec7d0
+jz 0xb76f00cc
+mov dword ptr [ebp-0x88], eax
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp], ecx
+mov dword ptr [esp+0x4], esi
+mov dword ptr [ebp-0xc8], ecx
+call 0xb7704d20
+rep movsd dword ptr [edi], dword ptr [esi]
+rep movsd dword ptr [edi], dword ptr [esi]
+rep movsb byte ptr [edi], byte ptr [esi]
+rep movsb byte ptr [edi], byte ptr [esi]
+ret 
+mov dword ptr [edx], eax
+jz 0xb76ee375
+mov dword ptr [edi+0x4], ecx
+call 0xb76f6800
+call 0xb76f6800
+jnz 0xb76f6850
+mov dword ptr [eax+0x10], esi
+mov dword ptr [esi+0xc], eax
+add dword ptr [ebx+edx*1+0x44], 0x1
+mov dword ptr [eax+0x250], esi
+mov dword ptr [eax+0x254], edi
+mov dword ptr [ebx+0x534], esi
+mov dword ptr [ebx+0x538], edi
+mov dword ptr [esp], ebp
+call dword ptr [ebx+0x838]
+jnz 0xb76eed95
+jnz 0xb76eee80
+cmp dword ptr [ebx-0x1b0], eax
+mov dword ptr [edi+0x10], esi
+mov dword ptr [ebp-0x88], esi
+mov dword ptr [ebx+0x568], edi
+mov dword ptr [ebp-0xb4], esi
+mov dword ptr [ebx-0x1a8], edi
+jz 0xb76eee3e
+call 0xb7701790
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x2c], ecx
+jz 0xb7701870
+jz 0xb7701870
+mov dword ptr [esp+0x20], edx
+mov dword ptr [esp+0x28], eax
+mov dword ptr [esp+0x24], 0x1
+jmp 0xb77017fc
+cmp dword ptr [ecx], 0x4
+jnz 0xb77017e8
+mov dword ptr [esp+0x1c], ecx
+jnbe 0xb770184a
+jmp 0xb77017e8
+add dword ptr [esp+0x24], 0x1
+add dword ptr [esp+0x20], 0x20
+cmp dword ptr [esp+0x24], ecx
+jz 0xb7701870
+cmp dword ptr [ecx], 0x4
+jnz 0xb77017e8
+mov dword ptr [esp+0x1c], ecx
+jnbe 0xb770184a
+mov dword ptr [esp+0x8], 0x14
+mov dword ptr [esp+0x4], ebp
+mov dword ptr [esp], edi
+call 0xb77048d0
+jnz 0xb77048f4
+jnz 0xb77048ed
+ret 
+jl 0xb77048e9
+jnl 0xb7704b10
+call 0xb7704e98
+ret 
+jnz 0xb7704b87
+jnz 0xb7704b87
+jnz 0xb7704b87
+jnz 0xb7704b87
+jnz 0xb7704b87
+ret 
+jnz 0xb7701828
+ret 
+js 0xb76eee5c
+jnz 0xb76eebec
+mov dword ptr [ebx-0x33c], eax
+jnle 0xb76ee6c1
+call 0xb76f3df0
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0x2c], eax
+mov dword ptr [esp], eax
+call 0xb76f9e10
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0x40], eax
+mov dword ptr [ebp-0x48], edx
+mov dword ptr [ebp-0x44], ecx
+mov dword ptr [ebp-0x28], eax
+setnz byte ptr [ebp-0x3c]
+mov dword ptr [ebp-0x24], eax
+mov dword ptr [ebp-0x2c], edx
+jz 0xb76f9eab
+data16 nop 
+sbb dword ptr [ebp-0x2c], 0xffffffff
+jz 0xb76f9ea1
+jnz 0xb76f9e68
+jnz 0xb76f9e68
+mov dword ptr [ebp-0x34], esi
+jz 0xb76f9f90
+jz 0xb76f9f90
+sbb dword ptr [ebp-0x2c], 0xffffffff
+jz 0xb76f9ea1
+jnz 0xb76f9e68
+mov dword ptr [ebp-0x34], esi
+jz 0xb76f9f90
+mov dword ptr [ebp-0x20], edx
+mov dword ptr [ebp-0x30], eax
+mov dword ptr [ebp-0x1c], 0x1
+mov dword ptr [ebp-0x38], edi
+jmp 0xb76f9f04
+cmp dword ptr [edx], 0x4
+jnz 0xb76f9ef0
+jbe 0xb76f9ef0
+mov dword ptr [ebp-0x54], edx
+jmp 0xb76f9f49
+add dword ptr [ebp-0x1c], 0x1
+add dword ptr [ebp-0x20], 0x20
+cmp dword ptr [ebp-0x1c], esi
+jz 0xb76f9f90
+cmp dword ptr [edx], 0x4
+jnz 0xb76f9ef0
+jbe 0xb76f9ef0
+mov dword ptr [ebp-0x54], edx
+jmp 0xb76f9f49
+cmp dword ptr [esi+0x8], 0x2
+jnz 0xb76f9f28
+jnz 0xb76f9f28
+mov dword ptr [esp+0x8], 0x4
+mov dword ptr [esp], eax
+mov dword ptr [ebp-0x4c], ecx
+mov dword ptr [esp+0x4], edx
+call 0xb77048d0
+jnb 0xb76f9ef0
+cmp dword ptr [esi+0x8], 0x2
+jnz 0xb76f9f28
+jnz 0xb76f9f28
+mov dword ptr [esp+0x8], 0x4
+mov dword ptr [esp], eax
+mov dword ptr [ebp-0x4c], ecx
+mov dword ptr [esp+0x4], edx
+call 0xb77048d0
+jnz 0xb7704b87
+ret 
+jnz 0xb76f9f2b
+jbe 0xb76f9f2b
+add dword ptr [ebp-0x2c], ecx
+jmp 0xb76f9f94
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], eax
+call 0xb7703f90
+int 0x80
+jnb 0xb7703fab
+ret 
+call 0xb7704e94
+ret 
+mov dword ptr [ecx+0x920], eax
+ret 
+jnz 0xb76f9fe4
+mov dword ptr [esp], 0x8
+call 0xb76ec7d0
+mov dword ptr [ebp-0x38], eax
+mov dword ptr [ebp-0x2c], edx
+jz 0xb76fa3f0
+mov dword ptr [ebp-0x1c], edi
+or dword ptr [ebx-0x2fc], eax
+or dword ptr [ebx-0x2f4], eax
+mov dword ptr [ebp-0x20], edx
+jnb 0xb76fa3f0
+nop 
+mov dword ptr [esp], esi
+mov dword ptr [ebp-0x4c], ecx
+call 0xb77045d0
+cmp byte ptr [eax], dh
+jz 0xb7704686
+jz 0xb7704601
+cmp byte ptr [eax], dh
+jz 0xb7704686
+jnb 0xb7704669
+jnz 0xb7704669
+jnb 0xb7704669
+test dword ptr [ebp-0x20], edx
+jz 0xb76fa4dc
+mov dword ptr [ecx], esi
+mov dword ptr [ecx+0x4], eax
+jb 0xb76fa038
+mov dword ptr [ebp-0x34], ecx
+jz 0xb76fa12c
+sub dword ptr [ebp-0x38], 0x1
+jmp 0xb76fa06a
+jb 0xb76fa038
+mov dword ptr [ebp-0x34], ecx
+jz 0xb76fa12c
+mov dword ptr [ebp-0x20], edi
+mov dword ptr [ebp-0x30], edx
+jz 0xb76fa0b8
+jz 0xb76fa113
+mov dword ptr [ebp-0x1c], edx
+mov dword ptr [edx], eax
+mov dword ptr [esp], eax
+mov dword ptr [ebp-0x4c], ecx
+call 0xb77045d0
+jnz 0xb76fa0a8
+mov dword ptr [ebp-0x34], ecx
+cmp byte ptr [ebp-0x3c], 0x0
+jz 0xb76fa47e
+mov dword ptr [eax+0x4], edx
+mov dword ptr [eax], esi
+cmp dword ptr [ebp-0x38], edx
+mov dword ptr [eax], ecx
+mov dword ptr [eax+0x4], 0x3
+jnz 0xb76fa4e5
+jz 0xb76fa0b8
+jz 0xb76fa113
+mov dword ptr [ebp-0x1c], edx
+mov dword ptr [edx], eax
+mov dword ptr [esp], eax
+mov dword ptr [ebp-0x4c], ecx
+call 0xb77045d0
+mov dword ptr [edx+0x4], eax
+mov dword ptr [ebp-0x24], edx
+mov dword ptr [ebp-0x28], eax
+add dword ptr [ebp-0x20], 0x1
+jnz 0xb76fa0a8
+mov dword ptr [ebp-0x34], ecx
+cmp byte ptr [ebp-0x3c], 0x0
+jz 0xb76fa47e
+mov dword ptr [eax+0x4], edx
+mov dword ptr [eax], esi
+cmp dword ptr [ebp-0x38], edx
+mov dword ptr [eax], ecx
+mov dword ptr [eax+0x4], 0x3
+jnz 0xb76fa4e5
+cmp dword ptr [ebp-0x38], 0x1
+jz 0xb76fa400
+cmp dword ptr [ebp-0x38], 0x2
+mov dword ptr [ebp-0x1c], esi
+jbe 0xb76fa1de
+nop 
+jnz 0xb76fa1a0
+jnz 0xb76fa1a0
+cmp dword ptr [ebp-0x38], 0x3
+jz 0xb76fa1d6
+cmp dword ptr [ebp-0x38], 0x1f
+jnbe 0xb76fa4c5
+jnz 0xb76fa4c5
+mov dword ptr [ebp-0x30], edi
+mov dword ptr [ecx], edi
+mov dword ptr [esp], edx
+call 0xb76ec7d0
+mov dword ptr [ebp-0x28], eax
+jz 0xb76fa4c5
+cmp dword ptr [ebp-0x38], 0x2
+mov dword ptr [edx], eax
+mov dword ptr [edx+0x8], eax
+jz 0xb76fa489
+mov dword ptr [ebp-0x20], esi
+mov dword ptr [ebp-0x3c], edi
+mov dword ptr [ebp-0x40], ecx
+nop 
+mov word ptr [eax], 0x6c74
+mov byte ptr [eax+0x2], 0x73
+mov byte ptr [eax+0x3], 0x2f
+jz 0xb76fa2b8
+mov dword ptr [ebp-0x48], eax
+jmp 0xb76fa278
+jz 0xb76fa270
+mov dword ptr [esp+0x8], ecx
+mov dword ptr [esp], eax
+mov dword ptr [ebp-0x4c], edx
+mov dword ptr [esp+0x4], ecx
+call 0xb7704c60
+cld 
+jnb 0xb7704c76
+movsb byte ptr [edi], byte ptr [esi]
+jnb 0xb7704c7c
+movsw word ptr [edi], word ptr [esi]
+rep movsd dword ptr [edi], dword ptr [esi]
+jnb 0xb7704c7c
+movsw word ptr [edi], word ptr [esi]
+rep movsd dword ptr [edi], dword ptr [esi]
+rep movsd dword ptr [edi], dword ptr [esi]
+ret 
+mov byte ptr [eax], 0x2f
+mov dword ptr [ebp-0x48], eax
+jnz 0xb76fa278
+mov dword ptr [esp], eax
+mov dword ptr [ebp-0x4c], edx
+mov dword ptr [esp+0x8], esi
+mov dword ptr [esp+0x4], edi
+call 0xb7704c60
+mov byte ptr [eax], 0x2f
+jnz 0xb76fa248
+jz 0xb76fa306
+nop 
+mov dword ptr [eax+0x4], 0x0
+jnz 0xb76fa2f8
+mov word ptr [eax], 0x6c74
+mov byte ptr [eax+0x2], 0x73
+mov byte ptr [eax+0x3], 0x2f
+jz 0xb76fa2b8
+mov dword ptr [ebp-0x48], eax
+jmp 0xb76fa278
+jz 0xb76fa2b5
+jz 0xb76fa270
+mov dword ptr [esp+0x8], ecx
+mov dword ptr [esp], eax
+mov dword ptr [ebp-0x4c], edx
+mov dword ptr [esp+0x4], ecx
+call 0xb7704c60
+mov dword ptr [esp], eax
+mov dword ptr [ebp-0x4c], edx
+mov dword ptr [esp+0x8], esi
+mov dword ptr [esp+0x4], edi
+call 0xb7704c60
+mov dword ptr [eax+0x4], 0x0
+jnz 0xb76fa2f8
+mov dword ptr [ebp-0x20], eax
+jz 0xb76fa354
+test dword ptr [ebp-0x20], eax
+jz 0xb76fa34d
+add dword ptr [edx+0x4], edi
+test dword ptr [ebp-0x20], eax
+jnz 0xb76fa338
+jnz 0xb76fa330
+jnz 0xb76fa310
+test dword ptr [ebp-0x20], eax
+jz 0xb76fa34d
+add dword ptr [edx+0x4], edi
+test dword ptr [ebp-0x20], eax
+jnz 0xb76fa338
+jnz 0xb76fa330
+jnz 0xb76fa330
+jnz 0xb76fa310
+mov dword ptr [ebp-0x20], 0x1
+shl dword ptr [ebp-0x20], cl
+cmp dword ptr [ebp-0x20], edx
+mov dword ptr [ebp-0x1c], edx
+jz 0xb76fa3ba
+mov dword ptr [ebp-0x20], eax
+jz 0xb76fa354
+test dword ptr [ebp-0x20], eax
+jz 0xb76fa34d
+add dword ptr [edx+0x4], edi
+test dword ptr [ebp-0x20], eax
+jnz 0xb76fa338
+jnz 0xb76fa310
+mov dword ptr [ebp-0x20], 0x1
+shl dword ptr [ebp-0x20], cl
+cmp dword ptr [ebp-0x20], edx
+mov dword ptr [ebp-0x1c], edx
+jz 0xb76fa3ba
+jmp 0xb76fa397
+jnz 0xb76fa380
+mov dword ptr [ecx], esi
+jnz 0xb76fa397
+mov dword ptr [eax], ecx
+jnz 0xb76fa3c8
+mov dword ptr [ecx], esi
+jz 0xb76fa3b2
+jnz 0xb76fa380
+mov dword ptr [ecx], esi
+jnz 0xb76fa397
+mov dword ptr [eax], ecx
+jnz 0xb76fa3c8
+mov dword ptr [edi], eax
+ret 0x4
+mov dword ptr [eax], ecx
+jnz 0xb76fa3c8
+mov dword ptr [edi], eax
+ret 0x4
+mov dword ptr [esp], 0x14
+mov dword ptr [ebx-0xe8], eax
+call 0xb76ec7d0
+mov dword ptr [ebx-0xe4], eax
+jz 0xb76f415e
+mov dword ptr [ebp-0x38], edx
+mov dword ptr [esp], eax
+call 0xb76ec7d0
+jz 0xb7701b27
+mov dword ptr [esp+0x14], 0x0
+mov dword ptr [esp+0x10], 0xffffffff
+mov dword ptr [esp+0xc], 0x22
+mov dword ptr [esp+0x8], 0x3
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp], 0x0
+call 0xb7704020
+jnz 0xb7704053
+int 0x80
+jnbe 0xb770405f
+ret 
+jz 0xb7701b38
+mov dword ptr [ebx+0x8fc], eax
+mov dword ptr [ebx+0x904], edx
+mov dword ptr [ebx+0x900], eax
+ret 
+mov dword ptr [edi], eax
+jz 0xb76f4239
+mov dword ptr [ebx+0x554], eax
+mov dword ptr [ebp-0x1c], eax
+mov dword ptr [ebp-0x30], eax
+mov dword ptr [ecx+0x4], eax
+mov dword ptr [ebp-0x34], eax
+mov dword ptr [ecx+0xc], eax
+mov dword ptr [ebp-0x20], edx
+mov dword ptr [ebp-0x24], eax
+mov dword ptr [ebp-0x28], edi
+mov dword ptr [ebx-0xe0], 0x0
+mov dword ptr [ecx+0x8], 0x0
+mov dword ptr [ecx+0x10], 0x14
+jz 0xb76f3ef7
+mov dword ptr [ecx+edx*4+0x14], 0x0
+jnz 0xb76f3ee8
+mov dword ptr [ecx+edx*4+0x14], 0x0
+jnz 0xb76f3ee8
+cmp dword ptr [ebp-0x1c], edx
+jz 0xb76f3f48
+mov dword ptr [ecx], eax
+mov dword ptr [edx], eax
+mov dword ptr [ebp-0x1c], edx
+mov dword ptr [eax+0x8], 0x0
+mov dword ptr [eax+0xc], edi
+mov dword ptr [eax+0x4], edx
+add dword ptr [ebp-0x20], 0x4
+mov dword ptr [eax+0x10], edx
+cmp byte ptr [edi], 0x2f
+mov dword ptr [ebp-0x34], edx
+jnz 0xb76f420f
+jmp 0xb76f3edf
+jz 0xb76f3ef7
+mov dword ptr [ecx+edx*4+0x14], 0x0
+jnz 0xb76f3ee8
+cmp dword ptr [ebp-0x1c], edx
+jz 0xb76f3f48
+mov dword ptr [ecx], 0x0
+mov dword ptr [ebx+0x8b4], 0x18
+mov dword ptr [eax], 0x0
+jz 0xb76f3fb7
+jz 0xb76f4134
+jz 0xb76f40c2
+mov dword ptr [esi+0x1e8], 0xffffffff
+jz 0xb76f4104
+mov dword ptr [esp], ecx
+call 0xb76f3bd0
+mov dword ptr [esi+0x198], 0xffffffff
+jmp 0xb76f3fb7
+jz 0xb76f40b0
+cmp byte ptr [eax], 0x0
+jz 0xb76f40b0
+mov dword ptr [esp+0x4], 0x24
+mov dword ptr [esp], eax
+call 0xb7704350
+mov dword ptr [ebx-0xdc], 0xffffffff
+ret 
+call 0xb76fb9f0
+call 0xb7704e98
+ret 
+jz 0xb76fba38
+cmp dword ptr [eax+0x4], 0x0
+jz 0xb76fba44
+jz 0xb76fba35
+cmp dword ptr [eax+0x4], 0x0
+jnz 0xb76fba12
+mov dword ptr [eax], 0x1
+jnz 0xb76fba1c
+jmp 0xb76fba1c
+mov dword ptr [eax+0x10], ecx
+mov dword ptr [eax+0x4], edx
+mov dword ptr [eax+0x8], edx
+ret 
+mov dword ptr [ebp-0xb0], eax
+mov dword ptr [eax+0xc], 0x0
+jnz 0xb76ee6fe
+mov dword ptr [ebx+0x560], eax
+add dword ptr [ebx+0x44], 0x1
+mov byte ptr [ebx+0x6f0], al
+mov dword ptr [eax+0xc], esi
+add dword ptr [ebx+0x534], 0x1
+adc dword ptr [ebx+0x538], 0x0
+cmp dword ptr [ebx-0x1d0], 0xfffffffe
+mov dword ptr [ebx+0x56c], eax
+jnz 0xb76ee74c
+cmp dword ptr [eax], 0x1
+mov dword ptr [ebx-0x1d0], eax
+mov dword ptr [ebx+0x6ac], esi
+mov word ptr [ebx+0x6b4], ax
+jmp 0xb76ee78a
+jnz 0xb76ee778
+jmp 0xb76ee7a2
+jz 0xb76ee790
+jnz 0xb76ee778
+jmp 0xb76ee7a2
+mov dword ptr [ebx+0x7a4], eax
+mov dword ptr [ebx+0x7a8], eax
+jz 0xb76ee7b7
+call 0xb76fd650
+jnz 0xb76ee95a
+mov dword ptr [ebp-0x98], 0x0
+jz 0xb76ee7e2
+mov dword ptr [eax+0x4], edx
+jz 0xb76ee7f5
+jz 0xb76ee7f5
+mov dword ptr [eax+0x4], ecx
+mov dword ptr [eax+0xc], 0x1
+call 0xb76fb9e0
+mov dword ptr [eax+0xc], 0x1
+call 0xb76fb9e0
+ret 
+jnz 0xb76eed48
+jnz 0xb76eed1e
+jnz 0xb76eec68
+mov dword ptr [ebp-0x94], 0x0
+mov dword ptr [esp+0x4], 0x4
+mov dword ptr [ebp-0xa0], esi
+mov dword ptr [esp], esi
+call 0xb7703f90
+jz 0xb76eebf9
+jnz 0xb76eeeaa
+mov dword ptr [ebp-0x9c], edx
+cmp dword ptr [ebp-0x90], 0x3
+mov dword ptr [ebp-0xa0], eax
+mov dword ptr [ebp-0x80], edx
+mov dword ptr [esp], edx
+mov dword ptr [esp+0x4], 0x0
+call 0xb76f8e20
+mov dword ptr [ebp-0x74], eax
+mov dword ptr [ebp-0x4c], ecx
+mov dword ptr [ebp-0x8c], edi
+mov dword ptr [edi+0x4], eax
+mov dword ptr [edi], 0x0
+mov dword ptr [edi+0x8], eax
+call 0xb7704e98
+ret 
+mov byte ptr [ecx+0x194], al
+jz 0xb76f995f
+mov dword ptr [ebp-0x50], esi
+mov dword ptr [eax-0xc], 0x0
+mov dword ptr [eax-0x4], eax
+mov dword ptr [eax-0x8], esi
+mov byte ptr [esi+0x194], dl
+jnz 0xb76f8e9a
+mov dword ptr [ebp-0x64], eax
+mov dword ptr [ebp-0x50], esi
+mov dword ptr [ebp-0x68], eax
+mov dword ptr [eax+0x8], 0x0
+mov dword ptr [ebp-0x38], 0x0
+mov dword ptr [ebp-0x88], esi
+mov dword ptr [ebx+0x920], 0x0
+mov dword ptr [ebp-0x6c], edi
+mov dword ptr [ebp-0x84], 0x0
+mov dword ptr [ebp-0x80], 0x0
+mov dword ptr [ebp-0x5c], esi
+mov dword ptr [ebp-0x54], 0x0
+mov dword ptr [esi], 0x1
+jz 0xb76f912a
+mov dword ptr [ebp-0x64], 0x1
+mov dword ptr [ebp-0x50], eax
+jmp 0xb76f8edf
+mov dword ptr [ebp-0x68], eax
+mov dword ptr [eax+0x8], 0x0
+mov dword ptr [ebp-0x38], 0x0
+mov dword ptr [ebp-0x88], esi
+mov dword ptr [ebx+0x920], 0x0
+mov dword ptr [ebp-0x6c], edi
+mov dword ptr [ebp-0x84], 0x0
+mov dword ptr [ebp-0x80], 0x0
+mov dword ptr [ebp-0x5c], esi
+mov dword ptr [ebp-0x54], 0x0
+mov dword ptr [esi], 0x1
+jz 0xb76f912a
+jz 0xb76f905d
+mov dword ptr [ebp-0x30], esi
+mov dword ptr [ebp-0x2c], esi
+mov dword ptr [ebp-0x58], eax
+mov dword ptr [ebp-0x24], eax
+mov dword ptr [ebp-0x28], esi
+jz 0xb76f9079
+jnz 0xb76f8f46
+cmp dword ptr [ebp-0x74], esi
+jz 0xb76f8f46
+jz 0xb76f8f46
+jz 0xb76f905d
+mov dword ptr [ebp-0x30], esi
+mov dword ptr [ebp-0x2c], esi
+mov dword ptr [ebp-0x58], eax
+mov dword ptr [ebp-0x24], eax
+mov dword ptr [ebp-0x28], esi
+jz 0xb76f9079
+mov dword ptr [ebp-0x4c], 0x0
+mov dword ptr [ebp-0x70], edx
+jmp 0xb76f8fbb
+jnz 0xb76f962e
+mov dword ptr [esp+0x4], 0x24
+mov dword ptr [esp], edi
+call 0xb7704350
+jz 0xb77043b1
+jp 0xb770439d
+jz 0xb77044dd
+jz 0xb770450a
+jz 0xb77044dd
+jz 0xb770450a
+jnz 0xb77043b1
+jz 0xb77044dd
+jz 0xb770450a
+jnb 0xb77044e2
+jnz 0xb77044e2
+jnb 0xb77044c7
+jnz 0xb77044c7
+jnb 0xb77044e2
+jnz 0xb77044e2
+jz 0xb77044dd
+jz 0xb770450a
+jz 0xb77044dd
+jz 0xb770450a
+jz 0xb77044dd
+jz 0xb770450a
+jmp 0xb77044dd
+ret 
+jnz 0xb76f9728
+mov dword ptr [ebp-0x20], edi
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], eax
+call 0xb76fafe0
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x14], eax
+mov dword ptr [esp+0x18], edx
+mov dword ptr [esp+0x1c], ecx
+mov dword ptr [esp+0x2c], 0x0
+call dword ptr [ebx+0x558]
+call 0xb7704e94
+ret 
+ret 
+mov dword ptr [esp+0x10], eax
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp+0x24], eax
+mov dword ptr [esp], eax
+call 0xb7704160
+mov dword ptr [eax], ebx
+mov dword ptr [eax+0x4], esi
+mov dword ptr [eax+0x8], edi
+mov dword ptr [eax+0x10], ecx
+mov dword ptr [eax+0x14], ecx
+mov dword ptr [eax+0xc], ebp
+ret 
+jnz 0xb76fb080
+mov dword ptr [edx], eax
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp], edi
+call 0xb76f42a0
+mov dword ptr [esp+0x30], ecx
+call 0xb7704e98
+ret 
+js 0xb76f4b6e
+jnb 0xb76f4b44
+mov dword ptr [esp+0x2c], ecx
+jnz 0xb76f4314
+jnz 0xb76f430d
+jnz 0xb76f430d
+call 0xb76fc0d0
+call 0xb7704e98
+ret 
+mov dword ptr [esp], edi
+mov dword ptr [esp+0x4], eax
+call 0xb7704510
+jz 0xb76fc121
+jnz 0xb76fc10f
+nop 
+jmp 0xb76fc130
+mov dword ptr [esp], edi
+mov dword ptr [esp+0x4], eax
+call 0xb7704510
+jnz 0xb76fc108
+ret 
+jz 0xb76fc130
+mov dword ptr [esp], edi
+mov dword ptr [esp+0x4], eax
+call 0xb7704510
+ret 
+jz 0xb76f4300
+ret 0xc
+test byte ptr [ebp+0x195], 0x1
+jz 0xb76f4979
+jz 0xb76f4340
+jnz 0xb76f430d
+jz 0xb76f430d
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x4], eax
+call 0xb7704510
+jz 0xb76f4340
+jnz 0xb76f430d
+jnz 0xb76f430d
+call 0xb76fc0d0
+jnz 0xb7704527
+jnz 0xb7704518
+ret 
+jnz 0xb76f430d
+call 0xb76f1680
+jnz 0xb76f444a
+jnz 0xb76f4ace
+mov dword ptr [esp+0x4], 0x2f
+mov dword ptr [esp], esi
+mov byte ptr [esp+0x53], 0x0
+call 0xb7704350
+jz 0xb76f44d3
+jz 0xb76f4602
+mov dword ptr [esp], 0x0
+call 0xb76f3a60
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x24], edx
+call 0xb77045d0
+mov dword ptr [esp+0x38], eax
+jnz 0xb76f4a14
+jz 0xb76f4805
+jz 0xb76f48c8
+mov dword ptr [esp+0x48], ebp
+mov dword ptr [esp+0x44], esi
+mov byte ptr [esp+0x3c], 0x0
+mov dword ptr [esp+0x34], ecx
+mov dword ptr [esp+0x40], edi
+jmp 0xb76f48fe
+mov dword ptr [esp+0x4], ebp
+mov dword ptr [esp], 0xf
+call 0xb76f3d70
+mov dword ptr [esp+0x14], esi
+mov dword ptr [esp+0x18], edi
+jz 0xb76f3dd8
+jz 0xb76f3da0
+ret 
+ret 
+jz 0xb76f48f0
+mov dword ptr [esp+0x18], ecx
+mov dword ptr [esp+0x14], 0x4
+mov dword ptr [esp+0x10], eax
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp], eax
+call 0xb76f1dc0
+jz 0xb76f4625
+mov dword ptr [esp+0x4], ebp
+mov dword ptr [esp], 0xf
+call 0xb76f3d70
+cmp byte ptr [esp+0x3c], 0x0
+jz 0xb76f480f
+cmp dword ptr [ebx-0xdc], 0xffffffff
+jnz 0xb76f4527
+jmp 0xb76f4577
+jz 0xb76f450f
+jz 0xb76f450f
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], 0xf
+mov dword ptr [esp+0x28], ecx
+call 0xb76f3d70
+jz 0xb76f450f
+mov dword ptr [esp+0x14], 0x4
+mov dword ptr [esp+0x4], ecx
+mov dword ptr [esp+0x34], eax
+mov dword ptr [esp+0x18], eax
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x10], edx
+mov dword ptr [esp], eax
+call 0xb76f1dc0
+cmp dword ptr [ebx-0xdc], 0xffffffff
+jz 0xb76f464b
+mov dword ptr [esp+0x10], eax
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp+0x18], edx
+mov dword ptr [esp+0x14], 0x2
+mov dword ptr [esp], eax
+call 0xb76f1dc0
+jmp 0xb76f4577
+setnz byte ptr [esp+0x34]
+jnz 0xb76f477c
+jz 0xb76f465a
+test byte ptr [ebx-0x340], 0x1
+jz 0xb76f43dc
+cmp byte ptr [esp+0x34], 0x0
+jz 0xb76f4586
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], 0x1d
+mov dword ptr [esp+0x28], ecx
+call 0xb76f3d70
+mov byte ptr [esp+0x34], 0x1
+jz 0xb76f465a
+mov dword ptr [esp+0x18], eax
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x14], 0x4
+mov dword ptr [esp+0x10], edi
+mov dword ptr [esp+0x4], ecx
+mov dword ptr [esp], eax
+call 0xb76f1dc0
+mov dword ptr [esp+0x48], ecx
+jnz 0xb76f4aa2
+jnz 0xb76f4709
+call 0xb7700bb0
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x28], eax
+test byte ptr [ebx-0x340], 0x1
+jnz 0xb7701155
+jz 0xb7700dc3
+jz 0xb7700d08
+call 0xb76fbf40
+mov dword ptr [esp+0x8c], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x4], 0x80000
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x90], esi
+mov dword ptr [esp+0x94], edi
+mov dword ptr [esp+0x98], ebp
+call 0xb7703e60
+int 0x80
+jnb 0xb7703e7d
+ret 
+js 0xb76fbfe0
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], 0x3
+call 0xb7703de0
+call 0xb7704e98
+ret 
+int 0x80
+jnbe 0xb7703e08
+ret 
+js 0xb76fbfad
+mov dword ptr [edi], eax
+jnz 0xb76fbfe8
+mov dword ptr [esp], esi
+call 0xb7703ea0
+mov dword ptr [esp+0x14], 0x0
+mov dword ptr [esp+0x10], esi
+mov dword ptr [esp+0xc], 0x2
+mov dword ptr [esp+0x8], ebp
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], 0x0
+call 0xb7704020
+jmp 0xb76fbfb2
+mov dword ptr [esp], esi
+call 0xb7703ea0
+int 0x80
+jnb 0xb7703eb7
+ret 
+ret 
+jz 0xb7700e6d
+jbe 0xb7700e61
+mov dword ptr [esp+0x8], 0xb
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], edi
+call 0xb77048d0
+jnz 0xb7704b87
+jnz 0xb7704b87
+jnz 0xb7704b9b
+jnz 0xb7704b9b
+jnz 0xb7704b9b
+ret 
+jnz 0xb7700e7c
+mov dword ptr [ebx+0x8ec], edi
+mov dword ptr [ebx+0x8f4], eax
+jb 0xb7700e52
+mov dword ptr [esp+0x8], 0x14
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp], eax
+call 0xb77048d0
+jz 0xb7700bf0
+mov dword ptr [ebx+0x8f4], 0xffffffff
+jmp 0xb7700bf0
+mov dword ptr [esp+0x24], eax
+jz 0xb7700d20
+mov dword ptr [esp+0x20], esi
+sub dword ptr [esp+0x20], eax
+jz 0xb7700c46
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], esi
+call 0xb7704510
+jz 0xb7700da2
+jnz 0xb7700c1f
+mov dword ptr [esp+0x40], 0xffffffff
+mov dword ptr [esp+0x44], 0xffffffff
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], eax
+call 0xb7703f90
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], esi
+call 0xb7704510
+jz 0xb7700da2
+jnz 0xb7700c1f
+mov dword ptr [esp+0x40], 0xffffffff
+mov dword ptr [esp+0x44], 0xffffffff
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], eax
+call 0xb7703f90
+mov dword ptr [esp+0x40], eax
+mov dword ptr [esp+0x44], edx
+jmp 0xb7700c56
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], eax
+call 0xb7703f90
+mov dword ptr [esp+0x34], edx
+mov dword ptr [esp+0x30], eax
+mov dword ptr [esp+0x3c], edx
+mov dword ptr [esp+0x38], eax
+mov dword ptr [esp+0x48], eax
+js 0xb7700d08
+cmp dword ptr [esp+0x20], edx
+jbe 0xb7700d08
+jmp 0xb7700ce9
+call 0xb7700a70
+data16 nop 
+mov byte ptr [esp], cl
+jz 0xb7700b68
+jnbe 0xb7700b48
+jnbe 0xb7700b95
+jbe 0xb7700b74
+cmp byte ptr [esp], cl
+jnz 0xb7700b80
+mov byte ptr [esp], cl
+jnz 0xb7700a86
+jnbe 0xb7700b48
+jnbe 0xb7700b95
+mov dword ptr [esp], edi
+jnbe 0xb7700afc
+ret 
+jz 0xb7700ee0
+jnl 0xb7700cc0
+jle 0xb7700cc7
+cmp dword ptr [esp+0x20], edx
+jbe 0xb7700d08
+call 0xb7700a70
+jnle 0xb7700d08
+cmp dword ptr [esp+0x20], edx
+jbe 0xb7700d08
+call 0xb7700a70
+jnbe 0xb7700b33
+nop 
+add dword ptr [esp], 0x1
+jbe 0xb7700b10
+jz 0xb7700a78
+jz 0xb7700a78
+ret 
+mov byte ptr [esp], cl
+jz 0xb7700b68
+jnbe 0xb7700b48
+jnbe 0xb7700b95
+ret 
+mov dword ptr [esp+0x50], esi
+jle 0xb7700f3c
+cmp dword ptr [esp+0x20], edx
+jnbe 0xb7700f25
+jmp 0xb7700f3c
+call 0xb7700a70
+jz 0xb7700f08
+mov dword ptr [esp+0x58], edi
+mov dword ptr [esp+0x5c], edx
+jmp 0xb7700f54
+jle 0xb7700f7d
+cmp dword ptr [esp+0x20], eax
+jbe 0xb7700fac
+call 0xb7700a70
+jnz 0xb7700fa3
+cmp dword ptr [esp+0x20], eax
+mov dword ptr [esp+0x4c], eax
+jbe 0xb7700fa3
+jz 0xb7700fe8
+mov dword ptr [esp+0x54], eax
+not ecx
+mov dword ptr [esp+0x2c], eax
+not eax
+jnz 0xb7700fa3
+jz 0xb770102e
+jb 0xb7700fa3
+jnz 0xb7701137
+jnz 0xb7700fa3
+cmp dword ptr [ebx-0x304], edx
+jnz 0xb7700fa3
+jz 0xb7701048
+jnz 0xb7700fa3
+jmp 0xb7701048
+cmp dword ptr [ebx-0x304], edx
+jnz 0xb7700fa3
+jmp 0xb7700fac
+test byte ptr [ebx-0x340], 0x1
+jz 0xb7700d10
+jz 0xb7700d08
+mov dword ptr [esp+0x4], ecx
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x1c], ecx
+call 0xb76fc020
+ret 
+mov dword ptr [esp+0x3c], eax
+jz 0xb76f4709
+cmp byte ptr [esp+0x34], 0x0
+jz 0xb76f49c9
+test byte ptr [eax+0x205], 0x8
+jnz 0xb76f4a36
+cmp byte ptr [esp+0x34], 0x0
+jz 0xb76f4a00
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0xc], 0x0
+mov dword ptr [esp+0x4], 0x8
+call 0xb76f1800
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0x20], edx
+mov dword ptr [ebp-0x30], eax
+mov dword ptr [ebp-0x34], ecx
+jnz 0xb76f1cbd
+mov dword ptr [esp+0x4], 0x80000
+mov dword ptr [esp], eax
+call 0xb7703e60
+mov dword ptr [ebp-0x28], eax
+jz 0xb76f1a5d
+mov dword ptr [ebx+0x920], 0x0
+mov dword ptr [edx], 0x0
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], eax
+call 0xb7703ed0
+int 0x80
+jnb 0xb7703eed
+ret 
+jle 0xb76f1bda
+mov dword ptr [edx], edi
+jbe 0xb76f1867
+jle 0xb76f1d48
+mov dword ptr [esp+0x8], 0x8
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], esi
+call 0xb77048d0
+jnz 0xb7704b87
+jnz 0xb7704b87
+ret 
+jnz 0xb76f1d20
+jnz 0xb76f1a6f
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp+0x8], 0x7
+mov dword ptr [esp], eax
+call 0xb77048d0
+jnz 0xb7704b87
+jnz 0xb7704b9b
+jnz 0xb7704b9b
+jnz 0xb7704b9b
+ret 
+jnz 0xb76f1a80
+cmp dword ptr [edx+0x18], 0x1
+jnz 0xb76f1d7d
+cmp word ptr [edx+0x16], 0x3
+jnz 0xb76f1a48
+jnz 0xb76f1d8a
+cmp word ptr [edx+0x2e], 0x20
+jnz 0xb76f1da0
+jnbe 0xb76f1b28
+mov dword ptr [ebp-0x24], eax
+cmp dword ptr [ebp-0x24], esi
+jnb 0xb76f1a64
+jmp 0xb76f1983
+cmp dword ptr [edi], 0x4
+jnz 0xb76f1970
+jbe 0xb76f1970
+cmp dword ptr [edi+0x1c], 0x3
+jbe 0xb76f1970
+jnb 0xb76f1a64
+cmp dword ptr [edi], 0x4
+jnz 0xb76f1970
+jbe 0xb76f1970
+cmp dword ptr [edi+0x1c], 0x3
+jbe 0xb76f1970
+mov dword ptr [ebp-0x1c], esi
+jnbe 0xb76f1ab8
+mov dword ptr [ebp-0x38], edi
+mov dword ptr [ebp-0x2c], edx
+jmp 0xb76f19e4
+mov dword ptr [esp+0x8], 0x10
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x4], edx
+call 0xb77048d0
+jnz 0xb7704b87
+jnz 0xb7704b87
+jnz 0xb7704b87
+jnz 0xb7704b9b
+jnz 0xb7704b9b
+jnz 0xb7704b9b
+ret 
+jnz 0xb76f19c0
+jz 0xb76f1cb1
+jnz 0xb76f1a48
+jnbe 0xb76f1aa8
+mov dword ptr [esp+0x8], 0x10
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x4], edx
+call 0xb77048d0
+jnz 0xb7704b87
+ret 
+jz 0xb76f1a64
+jbe 0xb76f1a64
+mov dword ptr [esp], eax
+call 0xb7703ea0
+ret 
+jz 0xb76f4709
+mov dword ptr [esp+0x24], edx
+call 0xb76f12e0
+mov dword ptr [esp+0x10], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x14], esi
+mov dword ptr [esp+0x18], edi
+call 0xb77045d0
+mov dword ptr [esp], edi
+call 0xb76ec7d0
+jz 0xb76f1338
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], eax
+call 0xb7704d20
+jnb 0xb7704d81
+movsw word ptr [edi], word ptr [esi]
+rep movsd dword ptr [edi], dword ptr [esi]
+rep movsd dword ptr [edi], dword ptr [esi]
+ret 
+mov dword ptr [esp+0x54], eax
+jnz 0xb76f458f
+mov dword ptr [esp], edx
+call 0xb7703ea0
+test byte ptr [ebx-0x340], 0x1
+jz 0xb76f43dc
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x24], edx
+call 0xb76fc020
+jz 0xb76f4ba3
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp+0x58], eax
+mov dword ptr [esp+0x10], ecx
+mov dword ptr [esp+0x18], eax
+mov dword ptr [esp+0x14], eax
+mov dword ptr [esp+0xc], ecx
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], eax
+call 0xb76f23a0
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0xb8], edx
+mov dword ptr [ebp-0xc0], eax
+call 0xb76fb9f0
+jz 0xb76fba35
+mov dword ptr [eax], 0x1
+mov dword ptr [eax+0x10], ecx
+mov dword ptr [eax+0x4], edx
+mov dword ptr [eax+0x8], edx
+ret 
+ret 
+mov dword ptr [ebp-0xbc], eax
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp], 0x3
+mov dword ptr [esp+0x4], edx
+call 0xb7703de0
+js 0xb76f319c
+mov dword ptr [ebp-0xc4], edx
+jz 0xb76f24a8
+mov dword ptr [ebp-0x8c], eax
+mov dword ptr [ebp-0x90], edx
+jmp 0xb76f243f
+test byte ptr [edi+0x195], 0x20
+jnz 0xb76f2438
+jnz 0xb76f2438
+jnz 0xb76f2438
+jz 0xb76f24a8
+test byte ptr [edi+0x195], 0x20
+jnz 0xb76f2438
+jnz 0xb76f2438
+jnz 0xb76f305f
+test byte ptr [ebp+0x18], 0x4
+jnz 0xb76f2ed6
+test byte ptr [ebx-0x340], 0x40
+jnz 0xb76f31b0
+jz 0xb76f26a0
+jnz 0xb76f2f69
+mov byte ptr [ebp-0xa6], 0x0
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x4], ecx
+mov dword ptr [esp], eax
+call 0xb76f68c0
+jnz 0xb76f6a08
+jnz 0xb76f6b08
+mov dword ptr [esi+eax*1+0x1b8], edi
+mov dword ptr [esi+0x1d0], eax
+jz 0xb76f6ad3
+mov dword ptr [esi+0x1d0], eax
+jz 0xb76f6ad3
+mov dword ptr [esp], eax
+call 0xb77045d0
+mov dword ptr [esp+0x1c], eax
+mov dword ptr [esp+0x20], eax
+jz 0xb76f6b53
+mov dword ptr [esp+0x28], esi
+nop 
+mov dword ptr [esp+0x4], ebp
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x18], edx
+call 0xb76ec7f0
+mov dword ptr [esp], edx
+call 0xb76ec7d0
+jz 0xb76f6bcf
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x4], edx
+call 0xb7704c60
+rep movsd dword ptr [edi], dword ptr [esi]
+jmp 0xb76f6b8a
+cmp byte ptr [eax-0x1], 0x2f
+jnz 0xb76f6b88
+mov byte ptr [edx], 0x0
+jmp 0xb76f6acd
+cmp byte ptr [eax-0x1], 0x2f
+jnz 0xb76f6b88
+mov byte ptr [edx], 0x0
+jmp 0xb76f6acd
+mov dword ptr [esi+0x1a8], edi
+ret 0xc
+jz 0xb76f2f93
+mov dword ptr [edi+0x154], eax
+mov dword ptr [ebp-0xc8], edx
+mov dword ptr [ebp-0x90], edx
+mov word ptr [edi+0x158], ax
+jnbe 0xb76f2d29
+mov dword ptr [ebp-0x8c], edx
+mov dword ptr [ebp-0xcc], esp
+mov dword ptr [ebp-0xb4], edx
+cmp dword ptr [ebp-0x8c], esi
+mov dword ptr [ebp-0xac], edx
+jnb 0xb76f2ef6
+mov byte ptr [ebp-0xa5], 0x0
+mov dword ptr [ebp-0x90], 0x0
+mov dword ptr [ebp-0xb0], 0x7
+mov dword ptr [ebp-0xd0], edx
+jmp 0xb76f261b
+jz 0xb76f27b8
+jbe 0xb76f25d8
+jz 0xb76f27e0
+mov dword ptr [edi+0x150], eax
+jmp 0xb76f2600
+jnb 0xb76f2808
+jz 0xb76f27b8
+jbe 0xb76f25d8
+jz 0xb76f26d8
+jnz 0xb76f2600
+mov dword ptr [edi+0x8], eax
+mov word ptr [edi+0x15a], ax
+jnb 0xb76f2808
+mov dword ptr [ebp-0x9c], eax
+jnz 0xb76f2f44
+mov dword ptr [ebp-0x94], eax
+mov dword ptr [ebp-0x98], eax
+jnz 0xb76f2f4e
+add dword ptr [ebp-0x90], 0x1
+mov dword ptr [ebp-0xa4], ecx
+mov dword ptr [eax], ecx
+mov dword ptr [eax+0x8], ecx
+mov dword ptr [eax+0x4], ecx
+cmp dword ptr [ebp-0x90], 0x1
+mov dword ptr [eax+0xc], ecx
+mov dword ptr [eax+0x10], edx
+jbe 0xb76f279c
+mov dword ptr [eax+0x14], edx
+jmp 0xb76f2600
+mov byte ptr [ebp-0xa5], cl
+mov dword ptr [eax+0x14], edx
+jmp 0xb76f2600
+jz 0xb76f27e0
+jz 0xb76f27c8
+jnz 0xb76f2600
+jz 0xb76f2600
+mov dword ptr [edi+0x234], eax
+mov dword ptr [edi+0x238], eax
+jnz 0xb76f27f0
+mov dword ptr [edi+0x23c], 0x0
+mov dword ptr [edi+0x230], eax
+mov dword ptr [edi+0x22c], eax
+jnz 0xb76f2f9b
+mov dword ptr [edi+0x23c], eax
+jmp 0xb76f266b
+mov dword ptr [edi+0x230], eax
+mov dword ptr [edi+0x22c], eax
+jnz 0xb76f2f9b
+call 0xb76fd650
+mov dword ptr [esp+0x2c], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x30], esi
+mov dword ptr [esp+0x34], edi
+mov dword ptr [esp+0x38], ebp
+cmp byte ptr [ebx+0x844], 0x0
+jnz 0xb76fd69a
+mov dword ptr [ebx+0x848], eax
+ret 
+mov dword ptr [edi+0x244], eax
+jmp 0xb76f2600
+mov dword ptr [ebp-0xb0], edx
+jmp 0xb76f2600
+mov dword ptr [edi+0x248], eax
+mov dword ptr [edi+0x24c], eax
+jmp 0xb76f2600
+jz 0xb76f2ef6
+mov dword ptr [ebp-0x9c], ecx
+cmp dword ptr [ebp-0xc8], 0x3
+mov dword ptr [ebp-0x94], edx
+jnz 0xb76f33ad
+mov dword ptr [esp+0x14], ecx
+mov dword ptr [esp+0xc], 0x802
+mov dword ptr [esp+0x10], edx
+mov dword ptr [esp+0x8], ecx
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp], eax
+call 0xb7704020
+mov dword ptr [edi+0x1ac], eax
+jz 0xb76f2a10
+mov dword ptr [edi+0x1b0], edx
+cmp byte ptr [ebp-0xa5], 0x0
+mov dword ptr [edi], eax
+jnz 0xb76f2a20
+or byte ptr [edi+0x195], 0x40
+mov dword ptr [ebp-0xb4], eax
+jz 0xb76f28f8
+mov dword ptr [edi+0x1b4], eax
+jz 0xb76f2daa
+jbe 0xb76f29ad
+mov dword ptr [ebp-0x98], edx
+mov dword ptr [ebp-0x9c], eax
+mov dword ptr [ebp-0xa4], ecx
+jbe 0xb76f29a1
+jnb 0xb76f2a5a
+jbe 0xb76f28e0
+mov dword ptr [esp+0x14], ecx
+mov dword ptr [esp+0xc], 0x812
+mov dword ptr [esp+0x10], ecx
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp+0x8], ecx
+mov dword ptr [esp], eax
+call 0xb7704020
+jnz 0xb76f28e0
+jmp 0xb76f2e49
+mov dword ptr [ebp-0xb4], eax
+jz 0xb76f28f8
+mov dword ptr [edi+0x1b4], eax
+jz 0xb76f2daa
+jbe 0xb76f29ad
+jz 0xb76f2daa
+jbe 0xb76f29ad
+mov dword ptr [ebp-0x98], edx
+mov dword ptr [ebp-0x9c], eax
+mov dword ptr [ebp-0xa4], ecx
+jbe 0xb76f29a1
+test byte ptr [ebp-0xb4], 0x2
+jz 0xb76f33fe
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp], edx
+mov dword ptr [ebp-0xd4], ecx
+call 0xb7704c10
+cld 
+jecxz 0xb7704c4d
+jz 0xb7704c39
+jp 0xb7704c2e
+rep stosd dword ptr [edi]
+rep stosd dword ptr [edi]
+rep stosb byte ptr [edi]
+ret 
+jz 0xb76f31d4
+jb 0xb76f2e07
+jnb 0xb76f2a5a
+mov dword ptr [esp+0x14], 0x0
+mov dword ptr [esp+0x10], 0xffffffff
+mov dword ptr [esp+0xc], 0x32
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp], ecx
+mov dword ptr [esp+0x4], eax
+call 0xb7704020
+jnz 0xb76f29ad
+jmp 0xb76f2f5e
+jz 0xb76f2e89
+mov dword ptr [edi+0x8], edx
+jz 0xb76f2e7e
+mov dword ptr [ebp-0x90], ecx
+jnz 0xb76f2cc1
+jbe 0xb76f2cb0
+jnbe 0xb76f2ce0
+mov dword ptr [edi+ecx*4], edx
+jmp 0xb76f2cb4
+mov dword ptr [edi+eax*4+0x20], edx
+jz 0xb76f2a8d
+jbe 0xb76f2cb0
+jnbe 0xb76f2ce0
+jbe 0xb76f2cfb
+not ecx
+mov dword ptr [eax+ecx*4+0xc8], edx
+jmp 0xb76f2cb4
+jbe 0xb76f2d95
+jnbe 0xb76f2cb4
+mov dword ptr [ecx+eax*4], edx
+jmp 0xb76f2cb4
+jz 0xb76f2a8d
+jbe 0xb76f2cb0
+jnbe 0xb76f2ce0
+mov dword ptr [edi+ecx*4], edx
+jmp 0xb76f2cb4
+jz 0xb76f2af1
+jz 0xb76f2a9b
+add dword ptr [eax+0x4], esi
+jz 0xb76f2aa5
+add dword ptr [eax+0x4], esi
+jz 0xb76f2aaf
+add dword ptr [eax+0x4], esi
+jz 0xb76f2ab9
+add dword ptr [eax+0x4], esi
+jz 0xb76f2ac3
+jz 0xb76f2acd
+add dword ptr [eax+0x4], esi
+jz 0xb76f2ad7
+add dword ptr [eax+0x4], esi
+jz 0xb76f2ae4
+add dword ptr [eax+0x4], esi
+jz 0xb76f2af1
+add dword ptr [eax+0x4], esi
+jz 0xb76f2b04
+jnz 0xb76f344d
+jz 0xb76f2b04
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp+0x8], 0x73
+mov dword ptr [esp], eax
+call 0xb7701c40
+jz 0xb76f2b18
+cmp dword ptr [eax+0x4], 0xc
+jnz 0xb76f3480
+jz 0xb76f2b2c
+jz 0xb76f2b2c
+cmp dword ptr [eax+0x4], 0x8
+jnz 0xb76f34aa
+jz 0xb76f2b57
+mov dword ptr [edi+0x208], eax
+jz 0xb76f2b46
+mov dword ptr [edi+0x60], edx
+jz 0xb76f2b4d
+mov dword ptr [edi+0x78], edx
+jz 0xb76f2b57
+jz 0xb76f2b4d
+mov dword ptr [edi+0x78], edx
+jz 0xb76f2b57
+mov dword ptr [edi+0x80], edx
+jz 0xb76f2e73
+jz 0xb76f2b57
+mov dword ptr [edi+0x80], edx
+jz 0xb76f2e73
+test byte ptr [ebx-0x340], 0x40
+mov dword ptr [edi+0x204], eax
+jnz 0xb76f32e9
+jz 0xb76f2e73
+test byte ptr [ebx-0x340], 0x40
+mov dword ptr [edi+0x204], eax
+jnz 0xb76f32e9
+jz 0xb76f2b8d
+jmp 0xb76f2b8d
+jz 0xb76f2b9e
+mov dword ptr [edi+0x5c], 0x0
+jnz 0xb76f327e
+jz 0xb76f2f06
+jnz 0xb76f327e
+jz 0xb76f2f06
+mov dword ptr [edi+0x150], eax
+not eax
+test dword ptr [ebp-0xb0], eax
+jnz 0xb76f3217
+jz 0xb76f2be6
+mov dword ptr [edi+0x22c], eax
+mov dword ptr [esp], edx
+call 0xb7703ea0
+jnz 0xb76f3669
+jz 0xb76f2e58
+test byte ptr [ebx-0x340], 0x40
+mov dword ptr [edi+0x154], edx
+jnz 0xb76f35f8
+cmp dword ptr [ebp-0xc8], 0x2
+jnz 0xb76f2c11
+mov byte ptr [edi+0x194], al
+jmp 0xb76f2c11
+test byte ptr [ebx-0x340], 0x40
+mov dword ptr [edi+0x154], edx
+jnz 0xb76f35f8
+call 0xb76f6720
+test byte ptr [ebp+0x18], 0x8
+jnz 0xb76f2c46
+jnz 0xb76f3599
+test byte ptr [edi+0x204], 0x20
+mov dword ptr [ebx+0x53c], eax
+mov dword ptr [edi+0x1dc], edx
+mov dword ptr [edi+0x1d8], eax
+mov dword ptr [edi+0x1e4], edx
+mov dword ptr [edi+0x1e0], eax
+jnz 0xb76f3579
+call 0xb76f6800
+jnz 0xb76f6850
+mov dword ptr [eax+0x10], esi
+mov dword ptr [esi+0xc], eax
+add dword ptr [ebx+edx*1+0x44], 0x1
+mov dword ptr [eax+0x250], esi
+mov dword ptr [eax+0x254], edi
+mov dword ptr [ebx+0x534], esi
+mov dword ptr [ebx+0x538], edi
+mov dword ptr [esp], ebp
+call dword ptr [ebx+0x838]
+jnz 0xb76f34d4
+ret 
+ret 0xc
+mov dword ptr [esi+0x14], eax
+ret 
+mov dword ptr [edx], eax
+mov dword ptr [eax], 0x0
+mov dword ptr [edx], 0x0
+mov byte ptr [eax], 0x0
+ret 0x8
+jnz 0xb76f91a0
+test byte ptr [eax+0x194], 0x60
+jnz 0xb76f8f98
+add dword ptr [ebp-0x64], 0x1
+mov dword ptr [edx+0x8], 0x0
+mov dword ptr [edx+0x4], eax
+mov dword ptr [edx], 0x0
+mov dword ptr [ecx+0x8], edx
+mov byte ptr [eax+0x194], cl
+mov dword ptr [ebp-0x68], edx
+jmp 0xb76f8f98
+jz 0xb76f8fae
+mov dword ptr [ecx+edx*4], eax
+mov dword ptr [ebp-0x4c], edx
+jz 0xb76f9080
+jnz 0xb76f962e
+jz 0xb76f9080
+jnz 0xb76f962e
+mov dword ptr [esp+0x4], 0x24
+mov dword ptr [esp], edi
+call 0xb7704350
+jnz 0xb76f8fae
+mov dword ptr [esp+0x4], 0x24
+mov dword ptr [esp], edi
+call 0xb7704350
+jz 0xb76f90f7
+mov dword ptr [eax+esi*4], 0x0
+mov dword ptr [esp], eax
+call 0xb76ec7d0
+jz 0xb76f911c
+nop 
+jz 0xb76f9c08
+jnz 0xb76f9108
+mov dword ptr [ebp-0x6c], eax
+mov dword ptr [ebp-0x50], esi
+jmp 0xb76f8f25
+mov dword ptr [ebp-0x54], 0x0
+mov dword ptr [esi], 0x1
+jz 0xb76f912a
+jz 0xb76f905d
+mov dword ptr [ebp-0x30], esi
+mov dword ptr [ebp-0x2c], esi
+mov dword ptr [ebp-0x58], eax
+mov dword ptr [ebp-0x24], eax
+mov dword ptr [ebp-0x28], esi
+jz 0xb76f9079
+mov dword ptr [ebp-0x54], esi
+jbe 0xb76f8f46
+cmp dword ptr [ebp-0x80], edx
+mov dword ptr [ebp-0x54], esi
+jz 0xb76f9c14
+mov dword ptr [ebp-0x84], eax
+mov dword ptr [ebp-0x80], esi
+jmp 0xb76f8f46
+jnb 0xb77044c7
+jnz 0xb77044c7
+jnb 0xb77044e2
+jnz 0xb77044e2
+jnb 0xb77044c7
+jnz 0xb77044c7
+jz 0xb76f9973
+mov dword ptr [eax], edx
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x4], ecx
+call 0xb7704d20
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], eax
+call 0xb7704d20
+or byte ptr [ecx+0x196], 0x1
+mov dword ptr [ecx+0x1f0], esi
+jz 0xb76f911c
+nop 
+jz 0xb76f9c08
+jnz 0xb76f9108
+jnz 0xb76f8f54
+jnz 0xb76f8f54
+mov dword ptr [ebp-0x4c], 0x0
+jz 0xb76f90f7
+mov dword ptr [ebp-0x58], 0x0
+jmp 0xb76f9235
+jnz 0xb76f9255
+jz 0xb76f9255
+mov dword ptr [ebx+0x920], esi
+mov dword ptr [ebp-0x6c], eax
+jz 0xb76f9281
+mov dword ptr [esp], eax
+call 0xb76ec7d0
+mov dword ptr [ebp-0x5c], eax
+jz 0xb76f9bd9
+mov dword ptr [ebp-0x50], 0x0
+mov dword ptr [ecx+0x160], esi
+mov dword ptr [ecx+0x15c], eax
+jnz 0xb76f9b59
+mov dword ptr [edi+ecx*4], eax
+and byte ptr [eax+0x194], 0x9f
+jnz 0xb76f92c9
+jnz 0xb76f9b59
+mov dword ptr [edi+ecx*4], eax
+and byte ptr [eax+0x194], 0x9f
+jnz 0xb76f92c9
+test byte ptr [ebx-0x33f], 0x8
+mov dword ptr [ebp-0x50], ecx
+jnz 0xb76f9afa
+mov dword ptr [ebp-0x68], edx
+jnz 0xb76f9ad0
+jz 0xb76f9aa5
+jbe 0xb76f9355
+mov dword ptr [ebp-0x64], ecx
+mov dword ptr [esp+0x8], ecx
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], eax
+call 0xb7704d20
+cmp dword ptr [ebp-0x50], 0x1
+jbe 0xb76f95b3
+jmp 0xb76f9479
+mov dword ptr [ebp-0x7c], esp
+mov dword ptr [ebp-0x60], ecx
+mov dword ptr [esp], ecx
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x4], 0x0
+call 0xb7704c10
+rep stosb byte ptr [edi]
+mov dword ptr [ebp-0x4c], 0x1
+mov dword ptr [ebp-0x74], esi
+mov dword ptr [ebp-0x78], ecx
+mov dword ptr [ebp-0x54], 0x2
+add word ptr [edx+esi*2], 0x1
+cmp dword ptr [ebp-0x4c], edx
+mov dword ptr [ebp-0x70], eax
+jnb 0xb76f9518
+jnz 0xb76f9507
+jmp 0xb76f950d
+cmp dword ptr [ebp-0x4c], edi
+jb 0xb76f94f0
+cmp dword ptr [ebp-0x50], esi
+mov dword ptr [ebp-0x4c], esi
+jz 0xb76f95b0
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp], eax
+call 0xb7704c10
+mov dword ptr [ebp-0x54], edx
+jmp 0xb76f94c8
+add word ptr [edx+esi*2], 0x1
+cmp dword ptr [ebp-0x4c], edx
+mov dword ptr [ebp-0x70], eax
+jnb 0xb76f9518
+jnz 0xb76f9507
+jmp 0xb76f950d
+cmp dword ptr [ebp-0x50], esi
+mov dword ptr [ebp-0x4c], esi
+jz 0xb76f95b0
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp], eax
+call 0xb7704c10
+mov dword ptr [eax+ecx*1], 0x0
+or byte ptr [edx+0x196], 0x1
+mov dword ptr [edx+0x1f0], eax
+jz 0xb76f95e2
+mov dword ptr [esp], ecx
+call 0xb76fe4c0
+jnz 0xb76f9cb4
+ret 0x8
+add dword ptr [ebx-0x150], eax
+adc dword ptr [ebx-0x14c], edx
+jz 0xb76ee8f1
+or byte ptr [edx+0x194], 0x10
+jnz 0xb76ee8e0
+mov dword ptr [edx+0xc], eax
+jz 0xb76ee90d
+or byte ptr [edx+0x194], 0x10
+jnz 0xb76ee8e0
+mov dword ptr [edx+0xc], eax
+jz 0xb76ee90d
+mov dword ptr [eax+0x10], edx
+jbe 0xb76ee94e
+cmp dword ptr [edi+0x4], edx
+jz 0xb76efa9d
+jmp 0xb76ee947
+jnz 0xb76ee938
+mov byte ptr [ebp-0x94], 0x0
+jmp 0xb76eef87
+cmp dword ptr [edi+ecx*4], eax
+jz 0xb76eef0a
+jnz 0xb76ee938
+mov byte ptr [ebp-0x94], 0x0
+jmp 0xb76eef87
+mov dword ptr [ebx+0x56c], eax
+jnz 0xb76effb3
+jbe 0xb76eef34
+mov dword ptr [ebx+0x568], edx
+jz 0xb76eef4f
+mov dword ptr [ebx+0x568], edx
+jz 0xb76eef4f
+jz 0xb76efd4e
+jnz 0xb76efd24
+mov dword ptr [eax+0xc], esi
+jz 0xb76ef703
+jnz 0xb76ef6d9
+mov byte ptr [ebp-0x94], 0x1
+mov dword ptr [edx+0x10], edi
+mov dword ptr [ebp-0x54], eax
+mov dword ptr [ebp-0x50], eax
+call 0xb76fb0c0
+mov byte ptr [ebp-0x94], 0x1
+jmp 0xb76eef87
+mov dword ptr [ebp-0x54], eax
+mov dword ptr [ebp-0x50], eax
+call 0xb76fb0c0
+mov dword ptr [esp+0x2c], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x30], esi
+mov dword ptr [esp+0x34], edi
+mov dword ptr [esp+0x38], ebp
+mov dword ptr [esp+0x1c], ecx
+call dword ptr [ebx+0x558]
+mov dword ptr [esi], 0x0
+mov dword ptr [ebx+0x8b8], edi
+mov dword ptr [esp+0x1c], edx
+mov dword ptr [esp+0x18], eax
+mov dword ptr [esp], ecx
+mov dword ptr [esp+0x4], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x8], esi
+call 0xb76fc9c0
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0xc], edx
+jz 0xb76fca24
+jmp 0xb76fc9f1
+test byte ptr [esi+0x195], 0x2
+jnz 0xb76fc9e8
+call 0xb76fc550
+mov dword ptr [ebp-0x48], eax
+mov dword ptr [ebp-0x58], edx
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0x60], ecx
+jz 0xb76fc8d1
+mov dword ptr [ebp-0x54], eax
+mov dword ptr [ebp-0x68], esi
+mov dword ptr [ebp-0x6c], edi
+jz 0xb76fc742
+cmp word ptr [esi], 0x1
+mov dword ptr [ebp-0x5c], esi
+jnz 0xb76fc8f8
+mov dword ptr [ebp-0x40], 0x0
+mov dword ptr [ebp-0x4c], 0x0
+jz 0xb76fc79b
+cmp dword ptr [ebp-0x40], edx
+mov dword ptr [ebp-0x40], edx
+jz 0xb76fc79b
+jnz 0xb76fc780
+jnz 0xb76fc7ad
+ret 
+jnz 0xb76fc9f1
+ret 
+mov dword ptr [ebp-0x40], ecx
+jnz 0xb76fc7ad
+ret 
+mov dword ptr [esp+0x4], 0x10
+mov dword ptr [esp], esi
+mov dword ptr [ebp-0x3c], esi
+call 0xb76ec7e0
+mov dword ptr [eax+0x170], edi
+jz 0xb76fc9af
+mov dword ptr [eax+0x174], esi
+mov dword ptr [edx+0x1a4], eax
+jz 0xb76fc86b
+mov dword ptr [ebp-0x44], edi
+mov dword ptr [ebp-0x40], esi
+jmp 0xb76fc81a
+jz 0xb76fc7a2
+mov dword ptr [ebp-0x3c], edi
+jmp 0xb76fc892
+test byte ptr [eax+0x2], 0x1
+jnz 0xb76fc8bf
+mov dword ptr [edx+0x4], edi
+mov dword ptr [edx], ecx
+mov dword ptr [edx+0xc], 0x0
+jnz 0xb76fc890
+ret 
+jnz 0xb76fc890
+ret 
+test byte ptr [eax+0x2], 0x1
+jnz 0xb76fc8bf
+mov dword ptr [edx+0x4], edi
+mov dword ptr [edx], ecx
+mov dword ptr [edx+0xc], 0x0
+jnz 0xb76fc890
+ret 
+mov dword ptr [ebp-0x40], 0x0
+mov dword ptr [ebp-0x4c], 0x0
+mov dword ptr [ebp-0x64], esi
+mov dword ptr [ebp-0x50], eax
+jnz 0xb76fc5fb
+jmp 0xb76fc6b8
+call 0xb76fc0d0
+jz 0xb76fc5f0
+mov dword ptr [ebp-0x50], esi
+jnz 0xb76fc8e3
+jmp 0xb76fc622
+jz 0xb76fc6b8
+call 0xb76fc0d0
+mov dword ptr [ebp-0x70], edi
+mov dword ptr [ebp-0x3c], edi
+cmp byte ptr [eax], 0x0
+mov dword ptr [ebp-0x44], edi
+jnz 0xb76fc659
+mov dword ptr [esp+0xc], edi
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp], edi
+call 0xb76fc1b0
+mov dword ptr [esp+0xc], edi
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp], edi
+call 0xb76fc1b0
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0x48], eax
+test byte ptr [ebx-0x340], 0x10
+jnz 0xb76fc479
+jz 0xb76fc3c8
+jz 0xb76fc44f
+cmp word ptr [esi], 0x1
+jnz 0xb76fc222
+cmp dword ptr [esi+0x8], edi
+jz 0xb76fc2e8
+jz 0xb76fc320
+cmp word ptr [esi], 0x1
+jz 0xb76fc206
+mov dword ptr [esp+0x10], 0x0
+mov dword ptr [esp+0xc], 0xa
+mov dword ptr [esp+0x8], eax
+mov byte ptr [ebp-0x19], 0x0
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], eax
+call 0xb7701f10
+cmp dword ptr [esi+0x8], edi
+jz 0xb76fc2e8
+jz 0xb76fc320
+cmp word ptr [esi], 0x1
+jz 0xb76fc206
+mov dword ptr [ebp-0x4c], ecx
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], eax
+call 0xb7704510
+jnz 0xb76fc20f
+ret 0x10
+or dword ptr [ebp-0x4c], eax
+cmp dword ptr [ebp-0x40], eax
+mov dword ptr [ebp-0x40], eax
+jnz 0xb76fc620
+jz 0xb76fc750
+mov dword ptr [ebp-0x5c], esi
+jmp 0xb76fc5c8
+mov dword ptr [ebp-0x70], edi
+mov dword ptr [ebp-0x3c], edi
+cmp byte ptr [eax], 0x0
+mov dword ptr [ebp-0x44], edi
+jnz 0xb76fc659
+mov dword ptr [esp+0xc], edi
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp], edi
+call 0xb76fc1b0
+jz 0xb76fc79b
+cmp dword ptr [ebp-0x40], edx
+mov dword ptr [ebp-0x40], edx
+jz 0xb76fc79b
+jnz 0xb76fc780
+jnz 0xb76fc780
+mov dword ptr [ebp-0x40], ecx
+jnz 0xb76fc7ad
+ret 
+cmp dword ptr [ebp-0x3c], edx
+jbe 0xb76fc853
+mov dword ptr [edx+0x8], ecx
+mov dword ptr [edx+0x4], esi
+mov dword ptr [edx], ecx
+mov dword ptr [edx+0xc], ecx
+jnz 0xb76fc818
+jz 0xb76fc868
+cmp dword ptr [ebp-0x3c], edx
+jbe 0xb76fc853
+mov dword ptr [edx+0x8], ecx
+mov dword ptr [edx+0x4], esi
+mov dword ptr [edx], ecx
+mov dword ptr [edx+0xc], ecx
+jnz 0xb76fc818
+jz 0xb76fc868
+jz 0xb76fc7a2
+mov dword ptr [ebp-0x3c], edi
+jmp 0xb76fc892
+jz 0xb76f0b47
+jnz 0xb76f0b58
+ret 
+ret 
+mov dword ptr [esi], edx
+mov dword ptr [ebx+0x8b8], eax
+ret 
+mov byte ptr [ebp-0xb0], dl
+jnz 0xb76eefd3
+call 0xb76ecbe8
+call 0xb7704e98
+ret 
+cmp dword ptr [ebx+0x860], 0x0
+mov dword ptr [ebx+0x850], esi
+jnz 0xb76ecd7b
+mov dword ptr [esp+0x4], 0x1
+mov dword ptr [esp], eax
+call 0xb76ec7e0
+cmp dword ptr [ebx+0x8c], 0x0
+mov dword ptr [ebx+0x84c], eax
+mov dword ptr [eax], edx
+mov dword ptr [eax+0x4], 0x0
+jz 0xb76ecc70
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp+0x8], 0x2ed
+mov dword ptr [esp], eax
+call 0xb7701c40
+jmp 0xb76ecc8b
+jnz 0xb76ecc7a
+jz 0xb76eccbd
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp+0x8], 0x2f9
+mov dword ptr [esp], eax
+call 0xb7701c40
+cmp dword ptr [edx+0x234], 0x0
+jz 0xb76ecc88
+mov dword ptr [eax+ecx*8+0xc], edx
+jnz 0xb76ecc7a
+jz 0xb76eccbd
+jnz 0xb76ecc7a
+jz 0xb76eccbd
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp+0x8], 0x2f9
+mov dword ptr [esp], eax
+call 0xb7701c40
+call 0xb76fd760
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x38], ecx
+jz 0xb76fd95a
+jnz 0xb76fd930
+jz 0xb76fd8ed
+mov dword ptr [esp+0x3c], ecx
+jz 0xb76fd906
+mov dword ptr [esp+0x20], 0x0
+mov dword ptr [esp+0x2c], 0x0
+mov dword ptr [esp+0x34], 0x0
+mov dword ptr [esp+0x30], 0x0
+mov dword ptr [esp+0x24], 0x40
+jmp 0xb76fd82a
+cmp dword ptr [esp+0x24], ecx
+mov dword ptr [esp+0x24], eax
+mov dword ptr [esp+0x28], edx
+jnb 0xb76fd7d8
+mov dword ptr [esp+0x1c], edx
+jbe 0xb76fd89f
+mov dword ptr [esp+0x34], ecx
+mov dword ptr [esp+0x30], ecx
+mov dword ptr [edi+0x240], eax
+mov dword ptr [esp+0x2c], eax
+jmp 0xb76fd803
+mov dword ptr [edi+0x240], eax
+mov dword ptr [esp+0x2c], eax
+jmp 0xb76fd803
+add dword ptr [esp+0x20], 0x1
+jz 0xb76fd8b0
+cmp dword ptr [esp+0x20], ecx
+jz 0xb76fd906
+cmp dword ptr [esp+0x24], ecx
+mov dword ptr [esp+0x24], eax
+mov dword ptr [esp+0x28], edx
+jnb 0xb76fd7d8
+mov dword ptr [ebx+0x858], ecx
+div dword ptr [esp+0x24]
+mov dword ptr [ebx+0x854], eax
+mov dword ptr [ebx+0x85c], ecx
+ret 
+call 0xb76fda80
+mov dword ptr [esp+0x2c], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x30], esi
+mov dword ptr [esp+0x38], ebp
+mov dword ptr [esp+0x34], edi
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], eax
+call 0xb76ec7c0
+jz 0xb76fdb5d
+jnz 0xb76fdb40
+jnz 0xb76fdb50
+rep stosd dword ptr [edi]
+rep stosd dword ptr [edi]
+jnz 0xb76fdb30
+jnz 0xb76fdb10
+call 0xb76fd5f0
+mov dword ptr [esp+0x10], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x14], esi
+mov dword ptr [esp+0x4], 0x8
+mov dword ptr [esp+0x18], edi
+mov dword ptr [esp], edx
+call 0xb76ec7e0
+jz 0xb76fd648
+mov dword ptr [eax], esi
+mov dword ptr [edi+0x4], edx
+ret 
+jz 0xb76fdb1e
+ret 
+jnz 0xb76eccf1
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], 0x2
+call 0xb76fc0a0
+mov dword ptr [ebx+0x860], eax
+mov dword ptr [edx], edx
+mov dword ptr [edx+0x8], edx
+mov dword ptr [esp+0x10], 0xffffffff
+mov dword ptr [edx+0x10], eax
+mov dword ptr [esp+0x14], edx
+mov dword ptr [esp+0x18], 0xfffff
+mov dword ptr [esp+0x1c], 0x51
+int 0x80
+jnz 0xb76ecd4d
+mov byte ptr [ebx+0x8a0], 0x1
+jmp 0xb76ecd7b
+ret 
+mov dword ptr [ebp-0x98], eax
+jnz 0xb76eefe2
+call 0xb76ecd84
+call 0xb7704e98
+ret 
+jnz 0xb76ecdfc
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x1c], 0x0
+call 0xb7703e60
+mov dword ptr [esp+0x1c], eax
+and dword ptr [esp+0x1c], 0xffffff00
+mov dword ptr gs:[0x14], ecx
+cmp dword ptr [ebx-0x174], 0x0
+jz 0xb76ece3d
+jnz 0xb76ece2e
+jmp 0xb76ece31
+mov dword ptr gs:[0x18], eax
+mov dword ptr [ebx-0x170], eax
+mov dword ptr [ebx-0xd4], 0x0
+ret 
+jnz 0xb76ef5df
+jz 0xb76ef5d2
+jnz 0xb76ef5d2
+jmp 0xb76ef10d
+mov dword ptr [ebx+0x48], eax
+mov dword ptr [ebx-0x328], eax
+mov dword ptr [ebx-0x324], edx
+mov dword ptr [ebx-0x1bc], eax
+jnz 0xb76ef3c2
+jz 0xb76ef2a9
+jz 0xb76ef1b6
+mov dword ptr [ebp-0x80], ecx
+or dword ptr [ebx-0x314], ecx
+mov dword ptr [ebp-0xa0], eax
+mov dword ptr [ebp-0x9c], edx
+mov byte ptr [ebp-0xa4], cl
+mov dword ptr [ebp-0x90], edx
+jmp 0xb76ef366
+jnz 0xb76ef2f0
+mov dword ptr [ebx+0x8a8], eax
+mov dword ptr [ebx+0x8ac], edx
+jz 0xb76ef201
+call 0xb76fca30
+jnz 0xb76ef3a3
+and byte ptr [edi+0x196], 0xfe
+jz 0xb76ef349
+mov dword ptr [esp+0xc], ecx
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp], edi
+mov dword ptr [esp+0x4], eax
+call 0xb76f6ed0
+mov dword ptr [eax+0x8], 0x1
+jz 0xb76ef310
+jmp 0xb76ef3a3
+and byte ptr [edi+0x196], 0xfe
+jz 0xb76ef349
+mov dword ptr [esp+0xc], ecx
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp], edi
+mov dword ptr [esp+0x4], eax
+call 0xb76f6ed0
+jz 0xb76ef35c
+cmp byte ptr [ebx+0x8a0], 0x0
+jnz 0xb76ef3b7
+sub dword ptr [ebp-0x90], 0x4
+jnz 0xb76ef2f0
+sub dword ptr [ebp-0x90], 0x4
+jnz 0xb76ef2f0
+mov dword ptr [ebx+0x8a8], eax
+mov dword ptr [ebx+0x8ac], edx
+jz 0xb76ef201
+call 0xb76fca30
+call 0xb7704e98
+ret 
+jnz 0xb76f6f02
+or dword ptr [ebp+0x14], eax
+test byte ptr [eax+0x194], 0x4
+jnz 0xb76f7378
+jz 0xb76f7380
+jz 0xb76f6f1d
+test byte ptr [ebx-0x340], 0x20
+mov dword ptr [ebp-0xa4], 0x0
+jz 0xb76f6f35
+jmp 0xb76f8835
+test byte ptr [ebx-0x340], 0x20
+mov dword ptr [ebp-0xa4], esi
+jnz 0xb76f881b
+jnz 0xb76f8b46
+mov dword ptr [ebp-0xac], 0x0
+mov dword ptr [ebp-0xa0], eax
+jz 0xb76f6f71
+jnz 0xb76f73b0
+mov dword ptr [ebp+eax*1-0x58], 0x0
+jb 0xb76f6f73
+jz 0xb76f780d
+jnz 0xb76f73dc
+mov dword ptr [eax+0x4], edx
+jnz 0xb76f8863
+mov dword ptr [eax+0x8], edx
+jmp 0xb76f6f71
+mov dword ptr [ebp+eax*1-0x58], 0x0
+jb 0xb76f6f73
+jz 0xb76f780d
+mov dword ptr [ebp-0x58], esi
+mov dword ptr [ebp-0x54], eax
+jz 0xb76f7820
+mov dword ptr [ebp+eax*1-0x58], 0x0
+jb 0xb76f6f73
+jz 0xb76f780d
+mov dword ptr [ebp-0x58], esi
+mov dword ptr [ebp-0x54], eax
+jz 0xb76f7820
+mov dword ptr [ebp-0x50], edx
+mov dword ptr [ebp-0x88], ecx
+jz 0xb76f6fdb
+cmp dword ptr [ecx+0x4], 0x11
+jz 0xb76f77a4
+mov dword ptr [ebp-0xb0], edi
+mov dword ptr [ebp-0x94], edi
+mov dword ptr [ebp-0x7c], edi
+mov dword ptr [ebp-0xa8], edi
+mov dword ptr [ebp-0x80], ecx
+mov dword ptr [ebp-0x84], eax
+jz 0xb76f73f0
+mov dword ptr [ebp-0x80], ecx
+mov dword ptr [ebp-0x84], edx
+cmp dword ptr [ebp-0x84], edx
+jz 0xb76f8047
+jnz 0xb76f77e2
+jnz 0xb76f7a17
+mov dword ptr [ebp-0x44], ecx
+mov dword ptr [ebp-0x48], edx
+mov dword ptr [ebp-0x3c], ecx
+jmp 0xb76f6fdb
+mov dword ptr [ebp-0xb0], edi
+mov dword ptr [ebp-0x94], edi
+mov dword ptr [ebp-0x7c], edi
+mov dword ptr [ebp-0xa8], edi
+mov dword ptr [ebp-0x80], ecx
+mov dword ptr [ebp-0x84], eax
+jz 0xb76f73f0
+mov dword ptr [ebp-0x88], edi
+jnb 0xb76f7075
+jnz 0xb76f80be
+mov dword ptr [ebp-0x98], eax
+jz 0xb76f7447
+jz 0xb76f7447
+jnb 0xb76f7447
+cmp byte ptr [esi+0x4], 0x8
+jnz 0xb76f825b
+jmp 0xb76f743e
+add dword ptr [eax], edx
+jnbe 0xb76f7430
+jz 0xb76f782e
+cmp dword ptr [ebp-0x84], edi
+mov dword ptr [ebp-0x9c], eax
+jbe 0xb76f706d
+cmp byte ptr [esi+0x4], 0x8
+jnz 0xb76f825b
+add dword ptr [eax], edx
+jnbe 0xb76f7430
+jz 0xb76f782e
+cmp dword ptr [ebp-0x84], edi
+mov dword ptr [ebp-0x9c], eax
+jbe 0xb76f706d
+mov dword ptr [ebp-0xb4], esi
+mov dword ptr [ebp-0x8c], edi
+nop 
+mov dword ptr [ebp-0x88], edx
+mov dword ptr [ebp-0x90], ecx
+mov dword ptr [ebp-0x64], edx
+mov dword ptr [ebp-0xc0], edi
+jz 0xb76f824f
+jz 0xb76f7640
+jz 0xb76f7768
+jz 0xb76f8691
+jnz 0xb76f7778
+jbe 0xb76f7798
+mov dword ptr [ecx+0x21c], edi
+mov dword ptr [ecx+0x220], edx
+jz 0xb76f75f8
+jz 0xb76f75f8
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x10], 0x0
+mov dword ptr [esp+0xc], 0x1
+mov dword ptr [esp], edi
+call 0xb76f58a0
+mov dword ptr [ebp-0x60], eax
+mov dword ptr [ebp-0x74], edx
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0x78], ecx
+jz 0xb76f58e3
+data16 nop 
+jnz 0xb76f58d0
+add dword ptr [ebx+0x54c], 0x1
+mov dword ptr [ebp-0x58], 0xffffffff
+mov dword ptr [ebp-0x50], 0x0
+mov dword ptr [ebp-0x4c], 0x0
+jz 0xb76f5913
+jnz 0xb76f58d0
+add dword ptr [ebx+0x54c], 0x1
+mov dword ptr [ebp-0x58], 0xffffffff
+mov dword ptr [ebp-0x50], 0x0
+mov dword ptr [ebp-0x4c], 0x0
+jz 0xb76f5913
+test dword ptr [ebp+0x14], 0xfffffffa
+jnz 0xb76f6690
+jnz 0xb76f5c30
+mov dword ptr [ebp-0x7c], 0x0
+jz 0xb76f5c61
+mov dword ptr [ebp-0x64], edi
+jmp 0xb76f5959
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x10], edx
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x24], ecx
+mov dword ptr [esp+0x20], ecx
+mov dword ptr [esp+0x1c], ecx
+mov dword ptr [esp+0x18], ecx
+mov dword ptr [esp+0x14], ecx
+mov dword ptr [esp], edx
+mov dword ptr [esp+0x4], eax
+call 0xb76f5000
+mov dword ptr [esp+0x70], eax
+mov dword ptr [esp+0x24], edx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x78], eax
+mov dword ptr [esp+0x68], eax
+mov dword ptr [esp+0x60], eax
+mov dword ptr [esp+0x7c], eax
+mov dword ptr [esp+0x1c], eax
+mov dword ptr [esp+0x34], ecx
+mov dword ptr [esp+0x44], ebp
+mov dword ptr [esp+0x30], edx
+mov dword ptr [esp+0x5c], 0x0
+mov dword ptr [esp+0x58], 0x0
+mov dword ptr [esp+0x6c], esi
+jz 0xb76f5170
+test byte ptr [esp+0x7c], 0x2
+jz 0xb76f50b9
+test byte ptr [esi+0x194], 0x3
+jz 0xb76f5170
+test byte ptr [esi+0x195], 0x20
+jnz 0xb76f5170
+test byte ptr [ebx-0x340], 0x8
+jnz 0xb76f56d8
+mov dword ptr [esp+0x28], edx
+jz 0xb76f5170
+mov dword ptr [esp+0x38], eax
+mov dword ptr [esp+0x74], eax
+jz 0xb76f565d
+jnz 0xb76f5710
+mov dword ptr [esp+0x64], 0x0
+cmp dword ptr [esp+0x5c], 0x1
+jz 0xb76f5190
+mov dword ptr [esp+0x40], ecx
+jz 0xb76f57f0
+div dword ptr [esp+0x28]
+mov dword ptr [esp+0x64], eax
+jz 0xb76f513f
+jmp 0xb76f56b5
+mov dword ptr [esp+0x2c], ebp
+jz 0xb76f5856
+jecxz 0xb76f5856
+jecxz 0xb76f5856
+jecxz 0xb76f5856
+jecxz 0xb76f5856
+jecxz 0xb76f5856
+mov dword ptr [esp+0x40], eax
+mov dword ptr [ecx], eax
+jmp 0xb76f5673
+div dword ptr [esp+0x28]
+mov dword ptr [esp+0x64], eax
+jz 0xb76f513f
+jmp 0xb76f56b5
+call 0xb76f4e70
+mov dword ptr [esp+0x30], esi
+mov dword ptr [esp+0x2c], ebx
+mov dword ptr [esp+0x34], edi
+mov dword ptr [esp+0x38], ebp
+call 0xb7704e98
+ret 
+jz 0xb76f4faa
+cmp word ptr [esi+0xe], 0x0
+test dword ptr [edi+0x24], edx
+jnz 0xb76f4f80
+jnb 0xb76f4f80
+jz 0xb76f4ea4
+jmp 0xb76f4f2d
+ret 
+jz 0xb76f5698
+mov dword ptr [esp+0x44], ebp
+jmp 0xb76f5198
+mov dword ptr [esp+0x64], eax
+jz 0xb76f57de
+call 0xb76f4e70
+jz 0xb76f4ee6
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], eax
+call 0xb7704510
+jnz 0xb76f4f80
+jz 0xb76f4f48
+jz 0xb76f4fb9
+jmp 0xb76f4f2d
+mov dword ptr [esp+0x44], ebp
+jmp 0xb76f513f
+cmp dword ptr [esp+0x5c], 0x1
+jz 0xb76f5190
+jnz 0xb76f5170
+jz 0xb76f5170
+jz 0xb76f5170
+call 0xb76fc0d0
+cmp dword ptr [esp+0x1c], edi
+jnbe 0xb76f5079
+ret 
+mov dword ptr [esp+0x5c], 0x0
+mov dword ptr [esp+0x58], 0x0
+mov dword ptr [esp+0x6c], esi
+jz 0xb76f5170
+test byte ptr [esp+0x7c], 0x2
+jz 0xb76f50b9
+test byte ptr [esi+0x194], 0x3
+jz 0xb76f5170
+div dword ptr [esp+0x28]
+jz 0xb76f5137
+jmp 0xb76f574b
+jnz 0xb76f5740
+mov dword ptr [esp+0x64], eax
+call 0xb76f4e70
+jnz 0xb76f57e7
+jnz 0xb76f5740
+mov dword ptr [esp+0x64], eax
+call 0xb76f4e70
+jz 0xb76f4f48
+jz 0xb76f4fb9
+jz 0xb76f4f88
+mov dword ptr [esp+0x4], ecx
+mov dword ptr [esp+0x1c], edx
+mov dword ptr [esp], eax
+call 0xb7704510
+jz 0xb76f4f2d
+jmp 0xb76f4f1d
+jnz 0xb76f56c9
+jmp 0xb76f5740
+mov dword ptr [esp+0x44], ebp
+jmp 0xb76f5198
+jz 0xb76f51e0
+jz 0xb76f5210
+jnz 0xb76f5146
+mov dword ptr [esp+0x34], eax
+mov dword ptr [eax], edx
+mov dword ptr [ecx+0x4], eax
+ret 
+jle 0xb76f5948
+jz 0xb76f5c61
+jz 0xb76f59c9
+jz 0xb76f5a20
+mov dword ptr [ebp-0x64], 0x0
+jz 0xb76f5d26
+jz 0xb76f64cf
+jnz 0xb76f615a
+mov dword ptr [ecx], eax
+ret 0x14
+mov dword ptr [eax+0x228], ecx
+mov dword ptr [eax+0x224], edi
+jz 0xb76f7788
+jz 0xb76f8671
+jbe 0xb76f7660
+add dword ptr [esi], eax
+jmp 0xb76f7640
+add dword ptr [ebp-0x8c], 0x8
+cmp dword ptr [ebp-0x84], esi
+jnbe 0xb76f7480
+jmp 0xb76f706d
+mov dword ptr [ebp-0x88], edx
+mov dword ptr [ebp-0x90], ecx
+mov dword ptr [ebp-0x64], edx
+mov dword ptr [ebp-0xc0], edi
+jz 0xb76f824f
+jz 0xb76f7640
+jz 0xb76f7768
+jmp 0xb76f75d0
+jz 0xb76f8671
+jbe 0xb76f7660
+call 0xb76f6e60
+jz 0xb76f7640
+jbe 0xb76f8713
+mov dword ptr [edi], ecx
+jmp 0xb76f7640
+jz 0xb76f7640
+mov dword ptr [edi], eax
+jmp 0xb76f7640
+jz 0xb76f8691
+jnz 0xb76f7778
+jbe 0xb76f7798
+mov dword ptr [ecx+0x21c], edi
+mov dword ptr [ecx+0x220], edx
+jz 0xb76f75f8
+jz 0xb76f75f8
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x10], 0x0
+mov dword ptr [esp+0xc], 0x1
+mov dword ptr [esp], edi
+call 0xb76f58a0
+jnz 0xb76f5837
+mov dword ptr [esp+0x40], eax
+mov dword ptr [ecx], eax
+jmp 0xb76f5673
+jnz 0xb76f5788
+data16 nop 
+cmp dword ptr [esp+0x1c], edi
+jnbe 0xb76f5079
+ret 
+mov dword ptr [esp+0x44], ebp
+jmp 0xb76f5137
+mov dword ptr [esp+0x64], 0x0
+cmp dword ptr [esp+0x5c], 0x1
+jz 0xb76f5190
+jnz 0xb76f5170
+jz 0xb76f5170
+jz 0xb76f4f88
+jnz 0xb76f4f80
+jnz 0xb76f4f80
+mov dword ptr [esi+0x1fc], 0x1
+jmp 0xb76f59f3
+mov dword ptr [esi], eax
+jmp 0xb76f7640
+jz 0xb76f51ae
+cmp dword ptr [ebp], 0x0
+jnz 0xb76f5146
+mov dword ptr [ebp], eax
+mov dword ptr [ebp+0x4], eax
+jmp 0xb76f5146
+jnz 0xb76f5170
+jz 0xb76f5170
+jz 0xb76f5170
+call 0xb76fc0d0
+jmp 0xb76f757a
+jz 0xb76f4f2d
+jnle 0xb76f4f2d
+js 0xb76f4f80
+mov dword ptr [ebp-0xb8], 0x1
+jnz 0xb76f86d6
+jbe 0xb76f86d6
+setz byte ptr [ebp-0xc1]
+or byte ptr [ebp-0xc1], cl
+mov dword ptr [ebp-0xb8], edi
+jnz 0xb76f7513
+add dword ptr [ebx+0x550], 0x1
+mov dword ptr [ebp-0x64], ecx
+jmp 0xb76f75c8
+jz 0xb76f7788
+jz 0xb76f8671
+jbe 0xb76f7660
+jnz 0xb76f5b10
+jz 0xb76f59a7
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x10], edx
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x24], ecx
+mov dword ptr [esp+0x20], ecx
+mov dword ptr [esp+0x1c], ecx
+mov dword ptr [esp+0x18], ecx
+mov dword ptr [esp+0x14], ecx
+mov dword ptr [esp], edx
+mov dword ptr [esp+0x4], eax
+call 0xb76f5000
+jz 0xb76f5c61
+jz 0xb76f59c9
+jz 0xb76f5a20
+jz 0xb76f5c75
+jz 0xb76f5c7c
+jz 0xb76f5c8c
+mov dword ptr [ecx], 0x0
+jmp 0xb76f5a0d
+ret 0x14
+jz 0xb76f75e5
+jmp 0xb76f75d5
+jbe 0xb76f7660
+call 0xb76f6e60
+data16 nop 
+jz 0xb76f4f2d
+call 0xb76fc0d0
+mov dword ptr [ebp-0x80], eax
+add dword ptr [ebp-0x94], 0x10
+cmp dword ptr [ebp-0x94], esi
+jnz 0xb76f77f9
+mov dword ptr [ebp+eax*1-0x38], 0x0
+jb 0xb76f708d
+jz 0xb76f803c
+jmp 0xb76f700c
+mov dword ptr [ebp-0x84], eax
+jz 0xb76f73f0
+mov dword ptr [ebp-0x88], edi
+jnb 0xb76f7075
+jnz 0xb76f80be
+jnz 0xb76f80dd
+add dword ptr [edi], ecx
+cmp dword ptr [ebp-0x84], esi
+jnbe 0xb76f7038
+mov dword ptr [ebp-0x80], eax
+add dword ptr [ebp-0x94], 0x10
+cmp dword ptr [ebp-0x94], esi
+jnz 0xb76f77f9
+jnz 0xb76f80be
+jnz 0xb76f80dd
+add dword ptr [edi], ecx
+cmp dword ptr [ebp-0x84], esi
+jnbe 0xb76f7038
+jnz 0xb76f8947
+jnz 0xb76f8105
+mov dword ptr [edi], eax
+jmp 0xb76f7062
+jz 0xb76f89af
+call 0xb76f6e60
+jnz 0xb76f89c2
+call 0xb5a76173
+ret 
+cmp dword ptr [ebx+0x36c0], 0x0
+jnz 0xb59c681a
+call 0xb5961c80
+mov dword ptr [esp+0x14], ebx
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x18], esi
+mov dword ptr [esp+0x1c], edi
+mov dword ptr [esp+0x20], ebp
+mov dword ptr [ebx+0x36c4], eax
+jnz 0xb5961cc8
+jnz 0xb5961cc8
+jz 0xb5961e28
+mov dword ptr [ebx+0x36d4], edx
+mov dword ptr [esp+0x10], ecx
+mov dword ptr [ebx+0x36d0], ecx
+mov dword ptr [ebx+0x36cc], edi
+mov dword ptr [ebx+0x36f0], ecx
+mov dword ptr [ebx+0x36c8], eax
+jz 0xb5961ea0
+jz 0xb5961ec0
+mov dword ptr [esp], 0x1
+mov dword ptr [esp+0xc], ecx
+jmp 0xb5961ce5
+mov dword ptr [esp+0xc], eax
+jbe 0xb5961f00
+test dword ptr [esp+0x10], 0x10000000
+mov dword ptr [esp], 0x1
+jz 0xb5961ce5
+mov dword ptr [ebx+0x36f0], edx
+mov dword ptr [esp], 0x1
+jmp 0xb5961ce5
+test dword ptr [esp+0xc], 0x8000000
+jz 0xb5961d00
+jz 0xb5961de0
+mov dword ptr [ebx+0x36e8], esi
+mov dword ptr [ebx+0x36ec], edi
+mov dword ptr [ebx+0x36c0], ebp
+ret 
+test dword ptr [esp+0xc], 0x10000000
+jz 0xb5961df1
+or dword ptr [ebx+0x36f0], 0x40
+test dword ptr [esp+0xc], 0x1000
+jz 0xb5961e05
+or dword ptr [ebx+0x36f0], 0x80
+test byte ptr [ebx+0x36e2], 0x1
+jz 0xb5961d00
+test byte ptr [ebx+0x36e2], 0x1
+jz 0xb5961d00
+or dword ptr [ebx+0x36f0], 0x100
+jmp 0xb5961d00
+mov dword ptr [ebx+0x36e8], esi
+mov dword ptr [ebx+0x36ec], edi
+mov dword ptr [ebx+0x36c0], ebp
+ret 
+test dword ptr [ebx+0x36d4], 0x4000000
+jz 0xb59c6832
+ret 
+mov dword ptr [edi], eax
+jmp 0xb76f7062
+cmp dword ptr [ebp-0x84], esi
+jnbe 0xb76f7038
+mov dword ptr [ebp-0x80], eax
+add dword ptr [ebp-0x94], 0x10
+cmp dword ptr [ebp-0x94], esi
+jnz 0xb76f77f9
+mov dword ptr [ebp+eax*1-0x38], 0x0
+jb 0xb76f708d
+call 0xb5a76173
+ret 
+cmp dword ptr [ebx+0x36c0], 0x0
+jnz 0xb59c7d9a
+call 0xb5961c80
+test dword ptr [ebx+0x36d0], 0x200
+jz 0xb59c7dc4
+test dword ptr [ebx+0x36d0], 0x100000
+jz 0xb59c7dc4
+ret 
+call 0xb5a76173
+ret 
+cmp dword ptr [ebx+0x36c0], 0x0
+jnz 0xb59cd00a
+call 0xb5961c80
+test dword ptr [ebx+0x36d4], 0x4000000
+jz 0xb59cd02a
+test dword ptr [ebx+0x36f0], 0x4
+jz 0xb59cd032
+ret 
+ret 
+call 0xb5a76173
+ret 
+cmp dword ptr [ebx+0x36c0], 0x0
+jnz 0xb59e187a
+call 0xb5961c80
+test dword ptr [ebx+0x36d4], 0x4000000
+jz 0xb59e1892
+ret 
+mov dword ptr [ebp+eax*1-0x38], 0x0
+jb 0xb76f708d
+jz 0xb76f803c
+mov dword ptr [ebp-0x38], esi
+mov dword ptr [ebp-0x34], edi
+jz 0xb76f70db
+jmp 0xb76f70de
+jz 0xb76f70f2
+cmp dword ptr [eax+0x4], 0x7
+jz 0xb76f7d22
+mov dword ptr [ebp-0x9c], eax
+mov dword ptr [ebp-0x7c], edx
+mov dword ptr [ebp-0xa4], ecx
+mov dword ptr [ebp-0xa8], eax
+mov dword ptr [ebp-0x8c], edx
+mov dword ptr [ebp-0x90], edx
+cmp dword ptr [ebp+0x8], edi
+jz 0xb76f7169
+jnz 0xb76f7cf0
+jz 0xb76f7cf0
+jz 0xb76f7d76
+jnb 0xb76f7169
+nop 
+mov dword ptr [esi+edx*1], edi
+jnbe 0xb76f7d00
+jmp 0xb76f7169
+jz 0xb76f7d76
+cmp dword ptr [ebp-0x8c], ecx
+mov dword ptr [ebp-0x94], eax
+jbe 0xb76f7328
+mov dword ptr [ebp-0x88], esi
+mov dword ptr [ebp-0xc0], ecx
+mov dword ptr [ebp-0x84], edx
+mov dword ptr [ebp-0x5c], edx
+jz 0xb76f7bb0
+add dword ptr [ebp-0x9c], 0x10
+cmp dword ptr [ebp-0x9c], esi
+jnz 0xb76f8070
+jnz 0xb76f8ad1
+or byte ptr [eax+0x194], 0x4
+jnz 0xb76f8500
+mov dword ptr [ebp-0x80], eax
+jmp 0xb76f711b
+mov dword ptr [ebp-0x8c], edx
+mov dword ptr [ebp-0x90], edx
+cmp dword ptr [ebp+0x8], edi
+jz 0xb76f7169
+jnz 0xb76f7cf0
+jz 0xb76f7cf0
+jz 0xb76f7378
+call 0xb76f6de0
+mov dword ptr [esp+0x14], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x18], esi
+jz 0xb76f6e32
+mov dword ptr [esp+0x8], 0x1
+mov dword ptr [esp+0x4], ecx
+mov dword ptr [esp], eax
+call 0xb77040c0
+int 0x80
+jnb 0xb77040dd
+ret 
+js 0xb76f6e3e
+ret 
+data16 nop 
+ret 
+jz 0xb76ef35c
+cmp byte ptr [ebx+0x8a0], 0x0
+jnz 0xb76ef3b7
+sub dword ptr [ebp-0x90], 0x4
+jnz 0xb76ef2f0
+mov dword ptr [esp], edi
+call 0xb76fe280
+mov dword ptr [esp+0x1c], ebx
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x20], esi
+mov dword ptr [esp+0x28], ebp
+mov dword ptr [esp+0x24], edi
+jmp 0xb76fe2b2
+jb 0xb76fe2f8
+jnz 0xb76fe2b0
+jnz 0xb76fe343
+mov dword ptr [ebp+esi*8+0xc], eax
+mov dword ptr [ebp+esi*8+0x8], eax
+ret 
+nop 
+jmp 0xb76ef35c
+mov dword ptr [ebp-0x88], edx
+jmp 0xb76f6fc7
+jz 0xb76f6fdb
+cmp dword ptr [ecx+0x4], 0x11
+jz 0xb76f77a4
+mov dword ptr [ebp-0xb0], edi
+mov dword ptr [ebp-0x94], edi
+mov dword ptr [ebp-0x7c], edi
+mov dword ptr [ebp-0xa8], edi
+mov dword ptr [ebp-0x80], ecx
+mov dword ptr [ebp-0x84], eax
+jz 0xb76f73f0
+jz 0xb76f782e
+cmp dword ptr [ebp-0x84], edi
+mov dword ptr [ebp-0x9c], eax
+jbe 0xb76f706d
+mov dword ptr [ebp-0xb4], esi
+mov dword ptr [ebp-0x8c], edi
+nop 
+mov dword ptr [ebp-0x88], edx
+mov dword ptr [ebp-0x90], ecx
+mov dword ptr [ebp-0x64], edx
+mov dword ptr [ebp-0xc0], edi
+jz 0xb76f824f
+cmp dword ptr [ebp-0x84], edi
+mov dword ptr [ebp-0x9c], esi
+jbe 0xb76f706d
+mov dword ptr [ebp-0x88], edi
+mov dword ptr [ebp-0x90], edi
+mov dword ptr [ebp-0x68], edi
+jz 0xb76f8cdc
+jz 0xb76f79c0
+jz 0xb76f79e0
+jz 0xb76f8a6d
+jnz 0xb76f79ea
+jmp 0xb76f78dd
+mov dword ptr [eax+0x220], edx
+mov dword ptr [eax+0x21c], edi
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x10], 0x0
+mov dword ptr [esp+0xc], 0x1
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], edx
+call 0xb76f58a0
+mov dword ptr [eax+0x228], edx
+mov dword ptr [eax+0x224], ecx
+jz 0xb76f79f4
+mov dword ptr [ebp-0xb4], eax
+add dword ptr [ebp-0xb4], eax
+jz 0xb76f8c39
+jnbe 0xb76f75ea
+mov dword ptr [esi], eax
+jmp 0xb76f79c0
+add dword ptr [ebp-0x88], 0x8
+cmp dword ptr [ebp-0x84], esi
+jnbe 0xb76f7850
+jmp 0xb76f706d
+mov dword ptr [ebp-0x90], edi
+mov dword ptr [ebp-0x68], edi
+jz 0xb76f8cdc
+jz 0xb76f79c0
+jz 0xb76f79e0
+jz 0xb76f8a6d
+jnz 0xb76f79ea
+jbe 0xb76f8064
+mov dword ptr [eax+0x220], edx
+mov dword ptr [eax+0x21c], edi
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x10], 0x0
+mov dword ptr [esp+0xc], 0x1
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], edx
+call 0xb76f58a0
+mov dword ptr [ebp-0xb4], 0x0
+jz 0xb76f796c
+jmp 0xb76f795d
+jnbe 0xb76f75ea
+jz 0xb76f79c0
+jnbe 0xb76f8967
+jb 0xb76f8959
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], esi
+call 0xb7704d20
+add dword ptr [ebp-0x88], 0x8
+cmp dword ptr [ebp-0x84], esi
+jnbe 0xb76f7850
+jmp 0xb76f706d
+mov dword ptr [ebp-0x9c], eax
+mov dword ptr [ebp-0x7c], edx
+mov dword ptr [ebp-0xa4], ecx
+mov dword ptr [ebp-0xa8], eax
+mov dword ptr [ebp-0x8c], edx
+mov dword ptr [ebp-0x90], edx
+cmp dword ptr [ebp+0x8], edi
+jz 0xb76f7169
+jnz 0xb76f7cf0
+jz 0xb76f7cf0
+cmp dword ptr [ebp-0x8c], ecx
+jbe 0xb76f7328
+mov dword ptr [ebp-0x88], esi
+mov dword ptr [ebp-0x84], eax
+mov dword ptr [ebp-0x60], eax
+jz 0xb76f8010
+jz 0xb76f7ee0
+ret 
+cmp byte ptr [ebp-0xb0], 0x0
+jnz 0xb76ef21b
+jz 0xb76ef21b
+add dword ptr [ebx+0x864], 0x1
+call 0xb76fdb70
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x2c], eax
+jz 0xb76fdd22
+mov dword ptr [esp+0x18], 0x0
+mov dword ptr [esp+0x24], 0x0
+mov dword ptr [esp+0x28], edx
+mov dword ptr [esp+0x20], ecx
+jnb 0xb76fdcd1
+jb 0xb76fdd18
+jmp 0xb76fdc81
+jz 0xb76fdc61
+cmp dword ptr [esp+0x18], edx
+mov dword ptr [esp+0x18], edx
+jnbe 0xb76fdbe8
+mov dword ptr [eax], 0xffffffff
+mov byte ptr [eax+0x4], 0x0
+cmp dword ptr [edx], esi
+jnbe 0xb76fdc6c
+cmp dword ptr [eax+0x244], esi
+jnz 0xb76fdd2e
+mov dword ptr [esp+0x1c], ecx
+jb 0xb76fdd58
+jb 0xb76fdd82
+mov dword ptr [esp+0x14], ecx
+mov byte ptr [ecx+0x4], 0x1
+mov dword ptr [ecx], edx
+mov dword ptr [esp+0x8], ebp
+mov dword ptr [esp], edx
+mov dword ptr [esp+0x4], eax
+call 0xb7704c60
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp+0x8], ecx
+mov dword ptr [esp], eax
+call 0xb7704c10
+cmp dword ptr [edx], esi
+jbe 0xb76fdccb
+cmp dword ptr [ebx+0x848], eax
+jb 0xb76fdd18
+jz 0xb76fdc61
+mov dword ptr [edx], ecx
+ret 
+cmp byte ptr [ebx+0x8a0], 0x0
+jnz 0xb76ef3fb
+mov dword ptr [eax], eax
+mov dword ptr [eax+0x8], eax
+mov dword ptr [ebp-0x28], 0xffffffff
+mov dword ptr [edx+0x10], eax
+mov dword ptr [ebp-0x24], edx
+mov dword ptr [ebp-0x20], 0xfffff
+mov dword ptr [ebp-0x1c], 0x51
+int 0x80
+cmp dword ptr [ebx-0x1bc], ecx
+jnz 0xb76ef5a8
+jz 0xb76ef53c
+call 0xb7701570
+cmp byte ptr [ebp-0x94], 0x0
+jz 0xb76ef417
+mov dword ptr [ebp-0x90], eax
+mov dword ptr [ebp-0x8c], edx
+and byte ptr [ebx+0x6f0], 0xfb
+mov dword ptr [esp+0xc], 0x0
+mov dword ptr [esp+0x8], 0x0
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], esi
+call 0xb76f6ed0
+mov dword ptr [ebp-0x54], eax
+jmp 0xb76f6fdb
+jz 0xb76f7640
+jz 0xb76f7768
+jz 0xb76f8691
+jnz 0xb76f7778
+jbe 0xb76f7798
+mov dword ptr [ecx+0x21c], edi
+mov dword ptr [ecx+0x220], edx
+jz 0xb76f75f8
+jz 0xb76f75f8
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x10], 0x0
+mov dword ptr [esp+0xc], 0x1
+mov dword ptr [esp], edi
+call 0xb76f58a0
+jmp 0xb76f7538
+mov dword ptr [ecx+0x21c], edi
+mov dword ptr [ecx+0x220], edx
+jz 0xb76f75f8
+jz 0xb76f75f8
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x10], 0x0
+mov dword ptr [esp+0xc], 0x1
+mov dword ptr [esp], edi
+call 0xb76f58a0
+add dword ptr [ebx+0x8a8], eax
+adc dword ptr [ebx+0x8ac], edx
+jmp 0xb76ef417
+call 0xb7701570
+ret 
+jnz 0xb76ef4df
+call 0xb76fb9f0
+mov dword ptr [eax+0xc], 0x0
+call 0xb76fb9e0
+ret 
+call 0xb7701190
+call 0xb7704e98
+ret 
+jnbe 0xb77011c9
+mov dword ptr [esp], eax
+mov dword ptr [esp+0x4], edx
+call 0xb7704080
+int 0x80
+jnb 0xb770409b
+ret 
+mov dword ptr [ebx+0x8ec], 0x0
+ret 
+ret 
+ret 
+test byte ptr [ebx-0x340], 0x80
+mov dword ptr [ebp-0x20], eax
+mov dword ptr [ebp-0x1c], edx
+jnz 0xb76f109f
+ret 
+call 0xb76ed180
+ret 
+call 0xb76fb280
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x1c], ecx
+mov dword ptr [esp+0x18], edx
+jnz 0xb76fb2fb
+jnz 0xb76fb327
+jz 0xb76fb2f1
+nop 
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp], edx
+call 0xb76fb140
+mov dword ptr [esp+0x2c], ebx
+mov dword ptr [esp+0x38], ebp
+mov dword ptr [esp+0x30], esi
+mov dword ptr [esp+0x34], edi
+call 0xb7704e98
+ret 
+jnz 0xb76fb20f
+mov byte ptr [eax+0x194], dl
+jz 0xb76fb237
+jz 0xb76fb228
+jz 0xb76fb20f
+jmp 0xb76fb196
+ret 
+jnz 0xb76fb2c8
+ret 0x4
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp], edx
+call 0xb76fb140
+test byte ptr [ebx-0x340], 0x2
+jnz 0xb76fb242
+jz 0xb76fb1c9
+mov dword ptr [esp+0x18], eax
+mov dword ptr [esp+0x8], ecx
+mov dword ptr [esp], ebp
+mov dword ptr [esp+0x4], ecx
+mov dword ptr [esp+0x1c], ebx
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x20], esi
+mov dword ptr [esp+0x24], edi
+mov dword ptr [esp+0x28], ebp
+jz 0xb59617d0
+jnz 0xb59617d0
+mov dword ptr [ebx+0x40], 0x1
+mov dword ptr [ebx+0x36bc], esi
+mov dword ptr [ebx+0x36b8], edi
+mov dword ptr [eax], ebp
+mov dword ptr [esp+0x8], ebp
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp], esi
+call 0xb5a39d80
+mov dword ptr [ebx+0x40], 0x0
+cmp word ptr [edx+0x38], ax
+jz 0xb5961794
+mov dword ptr [esp], eax
+call 0xb5976750
+mov dword ptr [ebx+0x36bc], esi
+mov dword ptr [ebx+0x36b8], edi
+mov dword ptr [eax], ebp
+mov dword ptr [esp+0x8], ebp
+mov dword ptr [esp+0x4], edi
+mov dword ptr [esp], esi
+call 0xb5a39d80
+mov dword ptr [esp+0x14], esi
+mov dword ptr [esp+0x10], ebx
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x18], edi
+jz 0xb5a39dd1
+jz 0xb5a39dd1
+mov dword ptr [esp+0x4], 0x2f
+mov dword ptr [esp], edi
+call 0xb59c69a0
+jz 0xb59c6a43
+jnz 0xb59c69ca
+jz 0xb59c6b56
+jz 0xb59c6b56
+jz 0xb59c6a43
+jnz 0xb59c69e3
+jnb 0xb59c6b2c
+jnz 0xb59c6b2c
+jnb 0xb59c6a0a
+jnz 0xb59c6a20
+jnb 0xb59c6b29
+jnz 0xb59c6b29
+jnz 0xb59c6a36
+jmp 0xb59c6a40
+jnz 0xb59c6a40
+jnb 0xb59c6b2c
+jnz 0xb59c6b2c
+jnb 0xb59c6b2c
+jnz 0xb59c6b2c
+jnb 0xb59c6a0a
+jnb 0xb59c6a0d
+jnz 0xb59c6a23
+jnb 0xb59c6b26
+jnz 0xb59c6b26
+jnb 0xb59c6a10
+jnz 0xb59c6a26
+jnb 0xb59c6b23
+jnz 0xb59c6b23
+jnb 0xb59c6a13
+jnz 0xb59c6b32
+jz 0xb59c6b56
+jnz 0xb59c6b3d
+jz 0xb59c6b56
+jnz 0xb59c6b3d
+jz 0xb59c6b56
+jz 0xb59c6b56
+jnz 0xb59c6b4b
+jz 0xb59c6b56
+ret 
+jz 0xb5a39de8
+mov dword ptr [edx], eax
+mov dword ptr [eax], edx
+ret 
+jmp 0xb596ff50
+mov dword ptr [esp], ebx
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x4], esi
+mov dword ptr [eax+ecx*1], esi
+mov dword ptr [eax+ecx*1], esi
+mov dword ptr [eax+edx*1], ecx
+ret 
+jz 0xb76fb20f
+mov dword ptr [esp+0x1c], ecx
+jz 0xb76fb20f
+data16 nop 
+mov dword ptr [esp], ebp
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], edx
+call dword ptr [edi+esi*4]
+call 0xb5a76173
+ret 
+jnz 0xb5961465
+mov dword ptr [ebx+0xda4], edx
+mov dword ptr [eax], edx
+mov dword ptr [ebx+0xda0], ecx
+mov byte ptr [ecx+0x46], 0xb8
+mov byte ptr [edx+0x46], 0xb8
+mov dword ptr [eax], ecx
+mov dword ptr [esi], eax
+mov dword ptr [ebx+0xd9c], eax
+mov dword ptr [ebx+0x960], eax
+mov byte ptr [eax+0x46], 0xb8
+ret 
+ret 
+jnz 0xb76fb1f0
+ret 
+mov dword ptr [esp], ebp
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], edx
+call dword ptr [edi+esi*4]
+call 0xb5a76173
+ret 
+jz 0xb59614a2
+jz 0xb59614af
+jz 0xb596161a
+call 0xb59e1480
+jbe 0xb59e1588
+mov byte ptr [esp+0x3e], 0x0
+mov byte ptr [esp+0x3f], 0x0
+mov dword ptr [esp+0x1c], 0x1
+mov dword ptr [esp+0x2c], 0x1
+mov dword ptr [esp+0x18], eax
+cmp dword ptr [esp+0x1c], 0x1
+mov dword ptr [esp+0x28], edx
+mov dword ptr [esp+0x24], ecx
+mov dword ptr [esp+0x20], ebp
+jz 0xb59e1550
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], edi
+call 0xb59e11d0
+mov dword ptr [esp+0x2c], ebp
+jmp 0xb59e14d3
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], edi
+call 0xb59e11d0
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x2c], eax
+js 0xb59e12c8
+jz 0xb59e12c8
+jmp 0xb59e12a5
+jnz 0xb59e1220
+mov byte ptr [eax], 0x1
+jnz 0xb59e129e
+ret 
+jz 0xb59e12f8
+jnz 0xb59e1258
+jnz 0xb59e1258
+mov byte ptr [esp+0x38], al
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp+0x10], ebp
+mov dword ptr [esp+0xc], 0x8
+mov dword ptr [esp+0x8], 0x44
+mov dword ptr [esp], eax
+call 0xb597a1a0
+jnz 0xb597a1c3
+jmp 0xb597a1f6
+mov dword ptr [esp], edx
+mov dword ptr [esp+0x4], edi
+cmp byte ptr [edx], cl
+jz 0xb59e0fc8
+ret 
+jnl 0xb597a1b8
+mov dword ptr [esp+0x28], esi
+jb 0xb597a1c3
+ret 
+jz 0xb59e129e
+jz 0xb59e13a0
+jz 0xb59e12e8
+jz 0xb59e12c8
+jnz 0xb59e1220
+mov byte ptr [eax], 0x1
+jnz 0xb59e129e
+jz 0xb597a1f8
+jnb 0xb597a1f6
+mov dword ptr [esp], edx
+mov dword ptr [esp+0x4], edi
+ret 
+ret 
+jnz 0xb59e1580
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], edi
+call 0xb59e11d0
+jz 0xb59e12c8
+jmp 0xb59e1339
+setz byte ptr [esp+0x2b]
+jnz 0xb59e1358
+cmp byte ptr [esp+0x2b], 0x0
+jz 0xb59e1358
+jz 0xb59e1372
+jz 0xb59e13cf
+jz 0xb59e1435
+jnz 0xb59e146c
+jmp 0xb59e12ca
+ret 
+jnz 0xb59e1580
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], edi
+call 0xb59e11d0
+ret 
+call 0xb59e1480
+jnz 0xb59e1368
+cmp byte ptr [esp+0x2b], 0x0
+jz 0xb59e1368
+jz 0xb59e1372
+jnz 0xb59e1310
+jnz 0xb59e1310
+jz 0xb59e13cf
+jz 0xb59e1401
+jz 0xb59e1410
+jnz 0xb59e1319
+jmp 0xb59e1372
+jz 0xb59e1410
+jz 0xb59e12c8
+setz byte ptr [esp+0x2b]
+jnz 0xb59e1358
+cmp byte ptr [esp+0x2b], 0x0
+jz 0xb59e1358
+jle 0xb59616e5
+mov dword ptr [esp+0x14], edi
+mov dword ptr [esp+0x10], edi
+jle 0xb596169d
+mov dword ptr [esp+0x1c], ebp
+mov dword ptr [esp+0x18], esi
+jz 0xb5961695
+jnz 0xb5961506
+mov dword ptr [esp+0x14], eax
+jz 0xb59615a3
+jz 0xb59615b2
+jnle 0xb5961610
+jle 0xb59615da
+jmp 0xb59615b2
+jle 0xb59615da
+mov dword ptr [ebx+0x178], eax
+mov dword ptr [ebx+0x174], esi
+mov dword ptr [ebx+0x180], edx
+mov dword ptr [ebx+0x17c], eax
+jle 0xb596149a
+mov dword ptr [ebx+0x164], ebp
+mov dword ptr [ebx+0x168], eax
+mov dword ptr [ebx+0x16c], ebp
+mov dword ptr [ebx+0x170], eax
+ret 
+call 0xb5a76173
+ret 
+jnz 0xb596173e
+mov dword ptr [ecx+0x500], eax
+mov dword ptr [ecx+0x504], edx
+ret 
+ret 
+jnz 0xb76fb18b
+jmp 0xb76fb20f
+push 0x80486b0
+push 0x8048640
+push 0x80485d6
+call 0x8048790
+jmp dword ptr [0x804986c]
+call 0xb5a76173
+ret 
+jz 0xb596190d
+mov dword ptr [edx], ecx
+jz 0xb5961868
+mov dword ptr [esp+0x8], 0x0
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], eax
+call 0xb597ba20
+jmp 0xb5961844
+mov dword ptr [edx], ecx
+jz 0xb5961868
+mov dword ptr [esp+0x8], 0x0
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], eax
+call 0xb597ba20
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0xc], eax
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], eax
+call 0xb597b9c0
+call 0xb5a76173
+ret 
+mov dword ptr [esp], eax
+call 0xb597b870
+call 0xb5a76173
+ret 
+cmp dword ptr gs:[0xc], 0x0
+jz 0xb597b894
+lock cmpxchg dword ptr [ebx+0x11c0], ecx
+jnz 0xb597ba5a
+jz 0xb597b984
+cmpxchg dword ptr [ebx+0x11c0], ecx
+jnz 0xb597ba5a
+jz 0xb597b984
+nop 
+jz 0xb597b8f2
+mov dword ptr [edi+0x4], 0x0
+jz 0xb597b956
+jmp 0xb597b8b8
+mov dword ptr [eax+0x4], 0x1
+jmp 0xb597b91c
+mov dword ptr [edx], 0x1
+add dword ptr [ebx+0x37e0], 0x1
+adc dword ptr [ebx+0x37e4], 0x0
+cmp dword ptr gs:[0xc], 0x0
+jz 0xb597b93b
+lock sub dword ptr [ebx+0x11c0], 0x1
+jnz 0xb597ba6a
+ret 
+sub dword ptr [ebx+0x11c0], 0x1
+jnz 0xb597ba6a
+ret 
+jz 0xb597ba0b
+mov dword ptr [eax+0x4], edx
+mov dword ptr [eax+0x8], edx
+mov dword ptr [eax+0xc], edx
+mov dword ptr [eax], 0x4
+ret 
+ret 
+jnz 0xb59619b6
+jz 0xb596189a
+mov dword ptr [esp], edx
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], eax
+call 0x80486e0
+ret 
+call 0x80486bc
+call 0x80486e0
+ret 
+jz 0x80486da
+call 0x0
+ret 
+jz 0x8048699
+mov dword ptr [esp], ebp
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], eax
+call dword ptr [ebx+edi*4-0x10e0]
+ret 
+jnz 0xb5961972
+jnz 0xb596194e
+mov dword ptr [esp], eax
+call 0xb59768a0
+mov dword ptr [edx], ebx
+mov dword ptr [edx+0x4], esi
+mov dword ptr [edx+0x8], edi
+mov dword ptr [edx+0x10], ecx
+mov dword ptr [edx+0x14], ecx
+mov dword ptr [edx+0xc], ebp
+mov dword ptr [edx+0x18], eax
+ret 
+jnz 0xb5961914
+mov dword ptr [esp+0x40], eax
+mov dword ptr [esp+0x44], eax
+mov dword ptr gs:[0x80], eax
+mov dword ptr [esp+0x4], ecx
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp], eax
+call 0x80487a0
+jmp dword ptr [0x8049870]
+mov dword ptr [esp+0x14], esi
+mov dword ptr [esp+0x10], ebx
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x18], edi
+jnz 0xb59b1e49
+jz 0xb59b1e45
+cmp dword ptr gs:[0xc], 0x0
+jz 0xb59b1e36
+cmpxchg dword ptr [edx], ecx
+jnz 0xb59b1ed2
+mov dword ptr [edx+0x8], edi
+add dword ptr [edx+0x4], 0x1
+jnb 0xb59b1e94
+mov dword ptr [esi+0x4], edx
+test dword ptr [esi], 0x8000
+jnz 0xb59b1e82
+mov dword ptr [esp], esi
+call 0xb59bbb30
+call 0xb5a76173
+ret 
+cmp byte ptr [esi+0x46], 0x0
+jnz 0xb59bbb6a
+jz 0xb59bbbff
+jnz 0xb59bbc10
+mov dword ptr [esi+0x68], 0xffffffff
+jz 0xb59bbbc8
+test dword ptr [esi], 0x800
+jnz 0xb59bbbe5
+jb 0xb59bbc40
+test dword ptr [esi], 0x100
+jnz 0xb59bbc28
+jz 0xb59bbc50
+call 0xb59bb650
+jz 0xb59bbbaa
+mov dword ptr [esp], esi
+call 0xb59bb910
+mov dword ptr [esp], esi
+call dword ptr [eax+0x14]
+mov dword ptr [esp], esi
+call dword ptr [eax+0x10]
+mov dword ptr [esp+0x20], esi
+mov dword ptr [esp+0x1c], ebx
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x24], edi
+mov dword ptr [esp+0x28], ebp
+jnz 0xb59baf10
+jb 0xb59baea0
+jz 0xb59baeb8
+jz 0xb59baecd
+mov dword ptr [esp], eax
+call 0xb595f300
+mov dword ptr [esp], esi
+call 0xb59bbd00
+jz 0xb59bbd18
+ret 
+test byte ptr [esi], 0x2
+jz 0xb59bbd24
+jle 0xb59bbd3a
+mov dword ptr [esp], esi
+call dword ptr [eax+0x34]
+mov dword ptr [esp], esi
+call dword ptr [eax+0x34]
+mov dword ptr [esp+0x90], esi
+mov dword ptr [esp+0x98], ebp
+mov dword ptr [esp+0x8c], ebx
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x94], edi
+js 0xb59adac8
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp], esi
+call dword ptr [eax+0x48]
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp], 0x3
+mov dword ptr [esp+0x4], eax
+call 0xb5a27a60
+call 0xb5a76173
+ret 
+call dword ptr gs:[0x10]
+ret 
+jnbe 0xb5a27a8d
+ret 
+ret 
+js 0xb59adac8
+jz 0xb59adb50
+jle 0xb59adac8
+jmp 0xb59adad2
+mov dword ptr [esp+0x14], 0x0
+mov dword ptr [esp+0x10], 0xffffffff
+mov dword ptr [esp+0xc], 0x22
+mov dword ptr [esp+0x8], 0x3
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], 0x0
+call 0xb5a35180
+jnz 0xb5a351b8
+call dword ptr gs:[0x10]
+jnbe 0xb5a351c4
+ret 
+jz 0xb59adbc0
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp+0xc], 0x1
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp], esi
+call 0xb59bbc80
+mov dword ptr [esp+0x18], esi
+mov dword ptr [esp+0x14], ebx
+call 0xb5a76173
+ret 
+jz 0xb59bbca6
+test byte ptr [esi], 0x1
+jz 0xb59bbce0
+mov dword ptr [esi+0x1c], eax
+mov dword ptr [esi+0x20], eax
+jnz 0xb59bbcd0
+mov dword ptr [esi+0x1c], eax
+mov dword ptr [esi+0x20], eax
+jnz 0xb59bbcd0
+or dword ptr [esi], 0x1
+ret 
+and dword ptr [esi], 0xfffffffe
+ret 
+ret 
+jnz 0xb59bbd0f
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp], esi
+mov dword ptr [esp+0xc], 0x0
+mov dword ptr [esp+0x4], eax
+call 0xb59bbc80
+ret 
+jmp 0xb59bad83
+jz 0xb59bae20
+jnz 0xb59baddf
+jz 0xb59baf08
+mov dword ptr [esp], esi
+call 0xb59bb890
+jnbe 0xb59bb8d8
+jnz 0xb59bb8d0
+cmp dword ptr [esi+0x8], eax
+mov dword ptr [esi+0xc], ecx
+jnb 0xb59bb8b5
+mov dword ptr [esi+0x4], eax
+mov dword ptr [esi+0x18], eax
+mov dword ptr [esi+0x10], eax
+mov dword ptr [esi], edx
+ret 
+mov dword ptr [esi+0x4], eax
+mov dword ptr [esi+0xc], eax
+mov dword ptr [esi+0x8], eax
+mov dword ptr [esi+0x18], eax
+mov dword ptr [esi+0x14], eax
+mov dword ptr [esi+0x10], eax
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x8], edx
+call dword ptr [ecx+0x38]
+test byte ptr [eax+0x3c], 0x2
+jnz 0xb59ba446
+mov dword ptr [esp+0xc], ecx
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x4], eax
+jmp 0xb5a28890
+cmp dword ptr gs:[0xc], 0x0
+jnz 0xb5a288bc
+call dword ptr gs:[0x10]
+jnb 0xb5a288ed
+ret 
+jle 0xb59baea8
+add dword ptr [esi+0x8], eax
+jz 0xb59bae81
+mov dword ptr [esi+0x4c], eax
+mov dword ptr [esi+0x50], edx
+ret 
+ret 
+jz 0xb59bbda0
+mov dword ptr [esi+0x4], edx
+ret 
+ret 
+jmp 0xb59b1e5a
+test dword ptr [esi], 0x8000
+jnz 0xb59b1e82
+sub dword ptr [edx+0x4], 0x1
+jnz 0xb59b1e82
+mov dword ptr [edx+0x8], 0x0
+cmp dword ptr gs:[0xc], 0x0
+jz 0xb59b1e7d
+sub dword ptr [edx], 0x1
+jnz 0xb59b1ede
+ret 
+mov byte ptr [ebp-0x1], al
+mov dword ptr [ebp-0x8], eax
+jnz 0x804860e
+mov dword ptr [ebp-0x8], eax
+jz 0x804862c
+call 0x80487b0
+jmp dword ptr [0x8049874]
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], eax
+call 0xb598c8c0
+call 0xb5a76173
+ret 
+mov dword ptr [ebp-0x484], eax
+cmp byte ptr [esi+0x46], 0x0
+mov dword ptr [ebp-0x49c], edx
+jnz 0xb598c91b
+jz 0xb598ca9c
+jnz 0xb598cab0
+mov dword ptr [esi+0x68], 0xffffffff
+jnz 0xb598ed70
+jz 0xb598f082
+cmp byte ptr [esi+0x46], 0x0
+jnz 0xb598c957
+jz 0xb598cad1
+jnz 0xb598cae8
+mov dword ptr [esi+0x68], 0xffffffff
+jnz 0xb598caf8
+jnz 0xb598cab9
+jz 0xb598c960
+call 0xb59918f0
+mov dword ptr [ebp-0x46c], eax
+mov dword ptr [esp+0x4], 0x25
+mov dword ptr [esp], edx
+call 0xb59c9210
+jz 0xb59c9273
+jz 0xb59c936d
+jz 0xb59c936d
+jnb 0xb59c934f
+jnz 0xb59c934f
+jnb 0xb59c934f
+jnz 0xb59c934f
+jnb 0xb59c934c
+jnz 0xb59c934c
+jnb 0xb59c934c
+jnz 0xb59c934c
+jnb 0xb59c9349
+jnz 0xb59c9349
+jnb 0xb59c9349
+jnz 0xb59c9349
+jz 0xb59c936d
+jz 0xb59c936d
+jz 0xb59c936d
+ret 
+test dword ptr [esi], 0x8000
+mov dword ptr [ebp-0x494], 0x0
+mov dword ptr [ebp-0x490], eax
+mov dword ptr [ebp-0x470], eax
+jnz 0xb598c9f4
+mov dword ptr [ebp-0x494], ecx
+jnz 0xb598ccb8
+mov dword ptr [ebp-0x420], esi
+mov dword ptr [ebp-0x424], eax
+jz 0xb598c9f0
+cmp dword ptr gs:[0xc], 0x0
+jz 0xb598c9e1
+lock cmpxchg dword ptr [edx], ecx
+jnz 0xb5991b17
+mov dword ptr [edx+0x8], edi
+add dword ptr [edx+0x4], 0x1
+mov dword ptr [ebp-0x480], eax
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x4], edx
+call dword ptr [eax+0x1c]
+cmpxchg dword ptr [edx], ecx
+jnz 0xb5991b17
+mov dword ptr [edx+0x8], edi
+add dword ptr [edx+0x4], 0x1
+mov dword ptr [ebp-0x480], eax
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x4], edx
+call dword ptr [eax+0x1c]
+mov dword ptr [esp+0x30], esi
+mov dword ptr [esp+0x2c], ebx
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x34], edi
+mov dword ptr [esp+0x38], ebp
+jz 0xb59ba30c
+jz 0xb59ba388
+jbe 0xb59ba320
+jz 0xb59ba308
+mov dword ptr [esp+0x4], 0xffffffff
+mov dword ptr [esp], edi
+call dword ptr [eax+0xc]
+mov dword ptr [esp+0x20], esi
+mov dword ptr [esp+0x1c], ebx
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x24], edi
+mov dword ptr [esp+0x28], ebp
+jnz 0xb59bb0f8
+jz 0xb59bb000
+jz 0xb59bb120
+jz 0xb59bb120
+jnz 0xb59bb160
+jz 0xb59bb0e8
+mov dword ptr [esp], esi
+call 0xb59bbd00
+jnbe 0xb59adb90
+or dword ptr [esi], 0x200
+jnle 0xb59adab4
+jmp 0xb59adac8
+mov dword ptr [esi+0xc], edx
+mov dword ptr [esi+0x4], edx
+mov dword ptr [esi+0x8], edx
+jmp 0xb59bb00e
+jnz 0xb59bb160
+jz 0xb59bb0e8
+mov dword ptr [esi+0x18], ebp
+mov dword ptr [esi+0x4], eax
+mov dword ptr [esi+0xc], eax
+mov dword ptr [esi+0x14], edx
+mov dword ptr [esi+0x10], edx
+mov dword ptr [esi], eax
+jnle 0xb59bafb4
+jz 0xb59bafb4
+mov dword ptr [esi+0x18], edx
+jmp 0xb59bafb4
+jz 0xb59bb0c8
+cmp dword ptr [esi+0x20], edx
+jz 0xb59bb088
+mov byte ptr [edx], al
+mov dword ptr [esi+0x14], edx
+jnz 0xb59bb060
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x4], eax
+call 0xb59bad10
+jz 0xb59bad39
+mov dword ptr [esp], esi
+call 0xb59b9660
+ret 
+jmp 0xb59bafeb
+ret 
+jz 0xb59ba3d8
+jbe 0xb59ba35f
+jnz 0xb59ba3f0
+jz 0xb59ba308
+mov dword ptr [esp+0x8], ebp
+mov dword ptr [esp], edi
+mov dword ptr [esp+0x4], ecx
+call 0xb59bbdb0
+call 0xb5a76173
+ret 
+jz 0xb59bbe6e
+jnb 0xb59bbe1d
+jnbe 0xb59bbe48
+jz 0xb59bbe68
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp], edi
+call dword ptr [eax+0xc]
+jz 0xb59bb0c8
+cmp dword ptr [esi+0x20], edx
+jz 0xb59bb088
+mov byte ptr [edx], al
+mov dword ptr [esi+0x14], edx
+jnz 0xb59bb060
+jz 0xb59bafe4
+jz 0xb59bb060
+ret 
+jz 0xb59bbe68
+jmp 0xb59bbde0
+jnb 0xb59bbe1d
+jnbe 0xb59bbe48
+jz 0xb59bbe1b
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x4], eax
+call 0xb59bad10
+test dword ptr [eax], 0x1000
+mov dword ptr [esp+0x10], esi
+mov dword ptr [esp+0x18], ebp
+mov dword ptr [esp+0x14], edi
+jz 0xb59b96e8
+mov dword ptr [eax+0x4c], 0xffffffff
+mov dword ptr [eax+0x50], 0xffffffff
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x4], ebp
+mov dword ptr [esp], esi
+call dword ptr [eax+0x3c]
+jz 0xb59b9689
+mov dword ptr [esp+0xc], 0x1
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp], esi
+call dword ptr [ecx+0x40]
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp+0x4], ebp
+mov dword ptr [esp], esi
+call dword ptr [eax+0x3c]
+jle 0xb59b9810
+jmp 0xb59b97a8
+test byte ptr [ebp+0x3c], 0x2
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], eax
+jnz 0xb59b9816
+call 0xb5a28910
+cmp dword ptr gs:[0xc], 0x0
+jnz 0xb5a2893c
+call dword ptr gs:[0x10]
+jnb 0xb5a2896d
+ret 
+jns 0xb59b97a0
+or dword ptr [ebp], 0x20
+mov dword ptr [esp+0x18], esi
+mov dword ptr [esp+0x1c], edi
+js 0xb59b97f6
+mov dword ptr [ebp+0x4c], esi
+mov dword ptr [ebp+0x50], edi
+ret 
+jle 0xb59b9808
+test byte ptr [ebp+0x3c], 0x2
+mov dword ptr [esp+0x8], edi
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], eax
+jnz 0xb59b9816
+call 0xb5a28910
+jmp 0xb59b97cf
+mov dword ptr [esp+0x18], esi
+mov dword ptr [esp+0x1c], edi
+js 0xb59b97f6
+mov dword ptr [ebp+0x4c], esi
+mov dword ptr [ebp+0x50], edi
+ret 
+ret 
+jnz 0xb59b9730
+mov dword ptr [esi+0xc], edx
+mov dword ptr [esi+0x4], edx
+mov dword ptr [esi+0x8], edx
+mov dword ptr [esi+0x14], edx
+mov dword ptr [esi+0x10], edx
+jle 0xb59b9758
+mov dword ptr [esi+0x18], edx
+ret 
+test dword ptr [esi], 0x202
+jnz 0xb59b96d1
+jmp 0xb59b96ce
+mov dword ptr [esi+0x18], edx
+ret 
+ret 
+jnz 0xb59bafe4
+jmp 0xb59bafeb
+ret 
+ret 
+jmp 0xb59ba308
+ret 
+cmp dword ptr [ebp-0x480], eax
+jz 0xb598cb20
+mov dword ptr [ebp-0x480], 0xffffffff
+mov dword ptr [ebp-0x4a0], 0x0
+mov dword ptr [ebp-0x48c], 0x0
+mov dword ptr [esp], eax
+call 0xb595f300
+cmp byte ptr [edx], 0x0
+jz 0xb598ca3b
+jnz 0xb598dda4
+jnz 0xb598dda4
+mov dword ptr [ebp-0x4a0], 0x0
+mov dword ptr [ebp-0x48c], 0x0
+mov dword ptr [esp], eax
+call 0xb595f300
+jmp dword ptr [ebx+0x30]
+push 0x30
+jmp 0xb595f260
+push dword ptr [ebx+0x4]
+jmp dword ptr [ebx+0x8]
+call 0xb76fa510
+call 0xb7704e98
+ret 
+mov dword ptr [esp+0x2c], eax
+mov dword ptr [esp+0x3c], ecx
+jnz 0xb76fa655
+test byte ptr [ecx+0xd], 0x3
+jnz 0xb76fa651
+jz 0xb76fa628
+jnz 0xb76fa63c
+mov dword ptr [esp+0xc], edi
+mov dword ptr [esp+0x10], 0x0
+mov dword ptr [esp+0x8], 0x1
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp], edx
+call 0xb76f58a0
+jnz 0xb76fa67f
+jz 0xb76fa630
+jz 0xb76fa638
+jz 0xb76fa6b2
+jnz 0xb76fa61d
+mov dword ptr [ebp], eax
+ret 
+mov dword ptr [esp], eax
+ret 0xc
+call 0xb5a76173
+ret 
+jnz 0xb59c213e
+jz 0xb59c2150
+jnz 0xb59c2108
+ret 
+mov dword ptr [esp], eax
+call 0xb595f300
+call 0xb5a76173
+test dword ptr [esi], 0x8000
+jnz 0xb598ca80
+sub dword ptr [edx+0x4], 0x1
+jz 0xb598cc58
+jnz 0xb598cc81
+mov dword ptr [edx+0x8], 0x0
+cmp dword ptr gs:[0xc], 0x0
+jz 0xb598cc6a
+lock sub dword ptr [edx], 0x1
+jnz 0xb5991b23
+jz 0xb598ca8e
+sub dword ptr [edx], 0x1
+jnz 0xb5991b23
+jz 0xb598ca8e
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], edx
+ret 
+ret 
+jmp 0x804863a
+leave 
+ret 
+mov dword ptr [esp], eax
+call 0xb597b7f0
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x8], 0x1
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], eax
+call 0xb597b700
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x1c], eax
+jz 0xb597b7b9
+jz 0xb597b7b0
+mov dword ptr [ebp+0x4], eax
+jz 0xb597b798
+jz 0xb597b778
+jnz 0xb597b733
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp+0x4], esi
+mov dword ptr [esp], edx
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0x44], esi
+mov dword ptr [ebp-0x2c], 0x0
+mov dword ptr [ebp-0x40], 0x0
+mov dword ptr [ebp-0x24], 0x0
+mov dword ptr [ebp-0x4c], esi
+mov dword ptr [ebp-0x50], esi
+mov dword ptr [ebp-0x34], esi
+js 0xb76fb822
+mov dword ptr [ebp-0x3c], esi
+mov dword ptr [ebp-0x38], esi
+mov dword ptr [ebp-0x30], eax
+mov dword ptr [ebp-0x48], esi
+jmp 0xb76fb690
+mov dword ptr [esp], esi
+call dword ptr [esi+ebx*1]
+jz 0xb76fb670
+jnz 0xb76fb670
+setz byte ptr [ebp-0x1c]
+jbe 0xb76fb6ef
+jnz 0xb76fb8a0
+mov dword ptr [ebp-0x24], esi
+mov dword ptr [ebp-0x40], ecx
+mov dword ptr [ebp-0x20], 0x0
+jmp 0xb76fb707
+cmp dword ptr [eax+0x14], eax
+jnz 0xb76fb700
+jbe 0xb76fb97e
+mov dword ptr [esi+ecx*4], eax
+mov dword ptr [eax+0x20c], ecx
+add dword ptr [eax+0x190], 0x1
+jnz 0xb76fb707
+mov dword ptr [ebp-0x20], ecx
+jnz 0xb76fb937
+mov dword ptr [esp], esi
+call 0xb76fb3b0
+call 0xb7704e98
+ret 
+mov dword ptr [ebp-0x38], eax
+mov dword ptr [ebp-0x2c], edx
+mov dword ptr [ebp-0x40], ecx
+mov dword ptr [ebp-0x48], esp
+jz 0xb76fb4fe
+mov dword ptr [ebp-0x20], edx
+mov dword ptr [ebp-0x28], ecx
+mov dword ptr [esp], ecx
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0x4], 0x0
+call 0xb7704c10
+mov dword ptr [ebp-0x4c], edx
+mov dword ptr [ebp-0x24], ecx
+mov dword ptr [ebp-0x44], edx
+jmp 0xb76fb46c
+mov dword ptr [ebp-0x34], eax
+mov word ptr [esi+edx*2], cx
+mov word ptr [ebp-0x2e], cx
+jnz 0xb76fb430
+cmp dword ptr [esi+0x20c], 0xffffffff
+jz 0xb76fb430
+cmp dword ptr [ebp-0x20], ecx
+mov dword ptr [ebp-0x1c], ecx
+jnb 0xb76fb430
+jnz 0xb76fb4c7
+jmp 0xb76fb4cd
+jnz 0xb76fb5b5
+sub dword ptr [ebp-0x1c], 0x1
+cmp dword ptr [ebp-0x20], ecx
+jb 0xb76fb4b0
+mov dword ptr [ebp-0x20], esi
+jnz 0xb76fb441
+jnz 0xb76fb4c7
+jmp 0xb76fb4cd
+jnz 0xb76fb4c0
+jnz 0xb76fb5b5
+sub dword ptr [ebp-0x1c], 0x1
+cmp dword ptr [ebp-0x20], ecx
+jb 0xb76fb4b0
+jz 0xb76fb508
+jnz 0xb76fb4c0
+jnz 0xb76fb5b5
+sub dword ptr [ebp-0x1c], 0x1
+cmp dword ptr [ebp-0x20], ecx
+jb 0xb76fb4b0
+mov dword ptr [ebp-0x20], esi
+jnz 0xb76fb441
+ret 0x4
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp], eax
+call 0xb7704c10
+mov dword ptr [ebp-0x24], esi
+mov dword ptr [ebp-0x34], eax
+mov word ptr [esi+edx*2], cx
+mov word ptr [ebp-0x2e], cx
+jnz 0xb76fb430
+cmp dword ptr [esi+0x20c], 0xffffffff
+jz 0xb76fb430
+cmp dword ptr [ebp-0x20], ecx
+mov dword ptr [ebp-0x1c], ecx
+jnb 0xb76fb430
+stosb byte ptr [edi]
+jz 0xb7704c4d
+stosb byte ptr [edi]
+jz 0xb7704c4d
+jnz 0xb7704c39
+mov dword ptr [ebp-0x20], esi
+jz 0xb76fb4fb
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp+0x8], edx
+mov dword ptr [esp], eax
+call 0xb7704c10
+ret 0x4
+mov dword ptr [esp], esi
+call dword ptr [ebx+0x838]
+jz 0xb76fb67c
+mov dword ptr [ebp-0x1c], 0x0
+jz 0xb76fb7fd
+mov byte ptr [esi+0x194], al
+jz 0xb76fb858
+jz 0xb76fb7e2
+test byte ptr [ebx-0x340], 0x2
+jz 0xb76fb7a8
+cmp byte ptr [eax], 0x0
+jnz 0xb76fb87c
+jnz 0xb76fb7fd
+jnz 0xb76fb8fa
+sub dword ptr [esi+0x190], 0x1
+add dword ptr [ebp-0x1c], 0x1
+cmp dword ptr [ebp-0x1c], esi
+jnz 0xb76fb770
+jz 0xb76fb7fd
+mov byte ptr [esi+0x194], al
+jz 0xb76fb858
+test byte ptr [ebx-0x340], 0x2
+jnz 0xb76fb86c
+sub dword ptr [esi+0x190], 0x1
+add dword ptr [ebp-0x1c], 0x1
+cmp dword ptr [ebp-0x1c], esi
+jnz 0xb76fb770
+sub dword ptr [ebp-0x30], 0x4c
+sub dword ptr [ebp-0x34], 0x1
+jns 0xb76fb690
+jnz 0xb76fb83e
+sub dword ptr [ebp-0x30], 0x4c
+sub dword ptr [ebp-0x34], 0x1
+jns 0xb76fb690
+jnz 0xb76fb83e
+mov dword ptr [ebp-0x2c], 0x1
+jnz 0xb76fb62b
+test byte ptr [ebx-0x340], 0x80
+jnz 0xb76fb8d0
+ret 
+jmp 0xb597b730
+jz 0xb597b7b0
+mov dword ptr [ebp+0x4], eax
+jz 0xb597b798
+jz 0xb597b778
+mov dword ptr [edi], eax
+jnz 0xb597b7e1
+cmp byte ptr [esp+0x1c], 0x0
+jz 0xb597b7d9
+jnb 0xb597b7d9
+call dword ptr [edi]
+call 0xb5a76173
+ret 
+mov dword ptr [esp], 0x0
+call 0xb59bc420
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x1c], 0x0
+jz 0xb59bc4a1
+mov dword ptr [esp+0x1c], edx
+jnz 0xb59bc650
+mov dword ptr [esp+0x20], eax
+mov dword ptr [esp+0x24], 0x0
+jz 0xb59bc49a
+mov dword ptr [esp+0x14], 0x0
+jz 0xb59bc580
+mov dword ptr [esp+0x18], edx
+mov dword ptr [ebx+0x189c], esi
+jz 0xb59bc50e
+jnz 0xb59bc50e
+jle 0xb59bc610
+cmp byte ptr [esi+0x46], 0x0
+jz 0xb59bc5c6
+nop 
+jz 0xb59bc558
+cmp dword ptr [esi+0x14], edx
+jbe 0xb59bc528
+jmp 0xb59bc5d7
+jz 0xb59bc558
+test dword ptr [esi], 0x8000
+jnz 0xb59bc558
+sub dword ptr [edx+0x4], 0x1
+jnz 0xb59bc558
+mov dword ptr [ebx+0x189c], 0x0
+jz 0xb59bc608
+jnz 0xb59bc4c8
+jz 0xb59bc591
+jmp 0xb59bc578
+jnz 0xb59bc4c8
+jz 0xb59bc591
+sub dword ptr [ebx+0x1894], 0x1
+jz 0xb59bc628
+mov dword ptr [ebx+0x189c], esi
+jz 0xb59bc50e
+jnz 0xb59bc50e
+jz 0xb59bc50a
+jz 0xb59bc5ba
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], edx
+ret 
+mov dword ptr [esp+0x1c], eax
+jz 0xb59bc7a2
+nop 
+jnz 0xb59bc790
+jz 0xb59bc790
+mov dword ptr [esi+0x68], 0xffffffff
+jnz 0xb59bc6b8
+ret 
+jnz 0xb59bc790
+jz 0xb59bc790
+jz 0xb59bc790
+jz 0xb59bc837
+jz 0xb59bc820
+cmp dword ptr gs:[0xc], 0x0
+jz 0xb59bc705
+cmpxchg dword ptr [edx], ecx
+jz 0xb59bc7b0
+mov dword ptr [esp+0x18], ecx
+call 0xb5a0f4f0
+jmp 0xb59bc74e
+mov dword ptr [eax+0x8], edi
+mov dword ptr [eax+0x4], 0x1
+cmp byte ptr [ebx+0x18a4], 0x0
+jnz 0xb59bc76a
+jz 0xb59bc7b8
+mov dword ptr [esp+0x8], 0x0
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], esi
+call dword ptr [eax+0x2c]
+mov dword ptr [esi], eax
+mov dword ptr [ebx+0x18a8], esi
+mov dword ptr [esi+0x60], edx
+mov dword ptr [esi+0x5c], eax
+mov dword ptr [esi+0x64], eax
+jmp 0xb59bc76a
+mov dword ptr [esp+0x8], 0x0
+mov dword ptr [esp+0x4], 0x0
+mov dword ptr [esp], esi
+call dword ptr [eax+0x2c]
+mov dword ptr [esp+0x14], ebx
+call 0xb5a76173
+ret 
+mov dword ptr [esp+0x18], esi
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x4], eax
+call 0xb59bbf60
+mov dword ptr [esp+0x10], esi
+mov dword ptr [esp+0x14], edi
+mov dword ptr [esp+0x18], ebp
+mov dword ptr [esp], esi
+call dword ptr [eax+0x30]
+call 0xb5a76173
+ret 
+jbe 0xb59b9f04
+jle 0xb59b9f60
+mov dword ptr [esp], esi
+mov dword ptr [esp+0x4], edx
+mov dword ptr [esp+0x8], eax
+call 0xb59b72a0
+jnz 0xb59b9f28
+mov dword ptr [esi+0x4c], 0xffffffff
+mov dword ptr [esi+0x50], 0xffffffff
+ret 
+jz 0xb59bc020
+jz 0xb59bbf9d
+jnz 0xb59bc000
+or dword ptr [esi], 0x2
+mov dword ptr [esp+0x8], eax
+mov dword ptr [esp+0xc], 0x0
+mov dword ptr [esp+0x4], eax
+mov dword ptr [esp], esi
+call 0xb59bbc80
+or dword ptr [esi], 0x1
+ret 
+mov dword ptr [esi+0x18], 0x0
+mov dword ptr [esi+0x14], 0x0
+mov dword ptr [esi+0x10], 0x0
+mov dword ptr [esi+0x8], 0x0
+mov dword ptr [esi+0x4], 0x0
+mov dword ptr [esi+0xc], 0x0
+ret 
+jz 0xb59ba010
+mov dword ptr [esi+0x18], eax
+mov dword ptr [esi+0x14], eax
+mov dword ptr [esi+0x10], eax
+mov dword ptr [esi+0xc], eax
+mov dword ptr [esi+0x4], eax
+mov dword ptr [esi+0x8], eax
+ret 
+jnz 0xb59bc7f0
+mov dword ptr [esi+0x68], 0xffffffff
+jnz 0xb59bc6b8
+ret 
+jz 0xb59bc790
+sub dword ptr [edx+0x4], 0x1
+jnz 0xb59bc790
+mov dword ptr [edx+0x8], 0x0
+cmp dword ptr gs:[0xc], 0x0
+jz 0xb59bc80f
+sub dword ptr [edx], 0x1
+jnz 0xb59bcf9e
+jmp 0xb59bc790
+jb 0xb597b7d0
+mov dword ptr [esp], esi
+call 0xb5a02b04
+call dword ptr gs:[0x10]
