@@ -110,10 +110,11 @@ VOID untaint_register(REG reg, string insDis)
     for (list<REG>::iterator it=regs.begin(); it != regs.end(); ++it) {
 
         string regString = REG_StringShort(*it);
+        UINT32 userInputByte = get<0>(tainted_registers[regString]);
 
         tainted_registers.erase(regString);
-        TaintFile << INS_COUNT << ":\t" << "UNTAINT REG\t" << regString << "\t" << insDis << endl;
-        //write_taint("UNTAINT", 0, source, r, insDis);
+        TaintFile << INS_COUNT << ":" << userInputByte << "\t" 
+                  << "UNTAINT REG\t" << regString << "\t" << insDis << endl;
     }
 
 } // end untaint_register
@@ -143,7 +144,8 @@ VOID taint_register(REG reg, string source, string source_type, string insDis)
         string regString = REG_StringShort(*it);
 
         tainted_registers[regString] = tuple<UINT32, string>(userInputByte, "");
-        TaintFile << INS_COUNT << ":\t" << "TAINT REG\t" << regString << "\t" << insDis << endl;
+        TaintFile << INS_COUNT << ":" << userInputByte << "\t"
+                  << "TAINT REG\t" << regString << "\t" << insDis << endl;
     }
 
 } // end taint_register
@@ -167,9 +169,11 @@ BOOL reg_is_tainted(REG reg)
 VOID untaint_memory(string source, ADDRINT sink, string insDis)
 {
     //ADDRINT mem_addr = AddrintFromString(source);
+    UINT32 userInputByte = get<0>(tainted_registers[source]);
 
+    TaintFile << INS_COUNT << ":" << userInputByte << "\t"
+              << "UNTAINT MEM\t" << StringFromAddrint(sink) << "\t" << insDis << endl;
     tainted_memory.erase(sink);
-    TaintFile << INS_COUNT << ":\t" << "UNTAINT MEM\t" << StringFromAddrint(sink) << "\t" << insDis << endl;
 
 }
 
@@ -183,10 +187,11 @@ VOID taint_memory(string source, ADDRINT sink, string insDis)
 {
     // Get memory address from string and
     //ADDRINT mem_addr = AddrintFromString(sink);
-    UINT32 originalUserInput = get<0>(tainted_registers[source]);
+    UINT32 userInputByte = get<0>(tainted_registers[source]);
 
-    tainted_memory[sink] = tuple<UINT32, string>(originalUserInput, "");
-    TaintFile << INS_COUNT << ":\t" << "TAINT MEM\t" << StringFromAddrint(sink) << "\t" << insDis << endl;
+    tainted_memory[sink] = tuple<UINT32, string>(userInputByte, insDis);
+    TaintFile << INS_COUNT << ":" << userInputByte << "\t"
+    << "TAINT MEM\t" << StringFromAddrint(sink) << "\t" << insDis << endl;
 
 }
 
@@ -261,7 +266,8 @@ VOID followData(UINT32 insAddr, string insDis, REG reg)
 
     string regString = REG_StringShort(reg);
     if (tainted_registers.count(regString) > 0) {
-        TaintFile << "[FOLLOW]\t\t" << insDis << endl;
+        TaintFile << INS_COUNT << ":" << get<0>(tainted_registers[regString]) << "\t"
+        << "[FOLLOW]\t\t" << insDis << endl;
     }
 }
 
