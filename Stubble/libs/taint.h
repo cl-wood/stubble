@@ -349,17 +349,19 @@ VOID followData(UINT32 insAddr, string insDis, REG reg)
 }
 
 
+/*
 // TODO these two might need to be expanded to handle when it isn't "cmp reg, imm"
 VOID save_eflags(INS ins, string insDis, REG reg, CONTEXT* context)
 {
 
-    eflags.value = PIN_GetContextReg(context, REG_EFLAGS);
+    //eflags.value = PIN_GetContextReg(context, REG_EFLAGS);
 
-    if (DEBUG) {
-        EflagsFile << eflags.value << "\t" << insDis << endl;
-    }
+    //if (DEBUG) {
+    //    EflagsFile << eflags.value << "\t" << insDis << endl;
+    //}
 
 }
+*/
 
 /*
  *  Checks to see if a tainted instruction modified eflags
@@ -378,23 +380,23 @@ VOID diff_eflags(INS ins, string insDis, REG reg, CONTEXT* context)
 
     if (tainted_registers.count(regString) > 0) 
     {
-        ADDRINT new_eflags_value = PIN_GetContextReg(context, REG_EFLAGS);
+        //ADDRINT new_eflags_value = PIN_GetContextReg(context, REG_EFLAGS);
 
         // Check ZF
-        if ( (new_eflags_value & ZF) != (eflags.value & ZF) ) 
-        {
+        //if ( (new_eflags_value & ZF) != (eflags.value & ZF) ) 
+        //{
 
-            UINT32 userInputByte = get<0>(tainted_registers[regString]);
+        UINT32 userInputByte = get<0>(tainted_registers[regString]);
 
-            eflags.ZF_tainted = true;
-            eflags.ZF_instruction = insDis;
-            eflags.ZF_user_input_byte = userInputByte;
-            if (DEBUG) {
-                //EflagsFile << new_eflags_value << "\t" << insDis << endl;
-                TaintFile << userInputByte << ":\t"
-                      << "TAINT ZF\t" << insDis << endl;
-            }
+        eflags.ZF_tainted = true;
+        eflags.ZF_instruction = insDis;
+        eflags.ZF_user_input_byte = userInputByte;
+        if (DEBUG) {
+            //EflagsFile << new_eflags_value << "\t" << insDis << endl;
+            TaintFile << userInputByte << ":\t"
+                << "TAINT ZF\t" << insDis << endl;
         }
+        //}
     }
     else {
         eflags.ZF_tainted = false;
@@ -413,7 +415,6 @@ VOID function_enter(INS ins, string insDis, REG reg, UINT32 stack_ptr, UINT32 me
 
         //taint_memory(regString, stack_ptr, insDis);
         taint_memory(regString, memOp, insDis);
-        cout << insDis << "\t" << hex << memOp << endl;
 
     }
 
@@ -452,7 +453,7 @@ VOID handleLea(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_w, CO
         taint_register(reg_w, StringFromAddrint(ea), "MEMORY", insDis);
 
     }
-    
+
 }
 
 /* 
@@ -478,15 +479,17 @@ VOID Instructions(INS ins, VOID *v)
     // Handle instructions which write EFLAGS register
     //if (INS_RegWContain(ins, REG_EFLAGS) && INS_HasFallThrough(ins) && INS_OperandIsReg(ins, 0) ) {
     if (INS_RegWContain(ins, REG_EFLAGS) && INS_HasFallThrough(ins) ) {
+    //if (INS_RegWContain(ins, REG_EFLAGS) && INS_HasFallThrough(ins) && INS_Opcode(ins) == XED_ICLASS_CMP) {
 
-        INS_InsertCall(
-                ins, IPOINT_BEFORE, (AFUNPTR)save_eflags,
-                IARG_ADDRINT, INS_Address(ins),
-                IARG_PTR, new string(INS_Disassemble(ins)),
-                IARG_UINT32, INS_RegR(ins, 0),
-                IARG_CONST_CONTEXT,
-                IARG_END);
-
+        /*
+           INS_InsertCall(
+           ins, IPOINT_BEFORE, (AFUNPTR)save_eflags,
+           IARG_ADDRINT, INS_Address(ins),
+           IARG_PTR, new string(INS_Disassemble(ins)),
+           IARG_UINT32, INS_RegR(ins, 0),
+           IARG_CONST_CONTEXT,
+           IARG_END);
+         */
         INS_InsertCall(
                 ins, IPOINT_AFTER, (AFUNPTR)diff_eflags,
                 IARG_ADDRINT, INS_Address(ins),
@@ -538,7 +541,7 @@ VOID Instructions(INS ins, VOID *v)
                 IARG_END);
 
     }
-    
+
 
     // Taint can spread in 3 ways:
     //  Case 1) op reg, mem 
@@ -588,16 +591,16 @@ VOID Instructions(INS ins, VOID *v)
         }
     }
 
-/*
-    if (INS_OperandCount(ins) > 1 && INS_OperandIsReg(ins, 0)){
-        INS_InsertCall(
-                ins, IPOINT_BEFORE, (AFUNPTR)followData,
-                IARG_ADDRINT, INS_Address(ins),
-                IARG_PTR, new string(INS_Disassemble(ins)),
-                IARG_UINT32, INS_RegR(ins, 0),
-                IARG_END);
-    }
-*/
+    /*
+       if (INS_OperandCount(ins) > 1 && INS_OperandIsReg(ins, 0)){
+       INS_InsertCall(
+       ins, IPOINT_BEFORE, (AFUNPTR)followData,
+       IARG_ADDRINT, INS_Address(ins),
+       IARG_PTR, new string(INS_Disassemble(ins)),
+       IARG_UINT32, INS_RegR(ins, 0),
+       IARG_END);
+       }
+     */
 
     //INS_COUNT++;
 

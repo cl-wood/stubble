@@ -1,13 +1,19 @@
-0:	READ fd 0:[0xb58c7000, 0xb58c8000]
+0:	READ fd 0:[0xb591a000, 0xb591b000]
 0:	TAINT REG	al	movzx eax, byte ptr [eax]
 0:	TAINT REG	ah	movzx eax, byte ptr [eax]
 0:	TAINT REG	ax	movzx eax, byte ptr [eax]
 0:	TAINT REG	eax	movzx eax, byte ptr [eax]
+0:	TAINT ZF	cmp eax, 0xffffffff
+0:	TAINT BR	by ZF	cmp eax, 0xffffffff
 0:	TAINT REG	al	movzx eax, byte ptr [edx]
 0:	TAINT REG	ah	movzx eax, byte ptr [edx]
 0:	TAINT REG	ax	movzx eax, byte ptr [edx]
 0:	TAINT REG	eax	movzx eax, byte ptr [edx]
-0:	TAINT MEM	0xbfd379e4	mov byte ptr [edx], al
+0:	TAINT ZF	cmp eax, 0xffffffff
+0:	TAINT BR	by ZF	cmp eax, 0xffffffff
+0:	TAINT ZF	cmp eax, dword ptr [esp+0x4c]
+0:	TAINT BR	by ZF	cmp eax, dword ptr [esp+0x4c]
+0:	TAINT MEM	0xbfd21014	mov byte ptr [edx], al
 0:	UNTAINT REG	al	mov eax, dword ptr [esp+0xc]
 0:	UNTAINT REG	ah	mov eax, dword ptr [esp+0xc]
 0:	UNTAINT REG	ax	mov eax, dword ptr [esp+0xc]
@@ -16,7 +22,7 @@
 0:	TAINT REG	ah	lea eax, ptr [ebp-0x24]
 0:	TAINT REG	ax	lea eax, ptr [ebp-0x24]
 0:	TAINT REG	eax	lea eax, ptr [ebp-0x24]
-0:	TAINT MEM	0xbfd379e0	push eax
+0:	TAINT MEM	0xbfd21010	push eax
 0:	TAINT REG	al	mov eax, dword ptr [ebp+0x8]
 0:	TAINT REG	ah	mov eax, dword ptr [ebp+0x8]
 0:	TAINT REG	ax	mov eax, dword ptr [ebp+0x8]
@@ -25,6 +31,8 @@
 0:	TAINT REG	ch	movsx ecx, byte ptr [eax]
 0:	TAINT REG	cx	movsx ecx, byte ptr [eax]
 0:	TAINT REG	ecx	movsx ecx, byte ptr [eax]
+0:	TAINT ZF	cmp ecx, 0x41
+0:	TAINT BR	by ZF	cmp ecx, 0x41
 0:	UNTAINT REG	al	mov eax, 0x0
 0:	UNTAINT REG	ah	mov eax, 0x0
 0:	UNTAINT REG	ax	mov eax, 0x0
@@ -33,7 +41,7 @@
 0:	TAINT REG	ah	lea eax, ptr [esp+0x24]
 0:	TAINT REG	ax	lea eax, ptr [esp+0x24]
 0:	TAINT REG	eax	lea eax, ptr [esp+0x24]
-0:	TAINT MEM	0xbfd379c4	mov dword ptr [esp+0x8], eax
+0:	TAINT MEM	0xbfd20ff4	mov dword ptr [esp+0x8], eax
 0:	UNTAINT REG	al	mov eax, dword ptr [esp+0x20]
 0:	UNTAINT REG	ah	mov eax, dword ptr [esp+0x20]
 0:	UNTAINT REG	ax	mov eax, dword ptr [esp+0x20]
@@ -42,7 +50,7 @@
 0:	TAINT REG	ah	mov eax, dword ptr [ebp+0x10]
 0:	TAINT REG	ax	mov eax, dword ptr [ebp+0x10]
 0:	TAINT REG	eax	mov eax, dword ptr [ebp+0x10]
-0:	TAINT MEM	0xbfd37548	mov dword ptr [ebp-0x46c], eax
+0:	TAINT MEM	0xbfd20b78	mov dword ptr [ebp-0x46c], eax
 0:	UNTAINT REG	al	mov eax, dword ptr [esp+0x8]
 0:	UNTAINT REG	ah	mov eax, dword ptr [esp+0x8]
 0:	UNTAINT REG	ax	mov eax, dword ptr [esp+0x8]
@@ -61,37 +69,42 @@
 0:	TAINT REG	ch	add ecx, 0x4
 0:	TAINT REG	cx	add ecx, 0x4
 0:	TAINT REG	ecx	add ecx, 0x4
-0:	TAINT MEM	0xbfd374f8	mov dword ptr [ebp-0x4bc], ecx
+0:	TAINT ZF	add ecx, 0x4
+0:	TAINT MEM	0xbfd20b28	mov dword ptr [ebp-0x4bc], ecx
 0:	TAINT REG	dl	mov edx, dword ptr [edi]
 0:	TAINT REG	dh	mov edx, dword ptr [edi]
 0:	TAINT REG	dx	mov edx, dword ptr [edi]
 0:	TAINT REG	edx	mov edx, dword ptr [edi]
+0:	TAINT ZF	test edx, edx
+0:	TAINT BR	by ZF	test edx, edx
 0:	UNTAINT REG	cl	mov ecx, dword ptr [ebp-0x4d0]
 0:	UNTAINT REG	ch	mov ecx, dword ptr [ebp-0x4d0]
 0:	UNTAINT REG	cx	mov ecx, dword ptr [ebp-0x4d0]
 0:	UNTAINT REG	ecx	mov ecx, dword ptr [ebp-0x4d0]
 0:	TAINT REG	di	mov edi, edx
 0:	TAINT REG	edi	mov edi, edx
-0:	TAINT MEM	0xbfd37440	mov dword ptr [esp+0x4], edx
-0:	TAINT MEM	0xbfd37430	mov dword ptr [esp+0x34], edi
+0:	TAINT MEM	0xbfd20a70	mov dword ptr [esp+0x4], edx
+0:	TAINT MEM	0xbfd20a60	mov dword ptr [esp+0x34], edi
 0:	UNTAINT REG	di	mov edi, dword ptr [esp+0x40]
 0:	UNTAINT REG	edi	mov edi, dword ptr [esp+0x40]
 0:	TAINT REG	dl	xor edx, edx
 0:	TAINT REG	dh	xor edx, edx
 0:	TAINT REG	dx	xor edx, edx
 0:	TAINT REG	edx	xor edx, edx
+0:	TAINT ZF	xor edx, edx
 0:	TAINT REG	dl	add edx, ebp
 0:	TAINT REG	dh	add edx, ebp
 0:	TAINT REG	dx	add edx, ebp
 0:	TAINT REG	edx	add edx, ebp
 0:	TAINT ZF	add edx, ebp
-0:	TAINT BR	by ZF	add edx, ebp
-0:	TAINT MEM	0xbfd37310	mov dword ptr [esp+0x4], edx
+0:	TAINT ZF	test edx, edx
+0:	TAINT BR	by ZF	test edx, edx
+0:	TAINT MEM	0xbfd20940	mov dword ptr [esp+0x4], edx
 0:	TAINT REG	al	mov eax, dword ptr [esp+0x24]
 0:	TAINT REG	ah	mov eax, dword ptr [esp+0x24]
 0:	TAINT REG	ax	mov eax, dword ptr [esp+0x24]
 0:	TAINT REG	eax	mov eax, dword ptr [esp+0x24]
-0:	TAINT MEM	0xbfd372f4	mov dword ptr [esp+0x8], eax
+0:	TAINT MEM	0xbfd20924	mov dword ptr [esp+0x8], eax
 0:	UNTAINT REG	al	mov eax, dword ptr [esp+0x20]
 0:	UNTAINT REG	ah	mov eax, dword ptr [esp+0x20]
 0:	UNTAINT REG	ax	mov eax, dword ptr [esp+0x20]
@@ -104,7 +117,7 @@
 0:	UNTAINT REG	dh	mov edx, dword ptr [esp+0xc]
 0:	UNTAINT REG	dx	mov edx, dword ptr [esp+0xc]
 0:	UNTAINT REG	edx	mov edx, dword ptr [esp+0xc]
-0:	TAINT MEM	0xbfd372dc	push ecx
+0:	TAINT MEM	0xbfd2090c	push ecx
 0:	TAINT REG	cl	pop ecx
 0:	TAINT REG	ch	pop ecx
 0:	TAINT REG	cx	pop ecx
@@ -113,12 +126,13 @@
 0:	UNTAINT REG	ch	mov ecx, edx
 0:	UNTAINT REG	cx	mov ecx, edx
 0:	UNTAINT REG	ecx	mov ecx, edx
-:IMM	UNTAINT MEM	0xbfd37310	mov dword ptr [esp+0x4], eax
+:IMM	UNTAINT MEM	0xbfd20940	mov dword ptr [esp+0x4], eax
 0:	TAINT REG	cl	add ecx, dword ptr [esp+0x44]
 0:	TAINT REG	ch	add ecx, dword ptr [esp+0x44]
 0:	TAINT REG	cx	add ecx, dword ptr [esp+0x44]
 0:	TAINT REG	ecx	add ecx, dword ptr [esp+0x44]
-0:	TAINT MEM	0xbfd37400	mov dword ptr [esp+0x4], ecx
+0:	TAINT ZF	add ecx, dword ptr [esp+0x44]
+0:	TAINT MEM	0xbfd20a30	mov dword ptr [esp+0x4], ecx
 0:	TAINT REG	si	mov esi, dword ptr [esp+0x44]
 0:	TAINT REG	esi	mov esi, dword ptr [esp+0x44]
 0:	UNTAINT REG	cl	mov ecx, dword ptr [edi+0x14]
@@ -127,31 +141,36 @@
 0:	UNTAINT REG	ecx	mov ecx, dword ptr [edi+0x14]
 0:	TAINT REG	si	add esi, 0x1
 0:	TAINT REG	esi	add esi, 0x1
-0:	TAINT MEM	0xbfd373ac	mov dword ptr [esp+0x20], esi
+0:	TAINT ZF	add esi, 0x1
+0:	TAINT MEM	0xbfd209dc	mov dword ptr [esp+0x20], esi
 0:	UNTAINT REG	si	mov esi, dword ptr [esp+0x30]
 0:	UNTAINT REG	esi	mov esi, dword ptr [esp+0x30]
 0:	TAINT REG	si	mov esi, dword ptr [esp+0x20]
 0:	TAINT REG	esi	mov esi, dword ptr [esp+0x20]
 0:	TAINT REG	si	add esi, 0x1
 0:	TAINT REG	esi	add esi, 0x1
+0:	TAINT ZF	add esi, 0x1
 0:	UNTAINT REG	si	mov esi, dword ptr [esp+0x30]
 0:	UNTAINT REG	esi	mov esi, dword ptr [esp+0x30]
 0:	TAINT REG	si	mov esi, dword ptr [esp+0x20]
 0:	TAINT REG	esi	mov esi, dword ptr [esp+0x20]
 0:	TAINT REG	si	add esi, 0x1
 0:	TAINT REG	esi	add esi, 0x1
+0:	TAINT ZF	add esi, 0x1
 0:	UNTAINT REG	si	mov esi, dword ptr [esp+0x30]
 0:	UNTAINT REG	esi	mov esi, dword ptr [esp+0x30]
 0:	TAINT REG	si	mov esi, dword ptr [esp+0x20]
 0:	TAINT REG	esi	mov esi, dword ptr [esp+0x20]
 0:	TAINT REG	si	add esi, 0x1
 0:	TAINT REG	esi	add esi, 0x1
+0:	TAINT ZF	add esi, 0x1
 0:	UNTAINT REG	si	mov esi, dword ptr [esp+0x30]
 0:	UNTAINT REG	esi	mov esi, dword ptr [esp+0x30]
 0:	TAINT REG	si	mov esi, dword ptr [esp+0x20]
 0:	TAINT REG	esi	mov esi, dword ptr [esp+0x20]
 0:	TAINT REG	si	add esi, 0x1
 0:	TAINT REG	esi	add esi, 0x1
+0:	TAINT ZF	add esi, 0x1
 0:	UNTAINT REG	si	mov esi, dword ptr [esp+0x30]
 0:	UNTAINT REG	esi	mov esi, dword ptr [esp+0x30]
 0:	TAINT REG	si	mov esi, dword ptr [esp+0x20]
@@ -176,10 +195,15 @@
 0:	TAINT REG	dh	shl edx, 0x10
 0:	TAINT REG	dx	shl edx, 0x10
 0:	TAINT REG	edx	shl edx, 0x10
+0:	TAINT ZF	shl edx, 0x10
 0:	TAINT REG	dl	mov dx, cx
 0:	TAINT REG	dh	mov dx, cx
 0:	TAINT REG	dx	mov dx, cx
 0:	UNTAINT REG	cl	mov cl, byte ptr [eax]
+0:	TAINT ZF	cmp dl, cl
+0:	TAINT BR	by ZF	cmp dl, cl
+0:	TAINT ZF	cmp dl, cl
+0:	TAINT BR	by ZF	cmp dl, cl
 0:	UNTAINT REG	dl	movsx edx, byte ptr [esi+0x46]
 0:	UNTAINT REG	dh	movsx edx, byte ptr [esi+0x46]
 0:	UNTAINT REG	dx	movsx edx, byte ptr [esi+0x46]
@@ -188,8 +212,8 @@
 0:	UNTAINT REG	ch	mov ecx, dword ptr [ebp-0x480]
 0:	UNTAINT REG	cx	mov ecx, dword ptr [ebp-0x480]
 0:	UNTAINT REG	ecx	mov ecx, dword ptr [ebp-0x480]
-:IMM	UNTAINT MEM	0xbfd37440	mov dword ptr [esp+0x4], ecx
-:IMM	UNTAINT MEM	0xbfd37430	mov dword ptr [esp+0x34], edi
-:IMM	UNTAINT MEM	0xbfd37400	mov dword ptr [esp+0x4], eax
-:IMM	UNTAINT MEM	0xbfd373ac	mov dword ptr [esp], esi
-:IMM	UNTAINT MEM	0xbfd372f4	mov dword ptr [esp+0x10], edx
+:IMM	UNTAINT MEM	0xbfd20a70	mov dword ptr [esp+0x4], ecx
+:IMM	UNTAINT MEM	0xbfd20a60	mov dword ptr [esp+0x34], edi
+:IMM	UNTAINT MEM	0xbfd20a30	mov dword ptr [esp+0x4], eax
+:IMM	UNTAINT MEM	0xbfd209dc	mov dword ptr [esp], esi
+:IMM	UNTAINT MEM	0xbfd20924	mov dword ptr [esp+0x10], edx

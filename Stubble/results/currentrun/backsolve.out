@@ -1,1 +1,8 @@
-0:add edx, ebp
+0:cmp eax, 0xffffffff
+0:cmp eax, 0xffffffff
+0:cmp eax, dword ptr [esp+0x4c]
+0:cmp ecx, 0x41
+0:test edx, edx
+0:test edx, edx
+0:cmp dl, cl
+0:cmp dl, cl
