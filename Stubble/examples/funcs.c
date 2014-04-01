@@ -16,7 +16,7 @@ int main(int ac, char **av)
 {
     int fd;
     char buf[32];
-    char* secret = "AAAAAAAAAA";
+    //char* secret = "AAAAAAAAAA";
 
     fgets(buf, 32, stdin); 
         

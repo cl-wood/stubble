@@ -1,0 +1,36 @@
+0:	READ fd 0:[0xb5877000, 0xb5878000]
+0:	TAINT REG	al	movzx eax, byte ptr [eax]
+0:	TAINT REG	ah	movzx eax, byte ptr [eax]
+0:	TAINT REG	ax	movzx eax, byte ptr [eax]
+0:	TAINT REG	eax	movzx eax, byte ptr [eax]
+0:	TAINT REG	al	movzx eax, byte ptr [edx]
+0:	TAINT REG	ah	movzx eax, byte ptr [edx]
+0:	TAINT REG	ax	movzx eax, byte ptr [edx]
+0:	TAINT REG	eax	movzx eax, byte ptr [edx]
+0:	TAINT REG	cl	mov ecx, eax
+0:	TAINT REG	ch	mov ecx, eax
+0:	TAINT REG	cx	mov ecx, eax
+0:	TAINT REG	ecx	mov ecx, eax
+0:	TAINT REG	al	mov eax, ecx
+0:	TAINT REG	ah	mov eax, ecx
+0:	TAINT REG	ax	mov eax, ecx
+0:	TAINT REG	eax	mov eax, ecx
+0:	TAINT MEM	0xbfc6d037	mov byte ptr [ebp-0x1], al
+0:	UNTAINT REG	al	mov eax, 0x0
+0:	UNTAINT REG	ah	mov eax, 0x0
+0:	UNTAINT REG	ax	mov eax, 0x0
+0:	UNTAINT REG	eax	mov eax, 0x0
+0:	TAINT REG	al	movsx eax, byte ptr [ebp-0x1]
+0:	TAINT REG	ah	movsx eax, byte ptr [ebp-0x1]
+0:	TAINT REG	ax	movsx eax, byte ptr [ebp-0x1]
+0:	TAINT REG	eax	movsx eax, byte ptr [ebp-0x1]
+0:	TAINT ZF	cmp eax, 0x58
+0:	TAINT BR	by ZF	cmp eax, 0x58
+0:	UNTAINT REG	al	mov eax, 0x1
+0:	UNTAINT REG	ah	mov eax, 0x1
+0:	UNTAINT REG	ax	mov eax, 0x1
+0:	UNTAINT REG	eax	mov eax, 0x1
+0:	UNTAINT REG	cl	mov ecx, edx
+0:	UNTAINT REG	ch	mov ecx, edx
+0:	UNTAINT REG	cx	mov ecx, edx
+0:	UNTAINT REG	ecx	mov ecx, edx

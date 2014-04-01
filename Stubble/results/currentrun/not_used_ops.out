@@ -1,0 +1,41 @@
+not ecx
+nop 
+not eax
+not ecx
+cld 
+nop 
+nop 
+data16 nop 
+nop 
+nop 
+nop 
+cld 
+nop 
+nop 
+data16 nop 
+nop 
+not ecx
+not eax
+nop 
+cld 
+not ecx
+not eax
+nop 
+nop 
+nop 
+data16 nop 
+data16 nop 
+data16 nop 
+nop 
+data16 nop 
+nop 
+nop 
+nop 
+data16 nop 
+nop 
+cld 
+data16 nop 
+not ecx
+cld 
+nop 
+nop 

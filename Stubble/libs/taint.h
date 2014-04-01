@@ -301,10 +301,14 @@ VOID op_mem_reg(UINT32 insAddr, std::string insDis, REG reg_r, UINT32 memOp, UIN
 
     string regString = REG_StringShort(reg_r);
 
+            // Was using before
+            //(!REG_valid(reg_r) || tainted_registers.count(regString) == 0) ) {
     if (tainted_memory.count(memOp) > 0 && 
-            (!REG_valid(reg_r) || tainted_registers.count(regString) == 0) ) {
+            tainted_registers.count(regString) == 0 && REG_valid(reg_r) ) {
+
         untaint_memory(regString, memOp, insDis);
         return;    
+
     }
 
     // memory not tainted, register is tainted
@@ -398,6 +402,22 @@ VOID diff_eflags(INS ins, string insDis, REG reg, CONTEXT* context)
 
 }
 
+/*
+ *
+ */
+VOID function_enter(INS ins, string insDis, REG reg, UINT32 stack_ptr, UINT32 memOp)
+{
+
+    string regString = REG_StringShort(reg);
+    if (tainted_registers.count(regString) > 0) {
+
+        //taint_memory(regString, stack_ptr, insDis);
+        taint_memory(regString, memOp, insDis);
+        cout << insDis << "\t" << hex << memOp << endl;
+
+    }
+
+}
 
 /* 
  * Check conditional branch instructions
@@ -423,12 +443,38 @@ VOID conditional_branch(ADDRINT ins, string insDis)
     }
 }
 
+VOID handleLea(UINT32 insAddr, std::string insDis, UINT32 opCount, REG reg_w, CONTEXT* context, UINT32 disp, REG base, REG index, UINT32 scale)
+{
+    UINT32 ea = disp + PIN_GetContextReg(context, base) + PIN_GetContextReg(context, index) * scale; 
+
+    if (tainted_memory.count(ea) > 0) {
+
+        taint_register(reg_w, StringFromAddrint(ea), "MEMORY", insDis);
+
+    }
+    
+}
+
 /* 
  * Instrument instructions to track taint.
  * If an instruction is not instrumented, record it in unhandled_instructions.out
  */
 VOID Instructions(INS ins, VOID *v)
 {
+
+    // Handle functions
+    if (INS_IsStackWrite(ins) ) {
+        INS_InsertCall(
+                ins, IPOINT_BEFORE, (AFUNPTR)function_enter,
+                IARG_ADDRINT, INS_Address(ins),
+                IARG_PTR, new string(INS_Disassemble(ins)),
+                IARG_UINT32, INS_OperandReg(ins, 0),
+                IARG_REG_VALUE, REG_STACK_PTR,
+                IARG_MEMORYOP_EA, 0,
+                IARG_END);
+
+    }
+
     // Handle instructions which write EFLAGS register
     //if (INS_RegWContain(ins, REG_EFLAGS) && INS_HasFallThrough(ins) && INS_OperandIsReg(ins, 0) ) {
     if (INS_RegWContain(ins, REG_EFLAGS) && INS_HasFallThrough(ins) ) {
@@ -473,11 +519,32 @@ VOID Instructions(INS ins, VOID *v)
     }
 
     // TODO also need to handle immediates being op1 and op0 being written by it to untaint?
+
+
+    // handle Lea
+    else if (INS_IsLea(ins) ) {
+
+        INS_InsertCall(
+                ins, IPOINT_BEFORE, (AFUNPTR)handleLea,
+                IARG_ADDRINT, INS_Address(ins),
+                IARG_PTR, new string(INS_Disassemble(ins)),
+                IARG_UINT32, INS_OperandCount(ins),
+                IARG_UINT32, INS_RegW(ins, 0),
+                IARG_CONST_CONTEXT,
+                IARG_UINT32, INS_OperandMemoryDisplacement(ins, 1),
+                IARG_UINT32, INS_OperandMemoryBaseReg(ins, 1),
+                IARG_UINT32, INS_OperandMemoryIndexReg(ins, 1),
+                IARG_UINT32, INS_OperandMemoryScale(ins, 1),
+                IARG_END);
+
+    }
     
 
     // Taint can spread in 3 ways:
     //  Case 1) op reg, mem 
-    else if (INS_MemoryOperandIsRead(ins, 0) && INS_OperandIsReg(ins, 0)) {
+    // 
+    //else if (INS_MemoryOperandIsRead(ins, 0) && INS_OperandIsReg(ins, 0)) {
+    else if (INS_MemoryOperandIsRead(ins, 0) && INS_OperandIsReg(ins, 0) && INS_Opcode(ins) != XED_ICLASS_CMP) {
         INS_InsertCall(
                 ins, IPOINT_BEFORE, (AFUNPTR)ReadMem,
                 IARG_ADDRINT, INS_Address(ins),
@@ -489,6 +556,7 @@ VOID Instructions(INS ins, VOID *v)
 
     }
     //  Case 2) op mem, reg 
+    //else if (INS_MemoryOperandIsWritten(ins, 0) && !INS_IsStackWrite(ins) ) {
     else if (INS_MemoryOperandIsWritten(ins, 0) ) {
         INS_InsertCall(
                 ins, IPOINT_BEFORE, (AFUNPTR)op_mem_reg,
@@ -511,6 +579,7 @@ VOID Instructions(INS ins, VOID *v)
                 IARG_UINT32, INS_RegW(ins, 0),
                 IARG_END);
     }
+
 
     // Put in "unhandle_instruction.out" for debugging
     else {
