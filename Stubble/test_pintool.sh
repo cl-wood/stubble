@@ -20,5 +20,16 @@ else
     echo "[FAIL] function test";
 fi
 
+# Loops
+../pin/pin -t obj-ia32/MyPinTool.so -- ./loopsCrackme < file.txt
+egrep "TAINT ZF" results/currentrun/taint.out | egrep "cmp ecx, 0x41"
+
+if [ $? -eq 0 ]; 
+    then echo "[PASS] loops test"; 
+else
+    echo "[FAIL] loops test";
+fi
+
+#
 
 
